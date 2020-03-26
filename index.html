@@ -12,8 +12,20 @@
   <div id="app"></div>
   <script>
     window.$docsify = {
-      name: '',
-      repo: ''
+      search: {
+        paths: 'auto',
+        placeholder: '🔍 这是搜索框哦',
+        depth: 6,                       // 搜索标题的最大程级, 1 - 6
+        noData: '臣妾找不到啊',
+      },
+    loadSidebar: true,                  // 加载侧边栏
+    subMaxLevel: 3,                     // 侧边栏显示文档目录，显示1，2，3级目录
+    loadNavbar: true,                   // 加载导航栏
+    coverpage: false,                    // 加载封面
+    onlyCover: false,                    // 设置首页只显示封面
+    name: 'Sai',
+    repo: 'jiangsai0502',              // Github 仓库
+    auto2top: true,                      // 路径改变后，滚动到屏幕的顶部
     }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
