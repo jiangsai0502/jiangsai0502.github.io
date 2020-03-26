@@ -2,16 +2,301 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>Sai</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+  <link rel="stylesheet" href="plugins/vue.css">
+  <link rel="stylesheet" href="plugins/prism.css">
+  <link rel="shortcut icon" href="img/s.svg" />
+
+  <style type="text/css">
+
+    /* 隐藏头部的目录 */
+    #main>ul:nth-child(1) {
+        display: none;
+    }
+
+    #main>ul:nth-child(2) {
+        display: none;
+    }
+
+    .markdown-section h1 {
+        margin: 3rem 0 2rem 0;
+    }
+
+    .markdown-section h2 {
+        margin: 2rem 0 1rem;
+    }
+
+    img,
+    pre {
+        border-radius: 8px;
+    }
+
+    .content,
+    .sidebar,
+    .markdown-section,
+    body,
+    .search input {
+        /* 修改博客背景色 */
+        /* background-color: rgba(243, 242, 235, 1) !important; */
+        background-color: #FFFFF0 !important;
+    }
+
+    @media (min-width:600px) {
+        .sidebar-toggle {
+            background-color: #f3f2ee;
+        }
+    }
+
+    .docsify-copy-code-button {
+        background: #f8f8f8 !important;
+        color: #7a7a7a !important;
+    }
+
+    body {
+        /*font-family: Microsoft YaHei, Source Sans Pro, Helvetica Neue, Arial, sans-serif !important;*/
+    }
+
+    .markdown-section>p {
+        font-size: 16px !important;
+    }
+
+    .markdown-section pre>code {
+        font-family: Consolas, Roboto Mono, Monaco, courier, monospace !important;
+        /*font-size: .9rem !important;*/
+    }
+
+    /*.anchor span {
+    color: rgb(66, 185, 131);
+  }*/
+
+    section.cover h1 {
+        margin: 0;
+    }
+
+    body>section>div.cover-main>ul>li>a {
+        color: #42b983;
+    }
+
+    .markdown-section img {
+        /* 修改代码块阴影浓度 */
+        box-shadow: 3px 4px 4px #aaa !important;
+    }
+
+    pre {
+        background-color: #f3f2ee !important;
+    }
+
+    @media (min-width:600px) {
+        pre code {
+            /* 修改代码块边距 */
+            padding-left: 15px !important;
+            padding-top: 15px !important;
+            padding-bottom: 15px !important;
+        }
+    }
+
+    @media (max-width:600px) {
+        pre {
+            padding-left : 0px !important;
+            padding-right : 0px !important;
+        }
+    }
+
+    .markdown-section pre {
+        padding-left: 0 !important;
+        padding-right: 0px !important;
+        /* 修改代码块阴影浓度 */
+        box-shadow: 1px 1px 1px 1px #aaa;
+    }
+    </style>
+    <style type="text/css">
+    /**
+ * prism.js Coy theme for JavaScript, CoffeeScript, CSS and HTML
+ * Based on https://github.com/tshedor/workshop-wp-theme (Example: http://workshop.kansan.com/category/sessions/basics or http://workshop.timshedor.com/category/sessions/basics);
+ * @author Tim  Shedor
+ */
+
+    code[class*="language-"],
+    pre[class*="language-"] {
+        color: black;
+        background: none;
+        font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+        text-align: left;
+        white-space: pre;
+        word-spacing: normal;
+        word-break: normal;
+        word-wrap: normal;
+        line-height: 1.5;
+
+        -moz-tab-size: 4;
+        -o-tab-size: 4;
+        tab-size: 4;
+
+        -webkit-hyphens: none;
+        -moz-hyphens: none;
+        -ms-hyphens: none;
+        hyphens: none;
+    }
+
+    /* Code blocks */
+    pre[class*="language-"] {
+        position: relative;
+        margin: .5em 0;
+        overflow: visible;
+        padding: 0;
+    }
+
+    pre[class*="language-"]>code {
+        position: relative;
+        border-left: 10px solid #358ccb;
+        box-shadow: -1px 0px 0px 0px #358ccb, 0px 0px 0px 1px #dfdfdf;
+        background-color: #fdfdfd;
+        background-image: linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
+        background-size: 3em 3em;
+        background-origin: content-box;
+        background-attachment: local;
+    }
+
+    code[class*="language"] {
+        max-height: inherit;
+        height: inherit;
+        padding: 0 1em;
+        display: block;
+        overflow: auto;
+    }
+
+    /* Margin bottom to accommodate shadow */
+    :not(pre)>code[class*="language-"],
+    pre[class*="language-"] {
+        background-color: #fdfdfd;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        margin-bottom: 1em;
+    }
+
+    /* Inline code */
+    :not(pre)>code[class*="language-"] {
+        position: relative;
+        padding: .2em;
+        border-radius: 0.3em;
+        color: #c92c2c;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        display: inline;
+        white-space: normal;
+    }
+
+    pre[class*="language-"]:before,
+    pre[class*="language-"]:after {
+        content: '';
+        z-index: -2;
+        display: block;
+        position: absolute;
+        bottom: 0.75em;
+        left: 0.18em;
+        width: 40%;
+        height: 20%;
+        max-height: 13em;
+        box-shadow: 0px 13px 8px #979797;
+        -webkit-transform: rotate(-2deg);
+        -moz-transform: rotate(-2deg);
+        -ms-transform: rotate(-2deg);
+        -o-transform: rotate(-2deg);
+        transform: rotate(-2deg);
+    }
+
+    :not(pre)>code[class*="language-"]:after,
+    pre[class*="language-"]:after {
+        right: 0.75em;
+        left: auto;
+        -webkit-transform: rotate(2deg);
+        -moz-transform: rotate(2deg);
+        -ms-transform: rotate(2deg);
+        -o-transform: rotate(2deg);
+        transform: rotate(2deg);
+    }
+
+    .token.comment,
+    .token.block-comment,
+    .token.prolog,
+    .token.doctype,
+    .token.cdata {
+        color: #7D8B99;
+    }
+
+    .token.punctuation {
+        color: #5F6364;
+    }
+
+    .token.property,
+    .token.tag,
+    .token.boolean,
+    .token.number,
+    .token.function-name,
+    .token.constant,
+    .token.symbol,
+    .token.deleted {
+        color: #c92c2c;
+    }
+
+    .token.selector,
+    .token.attr-name,
+    .token.string,
+    .token.char,
+    .token.function,
+    .token.builtin,
+    .token.inserted {
+        color: #2f9c0a;
+    }
+
+    .token.operator,
+    .token.entity,
+    .token.url,
+    .token.variable {
+        color: #a67f59;
+        background: rgba(255, 255, 255, 0.5);
+    }
+
+    .token.atrule,
+    .token.attr-value,
+    .token.keyword,
+    .token.class-name {
+        color: #1990b8;
+    }
+
+    .token.regex,
+    .token.important {
+        color: #e90;
+    }
+
+    .language-css .token.string,
+    .style .token.string {
+        color: #a67f59;
+        background: rgba(255, 255, 255, 0.5);
+    }
+
+
+    /* Plugin styles */
+    .token.tab:not(:empty):before,
+    .token.cr:before,
+    .token.lf:before {
+        color: #e0d7d1;
+    }
+
+    </style>
+
 </head>
 <body>
+    <nav>
+       <a href="#/Sai_FootPrint/">中文</a>
+       <a href="#/Sai_PM/">产品</a>
+    </nav>
   <div id="app"></div>
   <script>
-    window.$docsify = {
+  window.$docsify = {
       search: {
         paths: 'auto',
         placeholder: '🔍 这是搜索框哦',
@@ -26,8 +311,22 @@
     name: 'Sai',
     repo: 'jiangsai0502',              // Github 仓库
     auto2top: true,                      // 路径改变后，滚动到屏幕的顶部
-    }
+  }
   </script>
-  <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <!-- 必须有的模块 -->
+  <script src="plugins/docsify.min.js"></script>
+  <!-- 搜索模块 -->
+  <script src="plugins/search.js"></script>
+  <!-- 图片缩放模块 -->
+  <script src="plugins/zoom-image.js"></script>
+  <!-- bash 代码高亮 -->
+  <script src="plugins/prism-bash.min.js"></script>
+  <!-- 复制代码块 -->
+  <script src="//unpkg.com/docsify-copy-code"></script>
+  <script src="plugins/docsify-copy-code.min.js"></script>
+  <!-- python 代码高亮 -->
+  <script src="plugins/prism-python.js"></script>
+  <script src="plugins/prism-python.min.js"></script>
+  <script src="plugins/prism.js"></script>
 </body>
 </html>

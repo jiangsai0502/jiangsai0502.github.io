@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="-170 0 3689 996" width="3689pt" height="83pc" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <metadata> Produced by OmniGraffle 7.2.2 
+    <dc:date>2019-03-12 05:06:00 +0000</dc:date>
+  </metadata>
+  <defs>
+    <font-face font-family="Helvetica Neue" font-size="14" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="500">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="PingFang SC" font-size="24" panose-1="2 11 4 0 0 0 0 0 0 0" units-per-em="1000" underline-position="-150" underline-thickness="58" slope="0" x-height="600" cap-height="860" ascent="1060.0021" descent="-340.0007" font-weight="500">
+      <font-face-src>
+        <font-face-name name="PingFangSC-Regular"/>
+      </font-face-src>
+    </font-face>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker_2" viewBox="-9 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M -8 0 L 0 3 L 0 -3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <font-face font-family="PingFang SC" font-size="12" panose-1="2 11 8 0 0 0 0 0 0 0" units-per-em="1000" underline-position="-150" underline-thickness="80" slope="0" x-height="600" cap-height="860" ascent="1060.0021" descent="-340.0007" font-weight="bold">
+      <font-face-src>
+        <font-face-name name="PingFangSC-Semibold"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="Helvetica Neue" font-size="12" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="500">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <g stroke="none" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1">
+    <title>Canvas 1</title>
+    <rect fill="white" width="3689" height="996"/>
+    <g>
+      <title>Layer 1</title>
+      <rect x="-169" y="105" width="3687" height="126" fill="white"/>
+      <rect x="-169" y="105" width="3687" height="126" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-169" y="105" width="56.00506" height="126" fill="#333"/>
+      <rect x="-169" y="105" width="56.00506" height="126" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-164 159.804)" fill="white">
+        <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" fill="white" x="8.358532" y="13" textLength="29.288">User</tspan>
+      </text>
+      <rect x="-169" y="231" width="3687" height="108" fill="white"/>
+      <rect x="-169" y="231" width="3687" height="108" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-169" y="231" width="56.00506" height="108" fill="#333"/>
+      <rect x="-169" y="231" width="56.00506" height="108" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-164 276.804)" fill="white">
+        <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" fill="white" x="12.369532" y="13" textLength="21.266">PM</tspan>
+      </text>
+      <rect x="-169" y="339" width="3687" height="108" fill="white"/>
+      <rect x="-169" y="339" width="3687" height="108" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-169" y="339" width="56.00506" height="108" fill="#333"/>
+      <rect x="-169" y="339" width="56.00506" height="108" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-164 384.804)" fill="white">
+        <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" fill="white" x="13.671532" y="13" textLength="18.662">UX</tspan>
+      </text>
+      <rect x="-169" y="447" width="3687" height="108" fill="white"/>
+      <rect x="-169" y="447" width="3687" height="108" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-169" y="447" width="56.00506" height="108" fill="#333"/>
+      <rect x="-169" y="447" width="56.00506" height="108" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-164 492.804)" fill="white">
+        <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" fill="white" x="16.135532" y="13" textLength="13.734">UI</tspan>
+      </text>
+      <rect x="-169" y="555" width="3687" height="145.5" fill="white"/>
+      <rect x="-169" y="555" width="3687" height="145.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-169" y="555" width="56.00506" height="145.5" fill="#333"/>
+      <rect x="-169" y="555" width="56.00506" height="145.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-164 619.554)" fill="white">
+        <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" fill="white" x="14.707532" y="13" textLength="16.59">FE</tspan>
+      </text>
+      <rect x="-169" y="700.5" width="3687" height="163" fill="white"/>
+      <rect x="-169" y="700.5" width="3687" height="163" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-169" y="700.5" width="56.00506" height="163" fill="#333"/>
+      <rect x="-169" y="700.5" width="56.00506" height="163" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-164 773.804)" fill="white">
+        <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" fill="white" x="13.279532" y="13" textLength="19.446">RD</tspan>
+      </text>
+      <rect x="-169" y="863.5" width="3687" height="128.5" fill="white"/>
+      <rect x="-169" y="863.5" width="3687" height="128.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-169" y="863.5" width="56.00506" height="128.5" fill="#333"/>
+      <rect x="-169" y="863.5" width="56.00506" height="128.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-164 919.554)" fill="white">
+        <tspan font-family="Helvetica Neue" font-size="14" font-weight="500" fill="white" x="13.146532" y="13" textLength="19.712">QA</tspan>
+      </text>
+      <rect x="-169" y="69" width="438" height="36" fill="#333"/>
+      <rect x="-169" y="69" width="438" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-164 70.5)" fill="white">
+        <tspan font-family="PingFang SC" font-size="24" font-weight="500" fill="white" x="166" y="25" textLength="96">需求分析</tspan>
+      </text>
+      <line x1="-46.5" y1="195" x2="-46.5" y2="257.1" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line x1="-1.5" y1="285" x2="21.1" y2="285" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line x1="76" y1="591" x2="76" y2="312.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line x1="76" y1="741.5" x2="76" y2="636.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line x1="121" y1="285" x2="143.6" y2="285" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 198.5 267 L 198.5 255.1 L 198.5 177 L -1.5 177 L 10.4 177 L 8.4 177" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="269" y="69" width="529.74563" height="36" fill="#333"/>
+      <rect x="269" y="69" width="529.74563" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(274 70.5)" fill="white">
+        <tspan font-family="PingFang SC" font-size="24" font-weight="500" fill="white" x="211.87282" y="25" textLength="96">交互设计</tspan>
+      </text>
+      <path d="M 243.5 285 L 255.4 285 L 270.25 285 L 285.1 285 L 287.1 285" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line x1="269" y1="69" x2="269" y2="992" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line x1="387" y1="285" x2="405.1" y2="285" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line x1="460" y1="195" x2="460" y2="257.1" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line x1="460" y1="365.1" x2="460" y2="313.9" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 460 483 L 460 471.1 L 460 447 L 460 422.9 L 460 420.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="797.7456" y="69" width="499.50437" height="36" fill="#333"/>
+      <rect x="797.7456" y="69" width="499.50437" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(802.7456 70.5)" fill="white">
+        <tspan font-family="PingFang SC" font-size="24" font-weight="500" fill="white" x="136.75218" y="25" textLength="216">视觉设计、技术方案</tspan>
+      </text>
+      <line x1="797.7456" y1="69" x2="797.7456" y2="992" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 915.5 580 L 915.5 568.1 L 915.5 550 L 915.5 531.9 L 915.5 529.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 915.5 686.9 L 915.5 688.9 L 915.5 706.25 L 915.5 723.6 L 915.5 725.6" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 960.5 753.5 L 972.4 753.5 L 977.75 753.5 L 983.1 753.5 L 985.1 753.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1386 686.9 L 1386 688.9 L 1386.1191 706.25 L 1386.2382 723.6 L 1386.2382 725.6" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 960.5 598 L 972.4 598 L 983.6846 598 L 994.9691 598 L 996.9691 598" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 960.5 502 L 972.4 502 L 974.0664 502 L 974.0664 394.53125 L 974.0664 285.5 L 994.9691 285.5 L 996.9691 285.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 915.0811 917.5 L 926.9811 917.5 L 956.6656 917.5 L 986.35 917.5 L 988.35 917.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1219.5 735.5 L 1219.5 723.6 L 1219.5 706.25 L 1219.5 688.9 L 1219.5 686.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1219.5 641 L 1219.5 629.1 L 1219.5 472 L 1219.5 314.9 L 1219.5 312.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1219.5 267 L 1219.5 255.1 L 1219.5 231 L 1219.5 206.9 L 1219.5 204.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="1296.25" y="69" width="838.25" height="36" fill="#333"/>
+      <rect x="1296.25" y="69" width="838.25" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1301.25 70.5)" fill="white">
+        <tspan font-family="PingFang SC" font-size="24" font-weight="500" fill="white" x="366.125" y="25" textLength="96">研发阶段</tspan>
+      </text>
+      <line x1="1296.25" y1="69" x2="1296.25" y2="992" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1466.5 520 L 1466.5 531.9 L 1466.5 659 L 1610 659 L 1598.1 659 L 1600.1 659" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1700 659 L 1711.9 659 L 1731.75 659 L 1751.6 659 L 1753.6 659" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1808.5 686.9 L 1808.5 688.9 L 1808.5 706.25 L 1808.5 723.6 L 1808.5 725.6" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1700 753.5 L 1711.9 753.5 L 1731.75 753.5 L 1751.6 753.5 L 1753.6 753.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1808.5 799.5 L 1808.5 787.6 L 1808.5 785.5 L 1808.5 783.4 L 1808.5 781.4" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1853.5 659 L 1865.4 659 L 1870.5 659 L 1875.6 659 L 1877.6 659" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1932.5 677 L 1932.5 688.9 L 1932.75 706.25 L 1933 723.6 L 1933 725.6" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1933 771.5 L 1933 783.4 L 1932.75 835.5 L 1932.5 887.6 L 1932.5 889.6" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line x1="2134.5" y1="69" x2="2134.5" y2="992" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="2134.5" y="69" width="385" height="36" fill="#333"/>
+      <rect x="2134.5" y="69" width="385" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(2139.5 70.5)" fill="white">
+        <tspan font-family="PingFang SC" font-size="24" font-weight="500" fill="white" x="70.632" y="25" textLength="233.736">Alpha测试、Beta测试</tspan>
+      </text>
+      <path d="M 2110 917.5 L 2121.9 917.5 L 2137 917.5 L 2152.1 917.5 L 2154.1 917.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 2209 899.5 L 2209 887.6 L 2209 835.5 L 2209 783.4 L 2209 781.4" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 2209 725.6 L 2209 723.6 L 2209 690.625 L 2209 657.65 L 2209 655.65" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 2328.5 772.625 L 2328.5 784.525 L 2328.5 836.0625 L 2328.5 887.6 L 2328.5 889.6" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 2254 627.75 L 2265.9 627.75 L 2268.75 627.75 L 2271.6 627.75 L 2273.6 627.75" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 2328.5 645.75 L 2328.5 657.65 L 2328.5 691.1875 L 2328.5 724.725 L 2328.5 726.725" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 2283.5 917.5 L 2276.5 917.5 L 2268.75 917.5 L 2261 917.5 L 2254 917.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 2373.5 917.5 L 2385.4 917.5 L 2440.5 917.5 L 2440.5 519 L 2440.5 530.9 L 2440.5 528.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line x1="2519.5" y1="69" x2="2519.5" y2="992" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="2519.5" y="69" width="291.5" height="36" fill="#333"/>
+      <rect x="2519.5" y="69" width="291.5" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(2524.5 70.5)" fill="white">
+        <tspan font-family="PingFang SC" font-size="24" font-weight="500" fill="white" x="80.75" y="25" textLength="120">发布、上线</tspan>
+      </text>
+      <path d="M 2485.5 285 L 2497.4 285 L 2604.5 285 L 2604.5 609.75 L 2604.5 597.85 L 2604.5 599.85" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 2604.5 645.75 L 2604.5 657.65 L 2604.5 690.625 L 2604.5 723.6 L 2604.5 725.6" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 2649.5 627.75 L 2661.4 627.75 L 2731.5 627.75 L 2731.5 303 L 2731.5 314.9 L 2731.5 312.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 2649.5 753.5 L 2661.4 753.5 L 2731.496 753.5 L 2731.496 731.0039 L 2731.5 314.9 L 2731.5 312.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 505 393 L 516.9 393 L 517.04686 393 L 517.1937 393 L 519.1937 393" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 771.4102 393 L 783.3102 393 L 845.0508 393 L 845.0508 449.6836 L 845.0508 502 L 858.6 502 L 860.6 502" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 728.5 899.5 L 728.5 887.6 L 729 772.625 L 729.5 657.65 L 729.5 655.65" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 729.5 609.75 L 729.5 597.85 L 729.5 564.875 L 729.5 531.9 L 729.5 529.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 460 609.75 L 460 597.85 L 460 564.375 L 460 530.9 L 460 528.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 574.0937 375 L 574.0937 363.1 L 574.0937 312 L 684.5 312 L 672.6 312 L 674.6 312" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1264.5 917.5 L 1276.4 917.5 L 1296.75 917.5 L 1317.1 917.5 L 1319.1 917.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 773.5 917.5 L 785.4 917.5 L 799.2906 917.5 L 813.1811 917.5 L 815.1811 917.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1264.5 753.5 L 1276.4 753.5 L 1302.8691 753.5 L 1329.3382 753.5 L 1331.3382 753.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1572 917.5 L 1583.9 917.5 L 1591 917.5 L 1598.1 917.5 L 1600.1 917.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1655 771.5 L 1655 783.4 L 1655 835.5 L 1655 887.6 L 1655 889.6" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1853.5 753.5 L 1865.4 753.5 L 1870.75 753.5 L 1876.1 753.5 L 1878.1 753.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1700 917.5 L 1711.9 917.5 L 1731.75 917.5 L 1751.6 917.5 L 1753.6 917.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1853.5 917.5 L 1865.4 917.5 L 1870.5 917.5 L 1875.6 917.5 L 1877.6 917.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="1610.5" y="580" width="328" height="36" fill="white"/>
+      <path d="M 1610.5 580 L 1938.5 580 L 1938.5 616 L 1610.5 616 Z M 1643.3 580 L 1643.3 616 M 1905.7 616 L 1905.7 580" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <text transform="translate(1648.3 589.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="24.2" y="13" textLength="204">研发过程中暴露问题而需要调整的内容</tspan>
+      </text>
+      <rect x="1609.75" y="266" width="328" height="36" fill="white"/>
+      <path d="M 1609.75 266 L 1937.75 266 L 1937.75 302 L 1609.75 302 Z M 1642.55 266 L 1642.55 302 M 1904.95 302 L 1904.95 266" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <text transform="translate(1647.55 275.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="20.42" y="13" textLength="211.56">第一时间让UX、UI、QA知晓，尤其QA!</tspan>
+      </text>
+      <path d="M 1774.5 580 L 1774.5 568.1 L 1774.125 441 L 1773.75 313.9 L 1773.75 312.4" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="888.125" y="806.5" width="310.25" height="25" fill="white"/>
+      <path d="M 888.125 806.5 L 1198.375 806.5 L 1198.375 831.5 L 888.125 831.5 Z M 919.15 806.5 L 919.15 831.5 M 1167.35 831.5 L 1167.35 806.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <text transform="translate(924.15 810.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="2.526" y="13" textLength="233.148">与PM、RD商讨是否小流量、压测，通知QA</tspan>
+      </text>
+      <path d="M 888.125 819 L 876.225 819 L 870.0811 819 L 870.0811 899.5 L 870.0811 887.6 L 870.0811 889.6" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-91.5" y="159" width="90" height="36" fill="white"/>
+      <rect x="-91.5" y="159" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-86.5 168.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="22" y="13" textLength="36">讲故事</tspan>
+      </text>
+      <rect x="-91.5" y="267" width="90" height="36" fill="white"/>
+      <rect x="-91.5" y="267" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-86.5 276.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="16" y="13" textLength="48">需求分析</tspan>
+      </text>
+      <rect x="31" y="591" width="90" height="36" fill="white"/>
+      <rect x="31" y="591" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(36 600.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="10" y="13" textLength="60">可行性分析</tspan>
+      </text>
+      <rect x="31" y="741.5" width="90" height="36" fill="white"/>
+      <rect x="31" y="741.5" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(36 751)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="10" y="13" textLength="60">可行性分析</tspan>
+      </text>
+      <rect x="31" y="267" width="90" height="36" fill="white"/>
+      <rect x="31" y="267" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(36 276.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="10" y="13" textLength="60">可行性分析</tspan>
+      </text>
+      <rect x="153.5" y="267" width="90" height="36" fill="white"/>
+      <rect x="153.5" y="267" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(158.5 276.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="16" y="13" textLength="48">功能取舍</tspan>
+      </text>
+      <rect x="297" y="267" width="90" height="36" fill="white"/>
+      <rect x="297" y="267" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(302 276.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">建立概念模型</tspan>
+      </text>
+      <rect x="415" y="267" width="90" height="36" fill="white"/>
+      <rect x="415" y="267" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(420 276.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="10" y="13" textLength="60">可行性分析</tspan>
+      </text>
+      <rect x="415" y="375" width="90" height="36" fill="white"/>
+      <rect x="415" y="375" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(420 384.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">交互方案构思</tspan>
+      </text>
+      <rect x="415" y="609.75" width="90" height="36" fill="white"/>
+      <rect x="415" y="609.75" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(420 619.25)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="10" y="13" textLength="60">可行性分析</tspan>
+      </text>
+      <rect x="415" y="159" width="90" height="36" fill="white"/>
+      <rect x="415" y="159" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(420 168.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="16" y="13" textLength="48">意见反馈</tspan>
+      </text>
+      <rect x="529.0937" y="375" width="90" height="36" fill="white"/>
+      <rect x="529.0937" y="375" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(534.0937 384.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="16" y="13" textLength="48">交互设计</tspan>
+      </text>
+      <rect x="415" y="483" width="90" height="36" fill="white"/>
+      <rect x="415" y="483" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(420 492.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="10" y="13" textLength="60">可行性分析</tspan>
+      </text>
+      <rect x="683.5" y="899.5" width="90" height="36" fill="white"/>
+      <rect x="683.5" y="899.5" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(688.5 909)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">交互设计评审</tspan>
+      </text>
+      <rect x="870.5" y="484" width="90" height="36" fill="white"/>
+      <rect x="870.5" y="484" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(875.5 493.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="16" y="13" textLength="48">视觉设计</tspan>
+      </text>
+      <rect x="1006.8691" y="267.5" width="90" height="36" fill="white"/>
+      <rect x="1006.8691" y="267.5" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1011.8691 277)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">视觉设计验收</tspan>
+      </text>
+      <rect x="870.5" y="580" width="90" height="36" fill="white"/>
+      <rect x="870.5" y="580" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(875.5 589.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">规范、标准化</tspan>
+      </text>
+      <rect x="1006.8691" y="580" width="90" height="36" fill="white"/>
+      <rect x="1006.8691" y="580" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1011.8691 589.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">视觉设计评审</tspan>
+      </text>
+      <rect x="870.5" y="641" width="90" height="36" fill="white"/>
+      <rect x="870.5" y="641" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(875.5 650.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">数据交互方案</tspan>
+      </text>
+      <rect x="870.5" y="735.5" width="90" height="36" fill="white"/>
+      <rect x="870.5" y="735.5" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(875.5 745)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">数据交互方案</tspan>
+      </text>
+      <rect x="1341" y="641" width="90" height="36" fill="white"/>
+      <rect x="1341" y="641" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1346 650.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="18.454" y="13" textLength="43.092">API协议</tspan>
+      </text>
+      <rect x="1341.2382" y="735.5" width="90" height="36" fill="white"/>
+      <rect x="1341.2382" y="735.5" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1346.2382 745)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="18.454" y="13" textLength="43.092">API协议</tspan>
+      </text>
+      <rect x="995" y="641" width="96.5" height="36" fill="white"/>
+      <rect x="995" y="641" width="96.5" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1e3 650.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="1.25" y="13" textLength="84">技术方案及评审</tspan>
+      </text>
+      <rect x="825.0811" y="899.5" width="90" height="36" fill="white"/>
+      <rect x="825.0811" y="899.5" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(830.0811 909)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="16" y="13" textLength="48">测试计划</tspan>
+      </text>
+      <rect x="1329" y="899.5" width="90" height="36" fill="white"/>
+      <rect x="1329" y="899.5" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1334 909)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">手测用例编写</tspan>
+      </text>
+      <rect x="1174.5" y="641" width="90" height="36" fill="white"/>
+      <rect x="1174.5" y="641" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1179.5 650.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">研发成本估算</tspan>
+      </text>
+      <rect x="1174.5" y="735.5" width="90" height="36" fill="white"/>
+      <rect x="1174.5" y="735.5" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1179.5 745)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">研发成本估算</tspan>
+      </text>
+      <rect x="1174.5" y="267" width="90" height="36" fill="white"/>
+      <rect x="1174.5" y="267" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1179.5 268)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">完善上线计划</tspan>
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="16.078" y="30" textLength="22.524">buff</tspan>
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="38.602" y="30" textLength="25.32">ered</tspan>
+      </text>
+      <rect x="1174.5" y="159" width="90" height="36" fill="white"/>
+      <rect x="1174.5" y="159" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1179.5 168.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="28" y="13" textLength="24">知晓</tspan>
+      </text>
+      <rect x="1341.2382" y="580" width="90" height="36" fill="white"/>
+      <rect x="1341.2382" y="580" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1346.2382 589.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="10" y="13" textLength="60">视图层研发</tspan>
+      </text>
+      <rect x="1610" y="735.5" width="90" height="36" fill="white"/>
+      <rect x="1610" y="735.5" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1615 745)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="12.454" y="13" textLength="55.092">API层研发</tspan>
+      </text>
+      <rect x="1610" y="641" width="90" height="36" fill="white"/>
+      <rect x="1610" y="641" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1615 650.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="10" y="13" textLength="60">数据层研发</tspan>
+      </text>
+      <rect x="1763.5" y="641" width="90" height="36" fill="white"/>
+      <rect x="1763.5" y="641" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1768.5 650.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="10" y="13" textLength="60">自测、联调</tspan>
+      </text>
+      <rect x="1763.5" y="735.5" width="90" height="36" fill="white"/>
+      <rect x="1763.5" y="735.5" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1768.5 745)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="10" y="13" textLength="60">自测、联调</tspan>
+      </text>
+      <rect x="1421.5" y="484" width="90" height="36" fill="white"/>
+      <rect x="1421.5" y="484" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1426.5 493.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">视觉实现验收</tspan>
+      </text>
+      <rect x="1763.5" y="799.5" width="90" height="36" fill="white"/>
+      <rect x="1763.5" y="799.5" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1768.5 809)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">其他分层研发</tspan>
+      </text>
+      <rect x="2020" y="899.5" width="90" height="36" fill="white"/>
+      <rect x="2020" y="899.5" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(2025 909)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="28" y="13" textLength="24">测试</tspan>
+      </text>
+      <rect x="1888" y="735.5" width="90" height="36" fill="white"/>
+      <rect x="1888" y="735.5" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1893 745)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="28" y="13" textLength="24">送测</tspan>
+      </text>
+      <rect x="1887.5" y="641" width="90" height="36" fill="white"/>
+      <rect x="1887.5" y="641" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1892.5 650.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="28" y="13" textLength="24">送测</tspan>
+      </text>
+      <rect x="2164" y="899.5" width="90" height="36" fill="white"/>
+      <rect x="2164" y="899.5" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(2169 909)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="16" y="13" textLength="48">测试反馈</tspan>
+      </text>
+      <rect x="2164" y="609.75" width="90" height="36" fill="white"/>
+      <rect x="2164" y="609.75" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(2169 619.25)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="14.92" y="13" textLength="50.16">BUG修复</tspan>
+      </text>
+      <rect x="2164" y="735.5" width="90" height="36" fill="white"/>
+      <rect x="2164" y="735.5" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(2169 745)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="14.92" y="13" textLength="50.16">BUG修复</tspan>
+      </text>
+      <rect x="2283.5" y="609.75" width="90" height="36" fill="white"/>
+      <rect x="2283.5" y="609.75" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(2288.5 619.25)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="28" y="13" textLength="24">送测</tspan>
+      </text>
+      <rect x="2283.5" y="736.625" width="90" height="36" fill="white"/>
+      <rect x="2283.5" y="736.625" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(2288.5 746.125)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="28" y="13" textLength="24">送测</tspan>
+      </text>
+      <path d="M 2328.5 899.5 L 2373.5 917.5 L 2328.5 935.5 L 2283.5 917.5 Z" fill="white"/>
+      <path d="M 2328.5 899.5 L 2373.5 917.5 L 2328.5 935.5 L 2283.5 917.5 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(2300.65 908.64)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="16.75" y="13" textLength="24">通过</tspan>
+      </text>
+      <rect x="2395.5" y="267" width="90" height="36" fill="white"/>
+      <rect x="2395.5" y="267" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(2400.5 276.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">产品测试验收</tspan>
+      </text>
+      <rect x="2559.5" y="609.75" width="90" height="36" fill="white"/>
+      <rect x="2559.5" y="609.75" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(2564.5 619.25)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="10" y="13" textLength="60">发布、上线</tspan>
+      </text>
+      <rect x="2559.5" y="735.5" width="90" height="36" fill="white"/>
+      <rect x="2559.5" y="735.5" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(2564.5 745)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="10" y="13" textLength="60">发布、上线</tspan>
+      </text>
+      <rect x="2686.5" y="267" width="90" height="36" fill="white"/>
+      <rect x="2686.5" y="267" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(2691.5 276.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">产品发布验收</tspan>
+      </text>
+      <rect x="684.5" y="294" width="90" height="36" fill="white"/>
+      <rect x="684.5" y="294" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(689.5 303.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">交互设计验收</tspan>
+      </text>
+      <rect x="684.5" y="609.75" width="90" height="36" fill="white"/>
+      <rect x="684.5" y="609.75" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(689.5 619.25)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">交互设计评审</tspan>
+      </text>
+      <rect x="684.5" y="484" width="90" height="36" fill="white"/>
+      <rect x="684.5" y="484" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(689.5 493.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">交互设计评审</tspan>
+      </text>
+      <rect x="1174.5" y="899.5" width="90" height="36" fill="white"/>
+      <rect x="1174.5" y="899.5" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1179.5 909)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">测试成本估算</tspan>
+      </text>
+      <rect x="1457" y="899.5" width="115" height="36" fill="white"/>
+      <rect x="1457" y="899.5" width="115" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1462 909)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x=".954" y="13" textLength="103.092">编写API自动化测试</tspan>
+      </text>
+      <rect x="1610" y="899.5" width="90" height="36" fill="white"/>
+      <rect x="1610" y="899.5" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1615 909)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x=".454" y="13" textLength="79.092">API自动化测试</tspan>
+      </text>
+      <rect x="1763.5" y="899.5" width="90" height="36" fill="white"/>
+      <rect x="1763.5" y="899.5" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1768.5 909)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">完善测试用例</tspan>
+      </text>
+      <rect x="2686.5" y="168" width="90" height="36" fill="white"/>
+      <rect x="2686.5" y="168" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(2691.5 177.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="28" y="13" textLength="24">知晓</tspan>
+      </text>
+      <path d="M 2731.5 267 L 2731.5 255.1 L 2731.5 235.5 L 2731.5 215.9 L 2731.5 213.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 729.53516 375 L 771.4102 393 L 729.53516 411 L 687.66016 393 Z" fill="white"/>
+      <path d="M 729.53516 375 L 771.4102 393 L 729.53516 411 L 687.66016 393 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(703.9664 384.14)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="14.40625" y="13" textLength="24">评审</tspan>
+      </text>
+      <line x1="729.5" y1="330" x2="729.5274" y2="365.1" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line x1="729.5" y1="484" x2="729.5304" y2="420.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="529.0937" y="484" width="90" height="36" fill="white"/>
+      <rect x="529.0937" y="484" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(534.0937 485)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="16" y="13" textLength="48">视觉设计</tspan>
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="16" y="30" textLength="48">成本估算</tspan>
+      </text>
+      <line x1="574.0937" y1="474.1" x2="574.0937" y2="420.9" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="805.29725" y="380.5" width="18" height="25" fill="white"/>
+      <text transform="translate(810.29725 385.832)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="12" font-weight="500" x=".112" y="11" textLength="7.776">Y</tspan>
+      </text>
+      <line x1="687.66016" y1="393" x2="628.9937" y2="393" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="657.4255" y="380.5" width="19" height="25" fill="white"/>
+      <text transform="translate(662.4255 385.832)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="12" font-weight="500" x=".168" y="11" textLength="8.664">N</tspan>
+      </text>
+      <rect x="684.53516" y="244.5" width="90" height="36" fill="white"/>
+      <rect x="684.53516" y="244.5" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(689.53516 254)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">初版上线计划</tspan>
+      </text>
+      <path d="M 619.0937 502 L 630.9937 502 L 645.0078 502 L 645.0078 419.8633 L 645.0078 262.5 L 672.63516 262.5 L 674.63516 262.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 774.5352 262.5 L 786.4352 262.5 L 915.5 262.5 L 915.5 484 L 915.5 472.1 L 915.5 474.1" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="1006.8691" y="386" width="90" height="36" fill="white"/>
+      <rect x="1006.8691" y="386" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1011.8691 395.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">视觉设计验收</tspan>
+      </text>
+      <path d="M 1051.8691 580 L 1051.8691 568.1 L 1051.8691 549.5 L 1051.8691 530.9 L 1051.8691 528.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1932.5 899.5 L 1977.5 917.5 L 1932.5 935.5 L 1887.5 917.5 Z" fill="white"/>
+      <path d="M 1932.5 899.5 L 1977.5 917.5 L 1932.5 935.5 L 1887.5 917.5 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1904.65 908.64)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="16.75" y="13" textLength="24">准入</tspan>
+      </text>
+      <path d="M 1977.5 917.5 L 1989.4 917.5 L 1998.75 917.5 L 2008.1 917.5 L 2010.1 917.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="1983.8381" y="905" width="18" height="25" fill="white"/>
+      <text transform="translate(1988.8381 910.332)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="12" font-weight="500" x=".112" y="11" textLength="7.776">Y</tspan>
+      </text>
+      <path d="M 1731.629 753.5 L 1756.5 753.5 L 1763.5 753.5" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1932.5 935.5 L 1932.5 942.5 L 1932.5 961.7812 L 1731.168 961.7812 L 1731.168 659 L 1756.5 659 L 1763.5 659" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="1813.4844" y="949.2812" width="19" height="25" fill="white"/>
+      <text transform="translate(1818.4844 954.6133)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="12" font-weight="500" x=".168" y="11" textLength="8.664">N</tspan>
+      </text>
+      <rect x="995" y="735.5" width="96.5" height="36" fill="white"/>
+      <rect x="995" y="735.5" width="96.5" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1e3 745)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="1.25" y="13" textLength="84">技术方案及评审</tspan>
+      </text>
+      <path d="M 960.5 659 L 972.4 659 L 977.75 659 L 983.1 659 L 985.1 659" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1091.5 753.5 L 1103.4 753.5 L 1133 753.5 L 1162.6 753.5 L 1164.6 753.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1091.5 659 L 1103.4 659 L 1133 659 L 1162.6 659 L 1164.6 659" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1043.25 771.5 L 1043.25 783.4 L 1043.25 789 L 1043.25 794.6 L 1043.25 796.1" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1043.25 831.5 L 1043.25 843.4 L 1043.25 865.5 L 1043.25 887.6 L 1043.25 889.6" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="998.25" y="899.5" width="90" height="36" fill="white"/>
+      <rect x="998.25" y="899.5" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1003.25 909)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">完善测试计划</tspan>
+      </text>
+      <path d="M 1088.25 917.5 L 1100.15 917.5 L 1131.375 917.5 L 1162.6 917.5 L 1164.6 917.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1219.5 899.5 L 1219.5 887.6 L 1219.5 835.5 L 1219.5 783.4 L 1219.5 781.4" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1305.832 659.15234 L 1329.1 659 L 1331.1 659" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1386.2382 580 L 1386.2382 568.1 L 1386.2382 502 L 1421.5 502 L 1409.6 502 L 1411.6 502" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1431 659 L 1442.9 659 L 1600.9006 659" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1431.2382 753.5 L 1443.1382 753.5 L 1514.5 753.5 L 1514.5 899.5 L 1514.5 887.6 L 1514.5 889.6" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1419 917.5 L 1430.9 917.5 L 1438 917.5 L 1445.1 917.5 L 1447.1 917.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1431.2382 753.5 L 1443.1382 753.5 L 1520.6191 753.5 L 1598.1 753.5 L 1600.1 753.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 2875 267 L 2920 285 L 2875 303 L 2830 285 Z" fill="white"/>
+      <path d="M 2875 267 L 2920 285 L 2875 303 L 2830 285 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(2847.15 276.14)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4.75" y="13" textLength="48">是否紧急</tspan>
+      </text>
+      <rect x="2830" y="609.75" width="90" height="36" fill="white"/>
+      <rect x="2830" y="609.75" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(2835 619.25)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4.864" y="13" textLength="27.828">Hotfi</tspan>
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="32.692" y="13" textLength="42.444">x或回滚</tspan>
+      </text>
+      <rect x="2830" y="735.5" width="90" height="36" fill="white"/>
+      <rect x="2830" y="735.5" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(2835 745)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4.864" y="13" textLength="27.828">Hotfi</tspan>
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="32.692" y="13" textLength="42.444">x或回滚</tspan>
+      </text>
+      <path d="M 2875 645.75 L 2875 657.65 L 2875 670.7305 L 2739.6992 670.7305 L 2492.6992 670.7305 L 2492.6992 627.75 L 2385.4 627.75 L 2383.4 627.75" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 2875 771.5 L 2875 783.4 L 2875 809.2461 L 2735.1406 809.2461 L 2490.1406 809.2461 L 2490.1406 754.625 L 2385.4 754.625 L 2383.4 754.625" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 2875 303 L 2875 314.9 L 2875 456.375 L 2875 597.85 L 2875 599.85" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 2875 645.75 L 2875 657.65 L 2875 690.625 L 2875 723.6 L 2875 725.6" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 2987 267 L 3050 267 C 3057.452 267 3063.5 275.064 3063.5 285 C 3063.5 294.936 3057.452 303 3050 303 L 2987 303 C 2979.548 303 2973.5 294.936 2973.5 285 C 2973.5 275.064 2979.548 267 2987 267" fill="white"/>
+      <path d="M 2987 267 L 3050 267 C 3057.452 267 3063.5 275.064 3063.5 285 C 3063.5 294.936 3057.452 303 3050 303 L 2987 303 C 2979.548 303 2973.5 294.936 2973.5 285 C 2973.5 275.064 2979.548 267 2987 267" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(2987.5 276.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="7" y="13" textLength="48">回到原点</tspan>
+      </text>
+      <path d="M 2920 285 L 2931.9 285 L 2946.75 285 L 2961.6 285 L 2963.6 285" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="2810" y="69" width="286" height="36" fill="#333"/>
+      <rect x="2810" y="69" width="286" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(2815 70.5)" fill="white">
+        <tspan font-family="PingFang SC" font-size="24" font-weight="500" fill="white" x="64.332" y="25" textLength="147.336">线上BUG修复</tspan>
+      </text>
+      <rect x="2830" y="899.5" width="90" height="36" fill="white"/>
+      <rect x="2830" y="899.5" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(2835 909)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="10" y="13" textLength="60">记录并总结</tspan>
+      </text>
+      <path d="M 2875 771.5 L 2875 783.4 L 2875 835.5 L 2875 887.6 L 2875 889.6" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 3018.5 303 L 3018.5 314.9 L 3018.5 917.5 L 2920 917.5 L 2931.9 917.5 L 2929.9 917.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="2928.9492" y="272.5" width="19" height="25" fill="white"/>
+      <text transform="translate(2933.9492 277.832)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="12" font-weight="500" x=".168" y="11" textLength="8.664">N</tspan>
+      </text>
+      <rect x="2866" y="412.3672" width="18" height="25" fill="white"/>
+      <text transform="translate(2871 417.6992)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="12" font-weight="500" x=".112" y="11" textLength="7.776">Y</tspan>
+      </text>
+      <line x1="2810" y1="70" x2="2810" y2="993" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="3095" y="69" width="423" height="36" fill="#333"/>
+      <rect x="3095" y="69" width="423" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(3100 70.5)" fill="white">
+        <tspan font-family="PingFang SC" font-size="24" font-weight="500" fill="white" x="122.5" y="25" textLength="168">产品精简、瘦身</tspan>
+      </text>
+      <rect x="3132" y="166" width="90" height="36" fill="white"/>
+      <rect x="3132" y="166" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(3137 175.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="16" y="13" textLength="48">使用反馈</tspan>
+      </text>
+      <rect x="3132" y="267" width="90" height="36" fill="white"/>
+      <rect x="3132" y="267" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(3137 276.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">总结用户反馈</tspan>
+      </text>
+      <rect x="3265.5" y="267" width="90" height="36" fill="white"/>
+      <rect x="3265.5" y="267" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(3270.5 276.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">统计用户数据</tspan>
+      </text>
+      <rect x="3399" y="267" width="90" height="36" fill="white"/>
+      <rect x="3399" y="267" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(3404 276.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="4" y="13" textLength="72">功能下线计划</tspan>
+      </text>
+      <rect x="3212.5" y="609.75" width="173.5" height="36" fill="white"/>
+      <rect x="3212.5" y="609.75" width="173.5" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(3217.5 619.25)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="3.75" y="13" textLength="156">删除无用代码、降低维护成本</tspan>
+      </text>
+      <rect x="3212.5" y="764" width="173.5" height="36" fill="white"/>
+      <rect x="3212.5" y="764" width="173.5" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(3217.5 773.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="3.75" y="13" textLength="156">删除无用代码、降低维护成本</tspan>
+      </text>
+      <rect x="3212.5" y="909.75" width="173.5" height="36" fill="white"/>
+      <rect x="3212.5" y="909.75" width="173.5" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(3217.5 919.25)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="3.75" y="13" textLength="156">删除无用代码、降低维护成本</tspan>
+      </text>
+      <line x1="3095" y1="71" x2="3095" y2="994" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 3177 202 L 3177 213.9 L 3177 234.5 L 3177 255.1 L 3177 257.1" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 3222 285 L 3233.9 285 L 3243.75 285 L 3253.6 285 L 3255.6 285" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 3355.5 285 L 3367.4 285 L 3377.25 285 L 3387.1 285 L 3389.1 285" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 3444 627.75 L 3386 627.75 L 3397.9 627.75 L 3395.9 627.75" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 3444 782.3711 L 3427.3203 782.3711 L 3397.9 782 L 3395.9 782" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 3444 303 L 3444 314.9 L 3444 928.1992 L 3438.043 928.1992 L 3397.9 927.75 L 3395.9 927.75" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="3265.5" y="375" width="90" height="36" fill="white"/>
+      <rect x="3265.5" y="375" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(3270.5 384.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="28" y="13" textLength="24">总结</tspan>
+      </text>
+      <rect x="3265.5" y="483" width="90" height="36" fill="white"/>
+      <rect x="3265.5" y="483" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(3270.5 492.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="28" y="13" textLength="24">总结</tspan>
+      </text>
+      <path d="M 3310.5 303 L 3310.5 314.9 L 3310.5 339 L 3310.5 363.1 L 3310.5 365.1" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 3310.5 411 L 3310.5 422.9 L 3310.5 447 L 3310.5 471.1 L 3310.5 473.1" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 3177 303 L 3177 314.9 L 3177 393 L 3265.5 393 L 3253.6 393 L 3255.6 393" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 3177 303 L 3177 314.9 L 3177.078 465.3242 L 3177.078 501 L 3253.6 501 L 3255.6 501" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1051.8691 483 L 1093.7441 501 L 1051.8691 519 L 1009.9941 501 Z" fill="white"/>
+      <path d="M 1051.8691 483 L 1093.7441 501 L 1051.8691 519 L 1009.9941 501 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(1026.3004 492.14)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="14.40625" y="13" textLength="24">评审</tspan>
+      </text>
+      <path d="M 1051.8691 422 L 1051.8691 433.9 L 1051.8691 452.5 L 1051.8691 471.1 L 1051.8691 473.1" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1051.8691 303.5 L 1051.8691 315.4 L 1051.8691 344.75 L 1051.8691 374.1 L 1051.8691 376.1" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1009.9941 501 L 998.0941 501 L 994.3086 501 L 994.3086 544.27734 L 915.5 544.27734 L 915.5 531.9 L 915.5 529.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="984.8086" y="516.1067" width="19" height="25" fill="white"/>
+      <text transform="translate(989.8086 521.4387)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="12" font-weight="500" x=".168" y="11" textLength="8.664">N</tspan>
+      </text>
+      <path d="M 1093.7441 501 L 1105.6441 501 L 1134.122 501 L 1134.122 580 L 1134.122 659 L 1162.6 659 L 1164.6 659" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 1264.5 659 L 1276.4 659 L 1309.711 659 L 1309.711 626.71484 L 1309.711 598 L 1329.3382 598 L 1331.3382 598" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="1125.122" y="512.30005" width="18" height="25" fill="white"/>
+      <text transform="translate(1130.122 517.63205)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="12" font-weight="500" x=".112" y="11" textLength="7.776">Y</tspan>
+      </text>
+      <rect x="2395.5" y="375" width="90" height="36" fill="white"/>
+      <rect x="2395.5" y="375" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(2400.5 384.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="16" y="13" textLength="48">交互走查</tspan>
+      </text>
+      <rect x="2395.5" y="483" width="90" height="36" fill="white"/>
+      <rect x="2395.5" y="483" width="90" height="36" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(2400.5 492.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="16" y="13" textLength="48">视觉走查</tspan>
+      </text>
+      <path d="M 2440.5 483 L 2440.5 471.1 L 2440.5 447 L 2440.5 422.9 L 2440.5 420.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path d="M 2440.5 375 L 2440.5 363.1 L 2440.5 339 L 2440.5 314.9 L 2440.5 312.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="2007.5" y="267" width="90" height="36" fill="white"/>
+      <path d="M 2007.5 267 L 2097.5 267 L 2097.5 303 L 2007.5 303 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" stroke-dasharray="4,4"/>
+      <text transform="translate(2012.5 276.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="7.996" y="13" textLength="64.008">Show Case</tspan>
+      </text>
+      <rect x="2007.5" y="641" width="90" height="36" fill="white"/>
+      <path d="M 2007.5 641 L 2097.5 641 L 2097.5 677 L 2007.5 677 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" stroke-dasharray="4,4"/>
+      <text transform="translate(2012.5 650.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="7.996" y="13" textLength="64.008">Show Case</tspan>
+      </text>
+      <rect x="2007.5" y="735.5" width="90" height="36" fill="white"/>
+      <path d="M 2007.5 735.5 L 2097.5 735.5 L 2097.5 771.5 L 2007.5 771.5 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" stroke-dasharray="4,4"/>
+      <text transform="translate(2012.5 745)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" fill="black" x="7.996" y="13" textLength="64.008">Show Case</tspan>
+      </text>
+      <path d="M 2007.5 659 L 1995.6 659 L 1992.5 659 L 1989.4 659 L 1987.4 659" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" stroke-dasharray="4,4"/>
+      <path d="M 2007.5 753.5 L 1995.6 753.5 L 1992.75 753.5 L 1989.9 753.5 L 1987.9 753.5" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" stroke-dasharray="4,4"/>
+      <path d="M 2052.5 725.6 L 2052.5 723.6 L 2052.5 706.25 L 2052.5 688.9 L 2052.5 686.9" marker-end="url(#FilledArrow_Marker)" marker-start="url(#FilledArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" stroke-dasharray="4,4"/>
+      <path d="M 2052.5 641 L 2052.5 629.1 L 2052.5 472 L 2052.5 314.9 L 2052.5 312.9" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" stroke-dasharray="4,4"/>
+      <path d="M 2395.5 285 L 2383.6 285 L 2209 285 L 2209 609.75 L 2209 597.85 L 2209 599.85" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" stroke-dasharray="4,4"/>
+      <path d="M 2395.5 393 L 2383.6 393 L 2209 393 L 2209 609.75 L 2209 597.85 L 2209 599.85" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" stroke-dasharray="4,4"/>
+      <path d="M 2395.5 501 L 2383.6 501 L 2209 501 L 2209 609.75 L 2209 597.85 L 2209 599.85" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" stroke-dasharray="4,4"/>
+      <text transform="translate(1957.5 969.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="12" font-weight="bold" x=".068" y="13" textLength="171.864">交互稿/Root Case/Show Case</tspan>
+      </text>
+      <line x1="2029.5" y1="970" x2="1961.1912" y2="932.7406" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" stroke-dasharray="4,4"/>
+    </g>
+  </g>
+</svg>
