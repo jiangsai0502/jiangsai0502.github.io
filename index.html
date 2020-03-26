@@ -4,11 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <title>docsify</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="/themes/vue.css" title="vue">
-  <link rel="stylesheet" href="/themes/dark.css" title="dark" disabled>
-  <link rel="stylesheet" href="/themes/buble.css" title="buble" disabled>
+  <link rel="icon" href="_media/favicon.ico">
+  <meta name="google-site-verification" content="6t0LoIeFksrjF4c9sqUEsVXiQNxLp2hgoqo0KryT-sE" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="keywords" content="doc,docs,documentation,gitbook,creator,generator,github,jekyll,github-pages">
+  <meta name="description" content="A magical documentation generator.">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css" title="vue">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/dark.css" title="dark" disabled>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/buble.css" title="buble" disabled>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/pure.css" title="pure" disabled>
+ 
+  <script src="//cdn.jsdelivr.net/npm/docsify-plugin-codefund/index.js"></script>
+  <link rel="stylesheet"  href="//cdn.jsdelivr.net/npm/docsify-dark-mode@0.6.1/dist/style.css"/>
   <style>
     nav.app-nav li ul {
       min-width: 100px;
@@ -17,7 +25,7 @@
 </head>
 
 <body>
-  <div id="app"></div>
+  <div id="app">Loading ...</div>
   <script>
     window.$docsify = {
       alias: {
@@ -30,7 +38,6 @@
         '/es/(.*)': 'https://raw.githubusercontent.com/docsifyjs/docs-es/master/$1'
       },
       auto2top: true,
-      basePath: '/docs/',
       coverpage: true,
       executeScript: true,
       loadSidebar: true,
@@ -38,6 +45,11 @@
       mergeNavbar: true,
       maxLevel: 4,
       subMaxLevel: 2,
+      ga: 'UA-106147152-1',
+      matomo: {
+        host: '//matomo.thunderwave.de',
+        id: 6
+      },
       name: 'docsify',
       search: {
         noData: {
@@ -50,6 +62,11 @@
           '/de-de/': 'Suche',
           '/zh-cn/': '搜索',
           '/': 'Search'
+        }
+      },
+      darkMode: {
+        light: {
+          toggleBtnBg: '#42b983'
         }
       },
       formatUpdated: '{MM}/{DD} {HH}:{mm}',
@@ -71,14 +88,24 @@
               + '<a href="https://docsify.js.org" target="_blank" style="color: inherit; font-weight: normal; text-decoration: none;">Powered by docsify</a>'
           })
         },
+        DocsifyCodefund.create('fae1f9a4-870c-4c25-b8e0-c80464f7a95c')
       ]
     }
   </script>
-  <script src="/lib/docsify.js"></script>
-  <script src="/lib/plugins/search.js"></script>
-  <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
-  <script src="//unpkg.com/prismjs/components/prism-markdown.min.js"></script>
-  <script src="//unpkg.com/prismjs/components/prism-nginx.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/ga.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/matomo.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-markdown.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-nginx.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-dark-mode@0.6.1/dist/index.js"></script>
+  <script>
+  ((window.gitter = {}).chat = {}).options = {
+    room: 'docsifyjs/Lobby'
+  };
+  </script>
+  <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 </body>
 
 </html>
