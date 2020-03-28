@@ -1,7 +1,7 @@
 
-* 百度成长
+* 产品
 
-	* [产品手记](Sai_PM/0_PMwork.md)
+	* [科研文章摘录](Sai_PM/ArticleS.md)
 	
 	  
 	
