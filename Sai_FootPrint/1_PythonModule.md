@@ -458,7 +458,7 @@ for i in video_list:
 
 1. 方法1：使用包含加密信息的完整m3u8链接
 
-   `ffmpeg -i http://media.learn.baidu.com/v1/kanbaidu/v/26cc8826-9009-4ba6-96c9-26545f96e251/b2ccfd03-c2d3-4d84-9842-7bbb8f121029/camera_out_low.m3u8?authorization=bce-auth-v1%2xxxxxx -c copy 视频名.mp4`
+   `ffmpeg -i http://media.learn.baidu.com/v1/kanbaidu/v/26cc8826-9009-4ba6-96c9-26545f96e251/b2ccfd03-c2d3-4d84-9842-7bbb8f121029/camera_out_low.m3u8?authorization=bce-auth-v1%2xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -c copy 视频名.mp4`
 
 2. 方法2：使用参数忽略加密报错`-protocol_whitelist "file,http,https,tcp,tls"`
 
