@@ -454,13 +454,13 @@ for i in video_list:
 
 #### 加密视频
 
-<img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200330175828.png" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200330175828.png" style="zoom:50%;" />![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200330193754.png)
 
 下载报错`Protocol 'http' not on whitelist 'file,crypto'!`
 
 1. 方法1：使用包含加密信息的完整m3u8链接
 
-   `ffmpeg -i http://media.learn.baidu.com/v1/kanbaidu/v/26cc8826-9009-4ba6-96c9-26545f96e251/b2ccfd03-c2d3-4d84-9842-7bbb8f121029/camera_out_low.m3u8?authorization=bce-auth-v1%2F17d46b8160c346eb8956da8a6ffd7499%2F2016-05-17T13%3A08%3A55Z%2F-1%2F%2Fd839135fec85729d13e4de97afefa4efe82fe8b861b27395df8ff9568e9f871f -c copy 视频名称.mp4`
+   `ffmpeg -i http://media.learn.baidu.com/v1/kanbaidu/v/26cc8826-9009-4ba6-96c9-26545f96e251/b2ccfd03-c2d3-4d84-9842-7bbb8f121029/camera_out_low.m3u8?authorization=bce-auth-v1%2xxxxxx -c copy 视频名.mp4`
 
 2. 方法2：使用参数忽略加密报错`-protocol_whitelist "file,http,https,tcp,tls"`
 
