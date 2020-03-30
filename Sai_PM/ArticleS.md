@@ -1,3 +1,21 @@
+
+
+### 搜索论文步骤
+
+1. 谷歌学术搜索论文，拿到论文的DOI
+
+   <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200328200335.png" style="zoom:30%;" />
+
+   
+
+   <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200328200016.png" style="zoom:30%;" />
+
+2. 搜索最新的`sci-hub`地址，搜索DOI
+
+   <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200328200631.png" style="zoom:30%;" />
+
+
+
 ### 微信：科研选题前，不可忽视的探索性研究
 
 1. 科研发端于一个“问题”
