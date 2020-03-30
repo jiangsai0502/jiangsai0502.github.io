@@ -448,13 +448,11 @@ for i in video_list:
 
    `ffmpeg -i http://lmsmedia.bnu.edu.cn/hls/http/lms.bnu.edu.cn/api/uploads/videos/4569/vod/index-v1-a1.m3u8 -c copy OUTPUT.mp4`
 
-   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200307103820.png)
-
 [延伸学习](https://www.jianshu.com/p/802074a62a42)
 
 #### 加密视频
 
-<img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200330175828.png" style="zoom:50%;" />![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200330193754.png)
+<img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200330194309.png" style="zoom:50%;" />
 
 下载报错`Protocol 'http' not on whitelist 'file,crypto'!`
 
