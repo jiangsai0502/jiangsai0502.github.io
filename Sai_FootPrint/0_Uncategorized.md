@@ -98,3 +98,8 @@
 
    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200324174710.png)
 
+
+
+### Parallels软件侵权告知函
+
+<img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200331103115.png" style="zoom:50%;" />
