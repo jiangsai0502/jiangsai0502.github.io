@@ -448,11 +448,24 @@ for i in video_list:
 
    `ffmpeg -i http://lmsmedia.bnu.edu.cn/hls/http/lms.bnu.edu.cn/api/uploads/videos/4569/vod/index-v1-a1.m3u8 -c copy OUTPUT.mp4`
 
-   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200307103820.png)
-
 [延伸学习](https://www.jianshu.com/p/802074a62a42)
 
+#### 加密视频
 
+<img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200330194309.png" style="zoom:50%;" />
+
+下载报错`Protocol 'http' not on whitelist 'file,crypto'!`
+
+1. 方法1：使用包含加密信息的完整m3u8链接
+
+   `ffmpeg -i http://media.learn.baidu.com/v1/kanbaidu/v/26cc8826-9009-4ba6-96c9-26545f96e251/b2ccfd03-c2d3-4d84-9842-7bbb8f121029/camera_out_low.m3u8?authorization=bce-auth-v1%2xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -c copy 视频名.mp4`
+
+2. 方法2：使用参数忽略加密报错`-protocol_whitelist "file,http,https,tcp,tls"`
+
+   1. 下载m3u8到本地：`camera_out_high.m3u8`
+   2. `ffmpeg -protocol_whitelist "file,http,https,tcp,tls" -i camera_out_low.m3u8  -c copy OUTPUT.mp4`
+
+   
 
 
 

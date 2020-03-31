@@ -80,6 +80,9 @@
 #### 获取IP
 
 1. 局域网IP：`ifconfig en0 | grep 'inet' | grep -vE 'inet6'`
+
+   <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200330111301.png" align='left' style="zoom:33%;" />
+
 2. 外网IP：`curl 'http://httpbin.org/get' -s | grep 'origin'`
 
 
@@ -88,7 +91,15 @@
 
 1. 进入共享目录
 
-2. 后台启动HTTP服务：`python -m http.server &`
+2. 后台启动HTTP服务：`python -m http.server 8000 &`
+
+3. 获取局域网IP：`inet 192.168.1.5`
+
+   <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200330111301.png" align='left' style="zoom:33%;" />
+
+4. Ipad浏览器访问：`http://192.168.1.5:8000`
+
+   <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200330112119.png" style="zoom:33%;" />
 
 
 
