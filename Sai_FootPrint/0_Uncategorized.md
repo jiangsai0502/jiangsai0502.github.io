@@ -114,3 +114,9 @@
 ### Parallels软件侵权告知函
 
 <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200331103115.png" style="zoom:50%;" />
+
+
+
+#### Mac录制鼠标键盘动作
+
+1. MurGaa Recoder
