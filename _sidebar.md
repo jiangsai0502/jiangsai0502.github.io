@@ -34,4 +34,5 @@
   * [PM工作小记](Sai_FootPrint/0_PMwork.md)
   * [未分类](Sai_FootPrint/0_Uncategorized.md)
   * [临时](Sai_FootPrint/0_Tips.md)
+  * [摘/录](3_ essay.md)
 
