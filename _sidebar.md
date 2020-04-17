@@ -1,5 +1,7 @@
 * 爬虫
   
+  * [MySQL](Sai_FootPrint/3_MySQL.md)
+  
   * [爬前须知](Sai_FootPrint/2_WebCrawlerTutorial.md)
   
   * [初级工具](Sai_FootPrint/2_WebCrawlerBasicTool.md)
