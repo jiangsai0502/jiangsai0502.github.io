@@ -1,9 +1,9 @@
 # 杂记
 
-#### final cut Pro 用法
-1. 导出方式
+#### final cut Pro 导出
 > 文件 - 共享 - Apple 设备 1080P - 设置
 > 修改2个地方
+>
 > 1. 格式：电脑
 > 2. 完成时：什么都不做
 
@@ -13,7 +13,6 @@
 
 1. 批量注释/取消注释 ：`command` + `/`
 2. 调整编辑界面和终端字体大小：`command` + `-`，`command` + `+`
-3. 
 
 
 
@@ -34,7 +33,13 @@
 
    > 终端显示：[2]  + 67089 suspended  docsify serve
 
-2. `bg %job_num`，让在后台暂停的进程在后台继续运行
+2. `fg %job_num`，让在后台暂停的进程回到前台继续运行
+
+   > `fg %1`
+   >
+   > 终端显示：[1]  + 51606 continued  docsify serve
+
+3. `bg %job_num`，让在后台暂停的进程在后台继续运行
 
    > `bg %2`
    >
@@ -42,7 +47,7 @@
 
    （命令 `kill -cont pid_num`  功能一样）
 
-3. `kill -stop %job_num` ，将后台运行的运行的进程暂停住
+4. `kill -stop %job_num` ，将后台运行的运行的进程暂停住
 
    > `kill -stop 64981`
    >
@@ -50,11 +55,11 @@
 
    （命令 `kill -stop pid_num` 功能一样）
 
-4. `kill %job_num`，杀掉后台进程
+5. `kill %job_num`，杀掉后台进程
 
    （命令`kill pid_num` 也可以）
 
-5. `command &`，命令前面加`&`，启动任务时就让任务去后台运行
+6. `command &`，命令前面加`&`，启动任务时就让任务去后台运行
 
    > `docsify serve &`
    >
@@ -81,7 +86,7 @@
 
 1. 局域网IP：`ifconfig en0 | grep 'inet' | grep -vE 'inet6'`
 
-   <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200330111301.png" align='left' style="zoom:33%;" />
+   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200330111301.png)
 
 2. 外网IP：`curl 'http://httpbin.org/get' -s | grep 'origin'`
 
@@ -95,11 +100,11 @@
 
 3. 获取局域网IP：`inet 192.168.1.5`
 
-   <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200330111301.png" align='left' style="zoom:33%;" />
+   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200330111301.png)
 
 4. Ipad浏览器访问：`http://192.168.1.5:8000`
 
-   <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200330112119.png" style="zoom:33%;" />
+   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200330112119.png)
 
 
 
@@ -111,9 +116,9 @@
 
 
 
-### Parallels软件侵权告知函
+#### Parallels软件侵权告知函
 
-<img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200331103115.png" style="zoom:50%;" />
+![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200331103115.png)
 
 
 

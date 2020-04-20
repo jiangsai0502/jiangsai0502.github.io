@@ -230,19 +230,41 @@ rm ~/.curlrc
 
 
 
-#### ffmpeg分割视频
+#### brew下载慢
 
-```js
-ffmpeg -i input.mp4 -ss 00:00:00 -to 00:10:00 -c copy output1.mp4
-ffmpeg -i input.mp4 -ss 00:10:00 -to 00:20:00 -c copy output2.mp4
+**问题描述**
 
-/**
-* -i  input file
-* -ss start time in seconds or in hh:mm:ss
-* -to end time in seconds or in hh:mm:ss
-* -c codec to use
-*/
-```
+1. brew安装软件一直卡在Update阶段
+2. 从github.com下载文件也极度缓慢
 
+**排查**
 
+1. 使用`brew update --verbose`观察update过程
+
+**解决方案：[参考](https://www.cnblogs.com/tp0829/p/Homebrew.html)**
+
+1. 替换`Homebrew`源
+
+   ```bash
+   $ cd "$(brew --repo)"
+   $ git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+   ```
+
+   > `"$(brew --repo)"`是用来自动指向Homebrew的目录的
+
+2. 替换`homebrew-core`源
+
+   ```bash
+   $ cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+   $ git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+   ```
+
+3. 替换`homebrew-cask`源
+
+   ```bash
+   $ cd "$(brew --repo)"/Library/Taps/homebrew/homebrew-cask
+   $ git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
+   ```
+
+   
 

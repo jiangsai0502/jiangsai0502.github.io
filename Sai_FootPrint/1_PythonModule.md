@@ -422,7 +422,7 @@ for i in video_list:
 >
 > [原教程](https://blog.csdn.net/weixin_33739627/article/details/88595353)
 
-#### 分析
+**分析**
 
 1. 通过`Chrome DevTool`的`Network`栏，能看到加载过程
 
@@ -434,11 +434,11 @@ for i in video_list:
    2. `index-v1-a1.m3u8`才是播放列表文件
    3. 播放列表展示了397个`ts`文件
 
-#### 思路
+**思路**
 
 * 下载所有`ts`切片文件，然后合成一个完整视频
 
-#### 步骤
+**步骤**
 
 1. `Network`栏点击`index-v1-a1.m3u8`，右侧`Headers`栏，`General`的`Request URL`
 
@@ -450,7 +450,7 @@ for i in video_list:
 
 [延伸学习](https://www.jianshu.com/p/802074a62a42)
 
-#### 加密视频
+**加密视频**
 
 <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200330194309.png" style="zoom:50%;" />
 
@@ -465,7 +465,22 @@ for i in video_list:
    1. 下载m3u8到本地：`camera_out_high.m3u8`
    2. `ffmpeg -protocol_whitelist "file,http,https,tcp,tls" -i camera_out_low.m3u8  -c copy OUTPUT.mp4`
 
-   
+
+**分割视频**
+
+```js
+ffmpeg -i input.mp4 -ss 00:00:00 -to 00:10:00 -c copy output1.mp4
+ffmpeg -i input.mp4 -ss 00:10:00 -to 00:20:00 -c copy output2.mp4
+
+/**
+* -i  input file
+* -ss start time in seconds or in hh:mm:ss
+* -to end time in seconds or in hh:mm:ss
+* -c codec to use
+*/
+```
+
+
 
 
 
