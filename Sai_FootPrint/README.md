@@ -12,6 +12,7 @@
 8. notion用法
 9. MySQL 韩顺平
 10. 质性分析课
+11. coursera公开课 -  Learning How to Learn
 
 
 
