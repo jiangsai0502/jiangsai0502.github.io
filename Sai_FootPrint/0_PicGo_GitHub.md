@@ -28,30 +28,37 @@
 
 ### 配置PicGo
 
-1. 下载运行PicGo
-![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200111140351.png)
+![anX8GM](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/anX8GM.png)
 
-2. 配置图床
-![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200111140408.png)
 > * 设定仓库名的时候，是按照“账户名/仓库名”的格式填写
 >   * 如 jiangsai0502/PicBedRepo
 > * 分支名统一填写“master”
-> * 将之前的Token黏贴在这里
+> * 将之前的Token黏贴在这里：`727b4cb5726fa1d46f4dee4930b4e460f9fc12d0`
 > * 存储路径可以写成img/，这样会在repository下创建一个“img”文件夹
 > * 自定义域名的作用是，在上传图片后成功后，PicGo会将“自定义域名+上传的图片名”生成的访问链接，放到剪切板上https://raw.githubusercontent.com/账户名/仓库名/分支名，自定义域名需要按照这样去填写
 >   * 如https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master
 
-3. 快捷键及相关配置
-> 可将快捷键设置为cmd+2
 
-#### 总结
-将上面的步骤都设置好之后，每次截图之后，都可以按一下cmd+2，这样就会将剪切板上面的截图转化为在线网络图片链接
+
+### 配置upic
+
+[参考](https://blog.svend.cc/upic/)
+
+![V1fBdf](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/V1fBdf.png)
+
+
+
+### 保存图片在blog中
+
+![image-20200420204547297](../img/image-20200420204547297.png)
+
+
 
 
 
 ### 图片左对齐
 
-align='left'
+`align='left'`
 
 `<img src="https://xxx" align='left' style="zoom:25%;" />`
 
@@ -76,21 +83,20 @@ align='left'
 >
 > 3. 修改hosts 
 >
->    打开hosts
->
->    ```
->    sudo vi /etc/hosts
+>    ```bash
+>sudo vi /etc/hosts    #打开hosts文件
 >    
 >    127.0.0.1	localhost
 >    255.255.255.255	broadcasthost
 >    ::1             localhost
 >    ```
->
+>    
 >    最后插入一行上面查到的 IP Address，内容如下
 >
->    ```
->    127.0.0.1	localhost
+>    ```bash
+>127.0.0.1	localhost
 >    255.255.255.255	broadcasthost
 >    ::1             localhost
 >    199.232.28.133 raw.githubusercontent.com
 >    ```
+
