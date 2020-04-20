@@ -1,8 +1,6 @@
 # 重装系统
 ### 常备软件安装
 
-
-
 | sougou     | 微信       | Chrome    | office                  |
 | ---------- | ---------- | --------- | ----------------------- |
 | PDF expert | snipaste   | itsycal   | istat menusistat menus  |
@@ -245,4 +243,18 @@ ffmpeg -i input.mp4 -ss 00:10:00 -to 00:20:00 -c copy output2.mp4
 ```
 
 
+
+#### Alfred用法
+
+1. 取消spotlight搜索的快捷键
+
+   ![1xszjl](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/1xszjl.png)
+
+2. 设置Alfred
+
+   ![Vre22p](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/Vre22p.png)
+
+   > 1. 设置Alfred的快捷键
+   > 2. **Quick Search**：最常用，`Space + 关键字`快速启用打开文件，功能类似于使用`Open + 关键字`
+   > 3. **Inside Files**：最常用，`in + 关键字`查找包含查询字的文件
 
