@@ -258,3 +258,26 @@ ffmpeg -i input.mp4 -ss 00:10:00 -to 00:20:00 -c copy output2.mp4
    > 2. **Quick Search**：最常用，`Space + 关键字`快速启用打开文件，功能类似于使用`Open + 关键字`
    > 3. **Inside Files**：最常用，`in + 关键字`查找包含查询字的文件
 
+
+
+### 文献阅读：沙拉查词 + Alfred
+
+[参考](https://zhuanlan.zhihu.com/p/113809716)
+
+1. 安装Chrome插件：沙拉查词
+
+2. 配置浏览器外划词翻译
+
+   > 浏览器外配置好后，其调用沙拉查词的方式同样适用于浏览器内，因此一劳永逸
+
+   1. 在Chrome内为沙拉查词设置**全局快捷键**
+
+      > 地址栏：chrome://extensions/shortcuts
+
+      ![image-20200420203924035](../img/image-20200420203924035.png)
+
+   2. 配置Alfred
+
+      
+
+3. 
