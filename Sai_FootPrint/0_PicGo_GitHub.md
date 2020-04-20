@@ -84,19 +84,13 @@
 > 3. 修改hosts 
 >
 >    ```bash
->sudo vi /etc/hosts    #打开hosts文件
+> sudo vi /etc/hosts    #打开hosts文件
 >    
 >    127.0.0.1	localhost
 >    255.255.255.255	broadcasthost
 >    ::1             localhost
+>    199.232.68.133 raw.githubusercontent.com
 >    ```
 >    
->    最后插入一行上面查到的 IP Address，内容如下
->
->    ```bash
->127.0.0.1	localhost
->    255.255.255.255	broadcasthost
->    ::1             localhost
->    199.232.28.133 raw.githubusercontent.com
->    ```
+> > 最后插入一行上面查到的 IP Address
 
