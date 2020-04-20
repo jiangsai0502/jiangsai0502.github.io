@@ -33,7 +33,7 @@
 > * 设定仓库名的时候，是按照“账户名/仓库名”的格式填写
 >   * 如 jiangsai0502/PicBedRepo
 > * 分支名统一填写“master”
-> * 将之前的Token黏贴在这里：`727b4cb5726fa1d46f4dee4930b4e460f9fc12d0`
+> * 将之前的Token黏贴在这里：`c23d73d20909e3129738a6071f77cb0c3f58777f`
 > * 存储路径可以写成img/，这样会在repository下创建一个“img”文件夹
 > * 自定义域名的作用是，在上传图片后成功后，PicGo会将“自定义域名+上传的图片名”生成的访问链接，放到剪切板上https://raw.githubusercontent.com/账户名/仓库名/分支名，自定义域名需要按照这样去填写
 >   * 如https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master
@@ -50,7 +50,7 @@
 
 ### 保存图片在blog中
 
-![image-20200420204547297](../img/image-20200420204547297.png)
+![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/image-20200420204547297.png)
 
 
 

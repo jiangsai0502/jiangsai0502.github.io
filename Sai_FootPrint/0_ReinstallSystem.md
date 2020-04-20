@@ -296,7 +296,7 @@ rm ~/.curlrc
 
       > 地址栏：chrome://extensions/shortcuts
 
-      ![image-20200420203924035](../img/image-20200420203924035.png)
+      ![image-20200420203924035](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/image-20200420203924035.png)
 
    2. 配置Alfred
 
