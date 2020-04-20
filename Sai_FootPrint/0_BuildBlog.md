@@ -199,7 +199,42 @@
 
 1. 参见 [插件列表](https://docsify.js.org/#/zh-cn/plugins)   ,   [插件仓库](https://github.com/PrismJS/prism/tree/gh-pages/components)
 
-2. 配置插件
+2. 在线使用插件
+
+   如增加python代码高亮插件
+
+   1. 去[插件仓库](https://github.com/PrismJS/prism/tree/gh-pages/components)找到插件，即`prism-python.js`
+
+   2. 拼接成使用路径
+
+      `<script src="//unpkg.com/prismjs/components/prism-python.js"></script>`
+
+      ```html
+        <!-- python 代码高亮 -->
+        <script src="//unpkg.com/prismjs/components/prism-python.js"></script>
+      </body>
+      </html>
+      ```
+
+3. 离线使用插件
+
+   1. 下载插件`prism-python.js`插件（方法如下）
+
+   2. 放入plugins 目录
+
+      ```html
+        <!-- python 代码高亮 -->
+        <script src="plugins/prism-python.js"></script>
+      </body>
+      </html>
+      ```
+
+   > 1. `<script src="//unpkg.com/prismjs/components/prism-python.js"></script>`
+   > 2. `<script src="plugins/prism-python.js"></script>`
+   >
+   > * 1 是在线插件和 2 是离线插件，功能完全相同
+
+   
 
    > **由于 Docsify 的 CSS 样式文件和插件文件默认是在线的，都放在了 unpkg.com 上面，一旦离线 Docsify 是无法使用的**
    >

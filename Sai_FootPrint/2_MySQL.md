@@ -335,7 +335,7 @@
 
 #### 2. 数据库管理
 
-1. 创建并进入数据库
+1. 创建并进入库
 
    ```bash
    mysql> CREATE DATABASE IF NOT EXISTS sai0417;
@@ -343,7 +343,7 @@
    mysql> SHOW DATABASES;
    ```
 
-2. 创建2张表
+2. 创建表
 
    ```bash
    mysql> use sai0417;
@@ -367,9 +367,165 @@
 
 3. 插入数据
 
-   
+   ```bash
+   mysql> INSERT INTO student VALUES( 901,'张老大', '男',1985,'计算机系', '北京市海淀区');
+   mysql> INSERT INTO student VALUES( 902,'张老二', '男',1986,'中文系', '北京市昌平区');
+   mysql> INSERT INTO student VALUES( 903,'张三', '女',1990,'中文系', '湖南省永州市');
+   mysql> INSERT INTO student VALUES( 904,'李四', '男',1990,'英语系', '辽宁省阜新市');
+   mysql> INSERT INTO student VALUES( 905,'王五', '女',1991,'英语系', '福建省厦门市');
+   mysql> INSERT INTO student VALUES( 906,'王六', '男',1988,'计算机系', '湖南省衡阳市');
+   ```
 
-4. 删除数据库
+   ```bash
+   mysql> INSERT INTO score VALUES(NULL,901, '计算机',98);
+   mysql> INSERT INTO score VALUES(NULL,901, '英语', 80);
+   mysql> INSERT INTO score VALUES(NULL,902, '计算机',65);
+   mysql> INSERT INTO score VALUES(NULL,902, '中文',88);
+   mysql> INSERT INTO score VALUES(NULL,903, '中文',95);
+   mysql> INSERT INTO score VALUES(NULL,904, '计算机',70);
+   mysql> INSERT INTO score VALUES(NULL,904, '英语',92);
+   mysql> INSERT INTO score VALUES(NULL,905, '英语',94);
+   mysql> INSERT INTO score VALUES(NULL,906, '计算机',90);
+   mysql> INSERT INTO score VALUES(NULL,906, '英语',85);
+   ```
+
+4. 删除表
+
+   ```bash
+   mysql> select database();   #查看当前使用的库
+   
+   mysql> DROP TABLE student;   #删除表
+   ```
+
+5. 删除库
+
+   ```bash
+   mysql> select database();   #查看当前使用的库
+   
+   mysql> drop database sai0417;   #删除sai0417库
+   ```
+
+6. 查询
+
+   1. 查询student表的所有记录
+
+      ```bash
+      mysql> select * from student;
+      +-----+-----------+------+-------+--------------+--------------------+
+      | id  | name      | sex  | birth | department   | address            |
+      +-----+-----------+------+-------+--------------+--------------------+
+      | 901 | 张老大    | 男   |  1985 | 计算机系     | 北京市海淀区       |
+      | 902 | 张老二    | 男   |  1986 | 中文系       | 北京市昌平区       |
+      | 903 | 张三      | 女   |  1990 | 中文系       | 湖南省永州市       |
+      | 904 | 李四      | 男   |  1990 | 英语系       | 辽宁省阜新市       |
+      | 905 | 王五      | 女   |  1991 | 英语系       | 福建省厦门市       |
+      | 906 | 王六      | 男   |  1988 | 计算机系     | 湖南省衡阳市       |
+      +-----+-----------+------+-------+--------------+--------------------+
+      ```
+
+   2. 查询student表的第2条到4条记录
+
+      ```bash
+      mysql> SELECT * FROM student LIMIT 1,3;
+      +-----+-----------+------+-------+------------+--------------------+
+      | id  | name      | sex  | birth | department | address            |
+      +-----+-----------+------+-------+------------+--------------------+
+      | 902 | 张老二    | 男   |  1986 | 中文系     | 北京市昌平区       |
+      | 903 | 张三      | 女   |  1990 | 中文系     | 湖南省永州市       |
+      | 904 | 李四      | 男   |  1990 | 英语系     | 辽宁省阜新市       |
+      +-----+-----------+------+-------+------------+--------------------+
+      ```
+
+   3. 查询student表中计算机系和英语系的学生的信息
+
+      ```bash
+      mysql> SELECT * FROM student WHERE department IN ('计算机系','英语系');
+      +-----+-----------+------+-------+--------------+--------------------+
+      | id  | name      | sex  | birth | department   | address            |
+      +-----+-----------+------+-------+--------------+--------------------+
+      | 901 | 张老大    | 男   |  1985 | 计算机系     | 北京市海淀区       |
+      | 904 | 李四      | 男   |  1990 | 英语系       | 辽宁省阜新市       |
+      | 905 | 王五      | 女   |  1991 | 英语系       | 福建省厦门市       |
+      | 906 | 王六      | 男   |  1988 | 计算机系     | 湖南省衡阳市       |
+      +-----+-----------+------+-------+--------------+--------------------+
+      ```
+
+   4. 查询student表中每个院系有多少人
+
+      ```bash
+      mysql> SELECT department, COUNT(id) FROM student GROUP BY department;
+      +--------------+-----------+
+      | department   | COUNT(id) |
+      +--------------+-----------+
+      | 计算机系     |         2 |
+      | 中文系       |         2 |
+      | 英语系       |         2 |
+      +--------------+-----------+
+      ```
+
+   5. 查询score表中每个科目的最高分
+
+      ```bash
+      mysql> select * from score;
+      +----+--------+-----------+-------+
+      | id | stu_id | c_name    | grade |
+      +----+--------+-----------+-------+
+      |  1 |   901  | 计算机    |    98 |
+      |  . |    .   |   .      |    .  |
+         . |    .   |   .      |    .  |
+      |  . |    .   |   .      |    .  |
+      | 10 |   906  |   英语    |    85 |
+      +----+--------+-----------+-------+
+      
+      mysql> SELECT c_name,MAX(grade) FROM score GROUP BY c_name;
+      +-----------+------------+
+      | c_name    | MAX(grade) |
+      +-----------+------------+
+      | 计算机    |         98 |
+      | 英语      |         94 |
+      | 中文      |         95 |
+      +-----------+------------+
+      ```
+
+   6. 联合student表和score表，查询所有学生的信息和考试信息
+
+      ```bash
+      mysql> SELECT a.id,a.name,a.sex,b.c_name,b.grade FROM student a,score b WHERE a.id=b.stu_id;
+      +-----+-----------+------+-----------+-------+
+      | id  | name      | sex  | c_name    | grade |
+      +-----+-----------+------+-----------+-------+
+      | 901 | 张老大    | 男   | 计算机    |    98 |
+      | 901 | 张老大    | 男   | 英语      |    80 |
+      | 902 | 张老二    | 男   | 计算机    |    65 |
+      | 902 | 张老二    | 男   | 中文      |    88 |
+      | 903 | 张三      | 女   | 中文      |    95 |
+      | 904 | 李四      | 男   | 计算机    |    70 |
+      | 904 | 李四      | 男   | 英语      |    92 |
+      | 905 | 王五      | 女   | 英语      |    94 |
+      | 906 | 王六      | 男   | 计算机    |    90 |
+      | 906 | 王六      | 男   | 英语      |    85 |
+      +-----+-----------+------+-----------+-------+
+      ```
+
+   7. 联合student表和score表，计算每个学生的总成绩
+
+      ```bash
+      mysql> SELECT a.id,a.name,SUM(b.grade) FROM student a,score b WHERE a.id=b.stu_id GROUP BY a.id;
+      +-----+-----------+--------------+
+      | id  | name      | SUM(b.grade) |
+      +-----+-----------+--------------+
+      | 901 | 张老大    |          178 |
+      | 902 | 张老二    |          153 |
+      | 903 | 张三      |           95 |
+      | 904 | 李四      |          162 |
+      | 905 | 王五      |           94 |
+      | 906 | 王六      |          175 |
+      +-----+-----------+--------------+
+      ```
+
+      
+
+   8. 
 
 
 

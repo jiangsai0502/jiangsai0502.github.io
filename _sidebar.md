@@ -1,6 +1,6 @@
 * 爬虫
   
-  * [MySQL](Sai_FootPrint/3_MySQL.md)
+  * [MySQL](Sai_FootPrint/2_MySQL.md)
   
   * [爬前须知](Sai_FootPrint/2_WebCrawlerTutorial.md)
   
@@ -33,8 +33,7 @@
   * [Markdown语法](Sai_FootPrint/0_MarkdownUsage.md)
   * [PicGo+GitHub 搭建图床](Sai_FootPrint/0_PicGo_GitHub.md)
   * [重装Mac](Sai_FootPrint/0_ReinstallSystem.md)
-  * [PM工作小记](Sai_FootPrint/0_PMwork.md)
-  * [未分类](Sai_FootPrint/0_Uncategorized.md)
-  * [临时](Sai_FootPrint/0_Tips.md)
-  * [摘/录](3_ essay.md)
+  * [小技巧](Sai_FootPrint/0_Tips.md)
+  * [待办](Sai_FootPrint/0_Todo.md)
+  * [摘/录](0_ essay.md)
 
