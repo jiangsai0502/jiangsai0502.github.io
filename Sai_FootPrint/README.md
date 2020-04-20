@@ -12,9 +12,13 @@
 8. notion用法
 9. MySQL 韩顺平
 10. 质性分析课
+<<<<<<< HEAD
 11. 金字塔原理
 12. 5why分析法
 13. 
+=======
+11. coursera公开课 -  Learning How to Learn
+>>>>>>> 6e5d498320507663f1563efc160045e892de442f
 
 
 
