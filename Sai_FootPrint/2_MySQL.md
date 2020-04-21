@@ -209,8 +209,6 @@
      $ mysql -u root -p -t < test_employees_md5.sql   #测试安装的数据
      ```
 
-  2. 
-
 #### 4. SSH远程登录数据库
 
 1. 连接远程服务器：`ssh user@remote -p port`
@@ -225,9 +223,7 @@
 
      
 
-
-
-#### 5. 配置数据库工具 **Sequel Pro**
+#### 5. 数据库工具 **Sequel Pro**
 
 1. **查看 MySQL 端口号**
 
@@ -245,6 +241,22 @@
 
    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/20200128104320.png)
 
+
+
+
+#### 6. 数据库工具[tableplus](https://www.macwk.com/soft/tableplus)
+
+1. 配置
+
+   ![ghGbNN](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/ghGbNN.png)
+
+
+
+#### 7. 数据库工具[navicat premium](https://www.macwk.com/soft/navicat-premium)
+
+1. 配置
+
+   ![mk5Yqg](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/mk5Yqg.png)
 
 
 
@@ -338,7 +350,7 @@
 1. 创建并进入库
 
    ```bash
-   mysql> CREATE DATABASE IF NOT EXISTS sai0417;
+   mysql> CREATE DATABASE IF NOT EXISTS SaiDB;
    
    mysql> SHOW DATABASES;
    ```
@@ -346,7 +358,7 @@
 2. 创建表
 
    ```bash
-   mysql> use sai0417;
+   mysql> use SaiDB;
    
    mysql> CREATE  TABLE  student (
        -> id  INT(10)  NOT NULL  UNIQUE  PRIMARY KEY  ,
@@ -402,10 +414,10 @@
    ```bash
    mysql> select database();   #查看当前使用的库
    
-   mysql> drop database sai0417;   #删除sai0417库
+   mysql> drop database SaiDB;   #删除SaiDB库
    ```
 
-6. 查询
+6. 查询数据
 
    1. 查询student表的所有记录
 
@@ -523,11 +535,230 @@
       +-----+-----------+--------------+
       ```
 
-      
+   8. 计算每个考试科目的平均成绩
 
-   8. 
+      ```bash
+      mysql> SELECT c_name,AVG(grade) FROM score GROUP BY c_name;
+      +-----------+------------+
+      | c_name    | AVG(grade) |
+      +-----------+------------+
+      | 计算机    |    80.7500 |
+      | 英语      |    87.7500 |
+      | 中文      |    91.5000 |
+      +-----------+------------+
+      ```
 
+   9. 查询计算机成绩低于95的学生信息
 
+      ```bash
+      mysql> SELECT * FROM student WHERE id IN (SELECT stu_id FROM score WHERE c_name="计算机" and grade<95);
+      +-----+-----------+------+-------+--------------+--------------------+
+      | id  | name      | sex  | birth | department   | address            |
+      +-----+-----------+------+-------+--------------+--------------------+
+      | 902 | 张老二    | 男   |  1986 | 中文系       | 北京市昌平区       |
+      | 904 | 李四      | 男   |  1990 | 英语系       | 辽宁省阜新市       |
+      | 906 | 王六      | 男   |  1988 | 计算机系     | 湖南省衡阳市       |
+      +-----+-----------+------+-------+--------------+--------------------+
+      ```
+
+   10. 查询同时参加计算机和英语考试的学生的信息
+
+       ```bash
+       mysql> SELECT * FROM student WHERE id = ANY (SELECT stu_id FROM score WHERE stu_id IN (SELECT stu_id FROM score WHERE c_name = '计算机') AND c_name= '英语');
+       +-----+-----------+------+-------+--------------+--------------------+
+       | id  | name      | sex  | birth | department   | address            |
+       +-----+-----------+------+-------+--------------+--------------------+
+       | 901 | 张老大    | 男   |  1985 | 计算机系     | 北京市海淀区       |
+       | 904 | 李四      | 男   |  1990 | 英语系       | 辽宁省阜新市       |
+       | 906 | 王六      | 男   |  1988 | 计算机系     | 湖南省衡阳市       |
+       +-----+-----------+------+-------+--------------+--------------------+
+       ```
+
+   11. 将计算机考试成绩按从高到低进行排序
+
+       > **排序**：`ORDER BY`，`ASC`升序，`DESC`降序
+
+       ```bash
+       mysql> SELECT s.stu_id,t.name,s.grade FROM score s,student t WHERE s.stu_id = t.id and s.c_name='计算机' ORDER BY s.grade DESC;
+       +--------+-----------+-------+
+       | stu_id | name      | grade |
+       +--------+-----------+-------+
+       |    901 | 张老大    |    98 |
+       |    906 | 王六      |    90 |
+       |    904 | 李四      |    70 |
+       |    902 | 张老二    |    65 |
+       +--------+-----------+-------+
+       ```
+
+   12. 查询姓李或姓王的同学的姓名、院系和考试科目及成绩
+
+       > **模糊查询**：`like`通常和`%`一起使用
+
+       ```bash
+       mysql> SELECT s.id, s.name, s.department, t.c_name, t.grade FROM student s, score t WHERE (s.name LIKE '李%' OR s.name LIKE '王%') AND s.id=t.stu_id ;
+       +-----+--------+--------------+-----------+-------+
+       | id  | name   | department   | c_name    | grade |
+       +-----+--------+--------------+-----------+-------+
+       | 904 | 李四   | 英语系       | 计算机    |    70 |
+       | 904 | 李四   | 英语系       | 英语      |    92 |
+       | 905 | 王五   | 英语系       | 英语      |    94 |
+       | 906 | 王六   | 计算机系     | 计算机    |    90 |
+       | 906 | 王六   | 计算机系     | 英语      |    85 |
+       +-----+--------+--------------+-----------+-------+
+       ```
+
+   13. 查询湖南学生的姓名、院系和考试科目及成绩
+
+       ```bash
+       mysql> SELECT s.id, s.name, s.department, t.c_name, t.grade FROM student s, score t WHERE s.address LIKE '湖南%' AND s.id=t.stu_id;
+       +-----+--------+--------------+-----------+-------+
+       | id  | name   | department   | c_name    | grade |
+       +-----+--------+--------------+-----------+-------+
+       | 903 | 张三   | 中文系       | 中文      |    95 |
+       | 906 | 王六   | 计算机系     | 计算机    |    90 |
+       | 906 | 王六   | 计算机系     | 英语      |    85 |
+       +-----+--------+--------------+-----------+-------+
+       ```
+
+7. 修改和删除数据
+
+   > **UPDATE和DELETE都是没有后悔药的操作，因此最好使用事务**
+   >
+   > * START TRANSACTION：开始一个事务
+   >
+   > * ROLLBACK：回滚之前的操作
+   >
+   > * COMMIT：提交事务内的操作
+
+   * 修改"王五"的名字成"王伍"
+
+     ```bash
+     mysql> START TRANSACTION;
+     
+     mysql> SELECT * FROM student WHERE id = '905';
+     +-----+--------+------+-------+------------+--------------------+
+     | id  | name   | sex  | birth | department | address            |
+     +-----+--------+------+-------+------------+--------------------+
+     | 905 | 王五    | 女   |  1991 | 英语系     | 福建省厦门市       |
+     +-----+--------+------+-------+------------+--------------------+
+     
+     mysql> UPDATE student SET name = '王伍' WHERE id = '905';
+     
+     mysql> ROLLBACK;   #若后悔了就执行回滚，否则不执行ROLLBACK直接执行COMMIT
+     mysql> COMMIT;    #无论
+     ```
+
+   * 删除王六的英语成绩
+
+     ```bash
+     mysql> START TRANSACTION;
+     
+     mysql> SELECT * FROM score t WHERE t.c_name = '英语' and t.stu_id = (SELECT s.id FROM student s where s.`name` = '王六');   #先用select确定查询条件
+     
+     mysql> DELETE FROM score t WHERE t.c_name = '英语' and t.stu_id = (SELECT s.id FROM student s where s.`name` = '王六');   #再用上面条件进行删除
+     
+     mysql> ROLLBACK;   #若后悔了就执行回滚，否则不执行ROLLBACK直接执行COMMIT
+     mysql> COMMIT;    #无论
+     ```
+
+8. 
+
+#### 3. python连接MySQL
+
+* 安装PyMySQL：`pip install pymysql`
+
+  ```python
+  import pymysql
+  
+  def ConnectDB():
+      db = pymysql.connect(
+          host = "127.0.0.1",   #主机名
+          port = 3306,   #端口号
+          user = "root",   #用户名
+          passwd = "sai",   #密码
+          db = "sai0417",   #数据库名
+          charset='utf8', #设置编码为utf8是为输出中文
+          ) 
+      print('MySQL连接上了!')
+      return db
+  
+  def CloseDB(db):
+      db.close()
+      print('MySQL关闭了!')
+  
+  def QueryData(db):
+      cursor = db.cursor()   #获取操作游标 
+      sql = "SELECT * FROM NewStudent;"
+  
+      try:
+          cursor.execute(sql)   #执行SQL语句
+          results = cursor.fetchall()   #获取所有记录列表
+          for row in results:
+              ID = row[0]
+              Name = row[1]
+              Grade = row[2]
+              print(f"ID: {ID}, Name: {Name}, Grade: {Grade}")
+      except:
+          print("Error: unable to fecth data")
+  
+  def CreateTable(db):
+      cursor = db.cursor()   #获取操作游标
+      cursor.execute("DROP TABLE IF EXISTS NewStudent")   # 若存在Sutdent表则先删除
+      sql = """CREATE TABLE NewStudent (
+              ID CHAR(10) NOT NULL,
+              Name CHAR(8),
+              Grade INT )"""
+      cursor.execute(sql)  #执行SQL语句
+  
+  def InsertData(db):
+      cursor = db.cursor()   #获取操作游标
+      sql = """INSERT INTO NewStudent
+           VALUES ('001', 'CZQ', 70),
+                  ('002', 'LHQ', 80),
+                  ('003', 'MQ', 90)"""
+      try:
+          cursor.execute(sql)   # 执行sql语句
+          db.commit()
+      except:
+          print('插入数据失败!')
+          db.rollback()
+  
+  def DeleteData(db):
+      cursor = db.cursor()   #获取操作游标
+      sql = "DELETE FROM NewStudent WHERE Grade = '70'"
+      try:
+         cursor.execute(sql)   #执行SQL语句
+         db.commit()
+      except:
+          print('删除数据失败!')
+          db.rollback()
+  
+  def UpdateData(db):
+      cursor = db.cursor()   #获取操作游标
+      sql = "UPDATE NewStudent SET Grade = Grade + 3 WHERE ID = '003'"
+      try:
+          cursor.execute(sql)   #执行SQL语句
+          db.commit()
+      except:
+          print('更新数据失败!')
+          db.rollback()
+  
+  if __name__ == '__main__':
+      db = ConnectDB()    # 连接MySQL数据库
+      CreateTable(db)     # 创建表
+      InsertData(db)        # 插入数据
+      print('\n插入数据后:')
+      QueryData(db) 
+      DeleteData(db)        # 删除数据
+      print('\n删除数据后:')
+      QueryData(db)
+      UpdateData(db)        # 更新数据
+      print('\n更新数据后:')
+      QueryData(db)
+      CloseDB(db)         # 关闭数据库
+  ```
+
+  
 
 
 
