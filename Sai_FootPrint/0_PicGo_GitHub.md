@@ -28,6 +28,8 @@
 
 ### 配置PicGo
 
+[参考](https://picgo.github.io/PicGo-Doc/zh/guide/config.html)
+
 ![anX8GM](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/anX8GM.png)
 
 > * 设定仓库名的时候，是按照“账户名/仓库名”的格式填写

@@ -300,6 +300,6 @@ rm ~/.curlrc
 
    2. 配置Alfred
 
-      
-
-3. 
+      1. [下载Alfred workflow脚本](https://link.zhihu.com/?target=https%3A//github.com/crimx/ext-saladict/files/3711425/saladict.alfredworkflow.zip)
+      2. import脚本
+      3. 设置hotkey：`option + 1`
