@@ -197,17 +197,18 @@
     > code - preference - settings，点击右上角的open settings(UI)，输入
     > ```js
     > {
-    >  "python.pythonPath": "/Users/jiangsai02/opt/anaconda3/envs/py3/bin/python",
-    >  "workbench.startupEditor": "newUntitledFile",
-    >  "terminal.integrated.inheritEnv": false,
-    >  "editor.minimap.enabled": false,
-    >  "editor.suggestSelection": "first",
-    >  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    >  "python.jediEnabled": false,
-    >  "terminal.integrated.shell.osx": "/bin/zsh",
-    >  "editor.renderControlCharacters": true,
-    >  "editor.renderWhitespace": "all",
-    >  "editor.suggest.snippetsPreventQuickSuggestions": false,
+    >     "python.venvPath":"/Users/sai/miniconda3/envs",
+    >     "python.pythonPath": "/Users/sai/miniconda3/envs/flask_py3/bin/python",
+    >     "workbench.startupEditor": "newUntitledFile",
+    >     "terminal.integrated.inheritEnv": false,
+    >     "editor.minimap.enabled": false,
+    >     "editor.suggestSelection": "first",
+    >     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    >     "python.jediEnabled": false,
+    >     "terminal.integrated.shell.osx": "/bin/zsh",
+    >     "editor.renderControlCharacters": true,
+    >     "editor.renderWhitespace": "all",
+    >     "editor.suggest.snippetsPreventQuickSuggestions": false,
     > }
     > ```
     

@@ -1,4 +1,5 @@
-# flask 入门
+![](https://gitee.com/jiangsai0502/tuchuang/raw/master/20200425013544.png)
+
 ### 安装 flask 环境
 
 1. 查看虚拟环境   `conda info --envs`
@@ -35,7 +36,9 @@
 
     > `/Users/sai/miniconda3/envs/flask_py3/bin/python`不能写成`~/miniconda3/envs/flask_py3/bin/python`
 
-    ![gj6sZ8](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/gj6sZ8.png)
+    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/image-20200424231604934.png)
+
+    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/image-20200424232720416.png)
 
 7. requirements.txt
     1. python项目中必须包含一个 requirements.txt 文件，用于记录所有依赖包及其精确的版本号，以便新环境部署
@@ -93,50 +96,50 @@
 ### 一个最小的应用：返回字符串
 
 ```python
+#1. 导入flask扩展
 from flask import Flask
 
+#2. 创建flask程序实例，传入__name__，作用是确定资源所在位置
 app = Flask(__name__)
 
+#3. 定义路由及视图函数
 @app.route('/', methods = ['GET', 'POST'])
 def hello_world():
     return 'Hello Flask Sai!'
 
 @app.route('/<order_id>')
 def get_order_id(order_id):
-    print(f'Your order ID Type : {type(order_id)}')
-    return f'Your order ID : {order_id}'
+    print(f'你的订单号类型 : {type(order_id)}')
+    return f'你的订单号 : {order_id}'
 
+#4. 启动程序
 if __name__ == '__main__':
     app.run(debug = True)
 ```
 
 **剖析**
 
-> 1. 创建Flask 应用程序实例
-> > ```python
-> > app = Flask(__name__)
-> > ```
-> > 1. __name__的作用是确定资源所在路径
-> 
-> 2. 定义路由及视图函数
+> 1. 定义路由及视图函数
 > > ```python
 > > @app.route('/', methods = ['GET', 'POST'])
 > > def hello_world():
-> >     return 'Hello Flask Sai!'
+> >  return 'Hello Flask Sai!'
 > > ```
 > > 1. 用 app 变量的 route() 装饰器来告诉 Flask 框架，哪些 URL 触发哪些视图函数
 > > 2. 如 对路径 '/' 的请求，将触发对 hello_world() 函数的调用
 > > 3. 如 对路径 '/<order_id>' 的请求，将触发对 get_order_id() 函数的调用
 > > 4. 路由默认只支持 GET 请求，可用 methods = [] 自行扩展
-> > 
-> > ```
+> >
+> > ```python
 > > @app.route('/<order_id>')
 > > def get_order_id(order_id):
 > >     return f'Your order ID : {order_id}'
 > > ```
 > > 1. 使用同一个视图函数 get_order_id() 显示不同用户的订单信息
-> > 2. 格式：1. <路由参数> 2. get_order_id(路由参数)
-> 
+> > 2. 格式：
+> >    1. `<>`定义路由的参数 <路由参数> 
+> >    2. get_order_id(路由参数)
+>
 > 3. 启动程序
 > > ```python
 > > if __name__ == '__main__':
@@ -152,52 +155,126 @@ if __name__ == '__main__':
 
 * 创建一个基本的 Flask 目录结构
 
-```markdown
-├── ~/Documents/Temp/SaiFlask/
-    ├── app.py
-    ├── templates/
-        ├── index.html
-        └── HelloYou.html
-    └── static/
-        ├── TeddyBear.jpg
-```
+  ```bash
+  ├── ~/Documents/Temp/SaiFlask/
+      ├── MyApp.py
+      ├── templates/
+          ├── MyTemplate.html
+          └── HelloYou.html
+      └── static/
+          ├── TeddyBear.jpg
+  ```
 
-| 目录 | 描述 |
-| -------- | ----------- |
-| `app.py` | 主程序 |
-| `templates` | 存放模板文件 |
-| `static` | 存放静态文件，如图片，音频，视频，JS文件以及样式文件 |
+  | 目录        | 描述                                                 |
+  | ----------- | ---------------------------------------------------- |
+  | `MyApp.py`  | 主程序                                               |
+  | `templates` | 存放模板文件                                         |
+  | `static`    | 存放静态文件，如图片，音频，视频，JS文件以及样式文件 |
 
-* 1_Index.html
 
-```javascript
-<!doctype html>
-<title>Hello Sample</title>
-{% if name %}
-    <h1>Hello {{ name }}!</h1>
-{% else %}
-    <h1>Hello World!</h1>
-{% endif %}
-```
-* 2_CodeBlock.html
+* 变量代码块：单一变量
 
-```javascript
-<!doctype html>
-<title>Hello CodeBlock</title>
-MovieList 是 {{ MovieList }}，共计 {{ MovieList | length }} 部电影 <br>
-电影列表是 <br>
-{% for movie in MovieList %}
-    {{ movie.title }} - {{ movie.year }} <br>
-{% endfor %}
-<hr>
-NumList 是 {{ NumList }}，共计 {{ NumList | length }} 个数 <br>
-小于 10 的数是 <br>
-{% for num in NumList %}
-    {% if num < 10 %}
-        {{ num }} <br>
-    {% endif %}
-{% endfor %}
-```
+  ```python
+  from flask import Flask, render_template
+  
+  app = Flask(__name__)
+  
+  @app.route('/', methods = ['GET', 'POST'])
+  @app.route('/<name>')
+  def SaiIndex(name = None):
+      return render_template('MyTemplate.html', name = name)
+  
+  if __name__ == '__main__':
+      app.run(debug = True)
+  ```
+
+  ```javascript
+  <!doctype html>
+  <title>单一变量</title>
+  {% if name %}
+      <h1>Hello {{ name }}!</h1>
+  {% else %}
+      <h1>Hello World!</h1>
+  {% endif %}
+  ```
+
+  > * {{ args }} 表示 HTML 的变量代码块
+  >   * args 变量可以是任意类型，如{{ name }}，{{ student.age }}，{{ my_dict['key'] }}，{{ my_list[0] }}
+  > * `name = name` ：等号前的name是前端html模板的变量，等号后的name是后端的变量
+
+  > * 网址输入`http://127.0.0.1:5000/`，则展示`Hello World!`
+  > * 网址输入`http://127.0.0.1:5000/sai`，则展示`Hello sai!`
+
+* 变量代码块：多变量
+
+  ```python
+  from flask import Flask, render_template
+  
+  app = Flask(__name__)
+  
+  @app.route('/')
+  def MoreArgs():
+      web_name = '多变量'
+      my_list = [1, 3, 5, 7, 9, 11, 13]
+      my_dict = {'name':'sai','age':18}
+  
+      return render_template('MyTemplate.html', web_name = web_name, my_list = my_list, my_dict = my_dict)
+    
+  if __name__ == '__main__':
+      app.run(debug = True)
+  ```
+
+  ```javascript
+  <!doctype html>
+  <title>{{ web_name }}</title>
+  
+  my_list 是 {{ my_list }} , 共 {{ my_list | length }} 个元素, 其中第2个是 {{ my_list[1] }} <br>
+  my_dict 是 {{ my_dict }} , 共 {{ my_dict | length }} 个元素, age对应的值是 {{ my_dict['age'] }} <br>
+  ```
+
+* 控制代码块
+
+  ```python
+  from flask import Flask, render_template
+  
+  app = Flask(__name__)
+  
+  @app.route('/')
+  def MoreArgs():
+      my_list = [1, 3, 5, 7, 9, 11, 13]
+      my_dict = {'name':'sai','age':18}
+      MovieList = [
+      {'title': 'xxxxx', 'year': '1988'},
+      {'title': 'yyyyy', 'year': '1989'}
+      ]
+      return render_template('MyTemplate.html', my_list = my_list, my_dict = my_dict, MovieList = MovieList)
+    
+  if __name__ == '__main__':
+      app.run(debug = True)
+  ```
+
+  ```javascript
+  <!doctype html>
+  <title> 控制代码块 </title>
+  
+  遍历 my_list 中小于10的数
+  {% for num in my_list %}
+      {% if num < 10 %}
+          {{ num }}, 
+      {% endif %}
+  {% endfor %} <br>
+  
+  遍历 my_dict  <br>
+  {% for k,v in my_dict.items() %}
+      {{k}}：{{v}} <br>
+  {% endfor %}
+  
+  遍历 MovieList <br>
+  {% for movie in MovieList %}
+      {{ movie['title'] }} - {{ movie['year'] }} <br>
+  {% endfor %}
+  ```
+
 * 3_Filter.html
 
 ```javascript
@@ -267,21 +344,6 @@ app = Flask(__name__)
 
 app.secret_key = 'The secret string for encryption'
 
-@app.route('/')
-@app.route('/<name>')
-def Index(name = None):
-    return render_template('1_Index.html', name = name)
-
-@app.route('/cb')
-def CodeBlock():
-    MovieList = [
-    {'title': 'My Neighbor Totoro', 'year': '1988'},
-    {'title': 'Dead Poets Society', 'year': '1989'},
-    {'title': 'A Perfect World', 'year': '1993'},
-    ]
-    NumList = [1, 3, 5, 7, 9, 11, 13]
-    return render_template('2_CodeBlock.html', NumList = NumList, MovieList = MovieList)
-
 @app.route('/f')
 def Filter():
     BaiduUrl = 'https://www.baidu.com/'
@@ -339,19 +401,7 @@ if __name__ == '__main__':
     app.run(debug = True)
 ```
 
-**剖析**
 
-> **2_CodeBlock.html**
->
-> ```js
-> myList 是 {{ myList }}，而小于 10 的是<br>
-> {% for num in myList %}
-> {% if num < 10 %}
->   {{ num }}<br>
-> {% endif %}
-> {% endfor %}
-> ```
-> 2. {{ 变量代码块 }} 表示 HTML 的变量代码块
 
 > **3_Filter.html**
 >

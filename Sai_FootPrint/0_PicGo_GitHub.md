@@ -26,6 +26,14 @@
 
 
 
+### 创建Gitee图床
+
+[参考](https://zhuanlan.zhihu.com/p/102594554)
+
+
+
+
+
 ### 配置PicGo
 
 [参考](https://picgo.github.io/PicGo-Doc/zh/guide/config.html)
