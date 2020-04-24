@@ -208,3 +208,21 @@
        5. 删除temp分支：`git branch -d temp`
 
 
+
+#### GIT 获取指定历史版本代码
+
+1. 首先拉去最新代码
+
+   `git clone https://github.com/lalor/headlines.git`
+
+   ![eKSEeZ](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/eKSEeZ.png)
+
+2. GitHub查看作者commit记录
+
+   ![3r9weq](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/3r9weq.png)
+
+3. 获取指定的历史版本代码
+
+   `git checkout 789f31871230c53c909df7f22721abc91d71d00a`
+
+

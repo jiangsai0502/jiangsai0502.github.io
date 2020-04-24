@@ -3,24 +3,41 @@
 
 1. 查看虚拟环境   `conda info --envs`
 
-2. 创建虚拟环境   `conda create -n flask_py3 python=3.7`
+2. 创建虚拟环境   `conda create -n flask_py3 python=3.8`
+
+    > 虚拟环境位置：~/miniconda3/envs/flask_py3
 
 3. 激活虚拟环境   `source activate flask_py3`
 
 4. 安装flask   `pip install flask`
+
+    > Flask被安装位置：~/miniconda3/envs/flask_py3/lib/python3.8/site-packages/
+    >
+    > 卸载flask`pip uninstall flask`
+
     * 安装 Flask-WTF 表单插件   `pip install Flask-WTF`
     * 安装 flask-sqlalchemy 数据库抽象插件   `pip install flask-sqlalchemy`
     * 安装 flask-mysqldb 数据库插件   `pip install pymysql`
     * 安装MySQL 数据库插件   `pip install cryptography`
 
 5. 查看环境下所有包   `conda list`
+
 6. 配置 VS Code 环境设置 
 
     ```bash
-    setting.json : "python.pythonPath": "/Users/jiangsai02/opt/anaconda3/envs/flask_py3/bin/python"
+    $ which python
+    /Users/sai/miniconda3/envs/flask_py3/bin/python
     ```
 
-1. requirements.txt
+    ```bash
+    setting.json : "python.pythonPath": "/Users/sai/miniconda3/envs/flask_py3/bin/python"
+    ```
+
+    > `/Users/sai/miniconda3/envs/flask_py3/bin/python`不能写成`~/miniconda3/envs/flask_py3/bin/python`
+
+    ![gj6sZ8](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/gj6sZ8.png)
+
+7. requirements.txt
     1. python项目中必须包含一个 requirements.txt 文件，用于记录所有依赖包及其精确的版本号，以便新环境部署
 
     2. 在本机的虚拟环境下使用pip生成    `pip freeze >requirements.txt`
@@ -234,8 +251,6 @@ NumList 是 {{ NumList }}，共计 {{ NumList | length }} 个数 <br>
     {% endfor %}
 </form>
 ```
-
-
 
 * app.py
 
@@ -694,3 +709,8 @@ if __name__ == '__main__':
 >    > 3. 加入 session ：`myDB.session.add_all([<实例1>, <实例2>])`
 >    > 4. 提交 session ：`myDB.session.commit()`
 >    > 5. 删除实例：`myDB.session.delete(<实例1>)`
+
+
+
+
+

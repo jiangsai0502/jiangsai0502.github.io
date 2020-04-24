@@ -1,6 +1,84 @@
 # 搭建Python环境
 
+### 安装miniconda
+
+1. [下载](https://docs.conda.io/en/latest/miniconda.html)并安装
+
+   ```bash
+   $ cd ~/Downloads
+   $ sh Miniconda3-latest-MacOSX-x86_64.sh
+   
+   Do you accept the license terms? [yes|no]
+   [no] >>> yes
+   
+   Do you wish the installer to initialize Miniconda3 by running conda init? [yes|no]
+   [yes] >>> yes
+   
+   modified      /Users/sai/.zshrc
+   Thank you for installing Miniconda3!
+   ```
+
+   > 一路`空格`略过读license的过程
+
+2. 重新加载配置文件：`source ~/.zshrc`
+
+3. 替换源
+
+   ```bash
+   $ conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
+   $ conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
+   $ conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge/
+   $ conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/msys2/
+   $ conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/bioconda/
+   $ conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/menpo/
+   
+   $ conda config --set show_channel_urls yes
+   $ conda info
+   ```
+
+4. 升级conda：`conda upgrade conda`
+
+#### 卸载miniconda
+
+1. 删除目录
+
+   ```bash
+   $ rm -rf ~/miniconda3
+   ```
+
+2. 删除下面关于conda的配置
+
+   ```bash
+   # >>> conda initialize >>>
+   # !! Contents within this block are managed by 'conda init' !!
+   __conda_setup="$('/Users/sai/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+   if [ $? -eq 0 ]; then
+       eval "$__conda_setup"
+   else
+       if [ -f "/Users/sai/miniconda3/etc/profile.d/conda.sh" ]; then
+           . "/Users/sai/miniconda3/etc/profile.d/conda.sh"
+       else
+           export PATH="/Users/sai/miniconda3/bin:$PATH"
+       fi
+   fi
+   unset __conda_setup
+   # <<< conda initialize <<<
+   ```
+
+3. 删除相关隐藏文件
+
+   ```bash
+   rm -rf ~/.condarc ~/.conda ~/.continuum
+   ```
+
+4. 重新加载配置文件：`source ~/.zshrc`
+
+
+
+
+
 ## Anaconda
+
 #### 搭建环境
 
 * 官网下载后默认安装即可  
@@ -22,9 +100,33 @@
     > open ~/.condarc
     > 最后插入几行
     > proxy_servers:
-    >   http: http://127.0.0.1:1087
-    >   https: https://127.0.0.1:1087
+    >   http: http://127.0.0.1:1081
+    >   https: https://127.0.0.1:1081
     > ```
+
+#### 卸载anaconda
+
+* 安装卸载插件
+
+  ```bash
+  $ conda install anaconda-clean
+  $ anaconda-clean
+  $ rm -r /Users/sai/.anaconda_backup/2020-04-24T164213    #删除备份
+  ```
+
+* 删除Anaconda的文件夹
+
+  ```bash
+  $ which conda
+  /opt/anaconda3/bin/conda
+  $ sudo rm -rf /opt/anaconda3
+  ```
+
+* 删除 `~/.bash_profile`中anaconda的环境变量，即删除最后一行：`export PATH="/opt/anaconda3/bin:$PATH"`
+
+* 删除Anaconda的可能存在隐藏的文件：`rm -rf ~/.condarc ~/.conda ~/.continuum`
+
+  
 
 #### 基础用法
 
@@ -70,7 +172,10 @@
 * 为当前的虚拟环境 flask_py3 卸载flask包   `conda remove flask`
 * 查看当前的虚拟环境 flask_py3 的所有安装包   `conda list`
 
+
+
 ## VSCode配置
+
 1. 左侧最下方“Extensions”，安装以下插件
     > Python - 代码分析，高亮，规范化
     >
