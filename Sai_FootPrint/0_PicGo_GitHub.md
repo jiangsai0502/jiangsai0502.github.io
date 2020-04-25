@@ -40,16 +40,19 @@
 >
 > **总结操作**
 >
-> 1. 先讲远程仓库全部合并到本地
+> 1. 进入项目目录：`cd ~/Documents/GitHub/PicBedRepo`
+> 2. 先讲远程仓库全部合并到本地
 >    1. `git pull GiteePicbed master`
 >    2. `git pull GithubPicbed master`
-> 2. 本地修改
-> 3. 提交到本地仓库
+> 3. 本地修改
+> 4. 提交到本地仓库
 >    1. `git add .`
 >    2. `git commit -am "删除测试文件"`
-> 4. 再将本地仓库全部推送到远程
+> 5. 再将本地仓库全部推送到远程
 >    1. `git push GiteePicbed master`
 >    2. `git push GithubPicbed master`
+
+#### 案例（从新建库开始）
 
 1. 新建库
 

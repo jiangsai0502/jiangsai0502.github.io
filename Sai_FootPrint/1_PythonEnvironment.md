@@ -36,6 +36,10 @@
    $ conda info
    ```
 
+   > 报错：`CondaHTTPError: HTTP 000 CONNECTION FAILED for url <https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge/osx-64/current_repodata.json>`
+   >
+   > 解决：将https改为http即可
+
 4. 升级conda：`conda upgrade conda`
 
 #### 卸载miniconda

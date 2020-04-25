@@ -10,14 +10,14 @@
 
 4. 安装flask   `pip install flask`
 
-    > Flask被安装位置：~/miniconda3/envs/flask_py3/lib/python3.8/site-packages/
+    > Flask被安装位置：`~/miniconda3/envs/flask_py3/lib/python3.8/site-packages/`
     >
     > 卸载flask`pip uninstall flask`
 
     * 安装 Flask-WTF 表单插件   `pip install Flask-WTF`
     * 安装 flask-sqlalchemy 数据库抽象插件   `pip install flask-sqlalchemy`
     * 安装 flask-mysqldb 数据库插件   `pip install pymysql`
-    * 安装MySQL 数据库插件   `pip install cryptography`
+    * 安装 MySQL 数据库插件   `pip install cryptography`
 
 5. 查看环境下所有包   `conda list`
 
@@ -32,7 +32,11 @@
     setting.json : "python.pythonPath": "/Users/sai/miniconda3/envs/flask_py3/bin/python"
     ```
 
-    > `/Users/sai/miniconda3/envs/flask_py3/bin/python`不能写成`~/miniconda3/envs/flask_py3/bin/python`
+    > 1. 下图修改的`setting.json`是项目的配置文件，而不是全局的配置文件
+    >    * 项目配置文件：`/Users/sai/Documents/FlaskProjects/.vscode/settings.json`
+    >    * 全局配置文件：`/Users/sai/Library/Application Support/Code/User/settings.json`
+    >
+    > 2. `/Users/sai/miniconda3/envs/flask_py3/bin/python`不能写成`~/miniconda3/envs/flask_py3/bin/python`
 
     ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/image-20200424231604934.png)
 
@@ -53,29 +57,31 @@
 
 #### Flask 调试
 
-**切记！！！**: `app.run(debug=False)` 一定不能开启调试！否则无法命中断点
-
+> ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200425195458.png)
+>
 > 1. `lanuch.json`是`debug`相关的配置文件
+>
 > 2. "stopOnEntry": true 进入程序时立即暂停执行，相当于在程序的第一行放一个断点
 >
-> >```python
-> >"configurations": [
-> >    {
-> >        "name": "Python: Current File (Integrated Terminal)",
-> >        "type": "python",
-> >        "request": "launch",
-> >        "program": "${file}",
-> >        "console": "integratedTerminal",
-> >        "stopOnEntry": true,
-> >    },
-> >```
+>    > ```bash
+>    > "configurations": [
+>    >     {
+>    >         "name": "Python: Current File (Integrated Terminal)",
+>    >         "type": "python",
+>    >         "request": "launch",
+>    >         "program": "${file}",
+>    >         "console": "integratedTerminal",
+>    >         "stopOnEntry": true,
+>    >     }
+>    > ]
+>    > ```
 >
 > 3. **切记！！！** ：Flask在启动时必须指定 `app.run(debug=False)`，一定不能开启调试！否则无法命中断点
 >
-> ```python
-> if __name__ == '__main__':
->     app.run(debug = False)
-> ```
+>    ```python
+>    if __name__ == '__main__':
+>        app.run(debug = False)
+>    ```
 >
 > 4. 监视变量
 >
@@ -149,7 +155,7 @@ if __name__ == '__main__':
 
 
 
-### 一个最小的应用：返回网页
+### 一个最小的应用：返回jinja2网页
 
 * 创建一个基本的 Flask 目录结构
 
@@ -179,26 +185,32 @@ if __name__ == '__main__':
   
   @app.route('/', methods = ['GET', 'POST'])
   @app.route('/<name>')
-  def SaiIndex(name = None):
-      return render_template('MyTemplate.html', name = name)
+  def SingleArg(name = None):
+      return render_template('MyTemplate.html', FEname = name)
   
   if __name__ == '__main__':
       app.run(debug = True)
   ```
 
+  > * 渲染模板需要导入 `render_template`
+  > * 对路径 `/` 的请求，将触发对 `SingleArg()` 函数的调用
+  > * 对路径 `/\<name>` 的请求，将触发对 `SingleArg()` 函数的调用，`<name>` 是任意 str
+  > * `render_template('MyTemplate.html')` 将渲染 `templates` 目录下的 `MyTemplate.html` 模板
+  > * 模板 `MyTemplate.html` 中的变量名和 `MyApp.py` 中的变量保持一致，即 `FEname = name`
+
   ```javascript
   <!doctype html>
   <title>单一变量</title>
-  {% if name %}
-      <h1>Hello {{ name }}!</h1>
+  {% if FEname %}
+      <h1>Hello {{ FEname }}!</h1>
   {% else %}
       <h1>Hello World!</h1>
   {% endif %}
   ```
 
-  > * {{ args }} 表示 HTML 的变量代码块
-  >   * args 变量可以是任意类型，如{{ name }}，{{ student.age }}，{{ my_dict['key'] }}，{{ my_list[0] }}
-  > * `name = name` ：等号前的name是前端html模板的变量，等号后的name是后端的变量
+  > * `{{ args }}` 表示 HTML 的变量代码块
+  >   * `args` 变量可以是任意类型，如`{{ arg }}`，`{{ my_list[0] }}`，`{{ my_dict['key'] }}`
+  > * `FEname = name` ：等号前的`FEname`是前端html模板的变量，等号后的`name`是后端的变量
 
   > * 网址输入`http://127.0.0.1:5000/`，则展示`Hello World!`
   > * 网址输入`http://127.0.0.1:5000/sai`，则展示`Hello sai!`
@@ -212,11 +224,11 @@ if __name__ == '__main__':
   
   @app.route('/')
   def MoreArgs():
-      web_name = '多变量'
-      my_list = [1, 3, 5, 7, 9, 11, 13]
-      my_dict = {'name':'sai','age':18}
+      webName = '多变量'
+      myList = [1, 3, 5, 7, 9, 11, 13]
+      myDict = {'name':'sai','age':18}
   
-      return render_template('MyTemplate.html', web_name = web_name, my_list = my_list, my_dict = my_dict)
+      return render_template('MyTemplate.html', web_name = webName, my_list = myList, my_dict = myDict)
     
   if __name__ == '__main__':
       app.run(debug = True)
@@ -238,14 +250,14 @@ if __name__ == '__main__':
   app = Flask(__name__)
   
   @app.route('/')
-  def MoreArgs():
-      my_list = [1, 3, 5, 7, 9, 11, 13]
-      my_dict = {'name':'sai','age':18}
-      MovieList = [
+  def Controller():
+      myList = [1, 3, 5, 7, 9, 11, 13]
+      myDict = {'name':'sai','age':18}
+      movieList = [
       {'title': 'xxxxx', 'year': '1988'},
       {'title': 'yyyyy', 'year': '1989'}
       ]
-      return render_template('MyTemplate.html', my_list = my_list, my_dict = my_dict, MovieList = MovieList)
+      return render_template('MyTemplate.html', my_list = myList, my_dict = myDict, movie_list = movieList)
     
   if __name__ == '__main__':
       app.run(debug = True)
@@ -267,178 +279,216 @@ if __name__ == '__main__':
       {{k}}：{{v}} <br>
   {% endfor %}
   
-  遍历 MovieList <br>
-  {% for movie in MovieList %}
+  遍历 movie_list <br>
+  {% for movie in movie_list %}
       {{ movie['title'] }} - {{ movie['year'] }} <br>
   {% endfor %}
   ```
 
-* 3_Filter.html
+* 过滤器
 
-```javascript
-<!doctype html>
-<title>Hello Filter</title>
+  ```python
+  from flask import Flask, render_template
+  
+  app = Flask(__name__)
+  
+  @app.route('/')
+  def Filter():
+      myStr = 'My name is Sai'
+      myList = [1, 3, 5, 7, 9, 11, 13]
+      return render_template('MyTemplate.html', my_str = myStr, my_list = myList)
+    
+  if __name__ == '__main__':
+      app.run(debug = True)
+  ```
 
-百度的网址：{{BaiduUrl}} <br>
-字符串大写：{{BaiduUrl | upper }} <br>
-字符串反转：{{BaiduUrl | reverse | upper }} <br>
-```
+  ```javascript
+  <!doctype html>
+  <title>Hello Filter</title>
+  
+  原字符串是：{{my_str}} <br>
+  字符串全大写：{{my_str | upper }} <br>
+  字符串全小写：{{my_str | lower }} <br>
+  字符串首单词首字母大写：{{my_str | capitalize }} <br>
+  字符串所有单词首字母大写：{{my_str | title }} <br>
+  字符串反转+全大写：{{my_str | reverse | upper }} <br>
+  <hr>
+  原list是：{{my_list}} <br>
+  list第1个元素：{{my_list | first }} <br>
+  list最后1个元素：{{my_list | last }} <br>
+  list长度：{{my_list | length }} <br>
+  list排序：{{my_list | sort }} <br>
+  ```
 
-* 4_OriginalWebForm
+  > 1. 过滤器格式：变量名 | 过滤器 {{ variable | filter_name(*args) }}
+  > 2. 过滤器的链式调用，即拼接多个过滤器 {{ variable | filter_name(\*args) | filter_name(\*args) }}
 
-```javascript
-<!doctype html>
-<form method="POST">
-    <label>用户名：</label> <input type="text" name="username"></p>
-    <label>密码：</label> <input type="password" name="password"></p>
-    <label>确认密码：</label> <input type="password" name="password2"></p>
-    <input type="submit" value="提交"><br>
-</form>
-```
+* 原生表单
 
-* 5_FlashWebForm.html
+  ```python
+  from flask import Flask, render_template, request
+  
+  app = Flask(__name__)
+  
+  # 定义路由，设置请求方式
+  # 1. 第1次请求是Get请求，为了获取空表单
+  # 2. 第2次请求是Post请求，为了提交表单数据
+  @app.route('/', methods = ['GET', 'POST'])
+  def OriginalWF():
+      #3. 判断请求方式
+      if request.method == 'POST':
+        #4. 获取请求参数
+          username = request.form.get('user_name')
+          password = request.form.get('pass_word')
+          password2 = request.form.get('pass_word2')
+          print(f'你输入的用户：{username}，密码：{password}，确认密码：{password2}')
+          #5. 对参数进行逻辑判断
+          if not all([username, password, password2]):
+              result = '输入不完整'
+          elif password != password2:
+              result = '两次输入的密码不同'
+          else:
+              result = 'POST 成功了, Yeah'
+          return result
+      return render_template('MyTemplate.html')
+  
+  if __name__ == '__main__':
+      app.run(debug = True)
+  ```
 
-```javascript
-<!doctype html>
-<form method="POST">
-    <label>用户名：</label> <input type="text" name="username"></p>
-    <label>密码：</label> <input type="password" name="password"></p>
-    <label>确认密码：</label> <input type="password" name="password2"></p>
-    <input type="submit" value="提交"><br>
-    {% for message in get_flashed_messages() %}
-        {{ message }}
-    {% endfor %}
-</form>
-```
+  ```javascript
+  <!doctype html>
+  <form method="POST">
+      <label>用户名：</label> <input type="text" name="user_name"></p>
+      <label>密码：</label> <input type="password" name="pass_word"></p>
+      <label>确认密码：</label> <input type="password" name="pass_word2"></p>
+      <input type="submit" value="提交"><br>
+  </form>
+  ```
 
-* 6_FlaskWTForm.html
+* 原生表单（后端向前端传递消息）
 
-```javascript
-<!doctype html>
-<form method="POST">
-    {{ login_form_web.csrf_token() }}
-    {{ login_form_web.username.label }}{{ login_form_web.username }} <br>
-    {{ login_form_web.password.label }}{{ login_form_web.password }} <br>
-    {{ login_form_web.password2.label }}{{ login_form_web.password2 }} <br>
-    {{ login_form_web.submit }} <br>
-    {% for message in get_flashed_messages() %}
-        {{ message }}
-    {% endfor %}
-</form>
-```
+  ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200425170002.png)
+
+  ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200425172613.png)
+
+  ```python
+  from flask import Flask, render_template, request, flash
+  
+  app = Flask(__name__)
+  app.secret_key = 'The secret string for encryption'
+  
+  @app.route('/', methods = ['GET', 'POST'])
+  def OriginalWF_Flash():
+      if request.method == 'POST':
+          username = request.form.get('user_name')
+          password = request.form.get('pass_word')
+          password2 = request.form.get('pass_word2')
+          print(f'你输入的用户：{username}，密码：{password}，确认密码：{password2}')
+          if not all([username, password, password2]):
+              flash('输入不完整')
+          elif password != password2:
+              flash('两次输入的密码不同')
+          else:
+              return 'OriginalWF_Flash 成功了, Yeah'
+      return render_template('MyTemplate.html')
+  
+  if __name__ == '__main__':
+      app.run(debug = True)
+  ```
+
+  > `flash`需要加密，必须增加一句`app.secret_key = 'The secret string for encryption'`
+
+  ```javascript
+  <!doctype html>
+  <form method="POST">
+      <label>用户名：</label> <input type="text" name="user_name"></p>
+      <label>密码：</label> <input type="password" name="pass_word"></p>
+      <label>确认密码：</label> <input type="password" name="pass_word2"></p>
+      <input type="submit" value="提交"><br>
+      {# 获取后端传递的flash消息 #}
+      {% for message in get_flashed_messages() %}
+          {{ message }}
+      {% endfor %}
+  </form>
+  ```
+
+  > `get_flashed_messages()` ：此函数能从后端获取消息list
+
+* Flask表单wtf
+
+  > 优势：很多验证函数，省去了写自己写逻辑判断的工作
+  >
+  > 用法：1. python中定义表单类，往表单类中存数据  2. html中从表单类中取数据
+
+  ```python
+  from flask import Flask, render_template, request, flash
+  from flask_wtf import FlaskForm   #导入wtf表单类
+  from wtforms import StringField, PasswordField, SubmitField   #导入表单所需字段
+  from wtforms.validators import EqualTo, DataRequired  #导入表单验证器
+  
+  app = Flask(__name__)
+  app.secret_key = 'The secret string for encryption'
+  
+  #1. 定义表单类
+  class LoginForm(FlaskForm):
+      username = StringField('用户名', validators = [DataRequired()])
+      password = PasswordField('密码')
+      password2 = PasswordField('确认密码', validators = [DataRequired(), EqualTo('password', '密码不一致')])
+      submit = SubmitField('提交')
+  
+  #2. 定义路由，设置请求方式
+  @app.route('/', methods = ['GET', 'POST'])
+  def FlaskWTForm():
+      loginForm = LoginForm()
+      print(f'FlaskWTForm 用户名：{loginForm.username.data}, 密码：{loginForm.password.data}, 确认密码：{loginForm.password2.data}')
+      
+      if request.method == 'POST':
+          if loginForm.validate_on_submit():   #3. wtf一句话实现所有校验
+              return 'FlaskWTForm 成功了, Yeah'
+          else:
+              flash(loginForm.errors)
+      return render_template('MyTemplate.html', login_Form = loginForm)
+  
+  if __name__ == '__main__':
+      app.run(debug = True)
+  ```
+
+  > * 类实例.字段名.label：表示字段名
+  > * 类实例.字段名.data：表示字段值
+
+  ```javascript
+  <!doctype html>
+  <form method="POST">
+      {# wtf必须开启CSRF保护，使用csrf_token()函数 #}
+      {{ login_Form.csrf_token() }}
+      {{ login_Form.username.label }} : {{ login_Form.username }} <br>
+      {{ login_Form.password.label }} : {{ login_Form.password }} <br>
+      {{ login_Form.password2.label }} : {{ login_Form.password2 }} <br>
+      {{ login_Form.submit }} <br>
+  
+      {% for message in get_flashed_messages() %}
+          {{ message }}
+      {% endfor %}
+  </form>
+  ```
+
+  | 字段类型            | 字段说明                                   | 验证函数     | 函数说明                                    |
+  | ------------------- | ------------------------------------------ | ------------ | ------------------------------------------- |
+  | StringField         | 文本字段， 相当于type类型为text的input标签 | DataRequired | 确保字段中有数据                            |
+  | PasswordField       | 密码文本字段                               | EqualTo      | 比较两个字段的值， 常用于密码的两次输入确认 |
+  | SubmitField         | 表单提交按钮                               | Length       | 验证输入字符串的长度                        |
+  | DateField           | 文本字段， 值为datetime.date格式           | URL          | 验证url                                     |
+  | IntegerField        | 文本字段， 值为整数                        | Email        | 验证是电子邮件地址                          |
+  | FloatField          | 文本字段， 值为浮点数                      | IPAddress    | 验证IPv4网络地址                            |
+  | BooleanField        | 复选框， 值为True 和 False                 | NumberRange  | 验证输入的值在数字范围内                    |
+  | RadioField          | 一组单选框                                 |              |                                             |
+  | SelectField         | 下拉列表                                   |              |                                             |
+  | SelectMultipleField | 下拉列表， 可选择多个值                    |              |                                             |
+  | TextAreaField       | 多行文本字段                               |              |                                             |
+  | FileField           | 文件上传字段                               |              |                                             |
 
 * app.py
-
-```python
-from flask import Flask
-from flask import render_template
-from flask import request
-from flask import flash
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import EqualTo, DataRequired
-
-app = Flask(__name__)
-
-app.secret_key = 'The secret string for encryption'
-
-@app.route('/f')
-def Filter():
-    BaiduUrl = 'https://www.baidu.com/'
-    return render_template('3_Filter.html', BaiduUrl = BaiduUrl)
-
-@app.route('/ot', methods = ['GET', 'POST'])
-def OriginalWebForm():
-    if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
-        password2 = request.form.get('password2')
-        print(f'你输入的用户：{username}，密码：{password}，确认密码：{password2}')
-        if not all([username, password, password2]):
-            result = '参数不完整'
-        elif password != password2:
-            result = '两次输入的密码不同'
-        else:
-            result = 'POST 成功了, Yeah'
-        return result
-    return render_template('4_OriginalWebForm.html')
-
-@app.route('/ft', methods = ['GET', 'POST'])
-def FlashWebForm():
-    if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
-        password2 = request.form.get('password2')
-        print(f'FlashWebForm 用户名：{username}，密码：{password}，确认密码：{password2}')
-        if not all([username, password, password2]):
-            flash('参数不完整')
-        elif password != password2:
-            flash('两次输入的密码不同')
-        else:
-            return 'FlashWebForm 成功了, Yeah'
-    return render_template('5_FlashWebForm.html')
-
-class LoginForm(FlaskForm):
-    username = StringField('用户名', validators = [DataRequired()])
-    password = PasswordField('密码', validators = [DataRequired()])
-    password2 = PasswordField('确认密码', validators = [DataRequired(), EqualTo('password', '密码不一致')])
-    submit = SubmitField('提交')
-
-@app.route('/fwt', methods = ['GET', 'POST'])
-def FlaskWTForm():
-    login_form = LoginForm()
-    print(f'FlaskWTForm 用户名：{login_form.username.data}, 密码：{login_form.password.data}, 确认密码：{login_form.password2.data}')
-    print(f'FlaskWTForm 用户名：{login_form.data["username"]}, 密码：{login_form.data["password"]}, 确认密码：{login_form.data["password2"]}')
-    if login_form.validate_on_submit():
-        return 'FlaskWTForm 成功了, Yeah'
-    else:
-        flash(login_form.errors)
-    return render_template('6_FlaskWTForm.html', login_form_web = login_form)
-
-if __name__ == '__main__':
-    app.run(debug = True)
-```
-
-
-
-> **3_Filter.html**
->
-> ```javascript
-> 百度的网址：{{BaiduUrl}} <br>
-> 字符串大写：{{BaiduUrl | upper }} <br>
-> 字符串反转：{{BaiduUrl | reverse | upper }} <br>
-> ```
->
-> 1. 过滤器格式：变量名 | 过滤器 {{ variable | filter_name(*args) }}
-> 2. 过滤器的链式调用，即拼接多个过滤器 {{ variable | filter_name(*args) | filter_name(*args) }}
-
-> **5_FlashWebForm.html**
->
-> ```javascript
-> {% for message in get_flashed_messages() %}
->     {{ message }}
-> {% endfor %}
-> ```
->
-> 1. get_flashed_messages() 方法接受后端传来的 flash 消息
-
-> **6_FlaskWTForm.html**
->
-> ```javascript
-> <!doctype html>
-> <form method="POST">
->     {{ login_form_web.csrf_token() }}
->     {{ login_form_web.username.label }}{{ login_form_web.username }} <br>
->     {{ login_form_web.password.label }}{{ login_form_web.password }} <br>
->     {{ login_form_web.password2.label }}{{ login_form_web.password2 }} <br>
->     {{ login_form_web.submit }} <br>
->     {% for message in get_flashed_messages() %}
->         {{ message }}
->     {% endfor %}
-> </form>
-> ```
->
-> 1. WTForms默认开启CSRF保护，所以必须有这段代码 <实例名>..csrf_token()
 
 > ```python
 > from flask import render_template
