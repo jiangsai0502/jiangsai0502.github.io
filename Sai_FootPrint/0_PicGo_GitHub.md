@@ -1,6 +1,6 @@
 # PicGo+GitHub 搭建图床
 
-> 讲剪切板上的截图发送到图床，生成在线的图片链接
+> 将剪切板上的截图发送到图床，生成在线的图片链接
 
 ### 创建GitHub图床
 1. 登陆GitHub
@@ -31,6 +31,62 @@
 [参考](https://zhuanlan.zhihu.com/p/102594554)
 
 
+
+### 将Gitee与Github保持同步
+
+[参考](https://blog.csdn.net/idsof/article/details/105005158)
+
+> 描述：本地1个代码库，远端2个代码库（Github，Gitee），保持同步
+>
+> **总结操作**
+>
+> 1. 先讲远程仓库全部合并到本地
+>    1. `git pull GiteePicbed master`
+>    2. `git pull GithubPicbed master`
+> 2. 本地修改
+> 3. 提交到本地仓库
+>    1. `git add .`
+>    2. `git commit -am "删除测试文件"`
+> 4. 再将本地仓库全部推送到远程
+>    1. `git push GiteePicbed master`
+>    2. `git push GithubPicbed master`
+
+1. 新建库
+
+   > | GitHub新建库PicBed                                           | Gitee新建库PicBed                                            |
+   > | ------------------------------------------------------------ | ------------------------------------------------------------ |
+   > | ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200425105755.png) | ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200425105827.png) |
+
+2. 创建项目目录：`mkdir ~/Documents/GitHub/PicBed && cd ~/Documents/GitHub/PicBed`
+
+3. 克隆项目到本地
+
+   1. `git clone https://gitee.com/jiangsai0502/PicBed.git`
+   2. `git clone https://github.com/jiangsai0502/PicBed.git`
+
+4. 关联`Gitee`和`GitHub`远程库并设置远程库的本地名称
+
+   1. 设置`Gitee`远程库的本地名称为`GiteePicbed`
+
+      `git remote add GiteePicbed https://gitee.com/jiangsai0502/PicBed.git`
+
+   2. 设置`GitHub`远程库的本地名称为`GithubPicbed`
+
+      `git remote add GithubPicbed https://github.com/jiangsai0502/PicBed.git`
+
+5. 查看远程库地址和在本地的默认名称：`git remote -v`
+
+6. 删除远程库在本地的默认名称：`git remote rm origin`
+
+7. 将本地代码推送到远程仓库
+
+   1. `git push GiteePicbed master`
+   2. `git push GithubPicbed master`
+
+8. 从远程仓库拉取代码到本地
+
+   1. `git pull GiteePicbed master`
+   2. `git pull GithubPicbed master`
 
 
 

@@ -1,5 +1,3 @@
-![](https://gitee.com/jiangsai0502/tuchuang/raw/master/20200425013544.png)
-
 ### 安装 flask 环境
 
 1. 查看虚拟环境   `conda info --envs`
