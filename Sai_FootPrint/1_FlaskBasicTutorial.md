@@ -2,11 +2,11 @@
 
 1. 查看虚拟环境   `conda info --envs`
 
-2. 创建虚拟环境   `conda create -n flask_py3 python=3.8`
+2. 创建虚拟环境   `conda create -n flask_py3.8 python=3.8`
 
-    > 虚拟环境位置：~/miniconda3/envs/flask_py3
+    > 虚拟环境位置：~/miniconda3/envs/flask_py3.8
 
-3. 激活虚拟环境   `source activate flask_py3`
+3. 激活虚拟环境   `source activate flask_py3.8`
 
 4. 安装flask   `pip install flask`
 
@@ -356,6 +356,9 @@ if __name__ == '__main__':
       app.run(debug = True)
   ```
 
+  > 1. 路由通过 request.method 判断请求方式：'GET', 'POST' 。必须大写
+  > 2. 路由通过 request.form.get() 从前端获取请求的参数
+
   ```javascript
   <!doctype html>
   <form method="POST">
@@ -368,9 +371,9 @@ if __name__ == '__main__':
 
 * 原生表单（后端向前端传递消息）
 
-  ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200425170002.png)
-
-  ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200425172613.png)
+  > ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200425170002.png)
+  >
+  > ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200425172613.png)
 
   ```python
   from flask import Flask, render_template, request, flash
@@ -397,20 +400,24 @@ if __name__ == '__main__':
       app.run(debug = True)
   ```
 
-  > `flash`需要加密，必须增加一句`app.secret_key = 'The secret string for encryption'`
+  > 1. 从后端向前端传递消息，要导入 flash 模块
+  > 2. 通过 secret_key 给后端的消息加密
 
   ```javascript
-  <!doctype html>
+  <!doctype html>     
   <form method="POST">
-      <label>用户名：</label> <input type="text" name="user_name"></p>
-      <label>密码：</label> <input type="password" name="pass_word"></p>
-      <label>确认密码：</label> <input type="password" name="pass_word2"></p>
-      <input type="submit" value="提交"><br>
-      {# 获取后端传递的flash消息 #}
-      {% for message in get_flashed_messages() %}
-          {{ message }}
-      {% endfor %}
+      {# wtf必须开启CSRF保护，使用csrf_token()函数 #}
+      {{ login_Form.csrf_token() }}
+      {{ login_Form.username.label }} : {{ login_Form.username }} <br>
+      {{ login_Form.password.label }} : {{ login_Form.password }} <br>
+      {{ login_Form.password2.label }} : {{ login_Form.password2 }} <br>
+      {{ login_Form.submit }} <br>
   </form>
+  
+  {# 获取后端传递的flash消息 #}
+  {% for message in get_flashed_messages() %}
+      {{ message }}
+  {% endfor %}
   ```
 
   > `get_flashed_messages()` ：此函数能从后端获取消息list
@@ -420,19 +427,23 @@ if __name__ == '__main__':
   > 优势：很多验证函数，省去了写自己写逻辑判断的工作
   >
   > 用法：1. python中定义表单类，往表单类中存数据  2. html中从表单类中取数据
+  >
+  > ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200425230425.png)
+  >
+  > ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200426114019.png)
 
   ```python
   from flask import Flask, render_template, request, flash
   from flask_wtf import FlaskForm   #导入wtf表单类
   from wtforms import StringField, PasswordField, SubmitField   #导入表单所需字段
-  from wtforms.validators import EqualTo, DataRequired  #导入表单验证器
+  from wtforms.validators import EqualTo, DataRequired, Length  #导入表单验证器
   
   app = Flask(__name__)
   app.secret_key = 'The secret string for encryption'
   
   #1. 定义表单类
   class LoginForm(FlaskForm):
-      username = StringField('用户名', validators = [DataRequired()])
+      username = StringField('用户名', validators = [DataRequired(), Length(min=3,max=10,message="用户名长度有问题")])
       password = PasswordField('密码')
       password2 = PasswordField('确认密码', validators = [DataRequired(), EqualTo('password', '密码不一致')])
       submit = SubmitField('提交')
@@ -451,7 +462,8 @@ if __name__ == '__main__':
       return render_template('MyTemplate.html', login_Form = loginForm)
   
   if __name__ == '__main__':
-      app.run(debug = True)
+      app.run(debug = False)
+      # app.run(debug = True)
   ```
 
   > * 类实例.字段名.label：表示字段名
@@ -466,11 +478,11 @@ if __name__ == '__main__':
       {{ login_Form.password.label }} : {{ login_Form.password }} <br>
       {{ login_Form.password2.label }} : {{ login_Form.password2 }} <br>
       {{ login_Form.submit }} <br>
-  
-      {% for message in get_flashed_messages() %}
-          {{ message }}
-      {% endfor %}
   </form>
+  
+  {% for message in get_flashed_messages() %}
+      {{ message }}
+  {% endfor %}
   ```
 
   | 字段类型            | 字段说明                                   | 验证函数     | 函数说明                                    |
@@ -488,327 +500,646 @@ if __name__ == '__main__':
   | TextAreaField       | 多行文本字段                               |              |                                             |
   | FileField           | 文件上传字段                               |              |                                             |
 
-* app.py
-
-> ```python
-> from flask import render_template
-> 
-> @app.route('/')
-> @app.route('/<name>')
-> def Index(name = None):
->  return render_template('1_Index.html', name = name)
-> ```
-> 1. 渲染模板需要导入 render_template
-> 2. 对路径 '/' 的请求，将触发对 Index() 函数的调用
-> 3. 对路径 '/\<name>' 的请求，将触发对 Index() 函数的调用，<name> 是任意 str
-> 4. render_template('1_Index.html') 将渲染 templates 目录下的 1_Index.html 模板
-> 5. 模板 1_Index.html 中的变量名和 app.py 中的变量保持一致，即 name = name
-
-> ```python
-> @app.route('/cb')
-> def CodeBlock():
->     myList = [1, 3, 5, 7, 9, 11, 13]
->     return render_template('2_CodeBlock.html', myList = myList)
-> ```
-> 1. 对路径 '/cb' 的请求，将触发对 CodeBlock() 函数的调用
-
-> ```python
-> from flask import request
-> 
-> @app.route('/t', methods = ['GET', 'POST'])
-> def OriginalWebForm():
->     if request.method == 'POST':
->         username = request.form.get('username')
->         password = request.form.get('password')
->         password2 = request.form.get('password2')
->         print(f'你输入的用户：{username}，密码：{password}，确认密码：{password2}')
->         if not all([username, password, password2]):
->             result = '参数不完整'
->         elif password != password2:
->             result = '两次输入的密码不同'
->         else:
->             result = 'POST 成功了, Yeah'
->         return result
->     return render_template('4_OriginalWebForm.html')
-> ```
->
-> 1. 获取前端的上传请求消息，需要导入 request 模块
-> 2. 表单上传是 'POST' 方式
-> 3. 路由通过 request.method 判断请求方式：'GET', 'POST' 。必须大写
-> 4. 路由通过 request.form.get() 从前端获取请求的参数
-
-> ```python
-> from flask import flash
-> 
-> app.secret_key = 'The secret string for encryption'
-> 
-> @app.route('/ft', methods = ['GET', 'POST'])
-> def FlashWebForm():
->     if request.method == 'POST':
->         username = request.form.get('username')
->         password = request.form.get('password')
->         password2 = request.form.get('password2')
->         print(f'你输入的用户：{username}，密码：{password}，确认密码：{password2}')
->         if not all([username, password, password2]):
->             flash('参数不完整')
->         elif password != password2:
->             flash('两次输入的密码不同')
->         else:
->             return 'POST 成功了, Yeah'
->     return render_template('5_FlashWebForm.html')
-> ```
->
-> 1. 从后端向前端传递消息，要导入 flash 模块
-> 2. 通过 secret_key 给后端的消息加密
-
-> ```python
-> from flask_wtf import FlaskForm
-> 
-> from wtforms import StringField, PasswordField, SubmitField
-> 
-> from wtforms.validators import EqualTo, DataRequired
-> 
-> class LoginForm(FlaskForm):
->     username = StringField('用户名', validators = [Required()])
->     password = PasswordField('密码', validators = [Required()])
->     password2 = PasswordField('确认密码', validators = [Required(), EqualTo('password', '密码不一致')])
->     submit = SubmitField('提交')
-> 
-> @app.route('/fwt', methods = ['GET', 'POST'])
-> def FlaskWTForm():
->     login_form = LoginForm()
->     print(f'FlaskWTForm 用户名：{login_form.username.data}, 密码：{login_form.password.data}, 确认密码：{login_form.password2.data}')
->     print(f'FlaskWTForm 用户名：{login_form.data["username"]}, 密码：{login_form.data["password"]}, 确认密码：{login_form.data["password2"]}')
->     if login_form.validate_on_submit():
->         return 'FlaskWTForm 成功了, Yeah'
->     else:
->         flash(login_form.errors)
->     return render_template('6_FlaskWTForm.html', login_form_web = login_form)
-> ```
->
-> 1. 使用 Flask-WTF 验证表单数据
->
-> >1. 安装Flask-WTF： pip install Flask-WTF
-> >2. StringField 文本字段
-> >3. PasswordField 密码文本字段
-> >4. SubmitField 表单提交按钮
-> >5. EqualTo 验证函数，比较两个字段的值
-> >6. DataRequired 验证函数，确保字段中有数据
->
-> 2. 替代 request.method == 'POST' ，验证 FlaskForm 表单是否提交
->
-> >1. 方法：validate_on_submit()
->
-> 3. 获取 FlaskForm 属性值的两种方式
->
-> >1. login_form.username.data
-> >2. login_form.data["username"]
-
 
 
 ### 一个最小的应用：使用数据库
 
-```python
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+1. 查
 
-app = Flask(__name__)
+   ```python
+   from flask import Flask, render_template, request
+   from flask_sqlalchemy import SQLAlchemy
+   
+   app = Flask(__name__)
+   
+   app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:will@127.0.0.1/SaiDB'
+   app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+   myDB = SQLAlchemy(app)
+   
+   @app.route('/', methods = ['GET', 'POST'])
+   def select():
+       sql = "select * from student where id = '%s';" %(901)
+       data = myDB.session.execute(sql)
+       my_list = data.fetchall()
+       return render_template("MyTemplate.html", my_list = my_list)
+                                         
+   if __name__ == '__main__':
+       # app.run(debug=True, port = 8889)
+       app.run(debug=False, port = 8889)
+   ```
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:will@127.0.0.1/sql_demo'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-myDB = SQLAlchemy(app)
+   > * SQLAlchemy，会话用db.session表示
 
-class Role(myDB.Model):
-    __tablename__ = 'DB_Role'
-    id = myDB.Column(myDB.Integer, primary_key=True)
-    name = myDB.Column(myDB.String(64))
-    users = myDB.relationship('User', backref='role')
+   ```js
+   <!doctype html>
+   <title>Flask 示例</title>
+         操作结果 : {{ my_list }}
+         <h2><a href = "/">返回主页</a></h2>
+   ```
 
-    def __repr__(self):
-        return f'{self.name}'
+2. 增
 
-class User(myDB.Model):
-    __tablename__ = 'DB_User'
-    id = myDB.Column(myDB.Integer, primary_key=True)
-    name = myDB.Column(myDB.String(64), unique=True, index=True)
-    role_id = myDB.Column(myDB.Integer, myDB.ForeignKey('DB_Role.id'))
+   ```python
+   from flask import Flask, render_template, request
+   from flask_sqlalchemy import SQLAlchemy
+   
+   app = Flask(__name__)
+   
+   app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:will@127.0.0.1/SaiDB'
+   app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+   myDB = SQLAlchemy(app)
+   
+   @app.route('/',methods = ['POST', 'GET'])
+   def insert():
+       stu_id = 901
+       c_name = '英语'
+       if request.method == 'GET':
+           try:
+               sql = "INSERT INTO score (stu_id,c_name) VALUES ('%s','%s')" %(stu_id,c_name)
+               myDB.session.execute(sql)
+               myDB.session.commit()
+               msg = "插入成功"
+           except:
+               myDB.session.rollback()
+               msg = "插入失败"
+           finally:
+               return render_template("MyTemplate.html", msg = msg)
+                                         
+   if __name__ == '__main__':
+       # app.run(debug=True, port = 8889)
+       app.run(debug=False, port = 8889)
+   ```
 
-    def __repr__(self):
-        return f'{self.name}'
+   > * 由于score的字段 id 的类型是 Int(10)  Not Null  Unique  Primary Key  Auto_Increment，即非空自增整数，因此插入时不必特意声明，会自动自增的
 
-if __name__ == '__main__':
-    myDB.drop_all()
-    myDB.create_all()
+   ```js
+   <!doctype html>
+   <title>Flask 示例</title>
+         操作结果 : {{ msg }}
+         <h2><a href = "/">返回主页</a></h2>
+   ```
 
-    # 增
-    ro1 = Role(name='管理员')
-    ro2 = Role(name='用户')
-    myDB.session.add_all([ro1, ro2])
-    myDB.session.commit()
+3. 改
 
-    us1 = User(name='小李', role_id=ro1.id)
-    us2 = User(name='小欣', role_id=ro2.id)
-    us3 = User(name='小曲', role_id=ro1.id)
-    myDB.session.add_all([us1, us2, us3])
-    myDB.session.commit()
+   ```python
+   from flask import Flask, render_template, request
+   from flask_sqlalchemy import SQLAlchemy
+   
+   app = Flask(__name__)
+   
+   app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:will@127.0.0.1/SaiDB'
+   app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+   myDB = SQLAlchemy(app)
+   
+   @app.route('/',methods = ['POST', 'GET'])
+   def insert():
+       ID = 14
+       Grade = 40
+       if request.method == 'GET':
+           try:
+               sql = "UPDATE score SET Grade = '%d' WHERE ID = '%s'" %(Grade, ID)
+               myDB.session.execute(sql)
+               myDB.session.commit()
+               msg = "修改成功"
+           except:
+               myDB.session.rollback()
+               msg = "修改失败"
+           finally:
+               return render_template("MyTemplate.html", msg = msg)
+                                         
+   if __name__ == '__main__':
+       # app.run(debug=True, port = 8889)
+       app.run(debug=False, port = 8889)
+   ```
 
-    userlist = myDB.session.query(User)
-    for each_user in userlist:
-        print(f'User id: {each_user.id} | User name: {each_user.name} | User role_id: {each_user.role_id} | User role: {each_user.role}')
-    
-    rolelist = myDB.session.query(Role)
-    for each_role in rolelist:
-        print(f'Role id: {each_role.id} | Role name: {each_role.name} | Role users: {each_role.users}')
+   ```js
+   <!doctype html>
+   <title>Flask 示例</title>
+         操作结果 : {{ msg }}
+         <h2><a href = "/">返回主页</a></h2>
+   ```
 
-    # 改
-    us1.name = 'sai'
-    us2.name = 'chao'
-    myDB.session.commit()
+4. 删
 
-    # 删
-    myDB.session.delete(us1)
-    myDB.session.commit()
+   ```python
+   from flask import Flask, render_template, request
+   from flask_sqlalchemy import SQLAlchemy
+   
+   app = Flask(__name__)
+   
+   app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:will@127.0.0.1/SaiDB'
+   app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+   myDB = SQLAlchemy(app)
+   
+   @app.route('/',methods = ['POST', 'GET'])
+   def insert():
+       ID = 12
+       if request.method == 'GET':
+           try:
+               sql = "DELETE FROM score WHERE ID = '%d'"%(ID)
+               myDB.session.execute(sql)
+               myDB.session.commit()
+               msg = "修改成功"
+           except:
+               myDB.session.rollback()
+               msg = "修改失败"
+           finally:
+               return render_template("MyTemplate.html", msg = msg)
+                                         
+   if __name__ == '__main__':
+       app.run(debug=True, port = 8889)
+       # app.run(debug=False, port = 8889)
+   ```
 
-    app.run(debug=False, port = 8888)
-```
+   ```js
+   <!doctype html>
+   <title>Flask 示例</title>
+         操作结果 : {{ msg }}
+         <h2><a href = "/">返回主页</a></h2>
+   ```
 
-**剖析**
+   > 1. 设置连接数据库的URL
+   >
+   >    ```sql
+   >    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:will@127.0.0.1/sql_demo'
+   >    ```
+   >
+   >    > 1. 数据库协议：mysql+pymysql（不可变）
+   >    > 2. 用户名：root（可改为其他用户名）
+   >    > 3. 用户名密码：will
+   >    > 4. 服务器地址：127.0.0.1 或 localhost
+   >    > 5. 端口号：3306
+   >    > 6. 数据库名：sql_demo
+   >
+   > 2. 设置每次请求结束后会自动提交数据库的改动（为降低消耗资源，可设为False）
+   >
+   >    `app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True`
+   >
+   > 3. 通过类 SQLAlchemy 来连接数据库
+   >
+   >    `myDB = SQLAlchemy(app)`
+   >
+   > > 报错`Instance of 'SQLAlchemy' has no 'Column' member`，[参考](https://blog.csdn.net/stone0823/article/details/90488029)
 
-> 1. 首先安装 MySQL 数据库
->
-> > 1. 详情查看 PythonEnvironment.md
->
-> 2. 设置连接数据库的URL
->
->    ```sql
->    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:will@127.0.0.1/sql_demo'
->    ```
->
->    > 1. 数据库协议：mysql+pymysql（不可变）
->    > 2. 用户名：root（可改为其他用户名）
->    > 3. 用户名密码：will
->    > 4. 服务器地址：127.0.0.1 或 localhost
->    > 5. 端口号：3306
->    > 6. 数据库名：sql_demo
->
-> 3. 设置每次请求结束后会自动提交数据库的改动（为降低消耗资源，可设为False）
->
->    `app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True`
->
-> 4. 通过类 SQLAlchemy 来连接数据库
->
->    `myDB = SQLAlchemy(app)`
->
-> 5. 定义角色类 Role 都继承数据库模型 myDB.Model
->
->    > 1. 定义 Role 在数据库中的表名
->    >
->    >    `tablename__ = 'roles'`
->    >
->    > 2. 定义 id 为整数型，为主键
->    >
->    >    `id = myDB.Column(myDB.Integer, primary_key=True)`
->    >
->    > 3. 定义 name 为字符型，最大 64 个字符
->    >
->    >    `name = myDB.Column(myDB.String(64))`
->    >
->    > 4. 关于 relationship 的用法**（不懂，但是完全不影响，可以不使用）**
->    >
->    >    ```python
->    >    class Role(myDB.Model):
->    >        __tablename__ = 'DB_Role'
->    >        id = myDB.Column(myDB.Integer, primary_key=True)
->    >        name = myDB.Column(myDB.String(64))
->    >        users = myDB.relationship('User', backref='role')
->    >    
->    >        def __repr__(self):
->    >            return f'{self.name}'
->    >    
->    >    class User(myDB.Model):
->    >        __tablename__ = 'DB_User'
->    >        id = myDB.Column(myDB.Integer, primary_key=True)
->    >        name = myDB.Column(myDB.String(64), unique=True, index=True)
->    >        role_id = myDB.Column(myDB.Integer, myDB.ForeignKey('DB_Role.id'))
->    >    
->    >        def __repr__(self):
->    >            return f'{self.name}'
->    >    ```
->    >
->    >    > 1. 声明数据库 DB_Role 表的表名：`__tablename__ = 'DB_Role'`
->    >    >
->    >    > 2. 声明数据库 DB_Role 表的字段：id ,  name
->    >    >
->    >    > 3. id ,  name 是数据库 DB_Role 表的字段，而 user 不是字段，users 是为方便查询虚拟存在的。myDB.Column() **声明字段**，myDB.relationship() **声明关系**
->    >    >
->    >    >    ```python
->    >    >    id = myDB.Column()
->    >    >    name = myDB.Column()
->    >    >    users = myDB.relationship()
->    >    >    ```
->    >    >
->    >    > 4. 第一步，给 **Role 模型** 增加一个 users 属性，并与 **User 模型**建立关联
->    >    >
->    >    >    `users = myDB.relationship('User')`
->    >    >
->    >    > 5. 第二步，给 **User 模型** 增加一个 role 属性，并与 **Role 模型**建立关联
->    >    >
->    >    >    `users = myDB.relationship('User', backref='role')`
->    >    >
->    >    > 6. 声明了上面这一句代码，就相当于：给 **Role 模型** 增加一个 users 属性，同时给 **User 模型** 增加一个 role 属性。 **Role 模型** 中的一句代码给 **User 模型** 增加了一个属性，很神奇
->    >    >
->    >    > 7. 用法 
->    >    >
->    >    >    ```python
->    >    >    userlist = myDB.session.query(User)
->    >    >    for each_user in userlist:
->    >    >        print(f'User id: {each_user.id} | User name: {each_user.name} | User role_id: {each_user.role_id} | User role: {each_user.role}')
->    >    >    
->    >    >    rolelist = myDB.session.query(Role)
->    >    >    for each_role in rolelist:
->    >    >        print(f'Role id: {each_role.id} | Role name: {each_role.name} | Role users: {each_role.users}')
->    >    >    ```
->    >    >
->    >    >    > 1. User 模型的 each_user.role 取的是 `__repr__ `的值
->    >    >    > 2. Role 模型的 each_role.users 取的是 `__repr__ `的值
->
-> 6. 定义用户类 User 继承数据库模型 myDB.Model
->
->    > 1. 定义 name 为字符型，值唯一unique，为本字段创建索引index
->    >
->    >    `name = myDB.Column(myDB.String(64), unique=True, index=True)`
->    >
->    > 2. 定义 role_id 为整数型，为主键，将 role_id 设为 roles 表中 id 字段的外键，即 外键主表是 roles 表，子表 users 表
->    >
->    >    `role_id = myDB.Column(myDB.Integer, myDB.ForeignKey('roles.id'))`
->    >
->    >    外键的作用
->    >
->    >    > 1. 完整性：即向子表 users 表插入数据时会检查 role_id 的值在主表 roles 表中是否存在，若不存在，则插入失败。
->    >    >
->    >    >    例如 roles 表有 '1', '2' 两个值，向子表 users 表插入数据 us3 = User(name = 'liuwei', role_id = 3)，则插入失败，因为 roles 表没有 '3' 这个值
->
-> 7. 设置数据库
->
->    > 1. 进入数据库   `mysql -u root -p`
->    >
->    > 2. 创建数据库，并使用它
->    >
->    >    ```sql
->    >    create database sql_demo;
->    >    use sql_demo;
->    >    show tables;
->    >    ```
->
-> 8. 在操作数据库
->
->    > 1. 删除所有表：`myDB.drop_all()` 
->    > 2. 创建所有表：`myDB.create_all()`
->    > 3. 加入 session ：`myDB.session.add_all([<实例1>, <实例2>])`
->    > 4. 提交 session ：`myDB.session.commit()`
->    > 5. 删除实例：`myDB.session.delete(<实例1>)`
+   > * `pymysql`操作游标`cursor`
+   >
+   > * `SQLAlchemy`操作会话`session`
 
 
+
+### 图书管理系统
+
+1. 配置数据库
+
+   ```bash
+   $ mysql -u root -p
+   
+   mysql> use SaiDB;
+   
+   Mysql> Create Table Books (
+       -> Id Int(10) Not Null Unique Primary Key Auto_Increment,
+       -> Name Varchar(20) Not Null Unique,
+       -> Author Varchar(4)
+       -> );
+       
+   Mysql> Insert Into Books (ID, Name, Author) Values(Null, '肉蒲团', '李渔');
+   Mysql> Insert Into Books (ID, Name, Author) Values(Null, '大开眼界', '马尔科姆');
+   Mysql> Insert Into Books (ID, Name, Author) Values(Null, '眨眼之间', '马尔科姆');
+   Mysql> Insert Into Books (ID, Name, Author) Values(Null, '财富自由之路', '李笑来');
+   Mysql> Insert Into Books (Name, Author) Values('把时间当作朋友', '李笑来');
+   Mysql> Insert Into Books (Name, Author) Values('数据库系统实现', '加西亚');
+   Mysql> Insert Into Books (Name, Author) Values('引爆点', '加西亚');
+   Mysql> Insert Into Books (Name, Author) Values('数学思维导论', '加西亚');
+   ```
+
+2. 展示数据
+
+   ```python
+   from flask import Flask, render_template, request
+   from flask_sqlalchemy import SQLAlchemy
+   
+   app = Flask(__name__)
+   
+   app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:will@127.0.0.1/SaiDB'
+   app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+   myDB = SQLAlchemy(app)
+   
+   @app.route('/', methods = ['GET', 'POST'])
+   def BooK_list_Index():
+       Author_list, Book_list = showBooks()
+       return render_template("MyTemplate.html", Author_list = Author_list, Book_list = Book_list)
+   
+   # 展示所有作者/图书信息
+   def showBooks():
+       sql = "SELECT author, COUNT(*) count FROM books GROUP BY author;"
+       data = myDB.session.execute(sql)
+       Author_list = data.fetchall()
+       sql = "SELECT author, name FROM books;"
+       data = myDB.session.execute(sql)
+       Book_list = data.fetchall()
+       return Author_list, Book_list
+                                         
+   if __name__ == '__main__':
+       app.run(debug=True, port = 8889)
+       # app.run(debug=False, port = 8889)
+   ```
+
+   ```js
+   <!doctype html>
+   <title>Flask 示例</title>
+   
+   <ul>
+       {% for author in Author_list %}
+           <li>作者：{{ author['author'] }}，{{ author['count'] }} 本著作</li>
+           <ul>
+               {% for book in Book_list %}
+                   {% if book['author'] == author['author'] %}
+                       <li>{{ book['name'] }}</li>
+                   {% endif %}
+               {% endfor %}
+           </ul>
+       {% endfor %}
+   </ul>
+   ```
+
+3. 展示数据（增加wtf表单）
+
+   ```python
+   from flask import Flask, render_template, request, flash
+   from flask_sqlalchemy import SQLAlchemy
+   from flask_wtf import FlaskForm   #导入wtf表单类
+   from wtforms import StringField, SubmitField   #导入表单所需字段
+   from wtforms.validators import DataRequired  #导入表单验证器
+   
+   app = Flask(__name__)
+   app.secret_key = 'The secret string for encryption'
+   app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:will@127.0.0.1/SaiDB'
+   app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+   myDB = SQLAlchemy(app)
+   
+   #1. 定义表单类
+   class BookForm(FlaskForm):
+       bookName = StringField('书名', validators = [DataRequired()])
+       authorName = StringField('作者', validators = [DataRequired()])
+       submit = SubmitField('提交')
+   
+   @app.route('/', methods = ['GET', 'POST'])
+   def BooK_list_Index():
+       bookForm = BookForm()
+       print(f'书名：{bookForm.bookName.data}, 作者：{bookForm.authorName.data}')
+       
+       if request.method == 'GET':
+           Author_list, Book_list = QueryData()
+       elif request.method == 'POST':
+           if bookForm.validate_on_submit():
+               print('录入数据库操作成功, Yeah')
+               Author_list, Books_list = QueryData()
+           else:
+               flash(bookForm.errors)
+       
+       return render_template("MyTemplate.html", bookForm = bookForm, Author_list = Author_list, Book_list = Book_list)
+   
+   # 展示所有作者/图书信息
+   def QueryData():
+       try:
+           sql = "SELECT author, COUNT(*) count FROM books GROUP BY autho;"
+           data = myDB.session.execute(sql)
+           author_list = data.fetchall()
+           sql = "SELECT author, name FROM books;"
+           data = myDB.session.execute(sql)
+           book_list = data.fetchall()
+       except Exception as e:
+           print('-'*30,'\n',e,'\n','-'*30)
+       return author_list, book_list
+                                         
+   if __name__ == '__main__':
+       # app.run(debug=True, port = 8889)
+       app.run(debug=False, port = 8889)
+   ```
+
+   ```js
+   <!doctype html>
+   <title>Flask 示例</title>
+   
+   <form method="POST">
+       {# wtf必须开启CSRF保护，使用csrf_token()函数 #}
+       {{ book_Form.csrf_token() }}
+       {{ book_Form.book_Name.label }} : {{ book_Form.book_Name }} <br>
+       {{ book_Form.author_Name.label }} : {{ book_Form.author_Name }} <br>
+       {{ book_Form.submit }} <br>
+   </form>
+   
+   {% for message in get_flashed_messages() %}
+       {{ message }}
+   {% endfor %}
+   
+   <ul>
+       {% for author in Author_list %}
+           <li>作者：{{ author['author'] }}，{{ author['count'] }} 本著作</li>
+           <ul>
+               {% for book in Book_list %}
+                   {% if book['author'] == author['author'] %}
+                       <li>{{ book['name'] }}</li>
+                   {% endif %}
+               {% endfor %}
+           </ul>
+       {% endfor %}
+   </ul>
+   ```
+
+4. 插入数据
+
+   ```python
+   from flask import Flask, render_template, request, flash
+   from flask_sqlalchemy import SQLAlchemy
+   from flask_wtf import FlaskForm   #导入wtf表单类
+   from wtforms import StringField, SubmitField   #导入表单所需字段
+   from wtforms.validators import DataRequired  #导入表单验证器
+   
+   app = Flask(__name__)
+   app.secret_key = 'The secret string for encryption'
+   app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:will@127.0.0.1/SaiDB'
+   app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+   myDB = SQLAlchemy(app)
+   
+   #1. 定义表单类
+   class Book_Form(FlaskForm):
+       book_Name = StringField('书名', validators = [DataRequired()])
+       author_Name = StringField('作者', validators = [DataRequired()])
+       submit = SubmitField('提交')
+   
+   @app.route('/', methods = ['GET', 'POST'])
+   def BooK_list_Index():
+       book_Form = Book_Form()
+       print(f'书名：{book_Form.book_Name.data}, 作者：{book_Form.author_Name.data}')
+       
+       if request.method == 'GET':
+           author_list, book_list = QueryData()
+       elif request.method == 'POST':
+           if book_Form.validate_on_submit():
+               msg = InsertData(book_Form)
+               flash(msg)
+               author_list, book_list = QueryData()
+           else:
+               flash(book_Form.errors)
+       
+       return render_template("MyTemplate.html", book_Form = book_Form, author_list = author_list, book_list = book_list)
+   
+   # 展示所有作者/图书信息
+   def QueryData():
+       try:
+           sql = "SELECT author, COUNT(*) count FROM books GROUP BY author;"
+           data = myDB.session.execute(sql)
+           author_list = data.fetchall()
+           sql = "SELECT author, name FROM books;"
+           data = myDB.session.execute(sql)
+           book_list = data.fetchall()
+       except Exception as e:
+           print('-'*30,'\n',e,'\n','-'*30)
+       return author_list, book_list
+   
+   # 新增图书
+   def InsertData(book_Form):
+       try:
+           sql = "Insert Into Books (name, author) Values ('%s','%s')" %(book_Form.book_Name.data, book_Form.author_Name.data)
+           myDB.session.execute(sql)
+           myDB.session.commit()
+           msg = "修改成功"
+       except Exception as e:
+           print('-'*30,'\n',e,'\n','-'*30)
+           myDB.session.rollback()
+           msg = "修改失败"
+       finally:
+           return msg
+   
+   if __name__ == '__main__':
+       # app.run(debug=True, port = 8889)
+       app.run(debug=False, port = 8889)
+   ```
+
+   ```js
+   # html文件与上面相同
+   ```
+
+5. 插入数据前进行查重
+
+   ```python
+   from flask import Flask, render_template, request, flash
+   from flask_sqlalchemy import SQLAlchemy
+   from flask_wtf import FlaskForm   #导入wtf表单类
+   from wtforms import StringField, SubmitField   #导入表单所需字段
+   from wtforms.validators import DataRequired  #导入表单验证器
+   
+   app = Flask(__name__)
+   app.secret_key = 'The secret string for encryption'
+   app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:will@127.0.0.1/SaiDB'
+   app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+   myDB = SQLAlchemy(app)
+   
+   #1. 定义表单类
+   class Book_Form(FlaskForm):
+       book_Name = StringField('书名', validators = [DataRequired()])
+       author_Name = StringField('作者', validators = [DataRequired()])
+       submit = SubmitField('提交')
+   
+   @app.route('/', methods = ['GET', 'POST'])
+   def BooK_list_Index():
+       book_Form = Book_Form()
+       print(f'书名：{book_Form.book_Name.data}, 作者：{book_Form.author_Name.data}')
+       
+       if request.method == 'GET':
+           author_list, book_list = QueryData()
+       elif request.method == 'POST':
+           if book_Form.validate_on_submit():
+               msg = InsertData(book_Form)
+               flash(msg)
+               author_list, book_list = QueryData()
+           else:
+               flash(book_Form.errors)
+       
+       return render_template("MyTemplate.html", book_Form = book_Form, author_list = author_list, book_list = book_list)
+   
+   # 展示所有作者/图书信息
+   def QueryData():
+       try:
+           sql = "SELECT author, COUNT(*) count FROM books GROUP BY author;"
+           data = myDB.session.execute(sql)
+           author_list = data.fetchall()
+           sql = "SELECT author, name FROM books;"
+           data = myDB.session.execute(sql)
+           book_list = data.fetchall()
+       except Exception as e:
+           print('-'*30,'\n',e,'\n','-'*30)
+       return author_list, book_list
+   
+   # 新增图书
+   def InsertData(book_Form):
+       try:
+           sql = "SELECT * FROM books where name = '%s';" %(book_Form.book_Name.data)
+           data = myDB.session.execute(sql)
+           if data.rowcount > 0:   #库里已有这本书
+               msg = "数据库已有 " + book_Form.book_Name.data + " 这本书"
+           else:
+               sql = "Insert Into Books (name, author) Values ('%s','%s')" %(book_Form.book_Name.data, book_Form.author_Name.data)
+               myDB.session.execute(sql)
+               myDB.session.commit()
+               msg = "修改成功"
+       except Exception as e:
+           print('-'*30,'\n',e,'\n','-'*30)
+           myDB.session.rollback()
+           msg = "修改失败"
+       finally:
+           return msg
+   
+   if __name__ == '__main__':
+       # app.run(debug=True, port = 8889)
+       app.run(debug=False, port = 8889)
+   ```
+
+   ```js
+   # html文件与上面相同
+   ```
+
+6. 重定向用法
+
+   ```python
+   from flask import Flask, render_template, redirect, url_for
+   
+   app = Flask(__name__)
+   
+   @app.route('/', methods = ['GET', 'POST'])
+   @app.route('/<name>')
+   def SaiIndex(name = None):
+       return render_template('MyTemplate1.html', FEname = name)
+   
+   @app.route('/delete/<id>', methods = ['GET', 'POST'])
+   def delete(id = None):
+       return redirect(url_for('SaiIndex'))
+   
+   if __name__ == '__main__':
+       app.run(debug=True, port = 8889)
+       # app.run(debug=False, port = 8889)
+   ```
+
+   ```js
+   <!doctype html>
+   <title>单一变量</title>
+   {% if name %}
+       <h1>Hello {{ name }}!</h1>
+   {% else %}
+       <h1>Hello World!</h1>
+   {% endif %}
+   ```
+
+   > * 引入重定向包：`from flask import redirect, url_for`
+   > * 用法：`redirect(url_for('SaiIndex'))`，`url_for()`的参数是将要跳转到的函数名
+   >
+   > > 访问`http://127.0.0.1:8889/sai`，再访问`http://127.0.0.1:8889/delete/321`，会跳转到`http://127.0.0.1:8889`
+
+7. 删除数据
+
+   > * 点击发送待删数据的ID给**删除函数的路由**，路由接收ID，执行删除函数，最后路由重定向回首页
+
+   ```python
+   from flask import Flask, render_template, request, flash, redirect, url_for
+   from flask_sqlalchemy import SQLAlchemy
+   from flask_wtf import FlaskForm   #导入wtf表单类
+   from wtforms import StringField, SubmitField   #导入表单所需字段
+   from wtforms.validators import DataRequired  #导入表单验证器
+   
+   app = Flask(__name__)
+   app.secret_key = 'The secret string for encryption'
+   app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:will@127.0.0.1/SaiDB'
+   app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+   myDB = SQLAlchemy(app)
+   
+   @app.route('/', methods = ['GET', 'POST'])
+   def BooksIndex():
+       if request.method == 'GET':
+           author_list, book_list = QueryData()
+       elif request.method == 'POST':
+           if book_Form.validate_on_submit():
+               msg = InsertData(book_Form)
+               flash(msg)
+               author_list, book_list = QueryData()
+           else:
+               flash(book_Form.errors)
+       
+       return render_template("MyTemplate.html", author_list = author_list, book_list = book_list)
+   
+   @app.route('/delete/<del_name>', methods = ['GET', 'POST'])
+   def delete(del_name = None):
+       try:
+           sql = "SELECT * FROM books where name = '%s';" %(del_name)
+           data = myDB.session.execute(sql)
+           if data.rowcount == 0:   #库里没有这本书
+               flash("数据库没有 " + del_name + " 这本书")
+           else:
+               sql = "DELETE FROM Books WHERE name = '%s'" %(del_name)
+               myDB.session.execute(sql)
+               myDB.session.commit()
+               flash(del_name + " 已删除")
+       except Exception as e:
+           print('-'*30,'\n',e,'\n','-'*30)
+           myDB.session.rollback()
+           flash("无法删除 "+ del_name + "这本书")
+       return redirect(url_for('BooksIndex'))
+   
+   # 展示所有作者/图书信息
+   def QueryData():
+       try:
+           sql = "SELECT author, COUNT(*) count FROM books GROUP BY author;"
+           data = myDB.session.execute(sql)
+           author_list = data.fetchall()
+           sql = "SELECT author, name FROM books;"
+           data = myDB.session.execute(sql)
+           book_list = data.fetchall()
+       except Exception as e:
+           print('-'*30,'\n',e,'\n','-'*30)
+       return author_list, book_list
+   
+   if __name__ == '__main__':
+       app.run(debug=True, port = 8889)
+       # app.run(debug=False, port = 8889)
+   ```
+
+   ```js
+   <!doctype html>
+   <title>Flask 示例</title>
+   
+   {% for message in get_flashed_messages() %}
+       {{ message }}
+   {% endfor %}
+   
+   <ul>
+       {% for author in author_list %}
+           <li>作者：{{ author['author'] }}，{{ author['count'] }} 本著作</li>
+           <ul>
+               {% for book in book_list %}
+                   {% if book['author'] == author['author'] %}
+                       <li>{{ book['name'] }} - <a href="{{ url_for('delete', del_name = book['name']) }}">删除</a></li>
+                   {% endif %}
+               {% endfor %}
+           </ul>
+       {% endfor %}
+   </ul>
+   ```
+
+   > 删除链接：`<a href="{{ url_for('delete', del_name = book['name']) }}">`
+   >
+   > * 用法：`url_for('跳转函数', 路由变量名 = book['name'])`
+
+8. 修改数据
+
+   ```python
+   
+   ```
+
+   ```js
+   
+   ```
+
+   
 
 
 

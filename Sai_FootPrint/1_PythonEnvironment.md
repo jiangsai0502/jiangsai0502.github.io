@@ -39,6 +39,8 @@
    > 报错：`CondaHTTPError: HTTP 000 CONNECTION FAILED for url <https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge/osx-64/current_repodata.json>`
    >
    > 解决：将https改为http即可
+   >
+   > $ open ~/.condarc
 
 4. 升级conda：`conda upgrade conda`
 
@@ -282,3 +284,29 @@
 
 
 
+#### 完全卸载VSCode
+
+1. vscode拖入废纸篓
+
+   ```bash
+   rm -rf "/Applications/Visual Studio.app"
+   rm -rf ~/Library/Caches/VisualStudio
+   rm -fr ~/Library/Caches/com.microsoft.VSCode
+   rm -fr ~/Library/Caches/com.microsoft.VSCode.ShipIt/
+   rm -rf ~/Library/Preferences/VisualStudio
+   rm -rf ~/Library/Preferences/Visual\ Studio
+   rm -fr ~/Library/Preferences/com.microsoft.VSCode.helper.plist
+   rm -fr ~/Library/Preferences/com.microsoft.VSCode.plist
+   rm -rf ~/Library/Preferences/Xamarin/
+   rm -fr ~/Library/Application\ Support/Code/
+   rm -rf ~/Library/Application\ Support/VisualStudio
+   rm -rf ~/Library/Application\ Support/VisualStudio/7.0/LocalInstall/Addins/
+   rm -rf ~/Library/Application\ Support/VisualStudio/8.0/LocalInstall/Addins/
+   rm -rf ~/Library/Logs/VisualStudio
+   rm -rf ~/Library/VisualStudio
+   rm -fr ~/Library/Saved\ Application\ State/com.microsoft.VSCode.savedState/
+   rm -fr ~/.vscode/
+   rm -rf ~/.vscode*
+   ```
+
+   

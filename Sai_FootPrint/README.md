@@ -18,7 +18,15 @@
 13. 
 =======
 11. coursera公开课 -  Learning How to Learn
->>>>>>> 6e5d498320507663f1563efc160045e892de442f
+
+
+
+```
+原：raw.githubusercontent.com/jiangsai0502/PicBedRepo
+换：gitee.com/jiangsai0502/PicBedRepo/raw
+```
+
+
 
 
 

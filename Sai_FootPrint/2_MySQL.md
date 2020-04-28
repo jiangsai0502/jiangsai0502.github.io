@@ -101,9 +101,9 @@
 
    > 第一次登录没有密码，回车即可进入
 
-   1. 修改密码：`alter user 'root'@'localhost' identified with mysql_native_password by 'sai';`
+   1. 修改密码：`alter user 'root'@'localhost' identified with mysql_native_password by 'will';`
 
-      > 密码改成sai
+      > 密码改成will
 
 9. 设置安全配置：`mysql_secure_installation`
 
@@ -111,7 +111,7 @@
    $ mysql_secure_installation
    
    Securing the MySQL server deployment.
-   Enter password for user root:    #输入密码sai
+   Enter password for user root:    #输入密码will
    
    VALIDATE PASSWORD COMPONENT can be used to test passwords and improve security. It checks the strength of password and allows the users to set only those passwords which are secure enough. Would you like to setup VALIDATE PASSWORD component?
    
@@ -380,31 +380,35 @@
 3. 插入数据
 
    ```bash
-   mysql> INSERT INTO student VALUES( 901,'张老大', '男',1985,'计算机系', '北京市海淀区');
-   mysql> INSERT INTO student VALUES( 902,'张老二', '男',1986,'中文系', '北京市昌平区');
-   mysql> INSERT INTO student VALUES( 903,'张三', '女',1990,'中文系', '湖南省永州市');
-   mysql> INSERT INTO student VALUES( 904,'李四', '男',1990,'英语系', '辽宁省阜新市');
-   mysql> INSERT INTO student VALUES( 905,'王五', '女',1991,'英语系', '福建省厦门市');
-   mysql> INSERT INTO student VALUES( 906,'王六', '男',1988,'计算机系', '湖南省衡阳市');
+   mysql> INSERT INTO student (id, name, sex, birth, department, address) VALUES( 911,'张老大', '男',1985,'计算机系', '北京市海淀区');
+   mysql> INSERT INTO student (id, name, sex, birth, department, address) VALUES( 902,'张老二', '男',1986,'中文系', '北京市昌平区');
+   mysql> INSERT INTO student (id, name, sex, birth, department, address) VALUES( 903,'张三', '女',1990,'中文系', '湖南省永州市');
+   mysql> INSERT INTO student (id, name, sex, birth, department, address) VALUES( 904,'李四', '男',1990,'英语系', '辽宁省阜新市');
+   mysql> INSERT INTO student (id, name, sex, birth, department, address) VALUES( 905,'王五', '女',1991,'英语系', '福建省厦门市');
+   mysql> INSERT INTO student (id, name, sex, birth, department, address) VALUES( 906,'王六', '男',1988,'计算机系', '湖南省衡阳市');
+   
+   mysql> INSERT INTO student (id, name, sex, department) VALUES( 907,'小七', '男','计算机系');
    ```
 
+   > * 插入时可指定插入字段
+
    ```bash
-   mysql> INSERT INTO score VALUES(NULL,901, '计算机',98);
-   mysql> INSERT INTO score VALUES(NULL,901, '英语', 80);
-   mysql> INSERT INTO score VALUES(NULL,902, '计算机',65);
-   mysql> INSERT INTO score VALUES(NULL,902, '中文',88);
-   mysql> INSERT INTO score VALUES(NULL,903, '中文',95);
-   mysql> INSERT INTO score VALUES(NULL,904, '计算机',70);
-   mysql> INSERT INTO score VALUES(NULL,904, '英语',92);
-   mysql> INSERT INTO score VALUES(NULL,905, '英语',94);
-   mysql> INSERT INTO score VALUES(NULL,906, '计算机',90);
-   mysql> INSERT INTO score VALUES(NULL,906, '英语',85);
+   mysql> INSERT INTO score (id, stu_id, c_name, grade) VALUES(NULL,901, '计算机',198);
+   mysql> INSERT INTO score (id, stu_id, c_name, grade) VALUES(NULL,901, '英语', 80);
+   mysql> INSERT INTO score (id, stu_id, c_name, grade) VALUES(NULL,902, '计算机',65);
+   mysql> INSERT INTO score (id, stu_id, c_name, grade) VALUES(NULL,902, '中文',88);
+   mysql> INSERT INTO score (id, stu_id, c_name, grade) VALUES(NULL,903, '中文',95);
+   mysql> INSERT INTO score (id, stu_id, c_name, grade) VALUES(NULL,904, '计算机',70);
+   mysql> INSERT INTO score (id, stu_id, c_name, grade) VALUES(NULL,904, '英语',92);
+   mysql> INSERT INTO score (id, stu_id, c_name, grade) VALUES(NULL,905, '英语',94);
+   mysql> INSERT INTO score (id, stu_id, c_name, grade) VALUES(NULL,906, '计算机',90);
+   mysql> INSERT INTO score (id, stu_id, c_name, grade) VALUES(NULL,906, '英语',85);
    ```
 
 4. 删除表
 
    ```bash
-   mysql> select database();   #查看当前使用的库
+   mysql> SHOW TABLES;   #展示所有表
    
    mysql> DROP TABLE student;   #删除表
    ```
@@ -413,6 +417,8 @@
 
    ```bash
    mysql> select database();   #查看当前使用的库
+   
+   mysql> SHOW DATABASES;   #展示所有数据库
    
    mysql> drop database SaiDB;   #删除SaiDB库
    ```
@@ -661,7 +667,11 @@
      mysql> COMMIT;    #无论
      ```
 
-8. 
+8. 清空表数据（保留表结构）
+
+   ```bash
+   mysql> truncate table score;
+   ```
 
 #### 3. python连接MySQL
 
@@ -675,8 +685,8 @@
           host = "127.0.0.1",   #主机名
           port = 3306,   #端口号
           user = "root",   #用户名
-          passwd = "sai",   #密码
-          db = "sai0417",   #数据库名
+          passwd = "will",   #密码
+          db = "saidb",   #数据库名
           charset='utf8', #设置编码为utf8是为输出中文
           ) 
       print('MySQL连接上了!')
@@ -686,21 +696,6 @@
       db.close()
       print('MySQL关闭了!')
   
-  def QueryData(db):
-      cursor = db.cursor()   #获取操作游标 
-      sql = "SELECT * FROM NewStudent;"
-  
-      try:
-          cursor.execute(sql)   #执行SQL语句
-          results = cursor.fetchall()   #获取所有记录列表
-          for row in results:
-              ID = row[0]
-              Name = row[1]
-              Grade = row[2]
-              print(f"ID: {ID}, Name: {Name}, Grade: {Grade}")
-      except:
-          print("Error: unable to fecth data")
-  
   def CreateTable(db):
       cursor = db.cursor()   #获取操作游标
       cursor.execute("DROP TABLE IF EXISTS NewStudent")   # 若存在Sutdent表则先删除
@@ -709,56 +704,76 @@
               Name CHAR(8),
               Grade INT )"""
       cursor.execute(sql)  #执行SQL语句
+      
+  def QueryData(db):
+      ID = '01'
+      cursor = db.cursor()   #获取操作游标 
+      sql = "SELECT * FROM NewStudent where id = '%s';"%(ID)
+  
+      try:
+          cursor.execute(sql)   #执行SQL语句
+          results = cursor.fetchall()   #获取所有记录列表
+          for row in results:   #方法1取值
+              ID = row[0]
+              Name = row[1]
+              Grade = row[2]
+              print(f"方法1取值：ID: {ID}, Name: {Name}, Grade: {Grade}")
+          for ID, Name, Grade in results:   #方法2取值
+              print(f"方法2取值：ID: {ID}, Name: {Name}, Grade: {Grade}")
+      except pymysql.Warning as e:
+          print("查询出异常了", e)
   
   def InsertData(db):
+      ID = '01'
+      Name = 'CZQ'
+      Grade = 70
       cursor = db.cursor()   #获取操作游标
-      sql = """INSERT INTO NewStudent
-           VALUES ('001', 'CZQ', 70),
-                  ('002', 'LHQ', 80),
-                  ('003', 'MQ', 90)"""
+  
+      sql = "INSERT INTO NewStudent VALUES ('%s','%s',%d)" %(ID, Name, Grade)
       try:
           cursor.execute(sql)   # 执行sql语句
           db.commit()
-      except:
-          print('插入数据失败!')
+      except pymysql.Warning as e:
+          print('插入数据失败!', e)
           db.rollback()
   
   def DeleteData(db):
       cursor = db.cursor()   #获取操作游标
-      sql = "DELETE FROM NewStudent WHERE Grade = '70'"
+      sql = "DELETE FROM NewStudent WHERE Grade = '73'"
       try:
          cursor.execute(sql)   #执行SQL语句
          db.commit()
-      except:
-          print('删除数据失败!')
+      except pymysql.Warning as e:
+          print('删除数据失败!', e)
           db.rollback()
   
   def UpdateData(db):
       cursor = db.cursor()   #获取操作游标
-      sql = "UPDATE NewStudent SET Grade = Grade + 3 WHERE ID = '003'"
+      sql = "UPDATE NewStudent SET Grade = Grade + 3 WHERE ID = '01'"
       try:
           cursor.execute(sql)   #执行SQL语句
           db.commit()
-      except:
-          print('更新数据失败!')
+      except pymysql.Warning as e:
+          print('更新数据失败!', e)
           db.rollback()
   
   if __name__ == '__main__':
       db = ConnectDB()    # 连接MySQL数据库
       CreateTable(db)     # 创建表
       InsertData(db)        # 插入数据
-      print('\n插入数据后:')
+      print('\n插入后的数据:')
       QueryData(db) 
-      DeleteData(db)        # 删除数据
-      print('\n删除数据后:')
-      QueryData(db)
       UpdateData(db)        # 更新数据
-      print('\n更新数据后:')
+      print('\n更新后的数据:')
       QueryData(db)
+      DeleteData(db)        # 删除数据
+    print('\n删除后的数据:')
+      QueryData(db)
+  
       CloseDB(db)         # 关闭数据库
   ```
-
   
+  > * 拼接sql时，**字符串**字段必须使用单引号包围住，要写成'%s'，而不是%s
 
 
 
