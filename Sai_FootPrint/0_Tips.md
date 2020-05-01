@@ -121,6 +121,8 @@
 
 1. MurGaa Recoder
 
+
+
 #### Mac txt乱码问题
 
 1. cd [文件所在目录]
@@ -133,11 +135,33 @@
    ```
 
 
+
 #### Mac 终端翻页
 
 1. 回车向下翻一行
 2. 空格向下翻一页
 
-### 字符串转成驼峰式
+
+
+#### 字符串转成驼峰式
 
 * `print('INT NOT NULL UNIQUE PRIMARY KEY AUTO_INCREMENT'.title())`
+
+
+
+#### Mac 删除文件和文件夹的命令
+
+1. `rm -rf 目录名字`
+
+   * -r 就是向下递归，不管有多少级目录，一并删除
+   * -f 就是直接强行删除，不作任何提示的意思
+
+   > linux没有回收站的，rm删除不会进入废纸篓
+
+
+
+#### 查看网站自动填充的密码
+
+* input标签，密码字段，即type="password"，输入不可见，右键检查该元素，修改其type属性为text即可见
+
+  > ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200430102333.png)

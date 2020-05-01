@@ -183,19 +183,17 @@
 ## VSCode配置
 
 1. 左侧最下方“Extensions”，安装以下插件
-    > Python - 代码分析，高亮，规范化
-    >
-    > Bracket Pair Colorizer - 括号颜色
-    >
-> Anaconda Extension Pack - 代码提示增强
-    >
-    > Python Extension Pack(Don Jayamanne) - 代码补全
-
+    1. Python - 代码分析，高亮，规范化
+    2. Bracket Pair Colorizer - 括号颜色
+    3. Anaconda Extension Pack - 代码提示增强
+    4. Python Extension Pack(Don Jayamanne) - 代码补全
+    5. Live Server - 保存即可实施预览html（右键Open with live server）
+    6. Auto Rename Tag - 同步修改html前后标签名
 2. 查看Python版本路径
-    > ```js
-    > which python
+    > ```bash
+    > $ which python
     >    /Users/jiangsai02/opt/anaconda3/bin/python
-    > which python3
+    > $ which python3
     >    /Users/jiangsai02/opt/anaconda3/bin/python3
     > ```
 
@@ -215,8 +213,13 @@
     >     "editor.renderControlCharacters": true,
     >     "editor.renderWhitespace": "all",
     >     "editor.suggest.snippetsPreventQuickSuggestions": false,
+    >     "python.linting.enabled": true, //格式化python代码
+    >     "editor.formatOnType": true, //保存时自动格式化html代码
+    >     "editor.formatOnSave": true,
     > }
     > ```
+    >
+    > > `"python.linting.enabled"`无法格式化python的缩进，因为对python而言，缩进是语法，语法错误是格式化工具是无效的
     
 4. 改变当前python运行环境
 
@@ -224,11 +227,11 @@
 
     * 点击左下角的运行环境，选择想使用的环境即可
 
-      <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/20200208131736.png" style="zoom:40%;" />
+      <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200208131736.png" style="zoom:40%;" />
 
 5. 设置当前debug调试配置
 
-    <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/20200218183754.png" style="zoom:33%;" />
+    <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200218183754.png" style="zoom:33%;" />
 
     ```js
     {
@@ -263,19 +266,21 @@
     }
     ```
 
-    
+6. debug状态下交互调试
 
-6. VSCode 代码无提示的解决办法
+    ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200429002831.png)
+
+7. VSCode 代码无提示的解决办法
 
     > 点击右下角的当前文件类型，选择 "Auto Detect 自动检测"，等它加载一会即可自动提示
 
-    <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/20200208131258.png" style="zoom:40%;" />
+    <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200208131258.png" style="zoom:40%;" />
 
-7. unresolved import "xxx"
+8. unresolved import "xxx"
 
     > code - preference - settings，搜索 jedi，勾选
 
-8. 验证Python程序的运行环境
+9. 验证Python程序的运行环境
 
     ```python
     import platform

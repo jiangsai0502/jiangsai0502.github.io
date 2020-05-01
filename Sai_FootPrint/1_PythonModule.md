@@ -482,5 +482,11 @@ ffmpeg -i input.mp4 -ss 00:10:00 -to 00:20:00 -c copy output2.mp4
 
 
 
+#### 下载微博视频
 
+![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200501092000.png)
+
+```bash
+ffmpeg -i http://f.video.weibocdn.com/fRBCoWqdlx07CcXsFP0Q01041204RKRm0E020.mp4\?label\=mp4_720p\&template\=960x540.25.0\&trans_finger\=11ccc9c970f47cffd9369c72510b3033\&Expires\=1588298484\&ssig\=KiTVMxQF%2F8\&KID\=unistore,video -c copy OUTPUT.mp4
+```
 

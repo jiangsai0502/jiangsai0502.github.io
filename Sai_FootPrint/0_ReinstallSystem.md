@@ -64,7 +64,13 @@
         >
         >    修改 ⌘← 和 ⌘→ 的映射，双击进入后，选择Action为 “Send Escape Sequence”，Esc+为 ⌘← 对应 b ， ⌘→ 对应 f
         >
-        >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200131101305.png)
+        >    ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200131101305.png)
+        >    
+        > 2. 按照单词快速删除（结合BetterTouchTool）
+        >
+        >    修改 ⌘+Delete 的映射，⌘+Delete 代表 control + w
+        >
+        >    ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200429144312.png)
         
     * 安装Oh my zsh
       
@@ -85,7 +91,7 @@
       ```
     
       设置字体：iTerm2 -> Preferences -> Profiles -> Text，在Font区域选中Change Font，然后找到Meslo LG字体，有L、M、S可选
-      ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/20200112165201.png)
+      ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200112165201.png)
     
     * 安装配色方案
     
@@ -98,7 +104,7 @@
     
       设置配色：iTerm2 -> Preferences -> Profiles -> Colors -> Color Presets
     
-      ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/20200112182935.png)
+      ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200112182935.png)
     * 修改主题
     
       > ```bash
@@ -224,7 +230,7 @@ rm ~/.curlrc
 
 #### Chrome 搜索后新标签打开链接
 
-![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/20200216125118.png)
+![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200216125118.png)
 
 
 
@@ -270,11 +276,11 @@ rm ~/.curlrc
 
 1. 取消spotlight搜索的快捷键
 
-   ![1xszjl](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/1xszjl.png)
+   ![1xszjl](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/uPic/1xszjl.png)
 
 2. 设置Alfred
 
-   ![Vre22p](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/Vre22p.png)
+   ![Vre22p](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/uPic/Vre22p.png)
 
    > 1. 设置Alfred的快捷键
    > 2. **Quick Search**：最常用，`Space + 关键字`快速启用打开文件，功能类似于使用`Open + 关键字`
@@ -296,7 +302,7 @@ rm ~/.curlrc
 
       > 地址栏：chrome://extensions/shortcuts
 
-      ![image-20200420203924035](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/image-20200420203924035.png)
+      ![image-20200420203924035](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/uPic/image-20200420203924035.png)
 
    2. 配置Alfred
 
@@ -308,15 +314,15 @@ rm ~/.curlrc
 
       1. 沉浸式的`黑暗模式`
 
-         ![C4wOBf](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/C4wOBf.png)
+         ![C4wOBf](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/uPic/C4wOBf.png)
 
       2. PDF和沙拉查词并列显示
 
-         ![0Vh7oi](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/0Vh7oi.png)
+         ![0Vh7oi](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/uPic/0Vh7oi.png)
 
       3. 积累生词
 
-         ![ZTryoy](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/ZTryoy.png)
+         ![ZTryoy](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/uPic/ZTryoy.png)
 
       4. 生词导入Anki
 
@@ -348,7 +354,7 @@ rm ~/.curlrc
 
          2. Saladict 生词本导出生词
 
-            ![Sw0Zqw](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/Sw0Zqw.png)
+            ![Sw0Zqw](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/uPic/Sw0Zqw.png)
 
             1. 选`换行替换为空格`
 
@@ -360,7 +366,7 @@ rm ~/.curlrc
 
          3. Anki导入生词
 
-            ![DPmCzS](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/DPmCzS.png)
+            ![DPmCzS](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/uPic/DPmCzS.png)
 
             1. 导入类型选 `Text separated by tabs or semicolons`
             2. `Type` 选 `Saladict`
