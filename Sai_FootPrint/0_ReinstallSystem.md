@@ -137,9 +137,12 @@
       > 搜索'plugins'，修改为plugins=(zsh-autosuggestions git)
       > ```
     
-* Sublime Text 快捷键
+* Sublime Text
 
     * Command + Control +G 一次性选择所有相同的词
+    * 插件（`command + shift + p`，输入 `install`, 然后点击 `Package Control: Install Package`）
+      1. ConvertToUTF8：解决乱码问题
+      2. ChineseLocalizations：中文汉化包
 
 
 
@@ -176,9 +179,11 @@
 * 查看视频所有类型
 `youtube-dl -F https://www.youtube.com/watch?v=n_6p-1J551Y`
 * 查看视频所有字幕
-`-dl --list-subs https://www.youtube.com/watch?v=n_6p-1J551Y`
+`youtube-dl --list-subs https://www.youtube.com/watch?v=n_6p-1J551Y`
 * 下载指定质量的视频和音频并自动合并（有字幕）
-`youtube-dl --write-auto-sub -f 160+249 https://www.youtube.com/watch?v=n_6p-1J551Y`
+`youtube-dl -f 160+249 https://www.youtube.com/watch?v=n_6p-1J551Y`
+* 下载指定质量的视频和音频并自动合并，并转码成mp4格式（有字幕）
+`youtube-dl -f 160+249 --recode-video mp4 https://www.youtube.com/watch?v=n_6p-1J551Y`
 * 使用代理下载默认类型的视频（有字幕）
 `youtube-dl --proxy 127.0.0.1:1081 --write-auto-sub https://www.youtube.com/watch?v=xqdI6ljJ954`
 * 获取proxy_url:proxy_port的方式
@@ -375,3 +380,9 @@ rm ~/.curlrc
             5.  `Field Mapping` 是字段映射关系
 
 
+
+
+
+#### Subler合并视频和字幕
+
+![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200504124414.png)

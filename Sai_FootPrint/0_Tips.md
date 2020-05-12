@@ -103,6 +103,12 @@
 
 
 
+#### nplayer不显示视频信息直接播放
+
+<img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200512171934.png" style="zoom:53%;" />
+
+
+
 #### ScreenFlow 变速
 
 1. 双击那个视频，改变 Speed 

@@ -3,21 +3,39 @@
 #### To Study List
 
 1. [油管最火 Web 前端教程](https://www.bilibili.com/video/av48489320)
-4. [敬伟Photoshop教程](https://www.bilibili.com/video/av18792821)
-5. [我们花了2000小时设计的这套《素描课》](https://www.bilibili.com/video/av36244606)
-6. [怎么自学画画？快速捋清头绪！](https://www.bilibili.com/video/av38127103)
+
+2. [敬伟Photoshop教程](https://www.bilibili.com/video/av18792821)
+
+3. [我们花了2000小时设计的这套《素描课》](https://www.bilibili.com/video/av36244606)
+
+4. [怎么自学画画？快速捋清头绪！](https://www.bilibili.com/video/av38127103)
+
 5. Excel函数用法
-8. 穷爸爸富爸爸
-9. 巨婴国
+
+6. 穷爸爸富爸爸
+
+7. 巨婴国
+
 8. notion用法
+
 9. MySQL 韩顺平
+
 10. 质性分析课
-<<<<<<< HEAD
+
 11. 金字塔原理
+
 12. 5why分析法
+
 13. 
-=======
-11. coursera公开课 -  Learning How to Learn
+    思考的快与慢
+
+14. coursera公开课 -  Learning How to Learn
+
+15. Illstator 
+
+16. 工业设计手绘：北京新易设计坊
+
+    
 
 
 

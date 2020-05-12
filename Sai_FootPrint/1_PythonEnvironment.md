@@ -287,6 +287,10 @@
     print("platform = ",platform.python_version())
     ```
 
+10. vscode列选中
+
+    option+shift，光标拖动
+
 
 
 #### 完全卸载VSCode

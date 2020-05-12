@@ -415,78 +415,112 @@ for i in video_list:
 
 
 
-### 下载BNU畅课平台视频流m3u8中的ts视频片段
+### [ffmpeg用法](https://zhuanlan.zhihu.com/p/67878761)
+
+#### 1. 下载BNU畅课平台视频流m3u8中的ts视频片段
 
 > 1. 网站后台把视频切片成数百个`xx.ts`文件，一般10秒一个，每个几百kb
 > 2. 浏览器通过`xx.m3u8`播放列表把这些`ts`文件连接起来
 >
 > [原教程](https://blog.csdn.net/weixin_33739627/article/details/88595353)
 
-**分析**
+1. 分析
 
-1. 通过`Chrome DevTool`的`Network`栏，能看到加载过程
+   1. 通过`Chrome DevTool`的`Network`栏，能看到加载过程
 
-2. 直接点击`m3u8`播放列表文件，在旁边的`preview`栏查看其内容
+   2. 直接点击`m3u8`播放列表文件，在旁边的`preview`栏查看其内容
 
-   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200307101507.png)
+      ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200307101507.png)
 
-   1. `master.m3u8`文件存放的是`index-v1-a1.m3u8`文件的地址
-   2. `index-v1-a1.m3u8`才是播放列表文件
-   3. 播放列表展示了397个`ts`文件
+      1. `master.m3u8`文件存放的是`index-v1-a1.m3u8`文件的地址
+      2. `index-v1-a1.m3u8`才是播放列表文件
+      3. 播放列表展示了397个`ts`文件
 
-**思路**
+2. 思路
 
-* 下载所有`ts`切片文件，然后合成一个完整视频
+   * 下载所有`ts`切片文件，然后合成一个完整视频
 
-**步骤**
+3. 步骤
 
-1. `Network`栏点击`index-v1-a1.m3u8`，右侧`Headers`栏，`General`的`Request URL`
+   1. `Network`栏点击`index-v1-a1.m3u8`，右侧`Headers`栏，`General`的`Request URL`
 
-2. `Request URL`: `http://lmsmedia.bnu.edu.cn/hls/http/lms.bnu.edu.cn/api/uploads/videos/4569/vod/index-v1-a1.m3u8`
+   2. `Request URL`: `http://lmsmedia.bnu.edu.cn/hls/http/lms.bnu.edu.cn/api/uploads/videos/4569/vod/index-v1-a1.m3u8`
 
-3. 使用`ffmpeg`下载`index-v1-a1.m3u8`播放列表中所有的视频，然后直接合并成一个完整视频
+   3. 使用`ffmpeg`下载`index-v1-a1.m3u8`播放列表中所有的视频，然后直接合并成一个完整视频
 
-   `ffmpeg -i http://lmsmedia.bnu.edu.cn/hls/http/lms.bnu.edu.cn/api/uploads/videos/4569/vod/index-v1-a1.m3u8 -c copy OUTPUT.mp4`
+      `ffmpeg -i http://lmsmedia.bnu.edu.cn/hls/http/lms.bnu.edu.cn/api/uploads/videos/4569/vod/index-v1-a1.m3u8 -c copy OUTPUT.mp4`
 
-[延伸学习](https://www.jianshu.com/p/802074a62a42)
+#### 2. 下载加密视频流m3u8中的ts视频片段
 
-**加密视频**
+> [延伸学习](https://www.jianshu.com/p/802074a62a42)
 
-<img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200330194309.png" style="zoom:50%;" />
+1. 分析
 
-下载报错`Protocol 'http' not on whitelist 'file,crypto'!`
+   ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200330194309.png)
 
-1. 方法1：使用包含加密信息的完整m3u8链接
+2. 下载
 
-   `ffmpeg -i http://media.learn.baidu.com/v1/kanbaidu/v/26cc8826-9009-4ba6-96c9-26545f96e251/b2ccfd03-c2d3-4d84-9842-7bbb8f121029/camera_out_low.m3u8?authorization=bce-auth-v1%2xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -c copy 视频名.mp4`
+   > 直接下载报错`Protocol 'http' not on whitelist 'file,crypto'!`
 
-2. 方法2：使用参数忽略加密报错`-protocol_whitelist "file,http,https,tcp,tls"`
+   1. 方法1：使用包含加密信息的完整m3u8链接
 
-   1. 下载m3u8到本地：`camera_out_high.m3u8`
-   2. `ffmpeg -protocol_whitelist "file,http,https,tcp,tls" -i camera_out_low.m3u8  -c copy OUTPUT.mp4`
+      `ffmpeg -i http://media.learn.baidu.com/v1/kanbaidu/v/26cc8826-9009-4ba6-96c9-26545f96e251/b2ccfd03-c2d3-4d84-9842-7bbb8f121029/camera_out_low.m3u8?authorization=bce-auth-v1%2xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -c copy 视频名.mp4`
 
+   2. 方法2：使用参数忽略加密报错`-protocol_whitelist "file,http,https,tcp,tls"`
 
-**分割视频**
+      1. 下载m3u8到本地：`camera_out_high.m3u8`
+      2. `ffmpeg -protocol_whitelist "file,http,https,tcp,tls" -i camera_out_low.m3u8  -c copy OUTPUT.mp4`
 
-```js
-ffmpeg -i input.mp4 -ss 00:00:00 -to 00:10:00 -c copy output1.mp4
-ffmpeg -i input.mp4 -ss 00:10:00 -to 00:20:00 -c copy output2.mp4
+#### 3. 截取视频
 
-/**
-* -i  input file
-* -ss start time in seconds or in hh:mm:ss
-* -to end time in seconds or in hh:mm:ss
-* -c codec to use
-*/
+```bash
+# 第1种方法：截取第6分钟15秒 - 第11分钟25秒之间的视频，共截取时长为5分10秒的片段
+# 特点：分割精准，但可能采不到关键帧，开头出现黑屏
+ffmpeg -i input.mp4 -ss 00:06:15 -to 00:11:25 -c copy output1.mp4
+
+# 第2种方法，截取第6分钟15秒 - 第11分钟25秒之间的视频，共截取时长为5分10秒的片段
+# 特点：分割不够精准，但开头没有黑屏
+ffmpeg -ss 00:06:15 -to 00:11:25 -accurate_seek -i input.mp4 -codec copy -avoid_negative_ts 1 output2.mp4
+
+# 第3种方法，从第6分钟15秒开始，共截取时长为2分25秒的片段
+# 特点：没有黑屏
+ffmpeg -ss 00:06:15 -i input.mp4 -to 00:02:25 -vcodec copy -acodec copy -y output3.mp4
 ```
 
-
-
-#### 下载微博视频
+#### 4. 下载微博视频
 
 ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200501092000.png)
 
 ```bash
 ffmpeg -i http://f.video.weibocdn.com/fRBCoWqdlx07CcXsFP0Q01041204RKRm0E020.mp4\?label\=mp4_720p\&template\=960x540.25.0\&trans_finger\=11ccc9c970f47cffd9369c72510b3033\&Expires\=1588298484\&ssig\=KiTVMxQF%2F8\&KID\=unistore,video -c copy OUTPUT.mp4
 ```
+
+#### 5. 视频转换格式
+
+1. 视频转视频
+
+   ```bash
+   ffmpeg -i video.mp4 video.avi
+   
+   #如果想维持源视频文件的质量，使用 -qscale 0 参数
+   ffmpeg -i video.mp4 -qscale 0 video.avi
+   ```
+
+2. 视频转音频
+
+   ```bash
+   ffmpeg -i input.mp4 -vn output.mp3
+   ```
+
+#### 6. 修改视频分辨率
+
+```bash
+#查看视频流信息
+ffmpeg -i input.mp4
+
+#将分辨转成640×480
+ffmpeg -i input.mp4 -s 640x480 -c:a copy output.mp4
+```
+
+
 
