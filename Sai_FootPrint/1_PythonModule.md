@@ -400,6 +400,8 @@ video_list = [
 ]
 cmd = 'you-get --playlist '
 acount = 0   # 下载失败后的重试次数
+# 改变当前工作目录到指定的路径
+os.chdir('/Users/sai/Downloads')
 for i in video_list:
     flag = True
     while flag:

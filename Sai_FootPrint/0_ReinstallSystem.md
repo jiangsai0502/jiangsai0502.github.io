@@ -174,7 +174,7 @@
 `youtube-dl https://www.youtube.com/watch?v=n_6p-1J551Y`
 * 下载默认类型视频（有字幕）
 `youtube-dl --write-auto-sub https://www.youtube.com/watch?v=n_6p-1J551Y`
-* 下载字幕（无视频）
+* 下载**字幕**（无视频）
 `youtube-dl --write-auto-sub --skip-download https://www.youtube.com/watch?v=n_6p-1J551Y`
 * 查看视频所有类型
 `youtube-dl -F https://www.youtube.com/watch?v=n_6p-1J551Y`
@@ -184,8 +184,10 @@
 `youtube-dl -f 160+249 https://www.youtube.com/watch?v=n_6p-1J551Y`
 * 下载指定质量的视频和音频并自动合并，并转码成mp4格式（有字幕）
 `youtube-dl -f 160+249 --recode-video mp4 https://www.youtube.com/watch?v=n_6p-1J551Y`
-* 使用代理下载默认类型的视频（有字幕）
-`youtube-dl --proxy 127.0.0.1:1081 --write-auto-sub https://www.youtube.com/watch?v=xqdI6ljJ954`
+* 使用代理下载默认类型的视频
+`youtube-dl --proxy 127.0.0.1:1081 https://www.youtube.com/watch?v=xqdI6ljJ954`
+* 使用代理下载默认类型的视频**列表**
+`youtube-dl --proxy 127.0.0.1:1081 --yes-playlist https://www.youtube.com/watch?v=xqdI6ljJ954`
 * 获取proxy_url:proxy_port的方式
 `在Shadowsocks找到copy HTTP proxy shell export line，如‘export http_proxy=http://127.0.0.1:1081’即可提取代理地址何端口`
 
