@@ -193,6 +193,14 @@
 
 
 
+##### 下载bibi音频
+
+* B站无音频格式，故会先下视频载ffmepg自动转成音频
+
+  `youtube-dl --extract-audio https://www.bilibili.com/video/BV1xJ411r7Yo`
+
+
+
 #### 下载工具axel
 
 1. 安装axel：`brew install axel`
@@ -281,13 +289,9 @@ rm ~/.curlrc
 
 #### Alfred用法
 
-1. 取消spotlight搜索的快捷键
+1. 取消spotlight快捷键，设置Alfred快捷键
 
-   ![1xszjl](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/uPic/1xszjl.png)
-
-2. 设置Alfred
-
-   ![Vre22p](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/uPic/Vre22p.png)
+   ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200522092941.png)
 
    > 1. 设置Alfred的快捷键
    > 2. **Quick Search**：最常用，`Space + 关键字`快速启用打开文件，功能类似于使用`Open + 关键字`
@@ -309,7 +313,7 @@ rm ~/.curlrc
 
       > 地址栏：chrome://extensions/shortcuts
 
-      ![image-20200420203924035](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/uPic/image-20200420203924035.png)
+      ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200522093235.png)
 
    2. 配置Alfred
 

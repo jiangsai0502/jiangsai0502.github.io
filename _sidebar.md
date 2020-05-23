@@ -40,5 +40,6 @@
   * [小技巧](Sai_FootPrint/0_Tips.md)
   * [待办](Sai_FootPrint/0_Todo.md)
   * [摘录](0_essay.md)
-  * [AutodeskFusion360](Sai_FootPrint/AutodeskFusion360.md)
+  * [AutodeskFusion360](Sai_FootPrint/0_AutodeskFusion360.md)
+  * [Anki](Sai_FootPrint/3_anki.md)
 
