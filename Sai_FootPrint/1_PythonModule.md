@@ -440,6 +440,43 @@ for path, dir_list, file_list in g:
             num = num + 1
 ```
 
+> 给无序文件名添加序号，如
+>
+> 墓志铭.mp3    ---->>>>    01-墓志铭.mp3
+> 前言.mp3    ---->>>>    02-前言.mp3
+>
+> ```python
+> import os
+> g = os.walk('/Users/sai/Desktop/tmp/深度思维')
+> 
+> with open('/Users/sai/Desktop/tmp/demo.txt', 'r', encoding="utf-8") as f:
+>     lines = f.readlines()  # 读取所有行
+> 
+> # os.walk()产生3-元组 (dirpath, dirnames,folder_names)【文件夹路径, 文件夹名字, 文件名】
+> for path, dir_list, file_list in g:
+>     # 去除系统文件.DS_Store
+>     if '.DS_Store' in file_list:
+>         file_list.remove('.DS_Store')
+>     if file_list:
+>         # 文件排序，保证原始文件名从小到大
+>         file_list.sort()
+>         folder_name = path.split('/')[-1]
+>         for f_name in file_list:
+>             # 利用 os.path.join() 拼接成完整文件名
+>             old_name = os.path.join(path, f_name)
+>             # 扩展名
+>             suffix = '.' + f_name.split('.')[-1]
+>             # 比对文件名列表，与列表一致时进行替换名称
+>             for line in lines:
+>                 # 判断如文件名“01-序言\n” = “序言.mp3”
+>                 if line.replace('\n', '')[3:] == f_name.replace('.mp3', ''):
+>                     new_name = os.path.join(path,
+>                                             line.replace('\n', '') + suffix)
+>                     os.rename(old_name, new_name)
+>                     lines.remove(line)  # 匹配成功后从列表删除
+>                     break  # break跳出整个for循环，continue跳出本次循环
+> ```
+
 
 
 ##### 修改文件名中的汉字数字
@@ -673,7 +710,25 @@ ffmpeg -ss 00:06:15 -to 00:11:25 -accurate_seek -i input.mp4 -codec copy -avoid_
 ffmpeg -ss 00:06:15 -i input.mp4 -to 00:02:25 -vcodec copy -acodec copy -y output3.mp4
 ```
 
-#### 4. 下载微博视频
+#### 4. 合并视频
+
+1. 创建一个文本文件`filelist.txt`
+
+   ```bash
+   file 'input1.mkv'
+   file 'input2.mkv'
+   file 'input3.mkv'
+   ```
+
+2. 命令
+
+   ```bash
+   ffmpeg -f concat -i filelist.txt -c copy output.mkv
+   ```
+
+
+
+#### 5. 下载微博视频
 
 ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200501092000.png)
 
@@ -681,7 +736,7 @@ ffmpeg -ss 00:06:15 -i input.mp4 -to 00:02:25 -vcodec copy -acodec copy -y outpu
 ffmpeg -i http://f.video.weibocdn.com/fRBCoWqdlx07CcXsFP0Q01041204RKRm0E020.mp4\?label\=mp4_720p\&template\=960x540.25.0\&trans_finger\=11ccc9c970f47cffd9369c72510b3033\&Expires\=1588298484\&ssig\=KiTVMxQF%2F8\&KID\=unistore,video -c copy OUTPUT.mp4
 ```
 
-#### 5. 视频转换格式
+#### 6. 视频转换格式
 
 1. 视频转视频
 
@@ -698,7 +753,7 @@ ffmpeg -i http://f.video.weibocdn.com/fRBCoWqdlx07CcXsFP0Q01041204RKRm0E020.mp4\
    ffmpeg -i input.mp4 -vn output.mp3
    ```
 
-#### 6. 修改视频分辨率
+#### 7. 修改视频分辨率
 
 ```bash
 #查看视频流信息

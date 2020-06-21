@@ -1,6 +1,6 @@
 # Blog搭建
 
-## Docsify 搭建
+### Docsify 搭建
 
 #### 1.环境搭建
 
@@ -641,13 +641,13 @@
 
 
 
-## Blog 部署到Github Pages
+### Blog 部署到Github Pages
 
 1. **创建Blog项目**
 
    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200127135755.png)
 
-   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200127191727.png)	![image-20200127191922696](/Users/jiangsai02/Library/Application Support/typora-user-images/image-20200127191922696.png)
+   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200127191727.png)
 
    > 创建名为  `jiangsai0502.github.io`  的仓库，只能选择  `master`  分支发布，这就意味着 Blog 文件只能放在仓库的根目录下
 
@@ -667,7 +667,7 @@
 
 
 
-## YDoc搭建
+### YDoc搭建
 
 #### 1.环境搭建
 
@@ -872,7 +872,31 @@ YDoc 借鉴了 Gitbook 中 `"书"` 的概念：
 
 
 
+### Notion Blog部署到Gitee
 
+1. [创建Blog项目](https://blog.csdn.net/qq_36667170/article/details/79318578)
+
+   ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200606163045.png)
+
+   > Index.html
+   >
+   > ```html
+   > <!DOCTYPE html>
+   > <html>
+   >    <head>
+   >       <title>HappyAddOne</title>
+   >       <meta http-equiv = "refresh" content = "0; url = https://www.notion.so/Sai-1539d75c1a234f609f905f6b19099347" />
+   >    </head>
+   >    <body>
+   >    </body>
+   > </html>
+   > ```
+   >
+   > > 其中`https://www.notion.so/Sai-1539d75c1a234f609f905f6b19099347`是notion的share地址
+
+2. 更新index.html文件后要手动更新部署
+
+   > 服务 -> Gitee Pages -> 更新
 
 
 

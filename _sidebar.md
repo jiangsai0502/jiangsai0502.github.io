@@ -18,8 +18,6 @@
   
     
 
-
-
 * Python
   * [Python 周边环境](Sai_FootPrint/1_PythonEnvironment.md)
   * [Python 入门](Sai_FootPrint/1_PythonTutorial.md)
@@ -38,8 +36,7 @@
   * [PicGo+GitHub 搭建图床](Sai_FootPrint/0_PicGo_GitHub.md)
   * [重装Mac](Sai_FootPrint/0_ReinstallSystem.md)
   * [小技巧](Sai_FootPrint/0_Tips.md)
-  * [待办](Sai_FootPrint/0_Todo.md)
   * [摘录](0_essay.md)
-  * [AutodeskFusion360](Sai_FootPrint/0_AutodeskFusion360.md)
+  * [Fusion360](Sai_FootPrint/0_AutodeskFusion360.md)
   * [Anki](Sai_FootPrint/3_anki.md)
 

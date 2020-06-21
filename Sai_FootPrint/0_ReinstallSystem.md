@@ -193,6 +193,31 @@
 
 
 
+#### 下载[喜马拉雅](https://github.com/zeakhold/xmlyfetcher)
+
+* 安装：npm install -g xmlyfetcher
+
+* 使用
+
+  ```bash
+  # 下载专辑
+  xmlyfetcher https://www.ximalaya.com/ertong/10078066/
+  
+  # 下载专辑单页
+  xmlyfetcher https://www.ximalaya.com/ertong/12891461/p2/
+  
+  # 下载单个曲目
+  xmlyfetcher https://www.ximalaya.com/ertong/12891461/211393643
+  
+  # 下载到指定目录
+  xmlyfetcher https://www.ximalaya.com/ertong/12891461/211393643 -o ~/Downloads
+  
+  # 指定下载单个音频的超时时间（默认8s）
+  xmlyfetcher https://www.ximalaya.com/ertong/12891461/211393643 -t 20
+  ```
+
+  
+
 ##### 下载bibi音频
 
 * B站无音频格式，故会先下视频载ffmepg自动转成音频

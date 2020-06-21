@@ -1,22 +1,42 @@
+#### 论文题目
 
+> 1. 作者
+>
+> 2. 关键词
+>
+> 3. 引用
+>
+>    ----
 
-### 搜索论文步骤
-
-1. 谷歌学术搜索论文，拿到论文的DOI
-
-   <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200328200335.png" style="zoom:30%;" />
-
-   
-
-   <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200328200016.png" style="zoom:30%;" />
-
-2. 搜索最新的`sci-hub`地址，搜索DOI
-
-   <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200328200631.png" style="zoom:30%;" />
+> 4. 摘录
+>    1. 
 
 
 
-### 微信：科研选题前，不可忽视的探索性研究
+#### 搜索论文步骤
+
+* 谷歌学术搜索论文，拿到论文的DOI，`sci-hub`地址，搜索DOI
+
+  ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200530162840.png)
+
+* 知网无PDF格式时，下载PDF
+
+  > 原理：文献默认都有PDF格式，没有显示是因为CNKI隐藏了
+
+  ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200530163221.png)
+  
+* 知网PDF增加目录
+
+  > 1. 上述方式下载的PDF都没目录
+  > 2. PDF expert创建的目录，不知为何marginote认不出，所以要用Adobe Acrobat打开该文件后任意拖动下目录载保存即可
+
+  ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200602123419.png)
+
+  ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200602142722.png)
+
+----
+
+#### 微信：科研选题前，不可忽视的探索性研究
 
 1. 科研发端于一个“问题”
 
@@ -63,4 +83,46 @@
       2. 根据具体课题领域的不同，环境的气压、温度、湿度
       3. 被访者的眼动追踪、血压、脉搏、脑电等更加丰富的指标也有不同程度的应用
 
-5. 
+
+
+
+#### Marginote 3 技巧
+
+##### 同步笔记
+
+> 核心：备份，然后在两部设备之间传输
+
+1. 移动端MarginNote 3做的笔记，导出 - 导出MarginNote备份文件，隔空投送至MBP
+
+   ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200530220716.png)
+
+2. MBP的MarginNote里打开备份文件，编辑后，保存，导出 - 导出MarginNote备份文件
+
+   
+
+3. 导出到本地后隔空投送至MBP，移动端MarginNote 3选择替换成新的
+
+##### 添加卡片标题
+
+* 点击**卡片文字**，进入选中状态
+
+* 长按想设为**标题**的文字：标题文字上方出现备选框；**卡片文字**被矩形框住
+
+* 点击设为标题
+
+  ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200601211641.png)
+
+##### 编辑卡片
+
+* 双击右侧卡片文字
+
+  ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200601212644.png)
+
+##### 导入PDF目录
+
+* 确保文档有目录
+
+* 进入笔记模式 - 点击大纲 - 导入 - 从文档目录导入
+
+  ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200602152050.png)
+

@@ -13,7 +13,6 @@
 
 1. 批量注释/取消注释 ：`command` + `/`
 2. 调整编辑界面和终端字体大小：`command` + `-`，`command` + `+`
-3. 
 
 
 
@@ -171,3 +170,9 @@
 * input标签，密码字段，即type="password"，输入不可见，右键检查该元素，修改其type属性为text即可见
 
   > ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200430102333.png)
+
+
+
+#### 自定义PPT工具栏
+
+> ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200523232610.png)
