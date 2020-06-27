@@ -63,6 +63,10 @@
    >
    > 终端显示：[1]  + 96071 running    docsify serve
 
+#### 删除指定程序的进程
+
+如Google Chrome：`pkill Google Chrome`
+
 
 
 #### chrome 书签&插件同步不及时
@@ -176,3 +180,6 @@
 #### 自定义PPT工具栏
 
 > ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200523232610.png)
+
+
+

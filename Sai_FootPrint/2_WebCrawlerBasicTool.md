@@ -397,7 +397,10 @@
 
 > XPath 是一门在 XML 文档中查找信息的**语言**，通过元素和属性进行导航，是一种路径语言
 >
-> 用法：网页中按 `F12` 进行元素检查，在源码标签上右键进入 `Copy` 操作，选择里面的 `Copy Xpath` 的选项
+> 用法：网页中按 `F12` 进行元素检查，在源码标签上右键进入 `Copy` 操作
+>
+> 1. 选择里面的 `Copy Xpath` 的选项，即可获得该元素的`Xpath`值
+> 2. 选择里面的 `Copy selector` 的选项，即可获得该元素的`css selector`值
 >
 > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200201193531.png)
 

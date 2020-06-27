@@ -319,3 +319,40 @@
    ```
 
    
+
+#### Charles入门
+
+1. 配置
+
+   1. 
+
+2. 坑1：抓包抓不到[参考](https://blog.csdn.net/crdzg_Amy/article/details/100084297)
+
+   1. 解决1：工具栏 Proxy->Recording settings->include 里面，设置了某个网页域名，除此域名之外都不进行抓包，所以打开是一片空白，因为我进行了过滤～
+
+      <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200626193326.png" style="zoom:33%;" />
+
+   2. 解决2：先reset，然后删除证书，重新安装
+
+      ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200626204012.png)
+
+   3. 解决3：系统偏好设置 - 网络 - 高级 - 代理
+
+      <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200627103228.png" style="zoom:30%;" />
+
+3. 坑2：https抓包出现unknown，乱码
+
+   解决
+
+   1. 安装SSL证书
+
+      <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200626201555.png" style="zoom:50%;" />
+
+   2. 配置SSL代理：Host栏与Port栏都填空（*表示抓所有SSL请求*）
+
+      <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200626205327.png" style="zoom:30%;" />
+
+4. 抓包分析知乎API
+
+   ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200626212609.png)
+

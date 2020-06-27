@@ -765,3 +765,192 @@ ffmpeg -i input.mp4 -s 640x480 -c:a copy output.mp4
 
 
 
+#### 获取知乎问题答案并转换为MarkDown文件
+
+[参考](https://www.jianshu.com/p/59028353d0aa)
+
+> 知乎接口`https://www.zhihu.com/api/v4/questions/{}/answers?include=data[*].content,voteup_count,created_time&offset=0&limit=20&sort_by=default`
+
+```python
+# pip install html2text
+# pip install bs4
+# pip install lxml
+
+from multiprocessing import Pool
+import re, os, html2text, requests, json, time
+from requests import RequestException
+from bs4 import BeautifulSoup
+
+headers = {
+    'User-Agent':
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+    'authorization': 'oauth c3cef7c66a1843f8b3a9e6a1e3160e20',
+}
+
+
+def html_template(data):
+    # api content
+    html = '''
+            <html>
+            <head>
+            <body>
+            %s
+            </body>
+            </head>
+            </html>
+            ''' % data
+    return html
+
+
+def request(url):
+    try:
+        response = requests.get(url=url, headers=headers)
+        if response.status_code == 200:
+            # 不管是不是最后一条数据, 先进行解析再说
+            text = response.text
+            # 此处进行进一步解析
+            # print('url =', url, 'text =', text)
+            content = json.loads(text)
+            parse_content(content)
+            # 如果不是最后一条数据, 继续递归请求并解析
+            if not content.get('paging').get('is_end'):
+                # next_page_url = content.get('paging').get('next').replace('http', 'https')
+                next_page_url = content.get('paging').get('next')
+                request(next_page_url)
+
+        return None
+    except RequestException:
+        print(RequestException)
+        return None
+
+
+def parse_content(content):
+    if 'data' in content.keys():
+        for data in content.get('data'):
+            parsed_data = parse_data(data)
+            transform_to_markdown(parsed_data)
+
+
+def parse_data(content):
+    data = {}
+    answer_content = content.get('content')
+
+    author_name = content.get('author').get('name')
+    print('author_name =', author_name)
+    answer_id = content.get('id')
+    question_id = content.get('question').get('id')
+    question_title = content.get('question').get('title')
+    vote_up_count = content.get('voteup_count')
+
+    content = html_template(answer_content)
+    soup = BeautifulSoup(content, 'lxml')
+    answer = soup.find("body")
+
+    soup.body.extract()
+    soup.head.insert_after(soup.new_tag("body", **{'class': 'zhi'}))
+
+    soup.body.append(answer)
+
+    img_list = soup.find_all("img", class_="content_image lazy")
+    for img in img_list:
+        img["src"] = img["data-actualsrc"]
+    img_list = soup.find_all("img",
+                             class_="origin_image zh-lightbox-thumb lazy")
+    for img in img_list:
+        img["src"] = img["data-actualsrc"]
+    noscript_list = soup.find_all("noscript")
+    for noscript in noscript_list:
+        noscript.extract()
+
+    data['content'] = soup
+    data['author_name'] = author_name
+    data['answer_id'] = answer_id
+    data['question_id'] = question_id
+    data['question_title'] = question_title
+    data['vote_up_count'] = vote_up_count
+    return data
+
+
+def transform_to_markdown(data):
+    content = data['content']
+    author_name = data['author_name']
+    answer_id = data['answer_id']
+    question_id = data['question_id']
+    question_title = data['question_title']
+    vote_up_count = data['vote_up_count']
+
+    file_name = f'{question_title}.md'
+    answer_path = os.path.join(os.getcwd(), file_name)
+
+    with open(answer_path, 'a+', encoding='utf-8') as f:
+        origin_url = 'https://www.zhihu.com/question/{}/answer/{}'.format(
+            question_id, answer_id)
+        f.write("-" * 40 + "\n")
+        f.write("##### Author_Name: " + author_name + "\n")
+        f.write("##### VoteCount: %s" % vote_up_count + "\n")
+        text = html2text.html2text(content.decode('utf-8'))
+        # 标题
+        r = re.findall(r'\*\*(.*?)\*\*', text, re.S)
+        for i in r:
+            if i != " ":
+                text = text.replace(i, i.strip())
+
+        r = re.findall(r'_(.*)_', text)
+        for i in r:
+            if i != " ":
+                text = text.replace(i, i.strip())
+        text = text.replace('_ _', '')
+        text = text.replace('_b.', '_r.')
+        # 图片
+        r = re.findall(r'!\[\]\((?:.*?)\)', text)
+        for i in r:
+            text = text.replace(i, i + "\n\n")
+            folder_name = f'{os.getcwd()}/{question_title}_img'
+            if not os.path.exists(folder_name):
+                os.mkdir(folder_name)
+            img_url = re.findall('\((.*)\)', i)[0]
+            save_name = img_url.split('/')[-1]
+            file_path = '%s/%s' % (folder_name, save_name)
+
+            try:
+                content = download_image(img_url)
+                if content:
+                    save_image(content, file_path)
+            except Exception as e:
+                print(e)
+            else:  # if no exception,get here
+                text = text.replace(img_url, file_path)
+
+        f.write(text)
+        f.close()
+
+
+def download_image(url):
+    print('正在下载图片', url)
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            return response.content
+    except RequestException:
+        print('请求图片错误', url)
+        pass
+
+
+def save_image(content, file_path):
+    with open(file_path, 'wb') as f:
+        f.write(content)
+        f.close()
+
+
+if __name__ == '__main__':
+    # todo 这里的header可能需要加cookie了, 因为有的作者名不加cookie拿不到真名, 只能得到一个叫做"知乎用户"的作者名,
+    # 真实的作者名给隐藏了
+
+    os.chdir('/Users/sai/Desktop/tmp/zhihu')  # 切换当前目录
+    question_id = '20926054'  # 知乎问题'https://www.zhihu.com/question/37400041'
+
+    url_format = 'https://www.zhihu.com/api/v4/questions/{}/answers?include=data[*].content,voteup_count,created_time&offset=0&limit=20&sort_by=default'
+    url = url_format.format(question_id)
+    request(url)
+```
+

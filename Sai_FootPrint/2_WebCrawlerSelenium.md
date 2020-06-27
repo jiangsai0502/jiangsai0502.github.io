@@ -12,13 +12,120 @@
 
 5. 将` chromedriver驱动器` 移动到虚拟环境中 `/opt/anaconda3/envs/py3/bin/`
 
+   1. 先确定虚拟环境位置：`which python`得知`/opt/anaconda3/envs/py3/bin/python/`
+
 6. 将` chromedriver驱动器`加入环境变量
 
    `open ~/.bash_profile`
 
    最后插入一行：`export PATH=$PATH:/opt/anaconda3/envs/py3/bin/chromedriver`
 
-#### 2. 下载学习强国视频
+   `source ~/.bash_profile`
+
+#### 2. 基础用法
+
+```python
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
+import os, requests, time
+
+def BasicUsage(driver):
+    driver.get('https://www.baidu.com/')
+    # find_element 获取WebElement对象
+    # send_keys() 向WebElement对象输入内容
+    driver.find_element_by_xpath('//*[@id="kw"]').send_keys('sai的小站')
+    # click() 点击WebElement对象
+    driver.find_element_by_xpath('//*[@id="su"]').click()
+    # text 获取WebElement对象的文本内容
+    temp = driver.find_element_by_xpath('//*[@id="1"]/h3/a').text
+    print(temp)
+    # get_attribute() 获取WebElement对象的某个属性的值，括号内是属性名
+    temp = driver.find_element_by_xpath('//*[@id="1"]').get_attribute('srcid')
+    print(temp)
+    # get_attribute('outerHTML') 获取WebElement对象的某个属性的全部Html
+    temp = driver.find_element_by_xpath('//*[@id="1"]').get_attribute('outerHTML')
+    print(temp)
+
+def CreateTab(driver):
+    # js新建标签
+    driver.execute_script('window.open();')
+    # 获取当前浏览器所有标签的句柄
+    handles = driver.window_handles
+    # 获取当前标签的句柄
+    main_handle = driver.current_window_handle
+    # 切换标签
+    driver.switch_to.window(handles[1])
+    # 新标签打开网页
+    driver.get('https://www.sogou.com/')
+
+def FrameSwith(driver):
+    # 当页面内包含frame时，切入指定frame才能选择元素
+    # 页面默认是主frame
+    driver.get('https://www.w3school.com.cn/html/html_iframe.asp')
+    temp = driver.find_element_by_xpath('//*[@id="maincontent"]/h1').text
+    print('默认frame主题是：'+ temp)
+    # 找到目标frame
+    aim_frame = driver.find_element_by_xpath('//*[@id="intro"]/iframe')
+    # 切换到目标frame
+    driver.switch_to.frame(aim_frame)
+    temp = driver.find_element_by_xpath('//*[@id="maincontent"]/h1').text
+    print('子frame主题是：'+ temp)
+    # 切回默认frame
+    driver.switch_to.default_content()
+    temp = driver.find_element_by_xpath('//*[@id="maincontent"]/h1').text
+    print('子frame主题是：'+ temp)
+
+    
+if __name__ == '__main__':
+    try:
+        # 创建浏览器
+        path = "/Users/sai/miniconda3/envs/py3_428/bin/chromedriver"
+        options = Options()
+        # True为无头浏览器
+        # options.headless = True  
+        driver = webdriver.Chrome(executable_path=path, options=options)
+        # 每隔0.5秒检查一次元素是否加载完成，最多等10秒
+        driver.implicitly_wait(10)  
+
+        BasicUsage(driver)
+        CreateTab(driver)
+        FrameSwith(driver)
+    finally:
+        # 关闭当前标签
+        driver.close()
+        # 关闭当前浏览器
+        driver.quit()
+```
+
+参考
+
+1. [Python下selenium 打开新的窗口和切换到其他窗口](https://www.jianshu.com/p/affcccdf5ea2)
+
+2. [mac selenium 连接已经打开的chrome浏览器](https://blog.csdn.net/w5688414/article/details/106032555/)
+
+   ```bash
+   1. 向~/.zshrc添加环境变量
+     open ~/.zshrc
+     export PATH="/Applications/Google Chrome.app/Contents/MacOS:$PATH"
+     source ~/.zshrc
+   2. 打开chrome
+   	–remote-debugging-port=9222：指定启动端口9222
+   	–user-data-dir="/ChromeProfile"：指定浏览器数据存储目录
+   	Google\ Chrome --remote-debugging-port=9222 --user-data-dir="~/ChromeProfile"
+   3. 程序增加1行
+   	options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
+   ```
+
+3. []()
+
+
+
+#### 下载学习强国视频
 
 ```python
 from selenium import webdriver
@@ -98,13 +205,26 @@ if __name__ == '__main__':
 >
 >   * `By.ID`，`By.NAME`，`By.CLASS_NAME`，`By.XPATH`，`By.TAG_NAME`，`By.CSS_SELECTOR`，`By.LINK_TEXT`
 >
-> * 元素定位 `find_element_by……` 和 `find_elements_by……` 
+> * Webdriver在页面内定位元素： `find_element_by……` 和 `find_elements_by……` 
 >
->   * `find_element_by_id("id_vaule")`，`find_element_by_name("name_vaule")`
->     `find_element_by_tag_name("tag_name_vaule")`，`find_element_by_class_name("class_name")`
->     `find_element_by_xpath("xpath")`，`find_element_by_link_text("text_vaule")`
->     `find_element_by_css_selector()`
->   * `find_elements_by……` 用法同理
+>   * `find_element_by_id()`
+>     
+>   * `find_element_by_name()`
+>     
+>   * `find_element_by_tag_name()`
+>     
+>   * `find_element_by_class_name()`
+>     
+>   * `find_element_by_xpath()`
+>     
+>   * `find_element_by_link_text()`
+>     
+>   * `find_element_by_css_selector()`
+>     
+>     > * `find_element`：返回第一个复合条件的`WebElement`对象，若找不到对象，则抛异常
+>     > * `find_elements` ：返回所有复合条件的`WebElement`对象组成的列表，若找不到对象，则返回空列表
+>
+> * `WebElement`对象在对象内定位元素
 >
 > * `get_attribute`
 >
