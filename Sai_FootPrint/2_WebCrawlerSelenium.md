@@ -32,8 +32,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver import ActionChains
 import os, requests, time
 
+# 基本用法
 def BasicUsage(driver):
     driver.get('https://www.baidu.com/')
     # find_element 获取WebElement对象
@@ -51,6 +53,7 @@ def BasicUsage(driver):
     temp = driver.find_element_by_xpath('//*[@id="1"]').get_attribute('outerHTML')
     print(temp)
 
+# 创建新标签
 def CreateTab(driver):
     # js新建标签
     driver.execute_script('window.open();')
@@ -63,6 +66,7 @@ def CreateTab(driver):
     # 新标签打开网页
     driver.get('https://www.sogou.com/')
 
+# 页面含frame时的操作
 def FrameSwith(driver):
     # 当页面内包含frame时，切入指定frame才能选择元素
     # 页面默认是主frame
@@ -80,7 +84,68 @@ def FrameSwith(driver):
     temp = driver.find_element_by_xpath('//*[@id="maincontent"]/h1').text
     print('子frame主题是：'+ temp)
 
+# Radio，Checkbox，Select控件操作方式
+def CheckedWidgets(driver):
+    driver.get('file:///Users/sai/Documents/GitHub/jiangsai0502.github.io/Sai_FootPrint/LearnHtml.html')
+    # 选中某个Radio选项
+    driver.find_element_by_xpath('//*[@id="main"]/form[1]/input[@value="female"]').click()
+    # 获取选中项的值
+    for input in driver.find_elements_by_xpath('//*[@id="main"]/form[1]/input'):
+        if input.is_selected():
+            print(input.get_attribute('value'))
+
+    # 选中某个Checkbox选项
+    driver.find_element_by_xpath('//*[@id="main"]/form[2]/input[@value="Bike"]').click()
+    # 获取选中项的值
+    for input in driver.find_elements_by_xpath('//*[@id="main"]/form[2]/input'):
+        if input.is_selected():
+            print(input.get_attribute('value'))
     
+    # 选中某个Select选项
+    driver.find_element_by_xpath('//*[@id="main"]/select/option[@value="saab"]').click()
+    for input in driver.find_elements_by_xpath('//*[@id="main"]/select/option'):
+        if input.is_selected():
+            print(input.get_attribute('value'))
+
+# 弹窗操作方式
+def Popup(driver):
+    driver.get('file:///Users/sai/Documents/GitHub/jiangsai0502.github.io/Sai_FootPrint/LearnHtml.html')
+    # alert
+    driver.find_element_by_xpath('/html/body/button[1]').click()
+    # 打印alert提示信息
+    print(driver.switch_to.alert.text)
+    # 点击alert的OK按钮
+    driver.switch_to.alert.accept()
+    # confirm
+    driver.find_element_by_xpath('/html/body/button[2]').click()
+    # 打印confirm提示信息
+    print(driver.switch_to.alert.text)
+    # 点击confirm的OK按钮
+    # driver.switch_to.alert.accept()
+    # 点击confirm的Cancel按钮
+    driver.switch_to.alert.dismiss()
+    # prompt
+    driver.find_element_by_xpath('/html/body/button[3]').click()
+    # 打印prompt提示信息
+    print(driver.switch_to.alert.text)
+    # 向prompt输入信息
+    driver.switch_to.alert.send_keys('你猜猜我想说什么')
+    # 点击prompt的OK按钮
+    # driver.switch_to.alert.accept()
+    # 点击prompt的Cancel按钮
+    driver.switch_to.alert.dismiss()
+
+# 更多鼠标键盘操作
+def MoreActions(driver):
+    driver.get('https://www.mi.com/')
+    # 鼠标悬停
+    ac = ActionChains(driver)
+    ac.move_to_element(driver.find_element_by_xpath('//*[@id="app"]/div[1]/div/div[3]/div[1]/div[2]/ul/li[2]/a/span')).perform()
+    driver.find_element_by_xpath('//*[@id="J_navMenu"]/div/ul/li[2]/a/div[2]').click()
+    # 点击链接打开新标签，切换到新标签句柄
+    driver.switch_to.window(driver.window_handles[1])
+    print(driver.find_element_by_xpath('//*[@id="app"]/div[3]/div/div/div/div[2]/div[2]/div[3]/div/span[2]').text)
+
 if __name__ == '__main__':
     try:
         # 创建浏览器
@@ -88,21 +153,24 @@ if __name__ == '__main__':
         options = Options()
         # True为无头浏览器
         # options.headless = True  
+        # 托管当前打开的浏览器，先命令行打开浏览器（见参考2）
+        options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
         driver = webdriver.Chrome(executable_path=path, options=options)
         # 每隔0.5秒检查一次元素是否加载完成，最多等10秒
-        driver.implicitly_wait(10)  
+        driver.implicitly_wait(10)
 
-        BasicUsage(driver)
-        CreateTab(driver)
-        FrameSwith(driver)
+        # BasicUsage(driver)
+        # CreateTab(driver)
+        # FrameSwith(driver)
+        # CheckedWidgets(driver)
+        # MoreActions(driver)
+        Popup(driver)
     finally:
         # 关闭当前标签
         driver.close()
         # 关闭当前浏览器
         driver.quit()
 ```
-
-参考
 
 1. [Python下selenium 打开新的窗口和切换到其他窗口](https://www.jianshu.com/p/affcccdf5ea2)
 
@@ -121,7 +189,11 @@ if __name__ == '__main__':
    	options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
    ```
 
-3. []()
+3. 对于鼠标悬停出现，鼠标移开消失的元素，可以冻住页面
+
+   1. Console中执行`setTimeout(function(){ debugger }, 2000);`，即可冻住页面2秒
+
+      <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200627232839.png" style="zoom:30%;" />
 
 
 
