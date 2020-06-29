@@ -33,17 +33,32 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver import ActionChains
-import os, requests, time
+import os, requests, time, json
+
+def BasicInfo(driver):
+    driver.get('https://www.baidu.com/')
+    # 当前页面的url
+    print(driver.current_url)
+    # 当前页面源码，转码成中文，加ignore避免无法识别的生僻字
+    print(driver.page_source.encode("gbk","ignore"))
+    # 刷新页面
+    driver.refresh()
+    # 窗口最大化
+    driver.maximize_window()
+    # 页面title
+    print(driver.title)
 
 # 基本用法
 def BasicUsage(driver):
     driver.get('https://www.baidu.com/')
     # find_element 获取WebElement对象
-    # send_keys() 向WebElement对象输入内容
+    # 向WebElement对象输入内容
     driver.find_element_by_xpath('//*[@id="kw"]').send_keys('sai的小站')
-    # click() 点击WebElement对象
+    # 点击WebElement对象
     driver.find_element_by_xpath('//*[@id="su"]').click()
-    # text 获取WebElement对象的文本内容
+    # 清空输入框
+    driver.find_element_by_xpath('//*[@id="kw"]').clear()
+    # 获取WebElement对象的文本内容
     temp = driver.find_element_by_xpath('//*[@id="1"]/h3/a').text
     print(temp)
     # get_attribute() 获取WebElement对象的某个属性的值，括号内是属性名
@@ -52,6 +67,10 @@ def BasicUsage(driver):
     # get_attribute('outerHTML') 获取WebElement对象的某个属性的全部Html
     temp = driver.find_element_by_xpath('//*[@id="1"]').get_attribute('outerHTML')
     print(temp)
+    # 模糊查找文本
+    temp = driver.find_elements_by_partial_link_text('百度')
+    for i in temp:
+        print(i.text)
 
 # 创建新标签
 def CreateTab(driver):
@@ -66,7 +85,7 @@ def CreateTab(driver):
     # 新标签打开网页
     driver.get('https://www.sogou.com/')
 
-# 页面含frame时的操作
+# 页面含frame时
 def FrameSwith(driver):
     # 当页面内包含frame时，切入指定frame才能选择元素
     # 页面默认是主frame
@@ -136,15 +155,70 @@ def Popup(driver):
     driver.switch_to.alert.dismiss()
 
 # 更多鼠标键盘操作
-def MoreActions(driver):
-    driver.get('https://www.mi.com/')
-    # 鼠标悬停
-    ac = ActionChains(driver)
-    ac.move_to_element(driver.find_element_by_xpath('//*[@id="app"]/div[1]/div/div[3]/div[1]/div[2]/ul/li[2]/a/span')).perform()
-    driver.find_element_by_xpath('//*[@id="J_navMenu"]/div/ul/li[2]/a/div[2]').click()
-    # 点击链接打开新标签，切换到新标签句柄
-    driver.switch_to.window(driver.window_handles[1])
-    print(driver.find_element_by_xpath('//*[@id="app"]/div[3]/div/div/div/div[2]/div[2]/div[3]/div/span[2]').text)
+# ActionChains支持链式写法，即调用ActionChains方法不会立即执行，而是将所有操作顺序放入队列中，调用perform()方法后顺序执行队列中的方法
+def MouseActions(driver):
+    driver.get('https://www.runoob.com/try/try.php?filename=jqueryui-api-droppable')
+    driver.switch_to.frame("iframeResult")
+    source = driver.find_element_by_xpath('//*[@id="draggable"]')
+    target = driver.find_element_by_xpath('//*[@id="droppable"]')
+    # 1.鼠标悬停
+    ActionChains(driver).move_to_element(source).perform()
+    # 2.鼠标右键
+    ActionChains(driver).context_click(target).perform()
+    # 3.鼠标双击
+    ActionChains(driver).double_click(target).perform()
+    # 4.鼠标左键按住source，拖拽到距离原位置(300,500)的右下角
+    ActionChains(driver).drag_and_drop_by_offset(source,150,200).perform()
+    # 5.鼠标左键按住source，拖拽到target位置
+    # ActionChains(driver).drag_and_drop(source,target).perform()
+    # driver.switch_to.alert.accept()
+    # 6.(功能同5)鼠标左键按住source，拖拽到target位置，释放鼠标
+    ActionChains(driver).click_and_hold(source).move_to_element(target).release().perform()
+    driver.switch_to.alert.accept()
+    pass
+
+def KeyActions(driver):
+    driver.get('https://www.baidu.com/')
+    # 输入框输入内容
+    driver.find_element_by_xpath('//*[@id="kw"]').send_keys("seleniummmm")
+    # 删除多输入的一个字母，先定位光标，再输入BACKSPACE键
+    driver.find_element_by_xpath('//*[@id="kw"]').send_keys(Keys.BACK_SPACE)
+        # 此时光标已经在输入框中，所以还能直接用ActionChains(driver)
+    ActionChains(driver).send_keys(Keys.BACK_SPACE).perform()
+        # Keys.BACK_SPACE对应的key是'\ue003'
+    ActionChains(driver).send_keys('\ue003').perform()
+    # 输入空格键+“教程”
+    ActionChains(driver).send_keys(Keys.SPACE, "教程").perform()
+    # Mac上的Keys.CONTROL无效，是个bug。FireFox没问题
+    # 通过回车键来代替单击操作
+    driver.find_element_by_xpath('//*[@id="kw"]').send_keys(Keys.ENTER)
+    # ActionChains(driver).send_keys( Keys.Alt+"q").perform()容易出错
+    # ActionChains(driver).key_down(Keys.ALT).send_keys("q").key_up(Keys.ALT).perform()更好
+
+# 设置获取cookie
+def GetSetCookie(driver):
+    driver.get('https://www.douban.com/')
+    cookieFile = '~/zhihuCookie.json'
+    if not os.path.exists(cookieFile):
+        # 首先清除由于浏览器打开已有的cookies
+        driver.delete_all_cookies()
+        # cookie文件不存在时，要先手工登录一下，以便获取
+        input("请先手工登录一下，然后回车")
+        dictCookies = driver.get_cookies()
+        print(dictCookies)
+        with open(cookieFile, 'w') as f:
+            json.dump(dictCookies, f)
+    else:
+        # 清空所有cookie
+        driver.delete_all_cookies()
+        driver.refresh()
+        with open(cookieFile, 'r') as f:
+            listCookies = json.load(f)
+        print(listCookies)
+        for cookie in listCookies:
+            driver.add_cookie(cookie)
+        # time.sleep(2)
+        driver.refresh()
 
 if __name__ == '__main__':
     try:
@@ -159,12 +233,16 @@ if __name__ == '__main__':
         # 每隔0.5秒检查一次元素是否加载完成，最多等10秒
         driver.implicitly_wait(10)
 
+        # BasicInfo(driver)
         # BasicUsage(driver)
         # CreateTab(driver)
         # FrameSwith(driver)
         # CheckedWidgets(driver)
-        # MoreActions(driver)
-        Popup(driver)
+        # Popup(driver)
+        # MouseActions(driver)
+        # KeyActions(driver)
+        GetSetCookie(driver)
+        
     finally:
         # 关闭当前标签
         driver.close()
@@ -194,6 +272,10 @@ if __name__ == '__main__':
    1. Console中执行`setTimeout(function(){ debugger }, 2000);`，即可冻住页面2秒
 
       <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200627232839.png" style="zoom:30%;" />
+
+4. [selenium 键盘操作 键盘对应的key](https://blog.csdn.net/chang995196962/article/details/106499208)
+
+
 
 
 

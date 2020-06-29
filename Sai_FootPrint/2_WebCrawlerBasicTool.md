@@ -452,19 +452,20 @@
    | @*       | 匹配任何属性的节点                                       | //title[@*]     | 选取所有带有属性的 title 节点                                |
    | node()   | 匹配任何类型的节点                                       |                 |                                                              |
 
-   | 路径表达式                         | 结果                                                         |
-   | :--------------------------------- | :----------------------------------------------------------- |
-   | /bookstore/book[1]                 | 选取 bookstore 节点的第一个 book 儿子节点                    |
-   | /bookstore/book[last()]            | 选取 bookstore 节点的最后一个 book 儿子节点                  |
-   | /bookstore/book[last()-1]          | 选取 bookstore 节点的倒数第二个 book 儿子节点                |
-   | /bookstore/book[position()<3]      | 选取 bookstore 节点的全部 book 儿子节点的最前面 2 个         |
-   | //title[@lang]                     | 选取文档中任意位置的所有 title 节点，且这些节点都拥有 lang 属性 |
-   | //title[@lang=’eng’]               | 选取文档中任意位置的所有 title 元素，且这些节点都拥有值为 eng 的 lang 属性 |
-   | /bookstore/book[price>35.00]       | 选取 bookstore 节点下的所有 book 儿子节点，且这些节点的 price 的值须大于 35.00 |
-   | /bookstore/book[price>35.00]/title | 选取 bookstore 节点下的所有 price 的值大于 35.00的 book 儿子节点的所有 title 儿子节点 |
-   | //book/title \| //book/price       | 选取文档中任意位置的 book 节点的所有 title 儿子节点和 price 儿子节点 |
-   | //title \| //price                 | 选取文档中任意位置的所有 title 节点和 price 节点             |
-   | /bookstore/book/title \| //price   | 选取 bookstore 节点的 book 儿子节点的所有 title 儿子节点，以及文档中任意位置的所有的 price 节点 |
+   | 路径表达式                                    | 结果                                                         |
+   | :-------------------------------------------- | :----------------------------------------------------------- |
+   | /bookstore/book[1]                            | 选取 bookstore 节点的第一个 book 儿子节点                    |
+   | /bookstore/book[last()]                       | 选取 bookstore 节点的最后一个 book 儿子节点                  |
+   | /bookstore/book[last()-1]                     | 选取 bookstore 节点的倒数第二个 book 儿子节点                |
+   | /bookstore/book[position()<3]                 | 选取 bookstore 节点的全部 book 儿子节点的最前面 2 个         |
+   | //title[@lang]                                | 选取文档中任意位置的所有 title 节点，且这些节点都拥有 lang 属性 |
+   | //title[@lang=’eng’]                          | 选取文档中任意位置的所有 title 元素，且这些节点都拥有值为 eng 的 lang 属性 |
+   | //book[@category="web" and cover="paperback"] | 选取文档中任意位置的所有book节点，且这些节点的category属性的值是"web"，cover属性的值是"paperback" |
+   | /bookstore/book[price>35.00]                  | 选取 bookstore 节点下的所有 book 儿子节点，且这些节点的 price 的值须大于 35.00 |
+   | /bookstore/book[price>35.00]/title            | 选取 bookstore 节点下的所有 price 的值大于 35.00的 book 儿子节点的所有 title 儿子节点 |
+   | //book/title \| //book/price                  | 选取文档中任意位置的 book 节点的所有 title 儿子节点和 price 儿子节点 |
+   | //title \| //price                            | 选取文档中任意位置的所有 title 节点和 price 节点             |
+   | /bookstore/book/title \| //price              | 选取 bookstore 节点的 book 儿子节点的所有 title 儿子节点，以及文档中任意位置的所有的 price 节点 |
 
    ```python
    xml = '上面的bookstore'
