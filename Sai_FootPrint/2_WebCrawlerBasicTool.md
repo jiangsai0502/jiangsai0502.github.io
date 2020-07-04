@@ -467,6 +467,32 @@
    | //title \| //price                            | 选取文档中任意位置的所有 title 节点和 price 节点             |
    | /bookstore/book/title \| //price              | 选取 bookstore 节点的 book 儿子节点的所有 title 儿子节点，以及文档中任意位置的所有的 price 节点 |
 
+   1. 层级：`/`直接子级，`//`跳级
+   2. 属性：`@`属性访问
+   3. 函数：`contains()`，`text()`
+
+   **常见用法**
+
+   1. `//div/@href`：取所有`div`元素的`href`**属性的值**(注意：是`div`元素的`href`属性，此处的反斜杠不是上下级关系)
+
+      如：`<div id="item" href="/vod/1728836">`，`div`的`href`属性值为`/vod/1728836`
+
+   2. `//div[@id]`：取所有包含`id`属性的`div`元素
+
+   3. `//div[@id = 'maincontent']`：取`id`属性值为`maincontent`的`div`元素
+
+   4. `//div[@id = 'maincontent' and @class = 'head']`：取`id`属性值为`maincontent`且`class`属性值为`head`的`div`元素
+
+   5. `//div[@class="col-xs-7 col-xs-offset-1 aside"]`：取`class`属性值为`col-xs-7 col-xs-offset-1 aside`的元素
+
+   6. `//div[contains(@class,"col-xs-7")]`：取`class`属性值含`col-xs-7`的元素
+
+   7. `//div[starts-with(@class,'col-xs-7')]`：取`class`属性值以`col-xs-7`开头的元素
+
+   8. `string(//div[@id = 'maincontent'])`：取`id`属性值为`maincontent`的`div`元素包含的所有文本
+
+   9. `//div[@id = 'maincontent'] | //div[@id = 'childcontent']`：取`id`属性值为`maincontent`的`div`元素与`id`属性值为`childcontent`的`div`元素的并集
+
    ```python
    xml = '上面的bookstore'
    tree = etree.HTML(xml)

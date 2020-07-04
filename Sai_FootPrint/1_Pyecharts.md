@@ -1,4 +1,36 @@
-### 饼状图
+#### 安装
+
+```bash
+# 查看当前系统下的虚拟环境
+conda info --envs
+# 切换虚拟环境
+source activate py3_428
+# 查看当前虚拟环境下用conda安装的包
+conda list
+# 查看当前虚拟环境下用pip安装的包
+pip list
+# 安装pyecharts版本1.0以上，0.5已被废弃
+conda install pyecharts
+# 查看pyecharts版本
+conda list
+# 
+
+# 
+
+# 
+
+# 
+
+# 
+
+# 
+
+
+```
+
+
+
+#### 饼状图
 
 1. **数字**
 

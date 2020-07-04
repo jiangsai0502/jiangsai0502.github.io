@@ -33,7 +33,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver import ActionChains
-import os, requests, time, json
+import os, requests, time, json, pickle
 
 def BasicInfo(driver):
     driver.get('https://www.baidu.com/')
@@ -129,30 +129,55 @@ def CheckedWidgets(driver):
 # 弹窗操作方式
 def Popup(driver):
     driver.get('file:///Users/sai/Documents/GitHub/jiangsai0502.github.io/Sai_FootPrint/LearnHtml.html')
-    # alert
+    # 1.alert
     driver.find_element_by_xpath('/html/body/button[1]').click()
-    # 打印alert提示信息
+        # 打印alert提示信息
     print(driver.switch_to.alert.text)
-    # 点击alert的OK按钮
+        # 点击alert的OK按钮
     driver.switch_to.alert.accept()
-    # confirm
+    # 2.confirm
     driver.find_element_by_xpath('/html/body/button[2]').click()
-    # 打印confirm提示信息
+        # 打印confirm提示信息
     print(driver.switch_to.alert.text)
-    # 点击confirm的OK按钮
-    # driver.switch_to.alert.accept()
-    # 点击confirm的Cancel按钮
+        # 点击confirm的OK按钮
+        # driver.switch_to.alert.accept()
+        # 点击confirm的Cancel按钮
     driver.switch_to.alert.dismiss()
-    # prompt
+    # 3.prompt
     driver.find_element_by_xpath('/html/body/button[3]').click()
-    # 打印prompt提示信息
+        # 打印prompt提示信息
     print(driver.switch_to.alert.text)
-    # 向prompt输入信息
+        # 向prompt输入信息
     driver.switch_to.alert.send_keys('你猜猜我想说什么')
-    # 点击prompt的OK按钮
-    # driver.switch_to.alert.accept()
-    # 点击prompt的Cancel按钮
+        # 点击prompt的OK按钮
+        # driver.switch_to.alert.accept()
+        # 点击prompt的Cancel按钮
     driver.switch_to.alert.dismiss()
+
+# 模拟滚动到底
+def Scroll(driver):
+    driver.get('https://www.zhihu.com/question/23498580')
+    old_height = 0
+    while True:
+        new_height = driver.execute_script('return action=document.body.scrollHeight')
+        # 每执行一次滚动条拖到最后，就进行一次参数校验，并且刷新页面高度
+        if new_height > old_height:
+            driver.execute_script('window.scrollTo(0, document.body.scrollHeight)')
+            old_height = new_height
+            time.sleep(1)
+        else:
+            # 当页面高度不再增加的时候，我们就认为已经是页面最底部，结束条件判断
+            print("滚动条已经处于页面最下方!")
+            driver.execute_script('window.scrollTo(0, 0)')  # 把滚动条拖到页面顶部
+            break
+# 翻页
+def NextPage(driver):
+    driver.get('https://search.bilibili.com/')
+    driver.find_element_by_xpath('//*[@id="search-keyword"]').send_keys('测试一下网站',Keys.ENTER)
+    # 元素不存在时，find_element抛异常，find_elements返回空列表，所以用后者判断是否存在该元素
+    while driver.find_elements_by_xpath('//li[@class="page-item next"]'):
+        driver.find_element_by_xpath('//li[@class="page-item next"]').click()
+        time.sleep(2)
 
 # 更多鼠标键盘操作
 # ActionChains支持链式写法，即调用ActionChains方法不会立即执行，而是将所有操作顺序放入队列中，调用perform()方法后顺序执行队列中的方法
@@ -231,7 +256,7 @@ if __name__ == '__main__':
         options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
         driver = webdriver.Chrome(executable_path=path, options=options)
         # 每隔0.5秒检查一次元素是否加载完成，最多等10秒
-        driver.implicitly_wait(10)
+        driver.implicitly_wait(5)
 
         # BasicInfo(driver)
         # BasicUsage(driver)
@@ -241,7 +266,9 @@ if __name__ == '__main__':
         # Popup(driver)
         # MouseActions(driver)
         # KeyActions(driver)
-        GetSetCookie(driver)
+        # GetSetCookie(driver)
+        # Scroll(driver)
+        NextPage(driver)
         
     finally:
         # 关闭当前标签

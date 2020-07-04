@@ -310,7 +310,10 @@ rm ~/.curlrc
    $ git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
    ```
 
-   
+
+#### pip安装慢
+
+指定安装源：pip install jupyter -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 #### Alfred用法
 
@@ -410,10 +413,36 @@ rm ~/.curlrc
             4. 勾选`Allow HTML in fields` 。因为导出时选了 `<br>` 或 `<p>` 等 HTML排版
             5.  `Field Mapping` 是字段映射关系
 
-
-
-
-
 #### Subler合并视频和字幕
 
 ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200504124414.png)
+
+#### jupyter用法
+
+1. 安装：`pip install jupyter -i https://pypi.tuna.tsinghua.edu.cn/simple`
+
+2. **base**环境下安装支持**conda**虚拟环境的插件：`conda install nb_conda`
+
+3. **base**环境下将环境写入notebook的kernel中
+
+   python -m ipykernel install --user --name 环境名称 --display-name "Python (环境名称)"
+
+   `python -m ipykernel install --user --name py3_428 --display-name "Python py3_428"`
+
+4. 使用
+
+   1. `cd /Users/sai/Documents/Temp`
+   2. `jupyter notebook`
+   3. 右侧`新建` - 选择`虚拟环境`
+
+5. 退出：`control`+`c`
+
+
+
+source activate py3_428
+
+conda list
+
+pip install selenium
+
+pip install pyecharts
