@@ -324,6 +324,7 @@ rm ~/.curlrc
    > 1. 设置Alfred的快捷键
    > 2. **Quick Search**：最常用，`Space + 关键字`快速启用打开文件，功能类似于使用`Open + 关键字`
    > 3. **Inside Files**：最常用，`in + 关键字`查找包含查询字的文件
+   > 4. 预览：`shift`
 
 
 
@@ -419,30 +420,38 @@ rm ~/.curlrc
 
 #### jupyter用法
 
-1. 安装：`pip install jupyter -i https://pypi.tuna.tsinghua.edu.cn/simple`
+1. 安装：
 
-2. **base**环境下安装支持**conda**虚拟环境的插件：`conda install nb_conda`
+   ```bash
+   # 切换虚拟环境
+   source activate py3.8
+   # 安装jupyter
+   conda install jupyter
+   # 安装支持conda虚拟环境的插件
+   conda install nb_conda
+   # 安装指定虚拟环境的kernel到notebook
+   python -m ipykernel install --user --name py3.8 --display-name "Python py3.8"
+   # 查看kernel虚拟环境
+   jupyter kernelspec list
+   # 删除指定虚拟环境的kernel
+   jupyter kernelspec remove kernel_name
+   # 
+   ```
 
-3. **base**环境下将环境写入notebook的kernel中
+2. 基本用法
 
-   python -m ipykernel install --user --name 环境名称 --display-name "Python (环境名称)"
+   ```bash
+   # 切换到jupyter文件目录
+   cd /Users/sai/Documents/Temp
+   # 启动 jupyter
+   jupyter notebook
+   # 退出 jupyter
+   `control`+`c`
+   ```
 
-   `python -m ipykernel install --user --name py3_428 --display-name "Python py3_428"`
+3. Vscode 中使用
 
-4. 使用
+   ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200708161754.png)
 
-   1. `cd /Users/sai/Documents/Temp`
-   2. `jupyter notebook`
-   3. 右侧`新建` - 选择`虚拟环境`
+   ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200708162432.png)
 
-5. 退出：`control`+`c`
-
-
-
-source activate py3_428
-
-conda list
-
-pip install selenium
-
-pip install pyecharts

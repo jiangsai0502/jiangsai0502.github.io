@@ -1,4 +1,6 @@
-#### 安装
+### pyecharts
+
+#### 1. 安装
 
 ```bash
 # 查看当前系统下的虚拟环境
@@ -109,3 +111,27 @@ conda list
 
 3. 百分比
 
+
+
+### Matplotlib
+
+1. 安装
+
+   ```bash
+   # 切换到虚拟环境
+   source activate py3.8
+   # 安装 numpy
+   conda install numpy
+   # 安装 matplotlib
+   conda install matplotlib
+   # 验证安装版本
+   conda list
+   ```
+
+2. 基本用法
+
+   ```
+   
+   ```
+
+   

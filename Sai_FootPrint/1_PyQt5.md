@@ -1,6 +1,19 @@
 #### 安装
 
-1. 安装：pip install PyQt5
+1. 安装
+
+   ```bash
+   # 切换虚拟环境
+   conda info --envs
+   source activate py3.8
+   # 安装 PyQt5
+   pip install PyQt5 -i https://pypi.tuna.tsinghua.edu.cn/simple
+   # 安装Qt Designer
+   https://build-system.fman.io/qt-designer-download
+   # 
+   ```
+
+   
 
 
 
