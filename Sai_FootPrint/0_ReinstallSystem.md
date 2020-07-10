@@ -487,3 +487,8 @@ rm ~/.curlrc
 
    ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200708162432.png)
 
+
+
+#### PDF增加大纲书签
+
+![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200710105047.png)
