@@ -88,19 +88,21 @@
 #### 搭建环境
 
 * 官网下载后默认安装即可  
-* 搜索anaconda3，得知安装路径是/opt/anaconda3
+* 搜索anaconda3，得知安装路径是/Users/saijiang/opt/anaconda3
 * 在环境变量中添加anaconda3的路径
-    > ```
+    > ```bash
     > open ~/.bash_profile
-    > 在最后插入一行：export PATH="/opt/anaconda3/bin:$PATH"
+    > 在最后插入一行：export PATH="/Users/saijiang/opt/anaconda3/bin:$PATH"
     > source ~/.bash_profile
     > ```
 * 在oh-my-zsh中添加anaconda3的路径
-    > ```
+    > ```bash
     > open ~/.zshrc
-    > 在第三行插入一行：export PATH="/opt/anaconda3/bin:$PATH"
+    > 在第三行插入一行：export PATH="/Users/saijiang/opt/anaconda3/bin:$PATH"
     > source ~/.zshrc
     > ```
+    >
+    > <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200709232216.png" style="zoom:33%;" />
 * 给conda挂代理  
     > ```
     > open ~/.condarc
@@ -136,49 +138,49 @@
 
 #### 基础用法
 
-* 查看当前系统下的虚拟环境   `conda info --envs`
-  
-* 激活base虚拟环境(base是默认创建的)   `source activate base`
-* 退出虚拟环境   `conda deactivate`
-* 创建名为 py2 的python2.7的虚拟环境   `conda create -n py2 python=2.7`
-* 创建名为 py3 的python3.7的虚拟环境   `conda create -n py3 python=3.7`
-* 虚拟环境的安装路径
-  
-    > /Users/jiangsai02/opt/anaconda3/envs
-* 激活虚拟环境 py3   `source activate py3`
-* 切换虚拟环境 py3 到flask_py3  
-    > ```bash
-    > conda deactivate
-    > source activate flask_py3
-    > ```
-    >
-    > 虚拟环境的切换原理：修改环境变量 $PATH
-    >
-    > 1. 系统环境下执行 `echo $PATH`
-    >
-    >    ```bash
-    >    echo $PATH
-    >    /opt/anaconda3/condabin:/opt/anaconda3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-    >    ```
-    >
-    > 2. py3虚拟环境下执行 `echo $PATH`
-    >
-    >    ```bash
-    >    echo $PATH
-    >    /opt/anaconda3/envs/py3/bin:/opt/anaconda3/condabin:/opt/anaconda3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-    >    ```
-    >
-    >    py3虚拟环境的 $PATH 前面增加了一段 `/opt/anaconda3/envs/py3/bin:`
-* 删除虚拟环境 py3   `conda env remove -n py3`
-* 为当前的虚拟环境 flask_py3 安装flask包   `conda install flask`
-* 虚拟环境下包的安装路径
+1. 用法
 
-    > /Users/jiangsai02/opt/anaconda3/envs/flask_py3/lib/python3.7/site-packages/flask
-* 为当前的虚拟环境 flask_py3 更新flask包   `conda update flask`
-* 为当前的虚拟环境 flask_py3 卸载flask包   `conda remove flask`
-* 查看当前的虚拟环境 flask_py3 的所有安装包   `conda list`
-
-
+   ```bash
+   # 查看当前系统下的虚拟环境，安装路径
+   	# base                  *  /Users/saijiang/opt/anaconda3
+   conda info --envs
+   
+   # 激活base虚拟环境(base是默认创建的)
+   source activate base
+   
+   # 退出虚拟环境
+   conda deactivate
+   
+   # 创建名为 py2 的python2.7的虚拟环境
+   conda create -n py2 python=2.7
+   
+   # 创建名为 py3 的python3.7的虚拟环境
+   conda create -n py3 python=3.7
+   
+   # 激活虚拟环境py3
+   source activate py3
+   
+   # 切换虚拟环境到flask_py3  
+   conda deactivate
+   source activate flask_py3
+   
+   # 删除虚拟环境 py3
+   conda env remove -n py3
+   
+   # 为当前的虚拟环境 flask_py3 安装flask包
+   conda install flask
+   
+   # 虚拟环境下包的安装路径：/Users/saijiang/opt/anaconda3/envs/flask_py3/lib/python3.7/site-packages/flask
+   
+   # 为当前的虚拟环境更新flask包
+   conda update flask
+   
+   # 为当前的虚拟环境下的flask包
+   conda remove flask
+   
+   # 查看当前的虚拟环境的所有安装包
+   conda list
+   ```
 
 ## VSCode配置
 

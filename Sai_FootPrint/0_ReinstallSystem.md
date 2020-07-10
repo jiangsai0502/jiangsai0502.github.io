@@ -13,43 +13,46 @@
 | Typora     | XMind ZEN  | ename     | ShadowsocksX            |
 | ezip       |            | draw.io   | Dr. Unarchiver          |
 
-* youtube-dl   `brew install youtube-dl`
-  
-* you-get   `brew install you-get`
-  
-* stretchly   `brew cask install stretchly`
-  
-* tree：`brew install tree`
+```bash
+# 安装 brew，选择清华源
+/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
+xclient.info
+brew install youtube-dl
 
-    > `tree` 命令可生成当前目录内子目录的优美树状图
-    >
-    > `tree -a` 显示包括隐藏文件在内的所有文件的树状图
+brew install you-get
 
-* mpv   `brew cask install mpv`
-  
-* Finder顶端显示完整路径  
-  `defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES`
-  
-* 启动台图标数量
+brew cask install stretchly
 
-    ```bash
-    defaults write com.apple.dock springboard-rows -int 7
-    defaults write com.apple.dock springboard-columns -int 11
-    defaults write com.apple.dock ResetLaunchPad -bool true;killall Dock
-    ```
+# tree 可生成当前目录内子目录的优美树状图
+# tree -a 显示包括隐藏文件在内的所有文件的树状图
+brew install tree
 
-* 创建配置文件：~/.config/mpv/input.conf
+brew cask install mpv
 
-    ```json
-    AXIS_UP  add volume 2
-    AXIS_DOWN  add volume -2
-    AXIS_LEFT  seek -2 exact
-    AXIS_RIGHT seek 2 exact
-    LEFT  seek -2 exact
-    RIGHT  seek 2 exact
-        UP  add volume 2
-        DOWN  add volume -2
-    ```
+# Finder顶端显示完整路径
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
+
+# 启动台图标数量
+defaults write com.apple.dock springboard-rows -int 7;
+defaults write com.apple.dock springboard-columns -int 11;
+defaults write com.apple.dock ResetLaunchPad -bool true;killall Dock
+
+# 创建配置文件：~/.config/mpv/input.conf
+AXIS_UP  add volume 2
+AXIS_DOWN  add volume -2
+AXIS_LEFT  seek -2 exact
+AXIS_RIGHT seek 2 exact
+LEFT  seek -2 exact
+RIGHT  seek 2 exact
+UP  add volume 2
+DOWN  add volume -2
+
+```
+
+
+
+
+
 * iterm2   `brew cask install iterm2`
   
     * 打开 Go2Shell 配置页，将自动调用设置为iterm2
@@ -74,19 +77,26 @@
         
     * 安装Oh my zsh
       
-        `sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
+        ```bash
+        sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+        open ~/.zshrc
+        # 在.zshrc文件中搜索 source $ZSH/oh-my-zsh.sh，只本句之前加一句
+        ZSH_DISABLE_COMPFIX="true"
+        source $ZSH/oh-my-zsh.sh
+        ```
         
     * 安装PowerLine
     
         ```json
-        sudo easy_install pip
+        sudo easy_install pip;
         pip install powerline-status --user
         ```
+        
     * 安装PowerFonts字体
     
       ```json
-      mkdir ~/Documents/Temp
-      git clone https://github.com/powerline/fonts.git --depth=1
+      mkdir ~/Documents/Temp;
+      git clone https://github.com/powerline/fonts.git --depth=1;
       ./fonts/install.sh
       ```
     
@@ -96,23 +106,24 @@
     * 安装配色方案
     
       ```json
-      cd ~/Documents/Temp
-      git clone https://github.com/altercation/solarized/ --config http.proxy='http://127.0.0.1:1087'
-      cd solarized/iterm2-colors-solarized/
+      cd ~/Documents/Temp;
+      git clone https://github.com/altercation/solarized/ --config http.proxy='http://127.0.0.1:1081';
+      cd solarized/iterm2-colors-solarized/;
       open solarized/iterm2-colors-solarized/
       ```
     
       设置配色：iTerm2 -> Preferences -> Profiles -> Colors -> Color Presets
     
       ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200112182935.png)
+      
     * 修改主题
     
       > ```bash
-      > cd ~/Documents/Temp
-      > git clone https://github.com/fcamblor/oh-my-zsh-agnoster-fcamblor.git --config http.proxy='http://127.0.0.1:1087'
-      > ./oh-my-zsh-agnoster-fcamblor/install
+      > cd ~/Documents/Temp;
+      > git clone https://github.com/fcamblor/oh-my-zsh-agnoster-fcamblor.git --config http.proxy='http://127.0.0.1:1081';
+      > ./oh-my-zsh-agnoster-fcamblor/install;
       > open ~/.zshrc
-      > 搜索'ZSH_THEME'，修改为ZSH_THEME="agnoster"
+      > # 搜索'ZSH_THEME'，修改为ZSH_THEME="agnoster"
       > ----或者使用自己的主题----
       > https://github.com/jiangsai0502/WillFileStore
       > 1.把主题文件WillTheme.zsh-theme放入/Users/sai/.oh-my-zsh/themes
@@ -128,11 +139,12 @@
       > 最后插入一行：source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
       > source ~/.zshrc
       > ```
+      
     * 自动提示与命令补全
     
       > ```bash
       > cd ~/.oh-my-zsh/custom/plugins/
-      > git clone https://github.com/zsh-users/zsh-autosuggestions  --config http.proxy='http://127.0.0.1:1087'
+      > git clone https://github.com/zsh-users/zsh-autosuggestions  --config http.proxy='http://127.0.0.1:1081'
       > open ~/.zshrc
       > 搜索'plugins'，修改为plugins=(zsh-autosuggestions git)
       > ```
@@ -140,11 +152,26 @@
 * Sublime Text
 
     * Command + Control +G 一次性选择所有相同的词
-    * 插件（`command + shift + p`，输入 `install`, 然后点击 `Package Control: Install Package`）
-      1. ConvertToUTF8：解决乱码问题
-      2. ChineseLocalizations：中文汉化包
 
+    * 安装插件
 
+      ```bash
+      # 通过View->Show Console菜单打开命令行，输入
+      import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ',' ')).read())
+      # 回车自动安装
+      
+      # command+Shift+P，输入
+      install package
+      # 回车自动安装
+      
+      # 解决乱码问题：command+Shift+P，输入install package，弹出框，输入
+      ConvertToUTF8
+      # 回车自动安装
+      
+      # 中文汉化包：command+Shift+P，输入install package，弹出框，输入
+      ChineseLocalizations
+      # 回车自动安装
+      ```
 
 ### you-get / YouTube-dl
 
@@ -195,7 +222,12 @@
 
 #### 下载[喜马拉雅](https://github.com/zeakhold/xmlyfetcher)
 
-* 安装：npm install -g xmlyfetcher
+* 安装
+
+  ```bash
+  brew install node
+  npm install -g xmlyfetcher
+  ```
 
 * 使用
 

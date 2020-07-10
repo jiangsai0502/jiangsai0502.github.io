@@ -30,7 +30,7 @@
 
 [参考](https://zhuanlan.zhihu.com/p/102594554)
 
-
+![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200709230723.png)
 
 ### 将Gitee与Github保持同步
 
@@ -137,7 +137,7 @@
 
 > **关于GitHub的raw.githubusercontent.com无法链接的问题**
 >
-> 修改hosts解决掉此问题 [参考](https://www.ioiox.com/archives/62.html)
+> 方法1：修改hosts解决掉此问题 [参考](https://www.ioiox.com/archives/62.html)
 >
 > 1. 进入  [`IPAddress.com`](https://www.ipaddress.com/)  首页,输入  `raw.githubusercontent.com`
 >
@@ -161,5 +161,12 @@
 >    199.232.68.133 raw.githubusercontent.com
 >    ```
 >    
+>    : wq 存盘并退出vi
 > > 最后插入一行上面查到的 IP Address
+>
+> 方法2：修改DNS
+>
+> 设置DNS为114.114.114.114或者8.8.8.8
+>
+> ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200709230841.png)
 
