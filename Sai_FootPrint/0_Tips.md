@@ -183,3 +183,29 @@
 
 
 
+#### Mac莫名奇妙自动重启
+
+1. 关闭安全性与隐私，高级，“不活跃后退出登录”
+
+   <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200712215643.png" style="zoom:50%;" />
+
+2. 关闭 `autopoweroff` 
+
+   ```bash
+   pmset -g
+   
+   # 输出
+   λ sai [~/Downloads] → pmset -g
+   System-wide power settings:
+   Currently in use:
+    lidwake              1
+    autopoweroff         1
+    standbydelayhigh     86400
+    autopoweroffdelay    28800
+    standbydelaylow      10800
+    
+   # 关闭 autopoweroff
+   sudo pmset -a autopoweroff 0
+   ```
+
+   

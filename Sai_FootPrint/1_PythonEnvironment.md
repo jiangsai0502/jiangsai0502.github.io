@@ -25,22 +25,23 @@
 3. 替换源
 
    ```bash
-   $ conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
-   $ conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
-   $ conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge/
-   $ conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/msys2/
-   $ conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/bioconda/
-   $ conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/menpo/
+   # .condarc 文件
+   open ~/.condarc
    
-   $ conda config --set show_channel_urls yes
-   $ conda info
+   # 文件内容改为
+   channels:
+     - defaults
+   show_channel_urls: true
+   default_channels:
+     - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+     - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
+     - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
    ```
 
    > 报错：`CondaHTTPError: HTTP 000 CONNECTION FAILED for url <https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge/osx-64/current_repodata.json>`
    >
    > 解决：将https改为http即可
    >
-   > $ open ~/.condarc
 
 4. 升级conda：`conda upgrade conda`
 
@@ -154,8 +155,8 @@
    # 创建名为 py2 的python2.7的虚拟环境
    conda create -n py2 python=2.7
    
-   # 创建名为 py3 的python3.7的虚拟环境
-   conda create -n py3 python=3.7
+   # 创建名为 py3 的python3的虚拟环境
+   conda create -n py3 python=3
    
    # 激活虚拟环境py3
    source activate py3
@@ -193,12 +194,11 @@
     6. Auto Rename Tag - 同步修改html前后标签名
 2. 查看Python版本路径
     > ```bash
-    > $ which python
-    >    /Users/jiangsai02/opt/anaconda3/bin/python
-    > $ which python3
-    >    /Users/jiangsai02/opt/anaconda3/bin/python3
-    > ```
-
+    > which python ; which python3
+    >    # /Users/sai/opt/anaconda3/bin/python
+    > # /Users/sai/opt/anaconda3/bin/python3
+    >    ```
+    
 3. 配置VS Code中用户配置
     > code - preference - settings，点击右上角的open settings(UI)，输入
     > ```js
