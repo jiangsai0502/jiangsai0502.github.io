@@ -2,6 +2,8 @@
 
 #### 搜索论文步骤
 
+搜索文献
+
 * 谷歌学术搜索论文，拿到论文的DOI，`sci-hub`地址，搜索DOI
 
   ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200530162840.png)
@@ -11,7 +13,7 @@
   > 原理：文献默认都有PDF格式，没有显示是因为CNKI隐藏了
 
   ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200530163221.png)
-  
+
 * 知网PDF增加目录
 
   > 1. 上述方式下载的PDF都没目录
@@ -20,8 +22,6 @@
   ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200602123419.png)
 
   ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200602142722.png)
-
-----
 
 #### 免费下载知网、万方
 

@@ -1,17 +1,17 @@
 # 重装系统
 ### 常备软件安装
 
-| sougou     | 微信       | Chrome    | office                  |
-| ---------- | ---------- | --------- | ----------------------- |
-| PDF expert | snipaste   | itsycal   | istat menusistat menus  |
-| Picgo      | Snagit     | sublime   | Paste（官网下载helper） |
-| Permute    | QQ         | Mweb      | bettertouchtool         |
-| ScreenFlow | Axure      | 欧路      | go2shell（官网下载）    |
-| xcode      | Appcleaner | stretchly | GitHub Desktop          |
-| brew       | Anaconda   | Anki      | Parallels Desktop       |
-| Photoshop  | 百度云盘   | iMoive    | 网易邮箱大师            |
-| Typora     | XMind ZEN  | ename     | ShadowsocksX            |
-| ezip       |            | draw.io   | Dr. Unarchiver          |
+| sougou     | 微信        | Chrome    | office                  |
+| ---------- | ----------- | --------- | ----------------------- |
+| PDF expert | snipaste    | itsycal   | istat menusistat menus  |
+| Picgo      | Snagit      | sublime   | Paste（官网下载helper） |
+| Permute    | QQ          | Mweb      | bettertouchtool         |
+| ScreenFlow | Axure       | 欧路      | go2shell（官网下载）    |
+| xcode      | Appcleaner  | stretchly | GitHub Desktop          |
+| brew       | Anaconda    | Anki      | Parallels Desktop       |
+| Photoshop  | 百度云盘    | iMoive    | 网易邮箱大师            |
+| Typora     | XMind ZEN   | ename     | ShadowsocksX            |
+| ezip       | Caffeinated | draw.io   | Dr. Unarchiver          |
 
 ```bash
 # 安装 brew，选择清华源
@@ -322,8 +322,8 @@ rm ~/.curlrc
 1. 替换`Homebrew`源
 
    ```bash
-   $ cd "$(brew --repo)"
-   $ git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+   cd "$(brew --repo)";
+   git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
    ```
 
    > `"$(brew --repo)"`是用来自动指向Homebrew的目录的
@@ -331,15 +331,15 @@ rm ~/.curlrc
 2. 替换`homebrew-core`源
 
    ```bash
-   $ cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
-   $ git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+   cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core";
+   git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
    ```
 
 3. 替换`homebrew-cask`源
 
    ```bash
-   $ cd "$(brew --repo)"/Library/Taps/homebrew/homebrew-cask
-   $ git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
+   cd "$(brew --repo)"/Library/Taps/homebrew/homebrew-cask;
+   git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
    ```
 
 
