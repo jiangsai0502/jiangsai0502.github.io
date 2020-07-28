@@ -987,3 +987,25 @@ if __name__ == '__main__':
     request(url)
 ```
 
+
+
+#### 下载荔枝音频
+
+<img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200729012642.png" style="zoom:50%;" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
