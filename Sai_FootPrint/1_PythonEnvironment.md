@@ -143,7 +143,6 @@
 
    ```bash
    # 查看当前系统下的虚拟环境，安装路径
-   	# base                  *  /Users/saijiang/opt/anaconda3
    conda info --envs
    
    # 激活base虚拟环境(base是默认创建的)

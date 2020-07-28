@@ -10,15 +10,15 @@
 
 4. 下载 [chromedriver驱动器](https://sites.google.com/a/chromium.org/chromedriver/home)，因为Chrome 版本是 79.0.3945.130，因此ChromeDriver版本选 79.0.3945.36
 
-5. 将` chromedriver驱动器` 移动到虚拟环境中 `/opt/anaconda3/envs/py3/bin/`
+5. 将` chromedriver驱动器` 移动到虚拟环境中 `/Users/sai/opt/anaconda3/envs/py3_demo/bin`
 
-   1. 先确定虚拟环境位置：`which python`得知`/opt/anaconda3/envs/py3/bin/python/`
+   1. 先确定虚拟环境位置：`which python`得知`/Users/sai/opt/anaconda3/envs/py3_demo/bin/python/`
 
 6. 将` chromedriver驱动器`加入环境变量
 
    `open ~/.bash_profile`
 
-   最后插入一行：`export PATH=$PATH:/opt/anaconda3/envs/py3/bin/chromedriver`
+   最后插入一行：`export PATH=$PATH:/Users/sai/opt/anaconda3/envs/py3_demo/bin/chromedriver`
 
    `source ~/.bash_profile`
 
@@ -34,6 +34,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver import ActionChains
 import os, requests, time, json, pickle
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 def BasicInfo(driver):
     driver.get('https://www.baidu.com/')
@@ -245,18 +246,41 @@ def GetSetCookie(driver):
         # time.sleep(2)
         driver.refresh()
 
+def GetResousce(driver):
+    driver.get("https://www.baidu.com/")
+    #静态资源链接存储集合
+    urls = []
+    #获取静态资源有效链接
+    for log in driver.get_log('performance'):
+        if 'message' not in log:
+                continue
+        log_entry = json.loads(log['message'])
+        try:
+            #该处过滤了data:开头的base64编码引用和document页面链接
+                if "data:" not in log_entry['message']['params']['request']['url'] and 'Document' not in  log_entry['message']['params']['type']:
+                    urls.append(log_entry['message']['params']['request']['url'])
+        except Exception as e:
+                pass
+    # print(urls)
+    for url in urls:
+        if url.endswith('.woff2'):
+            print('-'*20,'\n',url,'\n','-'*20)
+
 if __name__ == '__main__':
     try:
         # 创建浏览器
-        path = "/Users/sai/miniconda3/envs/py3_428/bin/chromedriver"
+        path = "/Users/sai/opt/anaconda3/envs/py3_demo/bin/chromedriver"
         options = Options()
+        # 获取资源文件会用到类DesiredCapabilities
+        desiredCapabilities = DesiredCapabilities.CHROME
+        desiredCapabilities['goog:loggingPrefs'] = {'performance': 'ALL'}
         # True为无头浏览器
         # options.headless = True  
         # 托管当前打开的浏览器，先命令行打开浏览器（见参考2）
         options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
-        driver = webdriver.Chrome(executable_path=path, options=options)
-        # 每隔0.5秒检查一次元素是否加载完成，最多等10秒
-        driver.implicitly_wait(5)
+        driver = webdriver.Chrome(executable_path=path, options=options, desired_capabilities=desiredCapabilities)
+        # 每隔0.5秒检查一次元素是否加载完成，最多等6秒
+        driver.implicitly_wait(6)
 
         # BasicInfo(driver)
         # BasicUsage(driver)
@@ -268,7 +292,8 @@ if __name__ == '__main__':
         # KeyActions(driver)
         # GetSetCookie(driver)
         # Scroll(driver)
-        NextPage(driver)
+        # NextPage(driver)
+        GetResousce(driver)
         
     finally:
         # 关闭当前标签
@@ -282,16 +307,18 @@ if __name__ == '__main__':
 2. [mac selenium 连接已经打开的chrome浏览器](https://blog.csdn.net/w5688414/article/details/106032555/)
 
    ```bash
-   1. 向~/.zshrc添加环境变量
-     open ~/.zshrc
-     export PATH="/Applications/Google Chrome.app/Contents/MacOS:$PATH"
-     source ~/.zshrc
-   2. 打开chrome
-   	–remote-debugging-port=9222：指定启动端口9222
-   	–user-data-dir="/ChromeProfile"：指定浏览器数据存储目录
-   	Google\ Chrome --remote-debugging-port=9222 --user-data-dir="~/ChromeProfile"
-   3. 程序增加1行
-   	options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
+   # 1. 向~/.zshrc添加环境变量
+   open ~/.zshrc
+   export PATH="/Applications/Google Chrome.app/Contents/MacOS:$PATH"
+   source ~/.zshrc
+   
+   # 2. 打开chrome
+   # –remote-debugging-port=9222：指定启动端口9222
+   # –user-data-dir="/ChromeProfile"：指定浏览器数据存储目录
+   cd ~/Documents/Temp
+   Google\ Chrome --remote-debugging-port=9222 --user-data-dir="~/ChromeProfile"
+   # 3. 程序增加1行
+   options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
    ```
 
 3. 对于鼠标悬停出现，鼠标移开消失的元素，可以冻住页面
@@ -301,6 +328,8 @@ if __name__ == '__main__':
       <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200627232839.png" style="zoom:30%;" />
 
 4. [selenium 键盘操作 键盘对应的key](https://blog.csdn.net/chang995196962/article/details/106499208)
+
+5. [通过DesiredCapabilities获取请求的资源文件](https://stackoverflow.com/questions/27644615/getting-chrome-performance-and-tracing-logs)
 
 
 

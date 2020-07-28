@@ -34,10 +34,11 @@ print("你输入的话是：",sentence)
 
 #### 测试程序清空shell
 
-```javascript
+```python
 import os
 input("")
-os.system('clear')
+# 调用系统命令
+os.system('pwd;clear')
 ```
 
 #### 格式化字符串 f-string
