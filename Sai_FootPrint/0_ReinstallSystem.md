@@ -379,9 +379,29 @@ rm ~/.curlrc
    2. 配置Alfred
 
       1. [下载Alfred workflow脚本](https://link.zhihu.com/?target=https%3A//github.com/crimx/ext-saladict/files/3711425/saladict.alfredworkflow.zip)
-      2. 双击，import脚本
-      3. 设置hotkey：`option + 1`
       
+      2. 双击，import脚本
+      
+      3. 设置hotkey：`control + ~`
+   
+      4. 修改Run NSAppleScript脚本
+   
+         <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200731013451.png" style="zoom:50%;" />
+   
+         ```bash
+      on alfred_script(q)
+           tell application "System Events"
+      	# 快捷键打开沙拉词典
+         	key code 37 using {control down, command down}
+      	delay 0.5
+         	# 焦点从沙拉词典移回源文件
+      	key code 48 using {command down}
+           end tell
+      end alfred_script
+         ```
+   
+         
+   
    3. 小技巧
 
       1. 沉浸式的`黑暗模式`
@@ -391,17 +411,17 @@ rm ~/.curlrc
       2. PDF和沙拉查词并列显示
 
          ![0Vh7oi](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/uPic/0Vh7oi.png)
-
+   
       3. 积累生词
 
          ![ZTryoy](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/uPic/ZTryoy.png)
 
       4. 生词导入Anki
-
+   
          1. Anki中创建新卡片类型
-
+   
             1. 点开 `Anki -> Tools -> Manage Note Types -> Add` 
-
+   
             2. 选最基础的 `Add: Basic`，填写名字，如 Saladict，添加成功后，点击 `Fields` 编辑字段
 
             3. 默认提供了 `Front` 和 `Back` ，全部删掉或直接改名成 `Word`, `Translation`，完成后， 点击 `Cards` 编辑卡片模板
@@ -411,35 +431,35 @@ rm ~/.curlrc
                * Front Template
 
                  ```html
-                 <p>{{Word}}</p>
+              <p>{{Word}}</p>
                  ```
-
+   
                * Back Template
 
                  ```html
-                 {{FrontSide}}
+              {{FrontSide}}
                  
-                 <hr id=answer>
+              <hr id=answer>
                  
                  <p>{{Translation}}</p>
                  ```
-
+   
          2. Saladict 生词本导出生词
-
+   
             ![Sw0Zqw](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/uPic/Sw0Zqw.png)
-
+   
             1. 选`换行替换为空格`
-
+   
             2. 模板设为
-
+   
                ```html
                %text% ` %trans%
                ```
-
+   
          3. Anki导入生词
-
+   
             ![DPmCzS](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/uPic/DPmCzS.png)
-
+   
             1. 导入类型选 `Text separated by tabs or semicolons`
             2. `Type` 选 `Saladict`
             3. `Fields separated by: Space` 。我们换成 `
