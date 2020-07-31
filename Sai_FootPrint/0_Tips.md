@@ -209,3 +209,45 @@
    ```
 
    
+
+
+
+#### Applescript入门
+
+```bash
+# tell指明脚本要控制的程序对象
+tell current application
+	
+	# 变量赋值
+	set str to "World"
+	# 字符串展示
+	display dialog "Hello " & str
+	
+	set temp to 5
+	
+	# 流程语句
+	if temp < 3 then
+		# 整型转字符型
+		display dialog (temp as text) & " < 3"
+	else if temp > 4 then
+		display dialog (temp as text) & " > 4"
+	end if
+	
+	# 条件循环
+	repeat until temp < 4
+		display dialog "until条件循环中 temp is " & (temp as text)
+		set temp to temp - 1
+	end repeat
+	
+	repeat while temp > 2
+		display dialog "while条件循环中 temp is " & (temp as text)
+		set temp to temp - 1
+	end repeat
+	
+	# 限定次数循环，3次
+	repeat 3 times
+		display dialog "限定次数循环中 temp is " & (temp as text)
+	end repeat
+end tell
+```
+
