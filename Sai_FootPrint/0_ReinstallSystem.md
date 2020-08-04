@@ -14,9 +14,6 @@
 | ezip       | Caffeinated | draw.io   | Dr. Unarchiver          |
 
 ```bash
-# 安装 brew，选择清华源
-/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
-xclient.info
 brew install youtube-dl
 
 brew install you-get
@@ -201,8 +198,8 @@ DOWN  add volume -2
 `youtube-dl https://www.youtube.com/watch?v=n_6p-1J551Y`
 * 下载默认类型视频（有字幕）
 `youtube-dl --write-auto-sub https://www.youtube.com/watch?v=n_6p-1J551Y`
-* 下载**字幕**（无视频）
-`youtube-dl --write-auto-sub --skip-download https://www.youtube.com/watch?v=n_6p-1J551Y`
+* 单独下载**字幕**（无视频）
+`youtube-dl --proxy 127.0.0.1:1081 --write-sub --skip-download https://www.youtube.com/watch?v=n_6p-1J551Y`
 * 查看视频所有类型
 `youtube-dl -F https://www.youtube.com/watch?v=n_6p-1J551Y`
 * 查看视频所有字幕
@@ -286,7 +283,9 @@ DOWN  add volume -2
 
 `git clone https://github.com/altercation/solarized/ --config http.proxy='http://127.0.0.1:1087'`
 
+#### Chrome 搜索后新标签打开链接
 
+![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200216125118.png)
 
 #### brew 挂代理方式
 
@@ -297,14 +296,6 @@ open ~/.curlrc
 用完可以删掉该文件，否则墙内资源会受限
 rm ~/.curlrc
 ```
-
-
-
-#### Chrome 搜索后新标签打开链接
-
-![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200216125118.png)
-
-
 
 #### brew下载慢
 
@@ -319,27 +310,39 @@ rm ~/.curlrc
 
 **解决方案：[参考](https://www.cnblogs.com/tp0829/p/Homebrew.html)**
 
-1. 替换`Homebrew`源
+1. `Homebrew`源
 
    ```bash
-   cd "$(brew --repo)";
-   git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+   # 查看brew镜像源
+   git -C "$(brew --repo)" remote -v
+   # 修改brew镜像源
+   git -C "$(brew --repo)" remote set-url origin https://mirrors.ustc.edu.cn/brew.git
    ```
 
    > `"$(brew --repo)"`是用来自动指向Homebrew的目录的
 
-2. 替换`homebrew-core`源
+2. `homebrew-core`源
 
    ```bash
-   cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core";
-   git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+   # 查看homebrew-core镜像源
+   git -C "$(brew --repo homebrew/core)" remote -v
+   # 修改homebrew-core镜像源
+   git -C "$(brew --repo homebrew/core)" remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
    ```
 
 3. 替换`homebrew-cask`源
 
    ```bash
-   cd "$(brew --repo)"/Library/Taps/homebrew/homebrew-cask;
-   git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
+   # 查看homebrew-cask镜像源（需要安装后才能查看）
+   git -C "$(brew --repo homebrew/cask)" remote -v
+   # 修改homebrew-cask镜像源（需要安装后才能修改）
+   git -C "$(brew --repo homebrew/cask)" remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
+   ```
+   
+4. 更新替换源
+
+   ```bash
+   brew update
    ```
 
 

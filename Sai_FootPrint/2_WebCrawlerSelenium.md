@@ -315,7 +315,7 @@ if __name__ == '__main__':
    # 2. 打开chrome
    # –remote-debugging-port=9222：指定启动端口9222
    # –user-data-dir="/ChromeProfile"：指定浏览器数据存储目录
-   cd ~/Documents/Temp
+   cd ~/Documents/Temp;
    Google\ Chrome --remote-debugging-port=9222 --user-data-dir="~/ChromeProfile"
    # 3. 程序增加1行
    options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
@@ -473,10 +473,10 @@ def GetResousce(driver):
     res_urls = []
     tar_url = ''
     
-    # 获取所有视频连接的元素
-    video_list = driver.find_elements_by_xpath('//*[@id="videoDetail"]/li[4]/ul/li')
+    # 获取所有视频（真题解析班）
+    video_list = driver.find_elements_by_xpath('//*[@id="videoDetail"]/li')
     for video_url in video_list:
-        # 逐个点击视频连接
+        # 逐个点击视频链接
         video_url.click()
         time.sleep(2)
         for log in driver.get_log('performance'):
@@ -489,14 +489,39 @@ def GetResousce(driver):
             except Exception as e:
                     pass
         Movie_Name = driver.find_element_by_xpath('//li[@class="videoZhangListThis"]').text
-        print(Movie_Name)
         for url in res_urls:
             if url.endswith('.mp4'):
-                # print('-'*20,'\n',url,'\n','-'*20)
+                print(url)
                 tar_url = f'you-get {url} -O {Movie_Name}'
         print(tar_url,'\n')
         os.system(tar_url)
-        
+    # 获取所有模块(精讲班)
+    # model_list = driver.find_elements_by_xpath('//*[@id="videoDetail"]/li')
+    # for model_url in model_list:
+    #     # 逐个点击模块链接
+    #     model_url.click()
+    #     time.sleep(2)
+    #     video_list = model_url.find_elements_by_xpath('ul/li')
+    #     #获取所有视频连接的元素
+    #     for video_url in video_list:
+    #         # 逐个点击视频链接
+    #         video_url.click()
+    #         time.sleep(2)
+    #         for log in driver.get_log('performance'):
+    #             if 'message' not in log:
+    #                     continue
+    #             log_entry = json.loads(log['message'])
+    #             try:
+    #                     if "data:" not in log_entry['message']['params']['request']['url'] and 'Document' not in  log_entry['message']['params']['type']:
+    #                         res_urls.append(log_entry['message']['params']['request']['url'])
+    #             except Exception as e:
+    #                     pass
+    #         Movie_Name = driver.find_element_by_xpath('//li[@class="videoZhangListThis"]').text
+    #         for url in res_urls:
+    #             if url.endswith('.mp4'):
+    #                 tar_url = f'you-get {url} -O {Movie_Name}'
+    #         print(tar_url,'\n')
+    #         os.system(tar_url)
 
 if __name__ == '__main__':
     try:
