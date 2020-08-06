@@ -292,9 +292,14 @@ DOWN  add volume -2
 ```bash
 touch ~/.curlrc
 open ~/.curlrc
-输入代理地址：proxy=127.0.0.1:8087
+输入代理地址：proxy=127.0.0.1:1081
 用完可以删掉该文件，否则墙内资源会受限
 rm ~/.curlrc
+
+# 单个命令挂代理1
+http_proxy=http://127.0.0.1:1081 https_proxy=http://127.0.0.1:1081 brew install PACKAGE
+# 单个命令挂代理2
+ALL_PROXY=socks5://127.0.0.1:1081 brew install PACKAGE
 ```
 
 #### brew下载慢
@@ -344,6 +349,8 @@ rm ~/.curlrc
    ```bash
    brew update
    ```
+
+   
 
 
 #### pip安装慢

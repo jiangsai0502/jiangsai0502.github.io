@@ -550,6 +550,89 @@ if __name__ == '__main__':
         driver.quit()
 ```
 
+##### 下载得到音频
+
+```python
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver import ActionChains
+import os, requests, time, json, pickle
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
+def GetResousce(driver):
+    driver.get('https://www.biji.com/article/ml9WNdP1QvaeKYG0PJAzx82Dyog0BZ')
+    res_urls = []
+    tar_url = ''
+    
+    # 获取条目数量
+    Model_list = driver.find_elements_by_xpath('//*[@id="app"]/div[2]/div[2]/div[1]/div[3]/div/div[1]/div')
+    flag = False
+    for model in Model_list[3:]:
+        Item_list = model.find_elements_by_xpath('ul/li')
+        for item in Item_list:
+            # 获取所有可点击的音频按钮数量
+            if not item.find_elements_by_xpath('div/div[2]/div[2]'):
+                continue
+            else:
+                # selenium模拟点击被网页检查
+                # item.find_element_by_xpath('div/div[2]/div[2]').click()
+                # js模拟点击没问题
+                temp = item.find_element_by_xpath('div/div[2]/div[2]')
+                driver.execute_script("arguments[0].click();", temp)
+                time.sleep(2)
+            for log in driver.get_log('performance'):
+                if 'message' not in log:
+                        continue
+                log_entry = json.loads(log['message'])
+                try:
+                        if "data:" not in log_entry['message']['params']['request']['url'] and 'Document' not in  log_entry['message']['params']['type']:
+                            res_urls.append(log_entry['message']['params']['request']['url'])
+                except Exception as e:
+                        pass
+            # 音频名称
+            Audio_Name = driver.find_element_by_xpath('//*[@id="app"]/div[4]/div/div/div[1]/div[2]/div[2]/h5/em').text
+            for url in res_urls:
+                if url.endswith('.m3u8'):
+                    # print(url)
+                    tar_url = f'ffmpeg -i {url} -c copy {Audio_Name}.m4a'
+            print(tar_url,'\n')
+            if Audio_Name=='第111讲丨违约与赔偿':
+                flag = True
+            if flag:
+                os.system(tar_url)
+            
+if __name__ == '__main__':
+    try:
+        # 创建浏览器
+        path = "/Users/sai/opt/anaconda3/envs/py3_demo/bin/chromedriver"
+        options = Options()
+        # 获取资源文件会用到类DesiredCapabilities
+        desiredCapabilities = DesiredCapabilities.CHROME
+        desiredCapabilities['goog:loggingPrefs'] = {'performance': 'ALL'}
+        # 设置pageLoadStrategy不等网络加载完也可以操作
+        # desiredCapabilities["pageLoadStrategy"] = "none"
+        # True为无头浏览器
+        # options.headless = True
+        # 托管当前打开的浏览器，先命令行打开浏览器（见参考2）
+        options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
+        driver = webdriver.Chrome(executable_path=path, options=options, desired_capabilities=desiredCapabilities)
+        # 每隔0.5秒检查一次元素是否加载完成，最多等10秒
+        driver.implicitly_wait(5)
+
+        GetResousce(driver)
+        
+    finally:
+        # 关闭当前标签
+        driver.close()
+        # 关闭当前浏览器
+        driver.quit()
+```
+
 
 
 
