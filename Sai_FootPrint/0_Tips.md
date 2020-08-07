@@ -130,8 +130,6 @@
 
 1. MurGaa Recoder
 
-
-
 #### Mac txt乱码问题
 
 1. cd [文件所在目录]
@@ -143,20 +141,14 @@
    //GB2312是常用中文编码，其他还有gbk等，UTF-8是mac能够识别的编码
    ```
 
-
-
 #### Mac 终端翻页
 
 1. 回车向下翻一行
 2. 空格向下翻一页
 
-
-
 #### 字符串转成驼峰式
 
 * `print('INT NOT NULL UNIQUE PRIMARY KEY AUTO_INCREMENT'.title())`
-
-
 
 #### Mac 删除文件和文件夹的命令
 
@@ -250,4 +242,10 @@ tell current application
 	end repeat
 end tell
 ```
+
+##### QQ截图OCR
+
+![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200807111739.png)
+
+##### QQ截图录屏转gif
 
