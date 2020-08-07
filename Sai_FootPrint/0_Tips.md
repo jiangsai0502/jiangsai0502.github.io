@@ -247,5 +247,7 @@ end tell
 
 ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200807111739.png)
 
+![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200807113607.png)
+
 ##### QQ截图录屏转gif
 
