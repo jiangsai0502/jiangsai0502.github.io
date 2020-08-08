@@ -251,3 +251,8 @@ end tell
 
 ##### QQ截图录屏转gif
 
+
+
+##### Ubuntu安装到U盘
+
+![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200808164137.png)
