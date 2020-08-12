@@ -256,3 +256,8 @@ end tell
 ##### Ubuntu安装到U盘
 
 ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200808164137.png)
+
+##### Win10安装到U盘 - Windows To Go
+
+[视频参考](https://www.youtube.com/watch?v=8CCGPEiD7Vw) [文字参考](https://sspai.com/post/44699)
+

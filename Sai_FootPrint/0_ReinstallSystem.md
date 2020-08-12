@@ -170,6 +170,26 @@ DOWN  add volume -2
       # 回车自动安装
       ```
 
+##### finder排序规则
+
+<img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200808210729.png" style="zoom:40%;" />
+
+##### Alfred搜索排除某个文件夹
+
+1. 系统偏好设置 - Spotlight - 隐私
+
+2. 可见文件夹：直接添加要排除的文件夹
+
+   <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200808232048.png" style="zoom:50%;" />
+
+3. 不可见文件夹：Finder - “前往文件夹” - 输入路径，进入文件夹 - 把要排除的文件夹拖进 Spotlight 的 隐私 窗口
+
+4. 清空alfred缓存：调出alfred，输入reload回车
+
+##### Alfred文件动作
+
+![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200809145254.png)
+
 ### you-get / YouTube-dl
 
 **you-get用法**
