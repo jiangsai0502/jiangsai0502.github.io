@@ -218,6 +218,8 @@ DOWN  add volume -2
 `youtube-dl https://www.youtube.com/watch?v=n_6p-1J551Y`
 * 下载默认类型视频（有字幕）
 `youtube-dl --write-auto-sub https://www.youtube.com/watch?v=n_6p-1J551Y`
+* 下载视频（指定名称）
+`youtube-dl https://www.youtube.com/watch?v=n_6p-1J551Y -o '你要的名字'`
 * 单独下载**字幕**（无视频）
 `youtube-dl --proxy 127.0.0.1:1081 --write-sub --skip-download https://www.youtube.com/watch?v=n_6p-1J551Y`
 * 查看视频所有类型

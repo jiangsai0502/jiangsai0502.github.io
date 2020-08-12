@@ -482,34 +482,35 @@ for i in video_list:
 
   ```python
   import os
-  g = os.walk('/Users/sai/Desktop/tmp/深度思维')
   
-  with open('/Users/sai/Desktop/tmp/demo.txt', 'r', encoding="utf-8") as f:
-   lines = f.readlines()  # 读取所有行
+  address = input('(喜马拉雅重命名)输入要处理的目录：')
+  file_address = address + '/demo.txt'
+  g = os.walk(address)
+  
+  with open(file_address, 'r', encoding="utf-8") as f:
+      lines = f.readlines()  # 读取所有行
   
   # os.walk()产生3-元组 (dirpath, dirnames,folder_names)【文件夹路径, 文件夹名字, 文件名】
   for path, dir_list, file_list in g:
    # 去除系统文件.DS_Store
-   if '.DS_Store' in file_list:
-       file_list.remove('.DS_Store')
-   if file_list:
-       # 文件排序，保证原始文件名从小到大
-       file_list.sort()
-       folder_name = path.split('/')[-1]
-       for f_name in file_list:
+      if 'demo.txt' in file_list:
+          file_list.remove('demo.txt')
+      if file_list:
+          folder_name = path.split('/')[-1]
+          for f_name in file_list:
            # 利用 os.path.join() 拼接成完整文件名
-           old_name = os.path.join(path, f_name)
-           # 扩展名
-           suffix = '.' + f_name.split('.')[-1]
-           # 比对文件名列表，与列表一致时进行替换名称
-           for line in lines:
-               # 判断如文件名“01-序言\n” = “序言.mp3”
-               if line.replace('\n', '')[3:] == f_name.replace('.mp3', ''):
-                   new_name = os.path.join(path,
-                                           line.replace('\n', '') + suffix)
-                   os.rename(old_name, new_name)
-                   lines.remove(line)  # 匹配成功后从列表删除
-                   break  # break跳出整个for循环，continue跳出本次循环
+              old_name = os.path.join(path, f_name)
+              # 扩展名
+              suffix = '.' + f_name.split('.')[-1]
+              # 比对文件名列表，与列表一致时进行替换名称
+              for line in lines:
+                  # 判断如文件名“01-序言\n” = “序言.mp3”
+                  if line.replace('\n', '')[3:] == f_name.replace('.mp3', ''):
+                      new_name = os.path.join(path, line.replace('\n', '') + suffix)
+                      os.rename(old_name, new_name)
+                      lines.remove(line)  # 匹配成功后从列表删除
+                      break  # break跳出整个for循环，continue跳出本次循环
+  
   ```
 
 ##### 修改文件名中的汉字数字

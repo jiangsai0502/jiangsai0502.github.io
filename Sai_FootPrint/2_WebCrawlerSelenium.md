@@ -82,7 +82,7 @@ def CreateTab(driver):
     # 获取当前标签的句柄
     main_handle = driver.current_window_handle
     # 切换标签
-    driver.switch_to.window(handles[1])
+    driver.switch_to.window(handles[-1])
     # 新标签打开网页
     driver.get('https://www.sogou.com/')
 
@@ -550,7 +550,7 @@ if __name__ == '__main__':
         driver.quit()
 ```
 
-##### 下载得到音频
+##### 下载《得到》音频
 
 ```python
 from selenium import webdriver
@@ -608,32 +608,90 @@ def GetResousce(driver):
             
 if __name__ == '__main__':
     try:
-        # 创建浏览器
         path = "/Users/sai/opt/anaconda3/envs/py3_demo/bin/chromedriver"
         options = Options()
-        # 获取资源文件会用到类DesiredCapabilities
         desiredCapabilities = DesiredCapabilities.CHROME
         desiredCapabilities['goog:loggingPrefs'] = {'performance': 'ALL'}
-        # 设置pageLoadStrategy不等网络加载完也可以操作
-        # desiredCapabilities["pageLoadStrategy"] = "none"
-        # True为无头浏览器
-        # options.headless = True
-        # 托管当前打开的浏览器，先命令行打开浏览器（见参考2）
         options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
         driver = webdriver.Chrome(executable_path=path, options=options, desired_capabilities=desiredCapabilities)
-        # 每隔0.5秒检查一次元素是否加载完成，最多等10秒
         driver.implicitly_wait(5)
 
         GetResousce(driver)
         
     finally:
-        # 关闭当前标签
         driver.close()
-        # 关闭当前浏览器
         driver.quit()
 ```
 
+##### 下载荔枝
 
+```python
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver import ActionChains
+import os, requests, time, json, pickle
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
+def GetResousce(driver):
+    driver.get('https://m.lizhi.fm/vod/voicesheet/30161735618871067')
+    res_urls = []
+    tar_url = ''
+    
+    # 获取条目数量
+    Url_list = driver.find_elements_by_xpath('//*[@id="app"]/div/div[5]/a')
+    for url in Url_list:
+        down_url = url.get_attribute('href')
+        # 新建标签
+        driver.execute_script('window.open();')
+        handles = driver.window_handles
+        main_handle = driver.current_window_handle
+        print(driver.title)
+        # 切换到最后一个标签
+        driver.switch_to.window(handles[-1])
+        driver.get(down_url)
+        print(driver.title)
+        for log in driver.get_log('performance'):
+            if 'message' not in log:
+                    continue
+            log_entry = json.loads(log['message'])
+            try:
+                    if "data:" not in log_entry['message']['params']['request']['url'] and 'Document' not in  log_entry['message']['params']['type']:
+                        res_urls.append(log_entry['message']['params']['request']['url'])
+            except Exception as e:
+                    pass
+        # 音频名称
+        Audio_Name = driver.find_element_by_xpath('//*[@id="app"]/div/div[2]/h1').text.replace(' ', '').replace('(', '').replace(')', '')
+        for url in res_urls:
+            if url.endswith('.mp3'):
+                tar_url = f'youtube-dl {url} -o {Audio_Name}.mp3'
+        print(tar_url,'\n')
+        os.system(tar_url)
+        # 关闭标签
+        driver.close()
+        # handle切回主标签
+        driver.switch_to.window(main_handle)
+            
+if __name__ == '__main__':
+    try:
+        path = "/Users/sai/opt/anaconda3/envs/py3_demo/bin/chromedriver"
+        options = Options()
+        desiredCapabilities = DesiredCapabilities.CHROME
+        desiredCapabilities['goog:loggingPrefs'] = {'performance': 'ALL'}
+        options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
+        driver = webdriver.Chrome(executable_path=path, options=options, desired_capabilities=desiredCapabilities)
+        driver.implicitly_wait(5)
+
+        GetResousce(driver)
+        
+    finally:
+        driver.close()
+        driver.quit()
+```
 
 
 
