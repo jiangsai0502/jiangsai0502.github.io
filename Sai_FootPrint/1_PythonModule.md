@@ -513,6 +513,29 @@ for i in video_list:
   
   ```
 
+##### 修改文件时间
+
+```python
+import os
+path = '/Users/sai/Desktop/tmp/计算广告'
+# 获取目录下所有文件名
+g = os.walk(path)
+# 跳转进入该目录
+os.chdir(path)
+cmd = 'touch -m '
+
+# os.walk()产生3-元组 (dirpath, dirnames,folder_names)【文件夹路径, 文件夹名字, 文件名】
+for path, dir_list, file_list in g:
+    if file_list:
+        # 文件排序，保证原始文件名从小到大。默认sort(reverse = False)升序，reverse = True降序
+        file_list.sort(reverse = True)
+        for f_name in file_list:
+            var = os.system(cmd + f_name)
+            print(f'执行码是：{var}')
+```
+
+
+
 ##### 修改文件名中的汉字数字
 
 ```python

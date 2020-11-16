@@ -623,6 +623,66 @@ if __name__ == '__main__':
         driver.quit()
 ```
 
+```python
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver import ActionChains
+import os, requests, time, json, pickle
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
+def GetResousce(driver):
+    driver.get('https://www.dedao.cn/article/7EGBgdkRbn1mKg3ngKY890D3rvPOAN')
+    res_urls = []
+    tar_url = ''
+
+    # 获取条目数量
+    Model_list = driver.find_elements_by_xpath('//*[@id="app"]/div[2]/div[2]/div[2]/div[3]/div/div[1]/ul/li')
+    for model in Model_list:
+        temp = model.find_element_by_xpath('div/div[2]/div[2]')
+        driver.execute_script("arguments[0].click();", temp)
+        time.sleep(2)
+
+        for log in driver.get_log('performance'):
+            if 'message' not in log:
+                    continue
+            log_entry = json.loads(log['message'])
+            try:
+                    if "data:" not in log_entry['message']['params']['request']['url'] and 'Document' not in  log_entry['message']['params']['type']:
+                        res_urls.append(log_entry['message']['params']['request']['url'])
+            except Exception as e:
+                    pass
+        # 音频名称
+        Audio_Name = driver.find_element_by_xpath('//*[@id="app"]/div[4]/div/div/div[1]/div[2]/div[2]/h5/em').text.replace(' ', '').replace('|', '-')
+        for url in res_urls:
+            if url.endswith('.m3u8'):
+                tar_url = f'ffmpeg -i {url} -c copy {Audio_Name}.m4a'
+        print(tar_url,'\n')
+        os.system(tar_url)
+
+if __name__ == '__main__':
+    try:
+        path = "/Users/sai/opt/anaconda3/envs/py3_demo/bin/chromedriver"
+        options = Options()
+        desiredCapabilities = DesiredCapabilities.CHROME
+        desiredCapabilities['goog:loggingPrefs'] = {'performance': 'ALL'}
+        options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
+        driver = webdriver.Chrome(executable_path=path, options=options, desired_capabilities=desiredCapabilities)
+        driver.implicitly_wait(5)
+
+        GetResousce(driver)
+
+    finally:
+        driver.close()
+        driver.quit()
+```
+
+
+
 ##### 下载荔枝
 
 ```python
