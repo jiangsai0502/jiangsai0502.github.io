@@ -728,7 +728,7 @@ for path, dir_list, file_list in g:
 
    3. 使用`ffmpeg`下载`index-v1-a1.m3u8`播放列表中所有的视频，然后直接合并成一个完整视频
 
-      `ffmpeg -i http://lmsmedia.bnu.edu.cn/hls/http/lms.bnu.edu.cn/api/uploads/videos/4569/vod/index-v1-a1.m3u8 -c copy OUTPUT.mp4`
+      `ffmpeg -i 'http://lmsmedia.bnu.edu.cn/hls/http/lms.bnu.edu.cn/api/uploads/videos/4569/vod/index-v1-a1.m3u8' -c copy OUTPUT.mp4`
 
 #### 2. 下载加密视频流m3u8中的ts视频片段
 
@@ -744,12 +744,12 @@ for path, dir_list, file_list in g:
 
    1. 方法1：使用包含加密信息的完整m3u8链接
 
-      `ffmpeg -i http://media.learn.baidu.com/v1/kanbaidu/v/26cc8826-9009-4ba6-96c9-26545f96e251/b2ccfd03-c2d3-4d84-9842-7bbb8f121029/camera_out_low.m3u8?authorization=bce-auth-v1%2xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -c copy 视频名.mp4`
+      `ffmpeg -i 'http://media.learn.baidu.com/v1/kanbaidu/v/26cc8826-9009-4ba6-96c9-26545f96e251/b2ccfd03-c2d3-4d84-9842-7bbb8f121029/camera_out_low.m3u8?authorization=bce-auth-v1%2xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' -c copy 视频名.mp4`
 
    2. 方法2：使用参数忽略加密报错`-protocol_whitelist "file,http,https,tcp,tls"`
 
       1. 下载m3u8到本地：`camera_out_high.m3u8`
-      2. `ffmpeg -protocol_whitelist "file,http,https,tcp,tls" -i camera_out_low.m3u8  -c copy OUTPUT.mp4`
+      2. `ffmpeg -protocol_whitelist "file,http,https,tcp,tls" -i 'camera_out_low.m3u8'  -c copy OUTPUT.mp4`
 
 #### 3. 截取视频
 
