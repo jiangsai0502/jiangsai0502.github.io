@@ -513,7 +513,7 @@ for i in video_list:
   
   ```
 
-##### 修改文件时间
+##### 批量修改文件时间
 
 ```python
 import os

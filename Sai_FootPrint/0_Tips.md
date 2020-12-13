@@ -261,3 +261,10 @@ end tell
 
 [视频参考](https://www.youtube.com/watch?v=8CCGPEiD7Vw) [文字参考](https://sspai.com/post/44699)
 
+
+
+####  word表格插入行快捷键
+
+1. 表格最后一行插入行：光标定位到表格末尾，按**Tab**即可
+2. 表格中间一行插入行：光标定位到中间一行，按**Enter**即可
+
