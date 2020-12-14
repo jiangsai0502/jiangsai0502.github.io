@@ -268,3 +268,10 @@ end tell
 1. 表格最后一行插入行：光标定位到表格末尾，按**Tab**即可
 2. 表格中间一行插入行：光标定位到中间一行，按**Enter**即可
 
+
+
+#### Excel vlookup用法
+
+* [参考1](https://zhuanlan.zhihu.com/p/29161495)，[参考2](https://zhidao.baidu.com/question/1734379668253114707.html)
+
+* **坑**：公式：VLOOKUP(D1,A$1:B$9,2,0)，要加上绝对引用符号 $，否则会匹配出问题
