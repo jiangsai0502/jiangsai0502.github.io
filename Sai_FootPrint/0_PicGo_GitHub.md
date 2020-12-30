@@ -32,6 +32,9 @@
 
 ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200709230723.png)
 
+* repo：jiangsai0502/PicBedRepo
+* token：37ad7df3148561d78e096ce8ce9af044
+
 ### 将Gitee与Github保持同步
 
 [参考](https://blog.csdn.net/idsof/article/details/105005158)

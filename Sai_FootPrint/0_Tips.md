@@ -275,3 +275,8 @@ end tell
 * [参考1](https://zhuanlan.zhihu.com/p/29161495)，[参考2](https://zhidao.baidu.com/question/1734379668253114707.html)
 
 * **坑**：公式：VLOOKUP(D1,A$1:B$9,2,0)，要加上绝对引用符号 $，否则会匹配出问题
+
+#### Excel 正态分布画图
+
+* [参考](https://www.bilibili.com/video/BV1Hi4y1L7Eg)
+* ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20201230204751.png)
