@@ -65,11 +65,53 @@
 
    2. 情况2：1道题挖2个空，合成1张卡片展示，`Command+Shift+Option+C`
 
-      > BetterTouchTool快捷键
+      > 1. BetterTouchTool修改组合快捷键（经常失效）
       >
-      > `control+3`：`Command+Shift+Option+C`
+      >    `control+3`：`Command+Shift+Option+C`
       >
-      > `control+4`：`Command+Shift+C`
+      >    `control+4`：`Command+Shift+C`
+      >
+      > 2. Karabiner-Elements修改组合快捷键
+      >
+      >    [参考](https://blog.csdn.net/qq_26012495/article/details/88539120)，[下载](https://karabiner-elements.pqrs.org/docs/releasenotes/)，版本12.10.0
+      >
+      >    1. 新建anki.json，放入`~/.config/karabiner/assets/complex_modifications`
+      >
+      >       ```python
+      >       {
+      >         "title": "Anki_cloze",
+      >         "rules": [
+      >           {
+      >             "description": "Change command+option+shift+c key to command+3",
+      >             "manipulators": [
+      >               {
+      >                 "type": "basic",
+      >                 "from": {
+      >                   "key_code": "3",
+      >                   "modifiers": {
+      >                     "mandatory": ["command"]
+      >                   }
+      >                 },
+      >                 "to": [
+      >                   {
+      >                     "key_code": "c",
+      >                     "modifiers": [
+      >                       "left_command",
+      >                       "left_shift",
+      >                       "left_option"
+      >                     ]
+      >                   }
+      >                 ]
+      >               }
+      >             ]
+      >           }
+      >         ]
+      >       }
+      >       ```
+      >
+      >    2. preference - complex modification - add rule - 第一行Anki_cloze内的命令"Change command+option+shift+c key to command+3"点击"Enable"
+      >
+      >    3. 这是个临时修改，不想用时退出Karabiner即可
 
 6. 创建自己的卡片类型
 
