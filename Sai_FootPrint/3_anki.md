@@ -1,8 +1,8 @@
 ##### 快捷键
 
-1. 红色：`control+1`
-2. 绿色：`control+2`
-3. 挖空：`control+3`
+1. 红色：`option+2`
+2. 绿色：`option+3`
+3. 挖空：`command+3`
 
 #### 基础设置
 
@@ -38,17 +38,25 @@
 
       2. `Quick Colour Changing`：修改文本颜色
 
-         1. `Meta`对应`Control键`，`Ctrl`对应`Command键`
+         1. `Meta`对应`Control键`，`Ctrl`对应`Command键`，`Alt`对应`Option键`
 
             ```bash
             "keys": [
                 [ "#FF0000", "Meta+1" ],
                 [ "#008080", "Meta+2" ],
             ]
+            "keys": [
+             [ "#FF0000", "Alt+1" ],
+                [ "#008080", "Alt+2" ],
+         ]
+            "keys": [
+                [ "#FF0000", "Ctrl+1" ],
+                [ "#008080", "Ctrl+2" ],
+            ]
             ```
-
+      
       3. `Mini Format Pack`：增加格式选项
-
+      
          ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200522203746.png)
 
 4. 设置卡片的学习/复习节奏
