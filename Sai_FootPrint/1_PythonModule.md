@@ -513,11 +513,11 @@ for i in video_list:
   
   ```
 
-##### 批量修改文件时间
+##### 批量修改文件时间 - 文件按时间排序
 
 ```python
 import os
-path = '/Users/sai/Desktop/tmp/计算广告'
+path = '/Users/sai/Desktop/tmp/怎样升级你的说服力'
 # 获取目录下所有文件名
 g = os.walk(path)
 # 跳转进入该目录
@@ -530,8 +530,10 @@ for path, dir_list, file_list in g:
         # 文件排序，保证原始文件名从小到大。默认sort(reverse = False)升序，reverse = True降序
         file_list.sort(reverse = True)
         for f_name in file_list:
+            f_name = "'" + f_name + "'"
             var = os.system(cmd + f_name)
-            print(f'执行码是：{var}')
+            print(f'执行命令：{cmd + f_name}')
+            print(f'执行码：{var}')
 ```
 
 
