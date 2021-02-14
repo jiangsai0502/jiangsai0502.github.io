@@ -200,7 +200,12 @@
    sudo pmset -a autopoweroff 0
    ```
 
-   
+
+#### MacBook 突然没有声音
+
+```python
+sudo killall coreaudiod
+```
 
 
 

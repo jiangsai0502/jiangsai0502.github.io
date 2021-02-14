@@ -475,35 +475,38 @@ ALL_PROXY=socks5://127.0.0.1:1081 brew install PACKAGE
                * Front Template
 
                  ```html
-              <p>{{Word}}</p>
+                 
+                 ```
+        <p>{{Word}}</p>
                  ```
    
                * Back Template
-   
+         
                  ```html
                  {{FrontSide}}
                  
-              <hr id=answer>
-                 
-              <p>{{Translation}}</p>
                  ```
+              <hr id=answer>
 
-         2. Saladict 生词本导出生词
-
-            ![Sw0Zqw](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/uPic/Sw0Zqw.png)
-
-            1. 选`换行替换为空格`
-   
+              <p>{{Translation}}</p>
+        ```
+         
+2. Saladict 生词本导出生词
+         
+      ![Sw0Zqw](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/uPic/Sw0Zqw.png)
+         
+   1. 选`换行替换为空格`
+         
             2. 模板设为
-
-               ```html
+         
+      ```html
             %text% ` %trans%
-               ```
-
-         3. Anki导入生词
-   
+         ```
+         
+   3. Anki导入生词
+         
             ![DPmCzS](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/uPic/DPmCzS.png)
-   
+         
             1. 导入类型选 `Text separated by tabs or semicolons`
             2. `Type` 选 `Saladict`
             3. `Fields separated by: Space` 。我们换成 `
@@ -555,4 +558,9 @@ ALL_PROXY=socks5://127.0.0.1:1081 brew install PACKAGE
 
 #### PDF增加大纲书签
 
-![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200710105047.png)
+![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20210214215032.png)
+
+##### PDF阅读器不显示部分文字
+
+* 方法：Chrome打开
+

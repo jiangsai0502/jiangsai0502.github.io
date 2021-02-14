@@ -27,7 +27,7 @@
   * [Flask 源码 - Todolist](Sai_FootPrint/1_Flask_2_Todolist.md)
   * [Html-Css](Sai_FootPrint/1_html_css.md)
   * [Pyecharts入门](Sai_FootPrint/1_Pyecharts.md)
-  * [PyQt5.md](Sai_FootPrint/1_PyQt5.md)
+  * [PyQt5](Sai_FootPrint/1_PyQt5.md)
 
 
 
