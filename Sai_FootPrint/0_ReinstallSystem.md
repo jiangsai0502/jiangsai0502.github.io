@@ -558,7 +558,7 @@ ALL_PROXY=socks5://127.0.0.1:1081 brew install PACKAGE
 
 #### PDF增加大纲书签
 
-![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20210214220339.png)
+![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210214231022.png)
 
 ##### PDF阅读器不显示部分文字
 
