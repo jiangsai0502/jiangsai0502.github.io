@@ -285,3 +285,8 @@ end tell
 
 * [参考](https://www.bilibili.com/video/BV1Hi4y1L7Eg)
 * ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20201230204751.png)
+
+##### 大陆苹果ID变为美国苹果账号
+
+[参考](https://zhuanlan.zhihu.com/p/138058796)
+
