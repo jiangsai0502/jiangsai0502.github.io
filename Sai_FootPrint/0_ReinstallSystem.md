@@ -35,15 +35,14 @@ defaults write com.apple.dock springboard-columns -int 11;
 defaults write com.apple.dock ResetLaunchPad -bool true;killall Dock
 
 # 创建配置文件：~/.config/mpv/input.conf
-AXIS_UP  add volume 2
-AXIS_DOWN  add volume -2
-AXIS_LEFT  seek -2 exact
+AXIS_UP add volume -2
+AXIS_DOWN add volume 2
+AXIS_LEFT seek -2 exact
 AXIS_RIGHT seek 2 exact
-LEFT  seek -2 exact
-RIGHT  seek 2 exact
-UP  add volume 2
-DOWN  add volume -2
-
+LEFT seek -2 exact
+RIGHT seek 2 exact
+UP add volume 2
+DOWN add volume -2
 ```
 
 
@@ -479,34 +478,36 @@ ALL_PROXY=socks5://127.0.0.1:1081 brew install PACKAGE
                  ```
         <p>{{Word}}</p>
                  ```
-   
+       
                * Back Template
-         
+             
                  ```html
                  {{FrontSide}}
                  
                  ```
               <hr id=answer>
-
+    
               <p>{{Translation}}</p>
         ```
-         
+      
+        ```
+   
 2. Saladict 生词本导出生词
          
       ![Sw0Zqw](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/uPic/Sw0Zqw.png)
-         
+      
    1. 选`换行替换为空格`
-         
+      
             2. 模板设为
-         
+        
       ```html
             %text% ` %trans%
-         ```
-         
+      ```
+      
    3. Anki导入生词
-         
+      
             ![DPmCzS](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/uPic/DPmCzS.png)
-         
+             
             1. 导入类型选 `Text separated by tabs or semicolons`
             2. `Type` 选 `Saladict`
             3. `Fields separated by: Space` 。我们换成 `

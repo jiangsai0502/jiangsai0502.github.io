@@ -290,3 +290,6 @@ end tell
 
 [参考](https://zhuanlan.zhihu.com/p/138058796)
 
+#### 下载微信公众号文章的语音
+
+![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210222210825.png)
