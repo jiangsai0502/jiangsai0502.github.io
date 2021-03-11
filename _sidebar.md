@@ -40,6 +40,11 @@
   * [摘录](0_essay.md)
   * [Fusion360](Sai_FootPrint/0_AutodeskFusion360.md)
   * [Anki](Sai_FootPrint/3_anki.md)
+* 论文
+  * [文献阅读技巧](Sai_FootPrint/4_ReadingSkills.md)
+  * [文献阅读笔记](/Sai_PM/0_ReadingNotes.md)
+  * [心理统计](Sai_FootPrint/4_Statistics.md)
+  * [质性分析](Sai_FootPrint/4_Qualitative_research.md)
 
 [LearnHtml](Sai_FootPrint/LearnHtml.html)
 
