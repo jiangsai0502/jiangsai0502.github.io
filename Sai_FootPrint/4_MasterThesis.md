@@ -1,5 +1,44 @@
 
 
+#### SPSS用法
+
+1. 问卷分析 - 交叉表
+
+   * 数据：**学制**（2年制、3年制）x **年级**（1年级、2年级、3年级）
+
+     ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210311202517.png)
+
+2. 问卷分析 - 计算均值M、标准差SD
+
+   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210311202925.png)
+
+3. 问卷分析 - 分数转等级
+
+   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210311203337.png)
+
+4. 问卷分析 - 验证A在B的不同水平上有无显著差异
+
+   1. 独立样本t检验：验证A在B的2个水平上有无显著差异
+
+      ![image-20210311204000035](/Users/sai/Library/Application Support/typora-user-images/image-20210311204000035.png)
+
+   2. 单因素方差分析：验证A在B的3个水平上有无显著差异
+
+      ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210311204142.png)w
+
+5. 问卷分析 - Excel绘制误差线
+
+   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210311204404.png)
+
+#### endnote用法
+
+1. 作者姓名格式
+
+   * Pennebaker, J. W.
+   * 姓氏 + 英文逗号 + 空格 + 名字大写首字母 + 英文句号 + 空格 + 名字大写首字母 + 英文句号
+
+   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210311205145.png)
+
 #### 搜索论文步骤
 
 搜索文献
