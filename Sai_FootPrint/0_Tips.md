@@ -286,7 +286,18 @@ end tell
 * [参考](https://www.bilibili.com/video/BV1Hi4y1L7Eg)
 * ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20201230204751.png)
 
-##### 大陆苹果ID变为美国苹果账号
+#### Excel生成随机数
+
+* RAND()：产生0到1之间的随机小数
+* RANDBETWEEN(A,B)：产生A到B之间的随机整数
+
+1. 随机生成0~1的小数：RAND()
+2. 随机生成0~20的小数：20*RAND()
+3. 随机生成30~50的小数：30+(50-30)*RAND()
+4. 随机生成30~50的整数：RANDBETWEEN(30,50)
+5. 随机生成1~5000的含3为小数的数：RANDBETWEEN(1,4999)+RANDBETWEEN(1,1000)/1000
+
+#### 大陆苹果ID变为美国苹果账号
 
 [参考](https://zhuanlan.zhihu.com/p/138058796)
 
