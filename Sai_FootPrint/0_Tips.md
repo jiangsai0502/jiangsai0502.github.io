@@ -120,10 +120,6 @@
    
    
 
-### Parallels软件侵权告知函
-
-<img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200331103115.png" style="zoom:50%;" />
-
 
 
 #### Mac录制鼠标键盘动作
@@ -296,6 +292,9 @@ end tell
 3. 随机生成30~50的小数：30+(50-30)*RAND()
 4. 随机生成30~50的整数：RANDBETWEEN(30,50)
 5. 随机生成1~5000的含3为小数的数：RANDBETWEEN(1,4999)+RANDBETWEEN(1,1000)/1000
+6. 随机生成均值为250，标准差为100的正态分布数据：NORMINV(RAND(),250,100)
+7. 取正数：ABS()
+8. 取整数：INT()
 
 #### 大陆苹果ID变为美国苹果账号
 

@@ -2,9 +2,11 @@
 
 #### SPSS用法
 
-##### 原始数据
+##### [原始数据](https://github.com/jiangsai0502/jiangsai0502.github.io/blob/master/Sai_FootPrint/spss%E6%BC%94%E7%A4%BA%E6%95%B0%E6%8D%AE.xlsx)
 
 <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210313132214.png" style="zoom:30%;" />
+
+<img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210316172035.png" style="zoom:35%;" />
 
 ##### 数据分析
 
@@ -22,33 +24,47 @@
 
 4. 判断**前测分数**在**性别**（男、女）上有无显著差异（*即A在B的2个水平上有无显著差异*）
 
-   * 首先对**性别**的**不同水平**的**前测分数**进行正态性检验
+   1. 首先对**性别**的**不同水平**的**前测分数**进行正态性检验
 
-     <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210313181727.png" style="zoom:30%;" />
+      <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210315142239.png" style="zoom:20%;" />
 
-   * 若2组前测分数均为正态，则使用**独立样本t检验**
+   2. 若2组前测分数均为正态，则使用**独立样本t检验**
 
-     <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210313180855.png" style="zoom:50%;" />
+      <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210315142834.png" style="zoom:20%;" />
 
-   * 若2组前测分数有任何一组为非正态，则使用**独立样本非参数检验**
+   3. 若2组前测分数有任何一组为非正态，则使用**独立样本非参数检验**
 
-     <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210314214927.png" />
+      <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210315140750.png" style="zoom:20%;" />
 
 5. **前测分数**在**年级**（1、2、3年级）上有无显著差异（*A在C的大于3个水平上有无显著差异*）
 
-   * 首先对**年级**的**不同水平**的**前测分数**进行正态性检验
+   1. 首先对**年级**的**不同水平**的**前测分数**进行正态性检验
 
-     <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210313171619.png" style="zoom:30%;" />
+      <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210313171619.png" style="zoom:30%;" />
 
-   * 若3组前测分数均为正态，则使用**单因素方差分析**
+   2. 若3组前测分数均为正态，则使用**单因素方差分析**
 
-     <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210314203234.png" style="zoom:30%;" />
+      <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210315143408.png" style="zoom:30%;" />
 
-   * 若3组前测分数有任何一组为非正态，则使用**独立样本非参数检验**
+   3. 若3组前测分数有任何一组为非正态，则使用**独立样本非参数检验**
 
-     <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210314214927.png" style="zoom:30%;" />
+      <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210314214241.png" style="zoom:30%;" />
 
-6. 问卷分析 - Excel绘制误差线
+6. 前测分数与后测分数有无显著差异（*A在A'有无显著差异*）
+
+   1. 首先对**前测分数**与**后测分数**进行正态性检验
+
+      <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210315132830.png" style="zoom:30%;" />
+
+   2. 若2组数据均为正态，则使用**配对样本t检验**
+
+      <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210315141951.png" style="zoom:30%;" />
+
+   3. 若2组数据有任何一组为非正态，则使用**配对样本秩和检验**
+
+      <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210315140406.png" style="zoom:30%;" />
+
+7. 问卷分析 - Excel绘制误差线
 
    <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210311204404.png" style="zoom:30%;" />
 
