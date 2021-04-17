@@ -75,7 +75,52 @@
    * Pennebaker, J. W.
    * 姓氏 + 英文逗号 + 空格 + 名字大写首字母 + 英文句号 + 空格 + 名字大写首字母 + 英文句号
 
-   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210311205145.png)
+   <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210311205145.png" style="zoom:25%;" />
+
+#### 文本悬挂
+
+<img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210319135103.png" style="zoom:30%;" />
+
+#### 去掉章节黑点
+
+<img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210320031244.png" style="zoom:50%;" />
+
+#### 设置目录
+
+<img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210323183807.png" style="zoom:50%;" />
+
+#### 目录去掉“摘要”
+
+<img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210323163644.png" style="zoom:30%;" />
+
+#### word字体快捷键
+
+<img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210323181143.png" style="zoom:33%;" />
+
+#### [word表格跨页续表](https://blog.csdn.net/qq_42191914/article/details/106083395)
+
+1. 重复标题行
+
+   1. 选中第一行（标题行），然后在“表格布局”中点击“重复标题行”即可
+
+      <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210327164803.png" style="zoom:50%;" />
+
+2. 添加“续表”题注：
+  1. 先在.docx文件里“插入” - “文本框”，再复制到.doc文件中
+
+     <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210327164834.png" style="zoom:50%;" />
+
+  2. 右键该文本框 - 自动换行 - “上下型环绕” + “修复页面上的位置”
+
+     <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210327164938.png" style="zoom:50%;" />
+
+#### 引用的符号
+
+1. 正文引用
+   1. 逗号,，分号;：都是英文状态下的半角。如
+      1. （王永, 王振宏, 2010; 夏海鹭等, 2018）
+      2. （Graham et al., 2009; Middendorp & Geenen, 2008）
+   2. 括号（）：是中文状态下的全角，如（王永, 王振宏, 2010）
 
 #### 搜索论文步骤
 

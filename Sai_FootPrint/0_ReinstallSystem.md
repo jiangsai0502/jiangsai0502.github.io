@@ -78,6 +78,8 @@ DOWN add volume -2
         open ~/.zshrc
         # 在.zshrc文件中搜索 source $ZSH/oh-my-zsh.sh，只本句之前加一句
         ZSH_DISABLE_COMPFIX="true"
+        # 禁用oh-my-zsh自动更新
+        找到DISABLE_AUTO_UPDATE一行，将行首的注释'#'去掉
         source $ZSH/oh-my-zsh.sh
         ```
         
@@ -478,7 +480,7 @@ ALL_PROXY=socks5://127.0.0.1:1081 brew install PACKAGE
                  ```
         <p>{{Word}}</p>
                  ```
-       
+           
                * Back Template
              
                  ```html
@@ -486,7 +488,7 @@ ALL_PROXY=socks5://127.0.0.1:1081 brew install PACKAGE
                  
                  ```
               <hr id=answer>
-    
+        
               <p>{{Translation}}</p>
         ```
       

@@ -753,43 +753,226 @@ if __name__ == '__main__':
         driver.quit()
 ```
 
+**模拟登录访问Hipda**
 
+```python
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait, Select
+from selenium.webdriver.support import expected_conditions as EC
+import os, requests
 
-#### 3.案例
+def Login(login_url):
 
-1. 模拟登录访问Hipda
+    driver.get(login_url)
+    driver.find_element_by_xpath('//*[@id="umenu"]/a[2]').click()   #首页点击右上角的登录，进入登录页面
+    driver.find_element_by_name('username').send_keys('荒江孤叟')   #默认是用户名登录
+    driver.find_element_by_name('password').send_keys('hipda1122334')
+    driver.find_element_by_name('loginsubmit').click()
+
+    wait = WebDriverWait(driver, 10)
+    wait.until(EC.presence_of_element_located((By.ID, 'forum6')))
+
+    name = driver.find_element_by_xpath('//*[@id="forum6"]/tr/th/div/h2/a').text
+    print(name)
+
+if __name__ == '__main__':
+    home_page_url = 'https://www.hi-pda.com/forum/'
+    options = Options()
+    # options.headless = True   # 测试登录时注释掉这句，则会看到登录的场景
+    driver = webdriver.Chrome(options=options)
+    Login(home_page_url)
+```
+
+预定北师研究室
+
+1. 启动程序
 
    ```python
-   from selenium import webdriver
-   from selenium.webdriver.chrome.options import Options
-   from selenium.webdriver.common.by import By
-   from selenium.webdriver.support.ui import WebDriverWait, Select
-   from selenium.webdriver.support import expected_conditions as EC
-   import os, requests
-   
-   def Login(login_url):
-   
-       driver.get(login_url)
-       driver.find_element_by_xpath('//*[@id="umenu"]/a[2]').click()   #首页点击右上角的登录，进入登录页面
-       driver.find_element_by_name('username').send_keys('荒江孤叟')   #默认是用户名登录
-       driver.find_element_by_name('password').send_keys('hipda1122334')
-       driver.find_element_by_name('loginsubmit').click()
-   
-       wait = WebDriverWait(driver, 10)
-       wait.until(EC.presence_of_element_located((By.ID, 'forum6')))
-   
-       name = driver.find_element_by_xpath('//*[@id="forum6"]/tr/th/div/h2/a').text
-       print(name)
-   
-   if __name__ == '__main__':
-       home_page_url = 'https://www.hi-pda.com/forum/'
-       options = Options()
-       # options.headless = True   # 测试登录时注释掉这句，则会看到登录的场景
-       driver = webdriver.Chrome(options=options)
-       Login(home_page_url)
+   # 直接运行主程序总是预定失败，不明所以，因此外部套一层调用程序
+   import os,datetime,time
+   # 调用系统命令
+   while True:
+       print("dispatch：",datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+       if(datetime.datetime.now().strftime('%H:%M') == '00:02'):
+           os.system('python3 ~/Documents/Temp/抢研究间.py')
+           break
+       time.sleep(59)
    ```
 
+2. 主程序
+
+   ```python
+   import requests,datetime,time,schedule
    
+   jscookie = 0
+   
+   def Login(url, user):
+       LoginHeaders = {
+       "Accept": "application/json, text/javascript, */*; q=0.01",
+       "Referer": "http://219.224.28.56/ClientWeb/xcus/ic2/Default.aspx",
+       "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36",
+       "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+       }
+       # 每次登录前先登出
+       LoginReq = requests.post(url, data=user, headers=LoginHeaders)
+       requests.get("http://219.224.28.56/ClientWeb/pro/ajax/login.aspx?act=logout")
+       LoginReq = requests.post(url, data=user, headers=LoginHeaders)
+       print(LoginReq.status_code)
+       print(LoginReq.text)
+       global jscookie
+       jscookie = "ASP.NET_SessionId="+requests.utils.dict_from_cookiejar(LoginReq.cookies)['ASP.NET_SessionId']
+   
+   def POST(url, t):
+       PostHeaders = {
+           "Host": "219.224.28.56",
+           "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36",
+           "Accept": "application/json, text/javascript, */*; q=0.01",
+           "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-TW;q=0.6",
+           "Accept-Encoding": "gzip, deflate",
+           "Referer": "http://219.224.28.56/ClientWeb/xcus/ic2/Default.aspx",
+           "Connection": "keep-alive",
+           "Cookie": jscookie
+           }
+       datas = {
+           'dev_id':'770',  # 770是419研究间
+           'lab_id':'131',
+           'kind_id':'1257',
+           'type':'dev',
+           'start':'0000-00-00 00:00',
+           'end':'0000-00-00 00:00',
+           'act':'set_resv'
+           }
+       datas['start'] = t['start']
+       datas['end'] = t['end']
+       
+       PostReq = requests.post(url,data=datas,headers=PostHeaders)
+       print(PostReq.status_code)
+       print(PostReq.text)    
+   
+   if __name__ == '__main__':
+       LoginUrl = "http://219.224.28.56/ClientWeb/pro/ajax/login.aspx"
+       PostUrl = "http://219.224.28.56/ClientWeb/pro/ajax/reserve.aspx"
+       users = [{
+           'id':'1111',  # 罗云
+           'pwd':'1111',
+           'act':'login'
+           },{
+           'id':'2222',  # 雁飞
+           'pwd':'2222',
+           'act':'login'
+           }
+           ]
+       tomorrow = (datetime.datetime.now()+datetime.timedelta(days=1)).strftime('%Y-%m-%d')
+       times = [{
+           'start':tomorrow+' 10:00',
+           'end':tomorrow+' 14:00'
+       },{
+           'start':tomorrow+' 14:00',
+           'end':tomorrow+' 18:00'
+       },{
+           'start':tomorrow+' 18:00',
+           'end':tomorrow+' 21:30'
+       }
+       ]
+   
+       for user in users:
+           Login(LoginUrl, user)
+           time.sleep(2)
+           for t in times:
+               POST(PostUrl, t)
+               time.sleep(2)
+   ```
+
+下载超星音频
+
+```python
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver import ActionChains
+import os, requests, time, json, pickle
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
+def GetResousce(driver):
+    driver.get('https://special.chaoxing.com/mobile/mooc/tocourse/95755212')
+    res_urls = []
+    tar_url = ''
+
+    # 获取条目数量
+    Url_list = driver.find_elements_by_xpath('/html/body/div[3]/div[2]/div/div/ul/li')
+    for url in Url_list:
+        down_url = url.find_element_by_xpath('a').get_attribute('attr')
+        # 音频名称
+        Audio_Name = url.find_element_by_xpath('a').get_attribute('chaptername').replace(' ', '_').replace('：', '_').replace('，', '_')
+        # 新建标签
+        driver.execute_script('window.open();')
+        handles = driver.window_handles
+        main_handle = driver.current_window_handle
+        print(driver.title)
+        # 切换到最后一个标签
+        driver.switch_to.window(handles[-1])
+        driver.get(down_url)
+        print(driver.title)
+        # 找到目标iframe
+        if driver.find_elements_by_xpath('//*[@id="contentBox"]/div[1]/p[1]/div/iframe'):
+            aim_frame = driver.find_element_by_xpath('//*[@id="contentBox"]/div[1]/p[1]/div/iframe')
+            # 切换到目标iframe
+            driver.switch_to.frame(aim_frame)
+        # 点击播放，使音频加载入缓存
+        if driver.find_elements_by_xpath('//*[@id="reader"]/div/div[1]/a'):
+            driver.find_element_by_xpath('//*[@id="reader"]/div/div[1]/a').click()
+
+        for log in driver.get_log('performance'):
+            if 'message' not in log:
+                    continue
+            log_entry = json.loads(log['message'])
+            try:
+                    if "data:" not in log_entry['message']['params']['request']['url'] and 'Document' not in  log_entry['message']['params']['type']:
+                        res_urls.append(log_entry['message']['params']['request']['url'])
+            except Exception as e:
+                    pass
+        print("")
+        for url in res_urls:
+            if '.mp3' in url:
+                tar_url = f'you-get -O {Audio_Name}.mp3 {url}'
+                # tar_url = f'youtube-dl {url} -o {Audio_Name}.mp3'
+
+                # break
+        print(tar_url,'\n')
+        os.system(tar_url)
+        # 暂停便于调试
+        # input()
+        # 关闭标签
+        driver.close()
+        # handle切回主标签
+        driver.switch_to.window(main_handle)
+
+if __name__ == '__main__':
+    try:
+        path = "/Users/sai/opt/anaconda3/envs/py3_demo/bin/chromedriver"
+        options = Options()
+        # 测试登录时注释掉这句，则会看到登录的场景
+        options.headless = True
+        desiredCapabilities = DesiredCapabilities.CHROME
+        desiredCapabilities['goog:loggingPrefs'] = {'performance': 'ALL'}
+        options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
+        driver = webdriver.Chrome(executable_path=path, options=options, desired_capabilities=desiredCapabilities)
+        driver.implicitly_wait(5)
+
+        GetResousce(driver)
+
+    finally:
+        driver.close()
+        driver.quit()
+```
+
+
 
 
 

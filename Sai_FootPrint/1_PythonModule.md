@@ -517,15 +517,16 @@ for i in video_list:
 
 ```python
 import os
-path = '/Users/sai/Desktop/tmp/怎样升级你的说服力'
+path = '/Users/sai/Desktop/tmp/怎样成为解决问题的高手'
 # 获取目录下所有文件名
 g = os.walk(path)
-# 跳转进入该目录
-os.chdir(path)
 cmd = 'touch -m '
 
 # os.walk()产生3-元组 (dirpath, dirnames,folder_names)【文件夹路径, 文件夹名字, 文件名】
 for path, dir_list, file_list in g:
+    # 跳转进入该目录
+    os.chdir(path)
+    print(f'当前目录：{path}')
     if file_list:
         # 文件排序，保证原始文件名从小到大。默认sort(reverse = False)升序，reverse = True降序
         file_list.sort(reverse = True)
@@ -534,6 +535,105 @@ for path, dir_list, file_list in g:
             var = os.system(cmd + f_name)
             print(f'执行命令：{cmd + f_name}')
             print(f'执行码：{var}')
+```
+
+##### BNU抢研究间
+
+```python
+import requests,datetime,time
+
+jscookie = 0
+
+def Login(url, user):
+    LoginHeaders = {
+    "Accept": "application/json, text/javascript, */*; q=0.01",
+    "Referer": "http://219.224.28.56/ClientWeb/xcus/ic2/Default.aspx",
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36",
+    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+    }
+
+    LoginReq = requests.post(url, data=user, headers=LoginHeaders)
+    print(LoginReq.status_code)
+    print(LoginReq.text)
+    global jscookie
+    jscookie = "ASP.NET_SessionId="+requests.utils.dict_from_cookiejar(LoginReq.cookies)['ASP.NET_SessionId']
+
+def POST(url, t):
+    PostHeaders = {
+        "Host": "219.224.28.56",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36",
+        "Accept": "application/json, text/javascript, */*; q=0.01",
+        "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-TW;q=0.6",
+        "Accept-Encoding": "gzip, deflate",
+        "Referer": "http://219.224.28.56/ClientWeb/xcus/ic2/Default.aspx",
+        "Connection": "keep-alive",
+        "Cookie": jscookie
+        }
+    datas = {
+        'dev_id':'766',  # 770是419研究间
+        'lab_id':'131',
+        'kind_id':'1257',
+        'type':'dev',
+        'start':'0000-00-00 00:00',
+        'end':'0000-00-00 00:00',
+        'act':'set_resv'
+        }
+    datas['start'] = t['start']
+    datas['end'] = t['end']
+    PostReq = requests.post(url,data=datas,headers=PostHeaders)
+    print(PostReq.status_code)
+    print(PostReq.text)    
+
+if __name__ == '__main__':
+    LoginUrl = "http://219.224.28.56/ClientWeb/pro/ajax/login.aspx"
+    PostUrl = "http://219.224.28.56/ClientWeb/pro/ajax/reserve.aspx"
+    users = [{
+        'id':'201928061039',  # 罗云
+        'pwd':'107726',
+        'act':'login'
+        },{
+        'id':'201928061051',  # 雁飞
+        'pwd':'418042',
+        'act':'login'
+        },{
+        'id':'201928061041',  # 聪聪
+        'pwd':'133725',
+        'act':'login'
+        },{
+        'id':'201928061027',  # 李强
+        'pwd':'056712',
+        'act':'login'
+        },{
+        'id':'201928061011',  # 志行
+        'pwd':'725001',
+        'act':'login'
+        },{
+        'id':'201922100093',  # 琪琪
+        'pwd':'314225',
+        'act':'login'
+        }
+        ]
+    tomorrow = (datetime.datetime.now()+datetime.timedelta(days=1)).strftime('%Y-%m-%d')
+    times = [{
+        'start':tomorrow+' 10:00',
+        'end':tomorrow+' 14:00'
+    },{
+        'start':tomorrow+' 14:00',
+        'end':tomorrow+' 18:00'
+    },{
+        'start':tomorrow+' 18:00',
+        'end':tomorrow+' 21:30'
+    }
+    ]
+
+    while True:
+        # 判断此时是否夜里零点零分
+        if(datetime.datetime.now().strftime('%H:%M') == '00:00'):
+            for user in users:
+                Login(LoginUrl, user)
+                for t in times:
+                    POST(PostUrl, t)
+        time.sleep(20)
 ```
 
 
