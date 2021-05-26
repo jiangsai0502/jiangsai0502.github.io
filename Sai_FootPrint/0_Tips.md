@@ -303,3 +303,13 @@ end tell
 #### 下载微信公众号文章的语音
 
 ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210222210825.png)
+
+##### Mac 163邮箱：添加邮箱 无法验证账户或密码
+
+1. [开启pop3](https://blog.csdn.net/weixin_44203158/article/details/108652460)
+2. 开启IMAP
+
+##### 批量清理iPhone通讯录
+
+1. iPhone - 设置 - iCloud - 通讯录 - 关闭 - “从我的iPhone删除”
+2. PC登录iCloud - 通讯录 - command + 单击选择 - 左下角设置 - 删除

@@ -9,5 +9,4 @@
 
 * 过去的点滴就像散落的珍珠，等待着未来某个契机，串成了一串项链
 
-[GitHub](https://github.com/jiangsai0502)
 [Get Started](Sai_FootPrint/README.md)
