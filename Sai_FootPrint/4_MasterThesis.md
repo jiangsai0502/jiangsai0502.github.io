@@ -66,7 +66,7 @@
 
 7. 问卷分析 - Excel绘制误差线
 
-   <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210311204404.png" style="zoom:30%;" />
+   <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210311204404.png" style="zoom:50%;" />
 
 #### endnote用法
 

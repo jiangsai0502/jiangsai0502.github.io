@@ -313,3 +313,9 @@ end tell
 
 1. iPhone - 设置 - iCloud - 通讯录 - 关闭 - “从我的iPhone删除”
 2. PC登录iCloud - 通讯录 - command + 单击选择 - 左下角设置 - 删除
+
+
+
+##### FinePrint 双面打印
+
+![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210619003547.png)
