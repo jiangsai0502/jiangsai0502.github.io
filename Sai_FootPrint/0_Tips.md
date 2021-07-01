@@ -96,15 +96,23 @@
 
 2. 后台启动HTTP服务：`python -m http.server 8000 &`
 
-3. 获取局域网IP：`inet 192.168.1.5`
+3. 获取局域网IP：`ifconfig en0 | grep 'inet' | grep -vE 'inet6'`
 
    <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200330111301.png" align='left' style="zoom:33%;" />
 
 4. Ipad浏览器访问：`http://192.168.1.5:8000`
 
    <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200330112119.png" style="zoom:33%;" />
+   
+5. 局域网共享Axure原型
 
+   1. Axure生成html文件到：/Users/sai/Documents/Axure
 
+      ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210701144312.png)
+
+   2. 在html文件所在目录启动web服务
+
+   3. 访问：http://192.168.0.166:8000/m站.html
 
 #### nplayer不显示视频信息直接播放
 
@@ -318,4 +326,30 @@ end tell
 
 ##### FinePrint 双面打印
 
-![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210619003547.png)
+![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210619100110.png)
+
+> 打印机：Microsoft Print to PDF
+>
+> 订口：8mm
+
+
+
+#### [预览拼接图片](https://www.jianshu.com/p/d2cab29e6c0c)
+
+1. 获取空白面白：随便打开个图片，全选，删除
+2. 设置面板大小：工具调整大小 - 去掉“比例缩放” - 宽度50、高度50
+3. 导入素材：**截图**可粘贴进来；**本地图片**可用预览打开后全选粘贴进来
+4. 移动整个素材：点击选中素材，拖动
+5. 移动部分素材：框选，剪切，再粘贴，拖动
+
+#### [iphone接力失败](https://blog.newnius.com/apple-handoff-cross-device-paste-not-work.html)
+
+1. 在iPhone上打开记事本，Mac上也会同时出现记事本的标记，接力可用了
+
+
+
+#### Axure中使用iconfont
+
+1. 扎到icon后，下载 - 复制SVG代码 - 到Axure中粘贴
+
+   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210629200737.png)
