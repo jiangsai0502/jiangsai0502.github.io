@@ -353,3 +353,15 @@ end tell
 1. 扎到icon后，下载 - 复制SVG代码 - 到Axure中粘贴
 
    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210629200737.png)
+
+
+
+#### PDF里的图片文字不清晰
+
+1. Mac预览app打开pdf
+
+2. 菜单中选择文件→导出，Quartz滤镜选取“亮度减少”选项
+
+   使用一次后，对比度会明显增加。如果还不清楚，可连续操作。
+
+   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210703235411.png)
