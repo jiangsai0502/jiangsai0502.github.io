@@ -1,9 +1,12 @@
 # 杂记
 
 #### final cut Pro 用法
+
 1. 导出方式
+
 > 文件 - 共享 - Apple 设备 1080P - 设置
 > 修改2个地方
+>
 > 1. 格式：电脑
 > 2. 完成时：什么都不做
 
@@ -103,7 +106,7 @@
 4. Ipad浏览器访问：`http://192.168.1.5:8000`
 
    <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200330112119.png" style="zoom:33%;" />
-   
+
 5. 局域网共享Axure原型
 
    1. Axure生成html文件到：/Users/sai/Documents/Axure
@@ -125,7 +128,7 @@
 1. 双击那个视频，改变 Speed 
 
    ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200324174710.png)
-   
+
    
 
 
@@ -365,3 +368,73 @@ end tell
    使用一次后，对比度会明显增加。如果还不清楚，可连续操作。
 
    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210703235411.png)
+
+
+
+#### Axure小技巧
+
+1. 方案设计流程
+
+   1. 需求分析：背景、目标
+   2. 核心功能流程图：不是全部功能都画，只花核心
+      1. 先手画流程草稿
+      2. 再drawio绘制
+   3. 页面架构图：所有页面的上下级关系
+      1. 先手画架构草稿
+      2. 再Axure顶层页面，右键”生成流程图“
+   4. 页面布局设计：每个页面的展示
+      1. 先手画页面布局
+      2. 再Axure绘制
+   5. 交互原型：每个页面的交互
+      1. Axure绘制
+
+2. dkd
+
+   | 2                                                            | 2    | 2    |
+   | ------------------------------------------------------------ | ---- | ---- |
+   | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210707165106.png) |      |      |
+
+   
+
+3. 设置自己喜欢的颜色
+
+   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210707165106.png)
+
+4. 修改画布背景色：Page - style - 填充 - 改为灰色
+
+5. 调整图片大小：样式 -      位置和尺寸 - 锁定宽高比 - w：640
+
+6. 标尺：按住鼠标，从左/上往下拽；空白处框选标尺即可delete
+
+7. 调整图片偏转角度
+
+   1. 样式 - 位置和尺寸：手动输入调整旋转角度
+   2. 按住command，鼠标移到图形某个角，旋转
+
+8. 居中：A移到B的中间，先选B再选A，居中
+
+9. 水平/垂直移动原件：按住shift，移动原件
+
+10. 顶部快捷栏
+
+    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210707123014.png)
+
+11. 画布设置网格
+
+    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210707170155.png)
+
+12. 创建自己的元件库
+
+13. 发布Axure到手机
+
+    1. 原型尺寸：375 x 812：可去掉iPhone x/11/12顶端状态栏，设为**375 x 768**
+
+    2. 共享 - 登录Axure云：jiangsai0502@gmail.com - js1122334
+
+       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210707184808.png)
+
+    3. 手机打开发布链接
+
+14. 恢复默认工具摆放：视图 - 重置视图
+
+15. 母版：将多个页面公用的组件设为母版可以方便修改
