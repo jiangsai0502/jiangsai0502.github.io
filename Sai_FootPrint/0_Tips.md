@@ -349,16 +349,6 @@ end tell
 
 1. 在iPhone上打开记事本，Mac上也会同时出现记事本的标记，接力可用了
 
-
-
-#### Axure中使用iconfont
-
-1. 扎到icon后，下载 - 复制SVG代码 - 到Axure中粘贴
-
-   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210629200737.png)
-
-
-
 #### PDF里的图片文字不清晰
 
 1. Mac预览app打开pdf
@@ -388,44 +378,42 @@ end tell
    5. 交互原型：每个页面的交互
       1. Axure绘制
 
-2. dkd
+2. 常用设置
 
-   | 2                                                            | 2    | 2    |
-   | ------------------------------------------------------------ | ---- | ---- |
-   | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210707165106.png) |      |      |
+   | 设置自己喜欢的颜色                                           | 顶部快捷栏                                                   |
+   | ------------------------------------------------------------ | ------------------------------------------------------------ |
+   | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210707165106.png) | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210707123014.png) |
+
+   | 画布设置网格                                                 | Axure中使用iconfont                                          |
+   | ------------------------------------------------------------ | ------------------------------------------------------------ |
+   | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210707170155.png) | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210629200737.png) |
 
    
 
-3. 设置自己喜欢的颜色
+3. 修改画布背景色：Page - style - 填充 - 改为灰色
 
-   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210707165106.png)
+4. 调整图片大小：样式 -      位置和尺寸 - 锁定宽高比 - w：640
 
-4. 修改画布背景色：Page - style - 填充 - 改为灰色
+5. 标尺：按住鼠标，从左/上往下拽；空白处框选标尺即可delete
 
-5. 调整图片大小：样式 -      位置和尺寸 - 锁定宽高比 - w：640
-
-6. 标尺：按住鼠标，从左/上往下拽；空白处框选标尺即可delete
-
-7. 调整图片偏转角度
+6. 调整图片偏转角度
 
    1. 样式 - 位置和尺寸：手动输入调整旋转角度
    2. 按住command，鼠标移到图形某个角，旋转
 
-8. 居中：A移到B的中间，先选B再选A，居中
+7. 居中：A移到B的中间，先选B再选A，居中
 
-9. 水平/垂直移动原件：按住shift，移动原件
+8. 水平/垂直移动原件：按住shift，移动原件
 
-10. 顶部快捷栏
+9. 创建自己的元件库
 
-    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210707123014.png)
+10. 发布Axure到手机
 
-11. 画布设置网格
+    | 1                                                            |                                                              |
+    | ------------------------------------------------------------ | ------------------------------------------------------------ |
+    | 1. 原型尺寸：375 x 812：可去掉iPhone x/11/12顶端状态栏，设为**375 x 768** <br />2. 共享 - 登录Axure云：jiangsai0502@gmail.com - js1122334<br />3. 手机打开发布链接 | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210707184808.png) |
 
-    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210707170155.png)
-
-12. 创建自己的元件库
-
-13. 发布Axure到手机
+    
 
     1. 原型尺寸：375 x 812：可去掉iPhone x/11/12顶端状态栏，设为**375 x 768**
 
@@ -435,6 +423,6 @@ end tell
 
     3. 手机打开发布链接
 
-14. 恢复默认工具摆放：视图 - 重置视图
+11. 恢复默认工具摆放：视图 - 重置视图
 
-15. 母版：将多个页面公用的组件设为母版可以方便修改
+12. 母版：将多个页面公用的组件设为母版可以方便修改
