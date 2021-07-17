@@ -388,7 +388,9 @@ end tell
    | ------------------------------------------------------------ | ------------------------------------------------------------ |
    | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210707170155.png) | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210629200737.png) |
 
-   
+   | 发布Axure到手机                                              |                                                              |
+   | ------------------------------------------------------------ | ------------------------------------------------------------ |
+   | 1. 原型尺寸：375 x 812：可去掉iPhone x/11/12顶端状态栏，设为**375 x 768** <br />2. 共享 - 登录Axure云：jiangsai0502@gmail.com - js1122334<br />3. 手机打开发布链接 | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210707184808.png) |
 
 3. 修改画布背景色：Page - style - 填充 - 改为灰色
 
@@ -405,24 +407,54 @@ end tell
 
 8. 水平/垂直移动原件：按住shift，移动原件
 
-9. 创建自己的元件库
+9. 复制元件：按住option，拖动图形
 
-10. 发布Axure到手机
+10. 恢复默认工具摆放：视图 - 重置视图
 
-    | 1                                                            |                                                              |
+11. 母版：将多个页面公用的组件设为母版可以方便修改
+
+12. 事件添加条件：新建交互 - 选择动作 - 鼠标回到交互主界面 - 鼠标再移动到动作即可看到**启动情形**
+
+13. 动态面板功能
+
+    1. [tab切换](http://www.woshipm.com/rp/4186275.html)
+       1. 拖入1个动态面板；增加3个状态，分别命名为衣服、手机、电脑；双击进入每个状态，设置不同的展示
+       2. 拖入3个按钮；给按钮增加交互：单击时 - 设置面板状态 - 选择上述面板 - 选择状态、选择动画、选择时间
+    2. [滚动效果](https://blog.csdn.net/hst_gogogo/article/details/91350504)
+       1. 拖入**1个动态面板**，命名为**第1层面板**，**第1层状态**
+       2. 向**第1层状态**中再拖入**1个动态面板**，**尺寸**与第1层面板一致，命名为**第2层面板**，**第2层状态**
+       3. 向**第2层状态**中拖入要展示的**内容组件**
+       4. 将**第2层面板**右键设置为：滚动条 - 垂直滚动
+       5. 拖动**第2层面板**的右边框，拖到超过**第1层面板**的尺寸，完成
+    3. [App键盘弹出](https://www.bilibili.com/read/cv10174226)
+    4. [保持固定位置](https://www.axureshop.com/qa/25/)：把需要固定位置的内容转换为动态面板
+
+14. 创建自己的元件库
+
+15. 案例
+
+    | 1. 鼠标悬浮在湖南时，湖南下拉框展开，而湖北和江西的下拉框收起 | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210709214734.png) |
     | ------------------------------------------------------------ | ------------------------------------------------------------ |
-    | 1. 原型尺寸：375 x 812：可去掉iPhone x/11/12顶端状态栏，设为**375 x 768** <br />2. 共享 - 登录Axure云：jiangsai0502@gmail.com - js1122334<br />3. 手机打开发布链接 | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210707184808.png) |
+    | 用变量实现<br /><br />0. willFlag初始值设为0<br />1.若willFlag为0，则隐藏菜单，并将willFlag设为1<br />2.若willFlag为1，则隐藏菜单，并将willFlag设为0<br /> | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210709224621.png) |
+
+    | 【垂直菜单】鼠标悬停变色                                     |                                                              |
+    | ------------------------------------------------------------ | ------------------------------------------------------------ |
+    | 1. 随便选择一个【垂直菜单】中的菜单<br />2. 交互配置区最下方**交互样式**<br />3. 添加类似“鼠标悬停”的交互样式 - 鼠标悬停样式 - 更多样式选项 - 勾选“填充色” - 选个色 - 确定 | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210709000736.png) |
+
+    | 【垂直菜单】一对一联动                                       | 【垂直菜单】一对多联动                                       |
+    | ------------------------------------------------------------ | ------------------------------------------------------------ |
+    | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210709234526.png) | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210710002626.png) |
+
+    | 倒计时                                                       |                                                              |
+    | ------------------------------------------------------------ | ------------------------------------------------------------ |
+    | **点击按钮开始倒计时**<br /><br />1. 按钮Start：开始<br />2. 矩形框NumBoarder：显示数字<br />3. 全局变量Counter：修改数字<br />4. 动态面板Switcher：设2个状态，用转态切换控住数字改变<br />5. 思路：<br />    <1>.点击Start<br />    <2>.Switcher切换状态<br />    <3>.当Switcher状态改变时<br />        ①NumBoarder显示Counter<br />        ②Counter自减1<br />        ③等待1秒<br />        ④Switcher切换状态<br />        ⑤触发事件”当Switcher状态改变时“ | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210717133247.png) |
+    | **页面载入开始倒计时**<br /><br />1. 矩形框NumBoarder：显示数字<br />2. 全局变量Counter：修改数字<br />3. 思路：<br />    <1>.当元件载入时<br />        ①.NumBoarder显示Counter<br />        ②.Counter自减1<br />       ③.等待1秒<br />       ④触发事件”当元件载入时“ | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210717124529.png) |
 
     
 
-    1. 原型尺寸：375 x 812：可去掉iPhone x/11/12顶端状态栏，设为**375 x 768**
+16. 
 
-    2. 共享 - 登录Axure云：jiangsai0502@gmail.com - js1122334
+    
 
-       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210707184808.png)
+    1. 
 
-    3. 手机打开发布链接
-
-11. 恢复默认工具摆放：视图 - 重置视图
-
-12. 母版：将多个页面公用的组件设为母版可以方便修改
