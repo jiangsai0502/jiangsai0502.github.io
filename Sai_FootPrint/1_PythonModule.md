@@ -922,6 +922,19 @@ ffmpeg -i input.mp4
 ffmpeg -i input.mp4 -s 640x480 -c:a copy output.mp4
 ```
 
+#### 8. 降低分辨率
+
+```bash
+# 采用H.264视频压缩算法，
+ffmpeg -i input.mp4 -c:v libx264 -crf 24 output.mp4
+
+# 采用H.264视频压缩算法和AAC音频压缩算法，视频帧率10fps，音频码率32k
+ffmpeg -i input.mp4 -vcodec libx264 -crf 20 output.mp4
+
+# （首选）对它降低fps和音频码率的方法大大压缩文件大小，而清晰度不变
+ffmpeg -i input.mp4 -r 10 -b:a 32k output.mp4
+```
+
 
 
 #### 获取知乎问题答案并转换为MarkDown文件

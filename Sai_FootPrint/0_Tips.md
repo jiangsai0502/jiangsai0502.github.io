@@ -441,18 +441,36 @@ end tell
     | ------------------------------------------------------------ | ------------------------------------------------------------ |
     | 1. 随便选择一个【垂直菜单】中的菜单<br />2. 交互配置区最下方**交互样式**<br />3. 添加类似“鼠标悬停”的交互样式 - 鼠标悬停样式 - 更多样式选项 - 勾选“填充色” - 选个色 - 确定 | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210709000736.png) |
 
-    | 【垂直菜单】一对一联动                                       | 【垂直菜单】一对多联动                                       |
+    | 【垂直菜单】一对一联动                                       |                                                              |
     | ------------------------------------------------------------ | ------------------------------------------------------------ |
-    | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210709234526.png) | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210710002626.png) |
+    | 1. 下拉框1：Name<br />2. 下拉框2：Rank<br />3. 思路<br /><1>.选项改变时<br />①.若Name的选项为某值，则Rank切换到指定选项 | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210717225632.png) |
+
+    | 【垂直菜单】一对多联动                                       |                                                              |
+    | ------------------------------------------------------------ | ------------------------------------------------------------ |
+    | 1. 下拉框1：Province<br />2. 下拉框2：Citys<br />3. 思路<br /><1>.下拉框Citys转换为动态面板，1个状态的下拉框设为1个省的n个城市<br />选项改变时<br /> | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210710002626.png) |
+
+    
 
     | 倒计时                                                       |                                                              |
     | ------------------------------------------------------------ | ------------------------------------------------------------ |
     | **点击按钮开始倒计时**<br /><br />1. 按钮Start：开始<br />2. 矩形框NumBoarder：显示数字<br />3. 全局变量Counter：修改数字<br />4. 动态面板Switcher：设2个状态，用转态切换控住数字改变<br />5. 思路：<br />    <1>.点击Start<br />    <2>.Switcher切换状态<br />    <3>.当Switcher状态改变时<br />        ①NumBoarder显示Counter<br />        ②Counter自减1<br />        ③等待1秒<br />        ④Switcher切换状态<br />        ⑤触发事件”当Switcher状态改变时“ | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210717133247.png) |
     | **页面载入开始倒计时**<br /><br />1. 矩形框NumBoarder：显示数字<br />2. 全局变量Counter：修改数字<br />3. 思路：<br />    <1>.当元件载入时<br />        ①.NumBoarder显示Counter<br />        ②.Counter自减1<br />       ③.等待1秒<br />       ④触发事件”当元件载入时“ | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210717124529.png) |
 
+    | 登录                                                         | 元件闪烁                                                     |
+    | ------------------------------------------------------------ | ------------------------------------------------------------ |
+    | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210717232640.png) | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210717235459.png) |
+    | 拨动开关                                                     | 滑动幻灯片                                                   |
+    | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210718144243.png) | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210718145029.png) |
+
     
 
-16. 
+16. [Photoshop任意角度旋转图片](https://jingyan.baidu.com/article/6f2f55a15b7bd3b5b93e6c89.html)
+
+    | 标尺工具                                                     | 图像--图像旋转--任意角度                                     |
+    | ------------------------------------------------------------ | ------------------------------------------------------------ |
+    | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210812184958.png) | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210812185049.png) |
+
+    
 
     
 
