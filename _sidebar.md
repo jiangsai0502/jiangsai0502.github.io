@@ -2,7 +2,7 @@
 
 * 爬虫
   
-  * [MySQL](Sai_FootPrint/2_MySQL.md)
+  * [MySQL用法](Sai_FootPrint/2_MySQL.md)
   
   * [爬前须知](Sai_FootPrint/2_WebCrawlerTutorial.md)
   
@@ -48,3 +48,4 @@
 
 [LearnHtml](Sai_FootPrint/LearnHtml.html)
 
+[MySQL数据库](Sai_FootPrint/2_MySQL_Database.md)

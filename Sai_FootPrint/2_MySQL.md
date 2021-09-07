@@ -269,7 +269,7 @@
 1. 展示所有数据库
 
    ```bash
-   mysql> SHOW DATABASES;
+   SHOW DATABASES;
    +--------------------+
    | Database           |
    +--------------------+
@@ -282,12 +282,12 @@
 2. 进入/切换数据库
 
    ```bash
-   mysql> use mysql;
+   use mysql;
    Reading table information for completion of table and column names
    You can turn off this feature to get a quicker startup with -A
    Database changed
    
-   mysql> use employees;
+   use employees;
    Reading table information for completion of table and column names
    You can turn off this feature to get a quicker startup with -A
    Database changed
@@ -298,7 +298,7 @@
 3. 查看当前数据库
 
    ```bash
-   mysql> select database();
+   select database();
    +------------+
    | database() |
    +------------+
@@ -309,7 +309,7 @@
 4. 展示所有表
 
    ```bash
-   mysql> SHOW TABLES;
+   SHOW TABLES;
    +----------------------+
    | Tables_in_employees  |
    +----------------------+
@@ -327,7 +327,7 @@
 5. 展示表结构
 
    ```bash
-   mysql> SHOW COLUMNS FROM departments;
+   SHOW COLUMNS FROM departments;
    +-----------+-------------+------+-----+---------+-------+
    | Field     | Type        | Null | Key | Default | Extra |
    +-----------+-------------+------+-----+---------+-------+
@@ -339,7 +339,7 @@
 6. 退出数据库
 
    ```bash
-   mysql> exit;
+   exit;
    Bye
    ```
 
@@ -347,331 +347,345 @@
 
 #### 2. 数据库管理
 
-1. 创建并进入库
+1. 数据格式
+
+   | 类型     | 描述                                                        |
+   | -------- | ----------------------------------------------------------- |
+   | INT      | 整数，范围为：(-2,147,483,648, 2,147,483,647)               |
+   | FLOAT    | 浮点小数，小数点最多24位                                    |
+   | DATE     | 日期，输出格式为：YYYY-MM-DD                                |
+   | TIME     | 时间，输出格式为：HH:MM:SS                                  |
+   | DATETIME | 时间，输出格式为：YYYY-MM-DD HH:MM:SS                       |
+   | YEAR     | 年份，输出格式为：YYYY                                      |
+   | VARCHAR  | 变长字符串，使用格式为：VARCHAR(100)，最多100个字符的字符串 |
+   | TEXT     | 长文本                                                      |
+
+2. 常见函数
+
+   | 描述           | 函数                      | 案例                                                         |
+   | -------------- | ------------------------- | ------------------------------------------------------------ |
+   | 当前日期       | curdate()                 | select curdate();<br />2021-08-28                            |
+   | 当前时间       | curtime()                 | select curtime();<br />23:42:04                              |
+   | 日期字符串转换 | date_format(date, format) | select date_format('2021-08-27 23:42:04', '%W %M %Y');<br />Friday August 2021<br />select date_format('2021-08-27 23:42:04', '%Y/%m/%d %H_%i_%s');<br />2021/08/27 23_42_04 |
+   | 时间字符串转换 | time_format(time, format) |                                                              |
+   |                |                           |                                                              |
+
+   
+
+3. 常见符
+
+   | 描述 | 符号   | 描述 | 符号   |
+   | ---- | ------ | ---- | ------ |
+   | !=   | 不等于 | <>   | 不等于 |
+   |      |        |      |        |
+   |      |        |      |        |
+
+   
+
+4. 创建并进入库
 
    ```bash
-   mysql> CREATE DATABASE IF NOT EXISTS SaiDB;
+   CREATE DATABASE IF NOT EXISTS SaiDB;
    
-   mysql> SHOW DATABASES;
+   SHOW DATABASES;
    ```
 
-2. 创建表
+5. 创建表
 
-   ```bash
-   mysql> use SaiDB;
+   ```mysql
+   use SaiDB;
    
-   mysql> CREATE  TABLE  student (
-       -> id  INT(10)  NOT NULL  UNIQUE  PRIMARY KEY  ,
-       -> name  VARCHAR(20)  NOT NULL ,
-       -> sex  VARCHAR(4)  ,
-       -> birth  YEAR,
-       -> department  VARCHAR(20) ,
-       -> address  VARCHAR(50)
-       -> );
+   # 创建表时字段名被反引号`引起来，而不是单引号'
+   CREATE TABLE `Student` (
+     `stu_id` int(10) NOT NULL,
+     `name` varchar(20) DEFAULT NULL,
+     `sex` varchar(4) DEFAULT NULL,
+     `birth` year(4) DEFAULT NULL,
+     `leader_id` int(10) DEFAULT NULL,
+     `department` varchar(20) DEFAULT NULL,
+     `address` varchar(50) DEFAULT NULL,
+     PRIMARY KEY (`stu_id`)
+   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
    
-   mysql> CREATE  TABLE  score (
-       -> id  INT(10)  NOT NULL  UNIQUE  PRIMARY KEY  AUTO_INCREMENT ,
-       -> stu_id  INT(10)  NOT NULL ,
-       -> c_name  VARCHAR(20) ,
-       -> grade  INT(10)
-       -> );
+   # id从11开始自增
+   CREATE TABLE `CourseScore` (
+     `id` int(10) NOT NULL AUTO_INCREMENT,
+     `stu_id` int(10) NOT NULL,
+     `course` varchar(20) DEFAULT NULL,
+     `score` int(10) DEFAULT NULL,
+     PRIMARY KEY (`id`)
+   ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
    ```
 
-3. 插入数据
+6. 插入数据
 
-   ```bash
-   mysql> INSERT INTO student (id, name, sex, birth, department, address) VALUES( 911,'张老大', '男',1985,'计算机系', '北京市海淀区');
-   mysql> INSERT INTO student (id, name, sex, birth, department, address) VALUES( 902,'张老二', '男',1986,'中文系', '北京市昌平区');
-   mysql> INSERT INTO student (id, name, sex, birth, department, address) VALUES( 903,'张三', '女',1990,'中文系', '湖南省永州市');
-   mysql> INSERT INTO student (id, name, sex, birth, department, address) VALUES( 904,'李四', '男',1990,'英语系', '辽宁省阜新市');
-   mysql> INSERT INTO student (id, name, sex, birth, department, address) VALUES( 905,'王五', '女',1991,'英语系', '福建省厦门市');
-   mysql> INSERT INTO student (id, name, sex, birth, department, address) VALUES( 906,'王六', '男',1988,'计算机系', '湖南省衡阳市');
+   ```mysql
+   INSERT INTO `Student` (`stu_id`, `name`, `sex`, `birth`, `leader_id` , `department`, `address`) VALUES
+   ('902', '张二', '男', '1986', '907', '中文系', '北京市昌平区'),
+   ('903', '张三', '女', '1990', '907', '中文系', '湖南省永州市'),
+   ('904', '李四', '男', '1990', '906', '英语系', '辽宁省阜新市'),
+   ('905', '王五', '女', '1991', '906', '英语系', '福建省厦门市'),
+   ('911', '张大', '男', '1985', '907', '计算机系', '北京市海淀区');
    
-   mysql> INSERT INTO student (id, name, sex, department) VALUES( 907,'小七', '男','计算机系');
+   INSERT INTO `Student` (`stu_id`, `name`, `sex`, `birth`, `department`, `address`) VALUES
+   ('906', '王六', '男', '1988', '计算机系', '湖南省衡阳市'),
+   ('907', '小七', '男', '1998', '计算机系', '湖南省衡阳市');
    ```
 
    > * 插入时可指定插入字段
 
-   ```bash
-   mysql> INSERT INTO score (id, stu_id, c_name, grade) VALUES(NULL,901, '计算机',198);
-   mysql> INSERT INTO score (id, stu_id, c_name, grade) VALUES(NULL,901, '英语', 80);
-   mysql> INSERT INTO score (id, stu_id, c_name, grade) VALUES(NULL,902, '计算机',65);
-   mysql> INSERT INTO score (id, stu_id, c_name, grade) VALUES(NULL,902, '中文',88);
-   mysql> INSERT INTO score (id, stu_id, c_name, grade) VALUES(NULL,903, '中文',95);
-   mysql> INSERT INTO score (id, stu_id, c_name, grade) VALUES(NULL,904, '计算机',70);
-   mysql> INSERT INTO score (id, stu_id, c_name, grade) VALUES(NULL,904, '英语',92);
-   mysql> INSERT INTO score (id, stu_id, c_name, grade) VALUES(NULL,905, '英语',94);
-   mysql> INSERT INTO score (id, stu_id, c_name, grade) VALUES(NULL,906, '计算机',90);
-   mysql> INSERT INTO score (id, stu_id, c_name, grade) VALUES(NULL,906, '英语',85);
+   ```mysql
+   INSERT INTO `CourseScore` (`stu_id`, `course`, `score`) VALUES
+   ('901', '计算机', '98'),
+   ('901', '英语', '80'),
+   ('902', '计算机', '65'),
+   ('902', '中文', '88'),
+   ('903', '中文', '95'),
+   ('904', '计算机', '70'),
+   ('904', '英语', '92'),
+   ('905', '英语', '94'),
+   ('906', '计算机', '90'),
+   ('906', '英语', '85');
    ```
 
-4. 删除表
+7. 复制表结构和表数据
 
-   ```bash
-   mysql> SHOW TABLES;   #展示所有表
-   
-   mysql> DROP TABLE student;   #删除表
+   ```mysql
+   CREATE TABLE salary SELECT * FROM score
    ```
 
-5. 删除库
+8. 改表名
 
-   ```bash
-   mysql> select database();   #查看当前使用的库
-   
-   mysql> SHOW DATABASES;   #展示所有数据库
-   
-   mysql> drop database SaiDB;   #删除SaiDB库
+   ```mysql
+   rename table salary to YoungMan
    ```
 
-6. 查询数据
+9. 新增字段
 
-   1. 查询student表的所有记录
+   ```mysql
+   -- 新增 people_name字段 在 age字段 之后
+   ALTER TABLE salary ADD COLUMN people_name VARCHAR(100) DEFAULT NULL AFTER NO;
+   ```
+
+10. 删除表
+
+    ```bash
+    SHOW TABLES;   #展示所有表
+    
+    DROP TABLE student;   #删除表
+    ```
+
+11. 删除库
+
+    ```mysql
+    select database();   #查看当前使用的库
+    
+    SHOW DATABASES;   #展示所有数据库
+    
+    drop database SaiDB;   #删除SaiDB库
+    ```
+
+12. 查询数据
+
+    ```mysql
+    +-----+-----------+------+-------+--------------+--------------------+
+    | id  | name      | sex  | birth | department   | address            |
+    +-----+-----------+------+-------+--------------+--------------------+
+    | 901 | 张老大    | 男   |  1985 | 计算机系     | 北京市海淀区       |
+    | 902 | 张老二    | 男   |  1986 | 中文系       | 北京市昌平区       |
+    | 903 | 张三      | 女   |  1990 | 中文系       | 湖南省永州市       |
+    | 904 | 李四      | 男   |  1990 | 英语系       | 辽宁省阜新市       |
+    | 905 | 王五      | 女   |  1991 | 英语系       | 福建省厦门市       |
+    | 906 | 王六      | 男   |  1988 | 计算机系     | 湖南省衡阳市       |
+    +-----+-----------+------+-------+--------------+--------------------+
+    ```
+
+    2. LIMIT
+
+       ```mysql
+       SELECT * FROM student LIMIT 3;    # 查询前3条数据
+       
+       SELECT * FROM student LIMIT 2,4;    # 查询第3条到6条数据，即忽略前2个之后，取前4条
+       ```
+       
+    3. IN
+
+       ```mysql
+       SELECT * FROM student WHERE department IN ('计算机系','英语系');    # 查询计算机系和英语系的数据
+       ```
+       
+    4. COUNT()
+
+       ```mysql
+       SELECT department, COUNT(id) FROM student GROUP BY department;    # 查询每个院系有多少人
+       ```
+       
+    5. MAX()
+
+       ```mysql
+       SELECT c_name,MAX(grade),MAX(grade)+5 as AddGrade FROM score GROUP BY c_name;    # 查询每科的最高分
+       ```
+       
+    6. AVG()
+
+       ```mysql
+       SELECT c_name,AVG(grade),AVG(grade)*5 FROM score GROUP BY c_name;    # 查询每科的平均分
+       ```
+       
+    6. ORDER BY
+
+       ```mysql
+       SELECT s.stu_id,t.name,s.grade FROM score s,student t WHERE s.stu_id = t.id and s.c_name='英语' ORDER BY s.grade DESC;    # 将英语成绩从高到低展示
+       ```
+
+    7. like
+
+       ```mysql
+       SELECT s.id, s.name, s.department, t.c_name, t.grade FROM student s, score t WHERE (s.name LIKE '李%' OR s.name LIKE '王%') AND s.id=t.stu_id ;    # 模糊查询姓李或姓王的学生数据
+       ```
+
+    8. join（两表连接）
+
+       ```mysql
+       # 查询每个学生对应的leader信息
+       # student表含2部分数据，可看作2个子表，普通学生表classmate，组长表leader
+       # classmate表的leader_id字段 = leader表的stu_id字段
+       SELECT c.stu_id,c.name,c.leader_id,l.name FROM Student c join Student l on c.leader_id = l.stu_id
+       
+       # 查询每个学生各科的分数
+       SELECT t.stu_id,t.name,t.sex,s.course,s.score FROM Student t join CourseScore s on t.stu_id = s.stu_id;
+       
+       # 查询每个学生所有科目的总分
+       SELECT t.stu_id,t.name,sum(s.score) FROM Student t join CourseScore s on t.stu_id = s.stu_id GROUP by t.stu_id;
+       
+       # 查询湖南的每个学生的所有科目的总分
+       SELECT t.stu_id,t.name, s.course, s.score FROM Student t join CourseScore s on t.stu_id = s.stu_id and t.address LIKE '湖南%';
+       ```
+
+    9. join（两表连接）
+
+       ```mysql
+       SELECT o.order_id, c.customer_id, os.order_status_id FROM orders o
+       JOIN customers c 
+       	ON o.customer_id = c.customer_id
+       JOIN order_statuses os 
+       	ON o.status = os.order_status_id
+       ```
+
+    10. 子查询
+
+       ```mysql
+       # 查询英语成绩低于95的学生数据
+       SELECT * FROM student WHERE id IN (SELECT stu_id FROM score WHERE c_name="英语" and grade<95);
+       
+       # 查询同时参加计算机和英语考试的学生的信息
+       SELECT * FROM student WHERE id = ANY (SELECT stu_id FROM score WHERE stu_id IN (SELECT stu_id FROM score WHERE c_name = '计算机') AND c_name= '英语');
+       ```
+
+    11. 修改和删除数据
+
+
+    > **UPDATE和DELETE都是没有后悔药的操作，因此最好使用事务**
+    >
+    > * START TRANSACTION：开始一个事务
+    >
+    > * ROLLBACK：回滚之前的操作
+    >
+    > * COMMIT：提交事务内的操作
+
+    * 修改"王五"的名字成"王伍"
 
       ```bash
-      mysql> select * from student;
-      +-----+-----------+------+-------+--------------+--------------------+
-      | id  | name      | sex  | birth | department   | address            |
-      +-----+-----------+------+-------+--------------+--------------------+
-      | 901 | 张老大    | 男   |  1985 | 计算机系     | 北京市海淀区       |
-      | 902 | 张老二    | 男   |  1986 | 中文系       | 北京市昌平区       |
-      | 903 | 张三      | 女   |  1990 | 中文系       | 湖南省永州市       |
-      | 904 | 李四      | 男   |  1990 | 英语系       | 辽宁省阜新市       |
-      | 905 | 王五      | 女   |  1991 | 英语系       | 福建省厦门市       |
-      | 906 | 王六      | 男   |  1988 | 计算机系     | 湖南省衡阳市       |
-      +-----+-----------+------+-------+--------------+--------------------+
-      ```
-
-   2. 查询student表的第2条到4条记录
-
-      ```bash
-      mysql> SELECT * FROM student LIMIT 1,3;
-      +-----+-----------+------+-------+------------+--------------------+
-      | id  | name      | sex  | birth | department | address            |
-      +-----+-----------+------+-------+------------+--------------------+
-      | 902 | 张老二    | 男   |  1986 | 中文系     | 北京市昌平区       |
-      | 903 | 张三      | 女   |  1990 | 中文系     | 湖南省永州市       |
-      | 904 | 李四      | 男   |  1990 | 英语系     | 辽宁省阜新市       |
-      +-----+-----------+------+-------+------------+--------------------+
-      ```
-
-   3. 查询student表中计算机系和英语系的学生的信息
-
-      ```bash
-      mysql> SELECT * FROM student WHERE department IN ('计算机系','英语系');
-      +-----+-----------+------+-------+--------------+--------------------+
-      | id  | name      | sex  | birth | department   | address            |
-      +-----+-----------+------+-------+--------------+--------------------+
-      | 901 | 张老大    | 男   |  1985 | 计算机系     | 北京市海淀区       |
-      | 904 | 李四      | 男   |  1990 | 英语系       | 辽宁省阜新市       |
-      | 905 | 王五      | 女   |  1991 | 英语系       | 福建省厦门市       |
-      | 906 | 王六      | 男   |  1988 | 计算机系     | 湖南省衡阳市       |
-      +-----+-----------+------+-------+--------------+--------------------+
-      ```
-
-   4. 查询student表中每个院系有多少人
-
-      ```bash
-      mysql> SELECT department, COUNT(id) FROM student GROUP BY department;
-      +--------------+-----------+
-      | department   | COUNT(id) |
-      +--------------+-----------+
-      | 计算机系     |         2 |
-      | 中文系       |         2 |
-      | 英语系       |         2 |
-      +--------------+-----------+
-      ```
-
-   5. 查询score表中每个科目的最高分
-
-      ```bash
-      mysql> select * from score;
-      +----+--------+-----------+-------+
-      | id | stu_id | c_name    | grade |
-      +----+--------+-----------+-------+
-      |  1 |   901  | 计算机    |    98 |
-      |  . |    .   |   .      |    .  |
-         . |    .   |   .      |    .  |
-      |  . |    .   |   .      |    .  |
-      | 10 |   906  |   英语    |    85 |
-      +----+--------+-----------+-------+
+      START TRANSACTION;
       
-      mysql> SELECT c_name,MAX(grade) FROM score GROUP BY c_name;
-      +-----------+------------+
-      | c_name    | MAX(grade) |
-      +-----------+------------+
-      | 计算机    |         98 |
-      | 英语      |         94 |
-      | 中文      |         95 |
-      +-----------+------------+
+      SELECT * FROM student WHERE id = '905';
+      
+      UPDATE student SET name = '王伍' WHERE id = '905';
+      
+      ROLLBACK;   #若后悔了就执行回滚，否则不执行ROLLBACK直接执行COMMIT
+      COMMIT;    #无论
       ```
-
-   6. 联合student表和score表，查询所有学生的信息和考试信息
+      
+    * 删除王六的英语成绩
 
       ```bash
-      mysql> SELECT a.id,a.name,a.sex,b.c_name,b.grade FROM student a,score b WHERE a.id=b.stu_id;
-      +-----+-----------+------+-----------+-------+
-      | id  | name      | sex  | c_name    | grade |
-      +-----+-----------+------+-----------+-------+
-      | 901 | 张老大    | 男   | 计算机    |    98 |
-      | 901 | 张老大    | 男   | 英语      |    80 |
-      | 902 | 张老二    | 男   | 计算机    |    65 |
-      | 902 | 张老二    | 男   | 中文      |    88 |
-      | 903 | 张三      | 女   | 中文      |    95 |
-      | 904 | 李四      | 男   | 计算机    |    70 |
-      | 904 | 李四      | 男   | 英语      |    92 |
-      | 905 | 王五      | 女   | 英语      |    94 |
-      | 906 | 王六      | 男   | 计算机    |    90 |
-      | 906 | 王六      | 男   | 英语      |    85 |
-      +-----+-----------+------+-----------+-------+
+      START TRANSACTION;
+      
+      SELECT * FROM score t WHERE t.c_name = '英语' and t.stu_id = (SELECT s.id FROM student s where s.`name` = '王六');   #先用select确定查询条件
+      
+      DELETE FROM score t WHERE t.c_name = '英语' and t.stu_id = (SELECT s.id FROM student s where s.`name` = '王六');   #再用上面条件进行删除
+      
+      ROLLBACK;   #若后悔了就执行回滚，否则不执行ROLLBACK直接执行COMMIT
+      COMMIT;    #无论
       ```
 
-   7. 联合student表和score表，计算每个学生的总成绩
+13. 清空表数据（保留表结构）
 
-      ```bash
-      mysql> SELECT a.id,a.name,SUM(b.grade) FROM student a,score b WHERE a.id=b.stu_id GROUP BY a.id;
-      +-----+-----------+--------------+
-      | id  | name      | SUM(b.grade) |
-      +-----+-----------+--------------+
-      | 901 | 张老大    |          178 |
-      | 902 | 张老二    |          153 |
-      | 903 | 张三      |           95 |
-      | 904 | 李四      |          162 |
-      | 905 | 王五      |           94 |
-      | 906 | 王六      |          175 |
-      +-----+-----------+--------------+
-      ```
+    ```bash
+    truncate table score;
+    ```
 
-   8. 计算每个考试科目的平均成绩
+14. 案例
 
-      ```bash
-      mysql> SELECT c_name,AVG(grade) FROM score GROUP BY c_name;
-      +-----------+------------+
-      | c_name    | AVG(grade) |
-      +-----------+------------+
-      | 计算机    |    80.7500 |
-      | 英语      |    87.7500 |
-      | 中文      |    91.5000 |
-      +-----------+------------+
-      ```
+    >描述：向MySQL中导入数据进行分析，要求MySQL表具有自增的字段，序号列“No”
 
-   9. 查询计算机成绩低于95的学生信息
+    1. 建库建表
 
-      ```bash
-      mysql> SELECT * FROM student WHERE id IN (SELECT stu_id FROM score WHERE c_name="计算机" and grade<95);
-      +-----+-----------+------+-------+--------------+--------------------+
-      | id  | name      | sex  | birth | department   | address            |
-      +-----+-----------+------+-------+--------------+--------------------+
-      | 902 | 张老二    | 男   |  1986 | 中文系       | 北京市昌平区       |
-      | 904 | 李四      | 男   |  1990 | 英语系       | 辽宁省阜新市       |
-      | 906 | 王六      | 男   |  1988 | 计算机系     | 湖南省衡阳市       |
-      +-----+-----------+------+-------+--------------+--------------------+
-      ```
-
-   10. 查询同时参加计算机和英语考试的学生的信息
-
-       ```bash
-       mysql> SELECT * FROM student WHERE id = ANY (SELECT stu_id FROM score WHERE stu_id IN (SELECT stu_id FROM score WHERE c_name = '计算机') AND c_name= '英语');
-       +-----+-----------+------+-------+--------------+--------------------+
-       | id  | name      | sex  | birth | department   | address            |
-       +-----+-----------+------+-------+--------------+--------------------+
-       | 901 | 张老大    | 男   |  1985 | 计算机系     | 北京市海淀区       |
-       | 904 | 李四      | 男   |  1990 | 英语系       | 辽宁省阜新市       |
-       | 906 | 王六      | 男   |  1988 | 计算机系     | 湖南省衡阳市       |
-       +-----+-----------+------+-------+--------------+--------------------+
+       ```sql
+       DROP DATABASE IF EXISTS `ColorV`;
+       CREATE DATABASE `ColorV`; 
+       USE `ColorV`;
+       
+       CREATE TABLE `NonNextStay` (
+         `id` varchar(100) NOT NULL,
+         `user_id` varchar(50) NOT NULL,
+         `udid` varchar(50) NOT NULL,
+         `os` varchar(50) NOT NULL,
+         `version` varchar(50) NOT NULL,
+         `timestamp` datetime DEFAULT NULL,
+         `category` varchar(50) NOT NULL,
+         `page` varchar(50) NOT NULL,
+         `No` int(10) AUTO_INCREMENT NOT NULL PRIMARY KEY
+       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
        ```
 
-   11. 将计算机考试成绩按从高到低进行排序
+    2. csv表头
 
-       > **排序**：`ORDER BY`，`ASC`升序，`DESC`降序
+       | No   | id   | user_id | udid | os   | version | timestamp | category | page |
+       | ---- | ---- | ------- | ---- | ---- | ------- | --------- | -------- | ---- |
 
-       ```bash
-       mysql> SELECT s.stu_id,t.name,s.grade FROM score s,student t WHERE s.stu_id = t.id and s.c_name='计算机' ORDER BY s.grade DESC;
-       +--------+-----------+-------+
-       | stu_id | name      | grade |
-       +--------+-----------+-------+
-       |    901 | 张老大    |    98 |
-       |    906 | 王六      |    90 |
-       |    904 | 李四      |    70 |
-       |    902 | 张老二    |    65 |
-       +--------+-----------+-------+
+    3. TablePlus导入csv
+
+       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210825180906.png)
+
+    4. 案例
+
+       ```mysql
+       -- （临时表）非次留用户访问页面 x<5 的全部页面
+       create table Passby (
+       select n. `No`,	n.user_id,	n. `timestamp`,	n.category,	n.page
+       from NonNextStay n 
+       INNER JOIN 
+       (select user_id,count(user_id) num from NonNextStay n group by user_id having num < 5) t
+       ON n.user_id = t.user_id and category NOT in ('个人中心','直播','群组','话题','其他'))
+       
+       -- 删除临时表
+       SELECT * FROM Passby;
+       SHOW databases;
+       DROP TABLE IF EXISTS Passby;
+       
+       -- 非次留用户访问页面 x<5 的最后1个页面
+       select * from 
+       (select n.No,	n.user_id,	n. `timestamp`,	n.category,	n.page,row_number() over(partition by user_id order by No desc) as a from Passby n) r
+       where a<=1
+       
+       -- 非次留用户访问页面 x<5 的最后2个页面
+       select * from 
+       (select n.No,	n.user_id,	n. `timestamp`,	n.category,	n.page,row_number() over(partition by user_id order by No desc) as a from Passby n) r 
+       where a<=2
        ```
 
-   12. 查询姓李或姓王的同学的姓名、院系和考试科目及成绩
-
-       > **模糊查询**：`like`通常和`%`一起使用
-
-       ```bash
-       mysql> SELECT s.id, s.name, s.department, t.c_name, t.grade FROM student s, score t WHERE (s.name LIKE '李%' OR s.name LIKE '王%') AND s.id=t.stu_id ;
-       +-----+--------+--------------+-----------+-------+
-       | id  | name   | department   | c_name    | grade |
-       +-----+--------+--------------+-----------+-------+
-       | 904 | 李四   | 英语系       | 计算机    |    70 |
-       | 904 | 李四   | 英语系       | 英语      |    92 |
-       | 905 | 王五   | 英语系       | 英语      |    94 |
-       | 906 | 王六   | 计算机系     | 计算机    |    90 |
-       | 906 | 王六   | 计算机系     | 英语      |    85 |
-       +-----+--------+--------------+-----------+-------+
-       ```
-
-   13. 查询湖南学生的姓名、院系和考试科目及成绩
-
-       ```bash
-       mysql> SELECT s.id, s.name, s.department, t.c_name, t.grade FROM student s, score t WHERE s.address LIKE '湖南%' AND s.id=t.stu_id;
-       +-----+--------+--------------+-----------+-------+
-       | id  | name   | department   | c_name    | grade |
-       +-----+--------+--------------+-----------+-------+
-       | 903 | 张三   | 中文系       | 中文      |    95 |
-       | 906 | 王六   | 计算机系     | 计算机    |    90 |
-       | 906 | 王六   | 计算机系     | 英语      |    85 |
-       +-----+--------+--------------+-----------+-------+
-       ```
-
-7. 修改和删除数据
-
-   > **UPDATE和DELETE都是没有后悔药的操作，因此最好使用事务**
-   >
-   > * START TRANSACTION：开始一个事务
-   >
-   > * ROLLBACK：回滚之前的操作
-   >
-   > * COMMIT：提交事务内的操作
-
-   * 修改"王五"的名字成"王伍"
-
-     ```bash
-     mysql> START TRANSACTION;
-     
-     mysql> SELECT * FROM student WHERE id = '905';
-     +-----+--------+------+-------+------------+--------------------+
-     | id  | name   | sex  | birth | department | address            |
-     +-----+--------+------+-------+------------+--------------------+
-     | 905 | 王五    | 女   |  1991 | 英语系     | 福建省厦门市       |
-     +-----+--------+------+-------+------------+--------------------+
-     
-     mysql> UPDATE student SET name = '王伍' WHERE id = '905';
-     
-     mysql> ROLLBACK;   #若后悔了就执行回滚，否则不执行ROLLBACK直接执行COMMIT
-     mysql> COMMIT;    #无论
-     ```
-
-   * 删除王六的英语成绩
-
-     ```bash
-     mysql> START TRANSACTION;
-     
-     mysql> SELECT * FROM score t WHERE t.c_name = '英语' and t.stu_id = (SELECT s.id FROM student s where s.`name` = '王六');   #先用select确定查询条件
-     
-     mysql> DELETE FROM score t WHERE t.c_name = '英语' and t.stu_id = (SELECT s.id FROM student s where s.`name` = '王六');   #再用上面条件进行删除
-     
-     mysql> ROLLBACK;   #若后悔了就执行回滚，否则不执行ROLLBACK直接执行COMMIT
-     mysql> COMMIT;    #无论
-     ```
-
-8. 清空表数据（保留表结构）
-
-   ```bash
-   mysql> truncate table score;
-   ```
+       
 
 #### 3. python连接MySQL
 
