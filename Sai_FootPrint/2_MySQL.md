@@ -360,19 +360,114 @@
    | VARCHAR  | 变长字符串，使用格式为：VARCHAR(100)，最多100个字符的字符串 |
    | TEXT     | 长文本                                                      |
 
-2. 常见函数
+2. 日期函数
 
-   | 描述           | 函数                      | 案例                                                         |
-   | -------------- | ------------------------- | ------------------------------------------------------------ |
-   | 当前日期       | curdate()                 | select curdate();<br />2021-08-28                            |
-   | 当前时间       | curtime()                 | select curtime();<br />23:42:04                              |
-   | 日期字符串转换 | date_format(date, format) | select date_format('2021-08-27 23:42:04', '%W %M %Y');<br />Friday August 2021<br />select date_format('2021-08-27 23:42:04', '%Y/%m/%d %H_%i_%s');<br />2021/08/27 23_42_04 |
-   | 时间字符串转换 | time_format(time, format) |                                                              |
-   |                |                           |                                                              |
-
+   ```mysql
+   # 日期函数
+   # NOW()，当前日期+时间，如2021-09-12 17:58:26
+   # CURDATE()，当前日期，如2021-09-12
+   # CURTIME()，当前时间，如17:58:26
+   SELECT NOW(), CURDATE(), CURTIME();
    
+   # YEAR()，获取数值年份
+   # MONTH()，获取数值月份
+   # DAY()，获取数值天
+   # HOUR()，获取小时
+   # MINUTE()，获取分钟
+   # SECOND()，获取秒
+   select YEAR(NOW()), MONTH(NOW()), DAY(NOW()), HOUR(NOW()), MINUTE(NOW()), SECOND(NOW()); 
+   
+   # MONTHNAME()，获取字符串月份
+   # DAYNAME()，获取字符串天
+   select MONTHNAME(NOW()), DAYNAME(NOW());
+   
+   # DATE_FORMAT(date, format)：格式化日期+时间
+   # 如Friday September 2021，September 12 2021
+   select DATE_FORMAT(NOW(), '%W %M %Y'), DATE_FORMAT(now(), '%M %d %Y')
+   ;
+   # 如2021/08/27 23_42_04
+   select DATE_FORMAT(NOW(), '%Y/%m/%d %H_%i_%s');
+   
+   # DATE_ADD()，增加时间（1秒、2分、3小时、4天、5个月、6年）
+   SELECT now(), DATE_ADD(now(), INTERVAL 1 SECOND), DATE_ADD(now(), INTERVAL 2 MINUTE), DATE_ADD(now(), INTERVAL 3 HOUR), DATE_ADD(now(), INTERVAL 4 DAY), DATE_ADD(now(), INTERVAL 5 MONTH), DATE_ADD(now(), INTERVAL 6 YEAR) ;
+   # DATE_ADD()，减小时间（1秒、2分、3小时、4天、5个月、6年）
+   SELECT now(), DATE_ADD(now(), INTERVAL -1 SECOND), DATE_ADD(now(), INTERVAL -2 MINUTE), DATE_ADD(now(), INTERVAL -3 HOUR), DATE_ADD(now(), INTERVAL -4 DAY), DATE_ADD(now(), INTERVAL -5 MONTH), DATE_ADD(now(), INTERVAL -6 YEAR) ;
+   ```
 
-3. 常见符
+3. 数字函数
+
+   ```mysql
+   # ROUND()，四舍五入函数
+   SELECT ROUND(5.73429), ROUND(5.73429, 2)
+   
+   # TRUNCATE()，小数截取
+   SELECT TRUNCATE(5.73429,4), TRUNCATE(5.73429, 2)
+   
+   # RAND()，随机值
+   SELECT RAND()
+   ```
+
+4. 字符串函数
+
+   ```mysql
+   # LENGTH()，字符串长度
+   # UPPER()，字符串转大写
+   # LOWER()，字符串转小写
+   SELECT LENGTH('Jiang Sai'), UPPER('Jiang Sai'), LOWER('Jiang Sai')
+   
+   # TRIM()，删除字符串前后空格
+   SELECT TRIM(' Jiang Sai ')
+   
+   # LEFT()，截取左侧字符串
+   # RIGHT()，截取右侧字符串
+   # SUBSTR()，截取左侧指定位置，指定长度的字符串
+   SELECT LEFT('Jiang Sai',4),RIGHT('Jiang Sai',2),SUBSTR('Jiang Sai',3,2)
+   
+   # RIGHT()，替换指定字符串
+   SELECT REPLACE('Jiang Sai','ng',' Ma ')
+   
+   # CONCAT()，连接字符串
+   SELECT CONCAT(first_name, '_', last_name)
+   FROM customers
+   ```
+
+5. Null判断函数
+
+   ```mysql
+   # IFNULL(field1，'appointed_str')，若是字段field1的值为Null，则替换为字符'appointed_str'
+   SELECT order_id,
+   	IFNULL(shipper_id, 'no shipper')
+   FROM orders
+   
+   # COALESCE(field1，field2，'appointed_str')，若是字段field1的值为Null，则替换为字段field2，若field2也为空，则替换为字符'appointed_str'
+   SELECT order_id,
+   	COALESCE(shipper_id, comments, 'no shipper')
+   FROM orders
+   ```
+
+6. IF函数
+
+   ```mysql
+   # IF(expression, fist_value, second_value)，若表达式expression为真，则结果为fist_value，为假则结果为second_value
+   SELECT order_id, order_date,
+   	IF(YEAR(order_date) = '2018', 'Right', 'Wrong')
+   FROM orders
+   ```
+
+7. CASE函数
+
+   ```mysql
+   # CASE条件判断
+   SELECT order_id, order_date,
+   	CASE 
+   		WHEN YEAR(order_date) = '2018' THEN 'This Year'
+   		WHEN YEAR(order_date) = '2017' THEN 'Last Year'
+   		ELSE 'Wrong'
+   	END
+   FROM orders
+   ```
+
+8. 常见符
 
    | 描述 | 符号   | 描述 | 符号   |
    | ---- | ------ | ---- | ------ |
@@ -380,17 +475,15 @@
    |      |        |      |        |
    |      |        |      |        |
 
-   
+9. 创建并进入库
 
-4. 创建并进入库
-
-   ```bash
+   ```mysql
    CREATE DATABASE IF NOT EXISTS SaiDB;
    
    SHOW DATABASES;
    ```
 
-5. 创建表
+10. 创建表
 
    ```mysql
    use SaiDB;
@@ -417,57 +510,64 @@
    ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
    ```
 
-6. 插入数据
+11. 插入数据
 
-   ```mysql
-   INSERT INTO `Student` (`stu_id`, `name`, `sex`, `birth`, `leader_id` , `department`, `address`) VALUES
-   ('902', '张二', '男', '1986', '907', '中文系', '北京市昌平区'),
-   ('903', '张三', '女', '1990', '907', '中文系', '湖南省永州市'),
-   ('904', '李四', '男', '1990', '906', '英语系', '辽宁省阜新市'),
-   ('905', '王五', '女', '1991', '906', '英语系', '福建省厦门市'),
-   ('911', '张大', '男', '1985', '907', '计算机系', '北京市海淀区');
-   
-   INSERT INTO `Student` (`stu_id`, `name`, `sex`, `birth`, `department`, `address`) VALUES
-   ('906', '王六', '男', '1988', '计算机系', '湖南省衡阳市'),
-   ('907', '小七', '男', '1998', '计算机系', '湖南省衡阳市');
-   ```
+    ```mysql
+    INSERT INTO `Student` (`stu_id`, `name`, `sex`, `birth`, `leader_id` , `department`, `address`) VALUES
+    ('902', '张二', '男', '1986', '907', '中文系', '北京市昌平区'),
+    ('903', '张三', '女', '1990', '907', '中文系', '湖南省永州市'),
+    ('904', '李四', '男', '1990', '906', '英语系', '辽宁省阜新市'),
+    ('905', '王五', '女', '1991', '906', '英语系', '福建省厦门市'),
+    ('911', '张大', '男', '1985', '907', '计算机系', '北京市海淀区');
+    
+    INSERT INTO `Student` (`stu_id`, `name`, `sex`, `birth`, `department`, `address`) VALUES
+    ('906', '王六', '男', '1988', '计算机系', '湖南省衡阳市'),
+    ('907', '小七', '男', '1998', '计算机系', '湖南省衡阳市');
+    ```
 
-   > * 插入时可指定插入字段
+    > * 插入时可指定插入字段
 
-   ```mysql
-   INSERT INTO `CourseScore` (`stu_id`, `course`, `score`) VALUES
-   ('901', '计算机', '98'),
-   ('901', '英语', '80'),
-   ('902', '计算机', '65'),
-   ('902', '中文', '88'),
-   ('903', '中文', '95'),
-   ('904', '计算机', '70'),
-   ('904', '英语', '92'),
-   ('905', '英语', '94'),
-   ('906', '计算机', '90'),
-   ('906', '英语', '85');
-   ```
+    ```mysql
+    INSERT INTO `CourseScore` (`stu_id`, `course`, `score`) VALUES
+    ('901', '计算机', '98'),
+    ('901', '英语', '80'),
+    ('902', '计算机', '65'),
+    ('902', '中文', '88'),
+    ('903', '中文', '95'),
+    ('904', '计算机', '70'),
+    ('904', '英语', '92'),
+    ('905', '英语', '94'),
+    ('906', '计算机', '90'),
+    ('906', '英语', '85');
+    ```
 
-7. 复制表结构和表数据
+12. 复制表结构和表数据
 
-   ```mysql
-   CREATE TABLE salary SELECT * FROM score
-   ```
+    ```mysql
+    CREATE TABLE salary SELECT * FROM score
+    ```
 
-8. 改表名
+13. 新增字段
 
-   ```mysql
-   rename table salary to YoungMan
-   ```
+    ```mysql
+    -- 新增 people_name字段 在 age字段 之后
+    ALTER TABLE salary ADD COLUMN people_name VARCHAR(100) DEFAULT NULL AFTER NO;
+    ```
 
-9. 新增字段
+14. 复制并新增字段
 
-   ```mysql
-   -- 新增 people_name字段 在 age字段 之后
-   ALTER TABLE salary ADD COLUMN people_name VARCHAR(100) DEFAULT NULL AFTER NO;
-   ```
+    ```mysql
+    -- 新增age默认0岁，新增出生年份有生日算出来
+    CREATE TABLE salary SELECT id, name, department, 0 as age, date_format(`birthday`, '%Y/%m/%d') birthYear FROM score
+    ```
 
-10. 删除表
+15. 改表名
+
+    ```mysql
+    rename table salary to YoungMan
+    ```
+
+16. 删除表
 
     ```bash
     SHOW TABLES;   #展示所有表
@@ -475,7 +575,7 @@
     DROP TABLE student;   #删除表
     ```
 
-11. 删除库
+17. 删除库
 
     ```mysql
     select database();   #查看当前使用的库
@@ -485,7 +585,7 @@
     drop database SaiDB;   #删除SaiDB库
     ```
 
-12. 查询数据
+18. 查询数据
 
     ```mysql
     +-----+-----------+------+-------+--------------+--------------------+
@@ -514,30 +614,12 @@
        SELECT * FROM student WHERE department IN ('计算机系','英语系');    # 查询计算机系和英语系的数据
        ```
        
-    4. COUNT()
-
-       ```mysql
-       SELECT department, COUNT(id) FROM student GROUP BY department;    # 查询每个院系有多少人
-       ```
-       
-    5. MAX()
-
-       ```mysql
-       SELECT c_name,MAX(grade),MAX(grade)+5 as AddGrade FROM score GROUP BY c_name;    # 查询每科的最高分
-       ```
-       
-    6. AVG()
-
-       ```mysql
-       SELECT c_name,AVG(grade),AVG(grade)*5 FROM score GROUP BY c_name;    # 查询每科的平均分
-       ```
-       
-    6. ORDER BY
+    4. ORDER BY
 
        ```mysql
        SELECT s.stu_id,t.name,s.grade FROM score s,student t WHERE s.stu_id = t.id and s.c_name='英语' ORDER BY s.grade DESC;    # 将英语成绩从高到低展示
        ```
-
+       
     7. like
 
        ```mysql
@@ -562,7 +644,7 @@
        SELECT t.stu_id,t.name, s.course, s.score FROM Student t join CourseScore s on t.stu_id = s.stu_id and t.address LIKE '湖南%';
        ```
 
-    9. join（两表连接）
+    9. join（多表连接）
 
        ```mysql
        SELECT o.order_id, c.customer_id, os.order_status_id FROM orders o
@@ -572,52 +654,190 @@
        	ON o.status = os.order_status_id
        ```
 
-    10. 子查询
+    8. over partition by
+
+       描述：Trade_Record表中共有100个客户渠道，每个渠道有5000个客户，一共50万条数据。
+
+       目标：取出100个渠道中，每个渠道的最后1个交易时间对应的数据
+
+       > 最后1个时间点未必只有1条数据，也可能有多条
+
+       | 客户渠道  | 客户    | 交易时间     | 交易金额 |
+       | --------- | ------- | ------------ | -------- |
+       | source_id | user_id | trading_time | cash     |
 
        ```mysql
-       # 查询英语成绩低于95的学生数据
-       SELECT * FROM student WHERE id IN (SELECT stu_id FROM score WHERE c_name="英语" and grade<95);
+       -- 对所有数据，按照trading_time进行倒序，并给出序号
+       select *, rank()over(partition by source_id order by trading_time desc) tempRank from Trade_Record
        
-       # 查询同时参加计算机和英语考试的学生的信息
-       SELECT * FROM student WHERE id = ANY (SELECT stu_id FROM score WHERE stu_id IN (SELECT stu_id FROM score WHERE c_name = '计算机') AND c_name= '英语');
+       -- 查询每个客户来源source_id，排序第1的数据
+       select source_id , user_id, trading_time ,cash  
+       from (select *, rank()over(partition by source_id order by trading_time desc) tempRank from Trade_Record) n
+       where n.tempRank = 1
        ```
 
-    11. 修改和删除数据
+       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210909113642.png)
+
+       > 注意n.tempRank = 1，会取这个user_id的前4条数据，因为他们的序号都是1
+       >
+       > 注意n.tempRank = 2，取不到这个user_id的任何数据，因为没有数据的序号是2
+
+    9. 拼接查询结果
+
+       > 只要查询结果的列数相同即可拼接，没别的条件
+
+       ```mysql
+       SELECT a.address from clients a
+       UNION
+       SELECT b.birth_date from customers b
+       ```
+
+    10. 聚合函数
+
+        1. COUNT()
+
+           ```mysql
+           # 每个客户有多少笔交易
+           SELECT
+           	a.client_id,
+           	COUNT(*)
+           FROM
+           	invoices a
+           GROUP BY
+           	a.client_id
+           ```
+
+        2. MAX()、MIN()、AVG()
+
+           ```mysql
+           # 每个客户最大、最小、平均交易金额
+           SELECT
+           	a.client_id,
+           	max(invoice_total) max_cost,
+           	min(invoice_total) min_cost,
+           	avg(invoice_total) avg_cost
+           FROM
+           	invoices a
+           GROUP BY
+           	a.client_id;
+           ```
+
+        3. SUM()
+
+           ```mysql
+           # 每个客户的总交易金额
+           SELECT
+           	client_id,
+           	sum(invoice_total) total_sale
+           FROM
+           	invoices
+           GROUP BY
+           	client_id
+           	
+           # 统计每个城市的每个客户的总交易金额
+           SELECT
+           	b.city,
+           	a.client_id,
+           	sum(a.invoice_total) total_sale
+           FROM
+           	invoices a
+           	JOIN clients b ON a.client_id = b.client_id
+           GROUP BY
+           	b.city,
+           	a.client_id
+           ```
+
+        4. Having：分组条件
+
+           ```mysql
+           # 每个城市的每个客户最大、最小、平均交易金额，其中最大金额>185 且 最小金额>150的数据
+           SELECT
+           	b.city,
+           	a.client_id,
+           	max(a.invoice_total) max_cost,
+           	min(a.invoice_total) min_cost,
+           	avg(a.invoice_total) avg_cost
+           FROM
+           	invoices a
+           	JOIN clients b ON a.client_id = b.client_id
+           GROUP BY
+           	b.city,
+           	a.client_id
+           HAVING
+           	max_cost < 185
+           	or avg_cost > 150;
+           ```
+
+        5. with ROLLUP 结果集汇总
+
+           ```mysql
+           # 每个城市的每个客户的总交易金额，其中总交易金额>100的数据，并对每个城市和每个客户的结果汇总
+           SELECT
+           	b.city,
+           	a.client_id,
+           	SUM(a.invoice_total) sum_cost
+           FROM
+           	invoices a
+           	JOIN clients b ON a.client_id = b.client_id
+           GROUP BY
+           	b.city,
+           	a.client_id with ROLLUP
+           HAVING
+           	sum_cost > 100
+           ```
+
+           
+
+    11. 子查询
+
+        ```mysql
+        # 查询英语成绩低于95的学生数据
+        SELECT * FROM student WHERE id IN (SELECT stu_id FROM score WHERE c_name="英语" and grade<95);
+        
+        # 查询同时参加计算机和英语考试的学生的信息
+        SELECT * FROM student WHERE id = ANY (SELECT stu_id FROM score WHERE stu_id IN (SELECT stu_id FROM score WHERE c_name = '计算机') AND c_name= '英语');
+        ```
+
+        
+
+    12. 修改和删除数据
 
 
-    > **UPDATE和DELETE都是没有后悔药的操作，因此最好使用事务**
-    >
-    > * START TRANSACTION：开始一个事务
-    >
-    > * ROLLBACK：回滚之前的操作
-    >
-    > * COMMIT：提交事务内的操作
+~~~mysql
+> **UPDATE和DELETE都是没有后悔药的操作，因此最好使用事务**
+>
+> * START TRANSACTION：开始一个事务
+>
+> * ROLLBACK：回滚之前的操作
+>
+> * COMMIT：提交事务内的操作
 
-    * 修改"王五"的名字成"王伍"
+* 修改"王五"的名字成"王伍"
 
-      ```bash
-      START TRANSACTION;
-      
-      SELECT * FROM student WHERE id = '905';
-      
-      UPDATE student SET name = '王伍' WHERE id = '905';
-      
-      ROLLBACK;   #若后悔了就执行回滚，否则不执行ROLLBACK直接执行COMMIT
-      COMMIT;    #无论
-      ```
-      
-    * 删除王六的英语成绩
+  ```bash
+  START TRANSACTION;
+  
+  SELECT * FROM student WHERE id = '905';
+  
+  UPDATE student SET name = '王伍' WHERE id = '905';
+  
+  ROLLBACK;   #若后悔了就执行回滚，否则不执行ROLLBACK直接执行COMMIT
+  COMMIT;    #无论
+  ```
+  
+* 删除王六的英语成绩
 
-      ```bash
-      START TRANSACTION;
-      
-      SELECT * FROM score t WHERE t.c_name = '英语' and t.stu_id = (SELECT s.id FROM student s where s.`name` = '王六');   #先用select确定查询条件
-      
-      DELETE FROM score t WHERE t.c_name = '英语' and t.stu_id = (SELECT s.id FROM student s where s.`name` = '王六');   #再用上面条件进行删除
-      
-      ROLLBACK;   #若后悔了就执行回滚，否则不执行ROLLBACK直接执行COMMIT
-      COMMIT;    #无论
-      ```
+  ```bash
+  START TRANSACTION;
+  
+  SELECT * FROM score t WHERE t.c_name = '英语' and t.stu_id = (SELECT s.id FROM student s where s.`name` = '王六');   #先用select确定查询条件
+  
+  DELETE FROM score t WHERE t.c_name = '英语' and t.stu_id = (SELECT s.id FROM student s where s.`name` = '王六');   #再用上面条件进行删除
+  
+  ROLLBACK;   #若后悔了就执行回滚，否则不执行ROLLBACK直接执行COMMIT
+  COMMIT;    #无论
+  ```
+~~~
 
 13. 清空表数据（保留表结构）
 

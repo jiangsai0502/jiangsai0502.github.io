@@ -131,6 +131,10 @@ def WriteToCSV(bigData):
 
 ### 读写 Excel
 
+* 工作簿：workbook
+* 表单：worksheet
+* 行、列、单元格：row，column，cell
+
 ##### 1. 安装 openpyxl
 
 > 1. 切换到虚拟环境： `source activate jspython3`
@@ -156,51 +160,164 @@ MyWS = MyWB.get_sheet_by_name("TempData")
 print(MyWS['B2'].value)
 ```
 
-> 1. 获取指定单元格的值  `MyWS['B2'].value`
->
-> 2. 按行取值
->
->    1. 按行获取所有值
->
->       ```python
->       for row in MyWS.rows:
->           for cell in row:
->               print(f'{cell.value}', end=' ')
->       ```
->
->    2. 获取指定行的值
->
->       ```python
->       for cell in MyWS[3]:
->           print(f'{cell.value}', end=' ')
->       ```
->
-> 3. 按列取值
->
->    1. 按列获取所有值
->
->       ```python
->       for column in MyWS.columns:
->           for cell in column:
->               print(f'{cell.value}', end=' ')
->       ```
->
->    2. 获取指定列的值
->
->       ```python
->       for cell in MyWS['B']:
->           print(f'{cell.value}', end=' ')
->       ```
->
-> 4. 获取切片范围的单元格
->
->    ```python
->    for row in MyWS['A1':'C2']:
->        for cell in row:
->            print(f'{cell.value}', end=' ')
->    ```
+1. 新建一个Excel工作簿
 
-##### 项目模块
+   ```python
+   from openpyxl import Workbook, load_workbook
+   
+   myExcel = '/Users/sai/Documents/临时/Test.xlsx'
+   
+   # 步骤：新建工作簿类 -> 保存指定文件
+   myWorkbook = Workbook()
+   # 保存修改
+   myWorkbook.save(myExcel)
+   ```
+
+2. 新建一个表单
+
+   ```python
+   from openpyxl import Workbook, load_workbook
+   
+   myExcel = '/Users/sai/Documents/临时/Test.xlsx'
+   
+   # 打开一个Excel文件
+   myWorkbook = load_workbook(myExcel)
+   # 新建一个表单Mysheet
+   myWorkbook.create_sheet('Mysheet')
+   # 保存修改
+   myWorkbook.save(myExcel)
+   ```
+
+3. 删除一个表单
+
+   ```python
+   from openpyxl import Workbook, load_workbook
+   
+   myExcel = '/Users/sai/Documents/临时/Test.xlsx'
+   
+   # 打开一个Excel文件
+   myWorkbook = load_workbook(myExcel)
+   # 引用指定表单Mysheet
+   Mysheet = myWorkbook['Sheet1']
+   # 删除表单Mysheet
+   myWorkbook.remove(Mysheet)
+   # 保存修改
+   myWorkbook.save(myExcel)
+   ```
+
+4. 复制一个表单
+
+   ```python
+   from openpyxl import Workbook, load_workbook
+   
+   myExcel = '/Users/sai/Documents/临时/Test.xlsx'
+   
+   # 打开一个Excel文件
+   myWorkbook = load_workbook(myExcel)
+   # 获取本文件所有表单名称
+   print(myWorkbook.sheetnames)
+   # 引用指定表单Mysheet
+   Mysheet = myWorkbook['Test']
+   # 复制一个表单
+   myWorkbook.copy_worksheet(Mysheet)
+   # 保存修改
+   myWorkbook.save(myExcel)
+   ```
+
+5. 修改表单名称
+
+   ```python
+   from openpyxl import Workbook, load_workbook
+   
+   myExcel = '/Users/sai/Documents/临时/Test.xlsx'
+   
+   # 打开一个Excel文件
+   myWorkbook = load_workbook(myExcel)
+   # 引用指定表单Mysheet
+   Mysheet = myWorkbook['Test Copy']
+   # 修改指定表单的名称
+   Mysheet.title = 'SaiSheet'
+   # 获取本文件所有表单名称
+   print(myWorkbook.sheetnames)
+   # 保存修改
+   myWorkbook.save(myExcel)
+   ```
+
+6. 按行取值
+
+   ```python
+   from openpyxl import Workbook, load_workbook
+   
+   myExcel = '/Users/sai/Documents/临时/Test.xlsx'
+   
+   # 打开一个Excel文件
+   myWorkbook = load_workbook(myExcel)
+   # 引用指定表单Mysheet
+   Mysheet = myWorkbook['SaiSheet']
+   # 按行获取所有值
+   for row in Mysheet.rows:
+       for cell in row:
+           print(f'{cell.value}', end=' ')
+       print()
+   # 获取指定行的值
+   for cell in Mysheet[3]:
+       print(f'{cell.value}', end=' ')
+   ```
+
+7. 按列取值
+
+   ```python
+   from openpyxl import Workbook, load_workbook
+   
+   myExcel = '/Users/sai/Documents/临时/Test.xlsx'
+   
+   # 打开一个Excel文件
+   myWorkbook = load_workbook(myExcel)
+   # 引用指定表单Mysheet
+   Mysheet = myWorkbook['SaiSheet']
+   # 按列获取所有值
+   for column in Mysheet.columns:
+       for cell in column:
+           print(f'{cell.value}', end=' ')
+       print()
+   # 获取指定列的值
+   for cell in Mysheet['B']:
+       print(f'{cell.value}', end=' ')
+   ```
+
+8. 获取指定单元格，指定切片范围内单元格的值
+
+   ```python
+   from openpyxl import Workbook, load_workbook
+   
+   myExcel = '/Users/sai/Documents/临时/Test.xlsx'
+   
+   # 打开一个Excel文件
+   myWorkbook = load_workbook(myExcel)
+   # 引用指定表单Mysheet
+   Mysheet = myWorkbook['SaiSheet']
+   # 获取指定单元格的值
+   print(Mysheet['B2'].value)
+   # 获取切片范围内单元格的值
+   for row in Mysheet['A1':'C2']:
+       for cell in row:
+           print(f'{cell.value}', end=' ')
+       print()
+   ```
+
+9. 1
+
+10. 1
+
+11. 1
+
+12. 1
+
+13. 
+
+
+
+
 
 ```python
 from openpyxl import Workbook, load_workbook
@@ -251,6 +368,93 @@ MyWB.save('/Users/jiangsai02/Documents/Temp/CombineTable.xlsx')
 ```
 
 > openpyxl 只能打开 .xlsx 文件，xlrd 能打开 .xls 文件
+
+
+
+### Pandas
+
+1. csv转Excel
+
+   ```python
+   import pandas as pd
+   import time
+   
+   FromCsv = '/Users/sai/Documents/临时/Test.csv'
+   ToExcel = '/Users/sai/Documents/临时/Test.xlsx'
+   
+   # 读取csv文件
+   time_start=time.time()
+   csv = pd.read_csv(FromCsv, encoding='utf-8')
+   time_end=time.time()
+   print('读取CSV用时：',time_end-time_start,' s')
+   
+   # 转换csv到Excel文件
+   time_start=time.time()
+   csv.to_excel(ToExcel, sheet_name='data')
+   time_end=time.time()
+   print('转换用时：',time_end-time_start,' s')
+   ```
+
+2. Excel转csv
+
+   ```python
+   import pandas as pd
+   import time
+   
+   FromExcel = '/Users/sai/Documents/临时/Test.xlsx'
+   ToCsv = '/Users/sai/Documents/临时/Test2.csv'
+   
+   
+   # 读取Excel文件
+   time_start=time.time()
+   xls = pd.read_excel(FromExcel, index_col=0)
+   time_end=time.time()
+   print('读取Excel用时：',time_end-time_start,' s')
+   
+   # 转换Excel到csv文件
+   time_start=time.time()
+   xls.to_csv(ToCsv, encoding='utf-8')
+   time_end=time.time()
+   print('转换用时：',time_end-time_start,' s')
+   ```
+
+3. 拆分csv
+
+   ```python
+   import chardet,time
+   myExcel = '/Users/sai/Documents/临时/Test.csv'
+   f = open(myExcel, 'rb')
+   lines = f.readline()
+   file_code = chardet.detect(lines)['encoding']
+   
+   # 修改读取文件代码
+   with open(myExcel, 'r', encoding=file_code) as f:
+       csv_file = f.readlines()
+   
+   # 定义csv分割行数
+   linesPerFile = 100000
+   # 初始化文件编号为1
+   filecount = 1
+   # 以0为起点，文件行数为终点，分片大小为间隔，循环遍历文件，每次遍历行数即为分片大小，而不是每行遍历一次
+   for i in range(0, len(csv_file), linesPerFile):
+       # 打开目标文件准备写入，不存在则创建
+       with open(myExcel[:-4] + '_' + str(filecount) + '.csv', 'w+') as f:
+           # 判断是否为第一个文件，不是的话需要先写入标题行
+           if filecount > 1:
+               f.write(csv_file[0])
+           # 批量写入i至i+分片大小的多行数据
+           f.writelines(csv_file[i:i+linesPerFile])
+           # 完成一个文件写入之后，文件编号增加1
+           filecount += 1
+   ```
+
+   
+
+4. 
+
+
+
+
 
 
 
