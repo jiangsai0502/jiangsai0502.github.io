@@ -32,13 +32,23 @@
 
 5. 操作数据库
 
-   1. 启动：`mysql.server start`
-
-   2. 停止：`mysql.server stop`
-
-   3. 重启 ：`mysql.server restart`
-
-   4. 查看状态 ：`mysql.server status`
+   ```mysql
+   # 启动
+   mysql.server start
+   sudo /usr/local/mysql/support-files/mysql.server start
+   
+   # 停止
+   mysql.server stop
+   sudo /usr/local/mysql/support-files/mysql.server stop
+   
+   # 重启
+   mysql.server restart
+   sudo /usr/local/mysql/support-files/mysql.server restart
+   
+   # 查看状态
+   mysql.server status
+   sudo /usr/local/mysql/support-files/mysql.server status
+   ```
 
    5. 登录：`mysql -u root -p`
 
@@ -905,9 +915,111 @@
        where a<=2
        ```
 
-       
 
-#### 3. python连接MySQL
+#### 3. MySQL导入百万行csv文件
+
+* [参考1](https://blog.csdn.net/quiet_girl/article/details/71436108)，[参考2](https://swordpal.cn/posts/33306/)
+
+##### 命令行操作
+
+```mysql
+# 登录MySQL，密码js1122334
+mysql -u root -p
+
+# 创建数据库
+CREATE DATABASE IF NOT EXISTS SaiDB;
+
+# 使用数据库
+use SaiDB;
+
+# 建表
+CREATE TABLE `PourData` (
+	`id` varchar(100) NOT NULL,
+	`user_id` varchar(50) NOT NULL,
+	`udid` varchar(50) NOT NULL,
+	`os` varchar(50) NOT NULL,
+	`version` varchar(50) NOT NULL,
+	`timestamp` datetime DEFAULT NULL,
+	`分类` varchar(50) NOT NULL,
+	`事件` varchar(50) NOT NULL,
+	`event_date` date DEFAULT NULL,
+	`No` int(10) AUTO_INCREMENT NOT NULL PRIMARY KEY) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+
+# 修改禁止写入的配置，值为null则禁止写入
+show variables like '%secure_file_priv%';
+
+# 新建my.cnf
+sudo vim /etc/my.cnf
+
+# 复制粘贴my.cnf内容，:wq!命令保存退出my.cnf文件
+
+# 修改my.cnf文件权限
+sudo chmod 664 /etc/my.cnf
+
+# 开启本地导入权限
+set global local_infile=1;
+
+# 设置MySQL配置
+系统偏好设置 - MySQL - Configuration - Configuration File：/private/etc/my.cnf
+
+# 重启MySQL
+sudo /usr/local/mysql/support-files/mysql.server restart
+
+# 确认csv 文件是ANSI 编码
+
+# 导入
+load data local infile  '/Users/sai/Documents/MyTestStore/test.csv'
+into table PourData1
+fields terminated by ',' #分隔符
+optionally enclosed by '"' escaped by '"'
+lines terminated by '\n'
+IGNORE 1 ROWS #忽略csv文件第一行
+;
+```
+
+my.cnf内容
+
+```bash
+[client]  
+default-character-set=utf8  
+port        = 3306 
+socket      = /tmp/mysql.sock  
+
+[mysqld]  
+default-storage-engine=INNODB  
+character-set-server=utf8  
+collation-server=utf8_general_ci  
+port        = 3306 
+socket      = /tmp/mysql.sock  
+skip-external-locking  
+key_buffer_size = 16K  
+max_allowed_packet = 1M  
+table_open_cache = 4 
+sort_buffer_size = 64K  
+read_buffer_size = 256K  
+read_rnd_buffer_size = 256K  
+net_buffer_length = 2K  
+thread_stack = 128K  
+secure_file_priv=
+server-id   = 1 
+
+[mysqldump]  
+quick  
+max_allowed_packet = 16M  
+
+[mysql]  
+no-auto-rehash  
+local-infile=1
+
+[myisamchk]  
+key_buffer_size = 8M  
+sort_buffer_size = 8M  
+
+[mysqlhotcopy]  
+interactive-timeout
+```
+
+#### 4. python连接MySQL
 
 * 安装PyMySQL：`pip install pymysql`
 
