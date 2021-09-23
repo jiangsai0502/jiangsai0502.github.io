@@ -4,6 +4,12 @@
 
 1. 安装 MySql 数据库：[下载链接](https://downloads.mysql.com/archives/community/)，[安装步骤](https://www.jianshu.com/p/833f388da8e3)
 
+   * 安装位置默认，最后填写强密码，且勾选掉默认启动
+
+     安装目录
+
+     ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210917143749.png)
+
 2. 查看MySql进程是否存在   `ps aux | grep mysql`
 
 3. 测试数据库
@@ -69,7 +75,14 @@
 
    ```bash
    备份数据库
-   系统偏好设置 - Stop MySQL Server - Uninstall
+   # 停止：停止方式与开启方式对应
+   # 若当前运行的状态是从系统偏好设置里Start，那就从系统偏好设置里Stop
+   # 若当前运行的状态是sudo /usr/local/mysql/support-files/mysql.server Start，那就sudo /usr/local/mysql/support-files/mysql.server stop
+   
+   # 卸载
+   系统偏好设置 - Uninstall
+   
+   # 删除剩余文件
    sudo rm /usr/local/mysql;
    sudo rm -rf /usr/local/mysql*;
    sudo rm -rf /Library/StartupItems/MySQLCOM;
@@ -926,6 +939,26 @@
 # 登录MySQL，密码js1122334
 mysql -u root -p
 
+# 修改禁止写入的配置，值为null则禁止写入
+show variables like '%secure_file_priv%';
+
+# 新建my.cnf
+sudo vim /etc/my.cnf
+
+# 复制粘贴my.cnf内容，:wq!命令保存退出my.cnf文件
+
+# 修改my.cnf文件权限
+sudo chmod 664 /etc/my.cnf
+
+# 设置MySQL配置
+系统偏好设置 - MySQL - Configuration - Configuration File：/private/etc/my.cnf
+
+# 重启MySQL
+sudo /usr/local/mysql/support-files/mysql.server restart
+
+# 开启本地导入权限
+set global local_infile=1;
+
 # 创建数据库
 CREATE DATABASE IF NOT EXISTS SaiDB;
 
@@ -945,31 +978,11 @@ CREATE TABLE `PourData` (
 	`event_date` date DEFAULT NULL,
 	`No` int(10) AUTO_INCREMENT NOT NULL PRIMARY KEY) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
-# 修改禁止写入的配置，值为null则禁止写入
-show variables like '%secure_file_priv%';
-
-# 新建my.cnf
-sudo vim /etc/my.cnf
-
-# 复制粘贴my.cnf内容，:wq!命令保存退出my.cnf文件
-
-# 修改my.cnf文件权限
-sudo chmod 664 /etc/my.cnf
-
-# 开启本地导入权限
-set global local_infile=1;
-
-# 设置MySQL配置
-系统偏好设置 - MySQL - Configuration - Configuration File：/private/etc/my.cnf
-
-# 重启MySQL
-sudo /usr/local/mysql/support-files/mysql.server restart
-
 # 确认csv 文件是ANSI 编码
 
 # 导入
 load data local infile  '/Users/sai/Documents/MyTestStore/test.csv'
-into table PourData1
+into table PourData
 fields terminated by ',' #分隔符
 optionally enclosed by '"' escaped by '"'
 lines terminated by '\n'
@@ -983,14 +996,24 @@ my.cnf内容
 [client]  
 default-character-set=utf8  
 port        = 3306 
+#根据实际情况调整mysql.sock配置
 socket      = /tmp/mysql.sock  
+default-character-set= utf8mb4
 
 [mysqld]  
 default-storage-engine=INNODB  
 character-set-server=utf8  
 collation-server=utf8_general_ci  
-port        = 3306 
-socket      = /tmp/mysql.sock  
+# 服务端口号 默认3306
+port        = 3306
+# MySQL按照目录
+basedir = /usr/local/mysql
+# MySQL数据文件所在位置
+datadir = /usr/local/mysql/data
+# socke文件所在目录
+socket      = /tmp/mysql.sock
+# 临时目录
+tmpdir = /tmp
 skip-external-locking  
 key_buffer_size = 16K  
 max_allowed_packet = 1M  
@@ -999,9 +1022,15 @@ sort_buffer_size = 64K
 read_buffer_size = 256K  
 read_rnd_buffer_size = 256K  
 net_buffer_length = 2K  
-thread_stack = 128K  
+thread_stack = 128K
+#设置为空，即允许导入数据
 secure_file_priv=
+#Mysql服务的唯一编号 每个mysql服务Id需唯一
 server-id   = 1 
+character-set-client-handshake = FALSE
+character-set-server = utf8mb4
+collation-server = utf8mb4_unicode_ci
+init_connect='SET NAMES utf8mb4'
 
 [mysqldump]  
 quick  
@@ -1010,6 +1039,7 @@ max_allowed_packet = 16M
 [mysql]  
 no-auto-rehash  
 local-infile=1
+default-character-set= utf8mb4
 
 [myisamchk]  
 key_buffer_size = 8M  
@@ -1018,6 +1048,16 @@ sort_buffer_size = 8M
 [mysqlhotcopy]  
 interactive-timeout
 ```
+
+* [MySQL字段支持表情包](https://blog.csdn.net/dongwuming/article/details/79761096)
+
+  ```mysql
+  ALTER DATABASE 数据库名 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+  
+  ALTER TABLE 表名 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+  ```
+
+  
 
 #### 4. python连接MySQL
 

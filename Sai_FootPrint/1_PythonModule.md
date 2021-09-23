@@ -369,9 +369,7 @@ MyWB.save('/Users/jiangsai02/Documents/Temp/CombineTable.xlsx')
 
 > openpyxl 只能打开 .xlsx 文件，xlrd 能打开 .xls 文件
 
-
-
-### 操作csv
+#### 操作csv
 
 1. csv转Excel
 
@@ -404,7 +402,6 @@ MyWB.save('/Users/jiangsai02/Documents/Temp/CombineTable.xlsx')
    FromExcel = '/Users/sai/Documents/临时/Test.xlsx'
    ToCsv = '/Users/sai/Documents/临时/Test2.csv'
    
-   
    # 读取Excel文件
    time_start=time.time()
    xls = pd.read_excel(FromExcel, index_col=0)
@@ -417,7 +414,7 @@ MyWB.save('/Users/jiangsai02/Documents/Temp/CombineTable.xlsx')
    time_end=time.time()
    print('转换用时：',time_end-time_start,' s')
    ```
-
+   
 3. 拆分csv
 
    ```python
@@ -447,8 +444,6 @@ MyWB.save('/Users/jiangsai02/Documents/Temp/CombineTable.xlsx')
            # 完成一个文件写入之后，文件编号增加1
            filecount += 1
    ```
-
-   
 
 4. 
 
