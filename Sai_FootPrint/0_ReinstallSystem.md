@@ -3,7 +3,7 @@
 
 | sougou     | 微信        | Chrome    | office                  |
 | ---------- | ----------- | --------- | ----------------------- |
-| PDF expert | snipaste    | itsycal   | istat menusistat menus  |
+| PDF expert | snipaste    | itsycal   | istat menus             |
 | Picgo      | Snagit      | sublime   | Paste（官网下载helper） |
 | Permute    | QQ          | Mweb      | bettertouchtool         |
 | ScreenFlow | Axure       | 欧路      | go2shell（官网下载）    |
@@ -24,7 +24,7 @@ brew cask install stretchly
 # tree -a 显示包括隐藏文件在内的所有文件的树状图
 brew install tree
 
-brew cask install mpv
+brew install --cask mpv
 
 # Finder顶端显示完整路径
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
@@ -444,7 +444,7 @@ ALL_PROXY=socks5://127.0.0.1:1081 brew install PACKAGE
             	# 焦点从沙拉词典移回源文件
          	key code 48 using {command down}
               end tell
-         end alfred_script
+            end alfred_script
             ```
 
    4. 小技巧
@@ -488,7 +488,7 @@ ALL_PROXY=socks5://127.0.0.1:1081 brew install PACKAGE
                  
                  ```
               <hr id=answer>
-        
+            
               <p>{{Translation}}</p>
         ```
       

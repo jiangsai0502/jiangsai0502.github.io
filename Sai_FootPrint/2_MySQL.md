@@ -590,7 +590,13 @@
     rename table salary to YoungMan
     ```
 
-16. 删除表
+16. 获取表字段名
+
+    ```mysql
+    select COLUMN_NAME from information_schema.COLUMNS where table_name = 'Stay_FristDay';
+    ```
+    
+17. 删除表
 
     ```bash
     SHOW TABLES;   #展示所有表
@@ -598,7 +604,7 @@
     DROP TABLE student;   #删除表
     ```
 
-17. 删除库
+18. 删除库
 
     ```mysql
     select database();   #查看当前使用的库
@@ -608,7 +614,7 @@
     drop database SaiDB;   #删除SaiDB库
     ```
 
-18. 查询数据
+19. 查询数据
 
     ```mysql
     +-----+-----------+------+-------+--------------+--------------------+
@@ -715,7 +721,13 @@
        SELECT b.birth_date from customers b
        ```
 
-    10. 聚合函数
+    10. 字符串转数字
+
+        ```mysql
+        ORDER BY '123'+0;
+        ```
+        
+    11. 聚合函数
 
         1. COUNT()
 
@@ -811,7 +823,7 @@
 
            
 
-    11. 子查询
+    12. 子查询
 
         ```mysql
         # 查询英语成绩低于95的学生数据
@@ -823,44 +835,43 @@
 
         
 
-    12. 修改和删除数据
+    13. 修改和删除数据
 
-
-~~~mysql
-> **UPDATE和DELETE都是没有后悔药的操作，因此最好使用事务**
->
-> * START TRANSACTION：开始一个事务
->
-> * ROLLBACK：回滚之前的操作
->
-> * COMMIT：提交事务内的操作
-
-* 修改"王五"的名字成"王伍"
-
-  ```bash
-  START TRANSACTION;
-  
-  SELECT * FROM student WHERE id = '905';
-  
-  UPDATE student SET name = '王伍' WHERE id = '905';
-  
-  ROLLBACK;   #若后悔了就执行回滚，否则不执行ROLLBACK直接执行COMMIT
-  COMMIT;    #无论
-  ```
-  
-* 删除王六的英语成绩
-
-  ```bash
-  START TRANSACTION;
-  
-  SELECT * FROM score t WHERE t.c_name = '英语' and t.stu_id = (SELECT s.id FROM student s where s.`name` = '王六');   #先用select确定查询条件
-  
-  DELETE FROM score t WHERE t.c_name = '英语' and t.stu_id = (SELECT s.id FROM student s where s.`name` = '王六');   #再用上面条件进行删除
-  
-  ROLLBACK;   #若后悔了就执行回滚，否则不执行ROLLBACK直接执行COMMIT
-  COMMIT;    #无论
-  ```
-~~~
+        ```mysql
+        * UPDATE和DELETE都是没有后悔药的操作，因此最好使用事务**
+        
+        * START TRANSACTION：开始一个事务
+        
+        * ROLLBACK：回滚之前的操作
+        
+        * COMMIT：提交事务内的操作
+        
+        * 修改"王五"的名字成"王伍"
+        
+          ```bash
+          START TRANSACTION;
+          
+          SELECT * FROM student WHERE id = '905';
+          
+          UPDATE student SET name = '王伍' WHERE id = '905';
+          
+          ROLLBACK;   #若后悔了就执行回滚，否则不执行ROLLBACK直接执行COMMIT
+          COMMIT;    #无论
+          ```
+          
+        * 删除王六的英语成绩
+        
+          ```bash
+          START TRANSACTION;
+          
+          SELECT * FROM score t WHERE t.c_name = '英语' and t.stu_id = (SELECT s.id FROM student s where s.`name` = '王六');   #先用select确定查询条件
+          
+          DELETE FROM score t WHERE t.c_name = '英语' and t.stu_id = (SELECT s.id FROM student s where s.`name` = '王六');   #再用上面条件进行删除
+          
+          ROLLBACK;   #若后悔了就执行回滚，否则不执行ROLLBACK直接执行COMMIT
+          COMMIT;    #无论
+          ```
+        ```
 
 13. 清空表数据（保留表结构）
 

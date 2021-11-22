@@ -972,8 +972,27 @@ if __name__ == '__main__':
         driver.quit()
 ```
 
+### 下载小鹅通收费视频
 
+[参考](https://github.com/lfdotleo/edownload)
 
+1. 安装wget：brew install wget
+
+2. 安装php：brew install php
+
+3. 获取视频参数
+
+   1. 在 Filter 栏中输入 ts 可以看到多个包含 ts 的链接，选择任一链接复制，该链接为 ts_url
+   2. 点击该链接在右侧框中的 Headers - Request Headers 中找到 referer 字段，复制该值为 referer 。（其他值会随着课程变化而变化，该值每次不用重新获取）
+   3. 在 Filter 栏中输入 m3u8 可以看到包含 m3u8 的链接，该链接为 m3u8_url
+
+4. 下载key文件：在 Filter 栏中输入 key 可以看到包含 key 的链接，wget 下载该文件，改名为test.key
+
+5. 下载视频test.ts：`./edownload.sh <referer> <m3u8_url> <ts_url> <filename>`
+
+   * 例：`./edownload.sh https://appf5z0prau5564.h5.xiaoeknow.com/ https://appf5z0prau5564.h5.xiaoeknow.com/video_encrypt/index\?m3u8\=axHiRa0oceH_Mv6iLdye9ol_bemnNcyreyXpBt0_LwWhsitrdlmy9_kiLsn_hal_dlCi5a0nZgWzNaoiLzk3NjRhN2E1dm9kdHJhbnNnenAxMjUyNTI0MTI2L2FmYzc5YTEyNTI4NTg5MDgxNjU0NjUwMTc0OS9kcm0vdm9kZHJtLnRva2VuLk5URXhaV1U1TnpZM05qQmhZemxoTnl0aVNsaEtiSEZpVGxSTGNqVmlXbU01U25WRWQxcGtZbGxOZVdFNFMwYzVlRTlpZGxJeVRtbFhlbkoxUVU1R1J3LnYuZjQyMTIyMC5tM3U4P3Q9NjE5NGI1MjcmZXhwZXI9MCZ1cz1BQzZkU2Z1b2FHblImc2lnbj1kNjY0NjA5YmY1M2NhNWZjYjYwMTYxOWUyZGM3N2U3MAO0O0OO0O0O https://encrypt-k-vod.xet.tech/9764a7a5vodtransgzp1252524126/afc79a125285890816546501749/drm/v.f421220.ts\?start\=0\&end\=312655\&type\=mpegts\&exper\=0\&sign\=71d42e1cca101029d16ad7510cf2df1d\&t\=6194cd76\&us\=o43ea9xZEWWh test`
+
+     
 
 
 
