@@ -577,3 +577,46 @@ ALL_PROXY=socks5://127.0.0.1:1081 brew install PACKAGE
 
 * 方法：Chrome打开
 
+
+
+
+
+## ClashX 设置方法
+
+#### 获取订阅链接
+
+在产品详情页面获取 Clash 的服务器订阅链接。
+
+![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202111261625570.png)
+
+点击 ClashX 配置对应的获得地址，在弹出的窗口中，复制订阅 URL。
+
+#### 添加配置
+
+按 `⌘+M` 或是依次点击 `配置` > `托管配置` > `管理` 打开订阅管理窗口。
+
+![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202111261625530.png)
+
+点击添加，然后填写内容后点击确定完成添加。
+
+- `Url`: 填入订阅链接
+
+- `Config Name`：填写一个备注名称
+
+  ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202111261626028.png)
+
+#### 使用介绍
+
+点击右上角的 Clash 图标打开菜单。
+
+![image-20211126162650949](/Users/saijiang/Library/Application Support/typora-user-images/image-20211126162650949.png)
+
+点击 `设置为系统代理` 即可开启系统代理，此时即可正常使用。
+
+点击第一项 `出站模式` 可以选择客户端的代理模式：
+
+`全局模式`： 所有访问请求都使用代理。
+`规则链接`： 根据配置文件内规则处理访问请求是否使用代理。
+`直接连接`： 所有访问请求都**不使用代理**。
+
+点击 `Proxy` 可以切换需要使用的节点。
