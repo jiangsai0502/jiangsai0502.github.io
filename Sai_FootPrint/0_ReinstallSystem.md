@@ -171,6 +171,16 @@ DOWN add volume -2
       # 回车自动安装
       ```
 
+#### Mac快捷键
+
+* QQ截图识字：⌥ + 3
+* 锁屏：⌘ + L
+* 新建录音：⌥ + 1
+* 暂停录音：⌥ + 2
+* PicGo上传：⌥ + 4
+
+
+
 ##### finder排序规则
 
 <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200808210729.png" style="zoom:40%;" />
