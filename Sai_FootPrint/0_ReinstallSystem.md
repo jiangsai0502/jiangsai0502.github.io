@@ -169,6 +169,11 @@ DOWN add volume -2
       # 中文汉化包：command+Shift+P，输入install package，弹出框，输入
       ChineseLocalizations
       # 回车自动安装
+      
+      # Ayu主题：command+Shift+P，输入install package，弹出框，输入
+      ayu
+      # 回车自动安装
+      # 选择主题：ayu: Activate theme，选择，回车
       ```
 
 #### Mac快捷键
