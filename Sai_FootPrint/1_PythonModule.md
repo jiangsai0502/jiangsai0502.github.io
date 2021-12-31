@@ -996,7 +996,9 @@ for path, dir_list, file_list in g:
 >     print(tstr + ' = ' + GetChNumber(tstr))
 > ```
 
-### [ffmpeg用法](https://zhuanlan.zhihu.com/p/67878761)
+#### [ffmpeg用法](https://zhuanlan.zhihu.com/p/67878761)
+
+#### [windows安装](https://blog.csdn.net/m0_46278037/article/details/113790540)
 
 #### 1. 下载BNU畅课平台视频流m3u8中的ts视频片段
 
