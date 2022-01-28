@@ -48,7 +48,7 @@
             "keys": [
              [ "#FF0000", "Alt+1" ],
                 [ "#008080", "Alt+2" ],
-         ]
+            ]
             "keys": [
                 [ "#FF0000", "Ctrl+1" ],
                 [ "#008080", "Ctrl+2" ],
@@ -120,6 +120,110 @@
       >    2. preference - complex modification - add rule - 第一行Anki_cloze内的命令"Change command+option+shift+c key to command+3"点击"Enable"
       >
       >    3. 这是个临时修改，不想用时退出Karabiner即可
+      >    
+      >    4. 全局快捷键
+      >    
+      >       ```python
+      >       {
+      >         "title": "JiangSai",
+      >         "rules": [
+      >           {
+      >             "description": "锁屏",
+      >             "manipulators": [
+      >               {
+      >                 "type": "basic",
+      >                 "from": {
+      >                   "key_code": "l",
+      >                   "modifiers": {
+      >                     "mandatory": ["command"]
+      >                   }
+      >                 },
+      >                 "to": [
+      >                   {
+      >                     "key_code": "q",
+      >                     "modifiers": [
+      >                       "command",
+      >                       "control"
+      >                       ]
+      >                   }
+      >                 ]
+      >               }
+      >             ]
+      >           },
+      >           {
+      >             "description": "录音-新建",
+      >             "manipulators": [
+      >               {
+      >                 "type": "basic",
+      >                 "from": {
+      >                   "key_code": "1",
+      >                   "modifiers": {
+      >                     "mandatory": ["option"]
+      >                   }
+      >                 },
+      >                 "to": [
+      >                   {
+      >                     "key_code": "r",
+      >                     "modifiers": [
+      >                       "shift",
+      >                       "command"
+      >                       ]
+      >                   }
+      >                 ]
+      >               }
+      >             ]
+      >           },
+      >           {
+      >             "description": "录音-暂停",
+      >             "manipulators": [
+      >               {
+      >                 "type": "basic",
+      >                 "from": {
+      >                   "key_code": "2",
+      >                   "modifiers": {
+      >                     "mandatory": ["option"]
+      >                   }
+      >                 },
+      >                 "to": [
+      >                   {
+      >                     "key_code": "c",
+      >                     "modifiers": [
+      >                       "shift",
+      >                       "command"
+      >                       ]
+      >                   }
+      >                 ]
+      >               }
+      >             ]
+      >           },
+      >           {
+      >             "description": "typora",
+      >             "manipulators": [
+      >               {
+      >                 "type": "basic",
+      >                 "from": {
+      >                   "key_code": "grave_accent_and_tilde",
+      >                   "modifiers": {
+      >                     "mandatory": ["command"]
+      >                   }
+      >                 },
+      >                 "to": [
+      >                   {
+      >                     "key_code": "grave_accent_and_tilde",
+      >                     "modifiers": [
+      >                       "shift",
+      >                       "control"
+      >                       ]
+      >                   }
+      >                 ]
+      >               }
+      >             ]
+      >           }
+      >         ]
+      >       }
+      >       ```
+      >    
+      >       1. grave_accent_and_tilde即键盘esc下方的`
 
 6. 创建自己的卡片类型
 

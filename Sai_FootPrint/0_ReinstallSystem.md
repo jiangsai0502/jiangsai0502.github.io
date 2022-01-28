@@ -388,7 +388,10 @@ ALL_PROXY=socks5://127.0.0.1:1081 brew install PACKAGE
    brew update
    ```
 
-   
+
+
+
+
 
 
 #### pip安装慢
