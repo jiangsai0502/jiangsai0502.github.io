@@ -73,29 +73,37 @@ DOWN add volume -2
         
     * 安装Oh my zsh
       
+        * [参考](https://segmentfault.com/a/1190000039834490)
+        
+            ```python
+            export REMOTE=https://gitee.com/imirror/ohmyzsh.git
+            sh -c "$(wget -O- https://cdn.jsdelivr.net/gh/ohmyzsh/ohmyzsh/tools/install.sh)"
+            ```
+        
+            
+        
         ```bash
-        sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
         open ~/.zshrc
         # 在.zshrc文件中搜索 source $ZSH/oh-my-zsh.sh，只本句之前加一句
         ZSH_DISABLE_COMPFIX="true"
         # 禁用oh-my-zsh自动更新
         找到DISABLE_AUTO_UPDATE一行，将行首的注释'#'去掉
-        source $ZSH/oh-my-zsh.sh
+        source ~/.zshrc
         ```
         
     * 安装PowerLine
     
         ```json
-        sudo easy_install pip;
-        pip install powerline-status --user
-        ```
         
+        ```
+    
     * 安装PowerFonts字体
     
       ```json
-      mkdir ~/Documents/Temp;
-      git clone https://github.com/powerline/fonts.git --depth=1;
-      ./fonts/install.sh
+      1. 下载：https://github.com/powerline/fonts
+      2. 解压
+      3. 进入文件夹：cd fonts-master
+      4. 安装：./install.sh
       ```
     
       设置字体：iTerm2 -> Preferences -> Profiles -> Text，在Font区域选中Change Font，然后找到Meslo LG字体，有L、M、S可选
@@ -113,7 +121,7 @@ DOWN add volume -2
       设置配色：iTerm2 -> Preferences -> Profiles -> Colors -> Color Presets
     
       ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200112182935.png)
-      
+    
     * 修改主题
     
       > ```bash
@@ -137,7 +145,7 @@ DOWN add volume -2
       > 最后插入一行：source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
       > source ~/.zshrc
       > ```
-      
+    
     * 自动提示与命令补全
     
       > ```bash
