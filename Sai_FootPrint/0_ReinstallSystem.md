@@ -15,22 +15,37 @@
 
 1. 安装brew
 
-   * 命令：/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)" 
-     * 推荐使用中科大源
+   > 1. 命令
+   >
+   >    ```
+   >    /bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)" 
+   >    ```
+   >
+   > 2. 推荐使用中科大源
 
 2. 安装iterm2
 
-   * 命令：brew install iterm2
-
-   * 快捷键
-
-     * 光标按照单词快速移动
-
-       iTerm2 -> Preferences -> Keys -> Key Bindings
-
-       修改 ⌘← 和 ⌘→ 的映射，双击进入后，选择Action为 “Send Escape Sequence”，Esc+为 ⌘← 对应 b ， ⌘→ 对应 f
-
-3. 
+   > 1. 命令
+   >
+   >    ```
+   >    brew install iterm2
+   >    ```
+   >
+   > 2. 快捷键
+   >
+   >    1. 光标按照单词快速移动
+   >
+   >       * iTerm2 -> Preferences -> Keys -> Key Bindings
+   >
+   >       * 修改 ⌘← 和 ⌘→ 的映射，双击进入后，选择Action为 “Send Escape Sequence”，Esc+为 ⌘← 对应 b ， ⌘→ 对应 f
+   >
+   >         <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220412205506.png" style="zoom:50%;" />
+   >
+   >    2. 按照单词快速删除（结合BetterTouchTool）
+   >
+   >       * 修改 ⌘+Delete 的映射，⌘+Delete 代表 control + w
+   >
+   >         ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220412210000.png)
 
 ```bash
 brew install youtube-dl
@@ -64,112 +79,92 @@ UP add volume 2
 DOWN add volume -2
 ```
 
-* iterm2   `brew install iterm2`
-  
-    * 打开 Go2Shell 配置页，将自动调用设置为iterm2
-    
-         `open -a Go2Shell --args config`
-    
-    * 设置 iterm2 的快捷键
-      
-        > 1. 光标按照单词快速移动
-        >
-        >    iTerm2 -> Preferences -> Keys -> Key Bindings
-        >
-        >    修改 ⌘← 和 ⌘→ 的映射，双击进入后，选择Action为 “Send Escape Sequence”，Esc+为 ⌘← 对应 b ， ⌘→ 对应 f
-        >
-        >    ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200131101305.png)
-        >    
-        > 2. 按照单词快速删除（结合BetterTouchTool）
-        >
-        >    修改 ⌘+Delete 的映射，⌘+Delete 代表 control + w
-        >
-        >    ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200429144312.png)
-        
-    * 安装Oh my zsh
-      
-        * [参考](https://segmentfault.com/a/1190000039834490)
-        
-            ```python
-            export REMOTE=https://gitee.com/imirror/ohmyzsh.git
-            sh -c "$(wget -O- https://cdn.jsdelivr.net/gh/ohmyzsh/ohmyzsh/tools/install.sh)"
-            ```
-        
-            
-        
-        ```bash
-        open ~/.zshrc
-        # 在.zshrc文件中搜索 source $ZSH/oh-my-zsh.sh，只本句之前加一句
-        ZSH_DISABLE_COMPFIX="true"
-        # 禁用oh-my-zsh自动更新
-        找到DISABLE_AUTO_UPDATE一行，将行首的注释'#'去掉
-        source ~/.zshrc
+> 
+
+* 安装Oh my zsh
+
+    * [参考](https://segmentfault.com/a/1190000039834490)
+
+        ```python
+        export REMOTE=https://gitee.com/imirror/ohmyzsh.git
+        sh -c "$(wget -O- https://cdn.jsdelivr.net/gh/ohmyzsh/ohmyzsh/tools/install.sh)"
         ```
+
         
-    * 安装PowerLine
+
+    ```bash
+    open ~/.zshrc
+    # 在.zshrc文件中搜索 source $ZSH/oh-my-zsh.sh，只本句之前加一句
+    ZSH_DISABLE_COMPFIX="true"
+    # 禁用oh-my-zsh自动更新
+    找到DISABLE_AUTO_UPDATE一行，将行首的注释'#'去掉
+    source ~/.zshrc
+    ```
+
+* 安装PowerLine
+
+    ```json
     
-        ```json
-        
-        ```
-    
-    * 安装PowerFonts字体
-    
-      ```json
-      1. 下载：https://github.com/powerline/fonts
-      2. 解压
-      3. 进入文件夹：cd fonts-master
-      4. 安装：./install.sh
-      ```
-    
-      设置字体：iTerm2 -> Preferences -> Profiles -> Text，在Font区域选中Change Font，然后找到Meslo LG字体，有L、M、S可选
-      ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200112165201.png)
-    
-    * 安装配色方案
-    
-      ```json
-      cd ~/Documents/Temp;
-      git clone https://github.com/altercation/solarized/ --config http.proxy='http://127.0.0.1:1081';
-      cd solarized/iterm2-colors-solarized/;
-      open solarized/iterm2-colors-solarized/
-      ```
-    
-      设置配色：iTerm2 -> Preferences -> Profiles -> Colors -> Color Presets
-    
-      ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200112182935.png)
-    
-    * 修改主题
-    
-      > ```bash
-      > cd ~/Documents/Temp;
-      > git clone https://github.com/fcamblor/oh-my-zsh-agnoster-fcamblor.git --config http.proxy='http://127.0.0.1:1081';
-      > ./oh-my-zsh-agnoster-fcamblor/install;
-      > open ~/.zshrc
-      > # 搜索'ZSH_THEME'，修改为ZSH_THEME="agnoster"
-      > ----或者使用自己的主题----
-      > https://github.com/jiangsai0502/WillFileStore
-      > 1.把主题文件WillTheme.zsh-theme放入/Users/sai/.oh-my-zsh/themes
-      > 2.open ~/.zshrc
-      > 3.修改ZSH_THEME="WillTheme"
-      > ```
-    
-    * 安装高亮插件
-    
-      > ```bash
-      > brew install zsh-syntax-highlighting
-      > open ~/.zshrc
-      > 最后插入一行：source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-      > source ~/.zshrc
-      > ```
-    
-    * 自动提示与命令补全
-    
-      > ```bash
-      > cd ~/.oh-my-zsh/custom/plugins/
-      > git clone https://github.com/zsh-users/zsh-autosuggestions  --config http.proxy='http://127.0.0.1:1081'
-      > open ~/.zshrc
-      > 搜索'plugins'，修改为plugins=(zsh-autosuggestions git)
-      > ```
-    
+    ```
+
+* 安装PowerFonts字体
+
+  ```json
+  1. 下载：https://github.com/powerline/fonts
+  2. 解压
+  3. 进入文件夹：cd fonts-master
+  4. 安装：./install.sh
+  ```
+
+  设置字体：iTerm2 -> Preferences -> Profiles -> Text，在Font区域选中Change Font，然后找到Meslo LG字体，有L、M、S可选
+  ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200112165201.png)
+
+* 安装配色方案
+
+  ```json
+  cd ~/Documents/Temp;
+  git clone https://github.com/altercation/solarized/ --config http.proxy='http://127.0.0.1:1081';
+  cd solarized/iterm2-colors-solarized/;
+  open solarized/iterm2-colors-solarized/
+  ```
+
+  设置配色：iTerm2 -> Preferences -> Profiles -> Colors -> Color Presets
+
+  ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200112182935.png)
+
+* 修改主题
+
+  > ```bash
+  > cd ~/Documents/Temp;
+  > git clone https://github.com/fcamblor/oh-my-zsh-agnoster-fcamblor.git --config http.proxy='http://127.0.0.1:1081';
+  > ./oh-my-zsh-agnoster-fcamblor/install;
+  > open ~/.zshrc
+  > # 搜索'ZSH_THEME'，修改为ZSH_THEME="agnoster"
+  > ----或者使用自己的主题----
+  > https://github.com/jiangsai0502/WillFileStore
+  > 1.把主题文件WillTheme.zsh-theme放入/Users/sai/.oh-my-zsh/themes
+  > 2.open ~/.zshrc
+  > 3.修改ZSH_THEME="WillTheme"
+  > ```
+
+* 安装高亮插件
+
+  > ```bash
+  > brew install zsh-syntax-highlighting
+  > open ~/.zshrc
+  > 最后插入一行：source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  > source ~/.zshrc
+  > ```
+
+* 自动提示与命令补全
+
+  > ```bash
+  > cd ~/.oh-my-zsh/custom/plugins/
+  > git clone https://github.com/zsh-users/zsh-autosuggestions  --config http.proxy='http://127.0.0.1:1081'
+  > open ~/.zshrc
+  > 搜索'plugins'，修改为plugins=(zsh-autosuggestions git)
+  > ```
+
 * Sublime Text
 
     * Command + Control +G 一次性选择所有相同的词
