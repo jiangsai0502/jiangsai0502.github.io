@@ -13,6 +13,25 @@
 | Typora     | XMind ZEN   | ename     | ShadowsocksX            |
 | ezip       | Caffeinated | draw.io   | Dr. Unarchiver          |
 
+1. 安装brew
+
+   * 命令：/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)" 
+     * 推荐使用中科大源
+
+2. 安装iterm2
+
+   * 命令：brew install iterm2
+
+   * 快捷键
+
+     * 光标按照单词快速移动
+
+       iTerm2 -> Preferences -> Keys -> Key Bindings
+
+       修改 ⌘← 和 ⌘→ 的映射，双击进入后，选择Action为 “Send Escape Sequence”，Esc+为 ⌘← 对应 b ， ⌘→ 对应 f
+
+3. 
+
 ```bash
 brew install youtube-dl
 
@@ -45,11 +64,7 @@ UP add volume 2
 DOWN add volume -2
 ```
 
-
-
-
-
-* iterm2   `brew cask install iterm2`
+* iterm2   `brew install iterm2`
   
     * 打开 Go2Shell 配置页，将自动调用设置为iterm2
     
