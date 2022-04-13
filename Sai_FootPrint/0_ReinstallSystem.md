@@ -1,51 +1,57 @@
 # 重装系统
 ### 常备软件安装
 
-| sougou     | 微信        | Chrome    | office                  |
-| ---------- | ----------- | --------- | ----------------------- |
-| PDF expert | snipaste    | itsycal   | istat menus             |
-| Picgo      | Snagit      | sublime   | Paste（官网下载helper） |
-| Permute    | QQ          | Mweb      | bettertouchtool         |
-| ScreenFlow | Axure       | 欧路      | go2shell（官网下载）    |
-| xcode      | Appcleaner  | stretchly | GitHub Desktop          |
-| brew       | Anaconda    | Anki      | Parallels Desktop       |
-| Photoshop  | 百度云盘    | iMoive    | 网易邮箱大师            |
-| Typora     | XMind ZEN   | ename     | ShadowsocksX            |
-| ezip       | Caffeinated | draw.io   | Dr. Unarchiver          |
+1. 常备软件
 
-1. 安装brew
+   * sougou
+   * 微信
+   * QQ
+   * Chrome
+   * office
+   * PDF expert
+   * istat menus
+   * itsycal
+   * snipaste
+   * sublime
+   * App Cleaner & Uninstaller Pro
+   * Photoshop
+   * Typora
+   * XMind ZEN
+   * Permute
+   * go2shell（官网下载）
+   * 欧路
+   * Picgo
+   * Paste（官网下载helper）
+
+2. 安装brew
 
    > 1. 命令
    >
-   >    ```
-   >    /bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)" 
-   >    ```
+   >    `/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)" `
    >
    > 2. 推荐使用中科大源
 
-2. 安装mpv
+3. 安装mpv
 
-   ```
-   brew install mpv --cask
-   
-   # 创建配置文件：~/.config/mpv/input.conf
-   AXIS_UP add volume -2
-   AXIS_DOWN add volume 2
-   AXIS_LEFT seek -2 exact
-   AXIS_RIGHT seek 2 exact
-   LEFT seek -2 exact
-   RIGHT seek 2 exact
-   UP add volume 2
-   DOWN add volume -2
-   ```
+   > ```
+   > brew install mpv --cask
+   > 
+   > # 创建配置文件：~/.config/mpv/input.conf
+   > AXIS_UP add volume -2
+   > AXIS_DOWN add volume 2
+   > AXIS_LEFT seek -2 exact
+   > AXIS_RIGHT seek 2 exact
+   > LEFT seek -2 exact
+   > RIGHT seek 2 exact
+   > UP add volume 2
+   > DOWN add volume -2
+   > ```
 
-3. 安装iterm2
+4. 安装iterm2
 
    > 1. 命令
    >
-   >    ```
-   >    brew install iterm2
-   >    ```
+   >    `brew install iterm2`
    >
    > 2. 把iTerm2设为默认
    >
@@ -125,13 +131,13 @@
    >
    > 10. 获取代理地址
    >
-   >     ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413112830.png)
+   >     ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413141420.png)
    >
    > 11. 自动提示与命令补全
    >
+   >     `git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
+   >
    >     ```
-   >     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-   >     
    >     open ~/.zshrc
    >     搜索'plugins'，修改为plugins=(zsh-autosuggestions)
    >     source ~/.zshrc
@@ -152,115 +158,253 @@
    >
    >     ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413135638.png)
 
-4. 安装youtube-dl
+5. 安装youtube-dl
 
-   ```
-   brew install youtube-dl
-   ```
+   > `brew install youtube-dl`
+   >
+   > *  下载默认类型视频（无字幕）
+   >
+   >   `youtube-dl https://www.youtube.com/watch?v=n_6p-1J551Y`
+   >
+   > * 下载默认类型视频（有字幕）
+   >
+   >   `youtube-dl --write-auto-sub https://www.youtube.com/watch?v=n_6p-1J551Y`
+   >
+   > * 下载视频（指定名称）
+   >
+   >   `youtube-dl https://www.youtube.com/watch?v=n_6p-1J551Y -o '你要的名字'`
+   >
+   > * 单独下载**字幕**（无视频）
+   >
+   >   `youtube-dl --proxy 127.0.0.1:1081 --write-sub --skip-download https://www.youtube.com/watch?v=n_6p-1J551Y`
+   >
+   > * 查看视频所有类型
+   >
+   >   `youtube-dl -F https://www.youtube.com/watch?v=n_6p-1J551Y`
+   >
+   > * 查看视频所有字幕
+   >
+   >   `youtube-dl --list-subs https://www.youtube.com/watch?v=n_6p-1J551Y`
+   >
+   > * 下载指定质量的视频和音频并自动合并（有字幕）
+   >
+   >   `youtube-dl -f 160+249 https://www.youtube.com/watch?v=n_6p-1J551Y`
+   >
+   > * 下载指定质量的视频和音频并自动合并，并转码成mp4格式（有字幕）
+   >
+   >   `youtube-dl -f 160+249 --recode-video mp4 https://www.youtube.com/watch?v=n_6p-1J551Y`
+   >
+   > * 使用代理下载默认类型的视频
+   >
+   >   `youtube-dl --proxy 127.0.0.1:1081 https://www.youtube.com/watch?v=xqdI6ljJ954`
+   >
+   > * 使用代理下载默认类型的视频**列表**
+   >
+   >   `youtube-dl --proxy 127.0.0.1:1081 --yes-playlist https://www.youtube.com/watch?v=xqdI6ljJ954`
+   >
+   > * B站无音频格式，故会先下视频载ffmepg自动转成音频
+   >   `youtube-dl --extract-audio https://www.bilibili.com/video/BV1xJ411r7Yo`
 
-   *  下载默认类型视频（无字幕）
+6. 安装you-get
 
-     ```
-     youtube-dl https://www.youtube.com/watch?v=n_6p-1J551Y
-     ```
+   > `brew install you-get`
+   >
+   > * 分析视频可供下载的全部格式：-i参数
+   >   `you-get -i https://www.youtube.com/watch?v=jNQXAC9IVRw`
+   >
+   > * 直接下载默认格式：
+   >   `you-get https://www.youtube.com/watch?v=jNQXAC9IVRw`
+   >
+   > * 指定下载名称
+   >
+   >   `you-get https://www.youtube.com/watch?v=jNQXAC9IVRw -O FileName`
+   >
+   > * 自定义下载格式：
+   >   `you-get --itag=18 'https://www.youtube.com/watch?v=jNQXAC9IVRw'`
+   >
+   > * 使用HTTP代理下载：
+   >   `you-get -x 127.0.0.1:1081 --itag=18 'https://www.youtube.com/watch?v=jNQXAC9IVRw'`
 
-   * 下载默认类型视频（有字幕）
+7. 启动台图标数量7 x 11
 
-     ```
-     youtube-dl --write-auto-sub https://www.youtube.com/watch?v=n_6p-1J551Y
-     ```
+   > ```
+   > defaults write com.apple.dock springboard-rows -int 7;
+   > defaults write com.apple.dock springboard-columns -int 11;
+   > defaults write com.apple.dock ResetLaunchPad -bool true;
+   > killall Dock
+   > ```
 
-   * 下载视频（指定名称）
+8. Finder顶端显示完整路径
 
-     ```
-     youtube-dl https://www.youtube.com/watch?v=n_6p-1J551Y -o '你要的名字'
-     ```
+   > `defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES`
 
-   * 单独下载**字幕**（无视频）
+9. Alfred
 
-     ```
-     youtube-dl --proxy 127.0.0.1:1081 --write-sub --skip-download https://www.youtube.com/watch?v=n_6p-1J551Y
-     ```
+   > 1. 将Spotlight的快捷键分给Alfred
+   >
+   >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413142827.png)
+   >
+   > 2. 搜索排除某个文件夹
+   >
+   >    1. 添加要排除的文件夹
+   >    2. 调出alfred，输入reload回车，清空alfred缓存
+   >
+   >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413143239.png)
+   >
+   > 3. 自定义文件操作
+   >
+   >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413143409.png)
+   >
+   > 4. **Quick Search**：最常用，`Space + 关键字`快速启用打开文件，功能类似于使用`Open + 关键字`
+   >
+   > 5. **Inside Files**：最常用，`in + 关键字`查找包含查询字的文件
+   >
 
-   * 查看视频所有类型
+10. ClashX 设置方法
 
-     ```
-     youtube-dl -F https://www.youtube.com/watch?v=n_6p-1J551Y
-     ```
+    > 1. 获取订阅链接
+    >
+    >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202111261625570.png)
+    >
+    > 2. 添加配置
+    >
+    >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202111261625530.png)
+    >
+    >    - `Url`: 填入订阅链接
+    >
+    >    - `Config Name`：填写一个备注名称
 
-   * 1
+11. brew 挂代理方式
 
-   * 查看视频所有字幕
-     `youtube-dl --list-subs https://www.youtube.com/watch?v=n_6p-1J551Y`
-   * 下载指定质量的视频和音频并自动合并（有字幕）
-     `youtube-dl -f 160+249 https://www.youtube.com/watch?v=n_6p-1J551Y`
-   * 下载指定质量的视频和音频并自动合并，并转码成mp4格式（有字幕）
-     `youtube-dl -f 160+249 --recode-video mp4 https://www.youtube.com/watch?v=n_6p-1J551Y`
-   * 使用代理下载默认类型的视频
-     `youtube-dl --proxy 127.0.0.1:1081 https://www.youtube.com/watch?v=xqdI6ljJ954`
-   * 使用代理下载默认类型的视频**列表**
-     `youtube-dl --proxy 127.0.0.1:1081 --yes-playlist https://www.youtube.com/watch?v=xqdI6ljJ954`
-   * 获取proxy_url:proxy_port的方式
-     `在Shadowsocks找到copy HTTP proxy shell export line，如‘export http_proxy=http://127.0.0.1:1081’即可提取代理地址何端口`
+    > ```bash
+    > 1. touch ~/.curlrc
+    > 2. 见上教程，获取代理地址
+    > 3. open ~/.curlrc
+    > 4. 输入代理地址：proxy=127.0.0.1:1081
+    > 5. 用完可以删掉该文件，否则墙内资源会受限
+    >    rm ~/.curlrc
+    > 
+    > # 单个命令挂代理1
+    > http_proxy=http://127.0.0.1:1081 https_proxy=http://127.0.0.1:1081 brew install PACKAGE
+    > # 单个命令挂代理2
+    > ALL_PROXY=socks5://127.0.0.1:1081 brew install PACKAGE
+    > ```
+    >
 
-   * B站无音频格式，故会先下视频载ffmepg自动转成音频
-   youtube-dl --extract-audio https://www.bilibili.com/video/BV1xJ411r7Yo
+12. sublime配置
 
-5. 安装you-get
+    > ```
+    > # command+Shift+P，输入
+    > install package
+    > # 回车自动安装
+    > 
+    > # 解决乱码问题：command+Shift+P，输入install package，弹出框，输入
+    > ConvertToUTF8
+    > # 回车自动安装
+    > 
+    > # 中文汉化包：command+Shift+P，输入install package，弹出框，输入
+    > ChineseLocalizations
+    > # 回车自动安装
+    > 
+    > # Ayu主题：command+Shift+P，输入install package，弹出框，输入
+    > ayu
+    > # 回车自动安装
+    > # 选择主题：ayu: Activate theme，选择，回车
+    > ```
 
-   ```
-   brew install you-get
-   ```
+13. Git 挂代理方式
 
-6. 启动台图标数量7 x 11
+    > `git clone https://github.com/altercation/solarized/ --config http.proxy='http://127.0.0.1:1087'`
 
-   ```
-   defaults write com.apple.dock springboard-rows -int 7;
-   defaults write com.apple.dock springboard-columns -int 11;
-   defaults write com.apple.dock ResetLaunchPad -bool true;
-   killall Dock
-   ```
+14. Chrome 搜索后新标签打开链接
 
-7. Finder顶端显示完整路径
+    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413155126.png)
 
-   ```
-   defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
-   ```
+15. Mac 修改文件创建时间
 
-8. 
+    > `touch -mt YYYYMMDDhhmm`
+    > 示例
+    >
+    > ```bash
+    > 1. 在Terminal中输入 touch -mt 20160101  
+    > 2. 将/Users/will/Downloads/1.png拖入Terminal中
+    > 3. Terminal会显示 touch -mt 20160101 /Users/will/Downloads/123.png
+    > 4. 回车执行即可
+    > 注：改成当天 touch -m 文件名
+    > ```
+    >
+
+16. 文献阅读：沙拉查词 + Alfred
+
+    > [参考](https://zhuanlan.zhihu.com/p/113809716)
+    >
+    > 1. 安装Chrome插件：沙拉查词
+    >
+    > 2. 配置浏览器外划词翻译
+    >
+    >    > 浏览器外配置好后，其调用沙拉查词的方式同样适用于浏览器内，因此一劳永逸
+    >
+    >    1. 在Chrome内为沙拉查词设置**全局快捷键**
+    >
+    >       > 地址栏：chrome://extensions/shortcuts
+    >
+    >       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413160100.png)
+    >
+    >    2. 开启沙拉查词的Chrome权限
+    >
+    >       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413160125.png)
+    >
+    >    3. 配置Alfred
+    >
+    >       1. [下载Alfred workflow脚本](https://link.zhihu.com/?target=https%3A//github.com/crimx/ext-saladict/files/3711425/saladict.alfredworkflow.zip)
+    >
+    >       2. 双击，import脚本
+    >
+    >       3. 设置hotkey：`control + ~`
+    >
+    >       4. 结合BetterTouchTool修改触发条件：在PDF expert中鼠标移到底边触发`control + ~`
+    >
+    >          ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413160145.png)
+    >
+    >       5. 沙拉词典焦点
+    >
+    >          1. 方法1：设置
+    >
+    >             ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413160217.png)
+    >
+    >          2. 方法2：修改Run NSAppleScript脚本
+    >
+    >             ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413160246.png)
+    >
+    >             ```bash
+    >             on alfred_script(q)
+    >               tell application "System Events"
+    >             	# 快捷键打开沙拉词典
+    >             	key code 37 using {control down, command down}
+    >             	delay 0.1
+    >             	# 焦点从沙拉词典移回源文件
+    >             key code 48 using {command down}
+    >               end tell
+    >             end alfred_script
+    >             ```
+    >
+    >    4. 积累生词
+    >
+    >       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413155850.png)
+    >
+    >    5. Saladict 生词本导出生词
+    >       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413155956.png)
+    >
+
+17. 
 
 
 
-* Command + Control +G 一次性选择所有相同的词
 
-* 安装插件
-
-  ```bash
-  # 通过View->Show Console菜单打开命令行，输入
-  import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ',' ')).read())
-  # 回车自动安装
-  
-  # command+Shift+P，输入
-  install package
-  # 回车自动安装
-  
-  # 解决乱码问题：command+Shift+P，输入install package，弹出框，输入
-  ConvertToUTF8
-  # 回车自动安装
-  
-  # 中文汉化包：command+Shift+P，输入install package，弹出框，输入
-  ChineseLocalizations
-  # 回车自动安装
-  
-  # Ayu主题：command+Shift+P，输入install package，弹出框，输入
-  ayu
-  # 回车自动安装
-  # 选择主题：ayu: Activate theme，选择，回车
-  ```
 
 #### Mac快捷键
 
-* QQ截图识字：⌥ + 3
+* QQ截图识字：⌥ + 5
 * 锁屏：⌘ + L
 * 新建录音：⌥ + 1
 * 暂停录音：⌥ + 2
@@ -268,51 +412,9 @@
 
 
 
-##### finder排序规则
-
-<img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200808210729.png" style="zoom:40%;" />
-
-##### Alfred搜索排除某个文件夹
-
-1. 系统偏好设置 - Spotlight - 隐私
-
-2. 可见文件夹：直接添加要排除的文件夹
-
-   <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200808232048.png" style="zoom:50%;" />
-
-3. 不可见文件夹：Finder - “前往文件夹” - 输入路径，进入文件夹 - 把要排除的文件夹拖进 Spotlight 的 隐私 窗口
-
-4. 清空alfred缓存：调出alfred，输入reload回车
-
-##### Alfred文件动作
-
-![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200809145254.png)
-
-### you-get / YouTube-dl
-
-**you-get用法**
-
-* 分析视频可供下载的全部格式：-i参数
-  `you-get -i https://www.youtube.com/watch?v=jNQXAC9IVRw`
-
-* 直接下载默认格式：
-  `you-get https://www.youtube.com/watch?v=jNQXAC9IVRw`
-
-* 指定下载名称
-
-  `you-get https://www.youtube.com/watch?v=jNQXAC9IVRw -O FileName`
-
-* 自定义下载格式：
-  `you-get --itag=18 'https://www.youtube.com/watch?v=jNQXAC9IVRw'`
-
-* 使用HTTP代理下载：
-`you-get -x 127.0.0.1:1081 --itag=18 'https://www.youtube.com/watch?v=jNQXAC9IVRw'`
 
 
 
-**youtube-dl用法**
-
-* 
 
 
 
@@ -344,246 +446,6 @@
   xmlyfetcher https://www.ximalaya.com/ertong/12891461/211393643 -t 20
   ```
 
-  
-
-##### 下载bibi音频
-
-* B站无音频格式，故会先下视频载ffmepg自动转成音频
-
-  `youtube-dl --extract-audio https://www.bilibili.com/video/BV1xJ411r7Yo`
-
-
-
-#### Mac 修改文件创建时间
-
-`touch -mt YYYYMMDDhhmm`
-示例
-```bash
-1. 在Terminal中输入 touch -mt 20160101  
-2. 将/Users/will/Downloads/1.png拖入Terminal中
-3. Terminal会显示 touch -mt 20160101 /Users/will/Downloads/123.png
-4. 回车执行即可
-注：改成当天 touch -m 文件名
-```
-
-
-
-#### Git 挂代理方式
-
-`git clone https://github.com/altercation/solarized/ --config http.proxy='http://127.0.0.1:1087'`
-
-#### Chrome 搜索后新标签打开链接
-
-![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200216125118.png)
-
-#### brew 挂代理方式
-
-```bash
-touch ~/.curlrc
-open ~/.curlrc
-输入代理地址：proxy=127.0.0.1:1081
-用完可以删掉该文件，否则墙内资源会受限
-rm ~/.curlrc
-
-# 单个命令挂代理1
-http_proxy=http://127.0.0.1:1081 https_proxy=http://127.0.0.1:1081 brew install PACKAGE
-# 单个命令挂代理2
-ALL_PROXY=socks5://127.0.0.1:1081 brew install PACKAGE
-```
-
-#### brew下载慢
-
-**问题描述**
-
-1. brew安装软件一直卡在Update阶段
-2. 从github.com下载文件也极度缓慢
-
-**排查**
-
-1. 使用`brew update --verbose`观察update过程
-
-**解决方案：[参考](https://www.cnblogs.com/tp0829/p/Homebrew.html)**
-
-1. `Homebrew`源
-
-   ```bash
-   # 查看brew镜像源
-   git -C "$(brew --repo)" remote -v
-   # 修改brew镜像源
-   git -C "$(brew --repo)" remote set-url origin https://mirrors.ustc.edu.cn/brew.git
-   ```
-
-   > `"$(brew --repo)"`是用来自动指向Homebrew的目录的
-
-2. `homebrew-core`源
-
-   ```bash
-   # 查看homebrew-core镜像源
-   git -C "$(brew --repo homebrew/core)" remote -v
-   # 修改homebrew-core镜像源
-   git -C "$(brew --repo homebrew/core)" remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
-   ```
-
-3. 替换`homebrew-cask`源
-
-   ```bash
-   # 查看homebrew-cask镜像源（需要安装后才能查看）
-   git -C "$(brew --repo homebrew/cask)" remote -v
-   # 修改homebrew-cask镜像源（需要安装后才能修改）
-   git -C "$(brew --repo homebrew/cask)" remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
-   ```
-   
-4. 更新替换源
-
-   ```bash
-   brew update
-   ```
-
-
-
-
-
-
-
-#### pip安装慢
-
-指定安装源：pip install jupyter -i https://pypi.tuna.tsinghua.edu.cn/simple
-
-#### Alfred用法
-
-1. 取消spotlight快捷键，设置Alfred快捷键
-
-   ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200522092941.png)
-
-   > 1. 设置Alfred的快捷键
-   > 2. **Quick Search**：最常用，`Space + 关键字`快速启用打开文件，功能类似于使用`Open + 关键字`
-   > 3. **Inside Files**：最常用，`in + 关键字`查找包含查询字的文件
-   > 4. 预览：`shift`
-
-
-
-### 文献阅读：沙拉查词 + Alfred
-
-[参考](https://zhuanlan.zhihu.com/p/113809716)
-
-1. 安装Chrome插件：沙拉查词
-
-2. 配置浏览器外划词翻译
-
-   > 浏览器外配置好后，其调用沙拉查词的方式同样适用于浏览器内，因此一劳永逸
-
-   1. 在Chrome内为沙拉查词设置**全局快捷键**
-
-      > 地址栏：chrome://extensions/shortcuts
-
-      <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20201031151535.png" style="zoom:30%;" />
-
-   2. 开启沙拉查词的Chrome权限
-
-      <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20201031151255.png" style="zoom:30%;" />
-
-   3. 配置Alfred
-
-      1. [下载Alfred workflow脚本](https://link.zhihu.com/?target=https%3A//github.com/crimx/ext-saladict/files/3711425/saladict.alfredworkflow.zip)
-
-      2. 双击，import脚本
-
-      3. 设置hotkey：`control + ~`
-
-      4. 结合BetterTouchTool修改触发条件：在PDF expert中鼠标移到底边触发`control + ~`
-
-         <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200731184206.png" style="zoom:50%;" />
-
-      5. 沙拉词典焦点
-
-         1. 方法1：设置
-
-            ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200731151246.png)
-
-         2. 方法2：修改Run NSAppleScript脚本
-   
-            <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200731013451.png" style="zoom:50%;" />
-   
-            ```bash
-            on alfred_script(q)
-              tell application "System Events"
-            	# 快捷键打开沙拉词典
-            	key code 37 using {control down, command down}
-            	delay 0.1
-            	# 焦点从沙拉词典移回源文件
-         	key code 48 using {command down}
-              end tell
-            end alfred_script
-            ```
-
-   4. 小技巧
-
-      1. 沉浸式的`黑暗模式`
-
-         ![C4wOBf](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/uPic/C4wOBf.png)
-
-      2. PDF和沙拉查词并列显示
-
-         ![0Vh7oi](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/uPic/0Vh7oi.png)
-
-      3. 积累生词
-
-         ![ZTryoy](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/uPic/ZTryoy.png)
-
-      4. 生词导入Anki
-
-         1. Anki中创建新卡片类型
-
-            1. 点开 `Anki -> Tools -> Manage Note Types -> Add` 
-
-            2. 选最基础的 `Add: Basic`，填写名字，如 Saladict，添加成功后，点击 `Fields` 编辑字段
-
-            3. 默认提供了 `Front` 和 `Back` ，全部删掉或直接改名成 `Word`, `Translation`，完成后， 点击 `Cards` 编辑卡片模板
-
-            4. 提供一个简单的模板
-   
-               * Front Template
-
-                 ```html
-                 
-                 ```
-        <p>{{Word}}</p>
-                 ```
-           
-               * Back Template
-             
-                 ```html
-                 {{FrontSide}}
-                 
-                 ```
-              <hr id=answer>
-            
-              <p>{{Translation}}</p>
-        ```
-      
-        ```
-   
-2. Saladict 生词本导出生词
-         
-      ![Sw0Zqw](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/uPic/Sw0Zqw.png)
-      
-   1. 选`换行替换为空格`
-      
-            2. 模板设为
-        
-      ```html
-            %text% ` %trans%
-      ```
-      
-   3. Anki导入生词
-      
-            ![DPmCzS](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/uPic/DPmCzS.png)
-             
-            1. 导入类型选 `Text separated by tabs or semicolons`
-            2. `Type` 选 `Saladict`
-            3. `Fields separated by: Space` 。我们换成 `
-            4. 勾选`Allow HTML in fields` 。因为导出时选了 `<br>` 或 `<p>` 等 HTML排版
-            5.  `Field Mapping` 是字段映射关系
 
 #### Subler合并视频和字幕
 
@@ -640,42 +502,5 @@ ALL_PROXY=socks5://127.0.0.1:1081 brew install PACKAGE
 
 
 
-## ClashX 设置方法
 
-#### 获取订阅链接
 
-在产品详情页面获取 Clash 的服务器订阅链接。
-
-![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202111261625570.png)
-
-点击 ClashX 配置对应的获得地址，在弹出的窗口中，复制订阅 URL。
-
-#### 添加配置
-
-按 `⌘+M` 或是依次点击 `配置` > `托管配置` > `管理` 打开订阅管理窗口。
-
-![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202111261625530.png)
-
-点击添加，然后填写内容后点击确定完成添加。
-
-- `Url`: 填入订阅链接
-
-- `Config Name`：填写一个备注名称
-
-  ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202111261626028.png)
-
-#### 使用介绍
-
-点击右上角的 Clash 图标打开菜单。
-
-![image-20211126162650949](/Users/saijiang/Library/Application Support/typora-user-images/image-20211126162650949.png)
-
-点击 `设置为系统代理` 即可开启系统代理，此时即可正常使用。
-
-点击第一项 `出站模式` 可以选择客户端的代理模式：
-
-`全局模式`： 所有访问请求都使用代理。
-`规则链接`： 根据配置文件内规则处理访问请求是否使用代理。
-`直接连接`： 所有访问请求都**不使用代理**。
-
-点击 `Proxy` 可以切换需要使用的节点。
