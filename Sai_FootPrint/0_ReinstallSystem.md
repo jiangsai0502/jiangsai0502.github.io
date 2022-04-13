@@ -51,7 +51,7 @@
    >
    >    * iTerm2 -> Make ITerm2 Default Term
    >
-   >      <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413110312.png" style="zoom:30%;" />
+   >      ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413110312.png)
    >
    > 3. 快捷键
    >
@@ -61,7 +61,7 @@
    >
    >         修改 ⌘← 和 ⌘→ 的映射，双击进入后，选择Action为 “Send Escape Sequence”，Esc+为 ⌘← 对应 b ， ⌘→ 对应 f
    >
-   >         <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220412205506.png" style="zoom:50%;" />
+   >         ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220412205506.png)
    >
    >    2. 按照单词快速删除（结合BetterTouchTool）
    >
@@ -103,7 +103,7 @@
    >
    >    iTerm2 -> Preferences -> Profiles -> Colors -> Color Presets
    >
-   >    <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413113614.png" style="zoom:30%;" />
+   >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413113614.png)
    >
    > 8. 设置主题
    >
@@ -125,7 +125,7 @@
    >
    > 10. 获取代理地址
    >
-   >     <img src="https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413112830.png" style="zoom:25%;" />
+   >     ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413112830.png)
    >
    > 11. 自动提示与命令补全
    >
