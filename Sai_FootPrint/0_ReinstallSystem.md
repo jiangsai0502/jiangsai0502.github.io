@@ -1,32 +1,53 @@
 # 重装系统
 1. 快捷键
 
-   * ⌘ + ～：Chorome外的沙拉查词
-   * ⌘ + 1：Snipaste截图
-   * ⌘ + 4：PicGo上传剪切板图片
-   * ⌘ + 5：QQ截图识字
-   * ⌥ + S：Paste调起剪切板
-   
+   * Chrome外的沙拉查词：⌘ + ～
+   * 锁屏：⌘ + L
+   * Snipaste截图：⌘ + 1
+   * Anki挖空：⌘ + 3
+   * PicGo上传剪切板图片：⌘ + 4
+   * QQ截图识字：⌘ + 5
+   * 新建录音：⌥ + 1
+   * 暂停录音：⌥ + 2
+   * Paste调起剪切板⌥ + S
+
 2. 常备软件
 
    * sougou
    * 微信
+
    * QQ
+
    * Chrome
+
    * office
+
    * PDF expert
+
    * istat menus
+
    * itsycal
+
    * snipaste
+
    * sublime
+
    * App Cleaner & Uninstaller Pro
+
    * Photoshop
+
    * Typora
+
    * XMind ZEN
+
    * Permute
+
    * go2shell（官网下载）
+
    * 欧路
+
    * Picgo
+
    * Paste（官网下载helper）
 
 3. 安装brew
@@ -402,25 +423,139 @@
     >       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413155956.png)
     >
 
-18. 
+18. Karabiner修改组合快捷键
 
-
-
-
-
-#### Mac快捷键
-
-* QQ截图识字：⌥ + 5
-* 锁屏：⌘ + L
-* 新建录音：⌥ + 1
-* 暂停录音：⌥ + 2
-* PicGo上传：⌥ + 4
-
-
-
-
-
-
+    >[参考](https://blog.csdn.net/qq_26012495/article/details/88539120)
+    >
+    >1. 新建MyShortcut.json，放入`~/.config/karabiner/assets/complex_modifications`
+    >
+    >   ```
+    >   {
+    >     "title": "JiangSai",
+    >     "rules": [
+    >       {
+    >         "description": "锁屏",
+    >         "manipulators": [
+    >           {
+    >             "type": "basic",
+    >             "from": {
+    >               "key_code": "l",
+    >               "modifiers": {
+    >                 "mandatory": ["command"]
+    >               }
+    >             },
+    >             "to": [
+    >               {
+    >                 "key_code": "q",
+    >                 "modifiers": [
+    >                   "command",
+    >                   "control"
+    >                   ]
+    >               }
+    >             ]
+    >           }
+    >         ]
+    >       },
+    >       {
+    >         "description": "录音-新建",
+    >         "manipulators": [
+    >           {
+    >             "type": "basic",
+    >             "from": {
+    >               "key_code": "1",
+    >               "modifiers": {
+    >                 "mandatory": ["option"]
+    >               }
+    >             },
+    >             "to": [
+    >               {
+    >                 "key_code": "r",
+    >                 "modifiers": [
+    >                   "shift",
+    >                   "command"
+    >                   ]
+    >               }
+    >             ]
+    >           }
+    >         ]
+    >       },
+    >       {
+    >         "description": "录音-暂停",
+    >         "manipulators": [
+    >           {
+    >             "type": "basic",
+    >             "from": {
+    >               "key_code": "2",
+    >               "modifiers": {
+    >                 "mandatory": ["option"]
+    >               }
+    >             },
+    >             "to": [
+    >               {
+    >                 "key_code": "c",
+    >                 "modifiers": [
+    >                   "shift",
+    >                   "command"
+    >                   ]
+    >               }
+    >             ]
+    >           }
+    >         ]
+    >       },
+    >       {
+    >         "description": "typora",
+    >         "manipulators": [
+    >           {
+    >             "type": "basic",
+    >             "from": {
+    >               "key_code": "grave_accent_and_tilde",
+    >               "modifiers": {
+    >                 "mandatory": ["command"]
+    >               }
+    >             },
+    >             "to": [
+    >               {
+    >                 "key_code": "grave_accent_and_tilde",
+    >                 "modifiers": [
+    >                   "shift",
+    >                   "control"
+    >                   ]
+    >               }
+    >             ]
+    >           }
+    >         ]
+    >       },
+    >       {
+    >         "description": "Anki_cloze",
+    >         "manipulators": [
+    >           {
+    >             "type": "basic",
+    >             "from": {
+    >               "key_code": "3",
+    >               "modifiers": {
+    >                 "mandatory": ["command"]
+    >               }
+    >             },
+    >             "to": [
+    >               {
+    >                 "key_code": "c",
+    >                 "modifiers": [
+    >                   "left_command",
+    >                   "left_shift",
+    >                   "left_option"
+    >                 ]
+    >               }
+    >             ]
+    >           }
+    >         ]
+    >       }
+    >     ]
+    >   }
+    >   ```
+    >
+    >2. preference - complex modification - add rule - 第一行Anki_cloze内的命令"Change command+option+shift+c key to command+3"点击"Enable"
+    >
+    >3. grave_accent_and_tilde即键盘esc下方的`
 
 
 
