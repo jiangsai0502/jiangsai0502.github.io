@@ -1,7 +1,13 @@
 # 重装系统
-### 常备软件安装
+1. 快捷键
 
-1. 常备软件
+   * ⌘ + ～：Chorome外的沙拉查词
+   * ⌘ + 1：Snipaste截图
+   * ⌘ + 4：PicGo上传剪切板图片
+   * ⌘ + 5：QQ截图识字
+   * ⌥ + S：Paste调起剪切板
+   
+2. 常备软件
 
    * sougou
    * 微信
@@ -23,7 +29,7 @@
    * Picgo
    * Paste（官网下载helper）
 
-2. 安装brew
+3. 安装brew
 
    > 1. 命令
    >
@@ -31,7 +37,7 @@
    >
    > 2. 推荐使用中科大源
 
-3. 安装mpv
+4. 安装mpv
 
    > ```
    > brew install mpv --cask
@@ -47,7 +53,7 @@
    > DOWN add volume -2
    > ```
 
-4. 安装iterm2
+5. 安装iterm2
 
    > 1. 命令
    >
@@ -158,7 +164,7 @@
    >
    >     ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413135638.png)
 
-5. 安装youtube-dl
+6. 安装youtube-dl
 
    > `brew install youtube-dl`
    >
@@ -205,7 +211,7 @@
    > * B站无音频格式，故会先下视频载ffmepg自动转成音频
    >   `youtube-dl --extract-audio https://www.bilibili.com/video/BV1xJ411r7Yo`
 
-6. 安装you-get
+7. 安装you-get
 
    > `brew install you-get`
    >
@@ -225,7 +231,7 @@
    > * 使用HTTP代理下载：
    >   `you-get -x 127.0.0.1:1081 --itag=18 'https://www.youtube.com/watch?v=jNQXAC9IVRw'`
 
-7. 启动台图标数量7 x 11
+8. 启动台图标数量7 x 11
 
    > ```
    > defaults write com.apple.dock springboard-rows -int 7;
@@ -234,11 +240,11 @@
    > killall Dock
    > ```
 
-8. Finder顶端显示完整路径
+9. Finder顶端显示完整路径
 
    > `defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES`
 
-9. Alfred
+10. Alfred
 
    > 1. 将Spotlight的快捷键分给Alfred
    >
@@ -260,7 +266,7 @@
    > 5. **Inside Files**：最常用，`in + 关键字`查找包含查询字的文件
    >
 
-10. ClashX 设置方法
+11. ClashX 设置方法
 
     > 1. 获取订阅链接
     >
@@ -274,7 +280,7 @@
     >
     >    - `Config Name`：填写一个备注名称
 
-11. brew 挂代理方式
+12. brew 挂代理方式
 
     > ```bash
     > 1. touch ~/.curlrc
@@ -291,7 +297,7 @@
     > ```
     >
 
-12. sublime配置
+13. sublime配置
 
     > ```
     > # command+Shift+P，输入
@@ -312,15 +318,15 @@
     > # 选择主题：ayu: Activate theme，选择，回车
     > ```
 
-13. Git 挂代理方式
+14. Git 挂代理方式
 
     > `git clone https://github.com/altercation/solarized/ --config http.proxy='http://127.0.0.1:1087'`
 
-14. Chrome 搜索后新标签打开链接
+15. Chrome 搜索后新标签打开链接
 
     > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413155126.png)
 
-15. Mac 修改文件创建时间
+16. Mac 修改文件创建时间
 
     > `touch -mt YYYYMMDDhhmm`
     > 示例
@@ -334,7 +340,7 @@
     > ```
     >
 
-16. 文献阅读：沙拉查词 + Alfred
+17. 文献阅读：沙拉查词 + Alfred
 
     > [参考](https://zhuanlan.zhihu.com/p/113809716)
     >
@@ -396,7 +402,7 @@
     >       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413155956.png)
     >
 
-17. 
+18. 
 
 
 
