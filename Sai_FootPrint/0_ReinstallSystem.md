@@ -423,139 +423,143 @@
     >       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413155956.png)
     >
 
-18. Karabiner修改组合快捷键
+18. Karabiner
 
-    >[参考](https://blog.csdn.net/qq_26012495/article/details/88539120)
+    >1. 修改单个键位
     >
-    >1. 新建MyShortcut.json，放入`~/.config/karabiner/assets/complex_modifications`
+    >   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220426110827.png)
     >
-    >   ```
-    >   {
-    >     "title": "JiangSai",
-    >     "rules": [
-    >       {
-    >         "description": "锁屏",
-    >         "manipulators": [
-    >           {
-    >             "type": "basic",
-    >             "from": {
-    >               "key_code": "l",
-    >               "modifiers": {
-    >                 "mandatory": ["command"]
-    >               }
-    >             },
-    >             "to": [
-    >               {
-    >                 "key_code": "q",
-    >                 "modifiers": [
-    >                   "command",
-    >                   "control"
-    >                   ]
-    >               }
-    >             ]
-    >           }
-    >         ]
-    >       },
-    >       {
-    >         "description": "录音-新建",
-    >         "manipulators": [
-    >           {
-    >             "type": "basic",
-    >             "from": {
-    >               "key_code": "1",
-    >               "modifiers": {
-    >                 "mandatory": ["option"]
-    >               }
-    >             },
-    >             "to": [
-    >               {
-    >                 "key_code": "r",
-    >                 "modifiers": [
-    >                   "shift",
-    >                   "command"
-    >                   ]
-    >               }
-    >             ]
-    >           }
-    >         ]
-    >       },
-    >       {
-    >         "description": "录音-暂停",
-    >         "manipulators": [
-    >           {
-    >             "type": "basic",
-    >             "from": {
-    >               "key_code": "2",
-    >               "modifiers": {
-    >                 "mandatory": ["option"]
-    >               }
-    >             },
-    >             "to": [
-    >               {
-    >                 "key_code": "c",
-    >                 "modifiers": [
-    >                   "shift",
-    >                   "command"
-    >                   ]
-    >               }
-    >             ]
-    >           }
-    >         ]
-    >       },
-    >       {
-    >         "description": "typora",
-    >         "manipulators": [
-    >           {
-    >             "type": "basic",
-    >             "from": {
-    >               "key_code": "grave_accent_and_tilde",
-    >               "modifiers": {
-    >                 "mandatory": ["command"]
-    >               }
-    >             },
-    >             "to": [
-    >               {
-    >                 "key_code": "grave_accent_and_tilde",
-    >                 "modifiers": [
-    >                   "shift",
-    >                   "control"
-    >                   ]
-    >               }
-    >             ]
-    >           }
-    >         ]
-    >       },
-    >       {
-    >         "description": "Anki_cloze",
-    >         "manipulators": [
-    >           {
-    >             "type": "basic",
-    >             "from": {
-    >               "key_code": "3",
-    >               "modifiers": {
-    >                 "mandatory": ["command"]
-    >               }
-    >             },
-    >             "to": [
-    >               {
-    >                 "key_code": "c",
-    >                 "modifiers": [
-    >                   "left_command",
-    >                   "left_shift",
-    >                   "left_option"
-    >                 ]
-    >               }
-    >             ]
-    >           }
-    >         ]
-    >       }
-    >     ]
-    >   }
-    >   ```
+    >2. 修改组合快捷键[参考](https://blog.csdn.net/qq_26012495/article/details/88539120)
     >
-    >2. preference - complex modification - add rule - 第一行Anki_cloze内的命令"Change command+option+shift+c key to command+3"点击"Enable"
+    >   1. 新建MyShortcut.json，放入`~/.config/karabiner/assets/complex_modifications`
     >
-    >3. grave_accent_and_tilde即键盘esc下方的`
+    >      ```
+    >      {
+    >        "title": "JiangSai",
+    >        "rules": [
+    >          {
+    >            "description": "锁屏",
+    >            "manipulators": [
+    >              {
+    >                "type": "basic",
+    >                "from": {
+    >                  "key_code": "l",
+    >                  "modifiers": {
+    >                    "mandatory": ["command"]
+    >                  }
+    >                },
+    >                "to": [
+    >                  {
+    >                    "key_code": "q",
+    >                    "modifiers": [
+    >                      "command",
+    >                      "control"
+    >                      ]
+    >                  }
+    >                ]
+    >              }
+    >            ]
+    >          },
+    >          {
+    >            "description": "录音-新建",
+    >            "manipulators": [
+    >              {
+    >                "type": "basic",
+    >                "from": {
+    >                  "key_code": "1",
+    >                  "modifiers": {
+    >                    "mandatory": ["option"]
+    >                  }
+    >                },
+    >                "to": [
+    >                  {
+    >                    "key_code": "r",
+    >                    "modifiers": [
+    >                      "shift",
+    >                      "command"
+    >                      ]
+    >                  }
+    >                ]
+    >              }
+    >            ]
+    >          },
+    >          {
+    >            "description": "录音-暂停",
+    >            "manipulators": [
+    >              {
+    >                "type": "basic",
+    >                "from": {
+    >                  "key_code": "2",
+    >                  "modifiers": {
+    >                    "mandatory": ["option"]
+    >                  }
+    >                },
+    >                "to": [
+    >                  {
+    >                    "key_code": "c",
+    >                    "modifiers": [
+    >                      "shift",
+    >                      "command"
+    >                      ]
+    >                  }
+    >                ]
+    >              }
+    >            ]
+    >          },
+    >          {
+    >            "description": "typora",
+    >            "manipulators": [
+    >              {
+    >                "type": "basic",
+    >                "from": {
+    >                  "key_code": "grave_accent_and_tilde",
+    >                  "modifiers": {
+    >                    "mandatory": ["command"]
+    >                  }
+    >                },
+    >                "to": [
+    >                  {
+    >                    "key_code": "grave_accent_and_tilde",
+    >                    "modifiers": [
+    >                      "shift",
+    >                      "control"
+    >                      ]
+    >                  }
+    >                ]
+    >              }
+    >            ]
+    >          },
+    >          {
+    >            "description": "Anki_cloze",
+    >            "manipulators": [
+    >              {
+    >                "type": "basic",
+    >                "from": {
+    >                  "key_code": "3",
+    >                  "modifiers": {
+    >                    "mandatory": ["command"]
+    >                  }
+    >                },
+    >                "to": [
+    >                  {
+    >                    "key_code": "c",
+    >                    "modifiers": [
+    >                      "left_command",
+    >                      "left_shift",
+    >                      "left_option"
+    >                    ]
+    >                  }
+    >                ]
+    >              }
+    >            ]
+    >          }
+    >        ]
+    >      }
+    >      ```
+    >
+    >   2. preference - complex modification - add rule - 第一行Anki_cloze内的命令"Change command+option+shift+c key to command+3"点击"Enable"
+    >
+    >   3. grave_accent_and_tilde即键盘esc下方的`
 
 
 
