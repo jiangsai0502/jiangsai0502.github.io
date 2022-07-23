@@ -40,6 +40,8 @@
 
          1. `Meta`对应`Control键`，`Ctrl`对应`Command键`，`Alt`对应`Option键`
 
+            修改后，保存，退出App
+            
             ```bash
             "keys": [
                 [ "#FF0000", "Meta+1" ],
