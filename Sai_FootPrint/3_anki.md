@@ -25,11 +25,11 @@
 
          1. 选择该卡片类型 - 他处截图 - 点击右侧图形icon
 
-            ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200522171342.png)
+            ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220723212138.png)
 
          2. 遮盖要记忆的部分
 
-            ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200522180649.png)
+            ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220723212224.png)
 
             > 1. 选择矩形 - 遮挡
             > 2. 按住shift，选择矩形3，4，右键选择Group，则矩形3，4在卡片中同时出现同时消失
@@ -57,7 +57,7 @@
       
       3. `Mini Format Pack`：增加格式选项
       
-         ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200522203746.png)
+         ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220723212300.png)
 
 4. 设置卡片的学习/复习节奏
 
@@ -65,7 +65,7 @@
 
    2. All/All：学习所有新卡片，复习所有到期卡片
 
-      ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200522205145.png)
+      ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220723212327.png)
 
 5. 填空题挖空
 
@@ -197,14 +197,14 @@
       啥时候想再瞟一眼
       ```
 
-   ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200522214252.png)
+   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220723212407.png)
 
    > 案例
    >
    > 1. 新建问答题类型
    >
-   >    ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200522220207.png)
+   >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220723212455.png)
    >
    > 2. 增加字段并设置样式
    >
-   >    ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200522221434.png)
+   >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220723212526.png)
