@@ -1,8 +1,25 @@
-##### 快捷键
+#### 快捷键
 
 1. 红色：`option+2`
 2. 绿色：`option+3`
 3. 挖空：`command+3`
+
+#### 设置说明
+
+##### Daily Limits 每日上限
+New cards/day 9999 每天新卡的学习上限
+Maximum reviews/day 9999 每天旧卡的复习上限
+
+##### New Cards 新卡
+Learning steps 1m 19m 选【重来】的间隔1m，【良好】20m
+Graduating interval 1 选择【一般】的间隔1day
+Easy interval 7 选择【简单】的间隔7day
+
+##### Lapses 错误次数
+Relearning steps 19m 选【重来】的间隔
+Minimum interval 2
+Leech threshold 4 连续错4天则将卡片执行Leech action
+Leech action
 
 #### 基础设置
 
