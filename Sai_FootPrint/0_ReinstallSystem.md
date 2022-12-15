@@ -163,9 +163,9 @@
    >
    > 11. 自动提示与命令补全
    >
-   >     `git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
-   >
    >     ```
+   >下载 https://github.com/zsh-users/zsh-autosuggestions
+   >     解压到目录~/.oh-my-zsh/plugins/zsh-autosuggestions
    >     open ~/.zshrc
    >     搜索'plugins'，修改为plugins=(zsh-autosuggestions)
    >     source ~/.zshrc
