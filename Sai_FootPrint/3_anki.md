@@ -55,7 +55,7 @@ Leech action
 
       2. `Quick Colour Changing`：修改文本颜色
 
-         1. `Meta`对应`Control键`，`Ctrl`对应`Command键`，`Alt`对应`Option键`
+         1. `Meta`对应`Control键`，`Ctrl`对应`Command键`，`Alt`对应`fn + Option键`
 
             修改后，保存，退出App
             
@@ -100,17 +100,19 @@ Leech action
    
 6. 创建自己的卡片类型
 
-   1. 问答题
+   1. 新建字段：Fields，新建一个书名号字段《》
+
+   2. 问答题
 
       正面模板
-
+   
       ```bash
       {{问题}} <br>
       <div style='font-family: Arial; font-size: 12px;float:left;color:#D3D3D3'>《{{《》}}》</div>
       ```
 
       格式
-
+   
       ```css
       .card {
        font-family: arial;
@@ -137,7 +139,7 @@ Leech action
       ```
 
       背面模板
-
+   
       ```bash
       {{FrontSide}}<br>
       <hr id=answer>
@@ -150,17 +152,17 @@ Leech action
       <div style='font-family: Arial; font-size: 18px;'>{{hint:拓展}}</div><br>
       ```
 
-   2. 填空题
+   3. 填空题
 
       正面模板
-
+   
       ```bash
       {{cloze:文字}}<br>
       <div style='font-family: Arial; font-size: 12px;float:left;color:	#D3D3D3'>《{{《》}}》</div>
       ```
 
       格式
-
+   
       ```css
       .card {
        font-family: arial;
@@ -177,7 +179,7 @@ Leech action
       ```
 
       背面模板
-
+   
       ```html
       {{cloze:文字}}<br>
       <div style='font-family: Arial; font-size: 12px;float:left;color:	#D3D3D3'>《{{《》}}》</div>
@@ -188,10 +190,10 @@ Leech action
       <div style='font-family: Arial; font-size: 18px;'>{{hint:拓展}}</div><br>
       ```
 
-   3. 阅读题
+   4. 阅读题
 
       正面模板
-
+   
       ```html
       {{Text}}
        <br>
@@ -199,7 +201,7 @@ Leech action
       ```
 
       格式
-
+   
       ```css
       .card {
        font-family: arial;
@@ -211,13 +213,13 @@ Leech action
       ```
 
       背面模板
-
+   
       ```html
       啥时候想再瞟一眼
       ```
 
    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220723212407.png)
-
+   
    > 案例
    >
    > 1. 新建问答题类型
