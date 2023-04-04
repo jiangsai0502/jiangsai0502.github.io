@@ -77,6 +77,8 @@ Leech action
       3. `Mini Format Pack`：增加格式选项
       
          ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220723212300.png)
+         
+      4. Customize Keyboard Shortcuts：自定义anki的快捷方式
 
 4. 设置卡片的学习/复习节奏
 
@@ -233,12 +235,11 @@ Leech action
 
 * 三合一模板
 
-  > 1. 用法
+  > 1. 改名
   >
-  >    * 标题：题目
-  >    * 正面：加粗部分会在做填空题时隐藏，点击每个隐藏部分则逐个展示
-  >    * 反面：完全copy正面即可
-  >    * 挖空率：
+  >    1. 标题：改为《问题》
+  >    2. 正面：改为《填空》
+  >    3. 反面：改为《原文》
   >
   > 2. 删除一下没用的部分Notes、MNMindMap、MNLink（card - Back template）
   >
@@ -275,4 +276,10 @@ Leech action
   >       2. 改为`<div id="question" class=section style=display:block></div>`
   >    3. 修改挖空率（card - Front template）
   >       1. 找到rate = 80，改为目标数字
-  >    4. 
+  >
+  > 4. 录入
+  >
+  >    * 问题栏：卡片的问题
+  >    * 填空栏：做题时点**填空**按钮，填空栏里的加粗文字会隐藏，点击每个隐藏部分则逐个展示
+  >    * 原文栏：做题时点**原文**按钮，完整展示原文栏的全部内容
+  >    * 挖空率：不填则默认挖空率80%，做题时点**随机**按钮，按照挖空率对填空栏的内容进行80%的隐藏
