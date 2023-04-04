@@ -100,17 +100,18 @@ Leech action
    
 6. 创建自己的卡片类型
 
-   1. 新建字段：Fields，新建一个书名号字段《》
-
+   1. 新建字段：Fields，新建一个书名号字段《》并将至设置为输入时固定不变
+      ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202303031404194.png)
+   
    2. 问答题
-
+   
       正面模板
    
       ```bash
       {{问题}} <br>
       <div style='font-family: Arial; font-size: 12px;float:left;color:#D3D3D3'>《{{《》}}》</div>
       ```
-
+   
       格式
    
       ```css
@@ -137,7 +138,7 @@ Leech action
           text-shadow: 1px 1px 0px #ffffff;
       }
       ```
-
+   
       背面模板
    
       ```bash
@@ -151,16 +152,16 @@ Leech action
       <br>
       <div style='font-family: Arial; font-size: 18px;'>{{hint:拓展}}</div><br>
       ```
-
+   
    3. 填空题
-
+   
       正面模板
    
       ```bash
       {{cloze:文字}}<br>
       <div style='font-family: Arial; font-size: 12px;float:left;color:	#D3D3D3'>《{{《》}}》</div>
       ```
-
+   
       格式
    
       ```css
@@ -177,7 +178,7 @@ Leech action
        color: red;
       }
       ```
-
+   
       背面模板
    
       ```html
@@ -189,9 +190,9 @@ Leech action
       <div style='font-family: Arial; font-size: 18px;float:left'>{{hint:例子}}</div><br>
       <div style='font-family: Arial; font-size: 18px;'>{{hint:拓展}}</div><br>
       ```
-
+   
    4. 阅读题
-
+   
       正面模板
    
       ```html
@@ -199,7 +200,7 @@ Leech action
        <br>
       <div style='font-family: Arial; font-size: 12px;float:left;color:	#D3D3D3'>《{{《》}}》</div>
       ```
-
+   
       格式
    
       ```css
@@ -211,13 +212,13 @@ Leech action
        background-color: white;
       }
       ```
-
+   
       背面模板
    
       ```html
       啥时候想再瞟一眼
       ```
-
+   
    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220723212407.png)
    
    > 案例
@@ -229,3 +230,49 @@ Leech action
    > 2. 增加字段并设置样式
    >
    >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220723212526.png)
+
+* 三合一模板
+
+  > 1. 用法
+  >
+  >    * 标题：题目
+  >    * 正面：加粗部分会在做填空题时隐藏，点击每个隐藏部分则逐个展示
+  >    * 反面：完全copy正面即可
+  >    * 挖空率：
+  >
+  > 2. 删除一下没用的部分Notes、MNMindMap、MNLink（card - Back template）
+  >
+  >    ```
+  >    <div id=addnote style=display:none>
+  >    
+  >    {{#Notes}}
+  >    <p><div class="notes">
+  >    <div style="margin:5px 5px -3px 12px;font-weight:bold;font-size:0.92em;letter-spacing:0.02em">Notes :</div>
+  >    <div id=note class="notes-txt" style="font-family:kt">{{Notes}}</div></div>
+  >    {{/Notes}}
+  >    
+  >     {{#MNMindMap}}
+  >    <p><div class="section">
+  >    <div style="margin:5px 5px 8px; font-size:0.75em">{{MNMindMap}}</div></div>
+  >    {{/MNMindMap}}
+  >    
+  >    </div>
+  >    
+  >    {{#MNLink}}
+  >    <p><div style="text-align:center;max-width:828px;margin:0 auto;font-size:1.23em">{{MNLink}}</div>
+  >    {{/MNLink}}
+  >    
+  >    <p><br>
+  >    ```
+  >
+  > 3. 修改默认板块（card - Front template）
+  >
+  >    1. 改为默认显示填空板块
+  >       1. 找到`<div id="div0" style="display:none">`
+  >       2. 改为`<div id="div0" style="display:block">`
+  >    2. 改为默认显示随机板块
+  >       1. 找到`<div id="question" class=section style=display:none></div>`
+  >       2. 改为`<div id="question" class=section style=display:block></div>`
+  >    3. 修改挖空率（card - Front template）
+  >       1. 找到rate = 80，改为目标数字
+  >    4. 
