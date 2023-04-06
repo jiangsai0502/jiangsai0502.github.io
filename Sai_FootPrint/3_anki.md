@@ -78,7 +78,9 @@ Leech action
       
          ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220723212300.png)
          
-      4. Customize Keyboard Shortcuts：自定义anki的快捷方式
+      4. Customize Keyboard Shortcuts：自定义anki的快捷键
+      
+      5. Auto Sync：自动同步
 
 4. 设置卡片的学习/复习节奏
 
