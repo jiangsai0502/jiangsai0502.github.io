@@ -239,10 +239,45 @@ Leech action
   >
   >    1. 标题：改为《问题》
   >    2. 正面：改为《原文/填空》
-  >    3. 挖空率：不变
-  >    4. 反面、笔记、Remarks、MNLink、MNMindMap：删除
+  >    3. 《》：新增书名号
+  >    4. 挖空率：不变
+  >    5. 反面、笔记、Remarks、MNLink、MNMindMap：删除
   >
-  > 2. 删除没用的
+  > 2. 新增书名号部分
+  >
+  >    1. Card - Front template中`<div style="text-align:center">`前增加
+  >
+  >       ```
+  >       <br>
+  >       <div style='font-family: Arial; font-size: 12px;float:left;color:#D3D3D3'>《{{《》}}》</div><br>
+  >       ```
+  >
+  >    2. Card - Back template中`<div style="text-align:center">`前增加
+  >
+  >       ```
+  >       <br>
+  >       <div style='font-family: Arial; font-size: 12px;float:left;color:#D3D3D3'>《{{《》}}》</div><br>
+  >       ```
+  >
+  > 3. 修改卡片按钮名称
+  >
+  >    1. Card - Back template
+  >
+  >       ```
+  >       <button class="button1" onclick="text()" style=margin-right:6px>摘 录</button>
+  >       ```
+  >
+  >       “摘 录”改为“原 文”
+  >
+  >    2. Card - Front template
+  >
+  >       ```
+  >       <button class="button4" onclick="addnote()" style=margin-right:6px>笔 记</button>
+  >       ```
+  >
+  >       “笔 记”改为“原 文”
+  >
+  > 4. Card - Front template删除没用的部分
   >
   >    ```
   >    <div class="footer">
@@ -292,7 +327,7 @@ Leech action
   >
   >    
   >
-  > 3. Card - Back template 删除一下没用的部分Notes、audio
+  > 5. Card - Back template 删除一下没用的部分
   >
   >    ```
   >    <div style="margin:16px 0 0 0"></div>
@@ -333,7 +368,7 @@ Leech action
   >    </script>
   >    ```
   >
-  > 4. Card - Front template 修改默认板块
+  > 6. Card - Front template 修改默认板块
   >
   >    1. 改为默认显示填空板块
   >       1. 找到`<div id="div0" style="display:none">`
@@ -344,25 +379,7 @@ Leech action
   >    3. 修改挖空率（card - Front template）
   >       1. 找到rate = 80，改为目标数字
   >
-  > 5. 修改卡片按钮名称
-  >
-  >    1. Card - Back template
-  >
-  >       ```
-  >       <button class="button1" onclick="text()" style=margin-right:6px>摘 录</button>
-  >       ```
-  >
-  >       “摘 录”改为“原 文”
-  >
-  >    2. Card - Front template
-  >
-  >       ```
-  >       <button class="button4" onclick="addnote()" style=margin-right:6px>笔 记</button>
-  >       ```
-  >
-  >       “笔 记”改为“原 文”
-  >
-  > 6. 录入
+  > 7. 录入
   >
   >    * 问题栏：卡片的问题
   >    * 原文/填空栏：做题时点**填空**按钮，填空栏里的加粗文字会隐藏，点击每个隐藏部分则逐个展示；点
