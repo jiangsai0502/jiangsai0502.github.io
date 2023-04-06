@@ -373,11 +373,71 @@ Leech action
   >    1. 修改卡片一上来就展示填空板块
   >       1. 找到`<div id="div2" style="display:none">`
   >       2. 改为`<div id="div2" style="display:block">`
-  >    2. 修改挖空率（card - Front template）
-  >       1. 找到rate = 80，改为目标数字
   >
-  > 7. 录入
+  > 7. 挖空方式修改挖空率（Card - Front template）
+  >
+  >    1. 找到rate = 80，改为目标数字
+  >
+  > 8. 录入
   >
   >    * 问题栏：卡片的问题
   >    * 原文/填空栏：做题时点**填空**按钮，填空栏里的加粗文字会隐藏，点击每个隐藏部分则逐个展示；点
-  >    * 挖空率：不填则默认挖空率80%，做题时点**随机**按钮，按照挖空率对填空栏的内容进行80%的隐藏
+  >    * 挖空率：不填则默认挖空率80%，做题时点**随机**按钮，按照挖空率对填空栏的内容进行80%的隐藏。2种挖空方式
+  >
+  > 9. 2种挖空方式
+  >
+  >    1. 固定挖空率：卡片录入时，输入60，即可指定挖空60%的内容
+  >
+  >    2. 固定挖空位置：卡片录入时，输入7/5/6/7，即以7个字为一组，挖空第5、6、7个字，适合背诗（标点不算字数）
+  >
+  >       * 如“朝辞白帝彩云间，千里江陵一日还”，会被挖成“朝辞白帝 _ _ _，千里江陵 _ _ _”
+  >
+  >    3. 指定为一格一挖孔，模拟《背了个X》：
+  >
+  >       1. Card - Front template找到如下代码
+  >
+  >          ```
+  >          {{^挖空率}}
+  >          <script type="text/javascript">
+  >              var isFix = false;
+  >              var rate = 80;
+  >          </script>
+  >          {{/挖空率}}
+  >          ```
+  >
+  >          改为
+  >
+  >          ```
+  >          {{^挖空率}}
+  >          <script type="text/javascript">
+  >              var isFix = true;
+  >              var src = "2/1";
+  >              var arr_num =[];
+  >              src.split(/[/,;-]/).map(function(ele) {
+  >                  var num = parseInt(ele);
+  >                  if (!isNaN(num)) {
+  >                      arr_num.push(num);
+  >                  }
+  >              });
+  >          </script>
+  >          {{/挖空率}}
+  >          ```
+  >
+  >          其中 “ var src = "2/1"; ”，是指以2个字为一组，挖空第1个字，也可以替换为别的，如 “ var src = "5/2/4"; ”，是指以5个字为一组，挖空第2、4个字
+  >
+  >       2. 卡片录入的挖空率栏要清空
+  >
+  >    4. 英文“一个字母一个挖空”改为“一个单词一个挖空”
+  >
+  >       ```
+  >       element.innerHTML = Array(element.innerHTML.length + 1).join(char_mask);
+  >       ```
+  >
+  >       改为
+  >
+  >       ```
+  >       element.innerHTML = char_mask;
+  >       ```
+  >
+  >       
+
