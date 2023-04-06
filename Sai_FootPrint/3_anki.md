@@ -370,13 +370,10 @@ Leech action
   >
   > 6. Card - Front template 修改默认板块
   >
-  >    1. 改为默认显示填空板块
-  >       1. 找到`<div id="div0" style="display:none">`
-  >       2. 改为`<div id="div0" style="display:block">`
-  >    2. 改为默认显示随机板块
-  >       1. 找到`<div id="question" class=section style=display:none></div>`
-  >       2. 改为`<div id="question" class=section style=display:block></div>`
-  >    3. 修改挖空率（card - Front template）
+  >    1. 修改卡片一上来就展示填空板块
+  >       1. 找到`<div id="div2" style="display:none">`
+  >       2. 改为`<div id="div2" style="display:block">`
+  >    2. 修改挖空率（card - Front template）
   >       1. 找到rate = 80，改为目标数字
   >
   > 7. 录入
