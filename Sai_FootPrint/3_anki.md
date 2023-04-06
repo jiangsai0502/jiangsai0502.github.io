@@ -235,38 +235,105 @@ Leech action
 
 * 三合一模板
 
-  > 1. 改名
+  > 1. Fields 删改
   >
   >    1. 标题：改为《问题》
-  >    2. 正面：改为《填空》
-  >    3. 反面：改为《原文》
+  >    2. 正面：改为《原文/填空》
+  >    3. 挖空率：不变
+  >    4. 反面、笔记、Remarks、MNLink、MNMindMap：删除
   >
-  > 2. 删除一下没用的部分Notes、MNMindMap、MNLink（card - Back template）
+  > 2. 删除没用的
   >
   >    ```
-  >    <div id=addnote style=display:none>
-  >    
-  >    {{#Notes}}
-  >    <p><div class="notes">
-  >    <div style="margin:5px 5px -3px 12px;font-weight:bold;font-size:0.92em;letter-spacing:0.02em">Notes :</div>
-  >    <div id=note class="notes-txt" style="font-family:kt">{{Notes}}</div></div>
-  >    {{/Notes}}
-  >    
-  >     {{#MNMindMap}}
-  >    <p><div class="section">
-  >    <div style="margin:5px 5px 8px; font-size:0.75em">{{MNMindMap}}</div></div>
-  >    {{/MNMindMap}}
-  >    
+  >    <div class="footer">
+  >    <ul style=float:left;left:0>
+  >    <li><a href="javascript:void(0)" onselectstart="return false;" onclick="prevv()">← Prev</a></li></ul>
+  >    <ul style=float:right;right:0>
+  >    <li><a href= "javascript:void(0)" class="active" onselectstart="return false;" onclick="nextt()">Next →</a></li></ul>
   >    </div>
-  >    
-  >    {{#MNLink}}
-  >    <p><div style="text-align:center;max-width:828px;margin:0 auto;font-size:1.23em">{{MNLink}}</div>
-  >    {{/MNLink}}
-  >    
-  >    <p><br>
   >    ```
   >
-  > 3. 修改默认板块（card - Front template）
+  >    ```
+  >    function prevv()
+  >    {
+  >    	for (var i = sum -1; i >0; i = i - 2)
+  >    	{
+  >    		var n = i;
+  >    		idd = "keyy" + String(n);
+  >    
+  >    		if (document.getElementById(idd).getAttribute("class") == "cloze")
+  >    		{
+  >    			idd = "keyy" + String(n);
+  >    			$("#" + idd)[0];
+  >    			switchh(idd);
+  >    			break;
+  >    		}
+  >    	}
+  >    }
+  >    
+  >    function nextt()
+  >    {
+  >    	for (var i = 2; i < sum; i = i + 2)
+  >    	{
+  >    		var n = i;
+  >    		idd = "keyy" + String(n);
+  >    
+  >    		if (document.getElementById(idd).getAttribute("class") == "hidden")
+  >    		{
+  >    			
+  >    			idd = "keyy" + String(n - 1);
+  >    			$("#" + idd)[0];
+  >    			switchh(idd);
+  >    			break;
+  >    		}
+  >    	}
+  >    }
+  >    ```
+  >
+  >    
+  >
+  > 3. Card - Back template 删除一下没用的部分Notes、audio
+  >
+  >    ```
+  >    <div style="margin:16px 0 0 0"></div>
+  >    <div id="div2" style="display:block">
+  >    <div id="blank" class="section2">
+  >    <div class="mbooks-highlight-txt"></div></div></div>
+  >    ```
+  >
+  >    ```
+  >    <div style="margin:16px 0 0 0"></div>
+  >    <div id=question class=section3 style=display:none;>
+  >    <div id=div3 class="mbooks-highlight-txt"></div></div>
+  >    
+  >    <div style="margin:16px 0 0 0"></div>
+  >    <div id=question class=section3 style=display:none;>
+  >    <div id=div3 class="mbooks-highlight-txt">{{原文/填空}}</div></div>
+  >    ```
+  >
+  >    ```
+  >    <div style="margin:16px 0 0 0"></div>
+  >    <div class="notes">
+  >    <div style="margin:10px 5px 10px 12px;font-weight:bold;font-size:0.92em;letter-spacing:0.02em">Notes :</div>
+  >    <div id=note class="notes-txt" style="font-family:kt"></div></div>
+  >    
+  >    <div style="margin:16px 0 0 0"></div>
+  >    <div class="notes">
+  >    <div style="margin:10px 12px 5px; font-size:0.75em;text-align:left"></div></div>
+  >    ```
+  >
+  >    ```
+  >    <audio id=player src=""></audio>
+  >    <button class="btn3" onclick="playAudio()">播放</button>
+  >    <button class="btn4" onclick="pauseAudio()">暂停</button>
+  >    <script type="text/javascript">
+  >    document.querySelector("audio").setAttribute('src', 'https://fanyi.baidu.com/gettts?lan=zh&text=' + "{{text:原文/填空}}".replace(/\{\{c1\:\:/g,"").replace(/\}\}/g,"") + '&spd=6');
+  >    function playAudio() {player.play()};
+  >    function pauseAudio() {player.pause()};
+  >    </script>
+  >    ```
+  >
+  > 4. Card - Front template 修改默认板块
   >
   >    1. 改为默认显示填空板块
   >       1. 找到`<div id="div0" style="display:none">`
@@ -277,9 +344,26 @@ Leech action
   >    3. 修改挖空率（card - Front template）
   >       1. 找到rate = 80，改为目标数字
   >
-  > 4. 录入
+  > 5. 修改卡片按钮名称
+  >
+  >    1. Card - Back template
+  >
+  >       ```
+  >       <button class="button1" onclick="text()" style=margin-right:6px>摘 录</button>
+  >       ```
+  >
+  >       “摘 录”改为“原 文”
+  >
+  >    2. Card - Front template
+  >
+  >       ```
+  >       <button class="button4" onclick="addnote()" style=margin-right:6px>笔 记</button>
+  >       ```
+  >
+  >       “笔 记”改为“原 文”
+  >
+  > 6. 录入
   >
   >    * 问题栏：卡片的问题
-  >    * 填空栏：做题时点**填空**按钮，填空栏里的加粗文字会隐藏，点击每个隐藏部分则逐个展示
-  >    * 原文栏：做题时点**原文**按钮，完整展示原文栏的全部内容
+  >    * 原文/填空栏：做题时点**填空**按钮，填空栏里的加粗文字会隐藏，点击每个隐藏部分则逐个展示；点
   >    * 挖空率：不填则默认挖空率80%，做题时点**随机**按钮，按照挖空率对填空栏的内容进行80%的隐藏
