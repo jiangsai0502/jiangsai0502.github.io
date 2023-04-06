@@ -239,7 +239,7 @@ Leech action
 
   > 1. Fields 删改
   >
-  >    1. 标题：改为《问题》
+  >    1. 标题：改为《问题》，并设置为Sort by this field
   >    2. 正面：改为《原文/填空》
   >    3. 《》：新增书名号
   >    4. 挖空率：不变
@@ -280,6 +280,13 @@ Leech action
   >       “笔 记”改为“原 文”
   >
   > 4. Card - Front template删除没用的部分
+  >
+  >    ```
+  >    <div class=bg><div class=bg2>
+  >    
+  >    <div style="margin:-5px 0 0 0"></div>
+  >    <div style="text-align:right;font-size:0.75em;max-width:828px;margin:0 auto;color:#808080">➵ {{Subdeck}}</div>
+  >    ```
   >
   >    ```
   >    <div class="footer">
@@ -330,6 +337,13 @@ Leech action
   >    
   >
   > 5. Card - Back template 删除一下没用的部分
+  >
+  >    ```
+  >    <div class=bg><div class=bg2>
+  >    
+  >    <div style="margin:-5px 0 0 0"></div>
+  >    <div style="text-align:right;font-size:0.75em;max-width:828px;margin:0 auto;color:#808080">➵ {{Subdeck}}</div>
+  >    ```
   >
   >    ```
   >    <div style="margin:16px 0 0 0"></div>
