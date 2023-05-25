@@ -561,6 +561,10 @@
     >   2. preference - complex modification - add rule - 第一行Anki_cloze内的命令"Change command+option+shift+c key to command+3"点击"Enable"
     >
     >   3. grave_accent_and_tilde即键盘esc下方的`
+    
+18. 中国大陆无法登陆某些网站（newbing、binance）
+
+    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202305251538284.png)
 
 
 
