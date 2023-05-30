@@ -14,42 +14,41 @@
 
 2. 常备软件
 
-   * sougou
-   * 微信
-
-   * QQ
-
-   * Chrome
-
-   * office
-
-   * PDF expert
-
-   * istat menus
-
-   * itsycal
-
-   * snipaste
-
-   * sublime
-
-   * App Cleaner & Uninstaller Pro
-
-   * Photoshop
-
-   * Typora
-
-   * XMind ZEN
-
-   * Permute
-
-   * go2shell（官网下载）
-
-   * 欧路
-
-   * Picgo
-
-   * Paste（官网下载helper）
+   1. 文字处理
+      1. office
+      2. sublime
+      3. Typora
+      4. PDF expert
+      5. marginote3
+      6. goodnote
+   2. 思维梳理
+      1. XMind ZEN
+      2. MindNote
+   3. 科学上网
+      1. Geph
+      2. shadowrocket
+   4. 效率工具
+      1. Paste（官网下载helper）
+      2. MurGaa Recorder
+      3. rename
+      4. go2shell（官网下载）
+      5. magnet
+      6. MacroRecorder
+   5. 截图：
+      1. 主力贴图：snipaste
+      2. 长截图：xnip
+      3. 截图OCR：Easydict
+   6. istat menus
+   7. itsycal
+   8. App Cleaner & Uninstaller Pro
+   9. Photoshop
+   10. Permute
+   11. 欧路
+   12. flow
+   13. eXtra Voice Recorder Pro
+   14. proxyman
+   15. 剪映
+   16. downie
 
 3. 安装brew
 
