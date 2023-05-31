@@ -57,6 +57,8 @@
    >    `/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)" `
    >
    > 2. 推荐使用中科大源
+   >
+   > 2. brew update报错[参考](https://www.jianshu.com/p/bee56e756ece)
 
 4. 安装mpv
 
