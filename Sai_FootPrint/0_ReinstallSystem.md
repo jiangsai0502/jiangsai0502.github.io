@@ -10,7 +10,7 @@
    * 新建录音：⌥ + 1
    * 暂停录音：⌥ + 2
    * Paste调起剪切板：⌥ + S
-   * 切换输入法：Control + 空格
+   * 切换输入法：⌃⇧ + 空格
 
 2. 常备软件
 
@@ -343,24 +343,23 @@
 
 14. sublime配置
 
-    > ```
-    > # command+Shift+P，输入
-    > install package
-    > # 回车自动安装
-    > 
-    > # 解决乱码问题：command+Shift+P，输入install package，弹出框，输入
-    > ConvertToUTF8
-    > # 回车自动安装
-    > 
-    > # 中文汉化包：command+Shift+P，输入install package，弹出框，输入
-    > ChineseLocalizations
-    > # 回车自动安装
-    > 
-    > # Ayu主题：command+Shift+P，输入install package，弹出框，输入
-    > ayu
-    > # 回车自动安装
-    > # 选择主题：ayu: Activate theme，选择，回车
-    > ```
+    > 1. 安装
+    >
+    >    > ⌘+⇧+P，输入install package，回车自动安装
+    >
+    > 2. 解决乱码问题
+    >
+    >    > ⌘+⇧+P，输入install package，弹出框，输入ConvertToUTF8,回车自动安装
+    >
+    > 3. 中文汉化包
+    >
+    >    > ⌘+⇧+P，输入install package，弹出框，输入ChineseLocalizations，回车自动安装
+    >
+    > 4. Ayu主题
+    >
+    >    > ⌘+⇧+P，输入install package，弹出框，输入ayu，回车自动安装
+    >    >
+    >    > 选择主题：ayu: Activate theme，选择，回车
 
 15. Git 挂代理方式
 
