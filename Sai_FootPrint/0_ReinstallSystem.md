@@ -289,7 +289,28 @@
    > 5. **Inside Files**：最常用，`in + 关键字`查找包含查询字的文件
    >
 
-11. ClashX 设置方法
+11. OCR
+
+    [Keyboard Maestro ，在多语言环境中轻松抓取文字](https://utgd.net/article/9528)、[在 Mac 上随时提取屏幕上的文字](https://www.notion.so/Mac-b7ded7e6bfb6408d99f61832c043570a)
+
+    1. 设置个OCR快捷键：⌘2
+    2. 执行动作1：调用系统剪贴板
+       * 通过「type a keystroke」模拟按下「将所选区域的图片拷贝到剪贴板」，调用系统截图功能：⌃⇧⌘4
+    3. 执行动作2：等待截图完成
+       * 通过「pause until」等待直至达到某个条件，模拟按下触控板，然后滑动，再松开，让 Keyboard Maestro 等待截图完成
+       * 暂停 macro，直至鼠标左键按下，此时我们开始选择截图区域
+       2. 暂停 macro，直至鼠标左键松开，此时我们已经完成截图区域的选择，系统也完成了截图操作
+       3. 等待 0.5 秒，保证截图的内容在剪贴板中
+    4. 执行动作3：OCR 系统剪贴板
+       * 通过「OCR image」对剪贴板中的内容进行 OCR，并将识别后的内容存入剪贴板
+    5. 执行动作4：过滤多余空格
+       * 通过「Filter」去除OCR识别出的内容两端多余空格，并将加工后文本存入剪贴板
+    6. 执行动作5：发送通知
+       * 通过「Notification」发送一个系统通知，告知识别结果
+
+    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306011544445.png)
+
+12. ClashX 设置方法
 
     > 1. 获取订阅链接
     >
@@ -303,7 +324,7 @@
     >
     >    - `Config Name`：填写一个备注名称
 
-12. brew 挂代理方式
+13. brew 挂代理方式
 
     > ```bash
     > 1. touch ~/.curlrc
@@ -320,7 +341,7 @@
     > ```
     >
 
-13. sublime配置
+14. sublime配置
 
     > ```
     > # command+Shift+P，输入
@@ -341,15 +362,15 @@
     > # 选择主题：ayu: Activate theme，选择，回车
     > ```
 
-14. Git 挂代理方式
+15. Git 挂代理方式
 
     > `git clone https://github.com/altercation/solarized/ --config http.proxy='http://127.0.0.1:1087'`
 
-15. Chrome 搜索后新标签打开链接
+16. Chrome 搜索后新标签打开链接
 
     > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413155126.png)
 
-16. Mac 修改文件创建时间
+17. Mac 修改文件创建时间
 
     > `touch -mt YYYYMMDDhhmm`
     > 示例
@@ -363,7 +384,7 @@
     > ```
     >
 
-17. 文献阅读：沙拉查词 + Alfred
+18. 文献阅读：沙拉查词 + Alfred
 
     > [参考](https://zhuanlan.zhihu.com/p/113809716)
     >
@@ -425,7 +446,7 @@
     >       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413155956.png)
     >
 
-18. Karabiner
+19. Karabiner
 
     >1. 修改单个键位
     >
@@ -562,8 +583,8 @@
     >   2. preference - complex modification - add rule - 第一行Anki_cloze内的命令"Change command+option+shift+c key to command+3"点击"Enable"
     >
     >   3. grave_accent_and_tilde即键盘esc下方的`
-    
-18. 中国大陆无法登陆某些网站（newbing、binance）
+
+20. 中国大陆无法登陆某些网站（newbing、binance）
 
     ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202305251538284.png)
 
