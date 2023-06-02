@@ -4,9 +4,9 @@
    * Chrome外的沙拉查词：⌘ + ～
    * 锁屏：⌘ + L
    * Snipaste截图：⌘ + 1
+   * OCR：⌘ + 2
    * Anki挖空：⌘ + 3
    * PicGo上传剪切板图片：⌘ + 4
-   * QQ截图识字：⌘ + 5
    * 新建录音：⌥ + 1
    * 暂停录音：⌥ + 2
    * Paste调起剪切板：⌥ + S
@@ -28,6 +28,7 @@
       1. Geph
       2. shadowrocket
    4. 效率工具
+      1. Keyboard Maestro
       1. Paste（官网下载helper）
       2. MurGaa Recorder
       3. rename
@@ -50,7 +51,57 @@
    15. 剪映
    16. downie
 
-3. 安装brew
+3. Keyboard Maestro设置
+
+   1. 修改快捷键
+
+      1. 锁屏
+
+         > 1. 设置锁屏快捷键：⌘ + L
+         > 2. 通过「type a keystroke」模拟实际快捷键：⌃ + ⌘ + Q
+
+      2. 录音开关
+
+         > 1. 设置锁屏快捷键：⌥ + 1
+         > 2. 通过「type a keystroke」模拟实际快捷键：⇧ + ⌘ + R
+
+      3. 录音暂停
+
+         > 1. 设置锁屏快捷键：⌥ + 2
+         > 2. 通过「type a keystroke」模拟实际快捷键：⇧ + ⌘ + C
+
+   2. OCR
+
+      [Keyboard Maestro ，在多语言环境中轻松抓取文字](https://utgd.net/article/9528)、[在 Mac 上随时提取屏幕上的文字](https://www.notion.so/Mac-b7ded7e6bfb6408d99f61832c043570a)
+
+      1. 设置个OCR快捷键：⌘2
+
+      2. 执行动作1：调用系统剪贴板
+
+         > 通过「type a keystroke」模拟实际快捷键：⌃⇧⌘4
+
+      3. 执行动作2：等待截图完成
+
+         > 1. 通过「pause until」等待直至达到某个条件，模拟按下触控板，然后滑动，再松开，让 Keyboard Maestro 等待截图完成
+         > 2. 暂停 macro，直至鼠标左键按下，此时我们开始选择截图区域
+         > 3. 暂停 macro，直至鼠标左键松开，此时我们已经完成截图区域的选择，系统也完成了截图操作
+         > 4. 等待 0.5 秒，保证截图的内容在剪贴板中
+
+      4. 执行动作3：OCR 系统剪贴板
+
+         > 通过「OCR image」对剪贴板中的内容进行 OCR，并将识别后的内容存入剪贴板
+
+      5. 执行动作4：过滤多余空格
+
+         > 通过「Filter」去除OCR识别出的内容两端多余空格，并将加工后文本存入剪贴板
+
+      6. 执行动作5：发送通知
+
+         > 通过「Notification」发送一个系统通知，告知识别结果
+
+      ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306011544445.png)
+
+4. 安装brew
 
    > 1. 命令
    >
@@ -60,7 +111,7 @@
    >
    > 2. brew update报错[参考](https://www.jianshu.com/p/bee56e756ece)
 
-4. 安装mpv
+5. 安装mpv
 
    > ```
    > brew install mpv --cask
@@ -76,7 +127,7 @@
    > DOWN add volume -2
    > ```
 
-5. 安装iterm2
+6. 安装iterm2
 
    > 1. 命令
    >
@@ -187,7 +238,7 @@
    >
    >     ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413135638.png)
 
-6. 安装youtube-dl
+7. 安装youtube-dl
 
    > `brew install youtube-dl`
    >
@@ -234,7 +285,7 @@
    > * B站无音频格式，故会先下视频载ffmepg自动转成音频
    >   `youtube-dl --extract-audio https://www.bilibili.com/video/BV1xJ411r7Yo`
 
-7. 安装you-get
+8. 安装you-get
 
    > `brew install you-get`
    >
@@ -254,7 +305,7 @@
    > * 使用HTTP代理下载：
    >   `you-get -x 127.0.0.1:1081 --itag=18 'https://www.youtube.com/watch?v=jNQXAC9IVRw'`
 
-8. 启动台图标数量7 x 11
+9. 启动台图标数量7 x 11
 
    > ```
    > defaults write com.apple.dock springboard-rows -int 7;
@@ -263,11 +314,11 @@
    > killall Dock
    > ```
 
-9. Finder顶端显示完整路径
+10. Finder顶端显示完整路径
 
    > `defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES`
 
-10. Alfred
+11. Alfred
 
    > 1. 将Spotlight的快捷键分给Alfred
    >
@@ -289,28 +340,7 @@
    > 5. **Inside Files**：最常用，`in + 关键字`查找包含查询字的文件
    >
 
-11. OCR
-
-    [Keyboard Maestro ，在多语言环境中轻松抓取文字](https://utgd.net/article/9528)、[在 Mac 上随时提取屏幕上的文字](https://www.notion.so/Mac-b7ded7e6bfb6408d99f61832c043570a)
-
-    1. 设置个OCR快捷键：⌘2
-    2. 执行动作1：调用系统剪贴板
-       * 通过「type a keystroke」模拟按下「将所选区域的图片拷贝到剪贴板」，调用系统截图功能：⌃⇧⌘4
-    3. 执行动作2：等待截图完成
-       * 通过「pause until」等待直至达到某个条件，模拟按下触控板，然后滑动，再松开，让 Keyboard Maestro 等待截图完成
-       * 暂停 macro，直至鼠标左键按下，此时我们开始选择截图区域
-       2. 暂停 macro，直至鼠标左键松开，此时我们已经完成截图区域的选择，系统也完成了截图操作
-       3. 等待 0.5 秒，保证截图的内容在剪贴板中
-    4. 执行动作3：OCR 系统剪贴板
-       * 通过「OCR image」对剪贴板中的内容进行 OCR，并将识别后的内容存入剪贴板
-    5. 执行动作4：过滤多余空格
-       * 通过「Filter」去除OCR识别出的内容两端多余空格，并将加工后文本存入剪贴板
-    6. 执行动作5：发送通知
-       * 通过「Notification」发送一个系统通知，告知识别结果
-
-    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306011544445.png)
-
-12. ClashX 设置方法
+11. ClashX 设置方法
 
     > 1. 获取订阅链接
     >
@@ -324,7 +354,7 @@
     >
     >    - `Config Name`：填写一个备注名称
 
-13. brew 挂代理方式
+12. brew 挂代理方式
 
     > ```bash
     > 1. touch ~/.curlrc
@@ -341,7 +371,7 @@
     > ```
     >
 
-14. sublime配置
+13. sublime配置
 
     > 1. 安装
     >
@@ -361,15 +391,15 @@
     >    >
     >    > 选择主题：ayu: Activate theme，选择，回车
 
-15. Git 挂代理方式
+14. Git 挂代理方式
 
     > `git clone https://github.com/altercation/solarized/ --config http.proxy='http://127.0.0.1:1087'`
 
-16. Chrome 搜索后新标签打开链接
+15. Chrome 搜索后新标签打开链接
 
     > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413155126.png)
 
-17. Mac 修改文件创建时间
+16. Mac 修改文件创建时间
 
     > `touch -mt YYYYMMDDhhmm`
     > 示例
@@ -383,7 +413,7 @@
     > ```
     >
 
-18. 文献阅读：沙拉查词 + Alfred
+17. 文献阅读：沙拉查词 + Alfred
 
     > [参考](https://zhuanlan.zhihu.com/p/113809716)
     >
@@ -445,7 +475,7 @@
     >       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413155956.png)
     >
 
-19. Karabiner
+18. Karabiner
 
     >1. 修改单个键位
     >
@@ -583,7 +613,7 @@
     >
     >   3. grave_accent_and_tilde即键盘esc下方的`
 
-20. 中国大陆无法登陆某些网站（newbing、binance）
+19. 中国大陆无法登陆某些网站（newbing、binance）
 
     ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202305251538284.png)
 
