@@ -70,7 +70,12 @@
          > 1. 设置锁屏快捷键：⌥ + 2
          > 2. 通过「type a keystroke」模拟实际快捷键：⇧ + ⌘ + C
 
-   2. OCR
+   2. 剪切板
+
+      > 1. 设置锁屏快捷键：⌥ + S
+      > 2. 通过「Activate Clipboard History Switcher」调出剪切板历史
+
+   3. OCR
 
       [Keyboard Maestro ，在多语言环境中轻松抓取文字](https://utgd.net/article/9528)、[在 Mac 上随时提取屏幕上的文字](https://www.notion.so/Mac-b7ded7e6bfb6408d99f61832c043570a)
 
