@@ -1,5 +1,17 @@
 
 
+* 杂记
+  
+  * [Blog建站](Sai_FootPrint/0_BuildBlog.md)
+  * [Markdown语法](Sai_FootPrint/0_MarkdownUsage.md)
+  * [PicGo+GitHub 搭建图床](Sai_FootPrint/0_PicGo_GitHub.md)
+  * [重装Mac](Sai_FootPrint/0_ReinstallSystem.md)
+  * [Keyboard_Maestro用法](Sai_FootPrint/Keyboard_Maestro.md)
+  * [小技巧](Sai_FootPrint/0_Tips.md)
+  * [摘录](0_essay.md)
+  * [Fusion360](Sai_FootPrint/0_AutodeskFusion360.md)
+  * [Anki](Sai_FootPrint/3_anki.md)
+  
 * 爬虫
   
   * [MySQL用法](Sai_FootPrint/2_MySQL.md)
@@ -29,17 +41,6 @@
   * [Pyecharts入门](Sai_FootPrint/1_Pyecharts.md)
   * [PyQt5](Sai_FootPrint/1_PyQt5.md)
 
-
-
-* 杂记
-  * [Blog建站](Sai_FootPrint/0_BuildBlog.md)
-  * [Markdown语法](Sai_FootPrint/0_MarkdownUsage.md)
-  * [PicGo+GitHub 搭建图床](Sai_FootPrint/0_PicGo_GitHub.md)
-  * [重装Mac](Sai_FootPrint/0_ReinstallSystem.md)
-  * [小技巧](Sai_FootPrint/0_Tips.md)
-  * [摘录](0_essay.md)
-  * [Fusion360](Sai_FootPrint/0_AutodeskFusion360.md)
-  * [Anki](Sai_FootPrint/3_anki.md)
 * 论文
   * [硕士论文](Sai_FootPrint/4_MasterThesis.md)
   * [文献阅读笔记](/Sai_PM/4_ReadingNotes.md)
