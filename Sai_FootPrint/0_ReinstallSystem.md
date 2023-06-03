@@ -1,4 +1,4 @@
-# 重装系统
+### 重装系统
 1. 快捷键
 
    * Chrome外的沙拉查词：⌘ + ～
@@ -53,60 +53,108 @@
 
 3. Keyboard Maestro设置
 
-   1. 修改快捷键
+   1. 删除Groups列的All Macros中的所有宏
 
-      1. 锁屏
+   2. 全局通用快捷键
 
-         > 1. 设置锁屏快捷键：⌘ + L
-         > 2. 通过「type a keystroke」模拟实际快捷键：⌃ + ⌘ + Q
+      1. Groups列：创建一个group：Sai Global Group
 
-      2. 录音开关
+      2. Macros列：创建下列宏
 
-         > 1. 设置锁屏快捷键：⌥ + 1
-         > 2. 通过「type a keystroke」模拟实际快捷键：⇧ + ⌘ + R
+         1. 录音宏
 
-      3. 录音暂停
+            ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031102821.png)
 
-         > 1. 设置锁屏快捷键：⌥ + 2
-         > 2. 通过「type a keystroke」模拟实际快捷键：⇧ + ⌘ + C
+         2. 锁屏宏
 
-   2. 剪切板
+            ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031104819.png)
 
-      > 1. 设置锁屏快捷键：⌥ + S
-      > 2. 通过「Activate Clipboard History Switcher」调出剪切板历史
+         3. 剪切板宏
 
-   3. OCR
+            ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031108245.png)
 
-      [Keyboard Maestro ，在多语言环境中轻松抓取文字](https://utgd.net/article/9528)、[在 Mac 上随时提取屏幕上的文字](https://www.notion.so/Mac-b7ded7e6bfb6408d99f61832c043570a)
+         4. KM自带OCR宏
 
-      1. 设置个OCR快捷键：⌘2
+            [Keyboard Maestro ，在多语言环境中轻松抓取文字](https://utgd.net/article/9528)、[在 Mac 上随时提取屏幕上的文字](https://www.notion.so/Mac-b7ded7e6bfb6408d99f61832c043570a)
 
-      2. 执行动作1：调用系统剪贴板
+            ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031053764.png)
 
-         > 通过「type a keystroke」模拟实际快捷键：⌃⇧⌘4
+         5. 第三方OCR宏
 
-      3. 执行动作2：等待截图完成
+            1. [ KM 调用百度OCR接口](https://medium.com/@Cyborger/keyboard-maestro-%E4%BD%BF%E7%94%A8-km-%E5%AE%9E%E7%8E%B0%E5%85%8D%E8%B4%B9%E4%B8%AD%E6%96%87-ocr-%E5%85%89%E5%AD%A6%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB-94ff46e5625)、[申请百度文字识别API的AppID 、API Key、Secret Key](https://www.jianshu.com/p/e10dc43c38d0)
 
-         > 1. 通过「pause until」等待直至达到某个条件，模拟按下触控板，然后滑动，再松开，让 Keyboard Maestro 等待截图完成
-         > 2. 暂停 macro，直至鼠标左键按下，此时我们开始选择截图区域
-         > 3. 暂停 macro，直至鼠标左键松开，此时我们已经完成截图区域的选择，系统也完成了截图操作
-         > 4. 等待 0.5 秒，保证截图的内容在剪贴板中
+            2. 安装环境
 
-      4. 执行动作3：OCR 系统剪贴板
+               > 百度OCR API：pip3 install baidu-aip
+               >
+               > 通用字符编码检测器：pip install chardet
+               >
+               > ```
+               > #!/usr/bin/python3
+               > 
+               > # -*- coding: utf-8 -*-
+               > 
+               > # encoding=utf8
+               > 
+               > from aip import AipOcr
+               > import sys,io
+               > sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
+               > 
+               > """ 你的 APPID AK SK """
+               > APP_ID = '34338402'
+               > API_KEY = 'GVeTGTZdRIiH3AphNQtumCk4'
+               > SECRET_KEY = 'csTzqbvYHbj8XGMnIgCAOtN7Gq1Ra58H'
+               > 
+               > client = AipOcr(APP_ID, API_KEY, SECRET_KEY)
+               > 
+               > def get_file_content(file):
+               >     with open(file, 'rb') as fp:
+               >         return fp.read()
+               > 
+               > def img_to_str(image_path):
+               >     image = get_file_content(image_path)
+               >     result = client.basicGeneral(image)
+               >     if 'words_result' in result:
+               >         return u'\n'.join([w['words'] for w in result['words_result']])
+               > 
+               > print(img_to_str(image_path='/Users/jiangsai/Downloads/1.png'))
+               > ```
 
-         > 通过「OCR image」对剪贴板中的内容进行 OCR，并将识别后的内容存入剪贴板
+            ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031419869.png)
 
-      5. 执行动作4：过滤多余空格
+         6. 阅读摘录
 
-         > 通过「Filter」去除OCR识别出的内容两端多余空格，并将加工后文本存入剪贴板
+            > 实现从Marginote复制文字时，文字携带所属笔记链接；从Chrome复制文字时，文字携带所属网页链接
+            >
+            > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306030145197.png)
 
-      6. 执行动作5：发送通知
+   3. Chrome专用快捷键
 
-         > 通过「Notification」发送一个系统通知，告知识别结果
+      [Keyboard Maestro: 设置特定应用内的宏](https://www.bilibili.com/video/BV125411s79e/?spm_id_from=333.337.search-card.all.click&vd_source=052b07ad0190d9dabdf1d78fda0168a7)
 
-      ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306011544445.png)
+      1. Groups列：创建一个group：Sai Chrome Group，并设置Sai Chrome Group仅在Chrome中生效
 
-4. 安装brew
+         ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306022331425.png)
+
+      2. 已有快捷键替换
+
+         1. 下载内容页宏
+
+            > 1. Macros列创建宏：Downloads
+            > 2. 设置下载内容快捷键：⌘ + D
+            > 3. 通过「type a keystroke」模拟实际快捷键：⌥ + ⌘ + L
+
+      3. Chrome没有快捷键，用Keyboard Maestro创造快捷键宏
+
+         1. 扩展程序宏
+
+            > 1. Macros列创建宏：Extensions
+            > 2. 设置下载内容快捷键：⌘ + E
+            > 3. 通过「select or show a Menu item」模拟点击顶部菜单栏-窗口-扩展程序
+
+            ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306022340183.png)
+
+   4. 安装brew
 
    > 1. 命令
    >
@@ -116,7 +164,8 @@
    >
    > 2. brew update报错[参考](https://www.jianshu.com/p/bee56e756ece)
 
-5. 安装mpv
+   1. 安装mpv
+
 
    > ```
    > brew install mpv --cask
@@ -132,7 +181,8 @@
    > DOWN add volume -2
    > ```
 
-6. 安装iterm2
+   1. 安装iterm2
+
 
    > 1. 命令
    >
@@ -243,7 +293,8 @@
    >
    >     ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413135638.png)
 
-7. 安装youtube-dl
+   1. 安装youtube-dl
+
 
    > `brew install youtube-dl`
    >
@@ -290,7 +341,8 @@
    > * B站无音频格式，故会先下视频载ffmepg自动转成音频
    >   `youtube-dl --extract-audio https://www.bilibili.com/video/BV1xJ411r7Yo`
 
-8. 安装you-get
+   1. 安装you-get
+
 
    > `brew install you-get`
    >
@@ -310,7 +362,8 @@
    > * 使用HTTP代理下载：
    >   `you-get -x 127.0.0.1:1081 --itag=18 'https://www.youtube.com/watch?v=jNQXAC9IVRw'`
 
-9. 启动台图标数量7 x 11
+   1. 启动台图标数量7 x 11
+
 
    > ```
    > defaults write com.apple.dock springboard-rows -int 7;
@@ -319,11 +372,12 @@
    > killall Dock
    > ```
 
-10. Finder顶端显示完整路径
+   1. Finder顶端显示完整路径
+
 
    > `defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES`
 
-11. Alfred
+   1. Alfred
 
    > 1. 将Spotlight的快捷键分给Alfred
    >
@@ -332,51 +386,51 @@
    > 2. 搜索排除某个文件夹
    >
    >    1. 添加要排除的文件夹
+   >
    >    2. 调出alfred，输入reload回车，清空alfred缓存
    >
-   >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413143239.png)
+   >       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413143239.png)
    >
-   > 3. 自定义文件操作
+   >    3. 自定义文件操作
    >
-   >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413143409.png)
+   >       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413143409.png)
    >
-   > 4. **Quick Search**：最常用，`Space + 关键字`快速启用打开文件，功能类似于使用`Open + 关键字`
+   >    **Quick Search**：最常用，`Space + 关键字`快速启用打开文件，功能类似于使用`Open + 关键字`
    >
-   > 5. **Inside Files**：最常用，`in + 关键字`查找包含查询字的文件
+   >    **Inside Files**：最常用，`in + 关键字`查找包含查询字的文件
+
+   1. ClashX 设置方法
+
+4. > 1. 获取订阅链接
+   >
+   >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202111261625570.png)
+   >
+   > 2. 添加配置
+   >
+   >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202111261625530.png)
+   >
+   >    `Url`: 填入订阅链接
+   >
+   >    `Config Name`：填写一个备注名称
+
+5. brew 挂代理方式
+
+   > ```bash
+   > 1. touch ~/.curlrc
+   > 2. 见上教程，获取代理地址
+   > 3. open ~/.curlrc
+   > 4. 输入代理地址：proxy=127.0.0.1:1081
+   > 5. 用完可以删掉该文件，否则墙内资源会受限
+   >    rm ~/.curlrc
+   > 
+   > # 单个命令挂代理1
+   > http_proxy=http://127.0.0.1:1081 https_proxy=http://127.0.0.1:1081 brew install PACKAGE
+   > # 单个命令挂代理2
+   > ALL_PROXY=socks5://127.0.0.1:1081 brew install PACKAGE
+   > ```
    >
 
-11. ClashX 设置方法
-
-    > 1. 获取订阅链接
-    >
-    >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202111261625570.png)
-    >
-    > 2. 添加配置
-    >
-    >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202111261625530.png)
-    >
-    >    - `Url`: 填入订阅链接
-    >
-    >    - `Config Name`：填写一个备注名称
-
-12. brew 挂代理方式
-
-    > ```bash
-    > 1. touch ~/.curlrc
-    > 2. 见上教程，获取代理地址
-    > 3. open ~/.curlrc
-    > 4. 输入代理地址：proxy=127.0.0.1:1081
-    > 5. 用完可以删掉该文件，否则墙内资源会受限
-    >    rm ~/.curlrc
-    > 
-    > # 单个命令挂代理1
-    > http_proxy=http://127.0.0.1:1081 https_proxy=http://127.0.0.1:1081 brew install PACKAGE
-    > # 单个命令挂代理2
-    > ALL_PROXY=socks5://127.0.0.1:1081 brew install PACKAGE
-    > ```
-    >
-
-13. sublime配置
+11. sublime配置
 
     > 1. 安装
     >
@@ -396,15 +450,15 @@
     >    >
     >    > 选择主题：ayu: Activate theme，选择，回车
 
-14. Git 挂代理方式
+12. Git 挂代理方式
 
     > `git clone https://github.com/altercation/solarized/ --config http.proxy='http://127.0.0.1:1087'`
 
-15. Chrome 搜索后新标签打开链接
+13. Chrome 搜索后新标签打开链接
 
     > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413155126.png)
 
-16. Mac 修改文件创建时间
+14. Mac 修改文件创建时间
 
     > `touch -mt YYYYMMDDhhmm`
     > 示例
@@ -418,7 +472,7 @@
     > ```
     >
 
-17. 文献阅读：沙拉查词 + Alfred
+15. 文献阅读：沙拉查词 + Alfred
 
     > [参考](https://zhuanlan.zhihu.com/p/113809716)
     >
@@ -480,7 +534,7 @@
     >       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413155956.png)
     >
 
-18. Karabiner
+16. Karabiner
 
     >问题：连外接键盘时，键位不对应
     >
@@ -490,7 +544,7 @@
     >
     > 2. 修改组合快捷键[参考](https://blog.csdn.net/qq_26012495/article/details/88539120)
 
-19. 中国大陆无法登陆某些网站（newbing、binance）
+17. 中国大陆无法登陆某些网站（newbing、binance）
 
     ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202305251538284.png)
 
@@ -575,6 +629,64 @@
 ##### PDF阅读器不显示部分文字
 
 * 方法：Chrome打开
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
