@@ -79,7 +79,11 @@ Keyboard Maestro设置
 
          ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031505068.png)
 
-      8. 模拟Alfred搜索KM宏
+      8. 找到unisat钱包插件，点击 -> 输入密码 -> 回车，进入钱包
+
+         ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031611502.png)
+
+      9. 模拟Alfred搜索KM宏
 
          1. 创建一个Sai Search Group，所有不想设置快捷键的宏都放这里
 
