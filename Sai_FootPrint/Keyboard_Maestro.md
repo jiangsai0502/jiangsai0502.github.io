@@ -126,3 +126,13 @@ Keyboard Maestro设置
          ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306032241954.png)
 
          ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306032242967.png)
+
+   4. 断点调试
+
+      ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306032334153.png)
+
+   5. 自制动作重复器
+
+      > 无法精细控制，适用于简单的重复动作，更复杂的还是用record，record可以修改中间的动作细节
+
+      ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306032343693.png)
