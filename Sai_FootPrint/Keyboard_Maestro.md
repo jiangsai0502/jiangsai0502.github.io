@@ -83,13 +83,17 @@ Keyboard Maestro设置
 
          ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031611502.png)
 
-      9. 模拟Alfred搜索KM宏
+      9. 打开Zoom，输入会议号、密码、邮箱
 
-         1. 创建一个Sai Search Group，所有不想设置快捷键的宏都放这里
+         ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031805707.png)
 
-         2. 在Sai Global新建一个宏Trigger by Sai Search
+      10. 模拟Alfred搜索KM宏
 
-            ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031536092.png)
+          1. 创建一个Sai Search Group，所有不想设置快捷键的宏都放这里
+
+          2. 在Sai Global新建一个宏Trigger by Sai Search
+
+             ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031536092.png)
 
 3. Chrome专用快捷键
 
@@ -116,3 +120,9 @@ Keyboard Maestro设置
          > 3. 通过「select or show a Menu item」模拟点击顶部菜单栏-窗口-扩展程序
 
          ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306022340183.png)
+
+      2. 视频网站5秒快进
+
+         ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306032241954.png)
+
+         ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306032242967.png)
