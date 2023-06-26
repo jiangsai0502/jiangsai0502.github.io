@@ -118,6 +118,7 @@
    >    ZSH_DISABLE_COMPFIX="true"
    >    # 禁用oh-my-zsh自动更新
    >    找到DISABLE_AUTO_UPDATE一行，将行首的注释'#'去掉
+   >    DISABLE_AUTO_UPDATE="true"
    >    source ~/.zshrc
    >    ```
    >
@@ -154,7 +155,7 @@
    >
    >    ```
    >    brew install zsh-syntax-highlighting
-   >    
+   >
    >    open ~/.zshrc
    >    最后插入一行：source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
    >    source ~/.zshrc
@@ -167,7 +168,7 @@
    > 11. 自动提示与命令补全
    >
    >     ```
-   >下载 https://github.com/zsh-users/zsh-autosuggestions
+   > 下载 https://github.com/zsh-users/zsh-autosuggestions
    >     解压到目录~/.oh-my-zsh/plugins/zsh-autosuggestions
    >     open ~/.zshrc
    >     搜索'plugins'，修改为plugins=(zsh-autosuggestions)
