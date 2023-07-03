@@ -12,74 +12,107 @@
    8. Sleep Trigger：当 Mac 睡眠时触发，这个触发器能够将 Mac 睡眠推迟最长大概 30s 用于执行相应的 Action。
    9. Wake Trigger：类似 Sleep Trigger，在 Mac 唤醒时触发。
 
-2. Action
+2. **Action**
 
    1. **Application Control**
-      1. Activate a Specific Application：激活一个App，并置于顶部
-      2. Quit a Specific Application：退出一个App
-      3. Hide a Specific Application：隐藏一个App
+      
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031748852.png) | 激活一个App，并置于顶部 |
+      | ------------------------------------------------------------ | ----------------------- |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031749812.png) | 退出一个App             |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031750146.png) | 隐藏一个App             |
+      
    2. **Clipboard Actions**
-      1. Set Clipboard to Text：将文本赋值给剪切板
-      2. Set Clipboard to Variable：将变量赋值给剪切板
-      3. Set System Clipboard to Image：将图片赋值给剪切板
+
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031753111.png) | 将文本赋值给剪切板 |
+      | ------------------------------------------------------------ | ------------------ |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031754712.png) | 将变量赋值给剪切板 |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031755959.png) | 将图片赋值给剪切板 |
+
    3. **Control Flow Actions**
-      1. Pause：暂停xxx秒
-      2. Pause Until：暂停，直到某些条件达成
-      3. Until：一直执行某些操作，直到某些条件达成时结束
-      4. While：满足某些条件时，执行某些操作
-      5. Repeat：重复某些操作xxx次
-      6. Break From Loop：跳出循环，执行后面的操作
-      7. If Then Else：如果满足某些条件，则执行某些操作，否则执行其他操作
-      8. For Each：在一组值上循环（如数字、当前运行的程序、文件夹里的文件、）
-      9. Cancel All Macros：取消当前正在执行的所有宏
+
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031756726.png) | 暂停xxx秒                                                |
+      | ------------------------------------------------------------ | -------------------------------------------------------- |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031757251.png) | 暂停，直到某些条件达成                                   |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031757636.png) | 一直执行某些操作，直到某些条件达成时结束                 |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031758033.png) | 满足某些条件时，执行某些操作                             |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031758883.png) | 重复某些操作xxx次                                        |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031759448.png) | 如果满足某些条件，则执行某些操作，否则执行其他操作       |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031759535.png) | 在一组值上循环（如数字、当前运行的程序、文件夹里的文件） |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031800077.png) | 跳出循环，执行后面的操作                                 |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031800408.png) | 取消当前正在执行的所有宏                                 |
+
    4. **Debugger Actions**
-      1. Debugger Breakpoint This Macro：设置断点
+
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031802329.png) | 设置断点 |
+      | ------------------------------------------------------------ | -------- |
+
    5. **Execute Actions**
-      1. Execute a Shell Script：执行shell脚本
-      2. Execute a Macro：执行一个宏
+
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031803296.png) | 执行shell脚本 |
+      | ------------------------------------------------------------ | ------------- |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031803138.png) | 执行一个宏    |
+
    6. **File Actions**
-      1. Create a new folder：新建文件夹
-      2. Move or rename a file：移动（或重命名）文件
-      3. Delete a file：删除文件
-      4. Open a File，Folder or Application：打开一个文件、文件夹、App
-      5. Read a file：将一个文件读入剪切板、变量
-      6. Write to a file：将变量、剪切板清空写入一个文件
-      7. Append text to a file：将变量、剪切板追加写入文件
+
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031806050.png) | 新建文件夹                     |
+      | ------------------------------------------------------------ | ------------------------------ |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031806651.png) | 移动（或重命名）文件           |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031807831.png) | 删除文件                       |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031807332.png) | 打开一个文件、文件夹、App      |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031807569.png) | 将一个文件读入剪切板、变量     |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031808087.png) | 将变量、剪切板清空写入一个文件 |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031808502.png) | 将变量、剪切板追加写入文件     |
+
    7. **Google Chrome Actions**
-      1. New Google Chrome Window：新建窗口，打开指定URL
-      2. New Google Chrome Tab：新建Tab，打开指定URL
-      3. Next Google Chrome Tab：切换到下一个Tab
-      4. Previous Google Chrome Tab：切换到上一个Tab
-      5. Select Google Chrome Tab：选择指定Tab
-      6. Wait For Google Chrome to Finish Loading：等待页面加载
-      7. Click Google Chrome Link：点击指定标题的链接
+
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031810455.png) | 新建窗口，打开指定URL |
+      | ------------------------------------------------------------ | --------------------- |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031811454.png) | 新建Tab，打开指定URL  |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031811276.png) | 选择指定Tab           |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031812427.png) | 等待页面加载          |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031812352.png) | 点击指定标题的链接    |
+
    8. **Interface Control**
-      1. Manipulate a Window：调整大小，移动到指定坐标，置顶，关闭
-      2. Move or Click Mouse：移动光标，点击（单击、双击、三击），拖动，组合键点击，在指定窗口按图找坐标
-      3. Click at Found Image：点击图片
-      4. Select or Show Menu Item：操作指定App顶部菜单栏
-      5. Type a Keystroke：模拟按下指定按键或组合键
-      6. Use Variable：用变量移动鼠标、窗口、App、音量
+
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031814192.png) | 调窗口整大小，移动到指定坐标，置顶，关闭                     |
+      | ------------------------------------------------------------ | ------------------------------------------------------------ |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031815203.png) | 移动光标，点击（单击、双击、三击），拖动，组合键点击，在指定窗口按图找坐标 |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031815848.png) | 寻找图片，并点击它                                           |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031816373.png) | 操作指定App顶部菜单栏                                        |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031816517.png) | 模拟按下指定按键或组合键                                     |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031817606.png) | 用变量移动鼠标、窗口、App、音量                              |
+
    9. **Keyboard Maestro Actions**
-      1. Record Quick Macro：录制一个临时宏
-      2. Trigger Macro by Name：通过名字触发宏
-      3. Set Macro or Group Enable：启用、禁用某个宏
-      4. Comment：不执行任何操作，宏注释
+
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031819220.png) | 录制一个临时宏         |
+      | ------------------------------------------------------------ | ---------------------- |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031819582.png) | 通过名字触发宏         |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031820540.png) | 启用、禁用某个宏       |
+      | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031820669.png) | 不执行任何操作，宏注释 |
+
    10. **Notification Actions**
-       1. Alert：阻断式提示，【Stop】会中断这个宏后面的所有操作，【Continue】会继续这个宏后面的操作
-       2. Prompt For User Input：自定义按钮的Alert
+
+       | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031821763.png) | 阻断式提示<br />【Stop】会中断这个宏后面的所有操作，【Continue】会继续这个宏后面的操作 |
+       | ------------------------------------------------------------ | ------------------------------------------------------------ |
+       | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031821534.png) | 自定义按钮的Alert                                            |
+
    11. **Text Actions**
-       1. Insert Text by Pasting：通过粘贴插入文本
-       2. Insert Text by Typing：通过输入插入文本
-       3. Speak Text：文本朗读
-   12. **Variable Actions**
-       1. Set Variable to Text：将文本赋值给变量
-       2. Prepend Text to Variable：在变量前插入文本
-       3. Append Variable with Text：在变量后插入文本
-       4. Set Variable to Calculation：计算数字变量
-       5. Set Variable to Clipboard：将剪切板赋值给变量
-       6. Set Dictionary Value：设置字典
-       7. Filter：对剪切板、文本、变量进行格式化处理
+
+       | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031823929.png) | 通过粘贴插入文本 |
+       | ------------------------------------------------------------ | ---------------- |
+       | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031823361.png) | 通过输入插入文本 |
+       | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031823723.png) | 文本朗读         |
+
+   12. **Variable**
+
+       | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031825174.png) | 将文本赋值给变量                   |
+       | ------------------------------------------------------------ | ---------------------------------- |
+       | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031825007.png) | 在变量前插入文本                   |
+       | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031826923.png) | 在变量后插入文本                   |
+       | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031826250.png) | 计算数字变量                       |
+       | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031827888.png) | 将剪切板赋值给变量                 |
+       | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031827010.png) | 设置字典                           |
+       | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307031828714.png) | 对剪切板、文本、变量进行格式化处理 |
 
 3. 基础设置说明
 
@@ -190,3 +223,4 @@
   > 无法精细控制，适用于简单的重复动作，更复杂的还是用record，record可以修改中间的动作细节
 
   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306032343693.png)
+
