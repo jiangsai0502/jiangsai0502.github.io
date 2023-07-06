@@ -38,7 +38,7 @@
 >   >   > source ~/.zshrc
 >   >   > ```
 >   >   >
->   >   > <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200709232216.png" style="zoom:33%;" />
+>   >   > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307062310695.png)
 >
 
 > **卸载**
@@ -170,7 +170,7 @@
 >
 > 5. 设置当前debug调试配置
 >
->    <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200218183754.png" style="zoom:33%;" />
+>    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307062309938.png)
 >
 >    ```js
 >    {
@@ -207,13 +207,13 @@
 >
 > 6. debug状态下交互调试
 >
->    ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200429002831.png)
+>    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307062003989.png)
 >
 > 7. VSCode 代码无提示的解决办法
 >
 >    > 点击右下角的当前文件类型，选择 "Auto Detect 自动检测"，等它加载一会即可自动提示
->
->    <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200208131258.png" style="zoom:40%;" />
+>    >
+>    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307062003261.png)
 >
 > 8. unresolved import "xxx"
 >

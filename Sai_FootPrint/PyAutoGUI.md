@@ -59,7 +59,176 @@ else:
     pyautogui.moveTo(x/2,y/2)
 ```
 
+##### 按键精灵
 
+> 1. Excel格式
+>
+>    | 序号 | 操作指令 | 操作内容 | 重复次数（不填则执行1次） |
+>    | ---- | -------- | -------- | ------------------------- |
+>    |      |          |          |                           |
+>
+> 2. 用法
+>
+>    > 1. 操作指令：1-单击、2-双击、3-右键、4-输入、5-等待、6-滚轮
+>    > 2. 操作内容：
+>    >    1. 指令1、2、3对应的操作内容为png图片
+>    >    2. 指令4对应的为输入文字
+>    >    3. 指令5为等待
+>    >    4. 指令6为滚动
+>
+> ```
+> #导入 用于自动化控制鼠标与键盘
+> import pyautogui
+> import time
+> import xlrd
+> from openpyxl import Workbook, load_workbook
+> import pyperclip
+> 
+> # Excel数据检查
+> def dataCheck(C_sheet):
+>     # 默认Excel的数据全部有效
+>     Validation = True
+> 
+>     #Excel行数检查
+>     if C_sheet.max_row <2:
+>         print("没数据")
+>         Validation = False
+>     
+>     #每行数据检查
+>     i = 2
+>     while i <= C_sheet.max_row:
+>         # 第1列 操作类型
+>         cmdType = C_sheet[i][0]
+>         # and cmdType.value != 4.0 and cmdType.value != 5.0 and cmdType.value != 6.0):
+>         if cmdType.value not in [1,2,3,4,5,6]:
+>             print('第',i,"行,第1列当前是", cmdType.value,"，必须是1-6的数字")
+>             Validation = False
+> 
+>         # 第2列 内容检查
+>         cmdValue = C_sheet[i][1]
+>         # 读图点击类型指令，内容必须为字符串类型
+>         if cmdType.value ==1 or cmdType.value == 2 or cmdType.value == 3:
+>             if not cmdValue.value.lower().endswith('.png'):
+>                 print('第',i,"行,第2列当前是", cmdValue.value,"，图片操作必须预备png图片")
+>                 Validation = False
+>         # 输入类型，内容不能为空
+>         if cmdType.value == 4:
+>             if cmdValue.value.strip() is None:
+>                 print('第',i,"行,第2列当前是", cmdValue.value,"，输入操作必须设置输入内容")
+>                 Validation = False
+>         # 等待类型，内容必须为数字
+>         if cmdType.value == 5:
+>             if type(cmdValue.value) is not int:
+>                 print('第',i,"行,第2列当前是", cmdValue.value,"，等待操作必须要设置等待秒数")
+>             elif cmdValue.value < 1:
+>                 print('第',i,"行,第2列当前是", cmdValue.value,"，等待秒数必须>=1")
+>                 Validation = False
+>         # 滚轮事件，内容必须为数字
+>         if cmdType.value == 6:
+>             if type(cmdValue.value) is not int:
+>                 print('第',i,"行,第2列当前是", cmdValue.value,"，滚动操作必须要设置滚动格子数")
+>             elif cmdValue.value < 1:
+>                 print('第',i,"行,第2列当前是", cmdValue.value,"，滚动格子数必须>=1")
+>                 Validation = False
+> 
+>         # 第3列 重复次数检查
+>         cmdRepeat = C_sheet[i][2]
+>         if cmdRepeat.value is not None:
+>             if type(cmdRepeat.value) is not int:
+>                 print('第',i,"行,第3列当前是", cmdRepeat.value,"，重复次数必须是整数")
+>                 Validation = False
+>             elif cmdRepeat.value < 1:
+>                 print('第',i,"行,第2列当前是", cmdRepeat.value,"，重复次数必须>=1")
+>                 Validation = False
+> 
+>         i += 1
+>     return Validation
+> 
+> #定义鼠标操作方法
+> def mouseClick(clickTimes,lOrR,img,reTry):
+>     if reTry == 1:
+>         while True:
+>             location=pyautogui.locateCenterOnScreen(img,confidence=0.9)
+>             if location is not None:
+>                 pyautogui.click(location.x,location.y,clicks=clickTimes,interval=0.2,duration=0.2,button=lOrR)
+>                 break
+>             print("未找到匹配图片,0.1秒后重试")
+>             time.sleep(1)
+>     elif reTry > 1:
+>         i = 1
+>         while i < reTry + 1:
+>             location=pyautogui.locateCenterOnScreen(img,confidence=0.9)
+>             if location is not None:
+>                 pyautogui.click(location.x/2,location.y/2,clicks=clickTimes,interval=0.2,duration=0.2,button=lOrR)
+>                 print("点击1次")
+>                 i += 1
+>             time.sleep(1)
+> 
+> #任务
+> def mainWork(W_sheet):
+>     i = 2
+>     while i <= W_sheet.max_row:
+>         #取本行第1列，操作类型
+>         cmdType = W_sheet[i][0]
+>         # 图片操作
+>         if cmdType.value in [1,2,3]:
+>             # 取本行第2列，操作内容
+>             cmdValue = W_sheet[i][1].value
+>             # 默认重复执行1次
+>             reTry = 1
+>             # 若本行第3列不为空，则重新赋值重复次数
+>             if W_sheet[i][2].value is not None:
+>                 reTry = W_sheet[i][2].value
+>             if cmdType.value == 1:
+>                 print("左键单击",cmdValue,reTry,"次")
+>                 mouseClick(1,"left",cmdValue,reTry)
+>             elif cmdType.value == 2:
+>                 print("左键双击",cmdValue,reTry,"次")
+>                 mouseClick(2,"left",cmdValue,reTry)
+>             elif cmdType.value == 3:
+>                 print("右键单击",cmdValue,reTry,"次")
+>                 mouseClick(1,"right",cmdValue,reTry)
+>         # 输入操作
+>         elif cmdType.value == 4:
+>             pyautogui.click(x=1470,y=850,clicks=2)
+>             inputValue = W_sheet[i][1].value
+>             # 复制内容
+>             pyperclip.copy(inputValue)
+>             # 粘贴复制的内容
+>             pyautogui.hotkey('command','v')
+>             pyautogui.hotkey('enter')
+>             time.sleep(0.5)
+>             print("输入:",inputValue)                                        
+>         #5 等待
+>         elif cmdType.value == 5:
+>             #取等待的秒数
+>             waitTime = W_sheet[i][1].value
+>             time.sleep(waitTime)
+>             print("等待",waitTime,"秒")
+>         #6 滚轮
+>         elif cmdType.value == 6:
+>             pyautogui.click(1460,600)
+>             #取图片名称
+>             scroll = W_sheet[i][1].value
+>             pyautogui.scroll(int(scroll))
+>             print("滚轮滑动",int(scroll),"距离")                      
+>         i += 1
+> 
+> if __name__ == '__main__':
+>     # 打开Excel文件
+>     myWorkbook = load_workbook('test.xlsx')
+>     # 引用指定表单Mysheet
+>     Mysheet = myWorkbook['Sheet1']
+> 
+>     #数据检查
+>     checkCmd = dataCheck(Mysheet)
+>     if checkCmd:
+>         mainWork(Mysheet)
+>     else:
+>         print('输入有误或者已经退出!')
+> ```
+>
+> 
 
 ##### 固定配置
 
@@ -184,7 +353,7 @@ else:
 >    ```
 >
 >    ```
->    # 以90%的精确度定位第一个图片calc.png的坐标
+>    # 以90%的精确度定位第一个图片calc.png的坐标，精确度默认为 1
 >    >>> my_location = pyautogui.locateOnScreen('calc.png' , confidence=0.9)    
 >    >>> my_location
 >    Box(left=3412, top=467, width=104, height=86)    # （左、上、宽、高）
