@@ -33,6 +33,7 @@
 * Python
   * [Python 周边环境](Sai_FootPrint/1_PythonEnvironment.md)
   * [Python 入门](Sai_FootPrint/1_PythonTutorial.md)
+  * [PyAutoGUI](Sai_FootPrint/PyAutoGUI.md)
   * [Python 优秀包](Sai_FootPrint/1_PythonModule.md)
   * [Git 入门](Sai_FootPrint/1_GitStudy.md)
   * [Flask 入门](Sai_FootPrint/1_Flask_1_Tutorial.md)
@@ -40,7 +41,7 @@
   * [Html-Css](Sai_FootPrint/1_html_css.md)
   * [Pyecharts入门](Sai_FootPrint/1_Pyecharts.md)
   * [PyQt5](Sai_FootPrint/1_PyQt5.md)
-
+  
 * 论文
   * [硕士论文](Sai_FootPrint/4_MasterThesis.md)
   * [文献阅读笔记](/Sai_PM/4_ReadingNotes.md)

@@ -111,6 +111,8 @@
 > conda list
 > ```
 
+[Vscode使用Anaconda虚拟环境](https://developer.aliyun.com/article/1053197)
+
 > **VSCode配置**
 >
 > 1. 左侧最下方“Extensions”，安装以下插件
@@ -158,11 +160,13 @@
 >
 > 4. 改变当前python运行环境
 >
->    * 手动修改 `python.pythonPath`的值，重启
+>    1. CTRL+P打开搜索，输入""> select interpreter"
 >
->    * 点击左下角的运行环境，选择想使用的环境即可
+>    2. 选择Python解释器
 >
->      <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200208131736.png" style="zoom:40%;" />
+>    3. 点击左下角的当前运行环境，重新选择运行环境
+>
+>       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307051108205.png)
 >
 > 5. 设置当前debug调试配置
 >
@@ -225,32 +229,6 @@
 > 10. vscode列选中
 >
 >     option+shift，光标拖动
-
-> 完全卸载VSCode
->
-> > vscode拖入废纸篓
->
-> > ```bash
-> > rm -rf "/Applications/Visual Studio.app"
-> > rm -rf ~/Library/Caches/VisualStudio
-> > rm -fr ~/Library/Caches/com.microsoft.VSCode
-> > rm -fr ~/Library/Caches/com.microsoft.VSCode.ShipIt/
-> > rm -rf ~/Library/Preferences/VisualStudio
-> > rm -rf ~/Library/Preferences/Visual\ Studio
-> > rm -fr ~/Library/Preferences/com.microsoft.VSCode.helper.plist
-> > rm -fr ~/Library/Preferences/com.microsoft.VSCode.plist
-> > rm -rf ~/Library/Preferences/Xamarin/
-> > rm -fr ~/Library/Application\ Support/Code/
-> > rm -rf ~/Library/Application\ Support/VisualStudio
-> > rm -rf ~/Library/Application\ Support/VisualStudio/7.0/LocalInstall/Addins/
-> > rm -rf ~/Library/Application\ Support/VisualStudio/8.0/LocalInstall/Addins/
-> > rm -rf ~/Library/Logs/VisualStudio
-> > rm -rf ~/Library/VisualStudio
-> > rm -fr ~/Library/Saved\ Application\ State/com.microsoft.VSCode.savedState/
-> > rm -fr ~/.vscode/
-> > rm -rf ~/.vscode*
-> > ```
-> >
 
 #### Charles入门
 
