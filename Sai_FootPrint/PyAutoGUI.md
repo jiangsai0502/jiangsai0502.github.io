@@ -1,34 +1,5 @@
 #### PyAutoGUI
 
-##### 打地鼠
-
-```
-# conda info --envs   查看当前系统下的虚拟环境
-# conda activate py3   激活虚拟环境py3
-# pip3 install pyautogui 屏幕操作库
-# pip3 install opencv-python 图像处理库
-
-from numpy import where
-import pyautogui
-
-pyautogui.PAUSE = 0.1
-pyautogui.FAILSAFE = True
-
-while True:
-
-coords = pyautogui. locateonscreen("E:/pydemo/ demo/ image/image if coords is not None:
-
-print("找到了，进行点击"）
-x,y = pyautogui.center(coords)
-pyautogui. leftclick(x,y)
-else:
-
-print（"没找到"）
-
-
-
-```
-
 ##### 等待页面加载出控件，再点击它
 
 ```
@@ -93,7 +64,7 @@ else:
 >     if C_sheet.max_row <2:
 >         print("没数据")
 >         Validation = False
->     
+> 
 >     #每行数据检查
 >     i = 2
 >     while i <= C_sheet.max_row:
@@ -145,24 +116,46 @@ else:
 >     return Validation
 > 
 > #定义鼠标操作方法
-> def mouseClick(clickTimes,lOrR,img,reTry):
+> def mouseClick(clicks,mouse,image,reTry):
+> 
+>     # 目标图片坐标
+>     location = None
+>     # 等待加载时间
+>     second = 0
+> 
 >     if reTry == 1:
->         while True:
->             location=pyautogui.locateCenterOnScreen(img,confidence=0.9)
->             if location is not None:
->                 pyautogui.click(location.x,location.y,clicks=clickTimes,interval=0.2,duration=0.2,button=lOrR)
->                 break
->             print("未找到匹配图片,0.1秒后重试")
->             time.sleep(1)
+>         # 只要没找到图片，或者加载时间没超过10秒，就一直循环
+>         while (location == None and second != 10):
+>             try:
+>                 time.sleep(0.5)
+>                 second = second + 0.5
+>                 location = pyautogui.locateCenterOnScreen(image,confidence=0.9)
+>             except Exception as e:
+>                 print(e)
+>         # 找到图，或者过了10秒没找到图
+>         if location is None:
+>             print('不等了')
+>         else:
+>             pyautogui.click(location.x/2,location.y/2,clicks=clicks,interval=0.2,duration=0.2,button=mouse)
+>             print("点击1次")
 >     elif reTry > 1:
 >         i = 1
 >         while i < reTry + 1:
->             location=pyautogui.locateCenterOnScreen(img,confidence=0.9)
->             if location is not None:
->                 pyautogui.click(location.x/2,location.y/2,clicks=clickTimes,interval=0.2,duration=0.2,button=lOrR)
+>             # 只要没找到图片，或者加载时间没超过10秒，就一直循环
+>             while (location == None and second != 10):
+>                 try:
+>                     time.sleep(0.5)
+>                     second = second + 0.5
+>                     location = pyautogui.locateCenterOnScreen(image,confidence=0.9)
+>                 except Exception as e:
+>                     print(e)
+>             # 找到图，或者过了10秒没找到图
+>             if location is None:
+>                 print('不等了')
+>             else:
+>                 pyautogui.click(location.x/2,location.y/2,clicks=clicks,interval=0.2,duration=0.2,button=mouse)
 >                 print("点击1次")
 >                 i += 1
->             time.sleep(1)
 > 
 > #任务
 > def mainWork(W_sheet):
@@ -173,21 +166,21 @@ else:
 >         # 图片操作
 >         if cmdType.value in [1,2,3]:
 >             # 取本行第2列，操作内容
->             cmdValue = W_sheet[i][1].value
+>             imageFile = W_sheet[i][1].value
 >             # 默认重复执行1次
 >             reTry = 1
 >             # 若本行第3列不为空，则重新赋值重复次数
 >             if W_sheet[i][2].value is not None:
 >                 reTry = W_sheet[i][2].value
 >             if cmdType.value == 1:
->                 print("左键单击",cmdValue,reTry,"次")
->                 mouseClick(1,"left",cmdValue,reTry)
+>                 print("左键单击",imageFile,reTry,"次")
+>                 mouseClick(1,"left",imageFile,reTry)
 >             elif cmdType.value == 2:
->                 print("左键双击",cmdValue,reTry,"次")
->                 mouseClick(2,"left",cmdValue,reTry)
+>                 print("左键双击",imageFile,reTry,"次")
+>                 mouseClick(2,"left",imageFile,reTry)
 >             elif cmdType.value == 3:
->                 print("右键单击",cmdValue,reTry,"次")
->                 mouseClick(1,"right",cmdValue,reTry)
+>                 print("右键单击",imageFile,reTry,"次")
+>                 mouseClick(1,"right",imageFile,reTry)
 >         # 输入操作
 >         elif cmdType.value == 4:
 >             pyautogui.click(x=1470,y=850,clicks=2)
@@ -218,7 +211,7 @@ else:
 >     # 打开Excel文件
 >     myWorkbook = load_workbook('test.xlsx')
 >     # 引用指定表单Mysheet
->     Mysheet = myWorkbook['Sheet1']
+>     Mysheet = myWorkbook['Sheet2']
 > 
 >     #数据检查
 >     checkCmd = dataCheck(Mysheet)
@@ -226,6 +219,7 @@ else:
 >         mainWork(Mysheet)
 >     else:
 >         print('输入有误或者已经退出!')
+> 
 > ```
 >
 > 
