@@ -28,12 +28,12 @@
    2. shadowrocket
 4. 效率工具
    1. Keyboard Maestro
-   1. Paste（官网下载helper）
-   2. MurGaa Recorder
-   3. rename
-   4. go2shell（官网下载）
-   5. magnet
-   6. MacroRecorder
+   2. Paste（官网下载helper）
+   3. MurGaa Recorder
+   4. rename
+   5. go2shell（官网下载）
+   6. magnet
+   7. MacroRecorder
 5. 截图：
    1. 主力贴图：snipaste
    2. 长截图：xnip
@@ -53,12 +53,12 @@
 ##### 安装brew
 
 > 1. 命令
->
+>    
 >    `/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)" `
->
+> 
 > 2. 推荐使用中科大源
->
-> 2. brew update报错[参考](https://www.jianshu.com/p/bee56e756ece)
+> 
+> 3. brew update报错[参考](https://www.jianshu.com/p/bee56e756ece)
 
 ##### 安装mpv
 
@@ -75,263 +75,223 @@
 > UP add volume 2
 > DOWN add volume -2
 > ```
->
+> 
 > 设置mpv多开
->
+> 
 > 1. 打开Script Editor
->
+>    
 >    > ```
 >    > on run
->    > 	do shell script "open -n /Applications/mpv.app"
->    > 	tell application "mpv" to activate
+>    >     do shell script "open -n /Applications/mpv.app"
+>    >     tell application "mpv" to activate
 >    > end run
 >    > 
 >    > on open theFiles
->    > 	repeat with theFile in theFiles
->    > 		do shell script "open -na /Applications/mpv.app " & quote & (POSIX path of theFile) & quote
->    > 	end repeat
->    > 	tell application "mpv" to activate
+>    >     repeat with theFile in theFiles
+>    >         do shell script "open -na /Applications/mpv.app " & quote & (POSIX path of theFile) & quote
+>    >     end repeat
+>    >     tell application "mpv" to activate
 >    > end open
 >    > ```
->
+> 
 > 2. 保存
->
+>    
 >    1. 名称：mpv multiple
 >    2. 文件格式：应用程序
->
+> 
 > 3. 将mpv multiple拖入应用程序，修改视频文件的默认打开方式
 
 ##### 安装iterm2
 
+> 1. 命令
+>    
+>    `brew install iterm2`
+> 
+> 2. 把iTerm2设为默认
+>    
+>    * iTerm2 -> Make ITerm2 Default Term
+>      
+>      ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413110312.png)
+> 
+> 3. 快捷键
+>    
+>    1. 光标按照单词快速移动
+>       
+>       * iTerm2 -> Preferences -> Keys -> Key Bindings
+>         
+>         修改 ⌘← 和 ⌘→ 的映射，双击进入后，选择Action为 “Send Escape Sequence”，Esc+为 ⌘← 对应 b ， ⌘→ 对应 f
+>         
+>         ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220412205506.png)
+>    
+>    2. 按照单词快速删除（结合BetterTouchTool）
+>       
+>       * 修改 ⌘+Delete 的映射，⌘+Delete 代表 control + w
+>         
+>         ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220412210000.png)
+> 
+> 4. 安装Oh my zsh [参考](https://segmentfault.com/a/1190000041138667?utm_source=sf-similar-article)
+>    
+>    ```
+>    brew install wget;
+>    export REMOTE=https://gitee.com/imirror/ohmyzsh.git;
+>    sh -c "$(wget -O- https://cdn.jsdelivr.net/gh/ohmyzsh/ohmyzsh/tools/install.sh)";
+>    
+>    open ~/.zshrc
+>    # 在.zshrc文件中搜索 source $ZSH/oh-my-zsh.sh，在本句之前加一句
+>    ZSH_DISABLE_COMPFIX="true"
+>    # 禁用oh-my-zsh自动更新
+>    找到DISABLE_AUTO_UPDATE一行，将行首的注释'#'去掉
+>    DISABLE_AUTO_UPDATE="true"
+>    source ~/.zshrc
+>    ```
+> 
+> 5. 安装PowerFonts字体
+>    
+>    ```
+>    1. 下载：https://github.com/powerline/fonts
+>    2. 解压
+>    3. 进入文件夹：cd fonts-master
+>    4. 安装：./install.sh
+>    ```
+> 
+> 6. 设置字体
+>    
+>    iTerm2 -> Preferences -> Profiles -> Text，在Font区域选中Change Font，然后找到Meslo LG字体，有L、M、S可选
+>    
+>    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413112345.png)
+> 
+> 7. 配色方案
+>    
+>    iTerm2 -> Preferences -> Profiles -> Colors -> Color Presets
+>    
+>    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413113614.png)
+> 
+> 8. 设置主题
+>    
+>    ```
+>    open ~/.zshrc
+>    # 搜索'ZSH_THEME'，修改为ZSH_THEME="agnoster"
+>    source ~/.zshrc
+>    ```
+> 
+> 9. 设置语法高亮
+>    
+>    ```
+>    brew install zsh-syntax-highlighting
+>    
+>    open ~/.zshrc
+>    最后插入一行：source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+>    source ~/.zshrc
+>    ```
+> 
+> 10. 获取代理地址
+>     
+>     ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413141420.png)
+> 
+> 11. 自动提示与命令补全
+>     
+>     ```
+>     下载 https://github.com/zsh-users/zsh-autosuggestions
+>     解压到目录~/.oh-my-zsh/plugins/zsh-autosuggestions
+>     open ~/.zshrc
+>     搜索'plugins'，修改为plugins=(zsh-autosuggestions)
+>     source ~/.zshrc
+>     ```
+> 
+> 12. 隐藏名字和主机名
+>     
+>     ```
+>     open ~/.oh-my-zsh/themes
+>     打开agnoster.zsh-theme文件，找到prompt_context()函数，替换为
+>     prompt_context() {
+>       if [[ "$USERNAME" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+>         prompt_segment black default "Sai"
+>       fi
+>     }
+>     source agnoster.zsh-theme
+>     ```
+>     
+>     ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413135638.png)
 
-   > 1. 命令
-   >
-   >    `brew install iterm2`
-   >
-   > 2. 把iTerm2设为默认
-   >
-   >    * iTerm2 -> Make ITerm2 Default Term
-   >
-   >      ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413110312.png)
-   >
-   > 3. 快捷键
-   >
-   >    1. 光标按照单词快速移动
-   >
-   >       * iTerm2 -> Preferences -> Keys -> Key Bindings
-   >
-   >         修改 ⌘← 和 ⌘→ 的映射，双击进入后，选择Action为 “Send Escape Sequence”，Esc+为 ⌘← 对应 b ， ⌘→ 对应 f
-   >
-   >         ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220412205506.png)
-   >
-   >    2. 按照单词快速删除（结合BetterTouchTool）
-   >
-   >       * 修改 ⌘+Delete 的映射，⌘+Delete 代表 control + w
-   >
-   >         ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220412210000.png)
-   >
-   > 4. 安装Oh my zsh [参考](https://segmentfault.com/a/1190000041138667?utm_source=sf-similar-article)
-   >
-   >    ```
-   >    brew install wget;
-   >    export REMOTE=https://gitee.com/imirror/ohmyzsh.git;
-   >    sh -c "$(wget -O- https://cdn.jsdelivr.net/gh/ohmyzsh/ohmyzsh/tools/install.sh)";
-   >    
-   >    open ~/.zshrc
-   >    # 在.zshrc文件中搜索 source $ZSH/oh-my-zsh.sh，在本句之前加一句
-   >    ZSH_DISABLE_COMPFIX="true"
-   >    # 禁用oh-my-zsh自动更新
-   >    找到DISABLE_AUTO_UPDATE一行，将行首的注释'#'去掉
-   >    DISABLE_AUTO_UPDATE="true"
-   >    source ~/.zshrc
-   >    ```
-   >
-   > 5. 安装PowerFonts字体
-   >
-   >    ```
-   >    1. 下载：https://github.com/powerline/fonts
-   >    2. 解压
-   >    3. 进入文件夹：cd fonts-master
-   >    4. 安装：./install.sh
-   >    ```
-   >
-   > 6. 设置字体
-   >
-   >    iTerm2 -> Preferences -> Profiles -> Text，在Font区域选中Change Font，然后找到Meslo LG字体，有L、M、S可选
-   >
-   >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413112345.png)
-   >
-   > 7. 配色方案
-   >
-   >    iTerm2 -> Preferences -> Profiles -> Colors -> Color Presets
-   >
-   >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413113614.png)
-   >
-   > 8. 设置主题
-   >
-   >    ```
-   >    open ~/.zshrc
-   >    # 搜索'ZSH_THEME'，修改为ZSH_THEME="agnoster"
-   >    source ~/.zshrc
-   >    ```
-   >
-   > 9. 设置语法高亮
-   >
-   >    ```
-   >    brew install zsh-syntax-highlighting
-   >
-   >    open ~/.zshrc
-   >    最后插入一行：source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-   >    source ~/.zshrc
-   >    ```
-   >
-   > 10. 获取代理地址
-   >
-   >     ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413141420.png)
-   >
-   > 11. 自动提示与命令补全
-   >
-   >     ```
-   > 下载 https://github.com/zsh-users/zsh-autosuggestions
-   >     解压到目录~/.oh-my-zsh/plugins/zsh-autosuggestions
-   >     open ~/.zshrc
-   >     搜索'plugins'，修改为plugins=(zsh-autosuggestions)
-   >     source ~/.zshrc
-   >     ```
-   >
-   > 12. 隐藏名字和主机名
-   >
-   >     ```
-   >     open ~/.oh-my-zsh/themes
-   >     打开agnoster.zsh-theme文件，找到prompt_context()函数，替换为
-   >     prompt_context() {
-   >       if [[ "$USERNAME" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-   >         prompt_segment black default "Sai"
-   >       fi
-   >     }
-   >     source agnoster.zsh-theme
-   >     ```
-   >
-   >     ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413135638.png)
+##### 安装
 
-##### 安装youtube-dl
-
-
-   > `brew install youtube-dl`
-   >
-   > *  下载默认类型视频（无字幕）
-   >
-   >   `youtube-dl https://www.youtube.com/watch?v=n_6p-1J551Y`
-   >
-   > * 下载默认类型视频（有字幕）
-   >
-   >   `youtube-dl --write-auto-sub https://www.youtube.com/watch?v=n_6p-1J551Y`
-   >
-   > * 下载视频（指定名称）
-   >
-   >   `youtube-dl https://www.youtube.com/watch?v=n_6p-1J551Y -o '你要的名字'`
-   >
-   > * 单独下载**字幕**（无视频）
-   >
-   >   `youtube-dl --proxy 127.0.0.1:1081 --write-sub --skip-download https://www.youtube.com/watch?v=n_6p-1J551Y`
-   >
-   > * 查看视频所有类型
-   >
-   >   `youtube-dl -F https://www.youtube.com/watch?v=n_6p-1J551Y`
-   >
-   > * 查看视频所有字幕
-   >
-   >   `youtube-dl --list-subs https://www.youtube.com/watch?v=n_6p-1J551Y`
-   >
-   > * 下载指定质量的视频和音频并自动合并（有字幕）
-   >
-   >   `youtube-dl -f 160+249 https://www.youtube.com/watch?v=n_6p-1J551Y`
-   >
-   > * 下载指定质量的视频和音频并自动合并，并转码成mp4格式（有字幕）
-   >
-   >   `youtube-dl -f 160+249 --recode-video mp4 https://www.youtube.com/watch?v=n_6p-1J551Y`
-   >
-   > * 使用代理下载默认类型的视频
-   >
-   >   `youtube-dl --proxy 127.0.0.1:1081 https://www.youtube.com/watch?v=xqdI6ljJ954`
-   >
-   > * 使用代理下载默认类型的视频**列表**
-   >
-   >   `youtube-dl --proxy 127.0.0.1:1081 --yes-playlist https://www.youtube.com/watch?v=xqdI6ljJ954`
-   >
-   > * B站无音频格式，故会先下视频载ffmepg自动转成音频
-   >   `youtube-dl --extract-audio https://www.bilibili.com/video/BV1xJ411r7Yo`
+> `brew install yt-dlp`（youtube-dl已死）
+> 
+> * 查看视频所有类型
+>   
+>   `yt-dlp -f URL`
+> 
+> * 单独下载**字幕**（无视频）
+>   
+>   `yt-dlp --write-subs URL`
 
 ##### 安装you-get
 
-
-   > `brew install you-get`
-   >
-   > * 分析视频可供下载的全部格式：-i参数
-   >   `you-get -i https://www.youtube.com/watch?v=jNQXAC9IVRw`
-   >
-   > * 直接下载默认格式：
-   >   `you-get https://www.youtube.com/watch?v=jNQXAC9IVRw`
-   >
-   > * 指定下载名称
-   >
-   >   `you-get https://www.youtube.com/watch?v=jNQXAC9IVRw -O FileName`
-   >
-   > * 自定义下载格式：
-   >   `you-get --itag=18 'https://www.youtube.com/watch?v=jNQXAC9IVRw'`
-   >
-   > * 使用HTTP代理下载：
-   >   `you-get -x 127.0.0.1:1081 --itag=18 'https://www.youtube.com/watch?v=jNQXAC9IVRw'`
+> `brew install you-get`
+> 
+> * 分析视频可供下载的全部格式：-i参数
+>   `you-get -i https://www.youtube.com/watch?v=jNQXAC9IVRw`
+> 
+> * 直接下载默认格式：
+>   `you-get https://www.youtube.com/watch?v=jNQXAC9IVRw`
+> 
+> * 指定下载名称
+>   
+>   `you-get https://www.youtube.com/watch?v=jNQXAC9IVRw -O FileName`
+> 
+> * 自定义下载格式：
+>   `you-get --itag=18 'https://www.youtube.com/watch?v=jNQXAC9IVRw'`
+> 
+> * 使用HTTP代理下载：
+>   `you-get -x 127.0.0.1:1081 --itag=18 'https://www.youtube.com/watch?v=jNQXAC9IVRw'`
 
 ##### 启动台图标数量7 x 11
 
-
-   > ```
-   > defaults write com.apple.dock springboard-rows -int 7;
-   > defaults write com.apple.dock springboard-columns -int 11;
-   > defaults write com.apple.dock ResetLaunchPad -bool true;
-   > killall Dock
-   > ```
+> ```
+> defaults write com.apple.dock springboard-rows -int 7;
+> defaults write com.apple.dock springboard-columns -int 11;
+> defaults write com.apple.dock ResetLaunchPad -bool true;
+> killall Dock
+> ```
 
 ##### Finder顶端显示完整路径
 
-
-   > `defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES`
+> `defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES`
 
 ##### Alfred
 
-   > 1. 将Spotlight的快捷键分给Alfred
-   >
-   >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413142827.png)
-   >
-   > 2. 搜索排除某个文件夹
-   >
-   >    1. 添加要排除的文件夹
-   >
-   >    2. 调出alfred，输入reload回车，清空alfred缓存
-   >
-   >       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413143239.png)
-   >
-   >    3. 自定义文件操作
-   >
-   >       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413143409.png)
-   >
-   >    **Quick Search**：最常用，`Space + 关键字`快速启用打开文件，功能类似于使用`Open + 关键字`
-   >
-   >    **Inside Files**：最常用，`in + 关键字`查找包含查询字的文件
+> 1. 将Spotlight的快捷键分给Alfred
+>    
+>    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413142827.png)
+> 
+> 2. 搜索排除某个文件夹
+>    
+>    1. 添加要排除的文件夹
+>    
+>    2. 调出alfred，输入reload回车，清空alfred缓存
+>       
+>       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413143239.png)
+>    
+>    3. 自定义文件操作
+>       
+>       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413143409.png)
+>    
+>    **Quick Search**：最常用，`Space + 关键字`快速启用打开文件，功能类似于使用`Open + 关键字`
+>    
+>    **Inside Files**：最常用，`in + 关键字`查找包含查询字的文件
 
 ##### ClashX 设置方法
 
 > 1. 获取订阅链接
->
+>    
 >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202111261625570.png)
->
+> 
 > 2. 添加配置
->
+>    
 >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202111261625530.png)
->
+>    
 >    `Url`: 填入订阅链接
->
+>    
 >    `Config Name`：填写一个备注名称
 
 ##### brew 挂代理方式
@@ -349,26 +309,25 @@
 > # 单个命令挂代理2
 > ALL_PROXY=socks5://127.0.0.1:1081 brew install PACKAGE
 > ```
->
 
 ##### sublime配置
 
 > 1. 安装
->
+>    
 >    > ⌘+⇧+P，输入install package，回车自动安装
->
+> 
 > 2. 解决乱码问题
->
+>    
 >    > ⌘+⇧+P，输入install package，弹出框，输入ConvertToUTF8,回车自动安装
->
+> 
 > 3. 中文汉化包
->
+>    
 >    > ⌘+⇧+P，输入install package，弹出框，输入ChineseLocalizations，回车自动安装
->
+> 
 > 4. Ayu主题
->
+>    
 >    > ⌘+⇧+P，输入install package，弹出框，输入ayu，回车自动安装
->    >
+>    > 
 >    > 选择主题：ayu: Activate theme，选择，回车
 
 ##### Git 挂代理方式
@@ -383,7 +342,7 @@
 
 > `touch -mt YYYYMMDDhhmm`
 > 示例
->
+> 
 > ```bash
 > 1. 在Terminal中输入 touch -mt 20160101  
 > 2. 将/Users/will/Downloads/1.png拖入Terminal中
@@ -391,78 +350,76 @@
 > 4. 回车执行即可
 > 注：改成当天 touch -m 文件名
 > ```
->
 
 ##### 文献阅读：沙拉查词 + Alfred
 
 > [参考](https://zhuanlan.zhihu.com/p/113809716)
->
+> 
 > 1. 安装Chrome插件：沙拉查词
->
+> 
 > 2. 配置浏览器外划词翻译
->
+>    
 >    > 浏览器外配置好后，其调用沙拉查词的方式同样适用于浏览器内，因此一劳永逸
->
+>    
 >    1. 在Chrome内为沙拉查词设置**全局快捷键**
->
+>       
 >       > 地址栏：chrome://extensions/shortcuts
->
+>       
 >       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413160100.png)
->
+>    
 >    2. 开启沙拉查词的Chrome权限
->
+>       
 >       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413160125.png)
->
+>    
 >    3. 配置Alfred
->
+>       
 >       1. [下载Alfred workflow脚本](https://link.zhihu.com/?target=https%3A//github.com/crimx/ext-saladict/files/3711425/saladict.alfredworkflow.zip)
->
+>       
 >       2. 双击，import脚本
->
+>       
 >       3. 设置hotkey：`control + ~`
->
+>       
 >       4. 结合BetterTouchTool修改触发条件：在PDF expert中鼠标移到底边触发`control + ~`
->
+>          
 >          ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413160145.png)
->
+>       
 >       5. 沙拉词典焦点
->
+>          
 >          1. 方法1：设置
->
+>             
 >             ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413160217.png)
->
+>          
 >          2. 方法2：修改Run NSAppleScript脚本
->
+>             
 >             ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413160246.png)
->
+>             
 >             ```bash
 >             on alfred_script(q)
 >               tell application "System Events"
->             	# 快捷键打开沙拉词典
->             	key code 37 using {control down, command down}
->             	delay 0.1
->             	# 焦点从沙拉词典移回源文件
+>                 # 快捷键打开沙拉词典
+>                 key code 37 using {control down, command down}
+>                 delay 0.1
+>                 # 焦点从沙拉词典移回源文件
 >             key code 48 using {command down}
 >               end tell
 >             end alfred_script
 >             ```
->
+>    
 >    4. 积累生词
->
+>       
 >       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413155850.png)
->
+>    
 >    5. Saladict 生词本导出生词
 >       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413155956.png)
->
 
 ##### Karabiner
 
->问题：连外接键盘时，键位不对应
->
+> 问题：连外接键盘时，键位不对应
+> 
 > 1. 修改单个键位
->
->   > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306021108225.png)
->
+>    
+>    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306021108225.png)
+> 
 > 2. 修改组合快捷键[参考](https://blog.csdn.net/qq_26012495/article/details/88539120)
 
 ##### 中国大陆无法登陆某些网站（newbing、binance）
@@ -476,7 +433,7 @@
 #### jupyter用法
 
 > 1. 安装：
->
+>    
 >    ```bash
 >    # 切换虚拟环境
 >    source activate py3.8
@@ -492,9 +449,9 @@
 >    jupyter kernelspec remove kernel_name
 >    # 
 >    ```
->
+> 
 > 2. 基本用法
->
+>    
 >    ```bash
 >    # 切换到jupyter文件目录
 >    cd /Users/sai/Documents/Temp
@@ -503,16 +460,13 @@
 >    # 退出 jupyter
 >    `control`+`c`
 >    ```
->
+> 
 > 3. Vscode 中使用
->
+>    
 >    ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200708161754.png)
->
+>    
 >    ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200708162432.png)
->
 
 #### PDF增加大纲书签
 
 > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210214231022.png)
-
-
