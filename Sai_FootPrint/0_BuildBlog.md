@@ -161,6 +161,8 @@
 1. plugins文件夹的vue.css文件
    
    > max-width:1100px 宽度为1100像素（默认为800）
+   
+   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307281906128.png)
 
 #### 6.设置封面
 
