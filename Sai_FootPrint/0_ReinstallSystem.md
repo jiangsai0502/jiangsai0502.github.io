@@ -205,9 +205,14 @@
 > * 查看视频所有类型
 >
 >   `yt-dlp -F URL（获取ID)`
+>
+>   ![img](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202308271236418.png)
 > * 下载指定ID的视频
 >
 >   `yt-dlp -f ID URL`
+>
+>   * `yt-dlp -f 22 URL`
+>   * `yt-dlp -f 242+230 URL`
 > * 单独下载**字幕**（无视频）
 >
 >   `yt-dlp --write-subs URL`
