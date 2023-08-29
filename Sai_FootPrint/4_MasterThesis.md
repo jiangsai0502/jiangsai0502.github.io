@@ -209,17 +209,23 @@
 
 ##### 同步笔记
 
-> 核心：备份，然后在两部设备之间传输
+1. Mac：访达 - 前往 - iCloud云盘 - Marginote 3 - 新建个文件夹SaiMarginNote - 将pdf拖入
 
-1. 移动端MarginNote 3做的笔记，导出 - 导出MarginNote备份文件，隔空投送至MBP
+   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202308291107150.png)
 
-   ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200530220716.png)
+2. iPad：文件 - 位置 - iCloud云盘 - Marginote 3 - SaiMarginNote文件夹 - 等待pdf云同步结束
 
-2. MBP的MarginNote里打开备份文件，编辑后，保存，导出 - 导出MarginNote备份文件
+   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202308291109229.png)
 
-   
+3. 编辑：由于Mac端没付费，因此只能iPad端编辑，iPad端编辑涂鸦后，几十秒内Mac自动同步涂鸦
 
-3. 导出到本地后隔空投送至MBP，移动端MarginNote 3选择替换成新的
+   > 老办法
+   >
+   > 1. iPad：编辑涂鸦，导出 - 导出MarginNote备份文件，隔空投送至MBP
+   >
+   >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202308291113543.png)
+   >
+   > 2. Mac：MarginNote里打开备份文件
 
 ##### 添加卡片标题
 
