@@ -1,54 +1,46 @@
 ##### 快捷键
 
-* Chrome外的沙拉查词：⌘ + ～
-* 锁屏：⌘ + L
-* Snipaste截图：⌘ + 1
-* OCR：⌘ + 2
-* Anki挖空：⌘ + 3
-* PicGo上传剪切板图片：⌘ + 4
-* 新建录音：⌥ + 1
-* 暂停录音：⌥ + 2
-* Paste调起剪切板：⌥ + S
-* 切换输入法：⌃⇧ + 空格
+> * Chrome外的沙拉查词：⌘ + ～
+> * 锁屏：⌘ + L
+> * Snipaste截图：⌘ + 1
+> * OCR：⌘ + 2
+> * Anki挖空：⌘ + 3
+> * PicGo上传剪切板图片：⌘ + 4
+> * 新建录音：⌥ + 1
+> * 暂停录音：⌥ + 2
+> * Paste调起剪切板：⌥ + S
+> * 切换输入法：⌃⇧ + 空格
 
 ##### 常备软件
 
-1. 文字处理
-   1. office
-   2. sublime
-   3. Typora
-   4. PDF expert
-   5. marginote3
-   6. goodnote
-2. 思维梳理
-   1. XMind ZEN
-   2. MindNote
-3. 科学上网
-   1. Geph
-   2. shadowrocket
-4. 效率工具
-   1. Keyboard Maestro
-   2. Paste（官网下载helper）
-   3. MurGaa Recorder
-   4. rename
-   5. go2shell（官网下载）
-   6. magnet
-   7. MacroRecorder
-5. 截图：
-   1. 主力贴图：snipaste
-   2. 长截图：xnip
-   3. 截图OCR：Easydict
-6. istat menus
-7. itsycal
-8. App Cleaner & Uninstaller Pro
-9. Photoshop
-10. Permute
-11. 欧路
-12. flow
-13. eXtra Voice Recorder Pro
-14. proxyman
-15. 剪映
-16. downie
+> 1. 文字处理
+>
+>    > office、sublime、Typora、PDF expert、marginote3、goodnote
+>
+> 2. 思维梳理
+>
+>    > XMind ZEN、MindNote
+>
+> 3. 科学上网
+>
+>    > Geph、shadowrocket
+>
+> 4. 效率工具
+>
+>    > Keyboard Maestro、Paste、rename、go2shell（官网下载）、magnet、itsycal、App Cleaner & Uninstaller Pro
+>
+> 5. 截图
+>
+>    > 主力贴图：snipaste
+>    >
+>    > 长截图：xnip
+>    >
+>    > 截图OCR：Easydict
+>
+> 6. 其他
+>
+>    > istat menus、Photoshop、Permute、欧路、flow、eXtra Voice Recorder Pro、proxyman、剪映、downie
+>
 
 ##### 安装brew
 
@@ -128,7 +120,7 @@
 >    brew install wget;
 >    export REMOTE=https://gitee.com/imirror/ohmyzsh.git;
 >    sh -c "$(wget -O- https://cdn.jsdelivr.net/gh/ohmyzsh/ohmyzsh/tools/install.sh)";
->
+>      
 >    open ~/.zshrc
 >    # 在.zshrc文件中搜索 source $ZSH/oh-my-zsh.sh，在本句之前加一句
 >    ZSH_DISABLE_COMPFIX="true"
@@ -166,7 +158,7 @@
 >
 >    ```
 >    brew install zsh-syntax-highlighting
->
+>      
 >    open ~/.zshrc
 >    最后插入一行：source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 >    source ~/.zshrc
@@ -198,7 +190,7 @@
 >
 >     ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413135638.png)
 
-##### 安装
+##### 安装yt-dlp
 
 > `brew install yt-dlp`（youtube-dl已死）
 >
@@ -246,7 +238,7 @@
 
 > `defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES`
 
-##### Alfred
+##### Alfred配置
 
 > 1. 将Spotlight的快捷键分给Alfred
 >
@@ -265,7 +257,7 @@
 >
 >    **Inside Files**：最常用，`in + 关键字`查找包含查询字的文件
 
-##### ClashX 设置方法
+##### ClashX 配置
 
 > 1. 获取订阅链接
 >
@@ -396,8 +388,6 @@
 
 ##### 中国大陆无法登陆某些网站（newbing、binance）
 
-#### Subler合并视频和字幕
-
 #### jupyter用法
 
 > 1. 安装：
@@ -433,4 +423,6 @@
 >
 >    ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200708162432.png)
 
-#### PDF增加大纲书签
+##### PDF增加大纲书签
+
+> ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309201537091.png)

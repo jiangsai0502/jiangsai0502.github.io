@@ -122,22 +122,22 @@
 
 4. 宏案例
    
-   | 宏                                                                                                                                                                  |                                                                                                                                                                                                              |
-   | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-   | 停止所有宏                                                                                                                                                              | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306091847693.png)                                                                                                                |
-   | 录音                                                                                                                                                                 | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031102821.png)                                                                                                                |
-   | 锁屏                                                                                                                                                                 | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031104819.png)                                                                                                                |
-   | 防误退出宏                                                                                                                                                              | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306211412581.png)                                                                                                                |
-   | 模拟Alfred搜索KM宏<br/><br/>1. 创建一个Sai Search Group，所有不想设置快捷键的宏都放这里<br/><br/>2. 在Sai Global新建一个宏Trigger by Sai Search                                                   | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031536092.png)                                                                                                                |
-   | KM自带OCR宏<br/><br/>[Keyboard Maestro ，在多语言环境中轻松抓取文字](https://utgd.net/article/9528)、[在 Mac 上随时提取屏幕上的文字](https://www.notion.so/Mac-b7ded7e6bfb6408d99f61832c043570a) | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031545004.png)                                                                                                                |
-   | 第三方OCR宏<br />环境配置见下方<br />                                                                                                                                         | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031548451.png)                                                                                                                |
-   | 阅读摘录<br />`实现从Marginote复制文字时，文字携带所属笔记链接；从Chrome复制文字时，文字携带所属网页链接`                                                                                                   | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306211453150.png)                                                                                                                |
-   | Chrome打开指定标签文件夹中的所有网页                                                                                                                                              | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031505068.png)                                                                                                                |
-   | 找到unisat钱包插件，点击 -> 输入密码 -> 回车，进入钱包                                                                                                                                 | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031611502.png)                                                                                                                |
-   | 打开Zoom，输入会议号、密码、邮箱                                                                                                                                                 | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031805707.png)                                                                                                                |
-   | 视频网站5秒快进                                                                                                                                                           | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306032242967.png)                                                                                                                |
-   | VSCode调试程序快捷键F5、F10                                                                                                                                                | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307071723259.png)                                                                                                                |
-   | 逐个点击页面内多个相同元素                                                                                                                                                      | **Until**![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307071731190.png)**While**![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307071749139.png) |
+   | 宏                                                           |                                                              |
+   | ------------------------------------------------------------ | ------------------------------------------------------------ |
+   | 停止所有宏                                                   | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306091847693.png) |
+   | 录音                                                         | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031102821.png) |
+   | 锁屏                                                         | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031104819.png) |
+   | 防误退出宏<br /><br />如果「Motrix」在顶部，弹窗提示是否退出<br />1. 若「continue」，则执行后续动作<br />2. 若「stop」则到此为止 | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306211412581.png) |
+   | 模拟Alfred搜索KM宏<br/><br/>1. 创建一个Sai Search Group，所有不想设置快捷键的宏都放这里<br/><br/>2. 在Sai Global新建一个宏Trigger by Sai Search | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031536092.png) |
+   | KM自带OCR宏<br/><br/>[Keyboard Maestro ，在多语言环境中轻松抓取文字](https://utgd.net/article/9528)、[在 Mac 上随时提取屏幕上的文字](https://www.notion.so/Mac-b7ded7e6bfb6408d99f61832c043570a)<br /><br />1. 执行系统区域截图<br />2. 按下左键，等待左键松开<br />3. 松开左键<br />4. 等待系统反应0.5秒<br />5. 对剪贴板进行OCR，并将识别结果存入剪贴板<br />6. 处理剪贴板中的文本<br />7. 处理完成后发个系统通知 | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031545004.png) |
+   | 第三方OCR宏<br />环境配置见下方<br /><br />1. 执行系统区域截图<br />2. 按下左键，等待左键松开<br />3. 松开左键<br />4. 等待系统反应0.5秒<br />5. 将剪贴板写入图片文件<br />6. 执行python脚本解析图片文件，并将解析结果存入剪贴板<br />7. 处理完成后发个系统通知 | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031548451.png) |
+   | 阅读摘录<br />`实现从Marginote复制文字时，文字携带所属笔记链接；从Chrome复制文字时，文字携带所属网页链接` | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306211453150.png) |
+   | Chrome打开指定标签文件夹中的所有网页<br /><br />1. 打开一个新窗口<br />2. 全屏<br />3. 等系统反应1秒<br />4. 通过Get不断调试，取得目标坐标，鼠标移动到目标坐标，按住⌘+单击左键，打开文件夹中所有网页 | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031505068.png) |
+   | 找到unisat钱包插件，点击 -> 输入密码 -> 回车，进入钱包<br /><br />1. 打开一个新窗口<br />2. 全屏<br />3. 等系统反应1秒<br />4. 图片识别，不断调整识别的颗粒度（Display选中，Unique切为Best，all screens切为 the front window），不断调试直到能到定位到目标位置；点击图片中心<br />5. 等系统反应1秒<br />6. 在当前光标处插入文本<br />7. 回车 | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031611502.png) |
+   | 打开Zoom，输入会议号、密码、邮箱<br /><br />1. 打开app<br />2. 等待app加载<br />3. 点击登录按钮<br />4. 一直等待网络加载，直到加载出目标文案<br />5. 在默认光标处插入文本<br />6. 回车<br />7. 一直等待网络加载，直到加载出目标文案<br />8. 在默认光标处插入文本<br />9.回车<br />10. 等待网络加载10秒<br />11. 在默认光标处插入文本<br />12.回车 | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031805707.png) |
+   | 视频网站5秒快进                                              | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306032242967.png) |
+   | VSCode调试程序快捷键F5、F10<br /><br />1. 激活「系统设置」<br />2. 等待系统反应1秒<br />3. ⌘+F调出搜索栏<br />4. 输入搜索词<br />5.等待0.5秒<br />6. 回车<br />7. 找到目标图片，点击它<br />8. 等待1秒<br />9. 如果活跃界面包含目标图片，则等待1秒，点击该目标图片；否则等待1秒，点击另一个目标图片<br />10. 等待1秒<br />11. 点击目标图片<br />12. ⌘+W关闭当前页面 | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307071723259.png) |
+   | 逐个点击页面内多个相同元素                                   | **Until**![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307071731190.png)**While**![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307071749139.png) |
    
    第三方OCR宏
    
@@ -151,32 +151,32 @@
    >    
    >    ```
    >    #!/usr/bin/python3
-   >    
+   >       
    >    # -*- coding: utf-8 -*-
-   >    
+   >       
    >    # encoding=utf8
-   >    
+   >       
    >    from aip import AipOcr
    >    import sys,io
    >    sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
-   >    
+   >       
    >    """ 你的 APPID AK SK """
    >    APP_ID = '34338402'
    >    API_KEY = 'GVeTGTZdRIiH3AphNQtumCk4'
    >    SECRET_KEY = 'csTzqbvYHbj8XGMnIgCAOtN7Gq1Ra58H'
-   >    
+   >       
    >    client = AipOcr(APP_ID, API_KEY, SECRET_KEY)
-   >    
+   >       
    >    def get_file_content(file):
    >     with open(file, 'rb') as fp:
    >         return fp.read()
-   >    
+   >       
    >    def img_to_str(image_path):
    >     image = get_file_content(image_path)
    >     result = client.basicGeneral(image)
    >     if 'words_result' in result:
    >         return u'\n'.join([w['words'] for w in result['words_result']])
-   >    
+   >       
    >    print(img_to_str(image_path='/Users/jiangsai/Downloads/1.png'))
    >    ```
    
