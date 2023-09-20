@@ -9,29 +9,55 @@
 
 ##### 禁止Chrome更新
 
-> > 背景：使用爬虫工具时，一般会用到chromedriver，必须在Chrome和chromedriver的版本一致时才能正常工作，一旦Chrome更新后就不能正常工作了，而每次Chrome更新也不知道具体更新了个啥
+> > 背景：
+> >
+> > 1. EasySpider使用的Chrome是单独的，不同于「系统-访达-应用程序」中的Chrome
+> > 2. 无论哪个Chrome，都会自动更新，而EasySpider所依赖的chromedriver版本并不会随着chrome的自动更新而更新，从而导致EasySpider调用Chrome时chromedriver与Chrome版本不一致，Chrome闪退
+> > 3. Chrome升级到115版本后更麻烦，Chrome和chromedriver合并了，不懂什么意思，总之EasySpider不能用了
 >
-> 1. 方法1
+> 解决方式
 >
->    ```
->    1. 关闭 Chrome 浏览器，进入目录 “/Library/Google/GoogleSoftwareUpdate”
->    cd /Library/Google/GoogleSoftwareUpdate
->    2. 删除该目录下的 GoogleSoftwareUpdate.bundle 
->    ```
+> 1. 获取114版本的文件包
 >
->    > 有些 Mac 上发现在 “/Library” 这个根目录下没有 Google 目录，用方法2即可
+>    > * [下载114版本的Chrome](https://google-chrome.cn.uptodown.com/mac/versions)
+>    > * 安装时，提示都保留还是替换，选择保留，此时「访达-应用程序」有2个版本的Chrome
+>    >
+>    > * 或者，先将「访达-应用程序-旧的Chrome」拖入垃圾篓再安装114版本，此时「访达-应用程序」只有1个114版本的Chrome
 >
-> 2. 方法2
+> 2. 替换EasySpider使用的Chrome版本
 >
->    ```
->    1. 关闭 Chrome 浏览器，进入目录 “~/Library/Google”
->    cd ~/Library/Google
->    2. 修改 GoogleSoftwareUpdate 这个文件夹的拥有者，使 Google 对该文件夹没有写入权限
->    sudo chown root:wheel GoogleSoftwareUpdate
->    3. 重启 Chrome， “帮助 -> 关于 Google Chrome”显示「更新失败（错误：10）」
->    ```
+>    > 1. 右键EasySpider“显示包内容”
+>    > 2. 进入Contents/Resources/app文件夹
+>    > 3. 将「访达-应用程序-114版本Chrome」拖入Contents/Resources/app文件夹
 >
->    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309201459708.png)
+> 3. 替换EasySpider使用的Chrome对应的chromedriver
+>
+>    > 1. [下载114版本的chromedriver](https://chromedriver.chromium.org/downloads)
+>    > 2. 解压压缩包，将chromedriver文件更名为chromedriver_mac64，并拖入Contents/Resources/app文件夹内替换掉原来的“chromedriver_mac64”文件
+>
+> 4. 禁止Chrome更新
+>
+>    > 1. 方法1
+>    >
+>    >    ```
+>    >    1. 关闭 Chrome 浏览器，进入目录 “/Library/Google/GoogleSoftwareUpdate”
+>    >    cd /Library/Google/GoogleSoftwareUpdate
+>    >    2. 删除该目录下的 GoogleSoftwareUpdate.bundle 
+>    >    ```
+>    >
+>    >    > 有些 Mac 上发现在 “/Library” 这个根目录下没有 Google 目录，用方法2即可
+>    >
+>    > 2. 方法2
+>    >
+>    >    ```
+>    >    1. 关闭 Chrome 浏览器，进入目录 “~/Library/Google”
+>    >    cd ~/Library/Google
+>    >    2. 修改 GoogleSoftwareUpdate 这个文件夹的拥有者，使 Google 对该文件夹没有写入权限
+>    >    sudo chown root:wheel GoogleSoftwareUpdate
+>    >    3. 重启 Chrome， “帮助 -> 关于 Google Chrome”显示「更新失败（错误：10）」
+>    >    ```
+>    >
+>    >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309201459708.png)
 
 ##### iOS备忘录写日记
 
@@ -202,7 +228,7 @@
 >
 >    ```bash
 >    pmset -g
->    
+>       
 >    # 输出
 >    λ sai [~/Downloads] → pmset -g
 >    System-wide power settings:
@@ -212,7 +238,7 @@
 >     standbydelayhigh     86400
 >     autopoweroffdelay    28800
 >     standbydelaylow      10800
->     
+>        
 >    # 关闭 autopoweroff
 >    sudo pmset -a autopoweroff 0
 >    ```
@@ -293,4 +319,3 @@
 > | 标尺工具                                                     | 图像--图像旋转--任意角度                                     |
 > | ------------------------------------------------------------ | ------------------------------------------------------------ |
 > | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210812184958.png) | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210812185049.png) |
->
