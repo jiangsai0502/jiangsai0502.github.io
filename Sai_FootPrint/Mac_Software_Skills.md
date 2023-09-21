@@ -28,11 +28,11 @@
 >
 >    > 1. 右键EasySpider“显示包内容”
 >    > 2. 进入Contents/Resources/app文件夹
->    > 3. 将「访达-应用程序-114版本Chrome」拖入Contents/Resources/app文件夹
+>    > 3. 将「访达-应用程序-114版本Chrome」拖入废纸篓，然后从废纸篓将其拖入Contents/Resources/app文件夹
 >
 > 3. 替换EasySpider使用的Chrome对应的chromedriver
 >
->    > 1. [下载114版本的chromedriver](https://chromedriver.chromium.org/downloads)
+>    > 1. [下载114版本的chromedriver](https://chromedriver.chromium.org/downloads)（下载chromedriver_mac64.zip）
 >    > 2. 解压压缩包，将chromedriver文件更名为chromedriver_mac64，并拖入Contents/Resources/app文件夹内替换掉原来的“chromedriver_mac64”文件
 >
 > 4. 禁止Chrome更新
@@ -58,6 +58,8 @@
 >    >    ```
 >    >
 >    >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309201459708.png)
+>    
+> 5. 将最新版本的Chrome拖入「访达-应用程序」，以后只能去Chrome官网手动更新Chrome了
 
 ##### iOS备忘录写日记
 
@@ -228,7 +230,7 @@
 >
 >    ```bash
 >    pmset -g
->       
+>             
 >    # 输出
 >    λ sai [~/Downloads] → pmset -g
 >    System-wide power settings:
@@ -238,7 +240,7 @@
 >     standbydelayhigh     86400
 >     autopoweroffdelay    28800
 >     standbydelaylow      10800
->        
+>              
 >    # 关闭 autopoweroff
 >    sudo pmset -a autopoweroff 0
 >    ```
