@@ -120,7 +120,7 @@
 >    brew install wget;
 >    export REMOTE=https://gitee.com/imirror/ohmyzsh.git;
 >    sh -c "$(wget -O- https://cdn.jsdelivr.net/gh/ohmyzsh/ohmyzsh/tools/install.sh)";
->      
+>         
 >    open ~/.zshrc
 >    # 在.zshrc文件中搜索 source $ZSH/oh-my-zsh.sh，在本句之前加一句
 >    ZSH_DISABLE_COMPFIX="true"
@@ -158,7 +158,7 @@
 >
 >    ```
 >    brew install zsh-syntax-highlighting
->      
+>         
 >    open ~/.zshrc
 >    最后插入一行：source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 >    source ~/.zshrc
@@ -190,40 +190,48 @@
 >
 >     ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20220413135638.png)
 
-##### 安装yt-dlp
+##### 下载工具
 
-> `brew install yt-dlp`（youtube-dl已死）
+> **安装yt-dlp**
 >
-> * 查看视频所有类型
+> > `brew install yt-dlp`（youtube-dl已死）
+> >
+> > * 查看视频所有类型
+> >
+> >   `yt-dlp -F URL（获取ID)`
+> >
+> >   ![img](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202308271236418.png)
+> >
+> > * 下载指定ID的视频
+> >
+> >   `yt-dlp -f ID URL`
+> >
+> >   * `yt-dlp -f 22 URL`
+> >   * `yt-dlp -f 242+230 URL`
+> >
+> > * 单独下载**字幕**（无视频）
+> >
+> >   `yt-dlp --write-subs URL`
 >
->   `yt-dlp -F URL（获取ID)`
+> ##### 安装you-get
 >
->   ![img](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202308271236418.png)
-> * 下载指定ID的视频
->
->   `yt-dlp -f ID URL`
->
->   * `yt-dlp -f 22 URL`
->   * `yt-dlp -f 242+230 URL`
-> * 单独下载**字幕**（无视频）
->
->   `yt-dlp --write-subs URL`
-
-##### 安装you-get
-
-> `brew install you-get`
->
-> * 分析视频可供下载的全部格式：-i参数
->   `you-get -i https://www.youtube.com/watch?v=jNQXAC9IVRw`
-> * 直接下载默认格式：
->   `you-get https://www.youtube.com/watch?v=jNQXAC9IVRw`
-> * 指定下载名称
->
->   `you-get https://www.youtube.com/watch?v=jNQXAC9IVRw -O FileName`
-> * 自定义下载格式：
->   `you-get --itag=18 'https://www.youtube.com/watch?v=jNQXAC9IVRw'`
-> * 使用HTTP代理下载：
->   `you-get -x 127.0.0.1:1081 --itag=18 'https://www.youtube.com/watch?v=jNQXAC9IVRw'`
+> > `brew install you-get`
+> >
+> > * 分析视频可供下载的全部格式：-i参数
+> >   `you-get -i https://www.youtube.com/watch?v=jNQXAC9IVRw`
+> >
+> > * 直接下载默认格式：
+> >   `you-get https://www.youtube.com/watch?v=jNQXAC9IVRw`
+> >
+> > * 指定下载名称
+> >
+> >   `you-get https://www.youtube.com/watch?v=jNQXAC9IVRw -O FileName`
+> >
+> > * 自定义下载格式：
+> >   `you-get --itag=18 'https://www.youtube.com/watch?v=jNQXAC9IVRw'`
+> >
+> > * 使用HTTP代理下载：
+> >   `you-get -x 127.0.0.1:1081 --itag=18 'https://www.youtube.com/watch?v=jNQXAC9IVRw'`
 
 ##### 启动台图标数量7 x 11
 
