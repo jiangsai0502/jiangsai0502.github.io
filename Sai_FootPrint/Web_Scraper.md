@@ -1,64 +1,333 @@
 > 开宗明义：不是所有的网站都能用Web Scraper，有些网站反爬，能不能用可以先爬前先测一下
 
-##### 功能说明
-
-> 网页 - 右键 - 开发者工具 - 最右侧Web Scraper
->
-> 1. 创建1个爬虫项目：Create new sitemap，设置1个待爬取的起始页面（之所以叫起始页面，以后后续页面都是从本页向下一级一级延展的）
->
->    * 如要获取知乎上的一个问题的回答，就创建一个 sitemap ，并将这个问题所在的地址设置为sitemap 的 Start URL，然后点击 “Create Sitemap”即可创建一个 sitemap
->
->      ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309221529954.png)
->
-> 2. 项目看板：Sitemaps展示所有创建过的 sitemap ，从这里进入每一个 sitemap 进行数据抓取
->
->    * 如曾创建过百度，知乎，quoa等多个sitemap，本次要去抓取百度的内容
->
->      ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309221533055.png)
->
-> 3. 项目：进入某个 具体项目sitemap后，进行进行如下操作
->
->    * selector：选择器，一个选择器对应网页上待爬取的一块区域
->
->      * 一个 sitemap 可有多个 selector；每个 selector 还可包含多个子 selector ；一个 selector 可以只对应一个标题，也可以对应一整个区域；每个区域可能包含标题、副标题、作者信息、内容等
->
->    * Selectors：查看所有的选择器
->
->    * **Scrape：开始数据抓取工作**
->
->    * **Export data as CSV:将抓取的数据以 CSV 格式导出**
->
->      ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309221544255.png)
->
-> 4. 选择器：
->
->    1. 
-
 ##### 案例实操
 
-1. 抓取[李笑来微博的全部内容](https://weibo.com/bylixiaolai?is_all=1)
+1. 滚动加载的页面：知乎
 
+   > 需求：获取一个问题下所有答案的答主昵称、答题时间、答案内容
+   >
+   > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309262131254.png)
+   >
+   > 实现
+   >
    > 1. 创建1个爬虫项目：Create new sitemap
    >
-   >    1. sitemap name：LiXiaoLaiWeiBo
-   >    2. Start URL 1：https://weibo.com/bylixiaolai?is_all=1
+   >    >1. sitemap name：ZHScrollPage
+   >    >2. Start URL 1：https://www.zhihu.com/question/619256436
    >
-   > 2. 创建1个选择器：
+   > 2. 为项目创建父选择器，用于粗爬内容
    >
-   >    Add new selector
+   >    > 在_root下，Add new selector
+   >    >
+   >    > 1. 选择器名称：Id设为All_Answers
+   >    > 2. 选择器类型：Type设为Element scroll down，为实现向下滚动加载更多内容
+   >    > 3. 选择器选择待抓取的元素：Selector 点击Select -> 先选择要一整个答案块，再选一个答案块（此时所有答案块都会被选中，都变成红色） -> 点击Done selecting 完成选择
+   >    > 4. 勾选Multiple
+   >    > 5. 滚动上限：默认500，应对有些可以无限滚动的网站，这里的值可以改小，不要改大，否则等待时间超长，电脑也会卡死
+   >    > 6. 选择器等待时间：默认2000ms
    >
-   >    1. 选择器名称：Id设为Element
-   >    2. 选择器类型：Type设为Element scroll down，因为微博页面为下拉刷新显示更多
-   >    3. 选择器选择待抓取的元素：Selector 点击Select -> 然后选择要抓取的内容，选两个同类型的内容后，所有同类型的内容都会被选中，都变成红色；3.点击Done selecting 完成选择
+   > 3. 为父选择器创建子选择器，用于从父选择器进行细晒内容
+   >
+   >    > 点击进入Infos选择器
+   >
+   >    > 在_root / All_Answers下，Add new selector创建1个**答主昵称**选择器
+   >    >
+   >    > 1. 选择器名称：Id设为Answer_Name
+   >    > 2. 选择器类型：Type设为text
+   >    > 3. 选择器选择待抓取的元素：Selector 点击Select -> 选择答案块中的昵称 -> 点击Done selecting 完成选择
+   >
+   >    > 在_root / All_Answers下，Add new selector创建1个**答题时间**选择器
+   >    >
+   >    > 1. 选择器名称：Id设为Answer_Time
+   >    > 2. 选择器类型：Type设为text
+   >    > 3. 选择器选择待抓取的元素：Selector 点击Select -> 选择答案块中的时间 -> 点击Done selecting 完成选择
+   >
+   > 4. 预览每个选择器爬取的内容
+   >
+   > 5. 正式爬取
+   >
+   > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309251848381.png)
+
+2. 爬取二级页的内容：豆瓣读书
+
+   > 需求：抓取豆瓣读书榜，获取所有书的标题、短评数、短片链接
+   >
+   > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309271353707.png)
+   >
+   > 分析：页面是分页
+   >
+   > 实现
+   >
+   > 1. 创建1个爬虫项目：Create new sitemap
+   >
+   >    > 1. sitemap name：DBSonPage
+   >    > 2. Start URL 1：https://book.douban.com/top250
+   >
+   > 2. 为项目创建父选择器，用于跳转二级页
+   >
+   >    > 在_root下，Add new selector
+   >    >
+   >    > 1. 选择器名称：Id设为All_Item_to_Detail
+   >    > 2. 选择器类型：Type设为Link，可以拿到目标元素的文字和链接（因为所有待抓取的信息都是去二级页拿，这里只是个入口）
+   >    > 3. 选择器选择待抓取的元素：Selector 点击Select -> 先选择要一个可点击的书名，再选一个书名 -> 点击Done selecting 完成选择
+   >    > 4. 勾选Multiple
+   >    > 5. Link type：默认Link(read from href attribute)
+   >
+   > 3. 为父选择器创建子选择器，用子选择器承载二级页内容
+   >
+   >    > 点击任意一个一级页的书名链接进而二级页
+   >
+   >    > 点击进入All_Item_to_Detail选择器
+   >
+   >    > 在_root / All_Item_to_Detail下，Add new selector创建1个**书名**选择器
+   >    >
+   >    > 1. 选择器名称：Id设为Title
+   >    > 2. 选择器类型：Type设为text
+   >    > 3. 选择器选择待抓取的元素：Selector 点击Select -> 选择作品中的标题 -> 点击Done selecting 完成选择
+   >
+   >    > 在_root / All_Item_to_Detail下，Add new selector创建1个**短评数**选择器
+   >    >
+   >    > 1. 选择器名称：Id设为Item_ShortComments
+   >    > 2. 选择器类型：Type设为Text
+   >    > 3. 选择器选择待抓取的元素：Selector 点击Select -> 然后短评数量  -> 点击Done selecting 完成选择
+   >
+   >    > 在_root / All_Item_to_Detail下，Add new selector创建1个**短评数链接**选择器
+   >    >
+   >    > 1. 选择器名称：Id设为Item_ShortCommentsLink
+   >    > 2. 选择器类型：Type设为Element attribute
+   >    > 3. 选择器选择待抓取的元素：Selector 点击Select -> 然后短评数量 -> 点击Done selecting 完成选择
+   >    > 4. 选择要抓取的元素属性：href（这里会根据第3步选择的元素所包含的属性而定）
+   >    > 5. 预览一下：Data preview
+   >
+   > 4. 运行并实时预览
+   >
+   > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309271350499.png)
+
+3. 滚动加载所有条目+二级页内容爬取
+
+   > 需求：爬取知乎搜索答案
+   >
+   > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309271408491.png)
+   >
+   > [教程1](https://www.bilibili.com/video/BV1nU4y1R7vv/?spm_id_from=333.337.search-card.all.click&vd_source=052b07ad0190d9dabdf1d78fda0168a7)，[教程2](https://www.bilibili.com/video/BV1d34y1V7id/?spm_id_from=333.337.search-card.all.click&vd_source=052b07ad0190d9dabdf1d78fda0168a7)
+   >
+   > 实现
+   >
+   > 1. 创建1个爬虫项目：Create new sitemap
+   >
+   > 2. 为项目创建父选择器，用于粗爬内容
+   >
+   >    > 在_root下，Add new selector
+   >    >
+   >    > 1. 选择器名称：Id设为All_Items
+   >    > 2. 选择器类型：Type设为Element scroll down，为实现向下滚动加载更多内容
+   >    > 3. 选择器选择待抓取的元素：Selector 点击Select -> 先选择要一整个搜索结果条目，再选一整个搜索结果条目 -> 点击Done selecting 完成选择
+   >    > 4. 勾选Multiple
+   >    > 5. 滚动上限：默认500
+   >    > 6. 选择器等待时间：默认2000ms
+   >
+   > 3. 为父选择器创建子选择器，用于从父选择器进行细筛内容
+   >
+   >    > 点击进入All_Items选择器
+   >
+   >    > 在_root / All_Items下，Add new selector创建1个**标题**选择器
+   >    >
+   >    > 1. 选择器名称：Id设为Item_Question
+   >    > 2. 选择器类型：Type设为text
+   >    > 3. 选择器选择待抓取的元素：Selector 点击Select -> 选择搜索结果条目的标题 -> 点击Done selecting 完成选择
+   >
+   >    > 在_root / All_Items下，Add new selector创建1个**二级页**选择器
+   >    >
+   >    > 1. 选择器名称：Id设为Item_to_Detail
+   >    >
+   >    > 2. 选择器类型：Type设为Link
+   >    >
+   >    > 3. 选择器选择待抓取的元素：Selector 点击Select -> 选择搜索结果条目的标题 -> 点击Done selecting 完成选择
+   >    >
+   >    >    > 点击任意一个搜索结果条目进而二级页
+   >    >
+   >    >    > 点击进入Item_to_Detail选择器
+   >    >
+   >    >    > 在_root / All_Items / Item_to_Detail下，Add new selector创建1个**关注者**选择器
+   >    >    >
+   >    >    > 1. 选择器名称：Id设为Item_Follower
+   >    >    > 2. 选择器类型：Type设为text
+   >    >    > 3. 选择器选择待抓取的元素：Selector 点击Select -> 选择搜索结果条目的标题 -> 点击Done selecting 完成选择
+   >
+   > 4. 运行并实时预览
+   >
+   > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309262000638.png)
+
+4. 爬取网址递增的页面
+
+   > 需求：抓取知乎个人主页的想法中的内容和编辑时间
+   >
+   > 分析：页面是分页，网址递增
+   >
+   > 实现
+   >
+   > 1. 创建1个爬虫项目：Create new sitemap
+   >
+   >    1. sitemap name：ZHMorePage
+   >    2. Start URL 1：https://www.zhihu.com/org/hong-chen-nan-nu/pins?page=[1-4:1]
+   >       1. [1-4:1]表示从1递增到4，步长为1，分别是1、2、3、4
+   >       2. 豆瓣读书的步长是25：https://book.douban.com/top250?start=[0-100:25]
+   >
+   > 2. 创建母选择器，Add new selector
+   >
+   >    1. 选择器名称：Id设为All_Items
+   >    2. 选择器类型：Type设为Element，因为无需进二级页，本页就有目标元素
+   >    3. 选择器选择待抓取的元素：Selector 点击Select -> 先选择一个想法元素，再选一个想法元素（此时所有想法元素都会被选中，都变成红色） -> 点击Done selecting 完成选择
    >    4. 勾选Multiple
    >
-   > 3. 创建1个子选择器
+   > 3. 为母选择器创建子选择器
    >
-   >    点击Element选择器后，Add new selector
+   >    点击All_Items选择器后，Add new selector创建1个**内容**选择器
    >
-   >    1. 
+   >    1. 选择器名称：Id设为Item_Content
+   >    2. 选择器类型：Type设为text
+   >    3. 选择器选择待抓取的元素：Selector 点击Select -> 选择想法元素中的内容 -> 点击Done selecting 完成选择
+   >
+   >    Add new selector创建1个**编辑时间**选择器
+   >
+   >    1. 选择器名称：Id设为Item_Time
+   >    2. 选择器类型：Type设为Text
+   >    3. 选择器选择待抓取的元素：Selector 点击Select -> 然后想法元素中的时间  -> 点击Done selecting 完成选择
+   >
+   > 4. 运行并实时预览
+   >
+   > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309261728240.png)
 
-2. 抓取[留学人才网](http://www.liuxuehr.com/)的文章
+5. 爬取点击下一页的网页
+
+   > 需求：抓取知乎个人主页的想法中的内容和编辑时间
+   >
+   > 分析：页面是分页，网页底部可点击下一页
+   >
+   > 实现
+   >
+   > 1. 创建1个爬虫项目：Create new sitemap
+   >
+   >    1. sitemap name：ZHNextPage
+   >    2. Start URL 1：https://www.zhihu.com/org/hong-chen-nan-nu/pins?page=1
+   >
+   > 2. 创建母选择器，Add new selector
+   >
+   >    1. 选择器名称：Id设为FatherPage
+   >    2. 选择器类型：Type设为Element Click，点击进入下一页
+   >    3. 选择器选择待抓取的元素：Selector 点击Select ->  先选择一个想法元素，再选一个想法元素（此时所有想法元素都会被选中，都变成红色） -> 点击Done selecting 完成选择
+   >    4. 选择器选择下一页点击元素：
+   >       1. 方法一：Click Selector点击Select -> 选择底部导航【下一页】-> 点击Done selecting 完成选择
+   >       2. 方法二：Click Selector点击Select -> 先选择【2】再选择【3】（此时所有分页链接都会被选中变红）-> 点击Done selecting 完成选择
+   >    5. Click type：选择Click once（Click once即只点击1次，Click more即一直点击知道最后一页）
+   >    6. Click element uniqueness：默认Unique Text不变
+   >    7. 勾选Multiple
+   >    8. Discard initial elements：默认Never discard不变
+   >    9. Delay (ms)：默认2000不变
+   >
+   > 3. 为母选择器创建子选择器
+   >
+   >    点击FatherPage选择器后，Add new selector创建1个**内容**选择器
+   >
+   >    1. 选择器名称：Id设为FatherPage_Content
+   >    2. 选择器类型：Type设为text
+   >    3. 选择器选择待抓取的元素：Selector 点击Select -> 选择想法元素中的内容 -> 点击Done selecting 完成选择
+   >
+   >    Add new selector创建1个**编辑时间**选择器
+   >
+   >    1. 选择器名称：Id设为FatherPage_Time
+   >    2. 选择器类型：Type设为Text
+   >    3. 选择器选择待抓取的元素：Selector 点击Select -> 然后想法元素中的时间  -> 点击Done selecting 完成选择
+   >
+   > 4. 运行并实时预览
+   >
+   > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309262121468.png)
+
+6. 抓取人民网
+
+   > 需求
+   >
+   > 实现
+   >
+   > 1. 创建1个爬虫项目：Create new sitemap
+   >
+   >    1. sitemap name：RMW
+   >    2. Start URL 1：http://cpc.people.com.cn/GB/64093/64387/index1.html
+   >
+   > 2. 创建母选择器，Add new selector
+   >
+   >    1. 选择器名称：Id设为FatherPage
+   >    2. 选择器类型：Type设为Element Click，点击进入下一页
+   >    3. 选择器选择待抓取的元素：Selector 点击Select ->  先选择一个想法元素，再选一个想法元素（此时所有想法元素都会被选中，都变成红色） -> 点击Done selecting 完成选择
+   >    4. 选择器选择下一页点击元素：
+   >       1. 方法一：Click Selector点击Select -> 选择底部导航【下一页】-> 点击Done selecting 完成选择
+   >       2. 方法二：Click Selector点击Select -> 先选择【2】再选择【3】（此时所有分页链接都会被选中变红）-> 点击Done selecting 完成选择
+   >    5. Click type：选择Click once（Click once即只点击1次，Click more即一直点击知道最后一页）
+   >    6. Click element uniqueness：默认Unique Text不变
+   >    7. 勾选Multiple
+   >    8. Discard initial elements：默认Never discard不变
+   >    9. Delay (ms)：默认2000不变
+   >
+   >    1. 为母选择器创建子选择器
+   >
+   >       点击FatherPage选择器后，Add new selector创建1个**内容**选择器
+   >
+   >       1. 选择器名称：Id设为FatherPage_Content
+   >       2. 选择器类型：Type设为text
+   >       3. 选择器选择待抓取的元素：Selector 点击Select -> 选择想法元素中的内容 -> 点击Done selecting 完成选择
+   >
+   >       Add new selector创建1个**编辑时间**选择器
+   >
+   >       1. 选择器名称：Id设为FatherPage_Time
+   >       2. 选择器类型：Type设为Text
+   >       3. 选择器选择待抓取的元素：Selector 点击Select -> 然后想法元素中的时间  -> 点击Done selecting 完成选择
+   >
+   >    2. 运行并实时预览
+
+7. 抓取B站个人空间
+
+   > 需求：获取个人空间中所有作品的标题、标题链接
+   >
+   > 分析：个人空间是分页；标题链接是隐式信息不能直接抓取，[教程](https://www.bilibili.com/video/BV14F411P7DF/?spm_id_from=pageDriver&vd_source=052b07ad0190d9dabdf1d78fda0168a7)
+   >
+   > 实现
+   >
+   > 1. 创建1个爬虫项目：Create new sitemap
+   >
+   >    1. sitemap name：BZhanTest
+   >    2. Start URL 1：https://space.bilibili.com/107861587/video
+   >
+   > 2. 创建母选择器，Add new selector
+   >
+   >    1. 选择器名称：Id设为Elements
+   >    2. 选择器类型：Type设为Element，因为Element只是一个信息单元，太杂了，我们想要的是其中的某些关键信息
+   >    3. 选择器选择待抓取的元素：Selector 点击Select -> 先选择要一整个作品块，再选一个作品块（此时所有作品块都会被选中，都变成红色） -> 点击Done selecting 完成选择
+   >    4. 勾选Multiple
+   >
+   > 3. 为母选择器创建子选择器
+   >
+   >    点击Element选择器后，Add new selector创建1个标题选择器
+   >
+   >    1. 选择器名称：Id设为Title
+   >    2. 选择器类型：Type设为text
+   >    3. 选择器选择待抓取的元素：Selector 点击Select -> 然后选择作品中的标题 -> 点击Done selecting 完成选择
+   >
+   >    Add new selector创建1个播放量选择器
+   >
+   >    1. 选择器名称：Id设为Link
+   >    2. 选择器类型：Type设为Element attribute
+   >    3. 选择器选择待抓取的元素：Selector 点击Select -> 然后选择作品中的标题  -> 点击Done selecting 完成选择
+   >    4. 选择要抓取的元素属性：href（这里会根据第3步选择的元素所包含的属性而定）
+   >
+   > 4. 预览每个选择器爬取的内容
+   >
+   > 5. 正式爬取
+
+8. 抓取李笑来微博的全部内容
+
+   > 分析：微博网页的结构有点特殊，不知道怎么抓
+
+9. 抓取[留学人才网](http://www.liuxuehr.com/)的文章
 
    > 需求：抓取文章列表中的所有文章
    >
