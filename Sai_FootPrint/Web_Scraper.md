@@ -226,7 +226,7 @@
    >
    > 需求分析：【一级页】底部分页导航，从【一级页】获取信息
    >
-   > 实现
+   > 方法一
    >
    > 1. 创建1个爬虫项目：Create new sitemap
    >
@@ -301,6 +301,10 @@
    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309301546436.png)
    >
    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309291016643.png)
+   >
+   > 方法二
+   >
+   > 1. 不常用：[教程](https://www.bilibili.com/video/BV1s7411p7gD)
 
 5. 元素属性值
 
