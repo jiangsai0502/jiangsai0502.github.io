@@ -1,7 +1,7 @@
 * 杂记
   
   * [Mac技巧](Sai_FootPrint/Mac_Skills.md)
-  * [重装Mac](Sai_FootPrint/Software_Install&configuration.md)
+  * [重装Mac](Sai_FootPrint/Software_Install_configuration.md)
   * [Blog建站](Sai_FootPrint/0_BuildBlog.md)
   * [Markdown语法](Sai_FootPrint/0_MarkdownUsage.md)
   * [PicGo+GitHub 搭建图床](Sai_FootPrint/0_PicGo_GitHub.md)

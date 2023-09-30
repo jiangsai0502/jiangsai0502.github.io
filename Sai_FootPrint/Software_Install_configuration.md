@@ -120,7 +120,7 @@
 >    brew install wget;
 >    export REMOTE=https://gitee.com/imirror/ohmyzsh.git;
 >    sh -c "$(wget -O- https://cdn.jsdelivr.net/gh/ohmyzsh/ohmyzsh/tools/install.sh)";
->         
+>            
 >    open ~/.zshrc
 >    # 在.zshrc文件中搜索 source $ZSH/oh-my-zsh.sh，在本句之前加一句
 >    ZSH_DISABLE_COMPFIX="true"
@@ -158,7 +158,7 @@
 >
 >    ```
 >    brew install zsh-syntax-highlighting
->         
+>            
 >    open ~/.zshrc
 >    最后插入一行：source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 >    source ~/.zshrc
@@ -209,9 +209,24 @@
 > >   * `yt-dlp -f 22 URL`
 > >   * `yt-dlp -f 242+230 URL`
 > >
-> > * 单独下载**字幕**（无视频）
+> > * B站高清下载
 > >
-> >   `yt-dlp --write-subs URL`
+> >   `yt-dlp URL` Bilibili 直接下载只有 480P [原因](https://www.v2ex.com/t/894817)
+> >   
+> >   > `yt-dlp https://www.bilibili.com/video/BV1d3411w7at --cookies-from-browser chrome`
+> >   
+> >   `yt-dlp URL --cookies-from-browser chrome`  可破限制
+> >   
+> >   > `yt-dlp https://www.bilibili.com/video/BV1d3411w7at`
+> >   
+> > * B站列表下载
+> >
+> >   > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309302121718.png)
+> >   >
+> >   > 移除链接`/?`之后的所有部分，只保留`https://www.bilibili.com/video/BV1d3411w7at`
+> >   >
+> >   > 1. 只下载列表首个视频：`yt-dlp https://www.bilibili.com/video/BV1d3411w7at --cookies-from-browser chrome`
+> >   > 2. 下载列表所有视频：`yt-dlp --yes-playlist https://www.bilibili.com/video/BV1d3411w7at --cookies-from-browser chrome`
 >
 > ##### 安装you-get
 >

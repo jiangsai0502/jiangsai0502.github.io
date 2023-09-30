@@ -21,7 +21,7 @@
    > >
    > >    > 在_root下，Add new selector
    > >    >
-   > >    > 1. Id：选择器名称，设为Items_Load
+   > >    > 1. Id：选择器名称，设为Items_Preview
    > >    > 2. Type：选择器类型，设为Element scroll down，为实现向下滚动加载更多内容
    > >    > 3. Selector：待抓取的元素，点击Select -> 先选择要一整个答案块，再选一个答案块（此时所有答案块都会被选中，都变成红色） -> 点击Done selecting
    > >    > 4. Multiple：勾选
@@ -29,22 +29,33 @@
    > >    > 6. ~~Delay (ms)：选择器等待时间，默认2000ms~~
    > >    > 7. Parent Selectors：选择_root
    > >
-   > > 3. 点击进入Items_Load选择器
+   > > 3. 点击进入Items_Preview选择器
    > >
    > > 4. 创建**抓取一级页元素**的选择器
    > >
    > >    1. 「答主昵称」选择器
    > >
-   > >       > 在_root / Items_Load下，Add new selector
+   > >       > 在_root / Items_Preview下，Add new selector
    > >       >
    > >       > 1. Id：选择器名称，设为Items_Name
    > >       > 2. Type：选择器类型，设为text
-   > >       > 3. Selector：待抓取的元素，点击Select -> 选择答案块中的昵称 -> 点击Done selecting
+   > >       > 3. Selector：待抓取的元素，点击Select -> 选择答案块中的昵称（由于一个Element只有一个昵称，所以选一个即可） -> 点击Done selecting
    > >       > 4. Multiple：不勾选
    > >       > 5. ~~Regex：默认为空~~
-   > >       > 6. Parent Selectors：选择Items_Load
+   > >       > 6. Parent Selectors：选择Items_Preview
    > >
    > >    2. 「答题时间」「答案内容」选择器，同上
+   > >
+   > >    3. 「配图」选择器
+   > >
+   > >       > 在_root / Items_Preview下，Add new selector
+   > >       >
+   > >       > 1. Id：选择器名称，设为Items_Image
+   > >       > 2. Type：选择器类型，设为Image
+   > >       > 3. Selector：待抓取的元素，点击Select -> 先选择答案块中的一个配图，再选择一个配图（由于一个Element可能有多个配图，所以多选） -> 点击Done selecting
+   > >       > 4. Multiple：勾选
+   > >       > 5. ~~Regex：默认为空~~
+   > >       > 6. Parent Selectors：选择Items_Load
    > >
    > > 5. 运行并实时预览
    >
