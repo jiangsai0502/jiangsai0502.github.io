@@ -134,19 +134,38 @@
 >   >
 >   >* 进入py3后，查看此时要用的pip在哪个环境
 >   >
->   >  > `which -a pip`
+>   >  >`pip3 -V`
 >   >  >
->   >  > base环境的pip：可能在/root/anaconda3/bin/pip
+>   >  >base环境的pip：可能在
 >   >  >
->   >  > 而其他conda环境的pip：可能在/root/anaconda3/envs/my_env/bin/pip
+>   >  >```
+>   >  >pip 22.3.1 from /Users/jiangsai/anaconda3/lib/python3.10/site-packages/pip (python 3.10)
+>   >  >```
 >   >  >
->   >  > > 尽量不使用base环境的pip，用哪个环境，就用哪个环境的pip，如果切到py3环境后，`which -a pip`仍显示用的base环境的pip，则可能是py3没安装pip
->   >  > >
->   >  > > `conda install pip`
+>   >  >而其他conda环境的pip：可能在
+>   >  >
+>   >  >```
+>   >  >pip 23.1.2 from /Users/jiangsai/anaconda3/envs/py3/lib/python3.10/site-packages/pip (python 3.10)
+>   >  >```
+>   >  >
+>   >  >> 尽量不使用base环境的pip3，用哪个环境就用哪个环境下的pip3，如果切到py3环境后，`pip3 -V`仍显示用的base环境的pip3，则可能是py3没安装pip3
+>   >  >>
+>   >  >> `conda install pip3`
 >   >
 >   >* 在 py3 环境下使用pip安装playwright包
 >   >
->   >  > `pip install playwright`
+>   >  >`pip3 install playwright`
+>   >
+>   >* 查看pip3安装所有包的位置
+>   >
+>   >  > `pip3 list`随意找个已安装的包，再执行一次命令 `pip3 install xx`，就会显示安装路径
+>   >  >
+>   >  > `pip3 install wheel`
+>   >  >
+>   >  > ```
+>   >  > Requirement already satisfied: wheel in /Users/jiangsai/anaconda3/envs/py3/lib/python3.10/site-packages (0.40.0)
+>   >  > ```
+>   >
 
 [Vscode使用Anaconda虚拟环境](https://developer.aliyun.com/article/1053197)
 

@@ -17,7 +17,15 @@
 
 1. 为当前的虚拟环境安装playwright包
 
-  > `conda install pytest-playwright`
+  > * 查看此时要用的pip在哪个环境
+  >
+  >   > 详见[Python 周边环境](Sai_FootPrint/1_PythonEnvironment.md)
+  >   >
+  >   > `pip3 -V`
+  >   >
+  >   > `conda install pip3`
+  >
+  > * `pip3 install pytest-playwright`
 
 2. 为playwright安装浏览器
 
