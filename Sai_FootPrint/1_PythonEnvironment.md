@@ -76,78 +76,77 @@
 >
 > * 激活base虚拟环境(base是默认创建的)
 >
-> ```bash
-> # 
-> 
-> #
-> 
-> 
-> 
-> conda activate base
-> 
-> # 退出虚拟环境
-> conda deactivate
-> 
-> # 创建名为 py2 的python2.7的虚拟环境
-> conda create -n py2 python=2.7
-> 
-> # 创建名为 py3 的python3的虚拟环境
-> conda create -n py3 python=3.10
-> 
-> # 激活虚拟环境py3
-> conda activate py3
-> 
-> # py3中Python的位置
-> which python   # /Users/jiangsai/anaconda3/envs/py3/bin/python
-> 
-> # 切换虚拟环境到py2 
-> conda activate py2
-> 
-> # 删除虚拟环境 py3
-> conda env remove -n py3
-> 
-> # 为当前的虚拟环境 py2 安装flask包
-> conda install flask
-> 
-> # 虚拟环境下包的安装路径：/Users/jiangsai/anaconda3/envs/py3/lib/python3.10/site-packages
-> 
-> # 为当前的虚拟环境更新flask包
-> conda update flask
-> 
-> # 为当前的虚拟环境下的flask包
-> conda remove flask
-> 
-> # 查看当前的虚拟环境的所有安装包
-> conda list
-> ```
+>   >`conda activate base`
 >
-> **虚拟环境中使用pip**
+> * 退出虚拟环境
 >
-> > 坑：[conda虚拟环境使用pip慎重](https://www.cnblogs.com/zhangxingcomeon/p/13801554.html)
-> >
-> > 在 py3 环境下使用pip安装playwright包
-> >
-> > 1. 
-> >
-> >    ``
-> >
-> >    >base环境的pip：可能在/root/anaconda3/bin/pip
-> >    >
-> >    >而其他conda环境的pip：可能在/root/anaconda3/envs/my_env/bin/pip
-> >
-> >    > 尽量不使用base环境的pip，用哪个环境，就用哪个环境的pip，如果切到py3环境后，`which -a pip`仍显示用的base环境的pip，则可能是py3没安装pip
-> >    >
-> >    > `conda install pip`
+>   >`conda deactivate`
 >
-> `pip install playwright`
+> * 创建名为 py2 的python2.7的虚拟环境，创建名为 py3 的python3的虚拟环境
 >
-> ```bash
-> # 查看此时要用的pip在哪个环境
-> which -a pip
-> 
-> ```
+>   > `conda create -n py2 python=2.7`
+>   >
+>   > `conda create -n py3 python=3.10`
 >
-> 
+> * 激活虚拟环境py3
+>
+>   > `conda activate py3`
+>
+> * py3中Python的位置
+>
+>   > `which python `
+>   >
+>   > ```
+>   > # /Users/jiangsai/anaconda3/envs/py3/bin/python
+>
+> * 切换虚拟环境到py2 
+>
+>   > `conda activate py2`
+>
+> * 在当前虚拟环境py2 下，删除虚拟环境 py3
+>
+>   > `conda env remove -n py3`
+>
+> * 为当前的虚拟环境 py2 安装flask包
+>
+>   >`conda install flask`
+>
+> * 虚拟环境下包的安装路径
+>
+>   > ```
+>   > /Users/jiangsai/anaconda3/envs/py3/lib/python3.10/site-packages
+>
+> * 为当前的虚拟环境更新flask包
+>
+>   >`conda update flask`
+>
+> * 为当前的虚拟环境删除flask包
+>
+>   > `conda remove flask`
+>
+> * 查看当前的虚拟环境的所有安装包
+>
+>   > `conda list`
+>
+> * 虚拟环境中使用pip
+>
+>   >坑：[conda虚拟环境使用pip慎重](https://www.cnblogs.com/zhangxingcomeon/p/13801554.html)
+>   >
+>   >* 进入py3后，查看此时要用的pip在哪个环境
+>   >
+>   >  > `which -a pip`
+>   >  >
+>   >  > base环境的pip：可能在/root/anaconda3/bin/pip
+>   >  >
+>   >  > 而其他conda环境的pip：可能在/root/anaconda3/envs/my_env/bin/pip
+>   >  >
+>   >  > > 尽量不使用base环境的pip，用哪个环境，就用哪个环境的pip，如果切到py3环境后，`which -a pip`仍显示用的base环境的pip，则可能是py3没安装pip
+>   >  > >
+>   >  > > `conda install pip`
+>   >
+>   >* 在 py3 环境下使用pip安装playwright包
+>   >
+>   >  > `pip install playwright`
 
 [Vscode使用Anaconda虚拟环境](https://developer.aliyun.com/article/1053197)
 
