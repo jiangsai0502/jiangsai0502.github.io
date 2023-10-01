@@ -65,14 +65,24 @@
 
 > **基础用法**
 >
+> * 查看当前系统下的虚拟环境，安装路径
+>
+>   > `conda info --envs`
+>   >
+>   > ```
+>   > base                     /Users/jiangsai/anaconda3
+>   > py3                      /Users/jiangsai/anaconda3/envs/py3
+>   > ```
+>
+> * 激活base虚拟环境(base是默认创建的)
+>
 > ```bash
-> # 查看当前系统下的虚拟环境，安装路径
-> conda info --envs
-> #
-> base                     /Users/jiangsai/anaconda3
-> py3                      /Users/jiangsai/anaconda3/envs/py3
+> # 
 > 
-> # 激活base虚拟环境(base是默认创建的)
+> #
+> 
+> 
+> 
 > conda activate base
 > 
 > # 退出虚拟环境
@@ -110,6 +120,34 @@
 > # 查看当前的虚拟环境的所有安装包
 > conda list
 > ```
+>
+> **虚拟环境中使用pip**
+>
+> > 坑：[conda虚拟环境使用pip慎重](https://www.cnblogs.com/zhangxingcomeon/p/13801554.html)
+> >
+> > 在 py3 环境下使用pip安装playwright包
+> >
+> > 1. 
+> >
+> >    ``
+> >
+> >    >base环境的pip：可能在/root/anaconda3/bin/pip
+> >    >
+> >    >而其他conda环境的pip：可能在/root/anaconda3/envs/my_env/bin/pip
+> >
+> >    > 尽量不使用base环境的pip，用哪个环境，就用哪个环境的pip，如果切到py3环境后，`which -a pip`仍显示用的base环境的pip，则可能是py3没安装pip
+> >    >
+> >    > `conda install pip`
+>
+> `pip install playwright`
+>
+> ```bash
+> # 查看此时要用的pip在哪个环境
+> which -a pip
+> 
+> ```
+>
+> 
 
 [Vscode使用Anaconda虚拟环境](https://developer.aliyun.com/article/1053197)
 
