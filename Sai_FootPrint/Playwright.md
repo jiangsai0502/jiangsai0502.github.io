@@ -101,12 +101,14 @@
       SaiBrowser = playwright.chromium.connect_over_cdp('http://localhost:9222')
       SaiContext = SaiBrowser.contexts[0]
       SaiPage = SaiContext.new_page()
+      # 拦截所有的图片请求以减少带宽占用
+      # 但凡链接包含.png，无论是否是否以之结尾，都当做是png图片
+      SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
   # ---------------------Chrome本地浏览器---------------------
   
   # ---------------------Playwright无头浏览器---------------------
       # # 初始化一个无头浏览器
       # SaiBrowser = playwright.chromium.launch(headless=False)
-  
       # # 加载本地cookie
       #     # 若本地有cookie，则在SaiBrowser中创建一个context（网页管理器），并加载该cookie，实现免登陆
       # os.chdir('/Users/jiangsai/Desktop')
@@ -116,13 +118,10 @@
       #     # 每个context是一个独立会话，用于环境隔离，每个context可使用1套代理，登录1套账号
       # else:
       #     SaiContext = SaiBrowser.new_context()
-  
-      # # 初始化一个网页
-      #     # 在SaiContext中创建一个网页
-      # SaiPage = SaiContext.new_page()
-      #     # 拦截所有的图片请求以减少带宽占用
-      #     # 但凡链接包含.png，无论是否是否以之结尾，都当做是png图片
+      # 拦截所有的图片请求以减少带宽占用
       # SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
+      # # 初始化一个网页：在SaiContext中创建一个网页
+      # SaiPage = SaiContext.new_page()
   # ---------------------Playwright无头浏览器---------------------
   
   # ---------------------页面交互---------------------
@@ -164,23 +163,25 @@
       # SaiPage.keyboard.press('Enter')
   
       # 页面向下滚动加载更多内容，直到不再加载
-      # NotEnd = True
-      # while NotEnd:
-      #     # 滚动前的页面高度
-      #     BeforeScrollHeight = SaiPage.evaluate("() => document.documentElement.scrollHeight")
-      #     SaiPage.mouse.wheel(0,20000)
-      #     # 等待网络加载，单位是毫秒
-      #     SaiPage.wait_for_timeout(3000)
-      #     # 滚动后的页面高度
-      #     AfterScrollHeight = SaiPage.evaluate("() => document.documentElement.scrollHeight")
-      #     if BeforeScrollHeight == AfterScrollHeight:
-      #         # 知乎加载到一定程度，加载速度会变慢，但实际还没加载完
-      #         SaiPage.wait_for_timeout(5000)
-      #         SaiPage.mouse.wheel(0, 20000)
-      #         AfterScrollHeight = SaiPage.evaluate("() => document.documentElement.scrollHeight")
-      #         # 两次等待，两次加载后依然页面高度不变，则判断为加载完了
-      #         if BeforeScrollHeight == AfterScrollHeight:
-      #             NotEnd = False
+      NotEnd = True
+      while NotEnd:
+          # 滚动前的页面高度
+          BeforeScrollHeight = SaiPage.evaluate("() => document.body.scrollHeight")
+          # 滚动到页面底部
+          SaiPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
+          # 等待网络加载，单位是毫秒
+          SaiPage.wait_for_timeout(3000)
+          # 滚动后的页面高度
+          AfterScrollHeight = SaiPage.evaluate("() => document.body.scrollHeight")
+          if BeforeScrollHeight == AfterScrollHeight:
+              # 知乎加载到一定程度，加载速度会变慢，但实际还没加载完
+              SaiPage.wait_for_timeout(5000)
+              # SaiPage.mouse.wheel(0, 20000)
+              SaiPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
+              AfterScrollHeight = SaiPage.evaluate("() => document.body.scrollHeight")
+              # 两次等待，两次加载后依然页面高度不变，则判断为加载完了
+              if BeforeScrollHeight == AfterScrollHeight:
+                  NotEnd = False
   # ---------------------页面交互---------------------
   
   # ---------------------页面数据提取------------------
