@@ -65,8 +65,8 @@
   >   >
   >   > ```python
   >   > (base)  Sai  ~  lsof -i:9222
-  >   > COMMAND     PID     USER   FD   TYPE            DEVICE SIZE/OFF NODE NAME
-  >   > Google    93266 jiangsai   97u  IPv4 0xf8edc13e875fe59      0t0  TCP
+  >   > COMMAND   PID     USER     FD  TYPE       DEVICE         SIZE/OFF NODE NAME
+  >   > Google   93266  jiangsai  97u  IPv4   0xf8edc13e875fe59    0t0         TCP
   >   > ```
   >   >
   >   > > 即9222端口被「Google进程」占用，PID为「93266」，杀死进程可释放端口
@@ -233,6 +233,47 @@
       #     for attr in el_attrs:
       #         print(attr, ":", element.get_attribute(attr))
   # ---------------------页面数据提取------------------
+  
+  # ---------------------翻页------------------
+     # 情况一：有下一页标签
+      # 翻页方法1：底部导航条最后一个按钮不是【下一页】
+      # 如：http://cpc.people.com.cn/GB/64093/64387/index16.html
+      # TurnPage = True
+      # while TurnPage:
+      #     if SaiPage.locator('//div[@class="page"]/a[last()]').text_content() == '下一页':
+      #         PageURL = SaiPage.url
+      #         print('页面网址：', PageURL)
+      #         SaiPage.locator('//div[@class="page"]/a[last()]').click()
+      #     else:
+      #         TurnPage = False
+      #         print("没有下一页了...，爬取结束")
+      # 翻页方法2：底部导航条最后一个按钮是【下一页】，但不可见
+      # 如：https://space.bilibili.com/107861587/video?pn=13
+      # TurnPage = True
+      # while TurnPage:
+      #     if SaiPage.is_visible('//li[@title="下一页"]/a'):
+      #         SaiPage.click('//li[@title="下一页"]/a')
+      #         timeout = random.randint(1500, 2500)
+      #         SaiPage.wait_for_timeout(timeout)
+      #         SaiPage.mouse.wheel(0,20000)
+      #         PageURL = SaiPage.url
+      #         print('页面网址：', PageURL)
+      #     else:
+      #         TurnPage = False
+      #         print("没有下一页了...，爬取结束")
+      # 翻页方法3：底部导航条最后一个按钮是【下一页】，可见，可不点击
+      # 判断页面中是否存在某个元素：Page.locator(xpath).count() != 0
+      # 如：https://movie.douban.com/top250?start=200
+      # TurnPage = True
+      # while TurnPage:
+      #     if SaiPage.locator('//span[@class="next"]/link').count() != 0:
+      #         PageURL = SaiPage.url
+      #         print('页面网址：', PageURL)
+      #         SaiPage.click('//span[@class="next"]')
+      #     else:
+      #         TurnPage = False
+      #         print("没有下一页了...，爬取结束")
+  # ---------------------翻页------------------
   
   # ---------------------收尾工作---------------------
       # 将SaiContext的cookie保存到state.json，方便未来免登录
