@@ -55,36 +55,6 @@
   >
   > [教程](https://www.bilibili.com/video/BV1H24y1G745)
 
-* 使用本地Chrome
-
-  > * 查看9222端口是否被占用
-  >
-  >   > `lsof -i:9222`
-  >   >
-  >   > 若结果如下表示已被占用
-  >   >
-  >   > ```python
-  >   > (base)  Sai  ~  lsof -i:9222
-  >   > COMMAND   PID     USER     FD  TYPE       DEVICE         SIZE/OFF NODE NAME
-  >   > Google   93266  jiangsai  97u  IPv4   0xf8edc13e875fe59    0t0         TCP
-  >   > ```
-  >   >
-  >   > > 即9222端口被「Google进程」占用，PID为「93266」，杀死进程可释放端口
-  >   > >
-  >   > > `sudo kill -9 PID`
-  >
-  > * 关闭当前所有Chrome浏览器
-  >
-  > * debug模式启动Chrome浏览器
-  >
-  >   > `/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222`
-  >
-  > * 代码调用debug Chrome
-  >
-  >   > ```python
-  >   > 见"启动本地Chrome（模拟完全真实场景）"
-  >   > ```
-
 * 常用功能
 
   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310061535560.png)
@@ -96,17 +66,31 @@
   from bs4 import BeautifulSoup
   
   def run(playwright: Playwright) -> None:
-  # ---------------------Chrome本地浏览器---------------------
-      # 启动本地Chrome（模拟完全真实场景）
+  # ---------------------Chrome本地浏览器（模拟完全真实场景）---------------------
+      # terminal操作部分
+      # ①查看9222端口是否被占用
+        lsof -i:9222
+      # ②若结果如下表示端口已被占用
+        > COMMAND   PID     USER     FD  TYPE       DEVICE         SIZE/OFF NODE NAME
+        > Google   93266  jiangsai  97u  IPv4   0xf8edc13e875fe59    0t0         TCP
+        > > 即9222端口被「Google进程」占用，PID为「93266」
+      # ③杀掉进程释放端口
+        sudo kill -9 PID
+      # ④关闭当前所有Chrome浏览器
+      # ⑤debug模式启动Chrome浏览器
+        /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222
+    
+      # 代码部分
+      # 启动上述本地debug模式Chrome
       SaiBrowser = playwright.chromium.connect_over_cdp('http://localhost:9222')
       SaiContext = SaiBrowser.contexts[0]
       SaiPage = SaiContext.new_page()
       # 拦截所有的图片请求以减少带宽占用
       # 但凡链接包含.png，无论是否是否以之结尾，都当做是png图片
       SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
-  # ---------------------Chrome本地浏览器---------------------
+  # ---------------------Chrome本地浏览器（模拟完全真实场景）---------------------
   
-  # ---------------------Playwright无头浏览器---------------------
+  # ---------------------Playwright无头浏览器（反爬网站能识别）---------------------
       # # 初始化一个无头浏览器
       # SaiBrowser = playwright.chromium.launch(headless=False)
       # # 加载本地cookie
@@ -122,7 +106,7 @@
       # SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
       # # 初始化一个网页：在SaiContext中创建一个网页
       # SaiPage = SaiContext.new_page()
-  # ---------------------Playwright无头浏览器---------------------
+  # ---------------------Playwright无头浏览器（反爬网站能识别）---------------------
   
   # ---------------------页面交互---------------------
       # 打开一个网址
