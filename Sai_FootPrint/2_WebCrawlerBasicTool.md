@@ -410,7 +410,13 @@
    2. 查看当前环境是否已包含 `XPath` 模块：`conda list`
    3. 安装 `XPath` 模块：`pip install lxml`
 
-2. **选取节点的路径表达式**
+2. **Chrome调试**
+
+   > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310081842645.png)
+   >
+   > 格式：`$x('')`，如`$x('//*[@id="subBtn"]')`
+
+3. **选取节点的路径表达式**
 
    ```xml
    <?xml version="1.0" encoding="UTF-8"?>
@@ -517,7 +523,7 @@
    print(tree.xpath('//book[contains(@cover,"paper")]/title/text()'))
    ```
 
-3. XPath 示例
+4. XPath 示例
 
    ```python
    from lxml import etree
@@ -595,7 +601,7 @@
        print(div_1_1)
        print(etree.tostring(div_1_1, encoding='utf-8', pretty_print=True, method="html").decode('utf-8'))
    ```
-   
+
    > 注 1
    >
    > > etree.HTML() 返回的是个 lxml.etree._Element，可以用 etree.tostring() 直接打印
