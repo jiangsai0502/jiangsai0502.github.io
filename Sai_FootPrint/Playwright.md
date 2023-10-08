@@ -47,7 +47,7 @@
 
   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310011347291.png)
 
-##### 实操
+##### 网页爬虫实操
 
 * 录制脚本
 
@@ -60,7 +60,7 @@
   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310061535560.png)
 
   ```python
-  import re, os
+  import re, os, random
   from numbers import Integral
   from playwright.sync_api import Playwright, sync_playwright, expect
   from bs4 import BeautifulSoup
@@ -69,16 +69,16 @@
   # ---------------------Chrome本地浏览器（模拟完全真实场景）---------------------
       # terminal操作部分
       # ①查看9222端口是否被占用
-        lsof -i:9222
+      # lsof -i:9222
       # ②若结果如下表示端口已被占用
-        > COMMAND   PID     USER     FD  TYPE       DEVICE         SIZE/OFF NODE NAME
-        > Google   93266  jiangsai  97u  IPv4   0xf8edc13e875fe59    0t0         TCP
-        > > 即9222端口被「Google进程」占用，PID为「93266」
+      # > COMMAND   PID     USER     FD  TYPE       DEVICE         SIZE/OFF NODE NAME
+      # > Google   93266  jiangsai  97u  IPv4   0xf8edc13e875fe59    0t0         TCP
+      # > > 即9222端口被「Google进程」占用，PID为「93266」
       # ③杀掉进程释放端口
-        sudo kill -9 PID
+      # sudo kill -9 PID
       # ④关闭当前所有Chrome浏览器
       # ⑤debug模式启动Chrome浏览器
-        /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222
+      # /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222
     
       # 代码部分
       # 启动上述本地debug模式Chrome
@@ -91,8 +91,9 @@
   # ---------------------Chrome本地浏览器（模拟完全真实场景）---------------------
   
   # ---------------------Playwright无头浏览器（反爬网站能识别）---------------------
-      # # 初始化一个无头浏览器
-      # SaiBrowser = playwright.chromium.launch(headless=False)
+      # # 初始化一个浏览器
+      # # headless = False 有头浏览器；slow_mo = 3000 每个操作停3秒
+      # SaiBrowser = playwright.chromium.launch(headless = False, slow_mo = 3000)
       # # 加载本地cookie
       #     # 若本地有cookie，则在SaiBrowser中创建一个context（网页管理器），并加载该cookie，实现免登陆
       # os.chdir('/Users/jiangsai/Desktop')
@@ -106,6 +107,8 @@
       # SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
       # # 初始化一个网页：在SaiContext中创建一个网页
       # SaiPage = SaiContext.new_page()
+      # SaiPage.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
+      # # SaiContext.route()和SaiPage.route()的区别：前者应用于SaiContext下的所有页面，后者只应用于SaiPage这一个页面
   # ---------------------Playwright无头浏览器（反爬网站能识别）---------------------
   
   # ---------------------页面交互---------------------
@@ -143,10 +146,18 @@
       # 鼠标点击
       # SaiPage.locator('//button[@class="Button SearchBar-searchButton FEfUrdfMIKpQDJDqkjte Button--primary Button--blue epMJl0lFQuYbC7jrwr_o JmYzaky7MEPMFcJDLNMG"]').click()
   
-      # 回车
+      # # 回车
       # SaiPage.keyboard.press('Enter')
   
-      # 页面向下滚动加载更多内容，直到不再加载
+      # # 页面滚动
+      # # ①滚动指定高度
+      # # page.mouse.wheel(向右滚动长度,向下滚动长度)
+      # page.mouse.wheel(0,7000)
+      # # ②滚动到页面底部
+      # page.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
+  
+      
+      # 滚动加载更多内容，直到不再加载
       NotEnd = True
       while NotEnd:
           # 滚动前的页面高度
@@ -169,27 +180,32 @@
   # ---------------------页面交互---------------------
   
   # ---------------------页面数据提取------------------
-      # 全屏截图
-      # path = "FullScreenShot.png"
-      # SaiPage.screenshot(path)
+      # # 截取页面可见部分
+      # SaiPage.screenshot(path = "FullScreen.png")
   
-      # 页面网址
+      # # 截取页面指定部分
+      # SaiPage.locator('//table[3]/tbody').screenshot(path = "PartPage.png")
+  
+      # # 截取整个页面
+      # SaiPage.screenshot(path = "FullPage.png", full_page = True)
+      
+      # # 页面网址
       # PageURL = SaiPage.url
       # print('页面网址：', PageURL)
   
-      # 页面标题
+      # # 页面标题
       # PageTitle = SaiPage.title()
       # print('页面标题：', PageTitle)
   
-      # 页面完整Html
+      # # 页面完整Html源代码
       # PageHtml = SaiPage.content()
       # print('页面Html：', PageHtml)
   
-      # 页面完整文字
+      # # 页面完整文字
       # PageTextContent = SaiPage.text_content()
       # print('页面文字：', PageTextContent)
   
-      # 页面某个节点的完整Html
+      # # 页面某个节点的完整Html
       # ElementHtml = SaiPage.inner_html('//div[@class="QuestionHeader-topics"]')
       # BSHtml = BeautifulSoup(ElementHtml).prettify()
       # print(BSHtml)
@@ -201,6 +217,27 @@
       # ElementTextContent = SaiPage.inner_text('//div[@class="QuestionHeader-topics"]')
       # print(ElementTextContent)
   
+      # # 获取网页内的所有图片
+      # # 以当前时间建立文件夹
+      # ImgFolder = time.strftime("%Y-%m-%d %H-%M", time.localtime())
+      # if not os.path.exists(ImgFolder):
+      #     # 创建文件夹
+      #     os.mkdir(ImgFolder)
+      #     # 进入文件夹
+      #     os.chdir(ImgFolder) 
+      # # 找到所有图片节点
+      # All_Pic = SaiPage.query_selector_all('//img')
+      # Pic_num = 1
+      # for Pic in All_Pic:
+      #     # 提取所有图片链接
+      #     Pic_url = Pic.get_attribute('src')
+      #     if Pic_url != '':
+      #         # 将图片写入文件
+      #         with open(f'{Pic_num}.jpg', 'wb') as file:
+      #             file.write(requests.get(Pic_url).content)
+      #             Pic_num += 1
+      #         print(Pic_url)
+      
       # 定位网页的列表元素 query_selector_all
       # Elements = SaiPage.query_selector_all('//div[@class="QuestionHeader-topics"]/div')
       # 枚举列表元素所有目标值
@@ -271,3 +308,104 @@
   with sync_playwright() as playwright:
       run(playwright)
   ```
+
+##### 网页爬虫案例
+
+1. 向ChatGPT循环提交请求并获取请求结果
+
+   > ```python
+   > from numbers import Integral
+   > import re, os, random
+   > from playwright.sync_api import Playwright, sync_playwright, expect
+   > from bs4 import BeautifulSoup
+   > 
+   > def run(playwright: Playwright) -> None:
+   >     SaiBrowser = playwright.chromium.connect_over_cdp('http://localhost:9222')
+   >     SaiContext = SaiBrowser.contexts[0]
+   >     SaiPage = SaiContext.new_page()
+   >     SaiPage.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
+   > 
+   >     SaiPage.goto('https://chat.openai.com/')
+   >     
+   >     SaiPage.wait_for_timeout(5000)
+   >     question_list=['python','sql','oracle','mysql']
+   >     for qst in question_list:
+   >         SaiPage.get_by_role("textbox").fill(qst)
+   >         SaiPage.get_by_role("textbox").press("Enter")
+   >         SaiPage.wait_for_timeout(1000)
+   >         text1 = "1"
+   >         text2 = "2"
+   >         while(text1 != text2):
+   >             t1_list = SaiPage.query_selector_all('//div[@class="flex flex-col text-sm dark:bg-gray-800"]/div')
+   >             if(len(t1_list)>0):
+   >                 text1 = t1_list[-2].inner_text()
+   >             SaiPage.wait_for_timeout(3000)
+   >             t2_list = SaiPage.query_selector_all('//div[@class="flex flex-col text-sm dark:bg-gray-800"]/div')
+   >             if(len(t2_list)>0):
+   >                 text2 = t2_list[-2].inner_text()
+   >             print(text1)
+   >     
+   >     SaiPage.wait_for_timeout(200000)
+   >     SaiContext.close()
+   >     SaiBrowser.close()
+   > # ---------------------收尾工作---------------------
+   > 
+   > with sync_playwright() as playwright:
+   >     run(playwright)
+   > ```
+   > 
+
+##### 接口爬虫实操
+
+* 操作步骤
+
+  [参考](https://3yya.com/lesson/61)，[]()
+
+  > 打开开发者工具 -> 切到`Network`  -> 刷新页面 -> 点击`XHR`过滤请求 -> 逐个查看每个请求的`Response`
+  >
+  > 案例1：[B站个人空间](https://space.bilibili.com/107861587/video)
+  >
+  > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310071930814.png)
+  >
+  > > 通过观察和测试发现
+  > >
+  > > 1. 接口API：https://api.bilibili.com/x/space/wbi/arc/search?mid=107861587&ps=30&tid=0&pn=1&keyword=&order=pubdate&platform=web&web_location=1550101&order_avoided=true&w_rid=ae73d64fedd5ef027f2a7309c3fa27c5&wts=1696676696
+  > > 2. 接口API通过pn=1、2的方式进行翻页请求
+  > > 3. 所有`XHR`中请求中，接口API的特征为以`https://api.bilibili.com/x/space/wbi/arc/search?`开头
+  >
+  > ```python
+  > import json
+  > from playwright.sync_api import Playwright, sync_playwright, expect
+  > 
+  > def handle_json(json):
+  >     for p in json['data']['list']['vlist']:
+  >         title = p['title']
+  >         comment = p['comment']
+  >         print('title: ', title, ' comment: ', comment)
+  > 
+  > def handle(response):
+  >     if response is not None:
+  >         if response.url.startswith("https://api.bilibili.com/x/space/wbi/arc/search?"):
+  >             print(response.request.url)
+  >             print(response.request.post_data)
+  >             handle_json(response.json())
+  > 
+  > def run(playwright: Playwright) -> None:
+  >     SaiBrowser = playwright.chromium.connect_over_cdp('http://localhost:9222')
+  >     SaiContext = SaiBrowser.contexts[0]
+  >     SaiPage = SaiContext.new_page()
+  >     SaiPage.on("response", lambda response: handle(response=response))
+  >     SaiPage.goto('https://space.bilibili.com/107861587/video?pn=2')
+  > 
+  >     SaiContext.close()
+  >     SaiBrowser.close()
+  > 
+  > with sync_playwright() as playwright:
+  >     run(playwright)
+  > ```
+  >
+  > 
+
+* 常用功能
+
+  > 
