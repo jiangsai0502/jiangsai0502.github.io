@@ -397,26 +397,147 @@
 
 > XPath 是一门在 XML 文档中查找信息的**语言**，通过元素和属性进行导航，是一种路径语言
 >
-> 用法：网页中按 `F12` 进行元素检查，在源码标签上右键进入 `Copy` 操作
+> 用法：网页中按 `F12` 进行元素检查，在源码标签上右键进入 `Copy` 操作，选择里面的 `Copy Xpath` 的选项，即可获得该元素的`Xpath`值
 >
-> 1. 选择里面的 `Copy Xpath` 的选项，即可获得该元素的`Xpath`值
-> 2. 选择里面的 `Copy selector` 的选项，即可获得该元素的`css selector`值
->
-> ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20200201193531.png)
+> ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310101138890.png)
 
-1. **安装环境**
-
-   1. 切换到 `py3` 虚拟环境：`source activate py3`
-   2. 查看当前环境是否已包含 `XPath` 模块：`conda list`
-   3. 安装 `XPath` 模块：`pip install lxml`
-
-2. **Chrome调试**
+1. **Chrome调试**
 
    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310081842645.png)
    >
    > 格式：`$x('')`，如`$x('//*[@id="subBtn"]')`
 
-3. **选取节点的路径表达式**
+2. **语法**
+
+   > 1. 层级
+   >    1. `/`：直接子级
+   >    2. `//`：跳级
+   > 2. 属性
+   >    1. `@`：属性访问
+   > 3. 函数
+   >    1. contains()：包含
+   >    2. text()：文本值
+   >    3. starts-with()：以***开头
+
+   **用法**
+
+   > 1. 定位
+   >
+   >    1. 单一属性定位
+   >
+   >       `//div/a[@target='_blank']`
+   >
+   >       > 页面任何位置，所有`div`元素下，所有属性`target='_blank'`的子元素`a`
+   >
+   >    2. 多属性定位
+   >
+   >       `//div/a[@target="_blank" and @class="mnav"]`
+   >
+   >       > 页面任何位置，所有`div`元素下，所有属性`target='_blank'`且属性`class="mnav"`的子元素`a`
+   >
+   >    3. 借父节点定位
+   >
+   >       1. 不跳级定位
+   >
+   >          > `//div[@id="s-top-left"]/a`
+   >          >
+   >          > > 页面任何位置，所有属性`id="s-top-left"`的`div`元素下，所有子元素`a`（`/`表示仅包含子元素）
+   >
+   >       2. 跳级定位
+   >
+   >          > `//div[@id="s-top-left"]//a`
+   >          >
+   >          > > 页面任何位置，所有属性`id="s-top-left"`的`div`元素下，所有子孙元素`a`（`//`表示包含所有子孙元素）
+   >
+   >    4. 下标定位
+   >
+   >       `//div[@id="s-top-left"]/a[2]`
+   >
+   >       > 页面任何位置，所有属性`id="s-top-left"`的`div`元素下，第2个子元素`a`
+   >
+   >       `//div[@id="s-top-left"]/a[last()-2]`
+   >
+   >       > 页面任何位置，所有属性`id="s-top-left"`的`div`元素下，倒数第2个子元素`a`
+   >
+   >       `//div[@id="s-top-left"]/a[position()<3]`
+   >
+   >       > 页面任何位置，所有属性`id="s-top-left"`的`div`元素下，前2个子元素`a`
+   >
+   >    5. 文本定位
+   >
+   >       `//div/a[text()='hao123']`
+   >
+   >       > 页面任何位置，所有的`div`元素下，文本值为`hao123`的子元素`a`
+   >
+   >    6. 模糊定位
+   >
+   >       1. `contains()`
+   >
+   >          > `//div/a[contains(@href,'pan')]`
+   >          >
+   >          > >页面任何位置，所有的`div`元素下，属性`href`值包含`pan`的子元素`a`
+   >          >
+   >          > `//div/a[contains(text(),"史前")]`
+   >          >
+   >          > > 页面任何位置，所有的`div`元素下，文本值包含`史前`的子元素`a`
+   >
+   >       2. `starts-with()`
+   >
+   >          > `//div/a[starts-with(@data-nid,"news_850")]`
+   >          >
+   >          > >页面任何位置，所有的`div`元素下，属性`href`值以`news_850`开头的子元素`a`
+   >          >
+   >          > `//div/a[starts-with(text(),"史前")]`
+   >          >
+   >          > > 页面任何位置，所有的`div`元素下，文本值以`史前`开头的子元素`a`
+   >
+   >    7. 定位合并
+   >
+   >       `//div/a[text()='hao123'] | //div/a[contains(@href,'pan')]`
+   >
+   > 2. 取值
+   >
+   >    1. 取属性值
+   >
+   >       `//div/a/@href`
+   >
+   >       > 所有`div`元素下，所有子元素`a`的属性`href`的值（注意：是`div`元素的`href`属性，此处@后的反斜杠不是上下级关系)，结果如下
+   >       >
+   >       > ```bash
+   >       > http://news.baidu.com
+   >       > https://www.hao123.com?src=from_pc_logon
+   >       > ```
+   >
+   >    2. 取元素的文本值
+   >
+   >       `//div/a/text()`
+   >
+   >       > 页面任何位置，所有`div`元素下，所有子元素a的文本值，结果如下
+   >       >
+   >       > ```bash
+   >       > 新闻
+   >       > hao123
+   >       > ```
+
+   **特殊定位案例**
+
+   > 获取具有属性`target`的所有`a`元素
+   >
+   > `//a[@target]`
+   >
+   > 1. 获取定位元素的文本值
+   >
+   >    `//a[@target]/text()`
+   >
+   > 2. 获取定位元素的属性值
+   >
+   >    `//a[@target]/@target`
+   >
+   >    `//a[@target]/@class`
+   >
+   >    `//a[@target]/@href`
+
+   **案例**
 
    ```xml
    <?xml version="1.0" encoding="UTF-8"?>
@@ -434,75 +555,10 @@
            <year>2003</year>
            <price>49.99</price>
        </book>
-       <book category="web" cover="paperback">
-           <title lang="en">Learning XML</title>
-           <author>Erik T. Ray</author>
-           <year>2003</year>
-           <price>39.95</price>
-       </book>
    </bookstore>
    ```
 
-   | 表达式   | 表达式描述                                               | 示例            | 示例描述                                                     |
-   | :------- | :------------------------------------------------------- | :-------------- | :----------------------------------------------------------- |
-   | nodename | 选取此节点的所有子节点。                                 | bookstore       | 选取 bookstore 元素下的所有子节点                            |
-   | /        | 从根节点选取                                             | /bookstore      | 选取根节点 bookstore。注释：假如路径起始于正斜杠( / )，则此路径始终代表到某元素的绝对路径！ |
-   |          |                                                          | bookstore/book  | 选取 bookstore 节点下的所有 book 儿子节点                    |
-   | //       | 从匹配选择的当前节点选取文档中的节点，而不考虑它们的位置 | //book          | 选取文档中任意位置的所有 book 子孙节点                       |
-   |          |                                                          | bookstore//book | 选取 bookstore 节点的所有 book 子孙节点，而不管它们位于 bookstore 之下的什么位置 |
-   | @        | 选取属性                                                 | //@lang         | 选取名为 lang 的所有属性                                     |
-   | .        | 选取当前节点                                             |                 |                                                              |
-   | ..       | 选取当前节点的父节点                                     |                 |                                                              |
-   | *        | 匹配任何元素的节点                                       | /bookstore/*    | 选取 bookstore 节点的所有子节点                              |
-   |          |                                                          | //*             | 选取文档中的所有节点                                         |
-   | @*       | 匹配任何属性的节点                                       | //title[@*]     | 选取所有带有属性的 title 节点                                |
-   | node()   | 匹配任何类型的节点                                       |                 |                                                              |
-
-   | 路径表达式                                    | 结果                                                         |
-   | :-------------------------------------------- | :----------------------------------------------------------- |
-   | /bookstore/book[1]                            | 选取 bookstore 节点的第一个 book 儿子节点                    |
-   | /bookstore/book[last()]                       | 选取 bookstore 节点的最后一个 book 儿子节点                  |
-   | /bookstore/book[last()-1]                     | 选取 bookstore 节点的倒数第二个 book 儿子节点                |
-   | /bookstore/book[position()<3]                 | 选取 bookstore 节点的全部 book 儿子节点的最前面 2 个         |
-   | //title[@lang]                                | 选取文档中任意位置的所有 title 节点，且这些节点都拥有 lang 属性 |
-   | //title[@lang=’eng’]                          | 选取文档中任意位置的所有 title 元素，且这些节点都拥有值为 eng 的 lang 属性 |
-   | //book[@category="web" and cover="paperback"] | 选取文档中任意位置的所有book节点，且这些节点的category属性的值是"web"，cover属性的值是"paperback" |
-   | /bookstore/book[price>35.00]                  | 选取 bookstore 节点下的所有 book 儿子节点，且这些节点的 price 的值须大于 35.00 |
-   | /bookstore/book[price>35.00]/title            | 选取 bookstore 节点下的所有 price 的值大于 35.00的 book 儿子节点的所有 title 儿子节点 |
-   | //book/title \| //book/price                  | 选取文档中任意位置的 book 节点的所有 title 儿子节点和 price 儿子节点 |
-   | //title \| //price                            | 选取文档中任意位置的所有 title 节点和 price 节点             |
-   | /bookstore/book/title \| //price              | 选取 bookstore 节点的 book 儿子节点的所有 title 儿子节点，以及文档中任意位置的所有的 price 节点 |
-
-   1. 层级：`/`直接子级，`//`跳级
-   2. 属性：`@`属性访问
-   3. 函数：`contains()`，`text()`
-
-   **常见用法**
-
-   1. `//div/@href`：取所有`div`元素的`href`**属性的值**(注意：是`div`元素的`href`属性，此处的反斜杠不是上下级关系)
-
-      如：`<div id="item" href="/vod/1728836">`，`div`的`href`属性值为`/vod/1728836`
-
-   2. `//div[@id]`：取所有包含`id`属性的`div`元素
-
-   3. `//div[@id = 'maincontent']`：取`id`属性值为`maincontent`的`div`元素
-
-   4. `//div[@id = 'maincontent' and @class = 'head']`：取`id`属性值为`maincontent`且`class`属性值为`head`的`div`元素
-
-   5. `//div[@class="col-xs-7 col-xs-offset-1 aside"]`：取`class`属性值为`col-xs-7 col-xs-offset-1 aside`的元素
-
-   6. `//div[contains(@class,"col-xs-7")]`：取`class`属性值含`col-xs-7`的元素
-
-   7. `//div[starts-with(@class,'col-xs-7')]`：取`class`属性值以`col-xs-7`开头的元素
-
-   8. `string(//div[@id = 'maincontent'])`：取`id`属性值为`maincontent`的`div`元素包含的所有文本
-
-   9. `//div[@id = 'maincontent'] | //div[@id = 'childcontent']`：取`id`属性值为`maincontent`的`div`元素与`id`属性值为`childcontent`的`div`元素的并集
-
    ```python
-   xml = '上面的bookstore'
-   tree = etree.HTML(xml)
-   
    # 书店里所有书的作者名
    print(tree.xpath('//bookstore/book/author/text()'))
    # 书店里所有书的语言
@@ -522,8 +578,6 @@
    # 书店所有cover属性包含paper的书的标题
    print(tree.xpath('//book[contains(@cover,"paper")]/title/text()'))
    ```
-
-4. XPath 示例
 
    ```python
    from lxml import etree
@@ -564,7 +618,6 @@
    '''
    
    tree = etree.HTML(html)
-   print('-'*20, 'XPath 解析并修正后的 Html', '-'*20)
    print(type(tree))                            # <class 'lxml.etree._Element'>
    print(etree.tostring(tree, encoding='utf-8', pretty_print=True, method="html").decode('utf-8'))
    

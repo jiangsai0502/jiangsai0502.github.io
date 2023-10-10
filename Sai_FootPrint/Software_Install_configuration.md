@@ -120,7 +120,7 @@
 >    brew install wget;
 >    export REMOTE=https://gitee.com/imirror/ohmyzsh.git;
 >    sh -c "$(wget -O- https://cdn.jsdelivr.net/gh/ohmyzsh/ohmyzsh/tools/install.sh)";
->               
+>                  
 >    open ~/.zshrc
 >    # 在.zshrc文件中搜索 source $ZSH/oh-my-zsh.sh，在本句之前加一句
 >    ZSH_DISABLE_COMPFIX="true"
@@ -158,7 +158,7 @@
 >
 >    ```
 >    brew install zsh-syntax-highlighting
->               
+>                  
 >    open ~/.zshrc
 >    最后插入一行：source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 >    source ~/.zshrc
@@ -196,36 +196,41 @@
 >
 > > `brew install yt-dlp`（youtube-dl已死）
 > >
+> > > 直接下载往往被限制分辨率，增加参数可模拟浏览器
+> > >
+> > > ![img](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202308271236418.png)
+> >
 > > * 查看视频所有类型
 > >
-> >   `yt-dlp -F URL（获取ID)`
+> >   `yt-dlp -F --cookies-from-browser chrome URL`
 > >
-> >   ![img](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202308271236418.png)
+> > * 直接下载最高品质视频
+> >
+> >   `yt-dlp --cookies-from-browser chrome URL`
 > >
 > > * 下载指定ID的视频
 > >
 > >   `yt-dlp -f ID URL`
 > >
-> >   * `yt-dlp -f 22 URL`
-> >   * `yt-dlp -f 242+230 URL`
+> >   > 视频不包含音频
+> >   >
+> >   > `yt-dlp -f 242 --cookies-from-browser chrome URL`
+> >   >
+> >   > 音频不包含视频
+> >   >
+> >   > `yt-dlp -f 230 --cookies-from-browser chrome URL`
 > >
-> > * B站高清下载
+> > * 下载列表
+> >
+> >   `yt-dlp --yes-playlist --cookies-from-browser chrome URL`
+> >
+> > * B站下载
 > >
 > >   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309302121718.png)
 > >
 > >   > 移除链接`/?`之后的所有部分，只保留`https://www.bilibili.com/video/BV1d3411w7at`
 > >   >
-> >   > `yt-dlp URL` Bilibili 直接下载只有 480P [原因](https://www.v2ex.com/t/894817)
-> >
-> >   > `yt-dlp URL --cookies-from-browser chrome`  可破限制
-> >   >
-> >   > 下载单个视频
-> >   >
-> >   > `yt-dlp --cookies-from-browser chrome https://www.bilibili.com/video/BV1d3411w7at `
-> >   >
-> >   > 下载列表
-> >   >
-> >   > `yt-dlp --yes-playlist --cookies-from-browser chrome https://www.bilibili.com/video/BV1bj411U7oN `
+> >   
 > >
 >
 > ##### 安装you-get

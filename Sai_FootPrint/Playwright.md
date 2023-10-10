@@ -218,13 +218,12 @@
       # print(ElementTextContent)
   
       # # 获取网页内的所有图片
-      # # 以当前时间建立文件夹
-      # ImgFolder = time.strftime("%Y-%m-%d %H-%M", time.localtime())
-      # if not os.path.exists(ImgFolder):
+      # Pic_folder = SaiPage.title()
+      # if not os.path.exists(Pic_folder):
       #     # 创建文件夹
-      #     os.mkdir(ImgFolder)
+      #     os.mkdir(Pic_folder)
       #     # 进入文件夹
-      #     os.chdir(ImgFolder) 
+      #     os.chdir(Pic_folder) 
       # # 找到所有图片节点
       # All_Pic = SaiPage.query_selector_all('//img')
       # Pic_num = 1
