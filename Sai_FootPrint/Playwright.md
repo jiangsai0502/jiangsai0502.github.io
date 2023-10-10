@@ -156,7 +156,6 @@
       # # ②滚动到页面底部
       # page.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
   
-      
       # 滚动加载更多内容，直到不再加载
       NotEnd = True
       while NotEnd:
@@ -177,6 +176,9 @@
               # 两次等待，两次加载后依然页面高度不变，则判断为加载完了
               if BeforeScrollHeight == AfterScrollHeight:
                   NotEnd = False
+                  
+      # 在页面中定位弹窗，在弹窗中定位按钮
+      SaiPage.frame_locator('//*[@id="layer-iframe"]').locator('//div//input').click()
   # ---------------------页面交互---------------------
   
   # ---------------------页面数据提取------------------
