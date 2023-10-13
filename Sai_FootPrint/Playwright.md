@@ -204,15 +204,15 @@
       # PageHtml = SaiPage.content()
       # print('页面Html：', PageHtml)
   
-      # # 页面完整文字
-      # PageTextContent = SaiPage.text_content()
-      # print('页面文字：', PageTextContent)
-  
-      # # 页面某个节点的完整Html
-      # ElementHtml = SaiPage.inner_html('//div[@class="QuestionHeader-topics"]')
+      # # 部门页面Html源代码
+      # ElementHtml = SaiPage.locator('//div[@class="QuestionHeader-topics"]').inner_html()
       # BSHtml = BeautifulSoup(ElementHtml).prettify()
       # print(BSHtml)
   
+      # # 页面完整文字
+      # PageTextContent = SaiPage.text_content()
+      # print('页面文字：', PageTextContent)
+      
       # # 页面某个节点的完整文字内容
       # # text_content：返回代码内容；一股脑全部获取，包括隐藏内容
       # # inner_text：返回页面显示内容；按照元素获取，以换行分割
