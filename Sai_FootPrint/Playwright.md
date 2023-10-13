@@ -115,6 +115,7 @@
       # 打开一个网址
           # 在SaiPage中打开指定网址
       SaiPage.goto("https://www.zhihu.com/question/22543815")
+      SaiPage.wait_for_load_state("networkidle")
   
       # 页面刷新
       # SaiPage.reload()
@@ -254,6 +255,15 @@
       #     # 枚举所有的属性名称和值 get_attribute
       #     for attr in el_attrs:
       #         print(attr, ":", element.get_attribute(attr))
+      
+      # # 将页面部分内容转化为markdown后下载到本地
+      # os.chdir('/Users/jiangsai/Desktop')
+      # h = html2text.HTML2Text()
+      # h.ignore_links = True
+      # MarkDownContent = h.handle(SaiPage.locator('//div[@class="mod-article-content"]').inner_html())
+      # print(MarkDownContent)
+      # with open('test.md', mode='w', encoding='utf-8') as f:
+      #     f.write(MarkDownContent)
   # ---------------------页面数据提取------------------
   
   # ---------------------翻页------------------
