@@ -416,11 +416,12 @@
    >    1. `@`：属性访问
    > 3. 函数
    >    1. contains()：包含
-   >    2. text()：文本值
-   >    3. starts-with()：以***开头
-
+   >    2. not()：不包含
+   >    3. text()：文本值
+   >    4. starts-with()：以***开头
+   
    **用法**
-
+   
    > 1. 定位
    >
    >    1. 单一属性定位
@@ -491,9 +492,29 @@
    >          >
    >          > > 页面任何位置，所有的`div`元素下，文本值以`史前`开头的子元素`a`
    >
-   >    7. 定位合并
+   >    7. ~~排除定位（not非常难处理，尽量不用）~~
+   >
+   >       1. ~~按属性排除~~
+   >
+   >          ~~`//aside[@class="_2OwGUo"]/*[not(@class="_3Z3nHf")]`~~
+   >
+   >          > ~~所有属性`class="_2OwGUo"`的元素`aside`下，排除属性`class="_3Z3nHf"`的元素~~
+   >
+   >       2. ~~按元素排除~~
+   >
+   >          ~~`//aside[@class="_2OwGUo"]/*[not(name()="div")]`~~
+   >
+   >          > ~~所有属性`class="_2OwGUo"`的元素`aside`下，排除所有`div`子元素~~
+   >
+   >          ~~`//aside[@class="_2OwGUo"]/*[not(name()="div" or not(name()="span"))]`~~
+   >
+   >          > ~~所有属性`class="_2OwGUo"`的元素`aside`下，排除所有`div`子元素和`span`子元素~~
+   >
+   >    8. 定位合并
    >
    >       `//div/a[text()='hao123'] | //div/a[contains(@href,'pan')]`
+   >
+   >       > 取并集，先列出`//div/a[text()='hao123']`，再列出`//div/a[contains(@href,'pan')]`
    >
    > 2. 取值
    >
@@ -518,9 +539,9 @@
    >       > 新闻
    >       > hao123
    >       > ```
-
+   
    **特殊定位案例**
-
+   
    > 获取具有属性`target`的所有`a`元素
    >
    > `//a[@target]`
@@ -538,7 +559,7 @@
    >    `//a[@target]/@href`
 
    **案例**
-
+   
    ```xml
    <?xml version="1.0" encoding="UTF-8"?>
    <bookstore>
@@ -578,7 +599,7 @@
    # 书店所有cover属性包含paper的书的标题
    print(tree.xpath('//book[contains(@cover,"paper")]/title/text()'))
    ```
-
+   
    ```python
    from lxml import etree
    html = '''
@@ -654,7 +675,7 @@
        print(div_1_1)
        print(etree.tostring(div_1_1, encoding='utf-8', pretty_print=True, method="html").decode('utf-8'))
    ```
-
+   
    > 注 1
    >
    > > etree.HTML() 返回的是个 lxml.etree._Element，可以用 etree.tostring() 直接打印
