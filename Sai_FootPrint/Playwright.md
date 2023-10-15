@@ -100,6 +100,7 @@
   >   >   > # 启动上述本地debug模式Chrome
   >   >   > SaiBrowser = playwright.chromium.connect_over_cdp('http://localhost:9222')
   >   >   > SaiContext = SaiBrowser.contexts[0]
+  >   >   > SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
   >   >   > SaiPage = SaiContext.new_page()
   >   >   > ```
   >   >
@@ -108,7 +109,7 @@
   >   >   ```
   >   >   # # 初始化一个浏览器（headless = False 有头浏览器；slow_mo = 3000 每个操作停3秒）
   >   >   # SaiBrowser = playwright.chromium.launch(headless = False, slow_mo = 3000)
-  >   >     
+  >   >   
   >   >   # # 加载本地cookie
   >   >   # # 若本地有cookie，则在SaiBrowser中创建一个context（网页管理器），并加载该cookie，实现免登陆；若本地没有，则在SaiBrowser中创建一个空的context
   >   >   # # 每个context是一个独立会话，用于环境隔离，每个context可使用1套代理，登录1套账号
@@ -117,13 +118,13 @@
   >   >   #     SaiContext = SaiBrowser.new_context(storage_state="state.json")
   >   >   # else:
   >   >   #     SaiContext = SaiBrowser.new_context()
-  >   >     
+  >   >   
   >   >   # 拦截SaiContext下所有页面的图片请求（凡含.png的链接，都当做是png图片）
   >   >   # SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
-  >   >     
+  >   >   
   >   >   # 初始化一个网页
   >   >   # SaiPage = SaiContext.new_page()
-  >   >     
+  >   >   
   >   >   # 拦截SaiPage这个页面的图片请求
   >   >   # SaiPage.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
   >   >   ```
@@ -331,6 +332,28 @@
   >   >       f.write(MarkDownContent)
   >   >   ```
   >   >
+  >   > 打开二级页
+  >   >
+  >   > * 方法一：从一级页获取二级页的链接后再打开
+  >   >
+  >   >   ```python
+  >   >   SonPage = SaiContext.new_page()
+  >   >   SonPageUrl = SaiPage.query_selector('//div[@class="fl"]').get_attribute('href')
+  >   >   SonPage.gotoSonPageUrl(SonPageUrl)
+  >   >   SonPage.wait_for_load_state("networkidle")
+  >   >   SonPage.bring_to_front()
+  >   >   ```
+  >   >
+  >   > * 方法二：从一级页点击二级页链接打开
+  >   >
+  >   >   ```python
+  >   >   with SaiContext.expect_page() as SonPageInfo:
+  >   >       SaiPage.locator('//div[@class="fl"]').click()
+  >   >   SonPage = SonPageInfo.value
+  >   >   SonPage.wait_for_load_state()
+  >   >   SonPage.bring_to_front()
+  >   >   ```
+  >   >
   >   > 翻页
   >   >
   >   > * 翻页方法1：底部导航条最后一个按钮不是【下一页】，[范例CPC](http://cpc.people.com.cn/GB/64093/64387/index16.html)
@@ -371,6 +394,17 @@
   >   >   HaveNextPage = True
   >   >   while HaveNextPage:
   >   >       if SaiPage.locator('//span[@class="next"]/link').count() != 0:
+  >   >           PageURL = SaiPage.url
+  >   >           print('页面网址：', PageURL)
+  >   >           SaiPage.click('//span[@class="next"]')
+  >   >       else:
+  >   >           HaveNextPage = False
+  >   >           print("没有下一页了...，爬取结束")
+  >   >   
+  >   >   # 判断页面中是否存在某个元素：Page.query_selector('//span[@class="next"]/link') is not None
+  >   >   HaveNextPage = True
+  >   >   while HaveNextPage:
+  >   >       if Page.query_selector('//span[@class="next"]/link') is not None:
   >   >           PageURL = SaiPage.url
   >   >           print('页面网址：', PageURL)
   >   >           SaiPage.click('//span[@class="next"]')
@@ -444,9 +478,9 @@
    > ```
    > 
 
-##### 接口爬虫实操
+##### 爬虫实操
 
-* 操作步骤
+* 爬取接口json数据
 
   [参考](https://3yya.com/lesson/61)，[]()
 
@@ -493,8 +527,7 @@
   >     run(playwright)
   > ```
   >
-  > 
-
+  
 * 爬取知乎答案
 
   > ```python
@@ -555,6 +588,114 @@
   >             f.write(Question)
   >             f.write('----' + '\n')
   > 
+  >     # 收尾
+  >     SaiContext.close()
+  >     SaiBrowser.close()
+  > 
+  > with sync_playwright() as playwright:
+  >     run(playwright)
+  > ```
+  >
+  
+* 爬取知乎搜索结果
+
+  > ```python
+  > import os, html2text
+  > import re
+  > from playwright.sync_api import Playwright, sync_playwright
+  > 
+  > def SaiScroll(ScrollPage, ScrollTimes):
+  >     # 滚动加载更多内容，直到不再加载或者滚动了n次
+  >     NotEnd = True
+  >     ScrollTime = 1
+  >     while NotEnd and ScrollTime < ScrollTimes:
+  >         # 滚动前的页面高度
+  >         BeforeScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
+  >         # 滚动到页面底部
+  >         ScrollPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
+  >         ScrollTime += 1
+  >         # 等待网络加载，单位是毫秒
+  >         ScrollPage.wait_for_timeout(3000)
+  >         # 微上划几下模拟人类
+  >         for i in range(3):
+  >             ScrollPage.keyboard.press('PageUp')
+  >             ScrollPage.wait_for_timeout(200)
+  >         # 滚动到页面底部
+  >         ScrollPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
+  >         # 滚动后的页面高度
+  >         AfterScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
+  >         if BeforeScrollHeight == AfterScrollHeight or ScrollTime >= ScrollTimes:
+  >             NotEnd = False
+  > 
+  > def WriteMD(WritePage):
+  >     # 创建MD文件
+  >     os.chdir('/Users/jiangsai/Desktop')
+  >     MarkDownMaker = html2text.HTML2Text()
+  >     MarkDownMaker.ignore_links = True
+  >     # 问题
+  >     Answer_Title = WritePage.query_selector('//h1[@class="QuestionHeader-title"]').text_content()
+  >     Answer_Content = ''
+  >     # 判断问题描述是否存在，有些问题没有描述
+  >     if WritePage.query_selector('//div[@class="css-eew49z"]') is not None:
+  >         # 判断问题描述是否被收起
+  >         if WritePage.locator('//div[@class="css-eew49z"]//button').count() != 0:
+  >             WritePage.locator('//div[@class="css-eew49z"]//button').click()
+  >         Answer_Content_Html = WritePage.query_selector('//div[@class="css-eew49z"]').inner_html()
+  >         Answer_Content = MarkDownMaker.handle(Answer_Content_Html)
+  >     with open('test.md', mode='a', encoding='utf-8') as f:
+  >         f.write('### ' + Answer_Title + '\n')
+  >         f.write('> ' + Answer_Content + '\n\n')
+  >         f.write('----' + '\n')
+  > 
+  >     # 答案
+  >     # 判断答案是否存在，有些问题没有答案
+  >     if WritePage.query_selector_all('//div[@role="list"]/div') is not None:
+  >         Elements = WritePage.query_selector_all('//div[@role="list"]/*[not(@role="listitem")]')
+  >         for element in Elements:
+  >             Author = element.query_selector('//div[@class="AuthorInfo-head"]').text_content()
+  >             QuestionHtml = element.query_selector('//span[@class="RichText ztext CopyrightRichText-richText css-117anjg"]').inner_html()
+  >             Question = MarkDownMaker.handle(QuestionHtml)
+  >             with open('test.md', mode='a', encoding='utf-8') as f:
+  >                 f.write('##### ' +Author + '\n')
+  >                 f.write(Question)
+  >                 f.write('----' + '\n')
+  > 
+  > def run(playwright: Playwright) -> None:
+  >     SaiBrowser = playwright.chromium.connect_over_cdp('http://localhost:9222')
+  >     SaiContext = SaiBrowser.contexts[0]
+  >     SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
+  >     SaiPage = SaiContext.new_page()
+  >     SaiPage.goto('https://www.zhihu.com/search?q=%E6%91%A9%E6%89%98%E8%BD%A6%E4%BF%AE%E7%90%86%E4%B8%8E%E7%A6%85')
+  >     SaiPage.wait_for_load_state("networkidle")
+  >     SaiPage.bring_to_front()
+  > 
+  >     # 滚动搜索页获取更多数据
+  >     SaiScroll(SaiPage, 3)
+  > 
+  >     # 获取搜索结果链接
+  >     elementUrls = []
+  >     Elements = SaiPage.query_selector_all('//div[@class="List"]/div/*[not(@class="Card SearchResult-Card")]')
+  >     for element in Elements:
+  >         # 判断节点是否有URL，有就提取出链接
+  >         if element.query_selector('//meta[@itemprop="url"]') is not None:
+  >             elementUrl = element.query_selector('//meta[@itemprop="url"]').get_attribute('content')
+  >             elementUrls.append(elementUrl)
+  > 
+  >     # 打开搜索结果链接
+  >     for elementUrl in elementUrls:
+  >         SonPage = SaiContext.new_page()
+  >         SonPage.goto(elementUrl)
+  >         SonPage.wait_for_load_state("networkidle")
+  >         SonPage.bring_to_front()
+  >         # 判断问题是否存在，有些链接是专题链接而不是问题链接，则不爬
+  >         if SonPage.query_selector('//h1[@class="QuestionHeader-title"]') is None:
+  >             SonPage.close()
+  >         else:
+  >             # 滚动搜索页获取更多数据
+  >             SaiScroll(SonPage, 5)
+  >             WriteMD(SonPage)
+  >             SonPage.close()
+  >         
   >     # 收尾
   >     SaiContext.close()
   >     SaiBrowser.close()
