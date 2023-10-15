@@ -108,7 +108,7 @@
   >   >   ```
   >   >   # # 初始化一个浏览器（headless = False 有头浏览器；slow_mo = 3000 每个操作停3秒）
   >   >   # SaiBrowser = playwright.chromium.launch(headless = False, slow_mo = 3000)
-  >   >   
+  >   >     
   >   >   # # 加载本地cookie
   >   >   # # 若本地有cookie，则在SaiBrowser中创建一个context（网页管理器），并加载该cookie，实现免登陆；若本地没有，则在SaiBrowser中创建一个空的context
   >   >   # # 每个context是一个独立会话，用于环境隔离，每个context可使用1套代理，登录1套账号
@@ -117,13 +117,13 @@
   >   >   #     SaiContext = SaiBrowser.new_context(storage_state="state.json")
   >   >   # else:
   >   >   #     SaiContext = SaiBrowser.new_context()
-  >   >   
+  >   >     
   >   >   # 拦截SaiContext下所有页面的图片请求（凡含.png的链接，都当做是png图片）
   >   >   # SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
-  >   >   
+  >   >     
   >   >   # 初始化一个网页
   >   >   # SaiPage = SaiContext.new_page()
-  >   >   
+  >   >     
   >   >   # 拦截SaiPage这个页面的图片请求
   >   >   # SaiPage.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
   >   >   ```
@@ -497,4 +497,70 @@
 
 * 爬取知乎答案
 
+  > ```python
+  > import os, html2text
+  > from playwright.sync_api import Playwright, sync_playwright
+  > 
+  > def run(playwright: Playwright) -> None:
+  >     SaiBrowser = playwright.chromium.connect_over_cdp('http://localhost:9222')
+  >     SaiContext = SaiBrowser.contexts[0]
+  >     SaiPage = SaiContext.new_page()
+  >     SaiPage.goto('https://www.zhihu.com/question/47034512')
+  >     SaiPage.wait_for_load_state("networkidle")
+  >     SaiPage.bring_to_front()
+  > 
+  >     # 滚动加载更多内容，直到不再加载
+  >     NotEnd = True
+  >     while NotEnd:
+  >         # 滚动前的页面高度
+  >         BeforeScrollHeight = SaiPage.evaluate("() => document.body.scrollHeight")
+  >         # 滚动到页面底部
+  >         SaiPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
+  >         # 等待网络加载，单位是毫秒
+  >         SaiPage.wait_for_timeout(3000)
+  >         # 微上划一下模拟人类
+  >         SaiPage.mouse.wheel(0, -10000)
+  >         # 滚动后的页面高度
+  >         AfterScrollHeight = SaiPage.evaluate("() => document.body.scrollHeight")
+  >         if BeforeScrollHeight == AfterScrollHeight:
+  >             # 知乎加载到一定程度，加载速度会变慢，但实际还没加载完
+  >             SaiPage.mouse.wheel(0, -10000)
+  >             SaiPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
+  >             SaiPage.wait_for_timeout(1000)
+  >             AfterScrollHeight = SaiPage.evaluate("() => document.body.scrollHeight")
+  >             # 两次等待，两次加载后依然页面高度不变，则判断为加载完了
+  >             if BeforeScrollHeight == AfterScrollHeight:
+  >                 NotEnd = False
+  > 
+  >     # 切换目录
+  >     os.chdir('/Users/jiangsai/Desktop')
+  >     MarkDownMaker = html2text.HTML2Text()
+  >     MarkDownMaker.ignore_links = True
+  >     # 获取问题
+  >     Answer_Title = SaiPage.query_selector('//h1[@class="QuestionHeader-title"]').text_content()
+  >     Answer_Content = SaiPage.query_selector('//div[@class="css-eew49z"]').text_content()
+  >     with open('test.md', mode='a', encoding='utf-8') as f:
+  >         f.write('### ' + Answer_Title + '\n')
+  >         f.write('> ' + Answer_Content + '\n\n')
+  >         f.write('----' + '\n')
+  > 
+  >     # 获取答案
+  >     Elements = SaiPage.query_selector_all('//div[@class="List-item"]')
+  >     for element in Elements:
+  >         Author = element.query_selector('//div[@class="AuthorInfo-head"]').text_content()
+  >         QuestionHtml = element.query_selector('//span[@class="RichText ztext CopyrightRichText-richText css-117anjg"]').inner_html()
+  >         Question = MarkDownMaker.handle(QuestionHtml)
+  >         with open('test.md', mode='a', encoding='utf-8') as f:
+  >             f.write('##### ' +Author + '\n')
+  >             f.write(Question)
+  >             f.write('----' + '\n')
+  > 
+  >     # 收尾
+  >     SaiContext.close()
+  >     SaiBrowser.close()
+  > 
+  > with sync_playwright() as playwright:
+  >     run(playwright)
+  > ```
+  >
   > 
