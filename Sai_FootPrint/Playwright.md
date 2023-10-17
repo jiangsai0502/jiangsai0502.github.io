@@ -109,7 +109,7 @@
   >   >   ```
   >   >   # # 初始化一个浏览器（headless = False 有头浏览器；slow_mo = 3000 每个操作停3秒）
   >   >   # SaiBrowser = playwright.chromium.launch(headless = False, slow_mo = 3000)
-  >   >     
+  >   >       
   >   >   # # 加载本地cookie
   >   >   # # 若本地有cookie，则在SaiBrowser中创建一个context（网页管理器），并加载该cookie，实现免登陆；若本地没有，则在SaiBrowser中创建一个空的context
   >   >   # # 每个context是一个独立会话，用于环境隔离，每个context可使用1套代理，登录1套账号
@@ -118,13 +118,13 @@
   >   >   #     SaiContext = SaiBrowser.new_context(storage_state="state.json")
   >   >   # else:
   >   >   #     SaiContext = SaiBrowser.new_context()
-  >   >     
+  >   >       
   >   >   # 拦截SaiContext下所有页面的图片请求（凡含.png的链接，都当做是png图片）
   >   >   # SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
-  >   >     
+  >   >       
   >   >   # 初始化一个网页
   >   >   # SaiPage = SaiContext.new_page()
-  >   >     
+  >   >       
   >   >   # 拦截SaiPage这个页面的图片请求
   >   >   # SaiPage.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
   >   >   ```
@@ -400,7 +400,7 @@
   >   >       else:
   >   >           HaveNextPage = False
   >   >           print("没有下一页了...，爬取结束")
-  >   >     
+  >   >       
   >   >   # 判断页面中是否存在某个元素：Page.query_selector('//span[@class="next"]/link') is not None
   >   >   HaveNextPage = True
   >   >   while HaveNextPage:
@@ -605,27 +605,27 @@
   > from playwright.sync_api import Playwright, sync_playwright
   > 
   > def SaiScroll(ScrollPage, ScrollTimes):
-  >     # 滚动加载更多内容，直到不再加载或者滚动了n次
-  >     NotEnd = True
-  >     ScrollTime = 1
-  >     while NotEnd and ScrollTime < ScrollTimes:
-  >         # 滚动前的页面高度
-  >         BeforeScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
-  >         # 滚动到页面底部
-  >         ScrollPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
-  >         ScrollTime += 1
-  >         # 等待网络加载，单位是毫秒
-  >         ScrollPage.wait_for_timeout(3000)
-  >         # 微上划几下模拟人类
-  >         for i in range(3):
-  >             ScrollPage.keyboard.press('PageUp')
-  >             ScrollPage.wait_for_timeout(200)
-  >         # 滚动到页面底部
-  >         ScrollPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
-  >         # 滚动后的页面高度
-  >         AfterScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
-  >         if BeforeScrollHeight == AfterScrollHeight or ScrollTime >= ScrollTimes:
-  >             NotEnd = False
+  >        # 滚动加载更多内容，直到不再加载或者滚动了10次
+  >        NotEnd = True
+  >        ScrollTime = 1
+  >        while NotEnd and ScrollTime < ScrollTimes:
+  >            # 滚动前的页面高度
+  >            BeforeScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
+  >            # 滚动到页面底部
+  >            ScrollPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
+  >            ScrollTime += 1
+  >            # 等待网络加载，单位是毫秒
+  >            ScrollPage.wait_for_timeout(3000)
+  >            # 微上划一下模拟人类
+  >            for i in range(5):
+  >                ScrollPage.keyboard.press('PageUp')
+  >                ScrollPage.wait_for_timeout(200)
+  >            # 滚动到页面底部
+  >            ScrollPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
+  >            # 滚动后的页面高度
+  >            AfterScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
+  >            if BeforeScrollHeight == AfterScrollHeight or ScrollTime >= ScrollTimes:
+  >                NotEnd = False
   > 
   > def WriteMD(WritePage):
   >     # 创建MD文件

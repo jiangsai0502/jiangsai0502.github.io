@@ -12,19 +12,28 @@
 | 快速移动：Command+方向键                                     | 快速多选：Command+Shift+方向键                               |
 |                                                              |                                                              |
 
-##### Excel vlookup用法
+**vlookup用法**
 
 > * [参考1](https://zhuanlan.zhihu.com/p/29161495)，[参考2](https://zhidao.baidu.com/question/1734379668253114707.html)
 >
 > * **坑**：公式：VLOOKUP(D1,A$1:B$9,2,0)，要加上绝对引用符号 $，否则会匹配出问题
 
-##### Excel 正态分布画图
+**正态分布画图**
 
 > [参考](https://www.bilibili.com/video/BV1Hi4y1L7Eg)
 >
 > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309201525146.png)
 
-##### Excel数值判断大小并添加颜色
+**数值判断大小并添加颜色**
 
 > 1. 选中待判断的单元格
 > 2. 开始-条件格式-突出显示单元格规则
+
+**单元格下拉格式部分不变**
+
+> 增加$
+>
+> 1. A1= $C$1+D1
+> 2. 下拉得到A2、A3
+> 3. A2 = $C$1+D2
+> 4. A3 = $C$1+D3
