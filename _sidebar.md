@@ -1,6 +1,6 @@
 * 杂记
   
-  * [Excel技巧](Sai_FootPrint/Excel_Skills.md)
+  * [Mac技巧](Sai_FootPrint/Mac_Skill.md)
   * [重装Mac](Sai_FootPrint/Software_Install_configuration.md)
   * [Blog建站](Sai_FootPrint/0_BuildBlog.md)
   * [Markdown语法](Sai_FootPrint/0_MarkdownUsage.md)
@@ -8,6 +8,7 @@
   * [Keyboard_Maestro用法](Sai_FootPrint/Keyboard_Maestro.md)
   * [Fusion360](Sai_FootPrint/0_AutodeskFusion360.md)
   * [Anki](Sai_FootPrint/3_anki.md)
+  * [Excel技巧](Sai_FootPrint/Excel_Skills.md)
   
 * 爬虫
   

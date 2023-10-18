@@ -532,10 +532,6 @@
   >            NotEnd = False
   > 
   > def WriteMD(WritePage):
-  >    # 创建MD文件
-  >    os.chdir(MDdir)
-  >    MarkDownMaker = html2text.HTML2Text()
-  >    MarkDownMaker.ignore_links = True
   >    # 问题部分
   >    Answer = WritePage.query_selector(Xpath_Answer).text_content()
   >    Answer_Desc = ''
@@ -562,10 +558,13 @@
   >            with open('test.md', mode='a', encoding='utf-8') as f:
   >                f.write('##### ' +Author + '\n' + Question + '----' + '\n')
   > 
-  > # 待爬的第一个页面
-  > WebSite = 'https://www.zhihu.com/question/47034512'
   > # MarkDown文件目录
   > MDdir = '/Users/jiangsai/Desktop'
+  > os.chdir(MDdir)
+  > MarkDownMaker = html2text.HTML2Text()
+  > MarkDownMaker.ignore_links = True
+  > # 待爬的第一个页面
+  > WebSite = 'https://www.zhihu.com/question/47034512'
   > # 问题
   > Xpath_Answer = '//h1[@class="QuestionHeader-title"]'
   > # 问题描述
@@ -633,10 +632,6 @@
   >             NotEnd = False
   > 
   > def ExtractInfo(WritePage):
-  >     # 创建MD文件
-  >     os.chdir(MDdir)
-  >     MarkDownMaker = html2text.HTML2Text()
-  >     MarkDownMaker.ignore_links = True
   >     # 问题部分
   >     Answer = WritePage.query_selector(Xpath_Answer).text_content()
   >     Answer_Desc = ''
@@ -649,9 +644,7 @@
   >         Answer_Content_Html = WritePage.query_selector(Xpath_Answer_Desc).inner_html()
   >         Answer_Desc = MarkDownMaker.handle(Answer_Content_Html)
   >     with open('test.md', mode='a', encoding='utf-8') as f:
-  >         f.write('### ' + Answer + '\n')
-  >         f.write('> ' + Answer_Desc + '\n\n')
-  >         f.write('----' + '\n')
+  >         f.write('### ' + Answer + '\n' + '> ' + Answer_Desc + '\n\n' + '----' + '\n')
   >     # 答案部分
   >     # 判断答案是否存在，有些问题没有答案
   >     if WritePage.locator(Xpath_Questions_Block).count() != 0:
@@ -663,14 +656,15 @@
   >             QuestionHtml = element.query_selector(Xpath_Question).inner_html()
   >             Question = MarkDownMaker.handle(QuestionHtml)
   >             with open('test.md', mode='a', encoding='utf-8') as f:
-  >                 f.write('##### ' +Author + '\n')
-  >                 f.write(Question)
-  >                 f.write('----' + '\n')
+  >                 f.write('##### ' +Author + '\n' + Question + '----' + '\n')
   > 
-  > # 待爬的第一个页面
-  > WebSite = 'https://www.zhihu.com/search?q=python'
   > # MarkDown文件目录
   > MDdir = '/Users/jiangsai/Desktop'
+  > os.chdir(MDdir)
+  > MarkDownMaker = html2text.HTML2Text()
+  > MarkDownMaker.ignore_links = True
+  > # 待爬的第一个页面
+  > WebSite = 'https://www.zhihu.com/search?q=python'
   > # 搜索页答案list
   > Xpath_Search_Results = '//div[@class="List"]/div/*[not(@class="Card SearchResult-Card")]'
   > # 搜索页每个答案的url
