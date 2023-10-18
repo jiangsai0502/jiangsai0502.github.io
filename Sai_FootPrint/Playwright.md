@@ -106,10 +106,10 @@
   >   >
   >   > * 方式二：Playwright无头浏览器（反爬网站能识别）
   >   >
-  >   >   ```
+  >   >   ```python
   >   >   # # 初始化一个浏览器（headless = False 有头浏览器；slow_mo = 3000 每个操作停3秒）
   >   >   # SaiBrowser = playwright.chromium.launch(headless = False, slow_mo = 3000)
-  >   >     
+  >   >                   
   >   >   # # 加载本地cookie
   >   >   # # 若本地有cookie，则在SaiBrowser中创建一个context（网页管理器），并加载该cookie，实现免登陆；若本地没有，则在SaiBrowser中创建一个空的context
   >   >   # # 每个context是一个独立会话，用于环境隔离，每个context可使用1套代理，登录1套账号
@@ -118,13 +118,13 @@
   >   >   #     SaiContext = SaiBrowser.new_context(storage_state="state.json")
   >   >   # else:
   >   >   #     SaiContext = SaiBrowser.new_context()
-  >   >     
+  >   >                   
   >   >   # 拦截SaiContext下所有页面的图片请求（凡含.png的链接，都当做是png图片）
   >   >   # SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
-  >   >     
+  >   >                   
   >   >   # 初始化一个网页
   >   >   # SaiPage = SaiContext.new_page()
-  >   >     
+  >   >                   
   >   >   # 拦截SaiPage这个页面的图片请求
   >   >   # SaiPage.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
   >   >   ```
@@ -280,10 +280,10 @@
   >   >   Elements = SaiPage.query_selector_all('//div[@class="Question"]/div')
   >   >   # 枚举列表元素所有目标值
   >   >   for element in Elements:
-  >   >     # 每个元素的文本值 text_content
-  >   >     print(element.text_content())
-  >   >     # 每个元素的链接
-  >   >     print(element.query_selector('//a[@class="Link"]').get_attribute('href'))
+  >   >       # 每个元素的文本值 text_content
+  >   >       print(element.text_content())
+  >   >       # 每个元素的链接
+  >   >       print(element.query_selector('//a[@id="Link"]').get_attribute('href'))
   >   >   ```
   >   >
   >   >   ```python
@@ -408,15 +408,21 @@
    > from playwright.sync_api import Playwright, sync_playwright, expect
    > from bs4 import BeautifulSoup
    > 
-   > def run(playwright: Playwright) -> None:
+   > WebSite = 'https://chat.openai.com/'
+   > Xpath_Answer = '//div[@class="flex flex-col text-sm dark:bg-gray-800"]/div'
+   > 
+   > def Initialize(WebSite):
    >     SaiBrowser = playwright.chromium.connect_over_cdp('http://localhost:9222')
    >     SaiContext = SaiBrowser.contexts[0]
    >     SaiPage = SaiContext.new_page()
-   >     SaiPage.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
+   >     SaiPage.goto(WebSite)
+   >     SaiPage.wait_for_load_state("networkidle")
+   >     SaiPage.bring_to_front()
+   >     SaiPage.wait_for_timeout(10000)
+   >     return SaiBrowser, SaiContext, SaiPage
    > 
-   >     SaiPage.goto('https://chat.openai.com/')
-   >     
-   >     SaiPage.wait_for_timeout(random.randint(5000,7000))
+   > def run(playwright: Playwright) -> None:
+   >     SaiBrowser, SaiContext, SaiPage = Initialize(WebSite)
    >     question_list=['python','sql','oracle','mysql']
    >     for qst in question_list:
    >         SaiPage.get_by_role("textbox").fill(qst)
@@ -425,16 +431,15 @@
    >         text1 = "1"
    >         text2 = "2"
    >         while(text1 != text2):
-   >             t1_list = SaiPage.query_selector_all('//div[@class="flex flex-col text-sm dark:bg-gray-800"]/div')
+   >             t1_list = SaiPage.query_selector_all(Xpath_Answer)
    >             if(len(t1_list)>0):
    >                 text1 = t1_list[-2].inner_text()
    >             SaiPage.wait_for_timeout(random.randint(1000,3000))
-   >             t2_list = SaiPage.query_selector_all('//div[@class="flex flex-col text-sm dark:bg-gray-800"]/div')
+   >             t2_list = SaiPage.query_selector_all(Xpath_Answer)
    >             if(len(t2_list)>0):
    >                 text2 = t2_list[-2].inner_text()
    >             print(text1)
-   >     
-   >     SaiPage.wait_for_timeout(random.randint(5000,8000))
+   > 
    >     SaiContext.close()
    >     SaiBrowser.close()
    > # ---------------------收尾工作---------------------
@@ -442,11 +447,11 @@
    > with sync_playwright() as playwright:
    >     run(playwright)
    > ```
-   > 
+   >
 
 ##### 爬虫实操
 
-* 爬取接口json数据
+* #### 爬取接口json数据
 
   [参考](https://3yya.com/lesson/61)
 
@@ -494,7 +499,7 @@
   > ```
   >
   
-* 滚动加载 + 爬取一级页信息
+* #### 场景一：滚动加载 + 爬取一级页信息
 
   > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310171701388.png)
   >
@@ -502,99 +507,99 @@
   > import os, html2text, re, random
   > from playwright.sync_api import Playwright, sync_playwright
   > 
-  > def Initialize(WebSite):
-  >    SaiBrowser = playwright.chromium.connect_over_cdp('http://localhost:9222')
-  >    SaiContext = SaiBrowser.contexts[0]
-  >    SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
-  >    SaiPage = SaiContext.new_page()
-  >    SaiPage.goto(WebSite)
-  >    SaiPage.wait_for_load_state("networkidle")
-  >    SaiPage.bring_to_front()
-  >    return SaiBrowser, SaiContext, SaiPage
-  > 
-  > def SaiScroll(ScrollPage, ScrollTimes):
-  >    # 滚动加载更多内容，直到不再加载或者滚动了10次
-  >    NotEnd = True
-  >    ScrollTime = 1
-  >    while NotEnd and ScrollTime < ScrollTimes:
-  >        # 滚动前的页面高度
-  >        BeforeScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
-  >        ScrollTime += 1
-  >        for i in range(3):
-  >            # 滚动到页面底部
-  >            ScrollPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
-  >            # 微上划一下模拟人类
-  >            ScrollPage.keyboard.press('PageUp')
-  >            ScrollPage.wait_for_timeout(random.randint(1000,3000))
-  >        # 滚动后的页面高度
-  >        AfterScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
-  >        if BeforeScrollHeight == AfterScrollHeight or ScrollTime >= ScrollTimes:
-  >            NotEnd = False
-  > 
-  > def WriteMD(WritePage):
-  >    # 问题部分
-  >    Answer = WritePage.query_selector(Xpath_Answer).text_content()
-  >    Answer_Desc = ''
-  >    # 判断问题描述是否存在，有些问题没有描述
-  >    if WritePage.locator(Xpath_Answer_Desc).count() != 0:
-  >        # 判断问题描述是否被收起
-  >        if WritePage.locator(Xpath_Answer_Desc + '//button').count() != 0:
-  >            WritePage.locator(Xpath_Answer_Desc + '//button').click()
-  >        # 因问题描述可能包含图片，故此处使用HTML2Text提取富文本
-  >        Answer_Content_Html = WritePage.query_selector(Xpath_Answer_Desc).inner_html()
-  >        Answer_Desc = MarkDownMaker.handle(Answer_Content_Html)
-  >    with open('test.md', mode='a', encoding='utf-8') as f:
-  >        f.write('### ' + Answer + '\n' + '> ' + Answer_Desc + '\n\n' + '----' + '\n')
-  >    # 答案部分
-  >    # 判断答案是否存在，有些问题没有答案
-  >    if WritePage.locator(Xpath_Questions_Block).count() != 0:
-  >        # 获取所有答案块
-  >        Elements = WritePage.query_selector_all(Xpath_Questions)
-  >        for element in Elements:
-  >            Author = element.query_selector(Xpath_Author).text_content()
-  >            # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
-  >            QuestionHtml = element.query_selector(Xpath_Question).inner_html()
-  >            Question = MarkDownMaker.handle(QuestionHtml)
-  >            with open('test.md', mode='a', encoding='utf-8') as f:
-  >                f.write('##### ' +Author + '\n' + Question + '----' + '\n')
-  > 
   > # MarkDown文件目录
-  > MDdir = '/Users/jiangsai/Desktop'
-  > os.chdir(MDdir)
-  > MarkDownMaker = html2text.HTML2Text()
-  > MarkDownMaker.ignore_links = True
-  > # 待爬的第一个页面
-  > WebSite = 'https://www.zhihu.com/question/47034512'
-  > # 问题
-  > Xpath_Answer = '//h1[@class="QuestionHeader-title"]'
+  >    MDdir = '/Users/jiangsai/Desktop'
+  >    os.chdir(MDdir)
+  >    MarkDownMaker = html2text.HTML2Text()
+  >    MarkDownMaker.ignore_links = True
+  >    # 待爬的第一个页面
+  >    WebSite = 'https://www.zhihu.com/question/47034512'
+  >    # 问题
+  >    Xpath_Answer = '//h1[@class="QuestionHeader-title"]'
   > # 问题描述
   > Xpath_Answer_Desc = '//div[@class="css-eew49z"]'
-  > # 整个答案块
-  > Xpath_Questions_Block = '//div[@role="list"]/div'
-  > # 答案块中的答案list
-  > Xpath_Questions = '//div[@role="list"]/*[not(@role="listitem")]'
-  > # 答案块中的每个答案的作者
-  > Xpath_Author = '//div[@class="AuthorInfo-head"]'
-  > # 答案块中的每个答案的内容
-  > Xpath_Question = '//span[@class="RichText ztext CopyrightRichText-richText css-117anjg"]'
+  >    # 整个答案块
+  >    Xpath_Questions_Block = '//div[@role="list"]/div'
+  >    # 答案块中的答案list
+  >    Xpath_Questions = '//div[@role="list"]/*[not(@role="listitem")]'
+  >    # 答案块中的每个答案的作者
+  >    Xpath_Author = '//div[@class="AuthorInfo-head"]'
+  >    # 答案块中的每个答案的内容
+  >    Xpath_Question = '//span[@class="RichText ztext CopyrightRichText-richText css-117anjg"]'
+  >    
+  >    def Initialize(WebSite):
+  >        SaiBrowser = playwright.chromium.connect_over_cdp('http://localhost:9222')
+  >        SaiContext = SaiBrowser.contexts[0]
+  >        SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
+  >        SaiPage = SaiContext.new_page()
+  >        SaiPage.goto(WebSite)
+  >        SaiPage.wait_for_load_state("networkidle")
+  >        SaiPage.bring_to_front()
+  >        return SaiBrowser, SaiContext, SaiPage
+  > 
+  >    def SaiScroll(ScrollPage, ScrollTimes):
+  >        # 滚动加载更多内容，直到不再加载或者滚动了10次
+  >        NotEnd = True
+  >        ScrollTime = 1
+  >        while NotEnd and ScrollTime < ScrollTimes:
+  >            # 滚动前的页面高度
+  >            BeforeScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
+  >            ScrollTime += 1
+  >            for i in range(3):
+  >                # 滚动到页面底部
+  >                ScrollPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
+  >                # 微上划一下模拟人类
+  >                ScrollPage.keyboard.press('PageUp')
+  >                ScrollPage.wait_for_timeout(random.randint(1000,3000))
+  >            # 滚动后的页面高度
+  >            AfterScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
+  >            if BeforeScrollHeight == AfterScrollHeight or ScrollTime >= ScrollTimes:
+  >                NotEnd = False
+  >    
+  >    def WriteMD(WritePage):
+  >        # 问题部分
+  >        Answer = WritePage.query_selector(Xpath_Answer).text_content()
+  >        Answer_Desc = ''
+  >        # 判断问题描述是否存在，有些问题没有描述
+  >        if WritePage.locator(Xpath_Answer_Desc).count() != 0:
+  >         # 判断问题描述是否被收起
+  >         if WritePage.locator(Xpath_Answer_Desc + '//button').count() != 0:
+  >             WritePage.locator(Xpath_Answer_Desc + '//button').click()
+  >         # 因问题描述可能包含图片，故此处使用HTML2Text提取富文本
+  >         Answer_Content_Html = WritePage.query_selector(Xpath_Answer_Desc).inner_html()
+  >         Answer_Desc = MarkDownMaker.handle(Answer_Content_Html)
+  >     with open('test.md', mode='a', encoding='utf-8') as f:
+  >         f.write('### ' + Answer + '\n' + '> ' + Answer_Desc + '\n\n' + '----' + '\n')
+  >     # 答案部分
+  >     # 判断答案是否存在，有些问题没有答案
+  >     if WritePage.locator(Xpath_Questions_Block).count() != 0:
+  >         # 获取所有答案块
+  >         Elements = WritePage.query_selector_all(Xpath_Questions)
+  >         for element in Elements:
+  >             Author = element.query_selector(Xpath_Author).text_content()
+  >             # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
+  >             QuestionHtml = element.query_selector(Xpath_Question).inner_html()
+  >             Question = MarkDownMaker.handle(QuestionHtml)
+  >             with open('test.md', mode='a', encoding='utf-8') as f:
+  >                 f.write('##### ' +Author + '\n' + Question + '----' + '\n')
   > 
   > def run(playwright: Playwright) -> None:
-  >    SaiBrowser, SaiContext, SaiPage = Initialize(WebSite)
-  >    # 滚动搜索页获取更多数据
-  >    SaiScroll(SaiPage, 1)
-  >    # 写入MarkDown
-  >    WriteMD(SaiPage)
-  >    # 收尾
-  >    SaiPage.close()
-  >    SaiContext.close()
-  >    SaiBrowser.close()
+  >        SaiBrowser, SaiContext, SaiPage = Initialize(WebSite)
+  >        # 滚动搜索页获取更多数据
+  >        SaiScroll(SaiPage, 1)
+  >        # 写入MarkDown
+  >        WriteMD(SaiPage)
+  >        # 收尾
+  >        SaiPage.close()
+  >        SaiContext.close()
+  >        SaiBrowser.close()
   > 
   > with sync_playwright() as playwright:
-  >   run(playwright)
+  >       run(playwright)
   > ```
   >
   
-* 滚动加载 + 爬取二级页信息
+* #### 场景二：滚动加载 + 爬取二级页信息
 
   > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310171659341.png)
   >
@@ -631,145 +636,124 @@
   > Xpath_Question = '//span[@class="RichText ztext CopyrightRichText-richText css-117anjg"]'
   > 
   > def Initialize(WebSite):
-  >     SaiBrowser = playwright.chromium.connect_over_cdp('http://localhost:9222')
-  >     SaiContext = SaiBrowser.contexts[0]
-  >     SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
-  >     SaiPage = SaiContext.new_page()
-  >     SaiPage.goto(WebSite)
-  >     SaiPage.wait_for_load_state("networkidle")
-  >     SaiPage.bring_to_front()
-  >     return SaiBrowser, SaiContext, SaiPage
+  >        SaiBrowser = playwright.chromium.connect_over_cdp('http://localhost:9222')
+  >        SaiContext = SaiBrowser.contexts[0]
+  >        SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
+  >        SaiPage = SaiContext.new_page()
+  >        SaiPage.goto(WebSite)
+  >        SaiPage.wait_for_load_state("networkidle")
+  >        SaiPage.bring_to_front()
+  >        return SaiBrowser, SaiContext, SaiPage
   > 
   > def SaiScroll(ScrollPage, ScrollTimes):
-  >     # 滚动加载更多内容，直到不再加载或者滚动了10次
-  >     NotEnd = True
-  >     ScrollTime = 1
-  >     while NotEnd and ScrollTime < ScrollTimes:
-  >         # 滚动前的页面高度
-  >         BeforeScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
-  >         ScrollTime += 1
-  >         for i in range(3):
-  >             # 滚动到页面底部
-  >             ScrollPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
-  >             # 微上划一下模拟人类
-  >             ScrollPage.keyboard.press('PageUp')
-  >             ScrollPage.wait_for_timeout(random.randint(1000,3000))
-  >         # 滚动后的页面高度
-  >         AfterScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
-  >         if BeforeScrollHeight == AfterScrollHeight or ScrollTime >= ScrollTimes:
-  >             NotEnd = False
+  >        # 滚动加载更多内容，直到不再加载或者滚动了10次
+  >        NotEnd = True
+  >        ScrollTime = 1
+  >        while NotEnd and ScrollTime < ScrollTimes:
+  >            # 滚动前的页面高度
+  >            BeforeScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
+  >            ScrollTime += 1
+  >            for i in range(3):
+  >                # 滚动到页面底部
+  >                ScrollPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
+  >                # 微上划一下模拟人类
+  >                ScrollPage.keyboard.press('PageUp')
+  >                ScrollPage.wait_for_timeout(random.randint(1000,3000))
+  >            # 滚动后的页面高度
+  >            AfterScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
+  >            if BeforeScrollHeight == AfterScrollHeight or ScrollTime >= ScrollTimes:
+  >                NotEnd = False
   > 
   > def ExtractInfo(WritePage):
-  >     # 问题部分
-  >     Answer = WritePage.query_selector(Xpath_Answer).text_content()
-  >     Answer_Desc = ''
-  >     # 判断问题描述是否存在，有些问题没有描述
-  >     if WritePage.locator(Xpath_Answer_Desc).count() != 0:
-  >         # 判断问题描述是否被收起
-  >         if WritePage.locator(Xpath_Answer_Desc + '//button').count() != 0:
-  >             WritePage.locator(Xpath_Answer_Desc + '//button').click()
-  >         # 因问题描述可能包含图片，故此处使用HTML2Text提取富文本
-  >         Answer_Content_Html = WritePage.query_selector(Xpath_Answer_Desc).inner_html()
-  >         Answer_Desc = MarkDownMaker.handle(Answer_Content_Html)
-  >     with open('test.md', mode='a', encoding='utf-8') as f:
-  >         f.write('### ' + Answer + '\n' + '> ' + Answer_Desc + '\n\n' + '----' + '\n')
-  >     # 答案部分
-  >     # 判断答案是否存在，有些问题没有答案
-  >     if WritePage.locator(Xpath_Questions_Block).count() != 0:
-  >         # 获取所有答案块
-  >         Elements = WritePage.query_selector_all(Xpath_Questions)
-  >         for element in Elements:
-  >             Author = element.query_selector(Xpath_Author).text_content()
-  >             # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
-  >             QuestionHtml = element.query_selector(Xpath_Question).inner_html()
-  >             Question = MarkDownMaker.handle(QuestionHtml)
-  >             with open('test.md', mode='a', encoding='utf-8') as f:
-  >                 f.write('##### ' +Author + '\n' + Question + '----' + '\n')
+  >        # 问题部分
+  >        Answer = WritePage.query_selector(Xpath_Answer).text_content()
+  >        Answer_Desc = ''
+  >        # 判断问题描述是否存在，有些问题没有描述
+  >        if WritePage.locator(Xpath_Answer_Desc).count() != 0:
+  >            # 判断问题描述是否被收起
+  >            if WritePage.locator(Xpath_Answer_Desc + '//button').count() != 0:
+  >                WritePage.locator(Xpath_Answer_Desc + '//button').click()
+  >            # 因问题描述可能包含图片，故此处使用HTML2Text提取富文本
+  >            Answer_Content_Html = WritePage.query_selector(Xpath_Answer_Desc).inner_html()
+  >            Answer_Desc = MarkDownMaker.handle(Answer_Content_Html)
+  >            with open('test.md', mode='a', encoding='utf-8') as f:
+  >                f.write('### ' + Answer + '\n' + '> ' + Answer_Desc + '\n\n' + '----' + '\n')
+  >            # 答案部分
+  >            # 判断答案是否存在，有些问题没有答案
+  >            if WritePage.locator(Xpath_Questions_Block).count() != 0:
+  >                # 获取所有答案块
+  >                Elements = WritePage.query_selector_all(Xpath_Questions)
+  >                for element in Elements:
+  >                    Author = element.query_selector(Xpath_Author).text_content()
+  >                    # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
+  >                    QuestionHtml = element.query_selector(Xpath_Question).inner_html()
+  >                    Question = MarkDownMaker.handle(QuestionHtml)
+  >                    with open('test.md', mode='a', encoding='utf-8') as f:
+  >                        f.write('##### ' +Author + '\n' + Question + '----' + '\n')
   > 
   > def run(playwright: Playwright) -> None:
-  >     # 浏览器预备
-  >     SaiBrowser, SaiContext, SaiPage = Initialize(WebSite)
-  >     # 滚动搜索页获取更多数据
-  >     SaiScroll(SaiPage, 1)
-  >     # 获取搜索结果链接
-  >     Elements = SaiPage.query_selector_all(Xpath_Search_Results)
-  >     for element in Elements:
-  >         if element.query_selector(Xpath_Search_Result_url) is not None:
-  >             with SaiContext.expect_page() as SonPageInfo:
-  >                 element.query_selector(Xpath_Search_Result_url).click()
-  >             SonPage = SonPageInfo.value
-  >             SonPage.wait_for_load_state()
-  >             SonPage.bring_to_front()
-  >             SonPage.locator(Xpath_Check_All).click()
-  >             SonPage.wait_for_load_state()
-  >             # 判断问题是否存在，有些链接是专题链接而不是问题链接，则不爬
-  >             if SonPage.locator(Xpath_Answer).count() == 0:
-  >                 SonPage.close()
-  >             else:
-  >                 # 滚动二级页获取更多数据
-  >                 SaiScroll(SonPage, 1)
-  >                 # 将二级页写入MarkDown
-  >                 ExtractInfo(SonPage)
-  >                 SonPage.close()
-  >     # # 方法二，直接抽出搜索结果url
-  >     # for element in Elements:
-  >     #     # 判断搜索页的每个节点是否有URL，有就提取出链接
-  >     #     if element.query_selector(Xpath_Search_Result_url) is not None:
-  >     #         elementUrl = element.query_selector(Xpath_Search_Result_url).get_attribute('content')
-  >     #         SonPage = SaiContext.new_page()
-  >     #         SonPage.goto(elementUrl)
-  >     #         SonPage.wait_for_load_state("networkidle")
-  >     #         SonPage.bring_to_front()
-  >     #         # 判断问题是否存在，有些链接是专题链接而不是问题链接，则不爬
-  >     #         if SonPage.locator(Xpath_Answer).count() == 0:
-  >     #             SonPage.close()
-  >     #         else:
-  >     #             # 滚动二级页获取更多数据
-  >     #             SaiScroll(SonPage, 2)
-  >     #             # 将二级页写入MarkDown
-  >     #             ExtractInfo(SonPage)
-  >     #             SonPage.close()
-  >     # 收尾
-  >     SaiContext.close()
-  >     SaiBrowser.close()
-  > 
+  >        # 浏览器预备
+  >        SaiBrowser, SaiContext, SaiPage = Initialize(WebSite)
+  >        # 滚动搜索页获取更多数据
+  >        SaiScroll(SaiPage, 1)
+  >        # 获取搜索结果链接
+  >        Elements = SaiPage.query_selector_all(Xpath_Search_Results)
+  >        for element in Elements:
+  >            if element.query_selector(Xpath_Search_Result_url) is not None:
+  >                with SaiContext.expect_page() as SonPageInfo:
+  >                    element.query_selector(Xpath_Search_Result_url).click()
+  >                SonPage = SonPageInfo.value
+  >                SonPage.wait_for_load_state()
+  >                SonPage.bring_to_front()
+  >                SonPage.locator(Xpath_Check_All).click()
+  >                SonPage.wait_for_load_state()
+  >                # 判断问题是否存在，有些链接是专题链接而不是问题链接，则不爬
+  >                if SonPage.locator(Xpath_Answer).count() == 0:
+  >                    SonPage.close()
+  >                else:
+  >                    # 滚动二级页获取更多数据
+  >                    SaiScroll(SonPage, 1)
+  >                    # 将二级页写入MarkDown
+  >                    ExtractInfo(SonPage)
+  >                    SonPage.close()
+  >        # 收尾
+  >        SaiContext.close()
+  >        SaiBrowser.close()
+  >  
   > with sync_playwright() as playwright:
-  >     run(playwright)
-  > ```
-  >
-  > * 上述代码直接模拟点击，还可从搜索结果中抽取出结果的url，逐个打开url来进入二级页
-  >
-  >     > ```python
-  >     > def run(playwright: Playwright) -> None:
-  >     >     SaiBrowser, SaiContext, SaiPage = Initialize(WebSite)
-  >     >     SaiScroll(SaiPage, 1)
-  >     >     Elements = SaiPage.query_selector_all(Xpath_Search_Results)
-  >     >     # 方法二，直接抽出搜索结果url
-  >     >     for element in Elements:
-  >     >         # 判断搜索页的每个节点是否有URL，有就提取出链接
-  >     >         if element.query_selector(Xpath_Search_Result_url) is not None:
-  >     >             elementUrl = element.query_selector(Xpath_Search_Result_url).get_attribute('content')
-  >     >             SonPage = SaiContext.new_page()
-  >     >             SonPage.goto(elementUrl)
-  >     >             SonPage.wait_for_load_state("networkidle")
-  >     >             SonPage.bring_to_front()
-  >     >             # 判断问题是否存在，有些链接是专题链接而不是问题链接，则不爬
-  >     >             if SonPage.locator(Xpath_Answer).count() == 0:
-  >     >                 SonPage.close()
-  >     >             else:
-  >     >                 # 滚动二级页获取更多数据
-  >     >                 SaiScroll(SonPage, 2)
-  >     >                 # 将二级页写入MarkDown
-  >     >                 ExtractInfo(SonPage)
-  >     >                 SonPage.close()
-  >     >     # 收尾
-  >     >     SaiContext.close()
-  >     >     SaiBrowser.close()
-  >     > ```
-  >
+  >        run(playwright)
+  >  ```
   > 
+  >   * 上述代码直接模拟点击，还可从搜索结果中抽取出结果的url，逐个打开url来进入二级页
+  > 
+  >       > ```python
+  >        > def run(playwright: Playwright) -> None:
+  >        >        SaiBrowser, SaiContext, SaiPage = Initialize(WebSite)
+  >        >        SaiScroll(SaiPage, 1)
+  >        >        Elements = SaiPage.query_selector_all(Xpath_Search_Results)
+  >        >        for element in Elements:
+  >        >            # 判断搜索页的每个节点是否有URL，有就提取出链接
+  >        >            if element.query_selector(Xpath_Search_Result_url) is not None:
+  >        >                elementUrl = element.query_selector(Xpath_Search_Result_url).get_attribute('content')
+  >        >                SonPage = SaiContext.new_page()
+  >        >                SonPage.goto(elementUrl)
+  >        >                SonPage.wait_for_load_state("networkidle")
+  >        >                SonPage.bring_to_front()
+  >        >                # 判断问题是否存在，有些链接是专题链接而不是问题链接，则不爬
+  >        >                if SonPage.locator(Xpath_Answer).count() == 0:
+  >        >                    SonPage.close()
+  >        >                else:
+  >        >                    # 滚动二级页获取更多数据
+  >        >                    SaiScroll(SonPage, 2)
+  >        >                    # 将二级页写入MarkDown
+  >        >                    ExtractInfo(SonPage)
+  >        >                    SonPage.close()
+  >        >        # 收尾
+  >        >        SaiContext.close() 
+  >        >        SaiBrowser.close()
+  >        > ```
   
-* 翻页+提取一级页信息&二级页信息
+* #### 场景三：翻页+提取一级页信息&二级页信息
 
   > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310180107192.png)
   >
@@ -786,8 +770,8 @@
   > WebSite = 'https://space.bilibili.com/107861587/video?pn=1'
   > # 底部导航Xpath
   > Xpath_Nav = '//ul[@class="be-pager"]'
-  > # 一级页FatherPage的信息块
-  > Xpath_FP_Elements = '//ul[@class="clearfix cube-list"]/*'
+  > # 一级页FatherPage的信息块list
+  > Xpath_FP_Et_List = '//ul[@class="clearfix cube-list"]/*'
   > # 一级页FatherPage每个信息块的标题
   > Xpath_FP_Et_Title = '//a[@class="title"]'
   > # 一级页FatherPage每个信息块的时长
@@ -802,79 +786,184 @@
   > 
   > # 创建浏览器环境
   > def Initialize(WebSite):
-  >     SaiBrowser = playwright.chromium.connect_over_cdp('http://localhost:9222')
-  >     SaiContext = SaiBrowser.contexts[0]
-  >     # SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
-  >     SaiPage = SaiContext.new_page()
-  >     SaiPage.goto(WebSite)
-  >     SaiPage.wait_for_load_state("networkidle")
-  >     SaiPage.bring_to_front()
-  >     return SaiBrowser, SaiContext, SaiPage
+  >        SaiBrowser = playwright.chromium.connect_over_cdp('http://localhost:9222')
+  >        SaiContext = SaiBrowser.contexts[0]
+  >        # SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
+  >        SaiPage = SaiContext.new_page()
+  >        SaiPage.goto(WebSite)
+  >        SaiPage.wait_for_load_state("networkidle")
+  >        SaiPage.bring_to_front()
+  >        return SaiBrowser, SaiContext, SaiPage
   > 
   > # 翻页
   > def TurnPage(SaiContext, SaiPage):
-  >     # 所有导航数字集合
-  >     All_Nav = set()
-  >     # 已点击导航数字集合
-  >     Clicked_Nav = set()
-  >     # 可点击导航数字集合，初始设置为1，即第一页
-  >     Able_Click_Nav = [1]
-  >     while len(Able_Click_Nav) > 0:
-  >         # 取最小导航数
-  >         To_Click_Nav = Able_Click_Nav[0]
-  >         # 点击最小导航数
-  >         # locator('text=1')模糊匹配1,01,10,11等;locator('text="1"')精确匹配1
-  >         SaiPage.locator(Xpath_Nav).locator('text="'+str(To_Click_Nav)+'"').click()
-  >         SaiPage.wait_for_timeout(random.randint(1000,3000))
-  >         # 刚点击的数字追加到「已点击导航数字集合」
-  >         Clicked_Nav.add(To_Click_Nav)
-  >         # 当前页导航列表
-  >         Current_Nav_list = SaiPage.query_selector_all(Xpath_Nav + '/*')
-  >         for i in Current_Nav_list:
-  >             Nav_num = i.text_content()
-  >             # 抽取出导航列表中的数字，「上一页」「下一页」这种非确定性导航都排除
-  >             if str(Nav_num).isdigit():
-  >                 All_Nav.add(int(Nav_num))
-  >         # 可点击导航数字集合 = 所有导航数字集合 ∩ 已点击导航数字集合，再转换成列表
-  >         Able_Click_Nav= sorted(list(All_Nav.difference(Clicked_Nav)))
-  >         ExtractFPInfo(SaiContext, SaiPage)
+  >        # 所有导航数字集合
+  >        All_Nav = set()
+  >        # 已点击导航数字集合
+  >        Clicked_Nav = set()
+  >        # 可点击导航数字集合，初始设置为1，即第一页
+  >        Able_Click_Nav = [1]
+  >        while len(Able_Click_Nav) > 0:
+  >            # 取最小导航数
+  >            To_Click_Nav = Able_Click_Nav[0]
+  >            # 点击最小导航数
+  >            # locator('text=1')模糊匹配1,01,10,11等;locator('text="1"')精确匹配1
+  >            SaiPage.locator(Xpath_Nav).locator('text="'+str(To_Click_Nav)+'"').click()
+  >            SaiPage.wait_for_timeout(random.randint(1000,3000))
+  >            # 刚点击的数字追加到「已点击导航数字集合」
+  >            Clicked_Nav.add(To_Click_Nav)
+  >            # 当前页导航列表
+  >            Current_Nav_list = SaiPage.query_selector_all(Xpath_Nav + '/*')
+  >            for i in Current_Nav_list:
+  >                Nav_num = i.text_content()
+  >                # 抽取出导航列表中的数字，「上一页」「下一页」这种非确定性导航都排除
+  >                if str(Nav_num).isdigit():
+  >                    All_Nav.add(int(Nav_num))
+  >            # 可点击导航数字集合 = 所有导航数字集合 ∩ 已点击导航数字集合，再转换成列表
+  >            Able_Click_Nav= sorted(list(All_Nav.difference(Clicked_Nav)))
+  >            ExtractFPInfo(SaiContext, SaiPage)
   > 
   > # 一级页FatherPage信息爬取
   > def ExtractFPInfo(SaiContext, FatherPage):
-  >     Element_Blocks = FatherPage.query_selector_all(Xpath_FP_Elements)
-  >     for element in Element_Blocks:
-  >         Title = element.query_selector(Xpath_FP_Et_Title).text_content()
-  >         Length = element.query_selector(Xpath_FP_Et_Length).text_content()
-  >         PlayNum = element.query_selector(Xpath_FP_Et_PlayNum).text_content()
-  >         with open('test.md', mode='a', encoding='utf-8') as f:
-  >             f.write('片名：' + Title + '\n' + '时长：' + Length + '\n' + '播放数：' + PlayNum + '\n')
-  >         # 打开二级页，二级页在新标签加载
-  >         with SaiContext.expect_page() as SonPageInfo:
-  >             element.click()
-  >         SonPage = SonPageInfo.value
-  >         SonPage.wait_for_load_state()
-  >         SonPage.bring_to_front()
-  >         ExtractSPInfo(SonPage)
-  >         SonPage.close()
+  >        Element_Blocks = FatherPage.query_selector_all(Xpath_FP_Et_List)
+  >        for element in Element_Blocks:
+  >            Title = element.query_selector(Xpath_FP_Et_Title).text_content()
+  >            Length = element.query_selector(Xpath_FP_Et_Length).text_content()
+  >            PlayNum = element.query_selector(Xpath_FP_Et_PlayNum).text_content()
+  >            with open('test.md', mode='a', encoding='utf-8') as f:
+  >                f.write('片名：' + Title + '\n' + '时长：' + Length + '\n' + '播放数：' + PlayNum + '\n')
+  >            # 打开二级页，二级页在新标签加载
+  >            with SaiContext.expect_page() as SonPageInfo:
+  >                element.click()
+  >            SonPage = SonPageInfo.value
+  >            SonPage.wait_for_load_state()
+  >            SonPage.bring_to_front()
+  >            ExtractSPInfo(SonPage)
+  >            SonPage.close()
   > 
   > # 二级页SonPage信息爬取
   > def ExtractSPInfo(SonPage):
-  >     Publish_Date = SonPage.query_selector(Xpath_SP_Publish_Date).text_content()
-  >     Thumb = SonPage.query_selector(Xpath_Thumb).text_content()
-  >     Publish_Date = Publish_Date.strip() 
-  >     with open('test.md', mode='a', encoding='utf-8') as f:
-  >         f.write('发布时间：' + Publish_Date + '\n' + '点赞数：' + Thumb + '\n\n' + '----' + '\n')
+  >        Publish_Date = SonPage.query_selector(Xpath_SP_Publish_Date).text_content()
+  >        Thumb = SonPage.query_selector(Xpath_Thumb).text_content()
+  >        Publish_Date = Publish_Date.strip() 
+  >        with open('test.md', mode='a', encoding='utf-8') as f:
+  >            f.write('发布时间：' + Publish_Date + '\n' + '点赞数：' + Thumb + '\n\n' + '----' + '\n')
   > 
   > def run(playwright: Playwright) -> None:
-  >     SaiBrowser, SaiContext, SaiPage = Initialize(WebSite)
-  >     TurnPage(SaiContext, SaiPage)
-  >     # 收尾
-  >     SaiPage.close()
-  >     SaiContext.close() 
-  >     SaiBrowser.close()
+  >        SaiBrowser, SaiContext, SaiPage = Initialize(WebSite)
+  >        TurnPage(SaiContext, SaiPage)
+  >        # 收尾
+  >        SaiPage.close()
+  >        SaiContext.close() 
+  >        SaiBrowser.close()
   > 
   > with sync_playwright() as playwright:
-  >     run(playwright)
+  >        run(playwright)
   > ```
   >
   > 
+
+
+
+----
+
+#### 爬CCP文章
+
+> ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310182349285.png)
+>
+> > 分析：一级页文章列表，二级页文章正文
+> >
+> > 思路：场景三，从一级页列表进入二级页爬取
+
+```python
+import random, os, html2text
+from playwright.sync_api import Playwright, sync_playwright
+
+# MarkDown文件目录
+MDdir = '/Users/jiangsai/Desktop'
+os.chdir(MDdir)
+MarkDownMaker = html2text.HTML2Text()
+MarkDownMaker.ignore_links = True
+# 待爬的第一个页面
+WebSite = 'http://cpc.people.com.cn/GB/64093/64387/'
+# 底部导航Xpath
+Xpath_Nav = '//div[@class="page"]'
+# 一级页FatherPage标题list
+Xpath_FP_Et_List = '//div[@class="fl"]/ul/li'
+# 一级页FatherPage每个标题
+Xpath_FP_Et_Title = '//a'
+# 二级页正文
+Xpath_SP_Article = '//div[@class="text_c"]'
+
+# 创建浏览器环境
+def Initialize(WebSite):
+    SaiBrowser = playwright.chromium.connect_over_cdp('http://localhost:9222')
+    SaiContext = SaiBrowser.contexts[0]
+    # SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
+    SaiPage = SaiContext.new_page()
+    SaiPage.goto(WebSite)
+    SaiPage.wait_for_load_state("networkidle")
+    SaiPage.bring_to_front()
+    return SaiBrowser, SaiContext, SaiPage
+
+# 翻页
+def TurnPage(SaiContext, SaiPage):
+    # 所有导航数字集合
+    All_Nav = set()
+    # 已点击导航数字集合
+    Clicked_Nav = set()
+    # 可点击导航数字集合，初始设置为1，即第一页
+    Able_Click_Nav = [1]
+    while len(Able_Click_Nav) > 0:
+        # 取最小导航数
+        To_Click_Nav = Able_Click_Nav[0]
+        # 点击最小导航数
+        # locator('text=1')模糊匹配1,01,10,11等;locator('text="1"')精确匹配1
+        SaiPage.locator(Xpath_Nav).locator('text="'+str(To_Click_Nav)+'"').click()
+        SaiPage.wait_for_timeout(random.randint(1000,3000))
+        # 刚点击的数字追加到「已点击导航数字集合」
+        Clicked_Nav.add(To_Click_Nav)
+        # 当前页导航列表
+        Current_Nav_list = SaiPage.query_selector_all(Xpath_Nav + '/*')
+        for i in Current_Nav_list:
+            Nav_num = i.text_content()
+            # 抽取出导航列表中的数字，「上一页」「下一页」这种非确定性导航都排除
+            if str(Nav_num).isdigit():
+                All_Nav.add(int(Nav_num))
+        # 可点击导航数字集合 = 所有导航数字集合 ∩ 已点击导航数字集合，再转换成列表
+        Able_Click_Nav= sorted(list(All_Nav.difference(Clicked_Nav)))
+        ExtractFPInfo(SaiContext, SaiPage)
+
+# 一级页FatherPage信息爬取
+def ExtractFPInfo(SaiContext, FatherPage):
+    Element_Blocks = FatherPage.query_selector_all(Xpath_FP_Et_List)
+    for element in Element_Blocks:
+        # 打开二级页，二级页在新标签加载
+        with SaiContext.expect_page() as SonPageInfo:
+            element.click()
+        SonPage = SonPageInfo.value
+        SonPage.wait_for_load_state()
+        SonPage.bring_to_front()
+        SonPage.wait_for_timeout(random.randint(1000,3000))
+        ExtractSPInfo(SonPage)
+        SonPage.close()
+
+# 二级页SonPage信息爬取
+def ExtractSPInfo(SonPage):
+    ArticleHtml = SonPage.query_selector(Xpath_SP_Article).inner_html()
+    Article = MarkDownMaker.handle(ArticleHtml)
+    with open('test.md', mode='a', encoding='utf-8') as f:
+        f.write(Article + '\n\n' + '----' + '\n')
+
+def run(playwright: Playwright) -> None:
+    SaiBrowser, SaiContext, SaiPage = Initialize(WebSite)
+    TurnPage(SaiContext, SaiPage)
+    # 收尾
+    SaiPage.close()
+    SaiContext.close() 
+    SaiBrowser.close()
+
+with sync_playwright() as playwright:
+    run(playwright)
+```
+
