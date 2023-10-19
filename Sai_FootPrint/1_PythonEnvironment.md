@@ -214,7 +214,21 @@
 >    >
 >    > > `"python.linting.enabled"`无法格式化python的缩进，因为对python而言，缩进是语法，语法错误是格式化工具是无效的
 >
-> 4. 改变当前python运行环境
+> 4. [Python代码美化工具](https://www.cnblogs.com/kint216/p/16004937.html)
+>
+>    > 1. `pip3 install black`
+>    >
+>    > 2. 打开vscode的settings，搜索format on save，然后勾选上
+>    >
+>    >     > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310191701944.png)
+>    >
+>    > 3. 再搜索python formatting provider，然后选择black
+>    >
+>    >     > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310191701805.png)
+>    >     >
+>    >     > 若搜不到，则直接去中settings.json修改
+>
+> 5. 改变当前python运行环境
 >
 >    1. CTRL+P打开搜索，输入""> select interpreter"
 >
@@ -224,7 +238,7 @@
 >
 >       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307051108205.png)
 >
-> 5. 设置当前debug调试配置
+> 6. 设置当前debug调试配置
 >
 >    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307062309938.png)
 >
@@ -261,28 +275,28 @@
 >    }
 >    ```
 >
-> 6. debug状态下交互调试
+> 7. debug状态下交互调试
 >
 >    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307062003989.png)
 >
-> 7. VSCode 代码无提示的解决办法
+> 8. VSCode 代码无提示的解决办法
 >
 >    > 点击右下角的当前文件类型，选择 "Auto Detect 自动检测"，等它加载一会即可自动提示
 >    >
 >    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307062003261.png)
 >
-> 8. unresolved import "xxx"
+> 9. unresolved import "xxx"
 >
 >    > code - preference - settings，搜索 jedi，勾选
 >
-> 9. 验证Python程序的运行环境
+> 10. 验证Python程序的运行环境
 >
 >    ```python
 >    import platform
 >    print("platform = ",platform.python_version())
 >    ```
 >
-> 10. vscode列选中
+> 11. vscode列选中
 >
 >     option+shift，光标拖动
 
