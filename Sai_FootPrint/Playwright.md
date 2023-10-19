@@ -1,13 +1,9 @@
 ##### 虚拟环境检查、配置，使用
 
 1. 查看当前系统下的虚拟环境，安装路径
-   
    > `conda info --envs`
-
 2. 创建名为 py3 的python3的虚拟环境
-   
    > `conda create -n py3 python=3.10`
-
 3. 激活虚拟环境py3
    
    > `conda activate py3`
@@ -17,34 +13,32 @@
    > `which python`
 
 5. 查看当前的虚拟环境的所有安装包
-   
    > `conda list`
-   
    
 
 ##### Playwright安装、配置，使用
 
 1. 为当前的虚拟环境安装playwright包
    
-   > - 查看此时要用的pip在哪个环境
-   >   
-   >   > 详见[Python 周边环境](Sai_FootPrint/1_PythonEnvironment.md)
-   >   > 
-   >   > `pip3 -V`
-   >   > 
-   >   > `conda install pip3`
-   > 
-   > - `pip3 install pytest-playwright`
+    > - 查看此时要用的pip在哪个环境
+    >   
+    >   > 详见[Python 周边环境](Sai_FootPrint/1_PythonEnvironment.md)
+    >   > 
+    >   > `pip3 -V`
+    >   > 
+    >   > `conda install pip3`
+    > 
+    > - `pip3 install pytest-playwright`
 
 2. 为playwright安装浏览器
-
-> `playwright install`
-
+   
+    > `playwright install`
+    
 3. 第一个录制脚本
 
-> `playwright codegen`
-> 
-> [教程](https://www.bilibili.com/video/BV1H24y1G745)
+    > `playwright codegen`
+    > 
+    > [教程](https://www.bilibili.com/video/BV1H24y1G745)
 
 ##### VScode配置，使用
 
@@ -114,7 +108,7 @@
   >   >   ```python
   >   >   # # 初始化一个浏览器（headless = False 有头浏览器；slow_mo = 3000 每个操作停3秒）
   >   >   # SaiBrowser = playwright.chromium.launch(headless = False, slow_mo = 3000)
-  >   >   
+  >   >             
   >   >   # # 加载本地cookie
   >   >   # # 若本地有cookie，则在SaiBrowser中创建一个context（网页管理器），并加载该cookie，实现免登陆；若本地没有，则在SaiBrowser中创建一个空的context
   >   >   # # 每个context是一个独立会话，用于环境隔离，每个context可使用1套代理，登录1套账号
@@ -123,13 +117,13 @@
   >   >   #     SaiContext = SaiBrowser.new_context(storage_state="state.json")
   >   >   # else:
   >   >   #     SaiContext = SaiBrowser.new_context()
-  >   >   
+  >   >             
   >   >   # 拦截SaiContext下所有页面的图片请求（凡含.png的链接，都当做是png图片）
   >   >   # SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
-  >   >   
+  >   >             
   >   >   # 初始化一个网页
   >   >   # SaiPage = SaiContext.new_page()
-  >   >   
+  >   >             
   >   >   # 拦截SaiPage这个页面的图片请求
   >   >   # SaiPage.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
   >   >   ```
@@ -505,132 +499,130 @@
 * #### 场景一：滚动加载 + 爬取一级页信息
 
 > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310171701388.png)
-> 
-> ```python
-> import os, html2text, re, random
-> from playwright.sync_api import Playwright, sync_playwright
-> 
-> # MarkDown文件目录
-> MDdir = "/Users/jiangsai/Desktop"
-> os.chdir(MDdir)
-> MarkDownMaker = html2text.HTML2Text()
-> MarkDownMaker.ignore_links = True
-> # 待爬的页面
-> WebSite = "https://zhuanlan.zhihu.com/p/607194926"
-> # 类型一：问答型
-> # 问题
-> Xpath_Answer = '//h1[@class="QuestionHeader-title"]'
-> # 问题描述
-> Xpath_Answer_Desc = '//div[@class="css-eew49z"]'
-> # 整个答案块
-> Xpath_Questions_Block = '//div[@role="list"]/div'
-> # 答案块中的答案list
-> Xpath_Questions = '//div[@role="list"]/*[not(@role="listitem")]'
-> # 答案块中的每个答案的作者
-> Xpath_Author = '//div[@class="AuthorInfo-head"]'
-> # 答案块中的每个答案的内容
-> Xpath_Question = (
->     '//span[@class="RichText ztext CopyrightRichText-richText css-117anjg"]'
-> )
-> # 类型二：专题型
-> Xpath_Article_Title = "//article/header/h1"
-> Xpath_Article_Content = '//article/div[@class="Post-RichTextContainer"]'
-> 
-> 
-> def Initialize(WebSite):
->     SaiBrowser = playwright.chromium.connect_over_cdp("http://localhost:9222")
->     SaiContext = SaiBrowser.contexts[0]
->     # SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
->     SaiPage = SaiContext.new_page()
->     SaiPage.goto(WebSite)
->     SaiPage.wait_for_load_state("networkidle")
->     SaiPage.bring_to_front()
->     return SaiBrowser, SaiContext, SaiPage
-> 
-> 
-> def SaiScroll(ScrollPage, ScrollTimes):
->     # 滚动加载更多内容，直到不再加载或者滚动了10次
->     NotEnd = True
->     ScrollTime = 1
->     while NotEnd and ScrollTime < ScrollTimes:
->         # 滚动前的页面高度
->         BeforeScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
->         ScrollTime += 1
->         for i in range(3):
->             # 滚动到页面底部
->             ScrollPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
->             # 微上划一下模拟人类
->             ScrollPage.keyboard.press("PageUp")
->             ScrollPage.wait_for_timeout(random.randint(1000, 3000))
->         # 滚动后的页面高度
->         AfterScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
->         if BeforeScrollHeight == AfterScrollHeight or ScrollTime >= ScrollTimes:
->             NotEnd = False
-> 
-> 
-> def ExtractQAInfo(WritePage):
->     # 问题部分
->     Answer = WritePage.query_selector(Xpath_Answer).text_content()
->     Answer_Desc = ""
->     # 判断问题描述是否存在，有些问题没有描述
->     if WritePage.locator(Xpath_Answer_Desc).count() != 0:
->         # 判断问题描述是否被收起
->         if WritePage.locator(Xpath_Answer_Desc + "//button").count() != 0:
->             WritePage.locator(Xpath_Answer_Desc + "//button").click()
->         # 因问题描述可能包含图片，故此处使用HTML2Text提取富文本
->         Answer_Content_Html = WritePage.query_selector(Xpath_Answer_Desc).inner_html()
->         Answer_Desc = MarkDownMaker.handle(Answer_Content_Html)
->     with open("test.md", mode="a", encoding="utf-8") as f:
->         f.write("### " + Answer + "\n" + "> " + Answer_Desc + "\n\n" + "----" + "\n")
->     # 答案部分
->     # 判断答案是否存在，有些问题没有答案
->     if WritePage.locator(Xpath_Questions_Block).count() != 0:
->         # 获取所有答案块
->         Elements = WritePage.query_selector_all(Xpath_Questions)
->         for element in Elements:
->             Author = element.query_selector(Xpath_Author).text_content()
->             # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
->             QuestionHtml = element.query_selector(Xpath_Question).inner_html()
->             Question = MarkDownMaker.handle(QuestionHtml)
->             with open("test.md", mode="a", encoding="utf-8") as f:
->                 f.write("##### " + Author + "\n" + Question + "----" + "\n")
-> 
-> 
-> def ExtractZLInfo(WritePage):
->     # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
->     Article_Title_Html = WritePage.query_selector(Xpath_Article_Title).inner_html()
->     Article_Title = MarkDownMaker.handle(Article_Title_Html)
->     Article_Content_Html = WritePage.query_selector(Xpath_Article_Content).inner_html()
->     Article_Content = MarkDownMaker.handle(Article_Content_Html)
->     with open("test.md", mode="a", encoding="utf-8") as f:
->         f.write(
->             "### " + Article_Title + "\n" + Article_Content + "\n\n" + "----" + "\n"
->         )
-> 
-> 
-> def run(playwright: Playwright) -> None:
->     SaiBrowser, SaiContext, SaiPage = Initialize(WebSite)
->     if "zhuanlan" in SaiPage.url:
->         # 专栏页面
->         ExtractZLInfo(SaiPage)
->     elif "zvideo" in SaiPage.url:
->         # 视频页面不抓取
->         pass
->     else:
->         # 问答页面
->         # 滚动搜索页获取更多数据
->         SaiScroll(SaiPage, 1)
->         # 写入MarkDown
->         ExtractQAInfo(SaiPage)
->     # 收尾
->     SaiPage.close()
->     SaiContext.close()
->     SaiBrowser.close()
-> 
-> 
-> with sync_playwright() as playwright:
->     run(playwright)
-> ```
+>
+
+```python
+import os, html2text, re, random
+from playwright.sync_api import Playwright, sync_playwright
+
+# MarkDown文件目录
+MDdir = "/Users/jiangsai/Desktop"
+os.chdir(MDdir)
+MarkDownMaker = html2text.HTML2Text()
+MarkDownMaker.ignore_links = True
+# 待爬的页面
+WebSite = "https://zhuanlan.zhihu.com/p/607194926"
+# 类型一：问答型
+# 问题
+Xpath_Answer = '//h1[@class="QuestionHeader-title"]'
+# 问题描述
+Xpath_Answer_Desc = '//div[@class="css-eew49z"]'
+# 整个答案块
+Xpath_Questions_Block = '//div[@role="list"]/div'
+# 答案块中的答案list
+Xpath_Questions = '//div[@role="list"]/*[not(@role="listitem")]'
+# 答案块中的每个答案的作者
+Xpath_Author = '//div[@class="AuthorInfo-head"]'
+# 答案块中的每个答案的内容
+Xpath_Question = (
+    '//span[@class="RichText ztext CopyrightRichText-richText css-117anjg"]'
+)
+# 类型二：专题型
+Xpath_Article_Title = "//article/header/h1"
+Xpath_Article_Content = '//article/div[@class="Post-RichTextContainer"]'
+
+
+def Initialize(WebSite):
+    SaiBrowser = playwright.chromium.connect_over_cdp("http://localhost:9222")
+    SaiContext = SaiBrowser.contexts[0]
+    # SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
+    SaiPage = SaiContext.new_page()
+    SaiPage.goto(WebSite)
+    SaiPage.wait_for_load_state("networkidle")
+    SaiPage.bring_to_front()
+    return SaiBrowser, SaiContext, SaiPage
+
+
+def SaiScroll(ScrollPage, ScrollTimes):
+    # 滚动加载更多内容，直到不再加载或者滚动了10次
+    NotEnd = True
+    ScrollTime = 1
+    while NotEnd and ScrollTime < ScrollTimes:
+        # 滚动前的页面高度
+        BeforeScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
+        ScrollTime += 1
+        for i in range(3):
+            # 滚动到页面底部
+            ScrollPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
+            # 微上划一下模拟人类
+            ScrollPage.keyboard.press("PageUp")
+            ScrollPage.wait_for_timeout(random.randint(1000, 3000))
+        # 滚动后的页面高度
+        AfterScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
+        if BeforeScrollHeight == AfterScrollHeight or ScrollTime >= ScrollTimes:
+            NotEnd = False
+
+def ExtractQAInfo(WritePage):
+    # 问题部分
+    Answer = WritePage.query_selector(Xpath_Answer).text_content()
+    Answer_Desc = ""
+    # 判断问题描述是否存在，有些问题没有描述
+    if WritePage.locator(Xpath_Answer_Desc).count() != 0:
+        # 判断问题描述是否被收起
+        if WritePage.locator(Xpath_Answer_Desc + "//button").count() != 0:
+            WritePage.locator(Xpath_Answer_Desc + "//button").click()
+        # 因问题描述可能包含图片，故此处使用HTML2Text提取富文本
+        Answer_Content_Html = WritePage.query_selector(Xpath_Answer_Desc).inner_html()
+        Answer_Desc = MarkDownMaker.handle(Answer_Content_Html)
+    with open("test.md", mode="a", encoding="utf-8") as f:
+        f.write("### " + Answer + "\n" + "> " + Answer_Desc + "\n\n" + "----" + "\n")
+    # 答案部分
+    # 判断答案是否存在，有些问题没有答案
+    if WritePage.locator(Xpath_Questions_Block).count() != 0:
+        # 获取所有答案块
+        Elements = WritePage.query_selector_all(Xpath_Questions)
+        for element in Elements:
+            Author = element.query_selector(Xpath_Author).text_content()
+            # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
+            QuestionHtml = element.query_selector(Xpath_Question).inner_html()
+            Question = MarkDownMaker.handle(QuestionHtml)
+            with open("test.md", mode="a", encoding="utf-8") as f:
+                f.write("##### " + Author + "\n" + Question + "----" + "\n")
+
+def ExtractZLInfo(WritePage):
+    # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
+    Article_Title_Html = WritePage.query_selector(Xpath_Article_Title).inner_html()
+    Article_Title = MarkDownMaker.handle(Article_Title_Html)
+    Article_Content_Html = WritePage.query_selector(Xpath_Article_Content).inner_html()
+    Article_Content = MarkDownMaker.handle(Article_Content_Html)
+    with open("test.md", mode="a", encoding="utf-8") as f:
+        f.write(
+            "### " + Article_Title + "\n" + Article_Content + "\n\n" + "----" + "\n"
+        )
+
+def run(playwright: Playwright) -> None:
+    SaiBrowser, SaiContext, SaiPage = Initialize(WebSite)
+    if "zhuanlan" in SaiPage.url:
+        # 专栏页面
+        ExtractZLInfo(SaiPage)
+    elif "zvideo" in SaiPage.url:
+        # 视频页面不抓取
+        pass
+    else:
+        # 问答页面
+        # 滚动搜索页获取更多数据
+        SaiScroll(SaiPage, 1)
+        # 写入MarkDown
+        ExtractQAInfo(SaiPage)
+    # 收尾
+    SaiPage.close()
+    SaiContext.close()
+    SaiBrowser.close()
+
+
+with sync_playwright() as playwright:
+    run(playwright)
+```
 
 * #### 场景二：滚动加载 + 爬取二级页信息
 
@@ -638,172 +630,173 @@
 > 
 > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310181706425.png)
 > 
+
+```
+import os, html2text, re, random
+from playwright.sync_api import Playwright, sync_playwright
+
+# MarkDown文件目录
+MDdir = "/Users/jiangsai/Desktop"
+os.chdir(MDdir)
+MarkDownMaker = html2text.HTML2Text()
+MarkDownMaker.ignore_links = True
+# 待爬的第一个页面
+WebSite = "https://www.zhihu.com/search?q=%E4%B8%93%E9%A2%98"
+# 搜索页结果list
+Xpath_Search_Results = (
+    '//div[@class="List"]/div/*[not(@class="Card SearchResult-Card")]'
+)
+# 搜索页每个结果标题的url
+Xpath_Search_Result_url = '//h2[@class="ContentItem-title"]//div/a'
+# 类型一：问答型
+# 二级页「查看全部回答」（从搜索页点击进入问答页，哪怕只有1个答案，也会展示这个按钮）
+Xpath_Check_All = '//div[@class="Card ViewAll"][1]/a'
+# 二级页问题
+Xpath_Answer = '//h1[@class="QuestionHeader-title"]'
+# 二级页问题描述
+Xpath_Answer_Desc = '//div[@class="css-eew49z"]'
+# 二级页整个答案块
+Xpath_Questions_Block = '//div[@role="list"]/div'
+# 二级页答案块中的答案list
+Xpath_Questions = '//div[@role="list"]/*[not(@role="listitem")]'
+# 二级页答案块中的每个答案的作者
+Xpath_Author = '//div[@class="AuthorInfo-head"]'
+# 二级页答案块中的每个答案的内容
+Xpath_Question = (
+    '//span[@class="RichText ztext CopyrightRichText-richText css-117anjg"]'
+)
+# 类型二：专题型
+Xpath_Article_Title = "//article/header/h1"
+Xpath_Article_Content = '//article/div[@class="Post-RichTextContainer"]'
+
+
+def Initialize(WebSite):
+    SaiBrowser = playwright.chromium.connect_over_cdp("http://localhost:9222")
+    SaiContext = SaiBrowser.contexts[0]
+    SaiContext.route(
+        re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort()
+    )
+    SaiPage = SaiContext.new_page()
+    SaiPage.goto(WebSite)
+    SaiPage.wait_for_load_state("networkidle")
+    SaiPage.bring_to_front()
+    return SaiBrowser, SaiContext, SaiPage
+
+
+def SaiScroll(ScrollPage, ScrollTimes):
+    # 滚动加载更多内容，直到不再加载或者滚动了10次
+    NotEnd = True
+    ScrollTime = 1
+    while NotEnd and ScrollTime < ScrollTimes:
+        # 滚动前的页面高度
+        BeforeScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
+        ScrollTime += 1
+        for i in range(3):
+            # 滚动到页面底部
+            ScrollPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
+            # 微上划一下模拟人类
+            ScrollPage.keyboard.press("PageUp")
+            ScrollPage.wait_for_timeout(random.randint(1000, 3000))
+        # 滚动后的页面高度
+        AfterScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
+        if BeforeScrollHeight == AfterScrollHeight or ScrollTime >= ScrollTimes:
+            NotEnd = False
+
+
+def ExtractQAInfo(WritePage):
+    # 问题部分
+    Answer = WritePage.query_selector(Xpath_Answer).text_content()
+    Answer_Desc = ""
+    # 判断问题描述是否存在，有些问题没有描述
+    if WritePage.locator(Xpath_Answer_Desc).count() != 0:
+        # 判断问题描述是否被收起
+        if WritePage.locator(Xpath_Answer_Desc + "//button").count() != 0:
+            WritePage.locator(Xpath_Answer_Desc + "//button").click()
+        # 因问题描述可能包含图片，故此处使用HTML2Text提取富文本
+        Answer_Content_Html = WritePage.query_selector(Xpath_Answer_Desc).inner_html()
+        Answer_Desc = MarkDownMaker.handle(Answer_Content_Html)
+        with open("test.md", mode="a", encoding="utf-8") as f:
+            f.write(
+                "### " + Answer + "\n" + "> " + Answer_Desc + "\n\n" + "----" + "\n"
+            )
+        # 答案部分
+        # 判断答案是否存在，有些问题没有答案
+        if WritePage.locator(Xpath_Questions_Block).count() != 0:
+            # 获取所有答案块
+            Elements = WritePage.query_selector_all(Xpath_Questions)
+            for element in Elements:
+                Author = element.query_selector(Xpath_Author).text_content()
+                # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
+                QuestionHtml = element.query_selector(Xpath_Question).inner_html()
+                Question = MarkDownMaker.handle(QuestionHtml)
+                with open("test.md", mode="a", encoding="utf-8") as f:
+                    f.write("##### " + Author + "\n" + Question + "----" + "\n")
+
+
+# 提取专栏文章
+def ExtractZLInfo(WritePage):
+    # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
+    Article_Title_Html = WritePage.query_selector(Xpath_Article_Title).inner_html()
+    Article_Title = MarkDownMaker.handle(Article_Title_Html)
+    Article_Content_Html = WritePage.query_selector(Xpath_Article_Content).inner_html()
+    Article_Content = MarkDownMaker.handle(Article_Content_Html)
+    with open("test.md", mode="a", encoding="utf-8") as f:
+        f.write(
+            "### " + Article_Title + "\n" + Article_Content + "\n\n" + "----" + "\n"
+        )
+
+
+def run(playwright: Playwright) -> None:
+    # 浏览器预备
+    SaiBrowser, SaiContext, SaiPage = Initialize(WebSite)
+    # 滚动搜索页获取更多数据
+    SaiScroll(SaiPage, 2)
+    # 获取搜索结果链接
+    Elements = SaiPage.query_selector_all(Xpath_Search_Results)
+    for element in Elements:
+        if element.query_selector(Xpath_Search_Result_url) is not None:
+            with SaiContext.expect_page() as SonPageInfo:
+                element.query_selector(Xpath_Search_Result_url).click()
+            SonPage = SonPageInfo.value
+            SonPage.wait_for_load_state()
+            SonPage.bring_to_front()
+            if "zhuanlan" in SonPage.url:
+                # 专栏页面
+                ExtractZLInfo(SonPage)
+                SonPage.close()
+            elif "zvideo" in SonPage.url:
+                # 视频页面不抓取
+                pass
+            else:
+                # 问答页面
+                # 点击「查看全部回答」
+                SonPage.locator(Xpath_Check_All).click()
+                SonPage.wait_for_load_state()
+                # 滚动搜索页获取更多数据
+                SaiScroll(SonPage, 1)
+                # 写入MarkDown
+                ExtractQAInfo(SonPage)
+                SonPage.close()
+    # 收尾
+    SaiContext.close()
+    SaiBrowser.close()
+
+
+with sync_playwright() as playwright:
+    run(playwright)
+```
+
+上述代码直接模拟点击，还可从搜索结果中抽取出结果的url，逐个打开url来进入二级页
+
+> ```python
+> Elements = SaiPage.query_selector_all(Xpath_Search_Results)
+> for element in Elements:
+>     # 判断搜索页的每个节点是否有URL，有就提取出链接，通过链接打开
+>     if element.query_selector(Xpath) is not None:
+>         elementUrl = element.query_selector(Xpath).get_attribute('content')
+>         SonPage = SaiContext.new_page()
+>         SonPage.goto(elementUrl)
 > ```
-> import os, html2text, re, random
-> from playwright.sync_api import Playwright, sync_playwright
-> 
-> # MarkDown文件目录
-> MDdir = "/Users/jiangsai/Desktop"
-> os.chdir(MDdir)
-> MarkDownMaker = html2text.HTML2Text()
-> MarkDownMaker.ignore_links = True
-> # 待爬的第一个页面
-> WebSite = "https://www.zhihu.com/search?q=%E4%B8%93%E9%A2%98"
-> # 搜索页结果list
-> Xpath_Search_Results = (
->     '//div[@class="List"]/div/*[not(@class="Card SearchResult-Card")]'
-> )
-> # 搜索页每个结果标题的url
-> Xpath_Search_Result_url = '//h2[@class="ContentItem-title"]//div/a'
-> # 类型一：问答型
-> # 二级页「查看全部回答」（从搜索页点击进入问答页，哪怕只有1个答案，也会展示这个按钮）
-> Xpath_Check_All = '//div[@class="Card ViewAll"][1]/a'
-> # 二级页问题
-> Xpath_Answer = '//h1[@class="QuestionHeader-title"]'
-> # 二级页问题描述
-> Xpath_Answer_Desc = '//div[@class="css-eew49z"]'
-> # 二级页整个答案块
-> Xpath_Questions_Block = '//div[@role="list"]/div'
-> # 二级页答案块中的答案list
-> Xpath_Questions = '//div[@role="list"]/*[not(@role="listitem")]'
-> # 二级页答案块中的每个答案的作者
-> Xpath_Author = '//div[@class="AuthorInfo-head"]'
-> # 二级页答案块中的每个答案的内容
-> Xpath_Question = (
->     '//span[@class="RichText ztext CopyrightRichText-richText css-117anjg"]'
-> )
-> # 类型二：专题型
-> Xpath_Article_Title = "//article/header/h1"
-> Xpath_Article_Content = '//article/div[@class="Post-RichTextContainer"]'
-> 
-> 
-> def Initialize(WebSite):
->     SaiBrowser = playwright.chromium.connect_over_cdp("http://localhost:9222")
->     SaiContext = SaiBrowser.contexts[0]
->     SaiContext.route(
->         re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort()
->     )
->     SaiPage = SaiContext.new_page()
->     SaiPage.goto(WebSite)
->     SaiPage.wait_for_load_state("networkidle")
->     SaiPage.bring_to_front()
->     return SaiBrowser, SaiContext, SaiPage
-> 
-> 
-> def SaiScroll(ScrollPage, ScrollTimes):
->     # 滚动加载更多内容，直到不再加载或者滚动了10次
->     NotEnd = True
->     ScrollTime = 1
->     while NotEnd and ScrollTime < ScrollTimes:
->         # 滚动前的页面高度
->         BeforeScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
->         ScrollTime += 1
->         for i in range(3):
->             # 滚动到页面底部
->             ScrollPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
->             # 微上划一下模拟人类
->             ScrollPage.keyboard.press("PageUp")
->             ScrollPage.wait_for_timeout(random.randint(1000, 3000))
->         # 滚动后的页面高度
->         AfterScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
->         if BeforeScrollHeight == AfterScrollHeight or ScrollTime >= ScrollTimes:
->             NotEnd = False
-> 
-> 
-> def ExtractQAInfo(WritePage):
->     # 问题部分
->     Answer = WritePage.query_selector(Xpath_Answer).text_content()
->     Answer_Desc = ""
->     # 判断问题描述是否存在，有些问题没有描述
->     if WritePage.locator(Xpath_Answer_Desc).count() != 0:
->         # 判断问题描述是否被收起
->         if WritePage.locator(Xpath_Answer_Desc + "//button").count() != 0:
->             WritePage.locator(Xpath_Answer_Desc + "//button").click()
->         # 因问题描述可能包含图片，故此处使用HTML2Text提取富文本
->         Answer_Content_Html = WritePage.query_selector(Xpath_Answer_Desc).inner_html()
->         Answer_Desc = MarkDownMaker.handle(Answer_Content_Html)
->         with open("test.md", mode="a", encoding="utf-8") as f:
->             f.write(
->                 "### " + Answer + "\n" + "> " + Answer_Desc + "\n\n" + "----" + "\n"
->             )
->         # 答案部分
->         # 判断答案是否存在，有些问题没有答案
->         if WritePage.locator(Xpath_Questions_Block).count() != 0:
->             # 获取所有答案块
->             Elements = WritePage.query_selector_all(Xpath_Questions)
->             for element in Elements:
->                 Author = element.query_selector(Xpath_Author).text_content()
->                 # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
->                 QuestionHtml = element.query_selector(Xpath_Question).inner_html()
->                 Question = MarkDownMaker.handle(QuestionHtml)
->                 with open("test.md", mode="a", encoding="utf-8") as f:
->                     f.write("##### " + Author + "\n" + Question + "----" + "\n")
-> 
-> 
-> # 提取专栏文章
-> def ExtractZLInfo(WritePage):
->     # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
->     Article_Title_Html = WritePage.query_selector(Xpath_Article_Title).inner_html()
->     Article_Title = MarkDownMaker.handle(Article_Title_Html)
->     Article_Content_Html = WritePage.query_selector(Xpath_Article_Content).inner_html()
->     Article_Content = MarkDownMaker.handle(Article_Content_Html)
->     with open("test.md", mode="a", encoding="utf-8") as f:
->         f.write(
->             "### " + Article_Title + "\n" + Article_Content + "\n\n" + "----" + "\n"
->         )
-> 
-> 
-> def run(playwright: Playwright) -> None:
->     # 浏览器预备
->     SaiBrowser, SaiContext, SaiPage = Initialize(WebSite)
->     # 滚动搜索页获取更多数据
->     SaiScroll(SaiPage, 2)
->     # 获取搜索结果链接
->     Elements = SaiPage.query_selector_all(Xpath_Search_Results)
->     for element in Elements:
->         if element.query_selector(Xpath_Search_Result_url) is not None:
->             with SaiContext.expect_page() as SonPageInfo:
->                 element.query_selector(Xpath_Search_Result_url).click()
->             SonPage = SonPageInfo.value
->             SonPage.wait_for_load_state()
->             SonPage.bring_to_front()
->             if "zhuanlan" in SonPage.url:
->                 # 专栏页面
->                 ExtractZLInfo(SonPage)
->                 SonPage.close()
->             elif "zvideo" in SonPage.url:
->                 # 视频页面不抓取
->                 pass
->             else:
->                 # 问答页面
->                 # 点击「查看全部回答」
->                 SonPage.locator(Xpath_Check_All).click()
->                 SonPage.wait_for_load_state()
->                 # 滚动搜索页获取更多数据
->                 SaiScroll(SonPage, 1)
->                 # 写入MarkDown
->                 ExtractQAInfo(SonPage)
->                 SonPage.close()
->     # 收尾
->     SaiContext.close()
->     SaiBrowser.close()
-> 
-> 
-> with sync_playwright() as playwright:
->     run(playwright)
-> ```
-> 
-> * 上述代码直接模拟点击，还可从搜索结果中抽取出结果的url，逐个打开url来进入二级页
->   
->   > ```python
->   > Elements = SaiPage.query_selector_all(Xpath_Search_Results)
->   >    for element in Elements:
->   >        # 判断搜索页的每个节点是否有URL，有就提取出链接，通过链接打开
->   >        if element.query_selector(Xpath) is not None:
->   >            elementUrl = element.query_selector(Xpath).get_attribute('content')
->   >            SonPage = SaiContext.new_page()
->   >            SonPage.goto(elementUrl)
->   > ```
 
 * #### 场景三：翻页+提取一级页信息&二级页信息
 
@@ -1014,3 +1007,115 @@ def run(playwright: Playwright) -> None:
 with sync_playwright() as playwright:
     run(playwright)
 ```
+
+#### 爬Quora
+
+```python
+import os, html2text, re, random
+from playwright.sync_api import Playwright, sync_playwright
+
+# MarkDown文件目录
+MDdir = "/Users/jiangsai/Desktop"
+os.chdir(MDdir)
+MarkDownMaker = html2text.HTML2Text()
+MarkDownMaker.ignore_links = True
+# 待爬的页面
+WebSite = "https://ethology.quora.com/What-is-the-most-heroic-and-touching-gesture-ever-made-by-a-human-for-an-animal"
+# 类型一：问答型
+# 问题
+Xpath_Answer = '//div[@class="q-text puppeteer_test_question_title"]'
+# 问题描述
+# Xpath_Answer_Desc = '//div[@class="css-eew49z"]'
+# 整个答案块
+# Xpath_Questions_Block = '//div[@role="list"]/div'
+# 答案块中的答案list
+Xpath_Questions = '//*[@id="mainContent"]/div/div[2]/div'
+# 答案块中的每个答案的作者
+Xpath_Author = "//div/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div/div/div/div/div[2]/div[1]/span[1]"
+# 答案块中的每个答案的内容
+Xpath_Question = "//div/div/div/div/div/div[1]/div[2]/div/div[1]/div[2]/div"
+
+
+def Initialize(WebSite):
+    SaiBrowser = playwright.chromium.connect_over_cdp("http://localhost:9222")
+    SaiContext = SaiBrowser.contexts[0]
+    # SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
+    SaiPage = SaiContext.new_page()
+    SaiPage.goto(WebSite)
+    SaiPage.wait_for_load_state("networkidle")
+    SaiPage.bring_to_front()
+    return SaiBrowser, SaiContext, SaiPage
+
+
+def SaiScroll(ScrollPage, ScrollTimes):
+    # 滚动加载更多内容，直到不再加载或者滚动了10次
+    NotEnd = True
+    ScrollTime = 1
+    while NotEnd and ScrollTime < ScrollTimes:
+        # 滚动前的页面高度
+        BeforeScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
+        ScrollTime += 1
+        for i in range(3):
+            # 滚动到页面底部
+            ScrollPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
+            # 微上划一下模拟人类
+            ScrollPage.keyboard.press("PageUp")
+            ScrollPage.wait_for_timeout(random.randint(1000, 3000))
+        # 滚动后的页面高度
+        AfterScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
+        if BeforeScrollHeight == AfterScrollHeight or ScrollTime >= ScrollTimes:
+            NotEnd = False
+    # 点开每一个答案的「(more)」来查看更多
+    MoreClicks = ScrollPage.query_selector_all('text="(more)"')
+    for eliment in MoreClicks:
+        eliment.click()
+        ScrollPage.wait_for_timeout(random.randint(1000, 3000))
+    return ScrollPage
+
+
+def ExtractQAInfo(WritePage):
+    # 问题部分
+    Answer = WritePage.query_selector(Xpath_Answer).text_content()
+    Answer_Desc = ""
+    # # 判断问题描述是否存在，有些问题没有描述
+    # if WritePage.locator(Xpath_Answer_Desc).count() != 0:
+    #     # 判断问题描述是否被收起
+    #     if WritePage.locator(Xpath_Answer_Desc + "//button").count() != 0:
+    #         WritePage.locator(Xpath_Answer_Desc + "//button").click()
+    #     # 因问题描述可能包含图片，故此处使用HTML2Text提取富文本
+    #     Answer_Content_Html = WritePage.query_selector(Xpath_Answer_Desc).inner_html()
+    #     Answer_Desc = MarkDownMaker.handle(Answer_Content_Html)
+    with open("test.md", mode="a", encoding="utf-8") as f:
+        f.write("### " + Answer + "\n" + "> " + Answer_Desc + "\n\n" + "----" + "\n")
+    # 答案部分
+    Elements = WritePage.query_selector_all(Xpath_Questions)
+    # 分析源码发现Elements的第1个和最后一个都不是答案，故删除
+    del Elements[0]
+    del Elements[-1]
+    for element in Elements:
+        # 有些答案莫名没加载出来，就不要这个答案了
+        if element.query_selector(Xpath_Author) is not None:
+            Author = element.query_selector(Xpath_Author).text_content()
+            # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
+            QuestionHtml = element.query_selector(Xpath_Question).inner_html()
+            Question = MarkDownMaker.handle(QuestionHtml)
+            with open("test.md", mode="a", encoding="utf-8") as f:
+                f.write("##### " + Author + "\n" + Question + "----" + "\n")
+
+
+def run(playwright: Playwright) -> None:
+    SaiBrowser, SaiContext, SaiPage = Initialize(WebSite)
+    # 滚动搜索页获取更多数据
+    SaiPage = SaiScroll(SaiPage, 5)
+    # 写入MarkDown
+    ExtractQAInfo(SaiPage)
+    # 收尾
+    SaiPage.close()
+    SaiContext.close()
+    SaiBrowser.close()
+
+
+with sync_playwright() as playwright:
+    run(playwright)
+```
+
