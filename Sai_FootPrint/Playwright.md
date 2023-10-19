@@ -108,7 +108,7 @@
   >   >   ```python
   >   >   # # 初始化一个浏览器（headless = False 有头浏览器；slow_mo = 3000 每个操作停3秒）
   >   >   # SaiBrowser = playwright.chromium.launch(headless = False, slow_mo = 3000)
-  >   >             
+  >   >               
   >   >   # # 加载本地cookie
   >   >   # # 若本地有cookie，则在SaiBrowser中创建一个context（网页管理器），并加载该cookie，实现免登陆；若本地没有，则在SaiBrowser中创建一个空的context
   >   >   # # 每个context是一个独立会话，用于环境隔离，每个context可使用1套代理，登录1套账号
@@ -117,13 +117,13 @@
   >   >   #     SaiContext = SaiBrowser.new_context(storage_state="state.json")
   >   >   # else:
   >   >   #     SaiContext = SaiBrowser.new_context()
-  >   >             
+  >   >               
   >   >   # 拦截SaiContext下所有页面的图片请求（凡含.png的链接，都当做是png图片）
   >   >   # SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
-  >   >             
+  >   >               
   >   >   # 初始化一个网页
   >   >   # SaiPage = SaiContext.new_page()
-  >   >             
+  >   >               
   >   >   # 拦截SaiPage这个页面的图片请求
   >   >   # SaiPage.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
   >   >   ```
@@ -1010,6 +1010,9 @@ with sync_playwright() as playwright:
 
 #### 爬Quora
 
+> * quora得特点是html层级极多，还经常变，每次爬的时候，更新一下`Xpath_Questions`和`Xpath_Question`即可
+> * `xpath`就找元素最顶层的`div`即可
+
 ```python
 import os, html2text, re, random
 from playwright.sync_api import Playwright, sync_playwright
@@ -1020,20 +1023,20 @@ os.chdir(MDdir)
 MarkDownMaker = html2text.HTML2Text()
 MarkDownMaker.ignore_links = True
 # 待爬的页面
-WebSite = "https://ethology.quora.com/What-is-the-most-heroic-and-touching-gesture-ever-made-by-a-human-for-an-animal"
-# 类型一：问答型
+WebSite = "https://www.quora.com/How-does-culture-influence-human-behavior"
 # 问题
 Xpath_Answer = '//div[@class="q-text puppeteer_test_question_title"]'
-# 问题描述
-# Xpath_Answer_Desc = '//div[@class="css-eew49z"]'
-# 整个答案块
-# Xpath_Questions_Block = '//div[@role="list"]/div'
 # 答案块中的答案list
-Xpath_Questions = '//*[@id="mainContent"]/div/div[2]/div'
+Xpath_Questions = '//*[@id="mainContent"]/div[3]/div'
 # 答案块中的每个答案的作者
-Xpath_Author = "//div/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div/div/div/div/div[2]/div[1]/span[1]"
+Xpath_Author = (
+    '//div[@class="q-inlineFlex qu-alignItems--center qu-wordBreak--break-word"]'
+)
 # 答案块中的每个答案的内容
-Xpath_Question = "//div/div/div/div/div/div[1]/div[2]/div/div[1]/div[2]/div"
+Xpath_Question = (
+    '//div[@class="q-box spacing_log_answer_content puppeteer_test_answer_content"]'
+)
+
 
 
 def Initialize(WebSite):

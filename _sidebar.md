@@ -20,12 +20,14 @@
   
   * [PlayWright](Sai_FootPrint/Playwright.md)
   
+  * [Xpath](Sai_FootPrint/xpath.md)
+  
   * [初级工具](Sai_FootPrint/2_WebCrawlerBasicTool.md)
   
   * [初级示例](Sai_FootPrint/2_WebCrawlerBasicCase.md)
-  
-  * [中级Scrapy](Sai_FootPrint/2_WebCrawlerScrapy.md)
 
+  * [中级Scrapy](Sai_FootPrint/2_WebCrawlerScrapy.md)
+  
   * [中级Ajax](Sai_FootPrint/2_WebCrawlerAjax.md)
   
   * [中级Selenium](Sai_FootPrint/2_WebCrawlerSelenium.md)
