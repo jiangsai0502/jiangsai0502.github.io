@@ -36,8 +36,6 @@
    > 
    > - `pip3 install pytest-playwright`
 
-> * 
-
 2. 为playwright安装浏览器
 
 > `playwright install`
