@@ -147,21 +147,25 @@
 
    **特殊定位案例**
 
-   > 获取具有属性`target`的所有`a`元素
+   > 1. 获取具有属性`target`的所有`a`元素
    >
-   > `//a[@target]`
+   >    `//a[@target]`
    >
-   > 1. 获取定位元素的文本值
+   >    1. 获取定位元素的文本值
    >
-   >    `//a[@target]/text()`
+   >       `//a[@target]/text()`
    >
-   > 2. 获取定位元素的属性值
+   >    2. 获取定位元素的属性值
    >
-   >    `//a[@target]/@target`
+   >       `//a[@target]/@target`
    >
-   >    `//a[@target]/@class`
+   >       `//a[@target]/@class`
    >
-   >    `//a[@target]/@href`
+   >       `//a[@target]/@href`
+   >
+   > 2. 获取没有属性`target`的所有`a`元素
+   >
+   >    `//a[not(@target)]`
 
    **案例**
 

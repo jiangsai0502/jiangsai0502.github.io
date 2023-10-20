@@ -64,13 +64,13 @@
   > from playwright.sync_api import Playwright, sync_playwright, expect
   > from bs4 import BeautifulSoup
   > ```
-  > 
+  >
   > * `def run(playwright: Playwright) -> None:`
-  >   
+  >
   >   > 浏览器环境
-  >   > 
+  >   >
   >   > * 方式一：Chrome本地浏览器（模拟完全真实场景）
-  >   >   
+  >   >
   >   >   > terminal操作部分
   >   >   > 
   >   >   > 1. 查看9222端口是否被占用
@@ -102,13 +102,13 @@
   >   >   > SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
   >   >   > SaiPage = SaiContext.new_page()
   >   >   > ```
-  >   > 
+  >   >
   >   > * 方式二：Playwright无头浏览器（反爬网站能识别）
-  >   >   
+  >   >
   >   >   ```python
   >   >   # # 初始化一个浏览器（headless = False 有头浏览器；slow_mo = 3000 每个操作停3秒）
   >   >   # SaiBrowser = playwright.chromium.launch(headless = False, slow_mo = 3000)
-  >   >               
+  >   >     
   >   >   # # 加载本地cookie
   >   >   # # 若本地有cookie，则在SaiBrowser中创建一个context（网页管理器），并加载该cookie，实现免登陆；若本地没有，则在SaiBrowser中创建一个空的context
   >   >   # # 每个context是一个独立会话，用于环境隔离，每个context可使用1套代理，登录1套账号
@@ -117,90 +117,90 @@
   >   >   #     SaiContext = SaiBrowser.new_context(storage_state="state.json")
   >   >   # else:
   >   >   #     SaiContext = SaiBrowser.new_context()
-  >   >               
+  >   >     
   >   >   # 拦截SaiContext下所有页面的图片请求（凡含.png的链接，都当做是png图片）
   >   >   # SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
-  >   >               
+  >   >     
   >   >   # 初始化一个网页
   >   >   # SaiPage = SaiContext.new_page()
-  >   >               
+  >   >     
   >   >   # 拦截SaiPage这个页面的图片请求
   >   >   # SaiPage.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
   >   >   ```
-  >   >   
+  >   >
   >   >   > `SaiContext.route()`和 `SaiPage.route()`的区别：前者应用于 `SaiContext`下的所有页面，后者只应用于 `SaiPage`这一个页面
-  >   > 
+  >   >
   >   > 页面交互
-  >   > 
+  >   >
   >   > * 打开一个网址
-  >   >   
+  >   >
   >   >   `SaiPage.goto("https://www.zhihu.com/question/22543815")`
-  >   > 
+  >   >
   >   > * 等待页面加载，直至加载完成
-  >   >   
+  >   >
   >   >   `SaiPage.wait_for_load_state("networkidle")`
-  >   > 
+  >   >
   >   > * 将这个tab页置于顶部
-  >   >   
+  >   >
   >   >   `SaiPage.bring_to_front()`
-  >   > 
+  >   >
   >   > * 页面刷新
-  >   >   
+  >   >
   >   >   `SaiPage.reload()`
-  >   > 
+  >   >
   >   > * 页面后退
-  >   >   
+  >   >
   >   >   `SaiPage.go_back()`
-  >   > 
+  >   >
   >   > * 页面前进
-  >   >   
+  >   >
   >   >   `SaiPage.go_forward()`
-  >   > 
+  >   >
   >   > * 鼠标悬停
-  >   >   
+  >   >
   >   >   > 所有 `//`开头的表达式都会默认为 XPath
-  >   >   
+  >   >
   >   >   `SaiPage.locator('//div[@class="Question"]').hover()`
-  >   > 
+  >   >
   >   > * 键盘输入
-  >   >   
+  >   >
   >   >   1. 模拟字符串输入
-  >   >      
+  >   >
   >   >      `SaiPage.locator('//*[@id="Popover2"]').type('technical')`
-  >   >   
+  >   >
   >   >   2. 模拟按键输入
-  >   >      
+  >   >
   >   >      > `F(1-12)`,`数字(0-9)`,`Key(a-z、A-Z)大小写敏感`,`Backspace(向左删除)`,`Delete(向右删除)`,`Tab`,`Escape`,`End`,`Enter`,`Home`,`Insert`,`PageUp、PageDown`,`ArrowUp、ArrowDown、ArrowLeft、ArrowRight`
-  >   >      
+  >   >
   >   >      `SaiPage.locator('//*[@id="Popover2"]').press("Z")`
-  >   >      
+  >   >
   >   >      `SaiPage.locator('//*[@id="Popover2"]').press("Delete")`
-  >   >      
+  >   >
   >   >      `SaiPage.keyboard.press('Enter')`
-  >   >   
+  >   >
   >   >   3. 模拟组合键输入
-  >   >      
+  >   >
   >   >      > `Shift`, `Control`,` Alt`, `Meta(Meta = Win/Cmd 键)`
   >   >      > [其他的按键参考这里](https://playwright.dev/python/docs/api/class-keyboard)
-  >   >      
+  >   >
   >   >      全选 `Command+A`：`SaiPage.keyboard.press("Meta+A") `
-  >   > 
+  >   >
   >   > * 鼠标点击
-  >   > 
+  >   >
   >   > `SaiPage.locator('//button[@class="SearchBar"]').click()`
-  >   > 
+  >   >
   >   > * 页面滚动
-  >   >   
+  >   >
   >   >   1. 滚动指定高度
-  >   >      
+  >   >
   >   >      > `page.mouse.wheel(向右滚动长度,向下滚动长度)`
-  >   >      
+  >   >
   >   >      `page.mouse.wheel(0,7000)`
-  >   >   
+  >   >
   >   >   2. 滚动到页面底部
-  >   >      
+  >   >
   >   >      `page.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")`
-  >   >   
+  >   >
   >   >   ```python
   >   >   # 滚动加载更多内容，直到不再加载
   >   >   NotEnd = True
@@ -223,58 +223,58 @@
   >   >           if BeforeScrollHeight == AfterScrollHeight:
   >   >               NotEnd = False
   >   >   ```
-  >   > 
+  >   >
   >   > * frame弹窗
-  >   >   
+  >   >
   >   >   `SaiPage.frame_locator('//*[@id="iframe"]').locator('//div/input').click()`
-  >   > 
+  >   >
   >   > 页面数据提取
-  >   > 
+  >   >
   >   > * 截取页面当前可见部分
-  >   >   
+  >   >
   >   >   `SaiPage.screenshot(path = "FullScreen.png")`
-  >   > 
+  >   >
   >   > * 截取页面指定部分
-  >   >   
+  >   >
   >   >   `SaiPage.locator('//table[3]').screenshot(path = "PartPage.png")`
-  >   > 
+  >   >
   >   > * 截取整个页面
-  >   >   
+  >   >
   >   >   `SaiPage.screenshot(path = "FullPage.png", full_page = True)`
-  >   > 
+  >   >
   >   > * 获取页面网址
-  >   >   
+  >   >
   >   >   `PageURL = SaiPage.url`
-  >   > 
+  >   >
   >   > * 获取页面标题
-  >   >   
+  >   >
   >   >   `PageTitle = SaiPage.title()`
-  >   > 
+  >   >
   >   > * 获取页面完整Html源代码
-  >   >   
+  >   >
   >   >   `PageHtml = SaiPage.content()`
-  >   > 
+  >   >
   >   > * 获取页面某个节点的Html源代码
-  >   >   
+  >   >
   >   >   `ElementHtml = SaiPage.locator('//div[@class="Question"]').inner_html()`
-  >   >   
+  >   >
   >   >   `BSHtml = BeautifulSoup(ElementHtml).prettify()`
-  >   > 
+  >   >
   >   > * 获取页面完整文字
-  >   >   
+  >   >
   >   >   `PageTextContent = SaiPage.text_content()`
-  >   > 
+  >   >
   >   > * 获取页面某个节点的完整文字内容
-  >   >   
+  >   >
   >   >   > `text_content()`：返回代码内容；一股脑全部获取，包括隐藏内容
   >   >   > `inner_text()`：返回页面显示内容；按照元素获取，元素间以换行分割
-  >   >   
+  >   >
   >   >   `ElementTextContent = SaiPage.locator('//div[@class="HaHa"]').text_content()`
-  >   >   
+  >   >
   >   >   `ElementInnerText = SaiPage.locator('//div[@class="HaHa"]').inner_text()`
-  >   > 
+  >   >
   >   > * 获取页面的列表元素
-  >   >   
+  >   >
   >   >   ```python
   >   >   Elements = SaiPage.query_selector_all('//div[@class="Question"]/div')
   >   >   # 枚举列表元素所有目标值
@@ -284,7 +284,7 @@
   >   >       # 每个元素的链接
   >   >       print(element.query_selector('//a[@id="Link"]').get_attribute('href'))
   >   >   ```
-  >   >   
+  >   >
   >   >   ```python
   >   >   # 枚举列表中每个元素的每个属性值
   >   >   for element in Elements:
@@ -294,9 +294,9 @@
   >   >       for attr in el_attrs:
   >   >           print(attr, ":", element.get_attribute(attr))
   >   >   ```
-  >   > 
+  >   >
   >   > * 下载页面所有图片
-  >   >   
+  >   >
   >   >   ```python
   >   >   Pic_folder = SaiPage.title()
   >   >   if not os.path.exists(Pic_folder):
@@ -317,9 +317,9 @@
   >   >               Pic_num += 1
   >   >           print(Pic_url)
   >   >   ```
-  >   > 
+  >   >
   >   > * 将页面部分内容转化为 `markdown`后下载到本地
-  >   >   
+  >   >
   >   >   ```python
   >   >   # 切换目录
   >   >   os.chdir('/Users/jiangsai/Desktop')
@@ -330,13 +330,13 @@
   >   >   with open('test.md', mode='w', encoding='utf-8') as f:
   >   >       f.write(MarkDownContent)
   >   >   ```
-  >   > 
+  >   >
   >   > 元素存在性判断[参考](https://www.cnblogs.com/yoyoketang/p/17214493.html)
-  >   > 
+  >   >
   >   > * `locator()`判断页面中是否存在某个元素
-  >   >   
+  >   >
   >   >   > `locator()`定位页面上的元素，不管元素存不存在，都返回一个 `locator`对象，可用 `count() `方法统计元素个数，个数是 0则元素不存在
-  >   >   
+  >   >
   >   >   ```python
   >   >   # 直接使用locator()和click()进行定位点击，若当前页面没有该元素则程序会一直等待，直到报错TimeoutError
   >   >   SaiPage.locator(xpath).click()
@@ -344,11 +344,11 @@
   >   >   if SaiPage.locator(xpath).count() != 0:
   >   >       SaiPage.locator(xpath).click()
   >   >   ```
-  >   > 
+  >   >
   >   > * `query_selector()`判断页面中是否存在某个元素
-  >   >   
+  >   >
   >   >   > `query_selector()`和 `query_selector_all()`定位页面上的Dom，若元素不存在则返回None
-  >   >   
+  >   >
   >   >   ```python
   >   >   # 直接使用query_selector()和click()进行定位点击，若当前页面没有该元素则程序立刻报错AttributeError：'NoneType' object has no attribute 'click'
   >   >   SaiPage.query_selector(xpath).click()
@@ -356,19 +356,28 @@
   >   >   if SaiPage.query_selector(xpath) is not None:
   >   >       SaiPage.query_selector(xpath).click()
   >   >   ```
-  >   > 
+  >   >
+  >   > * 判断某个节点是否有直接子节点存在
+  >   >
+  >   >   > 平时可以直接用简写语句`'//div'`的双斜杠开头表示，这是个xpath，但是需要用到单斜杠时，就必须用到完整语句`'xpath=/div'`，`'xpath=/span'`，`'xpath=/*'`
+  >   >   >
+  >   >   > ```
+  >   >   > if root_element.query_selector_all("xpath=/*") is not None:
+  >   >   >     pass
+  >   >   > ```
+  >   >
   >   > 点击二级页链接
-  >   > 
+  >   >
   >   > * 情况一：二级页在老标签加载
-  >   >   
+  >   >
   >   >   ```python
   >   >   SaiPage.locator(xpath).click()
   >   >   SaiPage.wait_for_timeout(random.randint(1000,3000))
   >   >   # SaiPage是在打开二级页后，标签没有增加，一级页被二级页取代，未来只能操作二级页，但可以用SaiPage.go_back()在本标签回到一级页
   >   >   ```
-  >   > 
+  >   >
   >   > * 情况二：二级页在新标签加载
-  >   >   
+  >   >
   >   >   ```python
   >   >   with SaiContext.expect_page() as SonPageInfo:
   >   >       SaiPage.locator(xpath).click()
@@ -377,21 +386,23 @@
   >   >   SonPage.bring_to_front()
   >   >   # SaiPage是一级页的标签页，还在，SonPage是二级页的标签页，可以分别操作2个标签页
   >   >   ```
+  >   >
   >   > 
+  >   >
   >   > 存储Cookie
-  >   > 
+  >   >
   >   > > 将 `cookie`保存到 `state.json`，方便方式二Playwright无头浏览器进行免登录
-  >   > 
+  >   >
   >   > `storage = SaiContext.storage_state(path="state.json")`
-  >   > 
+  >   >
   >   > 收尾工作
-  >   > 
+  >   >
   >   > ```python
   >   > SaiPage.pause()
   >   > SaiContext.close()
   >   > SaiBrowser.close()
   >   > ```
-  > 
+  >
   > ```python
   > with sync_playwright() as playwright:
   >     run(playwright)
@@ -1023,31 +1034,35 @@ os.chdir(MDdir)
 MarkDownMaker = html2text.HTML2Text()
 MarkDownMaker.ignore_links = True
 # 待爬的页面
-WebSite = "https://www.quora.com/How-does-culture-influence-human-behavior"
+WebSites = [
+    "https://www.quora.com/How-advanced-is-high-speed-rail-in-China",
+    # "https://www.quora.com/How-profitable-is-Chinas-high-speed-rail",
+    # "https://www.quora.com/What-interesting-facts-about-psychology-do-you-not-usually-see-commented-by-anyone-9",
+]
 # 问题
 Xpath_Answer = '//div[@class="q-text puppeteer_test_question_title"]'
 # 答案块中的答案list
-Xpath_Questions = '//*[@id="mainContent"]/div[3]/div'
+Xpath_Questions = '//*[@id="mainContent"]'
 # 答案块中的每个答案的作者
-Xpath_Author = (
-    '//div[@class="q-inlineFlex qu-alignItems--center qu-wordBreak--break-word"]'
-)
+Xpath_Author = '//div[@class="q-inlineFlex qu-alignItems--center qu-wordBreak--break-word"]'
 # 答案块中的每个答案的内容
-Xpath_Question = (
-    '//div[@class="q-box spacing_log_answer_content puppeteer_test_answer_content"]'
-)
+Xpath_Question = '//div[@class="q-box spacing_log_answer_content puppeteer_test_answer_content"]'
 
 
-
-def Initialize(WebSite):
+def Initialize(WebSites):
     SaiBrowser = playwright.chromium.connect_over_cdp("http://localhost:9222")
     SaiContext = SaiBrowser.contexts[0]
+    # quora只要加这个规则就触发反爬
     # SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
-    SaiPage = SaiContext.new_page()
-    SaiPage.goto(WebSite)
-    SaiPage.wait_for_load_state("networkidle")
-    SaiPage.bring_to_front()
-    return SaiBrowser, SaiContext, SaiPage
+    SaiPages = []
+    for i in WebSites:
+        Page = SaiContext.new_page()
+        Page.goto(i)
+        # quora只要加这个规则就触发超时
+        # Page.wait_for_load_state("networkidle")
+        Page.wait_for_timeout(random.randint(3000, 5000))
+        SaiPages.append(Page)
+    return SaiBrowser, SaiContext, SaiPages
 
 
 def SaiScroll(ScrollPage, ScrollTimes):
@@ -1070,7 +1085,11 @@ def SaiScroll(ScrollPage, ScrollTimes):
             NotEnd = False
     # 点开每一个答案的「(more)」来查看更多
     MoreClicks = ScrollPage.query_selector_all('text="(more)"')
+    ContinueReading = ScrollPage.query_selector_all('text="Continue Reading"')
     for eliment in MoreClicks:
+        eliment.click()
+        ScrollPage.wait_for_timeout(random.randint(1000, 3000))
+    for eliment in ContinueReading:
         eliment.click()
         ScrollPage.wait_for_timeout(random.randint(1000, 3000))
     return ScrollPage
@@ -1079,41 +1098,51 @@ def SaiScroll(ScrollPage, ScrollTimes):
 def ExtractQAInfo(WritePage):
     # 问题部分
     Answer = WritePage.query_selector(Xpath_Answer).text_content()
-    Answer_Desc = ""
-    # # 判断问题描述是否存在，有些问题没有描述
-    # if WritePage.locator(Xpath_Answer_Desc).count() != 0:
-    #     # 判断问题描述是否被收起
-    #     if WritePage.locator(Xpath_Answer_Desc + "//button").count() != 0:
-    #         WritePage.locator(Xpath_Answer_Desc + "//button").click()
-    #     # 因问题描述可能包含图片，故此处使用HTML2Text提取富文本
-    #     Answer_Content_Html = WritePage.query_selector(Xpath_Answer_Desc).inner_html()
-    #     Answer_Desc = MarkDownMaker.handle(Answer_Content_Html)
     with open("test.md", mode="a", encoding="utf-8") as f:
-        f.write("### " + Answer + "\n" + "> " + Answer_Desc + "\n\n" + "----" + "\n")
+        f.write("### " + Answer + "\n" + "----" + "\n")
     # 答案部分
-    Elements = WritePage.query_selector_all(Xpath_Questions)
-    # 分析源码发现Elements的第1个和最后一个都不是答案，故删除
-    del Elements[0]
-    del Elements[-1]
-    for element in Elements:
-        # 有些答案莫名没加载出来，就不要这个答案了
-        if element.query_selector(Xpath_Author) is not None:
-            Author = element.query_selector(Xpath_Author).text_content()
-            # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
-            QuestionHtml = element.query_selector(Xpath_Question).inner_html()
-            Question = MarkDownMaker.handle(QuestionHtml)
-            with open("test.md", mode="a", encoding="utf-8") as f:
-                f.write("##### " + Author + "\n" + Question + "----" + "\n")
+    Questions_Elements = WritePage.query_selector(Xpath_Questions)
+    find_questions(Questions_Elements)
+
+
+# 列出问题列表xpath的所有子节点 - 逐个检测子节点是否包含答题者和答案
+# 若包含则判断数量是否唯一 - 若唯一，则写入；若不唯一，则调用自身
+def find_questions(Questions_Elements, level=0):
+    try:
+        if Questions_Elements.query_selector_all("xpath=/*") is not None:
+            Son_Elements = Questions_Elements.query_selector_all("xpath=/*")
+            for Son_E in Son_Elements:
+                Author_Num = len(Son_E.query_selector_all(Xpath_Author))
+                Question_Num = len(Son_E.query_selector_all(Xpath_Question))
+                if Author_Num > 0 and Question_Num > 0:
+                    if Author_Num == 1 and Question_Num == 1:
+                        Author = Son_E.query_selector(Xpath_Author).text_content()
+                        # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
+                        QuestionHtml = Son_E.query_selector(Xpath_Question).inner_html()
+                        Question = MarkDownMaker.handle(QuestionHtml)
+                        # 图片链接有些被莫名增加了换行，句子中间也莫名增加了换行
+                        Question = Question.replace("-\n", "-").replace("\n", " ").replace("  ", "\n\n")
+                        with open("test.md", mode="a", encoding="utf-8") as f:
+                            f.write("##### " + Author + "\n" + Question + "----" + "\n")
+                    else:
+                        if Son_E.query_selector_all("xpath=/*") is not None:
+                            find_questions(Son_E, level + 1)
+                        else:
+                            print("见鬼了")
+    except TimeoutError:
+        print("Timed out while waiting for elements. Exiting.")
 
 
 def run(playwright: Playwright) -> None:
-    SaiBrowser, SaiContext, SaiPage = Initialize(WebSite)
-    # 滚动搜索页获取更多数据
-    SaiPage = SaiScroll(SaiPage, 5)
-    # 写入MarkDown
-    ExtractQAInfo(SaiPage)
-    # 收尾
-    SaiPage.close()
+    SaiBrowser, SaiContext, SaiPages = Initialize(WebSites)
+    for SaiPage in SaiPages:
+        SaiPage.bring_to_front()
+        # 滚动搜索页获取更多数据
+        SaiPage = SaiScroll(SaiPage, 1)
+        # 写入MarkDown
+        ExtractQAInfo(SaiPage)
+        # 收尾
+        SaiPage.close()
     SaiContext.close()
     SaiBrowser.close()
 

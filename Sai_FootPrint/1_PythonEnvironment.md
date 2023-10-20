@@ -167,18 +167,18 @@
 >   >  > ```
 >   >
 
-[Vscode使用Anaconda虚拟环境](https://developer.aliyun.com/article/1053197)
+##### [Vscode使用Anaconda虚拟环境](https://developer.aliyun.com/article/1053197)
 
 > **VSCode配置**
 >
 > 1. 左侧最下方“Extensions”，安装以下插件
 >
 >    1. Python - 代码分析，高亮，规范化
->    2. Bracket Pair Colorizer - 括号颜色
->    3. Anaconda Extension Pack - 代码提示增强
->    4. Python Extension Pack(Don Jayamanne) - 代码补全
->    5. Live Server - 保存即可实施预览html（右键Open with live server）
->    6. Auto Rename Tag - 同步修改html前后标签名
+>    2. Anaconda Extension Pack - 代码提示增强
+>    3. Python Extension Pack(Don Jayamanne) - 代码补全
+>    4. Live Server - 保存即可实施预览html（右键Open with live server）
+>    5. Auto Rename Tag - 同步修改html前后标签名
+>    6. Black Formatter - python格式美化工具
 >
 > 2. 查看Python版本路径
 >
@@ -194,41 +194,32 @@
 >    >
 >    > ```js
 >    > {
->    >  "python.venvPath":"/Users/sai/miniconda3/envs",
->    >  "python.pythonPath": "/Users/sai/miniconda3/envs/flask_py3/bin/python",
->    >  "workbench.startupEditor": "newUntitledFile",
->    >  "terminal.integrated.inheritEnv": false,
->    >  "editor.minimap.enabled": false,
->    >  "editor.suggestSelection": "first",
->    >  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
->    >  "python.jediEnabled": false,
->    >  "terminal.integrated.shell.osx": "/bin/zsh",
->    >  "editor.renderControlCharacters": true,
->    >  "editor.renderWhitespace": "all",
->    >  "editor.suggest.snippetsPreventQuickSuggestions": false,
->    >  "python.linting.enabled": true, //格式化python代码
->    >  "editor.formatOnType": true, //保存时自动格式化html代码
->    >  "editor.formatOnSave": true,
+>    >   // 主题设为淡黄色
+>    >   "workbench.colorTheme": "Solarized Light",
+>    >   "terminal.integrated.inheritEnv": false,
+>    >   "editor.minimap.enabled": false,
+>    >   "git.openRepositoryInParentFolders": "always",
+>    >   "python.defaultInterpreterPath": "/Users/jiangsai/anaconda3/envs/py3/bin/python",
+>    >   "security.workspace.trust.untrustedFiles": "open",
+>    >   // 编辑器保存任何文件时都格式美化
+>    >   "editor.formatOnSave": true,
+>    >   "[python]": {
+>    >     // python文件保存时格式美化
+>    >     "editor.formatOnSaveMode": "file",
+>    >     "editor.formatOnSave": true,
+>    >     // black-formatter设为python文件格式美化工具
+>    >     "editor.defaultFormatter": "ms-python.black-formatter"
+>    >   },
+>    >   // black-formatter插件的每行允许的字符数默认最大为88，此处改为110
+>    >   "black-formatter.args": [
+>    >     "--line-length",
+>    >     "110"
+>    >   ]
 >    > }
 >    > ```
 >    >
->    > > `"python.linting.enabled"`无法格式化python的缩进，因为对python而言，缩进是语法，语法错误是格式化工具是无效的
 >
-> 4. [Python代码美化工具](https://www.cnblogs.com/kint216/p/16004937.html)
->
->    > 1. `pip3 install black`
->    >
->    > 2. 打开vscode的settings，搜索format on save，然后勾选上
->    >
->    >     > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310191701944.png)
->    >
->    > 3. 再搜索python formatting provider，然后选择black
->    >
->    >     > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310191701805.png)
->    >     >
->    >     > 若搜不到，则直接去中settings.json修改
->
-> 5. 改变当前python运行环境
+> 4. 改变当前python运行环境
 >
 >    1. CTRL+P打开搜索，输入""> select interpreter"
 >
@@ -238,7 +229,7 @@
 >
 >       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307051108205.png)
 >
-> 6. 设置当前debug调试配置
+> 5. 设置当前debug调试配置
 >
 >    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307062309938.png)
 >
@@ -275,21 +266,21 @@
 >    }
 >    ```
 >
-> 7. debug状态下交互调试
+> 6. debug状态下交互调试
 >
 >    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307062003989.png)
 >
-> 8. VSCode 代码无提示的解决办法
+> 7. VSCode 代码无提示的解决办法
 >
 >    > 点击右下角的当前文件类型，选择 "Auto Detect 自动检测"，等它加载一会即可自动提示
 >    >
 >    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307062003261.png)
 >
-> 9. unresolved import "xxx"
+> 8. unresolved import "xxx"
 >
 >    > code - preference - settings，搜索 jedi，勾选
 >
-> 10. 验证Python程序的运行环境
+> 9. 验证Python程序的运行环境
 >
 >    ```python
 >    import platform
