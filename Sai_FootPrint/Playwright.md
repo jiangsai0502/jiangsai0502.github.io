@@ -111,7 +111,7 @@
   >   >   ```python
   >   >   # # 初始化一个浏览器（headless = False 有头浏览器；slow_mo = 3000 每个操作停3秒）
   >   >   # SaiBrowser = playwright.chromium.launch(headless = False, slow_mo = 3000)
-  >   >   
+  >   >     
   >   >   # # 加载本地cookie
   >   >   # # 若本地有cookie，则在SaiBrowser中创建一个context（网页管理器），并加载该cookie，实现免登陆；若本地没有，则在SaiBrowser中创建一个空的context
   >   >   # # 每个context是一个独立会话，用于环境隔离，每个context可使用1套代理，登录1套账号
@@ -120,13 +120,13 @@
   >   >   #     SaiContext = SaiBrowser.new_context(storage_state="state.json")
   >   >   # else:
   >   >   #     SaiContext = SaiBrowser.new_context()
-  >   >   
+  >   >     
   >   >   # 拦截SaiContext下所有页面的图片请求（凡含.png的链接，都当做是png图片）
   >   >   # SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
-  >   >   
+  >   >     
   >   >   # 初始化一个网页
   >   >   # SaiPage = SaiContext.new_page()
-  >   >   
+  >   >     
   >   >   # 拦截SaiPage这个页面的图片请求
   >   >   # SaiPage.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
   >   >   ```
@@ -1020,7 +1020,7 @@ def run(playwright: Playwright) -> None:
     # https://space.bilibili.com/107861587/video?pn=1
     WebSite = input("请输入要爬的网址: ")
     SaiBrowser, SaiContext, SaiPage = InitialChrome(WebSite)
-    InitialMDFile(SaiPage)
+    InitialMDFile()
     ExtractInfo(SaiContext, SaiPage)
     
     # 收尾
@@ -1117,7 +1117,7 @@ def InitialChrome(WebSite):
 
 
 # 初始化写入方法：切换到目标路径，指定文件名
-def InitialMDFile(SaiPage):
+def InitialMDFile():
     # 切换MarkDown文件目录
     MDdir = "/Users/jiangsai/Desktop"
     os.chdir(MDdir)
@@ -1196,7 +1196,7 @@ def run(playwright: Playwright) -> None:
     # http://cpc.people.com.cn/GB/64093/64387/
     WebSite = input("请输入要爬的网址: ")
     SaiBrowser, SaiContext, SaiPage = InitialChrome(WebSite)
-    InitialMDFile(SaiPage)
+    InitialMDFile()
     ExtractInfo(SaiContext, SaiPage)
 
     # 收尾
@@ -1209,7 +1209,7 @@ with sync_playwright() as playwright:
     run(playwright)
 ```
 
-#### 爬Quora
+#### Quora
 
 > quora的HTML节点层级非常非常多，且几乎找不到唯一性，故使用如下穷举的策略
 >
@@ -1361,7 +1361,7 @@ with sync_playwright() as playwright:
     run(playwright)
 ```
 
-#### 爬贴吧
+#### 贴吧
 
 > 伪代码
 >
@@ -1420,7 +1420,7 @@ def InitialChrome(WebSite):
 
 
 # 初始化写入方法：切换到目标路径，指定文件名
-def InitialMDFile(SaiPage):
+def InitialMDFile():
     # 切换MarkDown文件目录
     MDdir = "/Users/jiangsai/Desktop"
     os.chdir(MDdir)
@@ -1595,7 +1595,7 @@ def run(playwright: Playwright) -> None:
     WebSite = "https://tieba.baidu.com/p/8670538425"
     # WebSite = input("请输入要爬的网址: ")
     SaiBrowser, SaiContext, SaiPage = InitialChrome(WebSite)
-    InitialMDFile(SaiPage)
+    InitialMDFile()
     # 获取帖子标题
     ExtractTileInfo(SaiPage)
     # 获取楼层信息
@@ -1603,6 +1603,102 @@ def run(playwright: Playwright) -> None:
 
     # 收尾
     SaiPage.close()
+    SaiContext.close()
+    SaiBrowser.close()
+
+
+with sync_playwright() as playwright:
+    run(playwright)
+```
+
+#### 人人都是产品经理、36氪、
+
+```python
+import os, html2text, re, random
+from playwright.sync_api import Playwright, sync_playwright
+
+
+# 待爬网址
+WebSites = [
+    "https://www.woshipm.com/zhichang/5824950.html",
+    "https://www.woshipm.com/it/28670.html",
+    "https://36kr.com/p/2399884943188356",
+]
+# woshipm
+# 标题
+Xpath_woshipm_Title = '//*[contains(@class,"article--title")]'
+# 内容
+Xpath_woshipm_Content = '//*[contains(@class,"article--content")]'
+
+# 36kr
+# 标题
+Xpath_36kr_Title = '//h1[contains(@class,"article-title")]'
+# 内容
+Xpath_36kr_Content = '//div[contains(@class,"articleDetailContent")]'
+
+
+# 初始化浏览器：调用本地Chrome，在新标签打开目标网页，并切换到该标签
+def InitialChrome(WebSites):
+    SaiBrowser = playwright.chromium.connect_over_cdp("http://localhost:9222")
+    SaiContext = SaiBrowser.contexts[0]
+    SaiContext.route(
+        re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.gif.*)|(.*\.webp.*)"), lambda route: route.abort()
+    )
+    SaiPages = []
+    for i in WebSites:
+        SaiPage = SaiContext.new_page()
+        SaiPage.goto(i)
+        SaiPages.append(SaiPage)
+        SaiPage.wait_for_timeout(random.randint(1000, 3000))
+    return SaiBrowser, SaiContext, SaiPages
+
+
+# 初始化写入方法：切换到目标路径，指定文件名
+def InitialMDFile():
+    # 切换MarkDown文件目录
+    MDdir = "/Users/jiangsai/Desktop"
+    os.chdir(MDdir)
+    # 声明全局MarkDown文件操作类
+    global MarkDownMaker
+    MarkDownMaker = html2text.HTML2Text()
+    MarkDownMaker.ignore_links = True
+    MDFile = "Test"
+    # 声明全局MarkDown文件路径
+    global MDFileDir
+    MDFileDir = f"{MDdir}/{MDFile}.md"
+
+
+# 获取woshipm信息
+def ExtractInfo_woshipm(WritePage):
+    Title = WritePage.query_selector(Xpath_woshipm_Title).text_content()
+    # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
+    Content_Html = WritePage.query_selector(Xpath_woshipm_Content).inner_html()
+    Content = MarkDownMaker.handle(Content_Html)
+    with open(MDFileDir, mode="a", encoding="utf-8") as f:
+        f.write("### " + Title + "\n" + Content + "\n\n" + "----" + "\n")
+
+
+# 获取36kr信息
+def ExtractInfo_36kr(WritePage):
+    Title = WritePage.query_selector(Xpath_36kr_Title).text_content()
+    # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
+    Content_Html = WritePage.query_selector(Xpath_36kr_Content).inner_html()
+    Content = MarkDownMaker.handle(Content_Html)
+    with open(MDFileDir, mode="a", encoding="utf-8") as f:
+        f.write("### " + Title + "\n" + Content + "\n\n" + "----" + "\n")
+
+
+def run(playwright: Playwright) -> None:
+    SaiBrowser, SaiContext, SaiPages = InitialChrome(WebSites)
+    InitialMDFile()
+    for saipage in SaiPages:
+        if "36kr" in saipage.url:
+            ExtractInfo_36kr(saipage)
+            saipage.close()
+        elif "woshipm" in saipage.url:
+            ExtractInfo_woshipm(saipage)
+            saipage.close()
+    # 收尾
     SaiContext.close()
     SaiBrowser.close()
 

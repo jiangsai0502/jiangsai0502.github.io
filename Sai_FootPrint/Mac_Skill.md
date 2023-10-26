@@ -36,7 +36,7 @@
     >     [1]  + 73282 terminated  /Users/jiangsai/anaconda3/envs/py3/bin/python  
     >     ```
     >
-    
+
 1. 购买ChatGPT4
 
     > 方式一：[按次购买，每次买一个月](https://www.youtube.com/watch?v=kkl2YPO33qc)
@@ -46,15 +46,16 @@
     > > 3. Apple官网使用信用卡购买礼品卡，送给自己的美区Apple账号
     > > 4. ChatGPT iOS端内购时自动扣礼品卡金额
     >
-    > 方式二：PayPal
+
+1. Typora打印PDF格式设置
+
+    > 1. 页边距
     >
-    > > PayPal用法
-    > >
-    > > 1. 关联卡：用于「消费」的扣钱的卡，可以是借记卡，可以是信用卡（招商双币信用卡）
-    > > 2. 关联银行账户：用户「提现」的卡
-    > >    1. 中国账户：无论哪个银行都有5W$额度限制、银行需要材料、手续费高、退回率高
-    > >    2. 香港/美国账户：没有上述缺点
+    >    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310261112999.png)
     >
-    > 1. 美区iOS账号
-    > 2. PayPal
-    > 3. 
+    > 2. [行距](https://www.twblogs.net/a/5db288f8bd9eee310d9fd66c/?lang=zh-cn)
+    >
+    >    > 1. 微调`body`中的`line-height`参数
+    >    > 2. 关闭文件重新打开，修改即可生效
+    >    >
+    >    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310261109296.png)
