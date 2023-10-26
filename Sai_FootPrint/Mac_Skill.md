@@ -41,8 +41,10 @@
 
     > 方式一：[按次购买，每次买一个月](https://www.youtube.com/watch?v=kkl2YPO33qc)
     >
-    > > 1. 美区iOS账号
-    > > 2. 购买礼品卡：支付宝，淘宝
+    > > 1. 注册Apple美国免税洲账号
+    > > 2. 办理招商双币信用卡
+    > > 3. Apple官网使用信用卡购买礼品卡，送给自己的美区Apple账号
+    > > 4. ChatGPT iOS端内购时自动扣礼品卡金额
     >
     > 方式二：PayPal
     >
