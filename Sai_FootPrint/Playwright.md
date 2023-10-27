@@ -111,7 +111,7 @@
   >   >   ```python
   >   >   # # 初始化一个浏览器（headless = False 有头浏览器；slow_mo = 3000 每个操作停3秒）
   >   >   # SaiBrowser = playwright.chromium.launch(headless = False, slow_mo = 3000)
-  >   >   
+  >   >     
   >   >   # # 加载本地cookie
   >   >   # # 若本地有cookie，则在SaiBrowser中创建一个context（网页管理器），并加载该cookie，实现免登陆；若本地没有，则在SaiBrowser中创建一个空的context
   >   >   # # 每个context是一个独立会话，用于环境隔离，每个context可使用1套代理，登录1套账号
@@ -120,13 +120,13 @@
   >   >   #     SaiContext = SaiBrowser.new_context(storage_state="state.json")
   >   >   # else:
   >   >   #     SaiContext = SaiBrowser.new_context()
-  >   >   
+  >   >     
   >   >   # 拦截SaiContext下所有页面的图片请求（凡含.png的链接，都当做是png图片）
   >   >   # SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
-  >   >   
+  >   >     
   >   >   # 初始化一个网页
   >   >   # SaiPage = SaiContext.new_page()
-  >   >   
+  >   >     
   >   >   # 拦截SaiPage这个页面的图片请求
   >   >   # SaiPage.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
   >   >   ```
@@ -1732,7 +1732,7 @@ with sync_playwright() as playwright:
 #### 微博
 
 ```python
-import os, html2text, re, random
+import os, html2text, re, random, requests
 from playwright.sync_api import Playwright, sync_playwright
 
 
@@ -1767,32 +1767,36 @@ def InitialChrome():
 # 初始化写入方法：切换到目标路径，指定文件名
 def InitialMDFile():
     # 切换MarkDown文件目录
-    MDdir = "/Users/jiangsai/Desktop"
-    os.chdir(MDdir)
+    global MD_dir
+    MD_dir = "/Users/jiangsai/Desktop"
+    global MD_Pic_dir
+    MD_Pic_dir = "/Users/jiangsai/Desktop/Pic"
+    if not os.path.exists(MD_Pic_dir):
+        os.mkdir(MD_Pic_dir)
     # 声明全局MarkDown文件操作类
     global MarkDownMaker
     MarkDownMaker = html2text.HTML2Text()
     MarkDownMaker.ignore_links = True
-    MDFile = "Test"
+    MDFile = "Test.md"
     # 声明全局MarkDown文件路径
     global MDFileDir
-    MDFileDir = f"{MDdir}/{MDFile}.md"
+    MDFileDir = f"{MD_dir}/{MDFile}"
 
 
 # 获取微博信息
 # 每下翻3屏就获取一次
-def ExtractInfo_WeiBo(WritePage, TimeToExtract):
+def ExtractInfo_WeiBo(SaiPage, TimeToExtract):
     # 所有内容块的纵坐标list
     AllSequenceNo = []
     for i in range(TimeToExtract):
         # 翻页：每3屏记为1页，每页取1次值
         for i in range(3):
-            WritePage.evaluate("() => window.scrollBy(0,window.innerHeight)")
-            WritePage.wait_for_timeout(random.randint(1000, 1500))
+            SaiPage.evaluate("() => window.scrollBy(0,window.innerHeight)")
+            SaiPage.wait_for_timeout(random.randint(1000, 1500))
         # 取值：获取当前页所有微博内容块
-        elements = WritePage.query_selector_all(Xpath_list)
+        elements = SaiPage.query_selector_all(Xpath_list)
         # 逐块取值
-        CurrentPageData = ExtractInfo_PerPage_Logic(WritePage, elements, AllSequenceNo)
+        CurrentPageData = ExtractInfo_PerPage_Logic(SaiPage, elements, AllSequenceNo)
         # 按照内容块的纵坐标对本页内容块排序
         sorted_PageData = sorted(CurrentPageData, key=lambda x: x["SequenceNo"])
         for ElementData in sorted_PageData:
@@ -1805,7 +1809,7 @@ def ExtractInfo_WeiBo(WritePage, TimeToExtract):
 
 
 # 取每一条内容块的信息
-def ExtractInfo_PerPage_Logic(WritePage, elements, AllSequenceNo):
+def ExtractInfo_PerPage_Logic(SaiPage, elements, AllSequenceNo):
     CurrentPageData = []
     for element in elements:
         # 获取子节点的style属性值，style是当前节点的纵坐标
@@ -1819,25 +1823,19 @@ def ExtractInfo_PerPage_Logic(WritePage, elements, AllSequenceNo):
                 AllSequenceNo.append(style_value)
                 # 滚动到当前元素位置
                 # element.evaluate("element => element.scrollIntoView()")
-
                 # 如果有折叠，则展开
                 if element.query_selector('text="展开"') != None:
                     element.query_selector('text="展开"').click()
-                    WritePage.wait_for_timeout(random.randint(1000, 1500))
-                # 如果有图片，逐个点开图片
-                # if element.query_selector(Xpath_content_image) != None:
-                #     for i in element.query_selector_all(Xpath_content_image):
-                #         i.click()
-                #     WritePage.wait_for_timeout(random.randint(500, 1500))
+                    SaiPage.wait_for_timeout(random.randint(1000, 1500))
 
-                CurrentElementData = ExtractInfo_PerPage_SetVar(element, style_value)
+                CurrentElementData = ExtractInfo_PerPage_SetVar(SaiPage, element, style_value)
                 # 将当前内容块数据加入本页数据
                 CurrentPageData.append(CurrentElementData)
     return CurrentPageData
 
 
 # 取每一条内容块的变量赋值
-def ExtractInfo_PerPage_SetVar(element, style_value):
+def ExtractInfo_PerPage_SetVar(SaiPage, element, style_value):
     CurrentElementData = {}
     CurrentElementData["SequenceNo"] = int(style_value)
     name = element.query_selector(Xpath_name).text_content()
@@ -1845,68 +1843,64 @@ def ExtractInfo_PerPage_SetVar(element, style_value):
 
     # 因内容可能包含图片，故此处使用HTML2Text提取富文本
     content_Html = element.query_selector(Xpath_content).inner_html()
-    content = MarkDownMaker.handle(content_Html)
-    CurrentElementData["content"] = content
+    content_Online_Pic = MarkDownMaker.handle(content_Html)
+    content_Local_Pic = DownLoad_Pic_Get_New_MDContent(SaiPage, content_Online_Pic)
+    CurrentElementData["content"] = content_Local_Pic
 
     CurrentElementData["reply"] = ""
     if element.query_selector(Xpath_reply) != None:
         # 因内容可能包含图片，故此处使用HTML2Text提取富文本
         reply_Html = element.query_selector(Xpath_reply).inner_html()
-        reply = MarkDownMaker.handle(reply_Html)
-        CurrentElementData["reply"] = reply.replace("\n", "")
+        reply_Online_Pic = MarkDownMaker.handle(reply_Html)
+        reply_Local_Pic = DownLoad_Pic_Get_New_MDContent(SaiPage, reply_Online_Pic)
+        reply_clean = reply_Local_Pic.replace("\n", "")
+        CurrentElementData["reply"] = reply_clean
     return CurrentElementData
 
 
-# 提取url名称
-# 从https://fe.t.sis.cn/ap.png/ddkkk提取出ap.png
-def extract_image_name(url):
-    # 使用正则表达式匹配文件名
-    match = re.search(r"/([^/]+\.(?:png|jpg|jpeg|webp))(?:/|$)", url)
-    if match:
-        filename = match.group(1)
-        return filename
-    else:
-        print(url)
-        return "图片格式需要扩充"
-
-
-def DownLoadPic(MarkDownContent):
+# 下载图片并替换图片引用路径
+def DownLoad_Pic_Get_New_MDContent(SaiPage, MDContent):
     # 提取出 ![](url) 中的 url
     MDPicUrls = re.findall(r"!\[\]\((.*?)\)", MDContent)
     for image_url in MDPicUrls:
-        # 提取url名称
-        PicName = extract_image_name(image_url)
+        # 提取图片名称：从 https://fe.t.sis.cn/ap.png/ddkkk 提取出ap.png
+        match = re.search(r"/([^/]+\.(?:png|jpg|jpeg|webp))(?:/|$)", image_url)
+        if match:
+            PicName = match.group(1)
+            # 拼接已下载的本地图片的完整路径
+            ThisPicDir = f"{MD_Pic_dir}/{PicName}"
+            # 利用requests下载图片
+            Requests_DownLoad_Pic(SaiPage, image_url, ThisPicDir)
+            # 将MarkDown文本中的服务器图片链接替换为本地连接
+            MDContent = MDContent.replace(image_url, ThisPicDir)
+        else:
+            print(f"图片格式需要扩充: {image_url}")
 
-        # 微博的反爬机制变态至极：即便有图片地址，但没有cookie会报错，即便有cookie，也各种报错
-        # 故使用下述变态方式
-        # 设置一个变量来保存图片数据
-        image_data = None
-        # 开启请求拦截
-        TemPage = SaiContext.new_page()
-        TemPage.route("**/*", lambda route, request: route.continue_())
-
-        # 拦截所有响应
-        def handle_response(response):
-            nonlocal image_data
-            if response.url == image_url:
-                image_data = response.body()
-
-        TemPage.on("response", handle_response)
-        # 尝试导航到图片URL
-        try:
-            TemPage.goto(image_url)
-        except:
-            # 期望的错误，因为我们知道这会失败
-            pass
-        # 保存图片
-        if image_data:
-            with open(PicName, "wb") as f:
-                f.write(image_data)
-        TemPage.close()
-
-        MDPicDir = f"{MDdir}/{PicName}"
-        MDContent = MDContent.replace(image_url, MDPicDir)
     return MDContent
+
+
+# 利用requests下载图片
+def Requests_DownLoad_Pic(SaiPage, image_url, ThisPicDir):
+    # 创建一个Session会话
+    session = requests.Session()
+    # 获取页面的Cookies
+    cookies = SaiPage.context.cookies()
+    # 将Cookies添加到Session会话中
+    for cookie in cookies:
+        session.cookies.set(cookie["name"], cookie["value"], domain=cookie["domain"])
+    # 直接抓的是小图，需要下载大图
+    # 小图链接：https://wx3.sinaimg.cn/orj360/b06442n.jpg
+    # 大图链接：https://wx3.sinaimg.cn/mw690/b06442n.jpg
+    image_url = image_url.replace("orj360", "mw690")
+    # 使用Session会话来下载图像
+    response = session.get(image_url)
+    # 检查响应状态码
+    if response.status_code == 200:
+        # 将图像保存到文件
+        with open(ThisPicDir, "wb") as fp:
+            fp.write(response.content)
+    else:
+        print("下载失败")
 
 
 def run(playwright: Playwright) -> None:
@@ -1920,6 +1914,5 @@ def run(playwright: Playwright) -> None:
 
 with sync_playwright() as playwright:
     run(playwright)
-
 ```
 
