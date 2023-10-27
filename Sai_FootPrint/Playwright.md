@@ -111,7 +111,7 @@
   >   >   ```python
   >   >   # # 初始化一个浏览器（headless = False 有头浏览器；slow_mo = 3000 每个操作停3秒）
   >   >   # SaiBrowser = playwright.chromium.launch(headless = False, slow_mo = 3000)
-  >   >     
+  >   >   
   >   >   # # 加载本地cookie
   >   >   # # 若本地有cookie，则在SaiBrowser中创建一个context（网页管理器），并加载该cookie，实现免登陆；若本地没有，则在SaiBrowser中创建一个空的context
   >   >   # # 每个context是一个独立会话，用于环境隔离，每个context可使用1套代理，登录1套账号
@@ -120,13 +120,13 @@
   >   >   #     SaiContext = SaiBrowser.new_context(storage_state="state.json")
   >   >   # else:
   >   >   #     SaiContext = SaiBrowser.new_context()
-  >   >     
+  >   >   
   >   >   # 拦截SaiContext下所有页面的图片请求（凡含.png的链接，都当做是png图片）
   >   >   # SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
-  >   >     
+  >   >   
   >   >   # 初始化一个网页
   >   >   # SaiPage = SaiContext.new_page()
-  >   >     
+  >   >   
   >   >   # 拦截SaiPage这个页面的图片请求
   >   >   # SaiPage.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
   >   >   ```
@@ -207,6 +207,20 @@
   >   >   3. 滚动到页面顶部
   >   >
   >   >      `page.evaluate("() => window.scrollTo(0,0)")`
+  >   >
+  >   >   4. 向下滚动一屏
+  >   >
+  >   >      `page.evaluate("() => window.scrollBy(0,window.innerHeight)")`
+  >   >
+  >   >   5. 向上滚动一屏
+  >   >
+  >   >      `page.evaluate("() => window.scrollBy(0,-window.innerHeight)")`
+  >   >
+  >   >   6. 滚动到当前元素位置
+  >   >
+  >   >      `element = page.locator(xpath)` 或 `element = page.query_selector(xpath)`
+  >   >
+  >   >      `element.evaluate("element => element.scrollIntoView()")`
   >   >
   >   >   ```python
   >   >   # 滚动加载更多内容，直到不再加载
@@ -637,6 +651,8 @@ def ExtractQAInfo(WritePage):
         # 获取所有答案块
         Elements = WritePage.query_selector_all(Xpath_Questions)
         for element in Elements:
+            # 滚动到当前元素位置
+            element.evaluate("element => element.scrollIntoView()")
             Author = element.query_selector(Xpath_Author).text_content()
             # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
             QuestionHtml = element.query_selector(Xpath_Question).inner_html()
@@ -787,6 +803,8 @@ def FromSearchResultsToSonPage(SaiContext, FatherPage):
         if element is not None:
             # 点击每个搜索结果标题，进入二级页
             with SaiContext.expect_page() as SonPageInfo:
+                # 滚动到当前元素位置
+                element.evaluate("element => element.scrollIntoView()")
                 element.click()
             SonPage = SonPageInfo.value
             SonPage.wait_for_timeout(random.randint(1000, 2000))
@@ -833,6 +851,8 @@ def ExtractQAInfo(WritePage):
         # 获取所有答案块
         Elements = WritePage.query_selector_all(Xpath_Questions)
         for element in Elements:
+            # 滚动到当前元素位置
+            element.evaluate("element => element.scrollIntoView()")
             Author = element.query_selector(Xpath_Author).text_content()
             # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
             QuestionHtml = element.query_selector(Xpath_Question).inner_html()
@@ -1328,6 +1348,8 @@ def ExtractAnswersInfo(WritePage):
             Question_Num = len(Son_E.query_selector_all(Xpath_Question))
             if Author_Num > 0 and Question_Num > 0:
                 if Author_Num == 1 and Question_Num == 1:
+                    # 滚动到当前元素位置
+                    element.evaluate("element => element.scrollIntoView()")
                     Author = Son_E.query_selector(Xpath_Author).text_content()
                     # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
                     QuestionHtml = Son_E.query_selector(Xpath_Question).inner_html()
@@ -1442,7 +1464,7 @@ def PageScroll(ScrollPage, ScrollTimes):
     while ScrollTime < ScrollTimes:
         # 滚动计数
         ScrollTime += 1
-        ScrollPage.keyboard.press("PageDown")
+        ScrollPage.evaluate("() => window.scrollBy(0,-window.innerHeight)")
         ScrollPage.wait_for_timeout(random.randint(500, 1000))
 
 
@@ -1611,7 +1633,7 @@ with sync_playwright() as playwright:
     run(playwright)
 ```
 
-#### 人人都是产品经理、36氪、
+#### 人人都是产品经理、36氪
 
 ```python
 import os, html2text, re, random
@@ -1705,5 +1727,199 @@ def run(playwright: Playwright) -> None:
 
 with sync_playwright() as playwright:
     run(playwright)
+```
+
+#### 微博
+
+```python
+import os, html2text, re, random
+from playwright.sync_api import Playwright, sync_playwright
+
+
+# 待爬网址
+WebSite = "https://weibo.com/u/2959386434"
+# list
+Xpath_list = '//div[@class="vue-recycle-scroller__item-wrapper"]/*'
+# name
+Xpath_name = '//a[@class="ALink_default_2ibt1 head_cut_2Zcft head_name_24eEB"]'
+# content
+Xpath_content = '//div[@class="Feed_body_3R0rO"]/div[contains(@class,"wbpro-feed-content")]'
+# image
+Xpath_content_image = '//div[contains(@class,"woo-picture-slot")]'
+# reply
+Xpath_reply = '//div[@class="Feed_body_3R0rO"]/div[contains(@class,"Feed_retweet_JqZJb")]'
+
+
+# 初始化浏览器：调用本地Chrome，在新标签打开目标网页，并切换到该标签
+def InitialChrome():
+    SaiBrowser = playwright.chromium.connect_over_cdp("http://localhost:9222")
+    SaiContext = SaiBrowser.contexts[0]
+    # SaiContext.route(
+    #     re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.gif.*)|(.*\.webp.*)"), lambda route: route.abort()
+    # )
+    SaiPage = SaiContext.new_page()
+    SaiPage.goto(WebSite)
+    SaiPage.wait_for_load_state("networkidle")
+    # SaiPage.wait_for_timeout(random.randint(1000, 3000))
+    return SaiBrowser, SaiContext, SaiPage
+
+
+# 初始化写入方法：切换到目标路径，指定文件名
+def InitialMDFile():
+    # 切换MarkDown文件目录
+    MDdir = "/Users/jiangsai/Desktop"
+    os.chdir(MDdir)
+    # 声明全局MarkDown文件操作类
+    global MarkDownMaker
+    MarkDownMaker = html2text.HTML2Text()
+    MarkDownMaker.ignore_links = True
+    MDFile = "Test"
+    # 声明全局MarkDown文件路径
+    global MDFileDir
+    MDFileDir = f"{MDdir}/{MDFile}.md"
+
+
+# 获取微博信息
+# 每下翻3屏就获取一次
+def ExtractInfo_WeiBo(WritePage, TimeToExtract):
+    # 所有内容块的纵坐标list
+    AllSequenceNo = []
+    for i in range(TimeToExtract):
+        # 翻页：每3屏记为1页，每页取1次值
+        for i in range(3):
+            WritePage.evaluate("() => window.scrollBy(0,window.innerHeight)")
+            WritePage.wait_for_timeout(random.randint(1000, 1500))
+        # 取值：获取当前页所有微博内容块
+        elements = WritePage.query_selector_all(Xpath_list)
+        # 逐块取值
+        CurrentPageData = ExtractInfo_PerPage_Logic(WritePage, elements, AllSequenceNo)
+        # 按照内容块的纵坐标对本页内容块排序
+        sorted_PageData = sorted(CurrentPageData, key=lambda x: x["SequenceNo"])
+        for ElementData in sorted_PageData:
+            with open(MDFileDir, mode="a", encoding="utf-8") as f:
+                f.write("##### " + ElementData["name"] + "\n")
+                f.write(ElementData["content"] + "\n")
+                if ElementData["reply"] != "":
+                    f.write("> " + ElementData["reply"] + "\n")
+                f.write("----" + "\n")
+
+
+# 取每一条内容块的信息
+def ExtractInfo_PerPage_Logic(WritePage, elements, AllSequenceNo):
+    CurrentPageData = []
+    for element in elements:
+        # 获取子节点的style属性值，style是当前节点的纵坐标
+        style = element.evaluate("el => el.getAttribute('style')")
+        style_value = re.findall(r"\((.*?)\)", style)[0].replace("px", "")
+        # <0的纵坐标是个占位符，忽略
+        if int(style_value) >= 0:
+            # 已经获取过的纵坐标不用重新获取，忽略
+            if style_value not in AllSequenceNo:
+                # 当前纵坐标加入纵坐标list
+                AllSequenceNo.append(style_value)
+                # 滚动到当前元素位置
+                # element.evaluate("element => element.scrollIntoView()")
+
+                # 如果有折叠，则展开
+                if element.query_selector('text="展开"') != None:
+                    element.query_selector('text="展开"').click()
+                    WritePage.wait_for_timeout(random.randint(1000, 1500))
+                # 如果有图片，逐个点开图片
+                # if element.query_selector(Xpath_content_image) != None:
+                #     for i in element.query_selector_all(Xpath_content_image):
+                #         i.click()
+                #     WritePage.wait_for_timeout(random.randint(500, 1500))
+
+                CurrentElementData = ExtractInfo_PerPage_SetVar(element, style_value)
+                # 将当前内容块数据加入本页数据
+                CurrentPageData.append(CurrentElementData)
+    return CurrentPageData
+
+
+# 取每一条内容块的变量赋值
+def ExtractInfo_PerPage_SetVar(element, style_value):
+    CurrentElementData = {}
+    CurrentElementData["SequenceNo"] = int(style_value)
+    name = element.query_selector(Xpath_name).text_content()
+    CurrentElementData["name"] = name
+
+    # 因内容可能包含图片，故此处使用HTML2Text提取富文本
+    content_Html = element.query_selector(Xpath_content).inner_html()
+    content = MarkDownMaker.handle(content_Html)
+    CurrentElementData["content"] = content
+
+    CurrentElementData["reply"] = ""
+    if element.query_selector(Xpath_reply) != None:
+        # 因内容可能包含图片，故此处使用HTML2Text提取富文本
+        reply_Html = element.query_selector(Xpath_reply).inner_html()
+        reply = MarkDownMaker.handle(reply_Html)
+        CurrentElementData["reply"] = reply.replace("\n", "")
+    return CurrentElementData
+
+
+# 提取url名称
+# 从https://fe.t.sis.cn/ap.png/ddkkk提取出ap.png
+def extract_image_name(url):
+    # 使用正则表达式匹配文件名
+    match = re.search(r"/([^/]+\.(?:png|jpg|jpeg|webp))(?:/|$)", url)
+    if match:
+        filename = match.group(1)
+        return filename
+    else:
+        print(url)
+        return "图片格式需要扩充"
+
+
+def DownLoadPic(MarkDownContent):
+    # 提取出 ![](url) 中的 url
+    MDPicUrls = re.findall(r"!\[\]\((.*?)\)", MDContent)
+    for image_url in MDPicUrls:
+        # 提取url名称
+        PicName = extract_image_name(image_url)
+
+        # 微博的反爬机制变态至极：即便有图片地址，但没有cookie会报错，即便有cookie，也各种报错
+        # 故使用下述变态方式
+        # 设置一个变量来保存图片数据
+        image_data = None
+        # 开启请求拦截
+        TemPage = SaiContext.new_page()
+        TemPage.route("**/*", lambda route, request: route.continue_())
+
+        # 拦截所有响应
+        def handle_response(response):
+            nonlocal image_data
+            if response.url == image_url:
+                image_data = response.body()
+
+        TemPage.on("response", handle_response)
+        # 尝试导航到图片URL
+        try:
+            TemPage.goto(image_url)
+        except:
+            # 期望的错误，因为我们知道这会失败
+            pass
+        # 保存图片
+        if image_data:
+            with open(PicName, "wb") as f:
+                f.write(image_data)
+        TemPage.close()
+
+        MDPicDir = f"{MDdir}/{PicName}"
+        MDContent = MDContent.replace(image_url, MDPicDir)
+    return MDContent
+
+
+def run(playwright: Playwright) -> None:
+    SaiBrowser, SaiContext, SaiPage = InitialChrome()
+    InitialMDFile()
+    ExtractInfo_WeiBo(SaiPage, 10)
+    # 收尾
+    SaiContext.close()
+    SaiBrowser.close()
+
+
+with sync_playwright() as playwright:
+    run(playwright)
+
 ```
 
