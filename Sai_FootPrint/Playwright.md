@@ -111,7 +111,7 @@
   >   >   ```python
   >   >   # # 初始化一个浏览器（headless = False 有头浏览器；slow_mo = 3000 每个操作停3秒）
   >   >   # SaiBrowser = playwright.chromium.launch(headless = False, slow_mo = 3000)
-  >   >     
+  >   >   
   >   >   # # 加载本地cookie
   >   >   # # 若本地有cookie，则在SaiBrowser中创建一个context（网页管理器），并加载该cookie，实现免登陆；若本地没有，则在SaiBrowser中创建一个空的context
   >   >   # # 每个context是一个独立会话，用于环境隔离，每个context可使用1套代理，登录1套账号
@@ -120,13 +120,13 @@
   >   >   #     SaiContext = SaiBrowser.new_context(storage_state="state.json")
   >   >   # else:
   >   >   #     SaiContext = SaiBrowser.new_context()
-  >   >     
+  >   >   
   >   >   # 拦截SaiContext下所有页面的图片请求（凡含.png的链接，都当做是png图片）
   >   >   # SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
-  >   >     
+  >   >   
   >   >   # 初始化一个网页
   >   >   # SaiPage = SaiContext.new_page()
-  >   >     
+  >   >   
   >   >   # 拦截SaiPage这个页面的图片请求
   >   >   # SaiPage.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
   >   >   ```
@@ -382,10 +382,18 @@
   >   >
   >   >   > 平时可以直接用简写语句`'//div'`的双斜杠开头表示，这是个xpath，但是需要用到单斜杠时，就必须用到完整语句`'xpath=/div'`，`'xpath=/span'`，`'xpath=/*'`
   >   >   >
-  >   >   > ```
+  >   >   > ```python
   >   >   > if root_element.query_selector_all("xpath=/*") is not None:
-  >   >   >     pass
+  >   >   >        pass
   >   >   > ```
+  >   >   
+  >   > * 移除某个节点
+  >   >
+  >   >   ```python
+  >   >   Target_node = WritePage.query_selector(Xpath)
+  >   >   Target_node_remove = Target_node.query_selector(Xpath)
+  >   >   Target_node_remove.evaluate("element => element.remove()")
+  >   >   ```
   >   >
   >   > 点击二级页链接
   >   >
@@ -1385,19 +1393,17 @@ with sync_playwright() as playwright:
 
 #### 贴吧
 
-> 伪代码
+> 准备工作：初始化浏览器、初始化写入方法、页面滚动
 >
-> > 准备工作：初始化浏览器、初始化写入方法、页面滚动
-> >
-> > 1. 滚动加载全部可见内容
-> > 2. 获取标题
-> > 3. 获取所有楼层
-> >    1. 获取楼层信息：作者、回答时间、MarkDown内容
-> >    2. 获取楼层评论
-> >       1. 若评论被折腾，点击「点击查看」展开
-> >       2. 获取每条评论：作者、文字内容
-> >       3. 评论翻页
-> > 4. 页面翻页
+> 1. 滚动加载全部可见内容
+> 2. 获取标题
+> 3. 获取所有楼层
+>    1. 获取楼层信息：作者、回答时间、MarkDown内容
+>    2. 获取楼层评论
+>       1. 若评论被折腾，点击「点击查看」展开
+>       2. 获取每条评论：作者、文字内容
+>       3. 评论翻页
+> 4. 页面翻页
 
 ```python
 import random, os, html2text, re
@@ -1635,6 +1641,8 @@ with sync_playwright() as playwright:
 
 #### 人人都是产品经理、36氪
 
+> 网页结构简单，只需要抓标题和内容即可
+
 ```python
 import os, html2text, re, random
 from playwright.sync_api import Playwright, sync_playwright
@@ -1642,8 +1650,7 @@ from playwright.sync_api import Playwright, sync_playwright
 
 # 待爬网址
 WebSites = [
-    "https://www.woshipm.com/zhichang/5824950.html",
-    "https://www.woshipm.com/it/28670.html",
+    # "https://www.woshipm.com/zhichang/5824950.html",
     "https://36kr.com/p/2399884943188356",
 ]
 # woshipm
@@ -1655,6 +1662,8 @@ Xpath_woshipm_Content = '//*[contains(@class,"article--content")]'
 # 36kr
 # 标题
 Xpath_36kr_Title = '//h1[contains(@class,"article-title")]'
+# 概要
+Xpath_36kr_Summary = '//div[contains(@class,"summary")]'
 # 内容
 Xpath_36kr_Content = '//div[contains(@class,"articleDetailContent")]'
 
@@ -1692,22 +1701,29 @@ def InitialMDFile():
 
 # 获取woshipm信息
 def ExtractInfo_woshipm(WritePage):
-    Title = WritePage.query_selector(Xpath_woshipm_Title).text_content()
-    # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
-    Content_Html = WritePage.query_selector(Xpath_woshipm_Content).inner_html()
-    Content = MarkDownMaker.handle(Content_Html)
+    title = WritePage.query_selector(Xpath_woshipm_Title).text_content()
+    content_node = WritePage.query_selector('//*[contains(@class,"article--content")]')
+    # 要从正文中移除的节点
+    content_node_remove = content_node.query_selector("//div[contains(@class,'copyright')]")
+    content_node_remove.evaluate("element => element.remove()")
+    content_node_remove = content_node.query_selector("//div[contains(@class,'bottomActions')]")
+    content_node_remove.evaluate("element => element.remove()")
+    # 因正文可能包含图片，故此处使用HTML2Text提取富文本
+    content_Html = content_node.inner_html()
+    content = MarkDownMaker.handle(content_Html)
     with open(MDFileDir, mode="a", encoding="utf-8") as f:
-        f.write("### " + Title + "\n" + Content + "\n\n" + "----" + "\n")
+        f.write("### " + title + "\n" + content + "\n" + "---" + "\n\n")
 
 
 # 获取36kr信息
 def ExtractInfo_36kr(WritePage):
     Title = WritePage.query_selector(Xpath_36kr_Title).text_content()
+    Summary = WritePage.query_selector(Xpath_36kr_Summary).text_content()
     # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
     Content_Html = WritePage.query_selector(Xpath_36kr_Content).inner_html()
     Content = MarkDownMaker.handle(Content_Html)
     with open(MDFileDir, mode="a", encoding="utf-8") as f:
-        f.write("### " + Title + "\n" + Content + "\n\n" + "----" + "\n")
+        f.write("### " + Title + "\n" + "> " + Summary + "\n\n" + Content + "\n\n" + "----" + "\n")
 
 
 def run(playwright: Playwright) -> None:
@@ -1784,19 +1800,22 @@ def InitialMDFile():
 
 
 # 获取微博信息
-# 每下翻3屏就获取一次
-def ExtractInfo_WeiBo(SaiPage, TimeToExtract):
-    # 所有内容块的纵坐标list
+# 微博的DOM节点一直在更新，新内容会覆盖旧内容的节点，无法像知乎一样滚动加载完成后抓取
+# 每滚动3屏抓一次，边滚边抓，记录每个内容块的纵坐标，汇总成已抓取的内容块的纵坐标list
+# 利用纵坐标进行内容排序，并排除重复
+def GetInfo_WeiBo(SaiPage, TimesToGet):
+    # 已抓取的内容块的纵坐标list
     AllSequenceNo = []
-    for i in range(TimeToExtract):
-        # 翻页：每3屏记为1页，每页取1次值
+    for i in range(TimesToGet):
+        # 翻页：每滚动3屏记为1页，每页取1次值
         for i in range(3):
+            # 滚动1屏
             SaiPage.evaluate("() => window.scrollBy(0,window.innerHeight)")
             SaiPage.wait_for_timeout(random.randint(1000, 1500))
-        # 取值：获取当前页所有微博内容块
-        elements = SaiPage.query_selector_all(Xpath_list)
-        # 逐块取值
-        CurrentPageData = ExtractInfo_PerPage_Logic(SaiPage, elements, AllSequenceNo)
+        # 获取内容块：获取当前页所有内容块
+        Blocks = SaiPage.query_selector_all(Xpath_list)
+        # 获取内容块数据：获取当前页所有内容块中每一个块的具体信息
+        CurrentPageData = GetInfo_PerPage(SaiPage, Blocks, AllSequenceNo)
         # 按照内容块的纵坐标对本页内容块排序
         sorted_PageData = sorted(CurrentPageData, key=lambda x: x["SequenceNo"])
         for ElementData in sorted_PageData:
@@ -1808,12 +1827,14 @@ def ExtractInfo_WeiBo(SaiPage, TimeToExtract):
                 f.write("----" + "\n")
 
 
-# 取每一条内容块的信息
-def ExtractInfo_PerPage_Logic(SaiPage, elements, AllSequenceNo):
+# 获取当前页所有内容块中每一个块的具体信息
+def GetInfo_PerPage(SaiPage, Blocks, AllSequenceNo):
+    # 当前页每一个块的具体信息list
     CurrentPageData = []
-    for element in elements:
-        # 获取子节点的style属性值，style是当前节点的纵坐标
-        style = element.evaluate("el => el.getAttribute('style')")
+    for Block in Blocks:
+        # 获取当前节点的style属性值，该值即是当前节点的纵坐标
+        # 格式：<div class="vue-***-view" style="transform: translateY(227px);">
+        style = Block.evaluate("el => el.getAttribute('style')")
         style_value = re.findall(r"\((.*?)\)", style)[0].replace("px", "")
         # <0的纵坐标是个占位符，忽略
         if int(style_value) >= 0:
@@ -1823,36 +1844,44 @@ def ExtractInfo_PerPage_Logic(SaiPage, elements, AllSequenceNo):
                 AllSequenceNo.append(style_value)
                 # 滚动到当前元素位置
                 # element.evaluate("element => element.scrollIntoView()")
-                # 如果有折叠，则展开
-                if element.query_selector('text="展开"') != None:
-                    element.query_selector('text="展开"').click()
+                # 若内容有折叠，则展开
+                if Block.query_selector('text="展开"') != None:
+                    Block.query_selector('text="展开"').click()
                     SaiPage.wait_for_timeout(random.randint(1000, 1500))
-
-                CurrentElementData = ExtractInfo_PerPage_SetVar(SaiPage, element, style_value)
+                # 提取当前内容块的数据
+                CurrentElementData = GetInfo_Per_Block(SaiPage, Block, style_value)
                 # 将当前内容块数据加入本页数据
                 CurrentPageData.append(CurrentElementData)
     return CurrentPageData
 
 
-# 取每一条内容块的变量赋值
-def ExtractInfo_PerPage_SetVar(SaiPage, element, style_value):
+# 提取当前内容块的数据
+def GetInfo_Per_Block(SaiPage, element, style_value):
+    # 当前内容块的数据字典
     CurrentElementData = {}
+    # 内容块纵坐标（整数）
     CurrentElementData["SequenceNo"] = int(style_value)
+    # 内容块作者（字符串）
     name = element.query_selector(Xpath_name).text_content()
     CurrentElementData["name"] = name
 
-    # 因内容可能包含图片，故此处使用HTML2Text提取富文本
+    # 内容块的具体内容（因内容可能包含图片，故用HTML2Text提取MarkDown富文本）
     content_Html = element.query_selector(Xpath_content).inner_html()
+    # 提取的原始内容的图片都是在线的，但是微博进站外部引用他的图片
     content_Online_Pic = MarkDownMaker.handle(content_Html)
+    # 故先将在线图片下载到本地再引用
     content_Local_Pic = DownLoad_Pic_Get_New_MDContent(SaiPage, content_Online_Pic)
     CurrentElementData["content"] = content_Local_Pic
 
+    # 内容块的回复部分
     CurrentElementData["reply"] = ""
+    # 若本内容没有回复则忽略
     if element.query_selector(Xpath_reply) != None:
-        # 因内容可能包含图片，故此处使用HTML2Text提取富文本
+        # 提取逻辑通内容块的具体内容
         reply_Html = element.query_selector(Xpath_reply).inner_html()
         reply_Online_Pic = MarkDownMaker.handle(reply_Html)
         reply_Local_Pic = DownLoad_Pic_Get_New_MDContent(SaiPage, reply_Online_Pic)
+        # 剔除多余换行
         reply_clean = reply_Local_Pic.replace("\n", "")
         CurrentElementData["reply"] = reply_clean
     return CurrentElementData
@@ -1860,10 +1889,11 @@ def ExtractInfo_PerPage_SetVar(SaiPage, element, style_value):
 
 # 下载图片并替换图片引用路径
 def DownLoad_Pic_Get_New_MDContent(SaiPage, MDContent):
-    # 提取出 ![](url) 中的 url
+    # 提取出MarkDown文本中 ![](url) 中 url list
     MDPicUrls = re.findall(r"!\[\]\((.*?)\)", MDContent)
     for image_url in MDPicUrls:
-        # 提取图片名称：从 https://fe.t.sis.cn/ap.png/ddkkk 提取出ap.png
+        # 提取图片名称
+        # 格式：https://fe.t.sis.cn/ap.png/ddkkk 提取出ap.png
         match = re.search(r"/([^/]+\.(?:png|jpg|jpeg|webp))(?:/|$)", image_url)
         if match:
             PicName = match.group(1)
@@ -1871,12 +1901,12 @@ def DownLoad_Pic_Get_New_MDContent(SaiPage, MDContent):
             ThisPicDir = f"{MD_Pic_dir}/{PicName}"
             # 利用requests下载图片
             Requests_DownLoad_Pic(SaiPage, image_url, ThisPicDir)
-            # 将MarkDown文本中的服务器图片链接替换为本地连接
-            MDContent = MDContent.replace(image_url, ThisPicDir)
+            # 将MarkDown文本中的在线图片链接替换为本地图片连接
+            New_MDContent = MDContent.replace(image_url, ThisPicDir)
         else:
             print(f"图片格式需要扩充: {image_url}")
 
-    return MDContent
+    return New_MDContent
 
 
 # 利用requests下载图片
@@ -1906,7 +1936,7 @@ def Requests_DownLoad_Pic(SaiPage, image_url, ThisPicDir):
 def run(playwright: Playwright) -> None:
     SaiBrowser, SaiContext, SaiPage = InitialChrome()
     InitialMDFile()
-    ExtractInfo_WeiBo(SaiPage, 10)
+    GetInfo_WeiBo(SaiPage, 10)
     # 收尾
     SaiContext.close()
     SaiBrowser.close()

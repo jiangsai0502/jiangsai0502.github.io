@@ -87,14 +87,8 @@
     > * 安装后测试
     >
     >   ```bash
-    >   edge-tts --text "自动化测试第2步，需要您手机微信扫码登录，成功后，请按回车继续" --write-media '1.mp3' --voice zh-CN-YunxiNeural
+    >   edge-tts --text "手机微信扫码登录，成功后按回车继续" --write-media 'test.mp3'
     >   ```
-    >
-    >   > `--text` 要转为语音的文字
-    >   >
-    >   > `--write-media` 要保存的文件路径
-    >   >
-    >   > `--voice` 指明了使用哪种语言
     >
     > * 转换指定文件
     >
@@ -106,18 +100,28 @@
     > * 转换指定文件 - 使用指定语音
     >
     >   ```bash
-    >   cd /Users/jiangsai/Desktop
-    >   edge-tts -f "demo.txt" --write-media "demo.mp3" --voice zh-CN-YunxiNeural
+    >   edge-tts --voice zh-CN-YunxiNeural -f "demo.txt" --write-media "demo.mp3"
     >   ```
-    >
+    >   
     > * 调整语速
     >
     >   ```bash
     >   //语速降低50%
-    >   edge-tts -f "d:\byhy\xy.txt" --write-media "d:\byhy\xy.mp3" --voice zh-CN-YunxiNeural --rate=-50%
+    >   edge-tts --voice zh-CN-YunxiNeural --rate=-50% -f "demo.txt" --write-media "demo.mp3"
     >   //语速增加50%
-    >   edge-tts -f "d:\byhy\xy.txt" --write-media "d:\byhy\xy.mp3" --voice zh-CN-YunxiNeural --rate=+50%
+    >   edge-tts --voice zh-CN-YunxiNeural --rate=+50% -f "demo.txt" --write-media "demo.mp3"
     >   ```
+    >
+    > * 调整音量
+    >
+    >   ```bash
+    >   //音量降低30%
+    >   edge-tts --voice zh-CN-YunxiNeural --rate=-50% --volume=-30% -f "demo.txt" --write-media "demo.mp3"
+    >   //音量增加30%
+    >   edge-tts --voice zh-CN-YunxiNeural --rate=+50% --volume=+30% -f "demo.txt" --write-media "demo.mp3"
+    >   ```
+    >   
+    >   
     >
     > * 查看更多发音
     >
@@ -158,27 +162,48 @@
     >   
     >   for Voice in Voice_List:
     >       Voice_Path = f"{folderPath}/{Voice}.mp3"
-    >       cmd = f'edge-tts --text "自动化测试，需要您手机微信扫码登录，Our companies have a track record of becoming billion dollar companies." --voice {Voice} --write-media "{Voice_Path}"'
+    >       cmd = f'edge-tts --text "手机微信扫码登录，成功后按回车继续，Our companies have a track record of becoming billion dollar companies." --voice {Voice} --write-media "{Voice_Path}"'
     >       print(cmd)
     >       os.system(cmd)
     >   ```
-    >
-    >   
     >
     > * Python 文字转语音脚本
     >
     >   ```python
     >   import os
-    >   
-    >   VOICE = "zh-CN-YunjianNeural"
-    >   folderPath = "/Users/jiangsai/Desktop/1"
-    >   
-    >   for dirpath, dirnames, filenames in os.walk(folderPath):
-    >       for fn in filenames:
-    >           # 把 dirpath 和 每个文件名拼接起来 就是全路径
-    >           fpath = os.path.join(dirpath, fn)
-    >           mp3Path = os.path.join(dirpath, fn.replace(".txt", ".mp3"))
-    >           cmd = f'edge-tts --voice {VOICE} -f "{fpath}" --write-media "{mp3Path}"'
-    >           print(cmd)
-    >           os.system(cmd)
+    >     
+    >   Voice = "zh-CN-YunjianNeural"
+    >   Rate = "+0%"
+    >   Volume = "+0%"
+    >     
+    >   Handle_Folder = "/Users/jiangsai/Desktop/1"
+    >     
+    >   # 转换目录内所有单个txt文件为单个mp3音频
+    >   for Folder_Path, SonFolders, FileNames in os.walk(Handle_Folder):
+    >       for FileName in FileNames:
+    >           if FileName.endswith(".txt"):
+    >               # 把 dirpath 和 每个文件名拼接起来 就是全路径
+    >               FilePath = f"{Folder_Path}/{FileName}"
+    >               mp3Name = FileName.replace(".txt", ".mp3")
+    >               mp3Path = f"{Folder_Path}/{mp3Name}"
+    >               cmd = f'edge-tts --voice {Voice} --rate={Rate} --volume={Volume} -f {FilePath} --write-media "{mp3Path}"'
+    >               os.system(cmd)
     >   ```
+
+1. Mac创建双击执行脚本
+
+    > 1. 新建文件`command`文件
+    >
+    >    `touch 重启音频服务.command`
+    >
+    > 2. 使用`Sublime Text`打开`重启音频服务.command`文件
+    >
+    >    ```
+    >    #!/bin/bash
+    >    sudo killall coreaudiod
+    >    ```
+    >
+    > 3. 文件授权
+    >
+    >    `chmod +x Restart_AudioService.command`
+
