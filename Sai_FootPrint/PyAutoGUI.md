@@ -1,33 +1,37 @@
 #### PyAutoGUI
 
+**安装**
+
+`pip install pyautogui`
+
 ##### 等待页面加载出控件，再点击它
 
-```
+```python
 import pyautogui
 import time
 
 # 目标图片
-imageFile = '11.png'
+target_pic = "/Users/jiangsai/Desktop/1.png"
 # 目标图片坐标
 location = None
 # 等待加载时间
 second = 0
 
 # 只要没找到图片，或者加载时间没超过10秒，就一直循环
-while (location == None and second != 10):
+while location == None and second != 10:
     try:
         time.sleep(0.5)
         second = second + 0.5
-        location = pyautogui.locateOnScreen(imageFile)
+        location = pyautogui.locateOnScreen(target_pic)
     except Exception as e:
         print(e)
 
 if location == None:
-    print('不等了')
+    print("不等了")
 else:
     print(location)
     x, y = pyautogui.center(location)
-    pyautogui.moveTo(x/2,y/2)
+    pyautogui.moveTo(x / 2, y / 2)
 ```
 
 ##### 按键精灵
@@ -314,7 +318,7 @@ else:
 >    >>> my_point1 = pyautogui.center(my_location)
 >    >>> my_point1
 >    Point(x=3464, y=511)    # 屏幕分辨率才1800x1169，这是Mac通病，解法是坐标/2
->    
+>       
 >    >>> my_point2 = pyautogui.locateCenterOnScreen('calc.png')    # 该图片的中心坐标
 >    >>> my_point2
 >    Point(x=3464, y=511)   # x = left+width/2, y = top+height/2
@@ -326,5 +330,14 @@ else:
 >        my_point = pyautogui.center(my_location)   # 定位每个calc.png
 >        pyautogui.click(my_point[0]/2, my_point[1]/2)   # 点击每个calc.png中心
 >    ```
-> 
-> 3. 
+
+坑
+
+1. 调用`pyautogui.locateOnScreen(target_pic)`时，报错`TypeError: '<' not supported between instances of 'str' and 'int'`
+
+   > 定位：pyautogui的bug
+   >
+   > 解决[参考](https://zhuanlan.zhihu.com/p/657907193)
+
+
+

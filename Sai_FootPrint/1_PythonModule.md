@@ -87,47 +87,114 @@ def WriteToTxt(bigData):
 
 ### 读写 CSV
 
-##### 1. 写操作，写入时覆盖原文
-
 ```python
-# 自动关闭文件
-with open('/Users/jiangsai02/Documents/Temp/test.csv', 'w', encoding="gbk", newline='') as OpenCSV:
+import requests, os, csv
+
+CsvFile = "/Users/jiangsai/Desktop/test.csv"
+
+MoiveList = [
+    {"影片名": "教父", "评分": "9.7", "评价人数": "2938225人"},
+    {"影片名": "冰与火", "评分": "9.6", "评价人数": "2170430人"},
+]
+AttrList = ["影片名", "评分", "评价人数"]
+
+with open(CsvFile, mode="w+", encoding="gbk", newline="") as OpenCSV:
+    ########### 方法1：csv.DictWriter ##########
+    # 设置CSV文件的表头
+    Header = ["影片名", "评分", "评价人数"]
+    # 创建一个DictWriter对象，指定字段名和CSV文件
+    CSVwriter = csv.DictWriter(OpenCSV, fieldnames=Header)
+    # 写入表头
+    CSVwriter.writeheader()
+    # 写入电影信息
+    for movie in MoiveList:
+        CSVwriter.writerow(movie)
+    ########### 方法2：csv.writer ##########
+    # 设置CSV文件的表头
+    Header = ["影片名", "评分", "评价人数"]
+    # 创建一个读写对象
     CSVwriter = csv.writer(OpenCSV)
-    CSVwriter.writerow([value1, value2, value3])
-```
+    # 写入表头
+    CSVwriter.writerow(Header)
+    # 写入电影信息
+    for movie in MoiveList:
+        row = [movie["影片名"], movie["评分"], movie["评价人数"]]
+        CSVwriter.writerow(row)
+    ########### 方法3：csv.writer ##########
+    # 创建一个读写对象
+    CSVwriter = csv.writer(OpenCSV)
+    # 写入电影信息
+    for movie in MoiveList:
+        extend_row = []
+        append_row = []
+        CSVwriter.writerow(["--extend--"])
+        for key, value in movie.items():
+            # list后扩充list（扩充的必须是list）
+            extend_row.extend([key, value])
+        CSVwriter.writerow(extend_row)
+        CSVwriter.writerow(["--append--"])
+        for key, value in movie.items():
+            # list后追加元素（追加的可以是int、str、list、dict等任意类型）
+            append_row.append(key)
+            append_row.append(value)
+        CSVwriter.writerow(append_row)
 
-> 1. Windows默认编码是gbk，如果用utf-8，excel打开可能会乱码
-> 2. newline='' 是为了让writer自动添加的换行符和文件的不重复，防止出现跳行的情况
-> 3. 每行写入 1 个 list
-
-##### 2. 读操作
-
-```python
-# 自动关闭文件
-with open('/Users/jiangsai02/Documents/Temp/test.csv', 'r', encoding="gbk") as OpenCSV:
+with open(CsvFile, mode="r", encoding="gbk", newline="") as OpenCSV:
     CSVreader = csv.reader(OpenCSV)
-    for row in reader:
+    # 逐行转换成list，同行内每一个单元格为一个元素
+    for row in CSVreader:
         print(row)
+        print(row[2], row[4])
 ```
 
-> 1. 读取的编码要和写入的保持一致，写入时是 "gbk" ，读取时也要 "gbk"
-> 2. 每次读 1 行
-
-##### 3. 项目模块
-
-```python
-import csv
-
-# bigData 是 List，data 是 Dictionary
-def WriteToCSV(bigData):
-    with open('/Users/jiangsai02/Documents/Temp/test.csv', 'w', encoding="gbk", newline='') as OpenCSV:
-        CSVwriter = csv.writer(OpenCSV)
-        CSVwriter.writerow(list(bigData[0].keys()))
-        for data in bigData:
-            CSVwriter.writerow(list(data.values()))
-```
-
-
+> 方法1和方法2的输出
+>
+> | 影片名 | 评分 | 评价人数  |
+> | ------ | ---- | --------- |
+> | 教父   | 9.7  | 2938225人 |
+> | 冰与火 | 9.6  | 2170430人 |
+>
+> 方法3 的输出
+>
+> | 影片名 | 教父   | 评分 | 9.7  | 评价人数 | 2938225人 |
+> | ------ | ------ | ---- | ---- | -------- | --------- |
+> | 影片名 | 冰与火 | 评分 | 9.6  | 评价人数 | 2170430人 |
+>
+> ##### 1. 写操作
+>
+> ```python
+> with open(CsvFile, mode="w+", encoding="gbk", newline="") as OpenCSV:
+>     CSVwriter = csv.writer(OpenCSV)
+>     for movie in MoiveList:
+>         extend_row = []
+>         for key, value in movie.items():
+>             extend_row.extend([key, value])
+>         CSVwriter.writerow(extend_row)
+> ```
+>
+> > * mode = "w+" 覆盖式读写，若文件存在，则打开，若不存在，则新建后打开
+> > * mode = "a+" 追加式读写，若文件存在，则打开，若不存在，则新建后打开
+> > * python3 默认是 utf-8 读写文本，若乱码可切换为 utf-8-sig 或 gbk
+> > * newline = "" 将数值写入新行
+> > * writerow 每次写入一行
+>
+> ##### 2. 读操作
+>
+> ```python
+> with open(CsvFile, mode="r", encoding="gbk", newline="") as OpenCSV:
+>     CSVreader = csv.reader(OpenCSV)
+>     # 逐行转换成list，同行内每一个单元格为一个元素
+>     for row in CSVreader:
+>         print(row)
+>         print(row[2], row[4])
+> ```
+>
+> > * mode = "r" 读取
+> > * encoding="gbk" 读取的编码要和写入的保持一致，写入时是 "gbk" ，读取时也要 "gbk"
+> > * 每次读取csv文件的 1 行
+>
+>
+> ​		
 
 ### 读写 Excel
 

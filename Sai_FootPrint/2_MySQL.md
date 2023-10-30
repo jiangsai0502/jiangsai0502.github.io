@@ -4,80 +4,103 @@
 
 1. 安装 MySql 数据库：[下载链接](https://downloads.mysql.com/archives/community/)，[安装步骤](https://www.jianshu.com/p/833f388da8e3)
 
-   * 安装位置默认，最后填写强密码，且勾选掉默认启动
+   > * 安装位置默认，最后填写强密码，且勾选掉默认启动
+   >
+   >   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310290036599.png)
+   >
+   > * 安装目录
+   >
+   >   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210917143749.png)
 
-     安装目录
+2. 查看MySql进程是否存在  
 
-     ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210917143749.png)
+   > `ps aux | grep mysql`
+   >
+   > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310290035935.png)
+   >
+   > 没有`mysqld`进程，可见MySQL服务器并没有运行
 
-2. 查看MySql进程是否存在   `ps aux | grep mysql`
+3. 设置环境变量
 
-3. 测试数据库
+   > 1. 检查终端上的mysql调用
+   >
+   >    ```bash
+   >    > which mysql
+   >    /Users/jiangsai/anaconda3/bin/mysql
+   >    ```
+   >
+   >    > 这里明显有错误，安装时我们知道mysql被安装在了/usr/local/mysql/bin
+   >
+   > 2. 修改环境变量的引用
+   >
+   >    > 查看本地使用的是`bash`还是`zsh`
+   >    > 若输出`/bin/zsh`，则编辑`~/.zshrc`；若输出`/bin/bash`，则编辑`~/.bash_profile`
+   >    >
+   >    > ```bash
+   >    > > echo $SHELL
+   >    > /bin/zsh
+   >    > > open ~/.zshrc
+   >    > ```
+   >    >
+   >    > > ```
+   >    > > export PATH="/usr/local/mysql/bin:$PATH"
+   >    > > 
+   >    > > # >>> conda initialize >>>
+   >    > > # !! Contents within this block are managed by 'conda init' !!
+   >    > > __conda_setup="$('/Users/jiangsai/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+   >    > > if [ $? -eq 0 ]; then
+   >    > >     eval "$__conda_setup"
+   >    > > else
+   >    > >     if [ -f "/Users/jiangsai/anaconda3/etc/profile.d/conda.sh" ]; then
+   >    > >         . "/Users/jiangsai/anaconda3/etc/profile.d/conda.sh"
+   >    > >     fi
+   >    > > ```
+   >    >
+   >    > 重新加载环境配置文件
+   >    >
+   >    > ```bash
+   >    > > source ~/.zshrc
+   >    > 
+   >    > >  which mysql
+   >    > /usr/local/mysql/bin/mysql
+   >    > ```
 
-   1. MySql默认安装路径
+4. 启动数据库
 
-      ```bash
-      $ which mysql
-      /usr/local/mysql
-      ```
+   1. 界面启动
 
-   2. 该路径下有bin、lib、doc等目录
+      > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310290046703.png)
 
-      `cd /usr/local/mysql && ls`
+   2. 代码操作
 
-   3. 在bin目录下，执行 `./mysql -u root -p` ，输入安装时设置的初始化密码，即可看到mysql版本信息和mysql命令行界面
+      > ```bash
+      > # 启动MySQL服务
+      > sudo /usr/local/mysql/support-files/mysql.server start
+      > Password:电脑密码
+      > # 关闭MySQL服务
+      > sudo /usr/local/mysql/support-files/mysql.server stop
+      > Password:电脑密码
+      > # 重启MySQL服务
+      > sudo /usr/local/mysql/support-files/mysql.server restart
+      > Password:电脑密码
+      > # 查看状态
+      > sudo /usr/local/mysql/support-files/mysql.server status
+      > # 进入MySQL：强制MySQL客户端通过TCP/IP连接
+      > mysql -uroot -p -h 127.0.0.1
+      > Enter password:数据库密码
+      > # 修改密码：由jiangsai改为sai
+      > ALTER USER 'root'@'localhost' IDENTIFIED BY 'sai';
+      > # 退出MySQL
+      > exit
+      > ```
 
-      `cd bin && ./mysql -u root -p`
-
-4. 配置环境变量   `open ~/.bash_profile`  文件最后新起一行，插入下面两行代码
-
-   ```bash
-   export PATH=$PATH:/usr/local/mysql/bin
-   export PATH=$PATH:/usr/local/mysql/support-files
-   ```
-
-5. 操作数据库
-
-   ```mysql
-   # 启动
-   mysql.server start
-   sudo /usr/local/mysql/support-files/mysql.server start
-   
-   # 停止
-   mysql.server stop
-   sudo /usr/local/mysql/support-files/mysql.server stop
-   
-   # 重启
-   mysql.server restart
-   sudo /usr/local/mysql/support-files/mysql.server restart
-   
-   # 查看状态
-   mysql.server status
-   sudo /usr/local/mysql/support-files/mysql.server status
-   ```
-
-   5. 登录：`mysql -u root -p`
-
-      * `mysql -h 主机名 -u 用户名 -p`
-        * **-h** : 指定要登录的 MySQL 主机名, 登录本机(localhost 或 127.0.0.1)，该参数可以省略
-        * **-u** : 登录的用户名
-        * **-p** : 告诉服务器将会使用密码登录, 若密码为空, 可忽略此选项
-
-   6. 修改root密码（必须修改，否则将来莫名报错）：`ALTER USER 'root'@'localhost' IDENTIFIED BY 'sai'; `
-
-   7. 退出MySQL： `exit`
-
-      > 错误： ERROR! MySQL server PID file could not be found!  [参考方案](https://blog.51cto.com/dahui09/1841627)
-      >
-      > 1. 重启 sql：系统偏好设置 - MySQL
-
-6. 卸载
+5. 卸载
 
    ```bash
    备份数据库
-   # 停止：停止方式与开启方式对应
-   # 若当前运行的状态是从系统偏好设置里Start，那就从系统偏好设置里Stop
-   # 若当前运行的状态是sudo /usr/local/mysql/support-files/mysql.server Start，那就sudo /usr/local/mysql/support-files/mysql.server stop
+   # 关闭MySQL服务（停止方式与开启方式对应）
+   	# 若是从系统偏好里启动的，则从系统偏好设置里关闭
+   	# 若是命令行启动的，则命令行关闭
    
    # 卸载
    系统偏好设置 - Uninstall
@@ -214,7 +237,7 @@
        * 查看mysql错误日志：`cat /usr/local/var/mysql/xxx-mini.local.err`
        *  [NOTE] 和 [WARNING] 可以不用管它，我直接找到了 [ERROR] 即错误信息，发现是没有读写权限
        * 查看mysql在Mac中的用户名`_mysql`：`dscl . list /Users | grep my`
-       * 把mysql文件夹的拥有者改成`_mysql`：`sudo chown -R _mysql /usr/local/Cellar/mysql`
+       * 把mysql文件夹的拥有者改成`_mysql`：`sudo chown -R _mysql /usr/local/mysql`
 
 
 
@@ -244,9 +267,8 @@
 
    * 执行完该指令后，输入密码，随后即可登录远程服务器
 
-     
 
-#### 5. 数据库工具 **Sequel Pro**
+#### 5. 数据库工具 **Sequel Pro**（不常用）
 
 1. **查看 MySQL 端口号**
 
@@ -267,7 +289,7 @@
 
 
 
-#### 6. 数据库工具[tableplus](https://www.macwk.com/soft/tableplus)
+#### 6. 数据库工具[tableplus](https://www.macwk.com/soft/tableplus)（不常用）
 
 1. 配置
 
@@ -275,15 +297,11 @@
 
 
 
-#### 7. 数据库工具[navicat premium](https://www.macwk.com/soft/navicat-premium)
+#### 7. 数据库工具[navicat premium](https://www.macwk.com/soft/navicat-premium)（常用）
 
 1. 配置
 
    ![mk5Yqg](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/mk5Yqg.png)
-
-
-
-
 
 ## 教程
 
@@ -857,8 +875,8 @@
           
           ROLLBACK;   #若后悔了就执行回滚，否则不执行ROLLBACK直接执行COMMIT
           COMMIT;    #无论
-          ```
-          
+        ```
+        
         * 删除王六的英语成绩
         
           ```bash
