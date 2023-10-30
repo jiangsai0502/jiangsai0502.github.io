@@ -69,10 +69,12 @@
 >
 >   > `conda info --envs`
 >   >
->   > ```
+>   > ```bash
 >   > base                     /Users/jiangsai/anaconda3
->   > py3                      /Users/jiangsai/anaconda3/envs/py3
+>   > py3              *       /Users/jiangsai/anaconda3/envs/py3
 >   > ```
+>   >
+>   > *即当前处于py3环境
 >
 > * 激活base虚拟环境(base是默认创建的)
 >
