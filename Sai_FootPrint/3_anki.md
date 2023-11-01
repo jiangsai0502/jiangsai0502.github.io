@@ -283,7 +283,7 @@ Leech action
   >
   >    ```
   >    <div class=bg><div class=bg2>
-  >    
+  >       
   >    <div style="margin:-5px 0 0 0"></div>
   >    <div style="text-align:right;font-size:0.75em;max-width:828px;margin:0 auto;color:#808080">➵ {{Subdeck}}</div>
   >    ```
@@ -304,7 +304,7 @@ Leech action
   >    	{
   >    		var n = i;
   >    		idd = "keyy" + String(n);
-  >    
+  >       
   >    		if (document.getElementById(idd).getAttribute("class") == "cloze")
   >    		{
   >    			idd = "keyy" + String(n);
@@ -314,17 +314,17 @@ Leech action
   >    		}
   >    	}
   >    }
-  >    
+  >       
   >    function nextt()
   >    {
   >    	for (var i = 2; i < sum; i = i + 2)
   >    	{
   >    		var n = i;
   >    		idd = "keyy" + String(n);
-  >    
+  >       
   >    		if (document.getElementById(idd).getAttribute("class") == "hidden")
   >    		{
-  >    			
+  >    			   
   >    			idd = "keyy" + String(n - 1);
   >    			$("#" + idd)[0];
   >    			switchh(idd);
@@ -457,3 +457,7 @@ Leech action
   >
   >       
 
+##### [长时间没复习，面对海量的review怎么办](https://zhuanlan.zhihu.com/p/442081874?utm_id=0)
+
+> 1. 创建个<7天到期的牌组
+> 2. 创建个>7天到期的牌组

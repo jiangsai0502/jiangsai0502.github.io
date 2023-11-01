@@ -111,7 +111,7 @@
   >   >   ```python
   >   >   # # 初始化一个浏览器（headless = False 有头浏览器；slow_mo = 3000 每个操作停3秒）
   >   >   # SaiBrowser = playwright.chromium.launch(headless = False, slow_mo = 3000)
-  >   >     
+  >   >           
   >   >   # # 加载本地cookie
   >   >   # # 若本地有cookie，则在SaiBrowser中创建一个context（网页管理器），并加载该cookie，实现免登陆；若本地没有，则在SaiBrowser中创建一个空的context
   >   >   # # 每个context是一个独立会话，用于环境隔离，每个context可使用1套代理，登录1套账号
@@ -120,13 +120,13 @@
   >   >   #     SaiContext = SaiBrowser.new_context(storage_state="state.json")
   >   >   # else:
   >   >   #     SaiContext = SaiBrowser.new_context()
-  >   >     
+  >   >           
   >   >   # 拦截SaiContext下所有页面的图片请求（凡含.png的链接，都当做是png图片）
   >   >   # SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
-  >   >     
+  >   >           
   >   >   # 初始化一个网页
   >   >   # SaiPage = SaiContext.new_page()
-  >   >     
+  >   >           
   >   >   # 拦截SaiPage这个页面的图片请求
   >   >   # SaiPage.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
   >   >   ```
@@ -437,6 +437,134 @@
   >     run(playwright)
   > ```
 
+##### 通用方法
+
+> 路径：`Module/Play_Wright_modules.py`
+>
+> ```python
+> import re, os, html2text, random
+> 
+> 
+> def Initial_Chrome(playwright, WebSites, AbortPic, WaitLoad):
+>     """
+>     初始化浏览器：调用本地Chrome，在新标签打开目标网页，并切换到该标签
+>     """
+>     SaiBrowser = playwright.chromium.connect_over_cdp("http://localhost:9222")
+>     SaiContext = SaiBrowser.contexts[0]
+>     if AbortPic == True:
+>         SaiContext.route(
+>             re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.gif.*)|(.*\.webp.*)"), lambda route: route.abort()
+>         )
+>     SaiPages = []
+>     for i in WebSites:
+>         SaiPage = SaiContext.new_page()
+>         SaiPage.goto(i)
+>         SaiPage.bring_to_front()
+>         if WaitLoad == True:
+>             SaiPage.wait_for_load_state("networkidle")
+>         SaiPage.wait_for_timeout(random.randint(1000, 3000))
+>         SaiPages.append(SaiPage)
+>     return SaiBrowser, SaiContext, SaiPages
+> 
+> 
+> def Initial_EachWeb_MDFile(SaiPage):
+>     """
+>     每个网页初始化写入方法：切换到目标路径，将网页标题处理成合法文件名
+>     """
+>     # 切换MarkDown文件目录
+>     MDdir = "/Users/jiangsai/Desktop"
+>     os.chdir(MDdir)
+>     # 声明全局MarkDown文件操作类
+>     MarkDownMaker = html2text.HTML2Text()
+>     MarkDownMaker.ignore_links = True
+>     # 知乎网页标题格式：(99+ 封私信 / 81 条消息) 期货怎么才能赚钱？ - 知乎
+>     # 处理MarkDown文件名
+>     MDFile = SaiPage.title()
+>     # 文件名中不能含有'.', '/', ':' 这些字符
+>     replace_dict = {".": "_", "/": "_", ":": "_", " ": "_"}
+>     # 遍历字典的键值对，将字符串中的每一个键都替换为对应的值
+>     for key, value in replace_dict.items():
+>         MDFile = MDFile.replace(key, value)
+>     # 将重复的'_'替换为1个
+>     MDFile = re.sub(r"(_)\1+", "_", MDFile)
+>     # 将括号和括号中的字符替换掉
+>     MDFile = re.sub(r"\((.*?)\)", "", MDFile)
+>     # 声明全局MarkDown文件路径
+>     MDFileDir = f"{MDdir}/{MDFile}.md"
+>     return MarkDownMaker, MDFileDir
+> 
+> 
+> def Initial_Single_MDFile(MDdir, MDFile):
+>     """
+>     初始化1个Mrdkdown文件：切换到目标路径，指定文件名
+>     """
+>     # 切换MarkDown文件目录
+>     os.chdir(MDdir)
+>     # 声明全局MarkDown文件操作类
+>     MarkDownMaker = html2text.HTML2Text()
+>     MarkDownMaker.ignore_links = True
+>     # 声明全局MarkDown文件路径
+>     MDFileDir = f"{MDdir}/{MDFile}"
+>     return MarkDownMaker, MDFileDir
+> 
+> 
+> def Page_Scroll(ScrollPage, ScrollTimes):
+>     """
+>     滚动加载更多内容，直到不再加载或者滚动了10次
+>     """
+>     # 
+>     NotEnd = True
+>     ScrollTime = 1
+>     while NotEnd and ScrollTime < ScrollTimes:
+>         # 滚动前的页面高度
+>         BeforeScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
+>         ScrollTime += 1
+>         for i in range(3):
+>             # 滚动到页面底部
+>             ScrollPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
+>             # 微上划一下模拟人类
+>             ScrollPage.keyboard.press("PageUp")
+>             ScrollPage.wait_for_timeout(random.randint(1000, 3000))
+>         # 滚动后的页面高度
+>         AfterScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
+>         if BeforeScrollHeight == AfterScrollHeight or ScrollTime >= ScrollTimes:
+>             NotEnd = False
+> 
+> 
+> def Turn_Page(FatherPage, Xpath_Nav, Nav):
+>     """
+>     翻页
+>     """
+>     # 当前页导航列表
+>     Current_Nav_list = FatherPage.query_selector_all(Xpath_Nav + "/*")
+>     for i in Current_Nav_list:
+>         Nav_num = i.text_content()
+>         # 抽取出导航列表中的数字，「上一页」「下一页」这种非确定性导航都排除
+>         if str(Nav_num).isdigit():
+>             Nav["All_Nav"].add(int(Nav_num))
+>     # 若本页是第1页，则不用点击
+>     if Nav["Is_First_Nav"] == True:
+>         # 取所有导航数列表中最小的数为即将点击的数
+>         To_Click_Nav = sorted(list(Nav["All_Nav"]))[0]
+>         pass
+>     else:
+>         # 取可点击列表的最小导航数为即将点击的数
+>         To_Click_Nav = Nav["Able_Click_Nav"][0]
+>         # 点击最小导航数
+>         # locator('text=1')模糊匹配1,01,10,11等;locator('text="1"')精确匹配1
+>         FatherPage.locator(Xpath_Nav).locator('text="' + str(To_Click_Nav) + '"').click()
+>         FatherPage.wait_for_timeout(random.randint(1000, 3000))
+>     # 刚点击的数字追加到「已点击导航数字集合」
+>     Nav["Clicked_Nav"].add(To_Click_Nav)
+>     Nav["Is_First_Nav"] = False
+>     # 可点击导航数字集合 = 所有导航数字集合 ∩ 已点击导航数字集合，再转换成列表
+>     Nav["Able_Click_Nav"] = sorted(list(Nav["All_Nav"].difference(Nav["Clicked_Nav"])))
+>     if len(Nav["Able_Click_Nav"]) == 0:
+>         Nav["Finish_Nav"] = True
+> ```
+>
+> 
+
 ##### 网页爬虫案例
 
 1. 向ChatGPT循环提交请求并获取请求结果
@@ -557,8 +685,9 @@
 ```python
 import os, html2text, re, random
 from playwright.sync_api import Playwright, sync_playwright
+from Module import Play_Wright_modules as pwm
 
-
+#########################全局变量#########################
 # 类型一：问答型
 # 问题
 Xpath_Answer = '//h1[@class="QuestionHeader-title"]'
@@ -575,71 +704,11 @@ Xpath_Question = '//span[@class="RichText ztext CopyrightRichText-richText css-1
 # 类型二：专题型
 Xpath_Article_Title = "//article/header/h1"
 Xpath_Article_Content = '//article/div[@class="Post-RichTextContainer"]'
-
-
-# 初始化浏览器：调用本地Chrome，在新标签打开目标网页，并切换到该标签
-def InitialChrome(WebSite):
-    SaiBrowser = playwright.chromium.connect_over_cdp("http://localhost:9222")
-    SaiContext = SaiBrowser.contexts[0]
-    SaiContext.route(
-        re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.gif.*)|(.*\.webp.*)"), lambda route: route.abort()
-    )
-    SaiPage = SaiContext.new_page()
-    SaiPage.goto(WebSite)
-    SaiPage.bring_to_front()
-    SaiPage.wait_for_load_state("networkidle")
-    return SaiBrowser, SaiContext, SaiPage
-
-
-# 初始化写入方法：切换到目标路径，将网页标题处理成合法文件名
-def InitialMDFile(SaiPage):
-    # 切换MarkDown文件目录
-    MDdir = "/Users/jiangsai/Desktop"
-    os.chdir(MDdir)
-    # 声明全局MarkDown文件操作类
-    global MarkDownMaker
-    MarkDownMaker = html2text.HTML2Text()
-    MarkDownMaker.ignore_links = True
-    # 知乎网页标题格式：(99+ 封私信 / 81 条消息) 期货怎么才能赚钱？ - 知乎
-    # 处理MarkDown文件名
-    MDFile = SaiPage.title()
-    # 文件名中不能含有'.', '/', ':' 这些字符
-    replace_dict = {".": "_", "/": "_", ":": "_", " ": "_"}
-    # 遍历字典的键值对，将字符串中的每一个键都替换为对应的值
-    for key, value in replace_dict.items():
-        MDFile = MDFile.replace(key, value)
-    # 将重复的'_'替换为1个
-    MDFile = re.sub(r"(_)\1+", "_", MDFile)
-    # 将括号和括号中的字符替换掉
-    MDFile = re.sub(r"\((.*?)\)", "", MDFile)
-    # 声明全局MarkDown文件路径
-    global MDFileDir
-    MDFileDir = f"{MDdir}/{MDFile}.md"
-
-
-# 页面滚动方法：对指定页面，滚动指定次数或滚动到底
-def PageScroll(ScrollPage, ScrollTimes):
-    # 滚动加载更多内容，直到不再加载或者滚动了10次
-    NotEnd = True
-    ScrollTime = 1
-    while NotEnd and ScrollTime < ScrollTimes:
-        # 滚动前的页面高度
-        BeforeScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
-        ScrollTime += 1
-        for i in range(3):
-            # 滚动到页面底部
-            ScrollPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
-            # 微上划一下模拟人类
-            ScrollPage.keyboard.press("PageUp")
-            ScrollPage.wait_for_timeout(random.randint(1000, 3000))
-        # 滚动后的页面高度
-        AfterScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
-        if BeforeScrollHeight == AfterScrollHeight or ScrollTime >= ScrollTimes:
-            NotEnd = False
+#########################全局变量#########################
 
 
 # 获取问答页信息
-def ExtractQAInfo(WritePage):
+def GetQAInfo(WritePage):
     # 问题部分
     Answer = WritePage.query_selector(Xpath_Answer).text_content()
     Answer_Desc = ""
@@ -670,7 +739,7 @@ def ExtractQAInfo(WritePage):
 
 
 # 获取专栏页信息
-def ExtractZLInfo(WritePage):
+def GetZhuanLanInfo(WritePage):
     # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
     Article_Title_Html = WritePage.query_selector(Xpath_Article_Title).inner_html()
     Article_Title = MarkDownMaker.handle(Article_Title_Html)
@@ -681,21 +750,27 @@ def ExtractZLInfo(WritePage):
 
 
 def run(playwright: Playwright) -> None:
-    WebSite = input("请输入要爬取的知乎网址: ")
-    SaiBrowser, SaiContext, SaiPage = InitialChrome(WebSite)
-    InitialMDFile(SaiPage)
-    # 专栏页面
-    if "zhuanlan" in SaiPage.url:
-        ExtractZLInfo(SaiPage)
-    # 视频页面不抓取
-    elif "zvideo" in SaiPage.url:
-        pass
-    # 问答页面
-    else:
-        PageScroll(SaiPage, 1)
-        ExtractQAInfo(SaiPage)
-    # 收尾
-    SaiPage.close()
+    global MarkDownMaker, MDFileDir  # 文件名称（含路径）
+    WebSites = [
+        "https://www.zhihu.com/question/21931620",
+        "https://www.zhihu.com/question/485142113",
+    ]
+    SaiBrowser, SaiContext, SaiPages = pwm.Initial_Chrome(
+        playwright, WebSites, AbortPic=False, WaitLoad=False
+    )
+    for SaiPage in SaiPages:
+        MarkDownMaker, MDFileDir = pwm.Initial_EachWeb_MDFile(SaiPage)
+        SaiPage.bring_to_front()
+        # 专栏页面
+        if "zhuanlan" in SaiPage.url:
+            GetZhuanLanInfo(SaiPage)
+        # 问答页面
+        elif "question" in SaiPage.url:
+            # 滚动搜索页获取更多数据
+            pwm.Page_Scroll(SaiPage, 1)
+            GetQAInfo(SaiPage)
+        # 收尾
+        SaiPage.close()
     SaiContext.close()
     SaiBrowser.close()
 
@@ -728,8 +803,13 @@ with sync_playwright() as playwright:
 ```python
 import os, html2text, re, random
 from playwright.sync_api import Playwright, sync_playwright
+from Module import Play_Wright_modules as pwm
 
 #########################全局变量#########################
+# MarkDown文件目录
+MDdir = "/Users/jiangsai/Desktop"
+# MarkDown文件名
+MDFile = "Test.md"
 # 搜索结果页每个结果标题的url
 Xpath_Search_Result_urls = '//h2[@class="ContentItem-title"]//div/a'
 ###########类型一：问答型###########
@@ -753,51 +833,6 @@ Xpath_Article_Content = '//article/div[@class="Post-RichTextContainer"]'
 #########################全局变量#########################
 
 
-# 初始化浏览器：调用本地Chrome，在新标签打开目标网页，并切换到该标签
-def InitialChrome(WebSite):
-    SaiBrowser = playwright.chromium.connect_over_cdp("http://localhost:9222")
-    SaiContext = SaiBrowser.contexts[0]
-    SaiContext.route(
-        re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.gif.*)|(.*\.webp.*)"), lambda route: route.abort()
-    )
-    SaiPage = SaiContext.new_page()
-    SaiPage.goto(WebSite)
-    SaiPage.bring_to_front()
-    SaiPage.wait_for_load_state("networkidle")
-    return SaiBrowser, SaiContext, SaiPage
-
-
-# 初始化写入方法：切换到目标路径，指定文件名
-def InitialMDFile(MDdir, MDFile):
-    # 切换MarkDown文件目录
-    os.chdir(MDdir)
-    # 声明全局MarkDown文件操作类
-    global MarkDownMaker
-    MarkDownMaker = html2text.HTML2Text()
-    MarkDownMaker.ignore_links = True
-    # 声明全局MarkDown文件路径
-    global MDFileDir
-    MDFileDir = f"{MDdir}/{MDFile}"
-
-
-# 页面滚动方法：对指定页面，滚动指定次数或滚动到底
-def SaiScroll(ScrollPage, ScrollTimes):
-    # 滚动加载更多内容，直到不再加载或者滚动了10次
-    NotEnd = True
-    ScrollTime = 1
-    while NotEnd and ScrollTime < ScrollTimes:
-        # 滚动前的页面高度
-        BeforeScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
-        ScrollTime += 1
-        # 向下滚动一屏
-        ScrollPage.evaluate("() => window.scrollBy(0,window.innerHeight)")
-        ScrollPage.wait_for_timeout(random.randint(500, 1000))
-        # 滚动后的页面高度
-        AfterScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
-        if BeforeScrollHeight == AfterScrollHeight or ScrollTime >= ScrollTimes:
-            NotEnd = False
-
-
 # 通过搜索结果进入二级页
 def FromSearchResultsToSonPage(SaiContext, FatherPage):
     # 获取搜索结果链接
@@ -810,27 +845,25 @@ def FromSearchResultsToSonPage(SaiContext, FatherPage):
                 element.evaluate("element => element.scrollIntoView()")
                 element.click()
             SonPage = SonPageInfo.value
-            SonPage.wait_for_timeout(random.randint(1000, 2000))
-            # 视频页面不抓取
-            if "zvideo" in SonPage.url:
-                SonPage.close()
+            # 视频和话题页面不抓取
+            if any(keyword in SonPage.url for keyword in ["zvideo", "topic"]):
+                pass
             else:
                 SonPage.bring_to_front()
                 SonPage.wait_for_load_state()
+                SonPage.wait_for_timeout(random.randint(3000, 5000))
                 # 专栏页面
                 if "zhuanlan" in SonPage.url:
-                    # 写入MarkDown
                     GetZhuanLanInfo(SonPage)
-                    SonPage.close()
                 # 问答页面
-                else:
+                elif "question" in SonPage.url:
                     # 点击「查看全部回答」
                     SonPage.locator(Xpath_Check_All).click()
                     SonPage.wait_for_load_state()
                     # 滚动搜索页获取更多数据
-                    SaiScroll(SonPage, 1)
+                    pwm.Page_Scroll(SonPage, 1)
                     GetQAInfo(SonPage)
-                    SonPage.close()
+            SonPage.close()
 
 
 # 获取问答页内容
@@ -876,18 +909,16 @@ def GetZhuanLanInfo(WritePage):
 
 
 def run(playwright: Playwright) -> None:
-    WebSite = input("请输入要爬取的知乎搜索网址: ")
-    SaiBrowser, SaiContext, SaiPage = InitialChrome(WebSite)
-    # MarkDown文件目录
-    MDdir = "/Users/jiangsai/Desktop"
-    # MarkDown文件名
-    MDFile = "Test.md"
-    # 初始化MarkDown操作方法
-    InitialMDFile(MDdir, MDFile)
-    # 滚动搜索页获取更多数据
-    SaiScroll(SaiPage, 2)
-    # 获取搜索结果的全部内容
-    FromSearchResultsToSonPage(SaiContext, SaiPage)
+    global MarkDownMaker, MDFileDir
+    WebSites = [
+        "https://www.zhihu.com/search?q=%E8%88%AC%E8%8B%A5%E6%B3%A2%E7%BD%97%E8%9C%9C",
+    ]
+    SaiBrowser, SaiContext, SaiPages = pwm.Initial_Chrome(playwright, WebSites, AbortPic=True, WaitLoad=True)
+    MarkDownMaker, MDFileDir = pwm.Initial_Single_MDFile(MDdir, MDFile)
+    for SaiPage in SaiPages:
+        pwm.Page_Scroll(SaiPage, 2)
+        # 获取搜索结果的全部内容
+        FromSearchResultsToSonPage(SaiContext, SaiPage)
     # 收尾
     SaiContext.close()
     SaiBrowser.close()
@@ -924,8 +955,13 @@ with sync_playwright() as playwright:
 ```python
 import random, os, html2text, re
 from playwright.sync_api import Playwright, sync_playwright
+from Module import Play_Wright_modules as pwm
 
 #########################全局变量#########################
+# MarkDown文件目录
+MDdir = "/Users/jiangsai/Desktop"
+# MarkDown文件名
+MDFile = "Test.md"
 # 底部导航Xpath
 Xpath_Nav = '//ul[@class="be-pager"]'
 # 一级页FatherPage的信息块list
@@ -940,79 +976,7 @@ Xpath_FP_Block_PlayNum = '//span[@class="play"]'
 Xpath_SP_Publish_Date = '//span[@class="pubdate-text"]'
 # 二级页SonPage的点赞数
 Xpath_Thumb = '//span[contains(@class,"video-like-info")]'
-# 翻页导航全部数字
-All_Nav = set()
-# 翻页导航点击过的数字
-Clicked_Nav = set()
-# 翻页导航可点击数字
-Able_Click_Nav = []
-# 是否第1个导航
-Is_First_Nav = True
-# 是否已点击完所有导航
-Finish_Nav = False
 #########################全局变量#########################
-
-
-# 初始化浏览器：调用本地Chrome，在新标签打开目标网页，并切换到该标签
-def InitialChrome(WebSite):
-    SaiBrowser = playwright.chromium.connect_over_cdp("http://localhost:9222")
-    SaiContext = SaiBrowser.contexts[0]
-    SaiContext.route(
-        re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.gif.*)|(.*\.webp.*)"), lambda route: route.abort()
-    )
-    SaiPage = SaiContext.new_page()
-    SaiPage.goto(WebSite)
-    SaiPage.bring_to_front()
-    SaiPage.wait_for_load_state("networkidle")
-    return SaiBrowser, SaiContext, SaiPage
-
-
-# 初始化写入方法：切换到目标路径，指定文件名
-def InitialMDFile(MDdir, MDFile):
-    # 切换MarkDown文件目录
-    os.chdir(MDdir)
-    # 声明全局MarkDown文件操作类
-    global MarkDownMaker
-    MarkDownMaker = html2text.HTML2Text()
-    MarkDownMaker.ignore_links = True
-    # 声明全局MarkDown文件路径
-    global MDFileDir
-    MDFileDir = f"{MDdir}/{MDFile}"
-
-
-# 翻页
-def TurnPage(FatherPage):
-    global All_Nav
-    global Clicked_Nav
-    global Able_Click_Nav
-    global Is_First_Nav
-    global Finish_Nav
-    # 当前页导航列表
-    Current_Nav_list = FatherPage.query_selector_all(Xpath_Nav + "/*")
-    for i in Current_Nav_list:
-        Nav_num = i.text_content()
-        # 抽取出导航列表中的数字，「上一页」「下一页」这种非确定性导航都排除
-        if str(Nav_num).isdigit():
-            All_Nav.add(int(Nav_num))
-    # 若本页是第1页，则不用点击
-    if Is_First_Nav == True:
-        # 取所有导航数列表中最小的数为即将点击的数
-        To_Click_Nav = sorted(list(All_Nav))[0]
-        pass
-    else:
-        # 取可点击列表的最小导航数为即将点击的数
-        To_Click_Nav = Able_Click_Nav[0]
-        # 点击最小导航数
-        # locator('text=1')模糊匹配1,01,10,11等;locator('text="1"')精确匹配1
-        FatherPage.locator(Xpath_Nav).locator('text="' + str(To_Click_Nav) + '"').click()
-        FatherPage.wait_for_timeout(random.randint(1000, 3000))
-    # 刚点击的数字追加到「已点击导航数字集合」
-    Clicked_Nav.add(To_Click_Nav)
-    Is_First_Nav = False
-    # 可点击导航数字集合 = 所有导航数字集合 ∩ 已点击导航数字集合，再转换成列表
-    Able_Click_Nav = sorted(list(All_Nav.difference(Clicked_Nav)))
-    if len(Able_Click_Nav) == 0:
-        Finish_Nav = True
 
 
 # 获取一级页FatherPage信息（直接定位到目标信息）
@@ -1030,8 +994,9 @@ def GetSonPageInfo(SaiContext, block):
     with SaiContext.expect_page() as SonPageInfo:
         block.click()
     SonPage = SonPageInfo.value
-    SonPage.wait_for_load_state()
     SonPage.bring_to_front()
+    SonPage.wait_for_load_state()
+
     # 抓取二级页信息
     Publish_Date = SonPage.query_selector(Xpath_SP_Publish_Date).text_content()
     Thumb = SonPage.query_selector(Xpath_Thumb).text_content()
@@ -1043,10 +1008,17 @@ def GetSonPageInfo(SaiContext, block):
 
 # 获取信息
 def GetInfo(SaiContext, FatherPage):
-    global Finish_Nav
+    # 导航
+    Nav = {
+        "All_Nav": set(),
+        "Clicked_Nav": set(),
+        "Able_Click_Nav": [],
+        "Is_First_Nav": True,
+        "Finish_Nav": False,
+    }
     # 持续取本页的数据，直到导航到最后一页
     while True:
-        TurnPage(FatherPage)
+        pwm.Turn_Page(FatherPage, Xpath_Nav, Nav)
         # 列出每个一级页信息块
         Blocks = FatherPage.query_selector_all(Xpath_FP_Block_List)
         for block in Blocks:
@@ -1055,25 +1027,22 @@ def GetInfo(SaiContext, FatherPage):
             # 获取每个一级页信息块的二级页的具体信息
             GetSonPageInfo(SaiContext, block)
             FatherPage.wait_for_timeout(random.randint(1000, 3000))
-        if Finish_Nav == True:
+        if Nav["Finish_Nav"] == True:
             break
 
 
 def run(playwright: Playwright) -> None:
-    WebSite = "https://space.bilibili.com/111082383/video"
-    # WebSite = input("请输入要爬的网址: ")
-    SaiBrowser, SaiContext, SaiPage = InitialChrome(WebSite)
-    # MarkDown文件目录
-    MDdir = "/Users/jiangsai/Desktop"
-    # MarkDown文件名
-    MDFile = "Test.md"
-    # 初始化MarkDown操作方法
-    InitialMDFile(MDdir, MDFile)
-    # 获取目标信息
-    GetInfo(SaiContext, SaiPage)
-
+    global MarkDownMaker, MDFileDir
+    WebSites = [
+        "https://space.bilibili.com/111082383/video",
+    ]
+    SaiBrowser, SaiContext, SaiPages = pwm.Initial_Chrome(playwright, WebSites, AbortPic=True, WaitLoad=True)
+    MarkDownMaker, MDFileDir = pwm.Initial_Single_MDFile(MDdir, MDFile)
+    for SaiPage in SaiPages:
+        # 获取目标信息
+        GetInfo(SaiContext, SaiPage)
+        SaiPage.close()
     # 收尾
-    SaiPage.close()
     SaiContext.close()
     SaiBrowser.close()
 
@@ -1133,10 +1102,13 @@ def ExtractFPInfo(SaiContext, FatherElement):
 ```python
 import random, os, html2text, re
 from playwright.sync_api import Playwright, sync_playwright
+from Module import Play_Wright_modules as pwm
 
 #########################全局变量#########################
-# 待爬的第一个页面
-WebSite = "http://dangjian.people.com.cn/GB/394443/index.html"
+# MarkDown文件目录
+MDdir = "/Users/jiangsai/Desktop"
+# MarkDown文件名
+MDFile = "Test.md"
 # 底部导航Xpath
 Xpath_Nav = '//div[@class="page"]'
 # 一级页FatherPage标题list
@@ -1145,94 +1117,29 @@ Xpath_FP_Title_List = '//div[@class="fl"]/ul/li'
 Xpath_FP_Title = "//a"
 # 二级页正文
 Xpath_SP_Article = '//div[@class="text_c"]'
-# 翻页导航全部数字
-All_Nav = set()
-# 翻页导航点击过的数字
-Clicked_Nav = set()
-# 翻页导航可点击数字
-Able_Click_Nav = []
-# 是否第1个导航
-Is_First_Nav = True
-# 是否已点击完所有导航
-Finish_Nav = False
 #########################全局变量#########################
-
-
-# 初始化浏览器：调用本地Chrome，在新标签打开目标网页，并切换到该标签
-def InitialChrome(WebSite):
-    SaiBrowser = playwright.chromium.connect_over_cdp("http://localhost:9222")
-    SaiContext = SaiBrowser.contexts[0]
-    SaiContext.route(
-        re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.gif.*)|(.*\.webp.*)"), lambda route: route.abort()
-    )
-    SaiPage = SaiContext.new_page()
-    SaiPage.goto(WebSite)
-    SaiPage.bring_to_front()
-    SaiPage.wait_for_load_state("networkidle")
-    return SaiBrowser, SaiContext, SaiPage
-
-
-# 初始化写入方法：切换到目标路径，指定文件名
-def InitialMDFile(MDdir, MDFile):
-    # 切换MarkDown文件目录
-    os.chdir(MDdir)
-    # 声明全局MarkDown文件操作类
-    global MarkDownMaker
-    MarkDownMaker = html2text.HTML2Text()
-    MarkDownMaker.ignore_links = True
-    # 声明全局MarkDown文件路径
-    global MDFileDir
-    MDFileDir = f"{MDdir}/{MDFile}"
-
-
-# 翻页
-def TurnPage(FatherPage):
-    global All_Nav
-    global Clicked_Nav
-    global Able_Click_Nav
-    global Is_First_Nav
-    global Finish_Nav
-    # 当前页导航列表
-    Current_Nav_list = FatherPage.query_selector_all(Xpath_Nav + "/*")
-    for i in Current_Nav_list:
-        Nav_num = i.text_content()
-        # 抽取出导航列表中的数字，「上一页」「下一页」这种非确定性导航都排除
-        if str(Nav_num).isdigit():
-            All_Nav.add(int(Nav_num))
-    # 若本页是第1页，则不用点击
-    if Is_First_Nav == True:
-        # 取所有导航数列表中最小的数为即将点击的数
-        To_Click_Nav = sorted(list(All_Nav))[0]
-        pass
-    else:
-        # 取可点击列表的最小导航数为即将点击的数
-        To_Click_Nav = Able_Click_Nav[0]
-        # 点击最小导航数
-        # locator('text=1')模糊匹配1,01,10,11等;locator('text="1"')精确匹配1
-        FatherPage.locator(Xpath_Nav).locator('text="' + str(To_Click_Nav) + '"').click()
-        FatherPage.wait_for_timeout(random.randint(1000, 3000))
-    # 刚点击的数字追加到「已点击导航数字集合」
-    Clicked_Nav.add(To_Click_Nav)
-    Is_First_Nav = False
-    # 可点击导航数字集合 = 所有导航数字集合 ∩ 已点击导航数字集合，再转换成列表
-    Able_Click_Nav = sorted(list(All_Nav.difference(Clicked_Nav)))
-    if len(Able_Click_Nav) == 0:
-        Finish_Nav = True
 
 
 # 获取信息
 def GetInfo(SaiContext, FatherPage):
-    global Finish_Nav
+    # 导航
+    Nav = {
+        "All_Nav": set(),
+        "Clicked_Nav": set(),
+        "Able_Click_Nav": [],
+        "Is_First_Nav": True,
+        "Finish_Nav": False,
+    }
     # 持续取本页的数据，直到导航到最后一页
     while True:
-        TurnPage(FatherPage)
+        pwm.Turn_Page(FatherPage, Xpath_Nav, Nav)
         # 列出每个一级页信息块
         Son_Page_Titles = FatherPage.query_selector_all(Xpath_FP_Title_List)
         for SP_Title in Son_Page_Titles:
             # 获取每个一级页信息块的二级页的具体信息
             GetSonPageInfo(SaiContext, SP_Title)
             FatherPage.wait_for_timeout(random.randint(1000, 3000))
-        if Finish_Nav == True:
+        if Nav["Finish_Nav"] == True:
             break
 
 
@@ -1253,19 +1160,17 @@ def GetSonPageInfo(SaiContext, SP_Title):
 
 
 def run(playwright: Playwright) -> None:
-    # WebSite = input("请输入要爬的网址: ")
-    SaiBrowser, SaiContext, SaiPage = InitialChrome(WebSite)
-    # MarkDown文件目录
-    MDdir = "/Users/jiangsai/Desktop"
-    # MarkDown文件名
-    MDFile = "Test.md"
-    # 初始化MarkDown操作方法
-    InitialMDFile(MDdir, MDFile)
+    global MarkDownMaker, MDFileDir
+    WebSites = [
+        "http://dangjian.people.com.cn/GB/394443/index.html",
+    ]
+    SaiBrowser, SaiContext, SaiPages = pwm.Initial_Chrome(playwright, WebSites, AbortPic=True, WaitLoad=True)
+    MarkDownMaker, MDFileDir = pwm.Initial_Single_MDFile(MDdir, MDFile)
     # 获取目标信息
-    GetInfo(SaiContext, SaiPage)
-
+    for SaiPage in SaiPages:
+        GetInfo(SaiContext, SaiPage)
+        SaiPage.close()
     # 收尾
-    SaiPage.close()
     SaiContext.close()
     SaiBrowser.close()
 
@@ -1295,8 +1200,11 @@ with sync_playwright() as playwright:
 ```python
 import os, html2text, re, random
 from playwright.sync_api import Playwright, sync_playwright
+from Module import Play_Wright_modules as pwm
 
 #########################全局变量#########################
+# MarkDown文件目录
+MDdir = "/Users/jiangsai/Desktop"
 # 问题
 Xpath_Answer = '//div[@class="q-text puppeteer_test_question_title"]'
 # 答案块中的每个答案的作者
@@ -1306,60 +1214,41 @@ Xpath_Question = '//div[@class="q-box spacing_log_answer_content puppeteer_test_
 #########################全局变量#########################
 
 
-# 初始化浏览器：调用本地Chrome，在新标签打开目标网页，并切换到该标签
-def InitialChrome(WebSite):
-    SaiBrowser = playwright.chromium.connect_over_cdp("http://localhost:9222")
-    SaiContext = SaiBrowser.contexts[0]
-    # quora只要加这个规则就触发反爬
-    # SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
-    SaiPage = SaiContext.new_page()
-    SaiPage.goto(WebSite)
-    SaiPage.bring_to_front()
-    # quora只要加这个规则就触发超时
-    # SaiPage.wait_for_load_state("networkidle")
-    SaiPage.wait_for_timeout(random.randint(3000, 5000))
-    return SaiBrowser, SaiContext, SaiPage
+# 获取页面信息
+def GetInfo(WritePage):
+    # 获取问题信息
+    Answer = WritePage.query_selector(Xpath_Answer).text_content()
+    with open(MDFileDir, mode="a", encoding="utf-8") as f:
+        f.write("### " + Answer + "\n" + "----" + "\n")
+    GetAnswersInfo(WritePage)
 
 
-# 初始化写入方法：切换到目标路径，将网页标题处理成合法文件名
-def InitialMDFile(MDFile, MDdir):
-    # 切换MarkDown文件目录
-    os.chdir(MDdir)
-    # 声明全局MarkDown文件操作类
-    global MarkDownMaker
-    MarkDownMaker = html2text.HTML2Text()
-    MarkDownMaker.ignore_links = True
-    # MarkDown文件名中不能含有'.', '/', ':' 全替换成_
-    replace_dict = {".": "_", "/": "_", ":": "_", " ": "_"}
-    # 遍历字典的键值对，将字符串中的键替换为对应的值
-    for key, value in replace_dict.items():
-        MDFile = MDFile.replace(key, value)
-    # 将重复的'_'替换为1个
-    MDFile = re.sub(r"(_)\1+", "_", MDFile)
-    # 声明全局MarkDown文件路径
-    global MDFileDir
-    MDFileDir = f"{MDdir}/{MDFile}.md"
+# 获取答案信息
+def GetAnswersInfo(WritePage):
+    # 判断当前节点下是否有子节点，没有则略过
+    if len(WritePage.query_selector_all("xpath=/*")) != 0:
+        Son_Elements = WritePage.query_selector_all("xpath=/*")
+        for Son_E in Son_Elements:
+            Author_Num = len(Son_E.query_selector_all(Xpath_Author))
+            Question_Num = len(Son_E.query_selector_all(Xpath_Question))
+            if Author_Num > 0 and Question_Num > 0:
+                if Author_Num == 1 and Question_Num == 1:
+                    # 滚动到当前元素位置
+                    Son_E.evaluate("element => element.scrollIntoView()")
+                    Author = Son_E.query_selector(Xpath_Author).text_content()
+                    # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
+                    QuestionHtml = Son_E.query_selector(Xpath_Question).inner_html()
+                    Question = MarkDownMaker.handle(QuestionHtml)
+                    # 图片链接有些被莫名增加了换行，句子中间也莫名增加了换行
+                    Question = Question.replace("-\n", "-").replace("\n", " ").replace("  ", "\n\n")
+                    with open(MDFileDir, mode="a", encoding="utf-8") as f:
+                        f.write("##### " + Author + "\n" + Question + "----" + "\n")
+                elif Son_E.query_selector_all("xpath=/*") is not None:
+                    GetAnswersInfo(Son_E)
 
 
-# 页面滚动方法：对指定页面，滚动指定次数或滚动到底，并点开每一个收起的答案
-def PageScroll(ScrollPage, ScrollTimes):
-    # 滚动加载更多内容，直到不再加载或者滚动了10次
-    NotEnd = True
-    ScrollTime = 1
-    while NotEnd and ScrollTime < ScrollTimes:
-        # 滚动前的页面高度
-        BeforeScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
-        ScrollTime += 1
-        for i in range(3):
-            # 滚动到页面底部
-            ScrollPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
-            # 微上划一下模拟人类
-            ScrollPage.keyboard.press("PageUp")
-            ScrollPage.wait_for_timeout(random.randint(1000, 3000))
-        # 滚动后的页面高度
-        AfterScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
-        if BeforeScrollHeight == AfterScrollHeight or ScrollTime >= ScrollTimes:
-            NotEnd = False
+def Page_Scroll(ScrollPage, ScrollTimes):
+    pwm.Page_Scroll(ScrollPage, ScrollTimes)
     # 点开每一个答案的「(more)」或「Continue Reading」来查看更多
     MoreClicks = ScrollPage.query_selector_all('text="(more)"')
     ContinueReading = ScrollPage.query_selector_all('text="Continue Reading"')
@@ -1372,53 +1261,24 @@ def PageScroll(ScrollPage, ScrollTimes):
     return ScrollPage
 
 
-# 获取页面信息
-def GetInfo(WritePage):
-    # 获取问题信息
-    Answer = WritePage.query_selector(Xpath_Answer).text_content()
-    with open("test.md", mode="a", encoding="utf-8") as f:
-        f.write("### " + Answer + "\n" + "----" + "\n")
-    # 获取答案信息
-    if WritePage.query_selector_all("xpath=/*") is not None:
-        Son_Elements = WritePage.query_selector_all("xpath=/*")
-        for Son_E in Son_Elements:
-            Author_Num = len(Son_E.query_selector_all(Xpath_Author))
-            Question_Num = len(Son_E.query_selector_all(Xpath_Question))
-            if Author_Num > 0 and Question_Num > 0:
-                if Author_Num == 1 and Question_Num == 1:
-                    # 滚动到当前元素位置
-                    element.evaluate("element => element.scrollIntoView()")
-                    Author = Son_E.query_selector(Xpath_Author).text_content()
-                    # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
-                    QuestionHtml = Son_E.query_selector(Xpath_Question).inner_html()
-                    Question = MarkDownMaker.handle(QuestionHtml)
-                    # 图片链接有些被莫名增加了换行，句子中间也莫名增加了换行
-                    Question = Question.replace("-\n", "-").replace("\n", " ").replace("  ", "\n\n")
-                    with open("test.md", mode="a", encoding="utf-8") as f:
-                        f.write("##### " + Author + "\n" + Question + "----" + "\n")
-                else:
-                    if Son_E.query_selector_all("xpath=/*") is not None:
-                        ExtractAnswersInfo(Son_E)
-                    else:
-                        print("见鬼了")
-
-
 def run(playwright: Playwright) -> None:
-    # https://www.quora.com/How-advanced-is-high-speed-rail-in-China
-    WebSite = input("请输入要爬取的quora网址: ")
-    SaiBrowser, SaiContext, SaiPage = InitialChrome(WebSite)
-    # MarkDown文件目录
-    MDdir = "/Users/jiangsai/Desktop"
-    # MarkDown文件名
-    MDFile = SaiPage.title()
-    # 初始化MarkDown操作方法
-    InitialMDFile(MDdir, MDFile)
-    # 滚动指定次数
-    SaiPage = PageScroll(SaiPage, 1)
-    # 获取页面信息
-    GetInfo(SaiPage)
-    # 收尾
-    SaiPage.close()
+    global MarkDownMaker, MDFileDir  # 文件名称（含路径）
+    WebSites = [
+        "https://www.quora.com/How-advanced-is-high-speed-rail-in-China",
+        "https://www.quora.com/How-successful-has-Chinas-high-speed-railway-system-been",
+    ]
+    SaiBrowser, SaiContext, SaiPages = pwm.Initial_Chrome(
+        playwright, WebSites, AbortPic=False, WaitLoad=False
+    )
+    for SaiPage in SaiPages:
+        MarkDownMaker, MDFileDir = pwm.Initial_EachWeb_MDFile(SaiPage)
+        SaiPage.bring_to_front()
+        # 滚动指定次数
+        Page_Scroll(SaiPage, 1)
+        # 获取页面信息
+        GetInfo(SaiPage)
+        # 收尾
+        SaiPage.close()
     SaiContext.close()
     SaiBrowser.close()
 
@@ -1682,19 +1542,18 @@ with sync_playwright() as playwright:
 ```python
 import os, html2text, re, random
 from playwright.sync_api import Playwright, sync_playwright
+from Module import Play_Wright_modules as pwm
 
 #########################全局变量#########################
-# 待爬网址
-WebSites = [
-    # "https://www.woshipm.com/zhichang/5824950.html",
-    "https://36kr.com/p/2399884943188356",
-]
-############## woshipm ##############
+# MarkDown文件目录
+MDdir = "/Users/jiangsai/Desktop"
+# MarkDown文件名
+MDFile = "Test.md"
+############## woshipm ###########
 # 标题
 Xpath_woshipm_Title = '//*[contains(@class,"article--title")]'
 # 内容
 Xpath_woshipm_Content = '//*[contains(@class,"article--content")]'
-
 ############## 36kr ##############
 # 标题
 Xpath_36kr_Title = '//h1[contains(@class,"article-title")]'
@@ -1703,35 +1562,6 @@ Xpath_36kr_Summary = '//div[contains(@class,"summary")]'
 # 内容
 Xpath_36kr_Content = '//div[contains(@class,"articleDetailContent")]'
 #########################全局变量#########################
-
-
-# 初始化浏览器：调用本地Chrome，在新标签打开目标网页，并切换到该标签
-def InitialChrome(WebSites):
-    SaiBrowser = playwright.chromium.connect_over_cdp("http://localhost:9222")
-    SaiContext = SaiBrowser.contexts[0]
-    SaiContext.route(
-        re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.gif.*)|(.*\.webp.*)"), lambda route: route.abort()
-    )
-    SaiPages = []
-    for i in WebSites:
-        SaiPage = SaiContext.new_page()
-        SaiPage.goto(i)
-        SaiPages.append(SaiPage)
-        SaiPage.wait_for_timeout(random.randint(1000, 3000))
-    return SaiBrowser, SaiContext, SaiPages
-
-
-# 初始化写入方法：切换到目标路径，指定文件名
-def InitialMDFile(MDdir, MDFile):
-    # 切换MarkDown文件目录
-    os.chdir(MDdir)
-    # 声明全局MarkDown文件操作类
-    global MarkDownMaker
-    MarkDownMaker = html2text.HTML2Text()
-    MarkDownMaker.ignore_links = True
-    # 声明全局MarkDown文件路径
-    global MDFileDir
-    MDFileDir = f"{MDdir}/{MDFile}"
 
 
 # 获取woshipm信息
@@ -1762,13 +1592,13 @@ def GetInfo_36kr(WritePage):
 
 
 def run(playwright: Playwright) -> None:
-    SaiBrowser, SaiContext, SaiPages = InitialChrome(WebSites)
-    # MarkDown文件目录
-    MDdir = "/Users/jiangsai/Desktop"
-    # MarkDown文件名
-    MDFile = "Test.md"
-    # 初始化MarkDown操作方法
-    InitialMDFile(MDdir, MDFile)
+    global MarkDownMaker, MDFileDir
+    WebSites = [
+        "https://www.woshipm.com/zhichang/5824950.html",
+        "https://36kr.com/p/2399884943188356",
+    ]
+    SaiBrowser, SaiContext, SaiPages = pwm.Initial_Chrome(playwright, WebSites)
+    MarkDownMaker, MDFileDir = pwm.Initial_Single_MDFile(MDdir, MDFile)
     # 逐个抓取每个网页
     for saipage in SaiPages:
         if "36kr" in saipage.url:
@@ -1791,10 +1621,15 @@ with sync_playwright() as playwright:
 ```python
 import os, html2text, re, random, requests
 from playwright.sync_api import Playwright, sync_playwright
+from Module import Play_Wright_modules as pwm
 
 #########################全局变量#########################
-# 待爬网址
-WebSite = "https://weibo.com/u/2959386434"
+# MarkDown文件目录
+MDdir = "/Users/jiangsai/Desktop"
+# MarkDown文件名
+MDFile = "Test.md"
+# MarkDown引用的图片目录
+MD_Pic_dir = "/Users/jiangsai/Desktop/Pic"
 # list
 Xpath_list = '//div[@class="vue-recycle-scroller__item-wrapper"]/*'
 # name
@@ -1806,34 +1641,6 @@ Xpath_content_image = '//div[contains(@class,"woo-picture-slot")]'
 # reply
 Xpath_reply = '//div[@class="Feed_body_3R0rO"]/div[contains(@class,"Feed_retweet_JqZJb")]'
 #########################全局变量#########################
-
-
-# 初始化浏览器：调用本地Chrome，在新标签打开目标网页，并切换到该标签
-def InitialChrome():
-    SaiBrowser = playwright.chromium.connect_over_cdp("http://localhost:9222")
-    SaiContext = SaiBrowser.contexts[0]
-    # SaiContext.route(
-    #     re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.gif.*)|(.*\.webp.*)"), lambda route: route.abort()
-    # )
-    SaiPage = SaiContext.new_page()
-    SaiPage.goto(WebSite)
-    SaiPage.wait_for_load_state("networkidle")
-    # SaiPage.wait_for_timeout(random.randint(1000, 3000))
-    return SaiBrowser, SaiContext, SaiPage
-
-
-# 初始化写入方法：切换到目标路径，指定文件名
-def InitialMDFile(MD_dir, MDFile):
-    # 切换MarkDown文件目录
-    if not os.path.exists(MD_Pic_dir):
-        os.mkdir(MD_Pic_dir)
-    # 声明全局MarkDown文件操作类
-    global MarkDownMaker
-    MarkDownMaker = html2text.HTML2Text()
-    MarkDownMaker.ignore_links = True
-    # 声明全局MarkDown文件路径
-    global MDFileDir
-    MDFileDir = f"{MD_dir}/{MDFile}"
 
 
 # 获取微博信息
@@ -1880,7 +1687,7 @@ def GetInfo_PerPage(SaiPage, Blocks, AllSequenceNo):
                 # 当前纵坐标加入纵坐标list
                 AllSequenceNo.append(style_value)
                 # 滚动到当前元素位置
-                # element.evaluate("element => element.scrollIntoView()")
+                Block.evaluate("element => element.scrollIntoView()")
                 # 若内容有折叠，则展开
                 if Block.query_selector('text="展开"') != None:
                     Block.query_selector('text="展开"').click()
@@ -1898,21 +1705,21 @@ def GetInfo_PerBlock(SaiPage, element, style_value):
     CurrentElementData = {}
     # 内容块纵坐标（整数）
     CurrentElementData["SequenceNo"] = int(style_value)
-    # 内容块作者（字符串）
+    # 作者（字符串）
     name = element.query_selector(Xpath_name).text_content()
     CurrentElementData["name"] = name
 
-    # 内容块的具体内容（因内容可能包含图片，故用HTML2Text提取MarkDown富文本）
+    # 具体内容（因内容可能包含图片，故用HTML2Text提取MarkDown富文本）
     content_Html = element.query_selector(Xpath_content).inner_html()
-    # 提取的原始内容的图片都是在线的
+    #        提取的原始内容的图片都是在线的
     content_Online_Pic = MarkDownMaker.handle(content_Html)
-    # 但微博禁止站外部引用他的图片，故先将在线图片下载到本地再引用
+    #        但微博禁止站外部引用他的图片，故先将在线图片下载到本地再引用
     content_Local_Pic = DownLoad_Pic_Get_New_MDContent(SaiPage, content_Online_Pic)
     CurrentElementData["content"] = content_Local_Pic
 
-    # 内容块的回复部分
+    # 回复部分
     CurrentElementData["reply"] = ""
-    # 若本内容没有回复则忽略
+    #        若本内容没有回复则忽略
     if element.query_selector(Xpath_reply) != None:
         # 提取逻辑同上述内容块
         reply_Html = element.query_selector(Xpath_reply).inner_html()
@@ -1971,19 +1778,149 @@ def Requests_DownLoad_Pic(SaiPage, image_url, ThisPicDir):
 
 
 def run(playwright: Playwright) -> None:
-    # 初始化浏览器
-    SaiBrowser, SaiContext, SaiPage = InitialChrome()
-    # MarkDown文件目录
-    MD_dir = "/Users/jiangsai/Desktop"
-    # MarkDown文件名
-    MDFile = "Test.md"
-    # MarkDown引用的图片目录
-    global MD_Pic_dir
-    MD_Pic_dir = "/Users/jiangsai/Desktop/Pic"
-    # 初始化MarkDown操作方法
-    InitialMDFile(MD_dir, MDFile)
-    # 获取目标信息
-    GetInfo_WeiBo(SaiPage, 10)
+    global MarkDownMaker, MDFileDir
+    WebSites = [
+        "https://weibo.com/u/2959386434",
+    ]
+    SaiBrowser, SaiContext, SaiPages = pwm.Initial_Chrome(playwright, WebSites, AbortPic=False, WaitLoad=True)
+    MarkDownMaker, MDFileDir = pwm.Initial_Single_MDFile(MDdir, MDFile)
+    if not os.path.exists(MD_Pic_dir):
+        os.mkdir(MD_Pic_dir)
+    for SaiPage in SaiPages:
+        # 获取目标信息
+        GetInfo_WeiBo(SaiPage, 10)
+        SaiPage.close()
+    # 收尾
+    SaiContext.close()
+    SaiBrowser.close()
+
+
+with sync_playwright() as playwright:
+    run(playwright)
+```
+
+#### 金色财经
+
+> 实时抓最新的新闻
+
+```python
+import os, html2text, re, random, requests, time
+from playwright.sync_api import Playwright, sync_playwright
+from Module import Play_Wright_modules as pwm
+
+# 已获取最新新闻的时间戳
+Latest_time = ""
+# MarkDown文件目录
+MDdir = "/Users/jiangsai/Desktop"
+# MarkDown文件名
+MDFile = "Test.md"
+# MarkDown引用的图片目录
+MD_Pic_dir = "/Users/jiangsai/Desktop/Pic"
+# 内容块list
+Xpath_Blocks = '//div[contains(@class,"js-lives__box")]/div'
+# 内容块的时间
+Xpath_Time = '//div[contains(@class,"time")]'
+# 内容块的标题
+Xpath_Title = '//div[contains(@class,"content")]/a[1]'
+# 内容块的内容
+Xpath_Content = '//div[contains(@class,"content")]/a[2]'
+# 内容块的图片
+Xpath_Pics = '//div[@class="js-lives__photo"]//*[@*[name()="src"]]'
+
+
+# 下载图片并替换图片引用路径
+def DownLoad_Pic_Get_New_MDContent(WritePage, urls):
+    Local_urls = []
+    if len(urls) != 0:
+        for image_url in urls:
+            # 提取图片名称
+            # 格式：https://fe.t.sis.cn/ap.png/ddkkk 提取出ap.png
+            match = re.search(r"/([^/]+\.(?:png|jpg|jpeg|webp))(?:/|$)", image_url)
+            if match:
+                PicName = match.group(1)
+                # 拼接已下载的本地图片的完整路径
+                ThisPicDir = f"{MD_Pic_dir}/{PicName}"
+                # 利用requests下载图片
+                Requests_DownLoad_Pic(WritePage, image_url, ThisPicDir)
+                ThisPicDir_MD = f"![]({ThisPicDir})"
+                Local_urls.append(ThisPicDir_MD)
+            else:
+                print(f"图片格式需要扩充: {image_url}")
+    return ThisPicDir_MD
+
+
+# 利用requests下载图片
+def Requests_DownLoad_Pic(SaiPage, image_url, ThisPicDir):
+    # 创建一个Session会话
+    session = requests.Session()
+    # 获取页面的Cookies
+    cookies = SaiPage.context.cookies()
+    # 将Cookies添加到Session会话中
+    for cookie in cookies:
+        session.cookies.set(cookie["name"], cookie["value"], domain=cookie["domain"])
+    # 使用Session会话来下载图像
+    response = session.get(image_url)
+    # 检查响应状态码
+    if response.status_code == 200:
+        # 将图像保存到文件
+        with open(ThisPicDir, "wb") as fp:
+            fp.write(response.content)
+    else:
+        print("下载失败")
+
+
+# 获取信息
+def ExtractInfo(WritePage):
+    # 获取所有答案块
+    # Blocks = WritePage.query_selector_all(Xpath_Blocks)
+    # for block in Blocks:
+
+    # 已获取最新新闻的时间戳
+    global Latest_time
+    # query_selector只取列表第1条，因为第1条最新
+    block = WritePage.query_selector(Xpath_Blocks)
+    # 滚动到当前元素位置
+    block.evaluate("element => element.scrollIntoView()")
+    # 当前第一条内容的时间；strip()删除开头、结尾的所有换行和空格
+    this_block_time = block.query_selector(Xpath_Time).text_content().strip()
+
+    if Latest_time != this_block_time:
+        Latest_time = this_block_time
+        # 标题
+        Title = block.query_selector(Xpath_Title).text_content().strip()
+        # 内容
+        Content = block.query_selector(Xpath_Content).text_content().strip()
+        # 替换多个换行为单个换行
+        Content = re.sub(r"\n+", "\n", Content)
+        # 替换多个空格为单个空格
+        Content = re.sub(r" +", " ", Content)
+
+        Pics_MD = ""
+        if len(block.query_selector_all(Xpath_Pics)) != 0:
+            Pics = []
+            for i in block.query_selector_all(Xpath_Pics):
+                Pic = block.query_selector(Xpath_Pics).get_attribute("src")
+                Pics.append(Pic)
+            Pics_MD = DownLoad_Pic_Get_New_MDContent(WritePage, Pics)
+        with open(MDFileDir, mode="a", encoding="utf-8") as f:
+            f.write("> " + Latest_time + "\n\n" + "#### " + Title + "\n\n")
+            f.write(Content + "\n\n" + Pics_MD + "\n\n" + "----" + "\n")
+    WritePage.wait_for_timeout(random.randint(1000, 3000))
+
+
+def run(playwright: Playwright) -> None:
+    global MarkDownMaker, MDFileDir
+    WebSites = [
+        "https://www.jinse.cn/lives",
+    ]
+    SaiBrowser, SaiContext, SaiPages = pwm.Initial_Chrome(playwright, WebSites, AbortPic=True, WaitLoad=True)
+    MarkDownMaker, MDFileDir = pwm.Initial_Single_MDFile(MDdir, MDFile)
+    # 币圈图片可能境内无法访问，故需要下载
+    if not os.path.exists(MD_Pic_dir):
+        os.mkdir(MD_Pic_dir)
+    while True:
+        ExtractInfo(SaiPages[0])
+    SaiPage.close()
     # 收尾
     SaiContext.close()
     SaiBrowser.close()
