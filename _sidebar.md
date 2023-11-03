@@ -7,7 +7,7 @@
   * [PicGo+GitHub 搭建图床](Sai_FootPrint/0_PicGo_GitHub.md)
   * [Keyboard_Maestro用法](Sai_FootPrint/Keyboard_Maestro.md)
   * [Fusion360](Sai_FootPrint/0_AutodeskFusion360.md)
-  * [Anki](Sai_FootPrint/3_anki.md)
+  * [Anki](Sai_FootPrint/Anki_Marginnote.md)
   * [Excel技巧](Sai_FootPrint/Excel_Skills.md)
   
 * 爬虫
@@ -18,14 +18,16 @@
   
   * [Web SCraper](Sai_FootPrint/Web_Scraper.md)
   
-  * [PlayWright](Sai_FootPrint/Playwright.md)
+  * [PlayWright有界面-调试](Sai_FootPrint/Playwright_Debug.md)
+  
+  * [PlayWright无界面-真实抓](Sai_FootPrint/Playwright_work.md)
   
   * [PlayWright异步](Sai_FootPrint/playwright_async.md)
   
   * [Xpath](Sai_FootPrint/xpath.md)
-  
-  * [初级工具](Sai_FootPrint/2_WebCrawlerBasicTool.md)
 
+  * [初级工具](Sai_FootPrint/2_WebCrawlerBasicTool.md)
+  
   * [初级示例](Sai_FootPrint/2_WebCrawlerBasicCase.md)
   
   * [中级Scrapy](Sai_FootPrint/2_WebCrawlerScrapy.md)
