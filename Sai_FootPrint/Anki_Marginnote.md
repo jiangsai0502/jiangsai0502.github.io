@@ -300,13 +300,118 @@
 >
 >   > 链接：https://shimo.im/docs/X3gyCqd9rrTYKtxJ/read
 
-#### Marginnote + Anki
+#### Marginnote读书方式
 
-> * Marginnote介绍
+> [主参考](https://www.bilibili.com/video/BV1NE411u7jZ)，[参考]()
 >
->   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311031243529.png)
+> 1. 文档区功能
 >
-> * Marginnote制作问答题
+>    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311050058814.png)
+>
+> 2. 脑图区功能
+>
+>    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311050059054.png)
+
+> **快速略读：第1遍**
+>
+> > 文档模式：随手勾画，如下图
+> >
+> > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311050106038.png)
+>
+> **通读：第2遍**
+>
+> > 学习模式：导图目录 + 摘录卡片，如下图
+> >
+> > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311042314698.png)
+>
+> 1. 切入学习模式
+>
+>    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311042113680.png)
+>
+> 2. 制作单面卡片：新建笔记
+>
+>    1. 手型工具
+>
+>       > > 只能操作文字
+>       >
+>       > > ①`文档区`，长按选中文字 -> ②长按已选中的文字，拖到`脑图区`，随即自动生成卡片
+>       >
+>       > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311042054166.png)
+>
+>    2. 文字选择工具
+>
+>       > > 只能操作文字
+>       >
+>       > > ①`文档区`，滑动选中文字，随即`脑图区`自动生成卡片
+>       >
+>       > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311042053952.png)
+>
+>    3. 矩形框选工具
+>
+>       > > 可操作文字、图片
+>       >
+>       > > ①`文档区`，框选文字、图片，随即`脑图区`自动生成图片卡片
+>       > >
+>       > > 图片手动OCR，也可设置自动OCR
+>       >
+>       > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311050011283.png)
+>
+>    4. 自由框选工具
+>
+>       > > 可操作文字、图片
+>       >
+>       > > ①`文档区`，框选文字、图片，随即`脑图区`自动生成图片卡
+>       >
+>       > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311042059629.png)
+>
+> 3. 制作双面卡片
+>
+>    1. 为已存在的单面卡片「添加评论」「添加标题」
+>
+>       > > **手型工具模式**下 -> ①`文档区`，选中要处理卡片 -> ②pencil长按，滑动选择文字，选完后弹窗选择将所选文字设为标题即卡片正面，或评论即卡片背面
+>       >
+>       > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311042155045.png)
+>
+>    2. 将2个单面卡片合并成1个双面卡片
+>
+>       > > ①`脑图区`，选中要设为评论的卡片 -> ②拖到要设为标题的卡片身上 -> ③ 成为其子节点后，再次将子节点卡片拖到父节点卡片身上，随即2张卡片合成1个
+>       >
+>       > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311042231549.png)
+>
+> 4. 脑图效果
+>
+>    > > 章节设为灰色；知识点设为绿色
+>    >
+>    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311042314698.png)
+>
+> 5. 导入卡片组
+>
+>    > > 排除章节卡片，筛选出知识点卡片，导入到卡片组
+>    >
+>    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311042338989.png)
+>
+> **复习：第3遍**
+>
+> > 学习模式：挖空记忆
+> >
+> > 1. 荧光笔挖空：边读文档边回忆
+> >
+> >    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311050124471.png)
+> >
+> > 2. 卡片挖空：anki回忆
+
+####  + Anki
+
+> * 制作浏览题
+>
+> * 制作填空题
+>
+>   * https://www.bilibili.com/video/BV1h7411v7ou/?spm_id_from=333.337.search-card.all.click&vd_source=052b07ad0190d9dabdf1d78fda0168a7
+>   * https://www.bilibili.com/video/BV1JK411P7VA/?spm_id_from=333.337.search-card.all.click&vd_source=052b07ad0190d9dabdf1d78fda0168a7
+>
+> * 制作问答题
+>
+>   * https://www.bilibili.com/video/BV1NE411u7jZ/?spm_id_from=333.788.recommend_more_video.1&vd_source=052b07ad0190d9dabdf1d78fda0168a7
 >
 >   > 1. 切换到【学习模式】，创建个笔记本，把这一个文件开两个视图（题目、答案）
 >   >
@@ -327,7 +432,9 @@
 >   >
 >   >    1. 
 >
-> * Marginnote制作填空题
+> * 背单词
+>
+>   * https://www.bilibili.com/video/BV1jL4y1471g/?spm_id_from=333.337.search-card.all.click&vd_source=052b07ad0190d9dabdf1d78fda0168a7
 >
 > * 
 
