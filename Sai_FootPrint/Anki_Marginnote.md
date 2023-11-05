@@ -323,12 +323,14 @@
 > > 学习模式：导图目录 + 摘录卡片，如下图
 > >
 > > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311042314698.png)
+> >
+> > > 制作**浏览题**、**简答题**、**填空题**
 >
 > 1. 切入学习模式
 >
 >    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311042113680.png)
 >
-> 2. 制作单面卡片：新建笔记
+> 2. 制作单面卡片**「浏览题」**
 >
 >    1. 手型工具
 >
@@ -364,7 +366,7 @@
 >       >
 >       > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311042059629.png)
 >
-> 3. 制作双面卡片
+> 3. 制作双面卡片**「问答题」**
 >
 >    1. 为已存在的单面卡片「添加评论」「添加标题」
 >
@@ -378,65 +380,73 @@
 >       >
 >       > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311042231549.png)
 >
-> 4. 脑图效果
+> 4. 制作**「填空题」**
+>
+>    1. 荧光笔挖空：边读文档边回忆
+>
+>       > > **挖空**
+>       > >
+>       > > 荧光笔涂鸦重点
+>       > >
+>       > > **遮盖**
+>       > >
+>       > > 文档区回忆：打开设置「回忆模式」，涂鸦部分自动被遮盖，点击遮盖展示遮盖内容
+>       >
+>       > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311050124471.png)
+>
+>    2. 卡片挖空
+>
+>       > > **挖空**
+>       > >
+>       > > 1. 文档区挖空：预备一个「单面卡片」 -> 打开设置「划重点」 
+>       > >    1. 手型工具：在该卡片上，长按划动选择「挖空文字」
+>       > >    2. 文字选择：在该卡片上，划动选择「挖空文字」
+>       > > 2. 卡片组挖空：点击填空，在卡片上，划动选择「挖空文字」
+>       > >
+>       > > **遮盖**
+>       > >
+>       > > 1. 文档区回忆：打开设置「回忆模式」，挖空文字自动变为空白，点击空白展示文字
+>       > > 2. Anki回忆：导入卡片组，同步到Anki
+>       >
+>       > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311052213089.png)
+>
+> 5. 脑图效果
 >
 >    > > 章节设为灰色；知识点设为绿色
 >    >
 >    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311042314698.png)
 >
-> 5. 导入卡片组
+> 6. 导入卡片组
 >
 >    > > 排除章节卡片，筛选出知识点卡片，导入到卡片组
 >    >
 >    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311042338989.png)
 >
-> **复习：第3遍**
+> 7. 导入Anki
 >
-> > 学习模式：挖空记忆
-> >
-> > 1. 荧光笔挖空：边读文档边回忆
-> >
-> >    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311050124471.png)
-> >
-> > 2. 卡片挖空：anki回忆
-
-####  + Anki
-
-> * 制作浏览题
+>    > > 导出时勾选「导出到 MarginNote 的链接」，Anki中点击卡片链接自动跳转到卡片在文档中的位置
+>    > >
+>    > > > 技巧：iPad记忆时，开分屏，左MarginNote右Anki
+>    >
+>    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311052148508.png)
 >
+> **简答题制作技巧**
+>
+> 1. 问题与答案在同一文件，但相距较远
+>
+>    >![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311060016950.png)
+>
+> 2. 问题与答案在不同文件
+>
+>    >![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311060046340.png)
+
 > * 制作填空题
->
 >   * https://www.bilibili.com/video/BV1h7411v7ou/?spm_id_from=333.337.search-card.all.click&vd_source=052b07ad0190d9dabdf1d78fda0168a7
 >   * https://www.bilibili.com/video/BV1JK411P7VA/?spm_id_from=333.337.search-card.all.click&vd_source=052b07ad0190d9dabdf1d78fda0168a7
->
 > * 制作问答题
->
 >   * https://www.bilibili.com/video/BV1NE411u7jZ/?spm_id_from=333.788.recommend_more_video.1&vd_source=052b07ad0190d9dabdf1d78fda0168a7
->
->   > 1. 切换到【学习模式】，创建个笔记本，把这一个文件开两个视图（题目、答案）
->   >
->   >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311031245442.png)
->   >
->   > 2. 制作题目卡片
->   >
->   >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311031249846.png)
->   >
->   >    > 1. 选择【框选模式】，框选题目和答案，框选的部分会自动以文字块出现在左侧脑图区
->   >    > 2. 合并文字块为卡片：在脑图中，将题目和答案拖到一起，上题目下答案
->   >
->   > 3. 将卡片加入一个卡片组
->   >
->   >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311031440088.png)
->   >
->   > 4. 将卡片导入Anki
->   >
->   >    1. 
->
 > * 背单词
->
 >   * https://www.bilibili.com/video/BV1jL4y1471g/?spm_id_from=333.337.search-card.all.click&vd_source=052b07ad0190d9dabdf1d78fda0168a7
->
-> * 
 
 -----
 
