@@ -314,7 +314,7 @@
 
 > **快速略读：第1遍**
 >
-> > 文档模式：随手勾画，如下图
+> > 文档模式：随手勾画、涂鸦，如下图
 > >
 > > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311050106038.png)
 >
@@ -334,35 +334,41 @@
 >
 >    1. 手型工具
 >
->       > > 只能操作文字
+>       > 1. 文字选择：`学习模式 - 文档区` ①长按选中文字 -> ②长按已选中的文字，拖到`脑图区`，自动生成卡片
 >       >
->       > > ①`文档区`，长按选中文字 -> ②长按已选中的文字，拖到`脑图区`，随即自动生成卡片
+>       >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311042054166.png)
 >       >
->       > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311042054166.png)
+>       > 2. 区域选择：`学习模式 - 文档区` ①长按框选区域 -> ②长按已选中的区域，拖到`脑图区`，自动生成卡片
+>       >
+>       >    > 若未提前开启`设置 - 自动转换矩形/ 多边形摘录为文字`，则卡片为图片卡片
+>       >    >
+>       >    > 若提前开启，则卡片自动OCR成文字
+>       >
+>       >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311061556465.png)
+>       >
+>       >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311050011283.png)
 >
 >    2. 文字选择工具
 >
->       > > 只能操作文字
+>       > * 文字选择：`学习模式 - 文档区` 提前开启①`设置 - 自动添加到脑图` -> ②滑动选中文字，`脑图区` 自动生成卡片
 >       >
->       > > ①`文档区`，滑动选中文字，随即`脑图区`自动生成卡片
->       >
->       > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311042053952.png)
+>       >   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311061546876.png)
+>       
+>    3. 矩形框选工具（同手型工具）
 >
->    3. 矩形框选工具
->
->       > > 可操作文字、图片
+>       > * 区域选择：`学习模式 - 文档区`提前开启`设置 - 自动添加到脑图`  -> ①框选区域，`脑图区` 自动生成卡片
 >       >
->       > > ①`文档区`，框选文字、图片，随即`脑图区`自动生成图片卡片
->       > >
->       > > 图片手动OCR，也可设置自动OCR
->       >
->       > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311050011283.png)
->
+>       >   > 若未提前开启`设置 - 自动转换矩形/ 多边形摘录为文字`，则卡片为图片卡片
+>       >   >
+>       >   > 若提前开启，则卡片自动OCR成文字
+>       
 >    4. 自由框选工具
 >
->       > > 可操作文字、图片
+>       > * 区域选择：`学习模式 - 文档区`提前开启`设置 - 自动添加到脑图`  -> ①框选区域，`脑图区` 自动生成卡片
 >       >
->       > > ①`文档区`，框选文字、图片，随即`脑图区`自动生成图片卡
+>       >   > 若未提前开启`设置 - 自动转换矩形/ 多边形摘录为文字`，则卡片为图片卡片
+>       >   >
+>       >   > 若提前开启，则卡片自动OCR成文字
 >       >
 >       > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311042059629.png)
 >
@@ -382,33 +388,37 @@
 >
 > 4. 制作**「填空题」**
 >
->    1. 荧光笔挖空：边读文档边回忆
+>    1. 荧光笔涂鸦
 >
->       > > **挖空**
->       > >
->       > > 荧光笔涂鸦重点
->       > >
->       > > **遮盖**
->       > >
->       > > 文档区回忆：打开设置「回忆模式」，涂鸦部分自动被遮盖，点击遮盖展示遮盖内容
->       >
->       > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311050124471.png)
+>       1. 非卡片涂鸦
 >
->    2. 卡片挖空
+>          >1. 涂鸦：`文档区` 任意位置「荧光笔涂鸦」①
+>          >2. 文档区复习：`文档区` 打开设置「回忆模式②」
+>          >
+>          >![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311050124471.png)
 >
->       > > **挖空**
->       > >
->       > > 1. 文档区挖空：预备一个「单面卡片」 -> 打开设置「划重点」 
->       > >    1. 手型工具：在该卡片上，长按划动选择「挖空文字」
->       > >    2. 文字选择：在该卡片上，划动选择「挖空文字」
->       > > 2. 卡片组挖空：点击填空，在卡片上，划动选择「挖空文字」
->       > >
->       > > **遮盖**
->       > >
->       > > 1. 文档区回忆：打开设置「回忆模式」，挖空文字自动变为空白，点击空白展示文字
->       > > 2. Anki回忆：导入卡片组，同步到Anki
->       >
->       > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311052213089.png)
+>       2. 卡片涂鸦
+>
+>          > 1. 涂鸦：`文档区` 在单面卡片上用「荧光笔涂鸦②」
+>          > 2. Anki复习：筛选出「目标颜色卡片③」导入「目标卡片组⑦」，勾选「遮挡文档上的荧光笔⑨」，勾选「导出到 MarginNote 的链接⑪」，Anki沉浸式复习
+>          >
+>          > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311061136985.png)
+>
+>    2. 文字挖空
+>
+>       1. 挖空方式
+>
+>          > 1. 文档区挖空：`学习模式 -> 文档区`打开设置「划重点①」
+>          >    1. `手型工具`挖空：在一个「单面卡片」上，长按划动选择「挖空文字」
+>          >    2. `文字选择`挖空：在一个「单面卡片」上，划动选择「挖空文字」
+>          > 2. 卡片组挖空：`复习模式`点击填空，在卡片上，划动选择「挖空文字」
+>
+>       2. 复习方式
+>
+>          > 1. 文档区复习：`学习模式 -> 文档区`打开设置「回忆模式②」，`文档区` 边阅读边复习
+>          > 2. Anki复习
+>
+>       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311061417711.png)
 >
 > 5. 脑图效果
 >
@@ -439,14 +449,36 @@
 > 2. 问题与答案在不同文件
 >
 >    >![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311060046340.png)
+>
+> **英文原著阅读**
+>
+> 1. MarginNote + Eudic
+>
+>    > 1. Eudic：`账号` - `设置` - 开启`查词后加入生词本`
+>    > 2. MarginNote：`•••` - `插件` - 开启`Search in Eudic+`
+>    > 3. 分屏开启Eudic、MarginNote，`手形工具`/`文字工具`下选中某个单词（只能是单词不能是句子）
+>
+>    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311061828564.png)
+>
+> 2. MarginNote + OhmyMN
+>
+>    > 
 
+> * 制作选择题
+>   * https://www.bilibili.com/video/BV1yW41117PU
 > * 制作填空题
->   * https://www.bilibili.com/video/BV1h7411v7ou/?spm_id_from=333.337.search-card.all.click&vd_source=052b07ad0190d9dabdf1d78fda0168a7
->   * https://www.bilibili.com/video/BV1JK411P7VA/?spm_id_from=333.337.search-card.all.click&vd_source=052b07ad0190d9dabdf1d78fda0168a7
+>   * https://www.bilibili.com/video/BV1h7411v7ou
+>   * https://www.bilibili.com/video/BV1JK411P7VA
 > * 制作问答题
->   * https://www.bilibili.com/video/BV1NE411u7jZ/?spm_id_from=333.788.recommend_more_video.1&vd_source=052b07ad0190d9dabdf1d78fda0168a7
+>   * https://www.bilibili.com/video/BV1NE411u7jZ
 > * 背单词
->   * https://www.bilibili.com/video/BV1jL4y1471g/?spm_id_from=333.337.search-card.all.click&vd_source=052b07ad0190d9dabdf1d78fda0168a7
+>   * https://www.bilibili.com/video/BV1jL4y1471g
+> * MN教程
+>   * https://www.bilibili.com/video/BV1qB4y1b7R9
+> * 看漫画背单词
+>   * https://www.bilibili.com/video/BV1fb411m77g
+> * 跑步背单词
+>   * https://www.bilibili.com/video/BV1TE41157qH
 
 -----
 
@@ -500,7 +532,7 @@
   >
   >    ```
   >    <div class=bg><div class=bg2>
-  >    
+  >       
   >    <div style="margin:-5px 0 0 0"></div>
   >    <div style="text-align:right;font-size:0.75em;max-width:828px;margin:0 auto;color:#808080">➵ {{Subdeck}}</div>
   >    ```
@@ -521,7 +553,7 @@
   >    	{
   >    		var n = i;
   >    		idd = "keyy" + String(n);
-  >    
+  >       
   >    		if (document.getElementById(idd).getAttribute("class") == "cloze")
   >    		{
   >    			idd = "keyy" + String(n);
@@ -531,17 +563,17 @@
   >    		}
   >    	}
   >    }
-  >    
+  >       
   >    function nextt()
   >    {
   >    	for (var i = 2; i < sum; i = i + 2)
   >    	{
   >    		var n = i;
   >    		idd = "keyy" + String(n);
-  >    
+  >       
   >    		if (document.getElementById(idd).getAttribute("class") == "hidden")
   >    		{
-  >    
+  >       
   >    			idd = "keyy" + String(n - 1);
   >    			$("#" + idd)[0];
   >    			switchh(idd);
@@ -671,4 +703,3 @@
   >       ```
   >       element.innerHTML = char_mask;
   >       ```
-  >
