@@ -120,7 +120,7 @@
 >    brew install wget;
 >    export REMOTE=https://gitee.com/imirror/ohmyzsh.git;
 >    sh -c "$(wget -O- https://cdn.jsdelivr.net/gh/ohmyzsh/ohmyzsh/tools/install.sh)";
->                     
+>                        
 >    open ~/.zshrc
 >    # 在.zshrc文件中搜索 source $ZSH/oh-my-zsh.sh，在本句之前加一句
 >    ZSH_DISABLE_COMPFIX="true"
@@ -158,7 +158,7 @@
 >
 >    ```
 >    brew install zsh-syntax-highlighting
->                     
+>                        
 >    open ~/.zshrc
 >    最后插入一行：source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 >    source ~/.zshrc
@@ -198,7 +198,6 @@
 > >
 > > > 直接下载往往被限制分辨率，增加参数可模拟浏览器
 > > >
-> > > ![img](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202308271236418.png)
 > >
 > > * 查看视频所有类型
 > >
@@ -210,7 +209,21 @@
 > >
 > > * 下载指定ID的视频
 > >
-> >   `yt-dlp -f ID URL`
+> >   `yt-dlp -f ID --cookies-from-browser chrome URL`
+> >
+> > * 下载列表
+> >
+> >   `yt-dlp --yes-playlist --cookies-from-browser chrome URL`
+> >
+> >   > 下载列表中指定范围内容
+> >   >
+> >   > `yt-dlp --yes-playlist --cookies-from-browser chrome --playlist-start StartNum --playlist-end EndNum URL`
+> >   >
+> >   > 案例：列表中有10个视频，只下载5、6、7
+> >   >
+> >   > `yt-dlp --yes-playlist --cookies-from-browser chrome --playlist-start 5 --playlist-end 7 URL`
+> >
+> > * 音频、视频下载
 > >
 > >   > 视频不包含音频
 > >   >
@@ -219,19 +232,17 @@
 > >   > 音频不包含视频
 > >   >
 > >   > `yt-dlp -f 230 --cookies-from-browser chrome URL`
-> >
-> > * 下载列表
-> >
-> >   `yt-dlp --yes-playlist --cookies-from-browser chrome URL`
-> >
+> >   >
+> >   > ![img](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202308271236418.png)
+> >   
 > > * B站下载
 > >
 > >   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309302121718.png)
 > >
 > >   > 移除链接`/?`之后的所有部分，只保留`https://www.bilibili.com/video/BV1d3411w7at`
 > >   >
-> >   
 > >
+> > 
 >
 > ##### 安装you-get
 >

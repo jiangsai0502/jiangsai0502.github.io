@@ -440,7 +440,11 @@
 >    >
 >    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311052148508.png)
 >
-> **简答题制作技巧**
+> **MarginNote导出的卡片改为自制卡片模版**
+>
+> > 
+>
+> **双面卡制作技巧**
 >
 > 1. 问题与答案在同一文件，但相距较远
 >
@@ -462,7 +466,13 @@
 >
 > 2. MarginNote + OhmyMN
 >
->    > 
+>    > 1. OhmyMN数据库安装
+>    >
+>    >    > [链接](https://pan.baidu.com/s/1iw2cahlRI9WX4MbKgU-RXw?pwd=gwmg)  提取码: gwmg
+>    >    >
+>    >    > AirDrop到iPad，使用MarginNote打开即完成安装
+>    >
+>    > 2. 
 
 > * 制作选择题
 >   * https://www.bilibili.com/video/BV1yW41117PU
