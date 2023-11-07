@@ -5,7 +5,7 @@
   * [Blog建站](Sai_FootPrint/0_BuildBlog.md)
   * [Markdown语法](Sai_FootPrint/0_MarkdownUsage.md)
   * [PicGo+GitHub 搭建图床](Sai_FootPrint/0_PicGo_GitHub.md)
-  * [Keyboard_Maestro用法](Sai_FootPrint/Keyboard_Maestro.md)
+  * [Keyboard_Maestro](Sai_FootPrint/Keyboard_Maestro.md)
   * [Fusion360](Sai_FootPrint/0_AutodeskFusion360.md)
   * [Anki](Sai_FootPrint/Anki.md)
   * [Marginnote](Sai_FootPrint/Marginnote.md)
