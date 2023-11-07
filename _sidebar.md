@@ -7,7 +7,8 @@
   * [PicGo+GitHub 搭建图床](Sai_FootPrint/0_PicGo_GitHub.md)
   * [Keyboard_Maestro用法](Sai_FootPrint/Keyboard_Maestro.md)
   * [Fusion360](Sai_FootPrint/0_AutodeskFusion360.md)
-  * [Anki](Sai_FootPrint/Anki_Marginnote.md)
+  * [Anki](Sai_FootPrint/Anki.md)
+  * [Marginnote](Sai_FootPrint/Marginnote.md)
   * [Excel技巧](Sai_FootPrint/Excel_Skills.md)
   
 * 爬虫

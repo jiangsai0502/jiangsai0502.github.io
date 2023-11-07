@@ -136,6 +136,7 @@
    | 找到unisat钱包插件，点击 -> 输入密码 -> 回车，进入钱包<br /><br />1. 打开一个新窗口<br />2. 全屏<br />3. 等系统反应1秒<br />4. 图片识别，不断调整识别的颗粒度（Display选中，Unique切为Best，all screens切为 the front window），不断调试直到能到定位到目标位置；点击图片中心<br />5. 等系统反应1秒<br />6. 在当前光标处插入文本<br />7. 回车 | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031611502.png) |
    | 打开Zoom，输入会议号、密码、邮箱<br /><br />1. 打开app<br />2. 等待app加载<br />3. 点击登录按钮<br />4. 一直等待网络加载，直到加载出目标文案<br />5. 在默认光标处插入文本<br />6. 回车<br />7. 一直等待网络加载，直到加载出目标文案<br />8. 在默认光标处插入文本<br />9.回车<br />10. 等待网络加载10秒<br />11. 在默认光标处插入文本<br />12.回车 | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306031805707.png) |
    | 视频网站5秒快进                                              | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202306032242967.png) |
+   | 删除Marginote卡片背面第一行的正面内容                        | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311072132229.png) |
    | VSCode调试程序快捷键F5、F10<br /><br />1. 激活「系统设置」<br />2. 等待系统反应1秒<br />3. ⌘+F调出搜索栏<br />4. 输入搜索词<br />5.等待0.5秒<br />6. 回车<br />7. 找到目标图片，点击它<br />8. 等待1秒<br />9. 如果活跃界面包含目标图片，则等待1秒，点击该目标图片；否则等待1秒，点击另一个目标图片<br />10. 等待1秒<br />11. 点击目标图片<br />12. ⌘+W关闭当前页面 | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307071723259.png) |
    | 逐个点击页面内多个相同元素                                   | **Until**![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307071731190.png)**While**![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202307071749139.png) |
    
@@ -151,32 +152,32 @@
    >    
    >    ```
    >    #!/usr/bin/python3
-   >       
+   >          
    >    # -*- coding: utf-8 -*-
-   >       
+   >          
    >    # encoding=utf8
-   >       
+   >          
    >    from aip import AipOcr
    >    import sys,io
    >    sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
-   >       
+   >          
    >    """ 你的 APPID AK SK """
    >    APP_ID = '34338402'
    >    API_KEY = 'GVeTGTZdRIiH3AphNQtumCk4'
    >    SECRET_KEY = 'csTzqbvYHbj8XGMnIgCAOtN7Gq1Ra58H'
-   >       
+   >          
    >    client = AipOcr(APP_ID, API_KEY, SECRET_KEY)
-   >       
+   >          
    >    def get_file_content(file):
    >     with open(file, 'rb') as fp:
    >         return fp.read()
-   >       
+   >          
    >    def img_to_str(image_path):
    >     image = get_file_content(image_path)
    >     result = client.basicGeneral(image)
    >     if 'words_result' in result:
    >         return u'\n'.join([w['words'] for w in result['words_result']])
-   >       
+   >          
    >    print(img_to_str(image_path='/Users/jiangsai/Downloads/1.png'))
    >    ```
    
