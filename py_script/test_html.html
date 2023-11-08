@@ -1,12 +1,346 @@
-"keys": [
-[ "#FF0000", "Meta+1" ],
-[ "#008080", "Meta+2" ],
-]
-"keys": [
-[ "#FF0000", "Alt+1" ],
-[ "#008080", "Alt+2" ],
-]
-"keys": [
-[ "#FF0000", "Ctrl+1" ],
-[ "#008080", "Ctrl+2" ],
-]
+<meta content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+
+<div class=bg>
+    <div class=bg2>
+
+        <div style="margin:-5px 0 0 0"></div>
+        <div style="text-align:right;font-size:0.75em;max-width:828px;margin:0 auto;color:#808080">➵ {{Subdeck}}</div>
+
+        {{#标题}}
+        <div style="margin:5px 0 0 0"></div>
+        <div class="section">
+            <div class="title">{{标题}}</div>
+            <div id="front-tag" style="text-align:left; margin:-5px 12px 0px 6px"></div>
+        </div>
+        <div style="margin:8px 0 0 0"></div>
+        {{/标题}}
+
+        <div style="text-align:center">
+            <button class="button1" onclick="text()" style=margin-right:6px>摘 录</button>
+            <button class="button2" onclick="div2()" style=margin-left:6px>填 空</button>
+            <button class="button3" onclick="button3()" style=margin-left:12px>随 机</button>
+        </div>
+
+        {{^标题}}
+        <div style="margin:6px 0 0 0"></div>
+        <div id="front-tag" style="text-align:left;max-width:828px;margin:0px auto -3px"></div>
+        {{/标题}}
+
+        <script>
+            function showTags() {
+                var tags = "{{Tags}}"
+                if (!tags) return
+                tags = tags.split(' ')
+                var tagList = '<span class="tags">Tags: </span>'
+                for (var tag of tags) {
+                    if (tag) {
+                        tagList += '<span class="single-tag"># ' + tag + '</span>'
+                    }
+                }
+                document.getElementById("front-tag").innerHTML = tagList
+            }
+            showTags()
+        </script>
+
+        {{#摘录/正面}}
+        <div style="margin:16px 0 0 0"></div>
+        <div id=text class=section1 style=display:none;>
+            <div id=div1 class="mbooks-highlight-txt">{{摘录/正面}}</div>
+        </div>
+        {{/摘录/正面}} {{#摘录/正面}}
+        <div style="margin:16px 0 0 0"></div>
+        <div id="div2" style="display:block">
+            <div id="blank" class="section2">
+                <div id="secstem" onclick="blockk">
+                    <div class="mbooks-highlight-txt">{{摘录/正面}}</div>
+                </div>
+            </div>
+            <div class="footer">
+                <ul style=float:left;left:0>
+                    <li><a href="javascript:void(0)" onselectstart="return false;" onclick="prevv()">← Prev</a></li>
+                </ul>
+                <ul style=float:right;right:0>
+                    <li><a href="javascript:void(0)" class="active" onselectstart="return false;" onclick="nextt()">Next
+                            →</a></li>
+                </ul>
+            </div>
+            <div style="text-align:center;margin-top:-10px">
+                <button class=button2 onclick="reset()">↺ Reset</button>
+            </div>
+        </div>
+        {{/摘录/正面}}
+
+        <script type="text/javascript">
+            divs = document.querySelectorAll('#blank');
+            [].forEach.call(divs, function (div) {
+                div.innerHTML = div.innerHTML
+                    .replace(/(<br>)(<br>)/g, "$1<div class=\"divider\"></div>$2")
+                    .replace(/(<div>|<br>)(#)(.*)/g, "");
+            });
+
+            function step1() {
+                var ele = document.getElementById("secstem");
+                var txt = document.getElementById("secstem").innerHTML;
+
+                txt = txt.replace(/\*\*(.+?)\*\*/g, '<y id="keyy" onclick="switchh(id)">$1<\/y>');
+
+                txt = txt.replace(/\{\{c1::/g, '<y id="keyy" onclick="switchh(id)">');
+                txt = txt.replace(/\}\}/g, "<\/y>");
+
+                txt = txt.replace(/<b>/g, '<y id="keyy" onclick="switchh(id)">');
+                txt = txt.replace(/<\/b>/g, "<\/y>");
+
+                txt = txt.replace(/<y.+?\/y>/g, "$&$&");
+
+                ele.innerHTML = txt;
+            }
+
+            step1();
+
+            function setn() {
+                var i = 1;
+                while (/keyy\"/.test(document.getElementById("secstem").innerHTML)) {
+                    idd = 'keyy' + String(i);
+                    var txt = document.getElementById("secstem").innerHTML.replace(/keyy\"/, idd + '"');
+                    document.getElementById("secstem").innerHTML = txt;
+
+                    if (i % 2 == 0) {
+                        document.getElementById(idd).setAttribute("class", "hidden");
+                    } else {
+
+                        document.getElementById(idd).innerHTML = document.getElementById(idd).innerHTML.replace(/<[\/]?span[^>]*>/g, "").replace(/&nbsp;/g, "_").replace(/&amp;/g, "_").replace(/&gt;/g, "_").replace(/&lt;/g, "_").replace(/[^\u4e00-\u9fa5、；，。！？：—“”（）《》【】]+?/g, "_").replace(/[\u4e00-\u9fa5、；，。！？：—“”（）《》【】]+?/g, "＿");
+                        document.getElementById(idd).setAttribute("class", "color");
+
+                    }
+                    i++;
+                }
+                return i;
+            }
+
+            var sum = setn();
+
+            function switchh(id) {
+                idd = id.replace(/keyy/, "");
+                if (Number(idd) % 2 == 1) {
+                    idd = Number(idd) + 1;
+                    var neww = "keyy" + String(idd);
+                } else {
+                    idd = Number(idd) - 1;
+                    var neww = "keyy" + String(idd);
+                }
+
+                document.getElementById(id).setAttribute("class", "hiddendelay");
+                window.setTimeout(
+                    function delay() {
+                        document.getElementById(id).setAttribute("class", "hidden");
+                        document.getElementById(neww).setAttribute("class", "cloze");
+                    }, 20);
+
+            }
+
+            function reset() {
+                for (var i = sum - 1; i > 0; i = i - 2) {
+                    var n = i;
+                    idd = "keyy" + String(n);
+
+                    if (document.getElementById(idd).getAttribute("class") == "cloze") {
+                        idd = "keyy" + String(n);
+                        $("#" + idd)[0];
+                        switchh(idd);
+                    }
+                }
+            }
+
+            function prevv() {
+                for (var i = sum - 1; i > 0; i = i - 2) {
+                    var n = i;
+                    idd = "keyy" + String(n);
+
+                    if (document.getElementById(idd).getAttribute("class") == "cloze") {
+                        idd = "keyy" + String(n);
+                        $("#" + idd)[0];
+                        switchh(idd);
+                        break;
+                    }
+                }
+            }
+
+            function nextt() {
+                for (var i = 2; i < sum; i = i + 2) {
+                    var n = i;
+                    idd = "keyy" + String(n);
+
+                    if (document.getElementById(idd).getAttribute("class") == "hidden") {
+
+                        idd = "keyy" + String(n - 1);
+                        $("#" + idd)[0];
+                        switchh(idd);
+                        break;
+                    }
+                }
+            }
+
+            var keycode_tab = 9;
+            var keycode_q = 81;
+            var keycode_w = 87;
+            var keycode_f10 = 121;
+            var keycode_f9 = 120;
+
+            var shortcuts = {
+                "previous": {
+                    "name": "Tab",
+                    "keycodes": [keycode_tab],
+                },
+                "reset": {
+                    "name": "Q",
+                    "keycodes": [keycode_q],
+                },
+                "next": {
+                    "name": "W",
+                    "keycodes": [keycode_w],
+                },
+                "show": {
+                    "name": "F10",
+                    "keycodes": [keycode_f10],
+                },
+                "mask": {
+                    "name": "F9",
+                    "keycodes": [keycode_f9],
+                }
+            };
+
+            function setupControls() {
+                if (document.keyeventflag != "keyeventflag") {
+                    console.log(document.keyeventflag);
+                    document.keyeventflag = "keyeventflag";
+                    document.addEventListener("keydown", (event) => {
+                        if (shortcuts.next.keycodes.includes(event.keyCode)) {
+                            nextt();
+                        } else if (shortcuts.previous.keycodes.includes(event.keyCode)) {
+                            event.preventDefault();
+                            prevv();
+                        } else if (shortcuts.reset.keycodes.includes(event.keyCode)) {
+                            reset();
+                        } else if (shortcuts.show.keycodes.includes(event.keyCode)) {
+                            addClass();
+                        } else if (shortcuts.mask.keycodes.includes(event.keyCode)) {
+                            addMask();
+                        }
+                    });
+                }
+            }
+
+            setupControls();
+        </script>
+
+        <script type="text/javascript">
+            function text() {
+                var text = document.getElementById("text");
+                if (text.style.display == 'none') {
+                    text.style.display = 'block';
+                } else {
+                    text.style.display = 'none';
+                }
+            }
+
+            divs = document.querySelectorAll('#div1');
+            [].forEach.call(divs, function (div) {
+                div.innerHTML = div.innerHTML
+                    .replace(/\*\*(.+?)\*\*/g, "<n class=\"color1\" style=text-decoration:underline;>$1</n>")
+                    .replace(/(\{\{)(c1\:\:)(.*?)(\}\})/g, "<n class=\"color1\" style=text-decoration:underline;>$3</n>")
+                    .replace(/(<b>)(.*?)(<\/b>)/g, "<n class=\"color1\" style=text-decoration:underline;>$2</n>")
+                    .replace(/(<br>)(<br>)/g, "$1<div class=\"divider\"></div>$2")
+                    .replace(/(<div>|<br>)(#)(.*)/g, "");
+            });
+
+            function div2() {
+                var div2 = document.getElementById("div2");
+                if (div2.style.display == 'none') {
+                    div2.style.display = 'block';
+                } else {
+                    div2.style.display = 'none';
+                }
+            }
+
+            function button3() {
+                var button3 = document.getElementById("button3");
+                if (button3.style.display == 'none') {
+                    button3.style.display = 'block';
+                } else {
+                    button3.style.display = 'none';
+                }
+            }
+
+            divs = document.querySelectorAll('#note');
+            [].forEach.call(divs, function (div) {
+                div.innerHTML = div.innerHTML
+                    .replace(/(\{\{)(c1\:\:)(.*?)(\}\})/g, "<n class=\"cloze\">[…]</n>")
+                    .replace(/(<div>|<br>)(#)(.*)/g, "");
+            });
+        </script>
+
+        {{#挖空率}}
+        <script type="text/javascript">
+            var isFix = true;
+            var rate = 80;
+            var src = "{{text:挖空率}}";
+            var arr_num = [];
+
+            src.split(/[/,;-]/).map(function (ele) {
+                var num = parseInt(ele);
+                if (!isNaN(num)) {
+                    arr_num.push(num);
+                }
+            });
+
+            if (arr_num.length === 0) {
+                isFix = false;
+                rate = 80;
+            } else if (arr_num.length === 1) {
+                isFix = false;
+                rate = arr_num[0];
+            } else {
+                isFix = true;
+            }
+        </script>
+        {{/挖空率}} {{^挖空率}}
+        <script type="text/javascript">
+            var isFix = false;
+            var rate = 80;
+        </script>
+        {{/挖空率}} {{#摘录/正面}}
+        <div style="margin:16px 0 0 0"></div>
+        <div id=note3>
+            <div id="origin_text" style="display:none">
+                <span class="mbooks-highlight-txt">{{摘录/正面}}</span>
+            </div>
+        </div>
+        <div id="button3" style=display:none>
+            <div id="question" class=section3></div>
+            <div style="margin:16px 0 0 0"></div>
+            <div style="text-align:center;margin-top:-10px">
+                <button class=button3 onclick="addMask()" style=margin-right:6%>⇠ Mask</button>
+                <button class=button3 onclick="addClass()" style=margin-left:6%>Show ⇢</button>
+            </div>
+        </div>
+        <script type="text/javascript">
+            divs = document.querySelectorAll('#note3');
+            [].forEach.call(divs, function (div) {
+                div.innerHTML = div.innerHTML
+                    .replace(/\*\*(.+?)\*\*/g, "<n class=\"color3\" style=text-decoration:none>$1</n>")
+                    .replace(/(\{\{)(c1\:\:)(.*?)(\}\})/g, "<n class=\"color3\" style=text-decoration:none>$3</n>")
+                    .replace(/(<b>)(.*?)(<\/b>)/g, "<n class=\"color3\" style=text-decoration:none>$2</n>")
+                    .replace(/(<u>)(.*?)(<\/u>)/g, "<n class=\"color4\" style=text-decoration:none>$2</n>")
+                    .replace(/(<br>)(<br>)/g, "$1<div class=\"divider\"></div>$2")
+                    .replace(/(<div>|<br>)(#)(.*)/g, "");
+            });
+            addClass();
+            addMask();
+        </script>
+        {{/摘录/正面}}
+
+        <p>
+            <br>
+
+    </div>
+</div>

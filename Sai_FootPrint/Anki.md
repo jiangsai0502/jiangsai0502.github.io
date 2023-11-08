@@ -97,139 +97,33 @@
 >   >
 >   >   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311031057282.png)
 >   >
->   >   > 正面内容模版
->   >   >
->   >   > ```css
->   >   > {{Front}}
->   >   > <br><br>
->   >   > <div style='font-family: Arial; font-size: 12px;float:left;color:#D3D3D3'>《{{《》}}》
->   >   > </div>
->   >   > ```
->   >
->   >   > 背面内容模版
->   >   >
->   >   > ```css
->   >   > {{FrontSide}}
->   >   > <br>
->   >   > <hr>
->   >   > {{Back}}
->   >   > ```
->   >
->   >   > 样式
->   >   >
->   >   > ```css
->   >   > .card {
->   >   >  font-family: arial;
->   >   >  font-size: 20px;
->   >   >  text-align: left;
->   >   >  color: black;
->   >   >  background-color: white;
->   >   > }
->   >   > 
->   >   > .kbd {
->   >   >     box-shadow: inset 0px 1px 0px 0px #ffffff;
->   >   >     background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f9f9f9)stop(1, #e9e9e9) );
->   >   >     background-color: #f9f9f9;
->   >   >     border-radius: 5px;
->   >   >     border: 1px solid #dcdcdc;
->   >   >     display: inline-block;
->   >   >     font-size: 0.8em;
->   >   >     height: 30px;
->   >   >     line-height: 30px;
->   >   >     padding: 0px 10px;
->   >   >     text-align: center;
->   >   >     text-shadow: 1px 1px 0px #ffffff;
->   >   > }
->   >   > ```
->
+>   > 4. 设置模版代码，见[Anki卡片模版样式代码](Storage/Anki_template.md)
+>   
 > * 自制带书名号的填空题模版（操作步骤见「自制带书名号的问答题模板」）
->
->   1. 添加个新的系统模板「添加：填空题」，然后修改此模版
->
->   2. 新建字段
->
->      ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311031111954.png)
->
->      > * 字段名称`Front`改为`Question`
->      > * 新建书名号字段，其他字段删除
->
->   3. 设置卡片格式
->
->      >正面内容模版
->      >
->      >```css
->      >{{cloze:Question}}
->      ><br>
->      ><div style='font-family: Arial; font-size: 12px;float:left;color:	#D3D3D3'>《{{《》}}》
->      ></div>
->      >```
->
->      > 背面内容模版
->      >
->      > ```css
->      > {{cloze:Question}}
->      > <br>
->      > <div style='font-family: Arial; font-size: 12px;float:left;color:	#D3D3D3'>《{{《》}}》
->      > </div>
->      > ```
->
->      > 样式
->      >
->      > ```css
->      > .card {
->      >  font-family: arial;
->      >  font-size: 20px;
->      >  text-align: left;
->      >  color: black;
->      >  background-color: white;
->      > }
->      > 
->      > .cloze {
->      >  font-weight: bold;
->      >  color: red;
->      > }
->      > ```
->
+> 
+>   >1. 添加个新的系统模板「添加：填空题」，然后修改此模版
+> >
+>   >2. 新建字段
+> >
+>   >   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311031111954.png)
+> >
+>   >   > * 字段名称`Front`改为`Question`
+>   >   > * 新建书名号字段，其他字段删除
+> >
+>   >3. 设置模版代码，见[Anki卡片模版样式代码](Storage/Anki_template.md)
+> 
 > * 自制带书名号的浏览题模板（操作步骤见「自制带书名号的问答题模板」）
->
->   1. 添加个新的系统模板「添加：问答题」，然后修改此模版
->
->   2. 新建字段
->
->      ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311031132769.png)
->
->      > * 字段名称`Front`改为`Text`
->      > * 新建书名号字段，其他字段删除
->
->   3. 设置卡片格式
->
->      > 正面内容模版
->      >
->      > ```
->      > {{Text}}
->      > <br>
->      > <br>
->      > <div style='font-family: Arial; font-size: 12px;float:left;color:	#D3D3D3'>《{{《》}}》
->      > </div>
->      > ```
->
->      > 背面内容模版
->      >
->      > ```
->      > {{FrontSide}}
->      > ```
->
->      > 样式
->      >
->      > ```css
->      > .card {
->      >  font-family: arial;
->      >  font-size: 20px;
->      >  text-align: left;
->      >  color: black;
->      >  background-color: white;
->      > }
->      > ```
+> 
+>   >1. 添加个新的系统模板「添加：问答题」，然后修改此模版
+>   >
+>   >2. 新建字段
+>   >
+>   >   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311031132769.png)
+>   >
+>   >   > * 字段名称`Front`改为`Text`
+>   >   > * 新建书名号字段，其他字段删除
+>   >
+>   >3. 设置模版代码，见[Anki卡片模版样式代码](Storage/Anki_template.md)
 
 #### 小技巧
 
@@ -304,6 +198,24 @@
 
 ### 高级教程
 
+* 自制高级阅读/填空题（加粗挖空）
+
+  > 效果：只有2个字段
+  >
+  > 1. `正文`字段
+  >    1. 有加粗时：题目是填空题，加粗部分在正面被挖空，点击挖空显示文字，背面显示完整信息
+  >    2. 无加粗时：题目是阅读题
+  > 2. `《》`字段：书名号字段
+
+  > 1. 新建一个**问答题**模版
+  >
+  >    > 1. `正文`字段：Sai阅读/填空
+  >    >    1. 有加粗时：题目是填空题，加粗部分在正面被挖空，点击挖空显示文字，背面显示完整信息
+  >    >    2. 无加粗时：题目是阅读题
+  >    > 2. `《》`字段：书名号字段
+  >
+  > 2. 设置模版代码，见[Anki卡片模版样式代码](Storage/Anki_template.md)
+
 * 三合一模板
 
   > 1. Fields 删改
@@ -352,7 +264,7 @@
   >
   >    ```
   >    <div class=bg><div class=bg2>
-  >       
+  >          
   >    <div style="margin:-5px 0 0 0"></div>
   >    <div style="text-align:right;font-size:0.75em;max-width:828px;margin:0 auto;color:#808080">➵ {{Subdeck}}</div>
   >    ```
@@ -373,7 +285,7 @@
   >    	{
   >    		var n = i;
   >    		idd = "keyy" + String(n);
-  >       
+  >          
   >    		if (document.getElementById(idd).getAttribute("class") == "cloze")
   >    		{
   >    			idd = "keyy" + String(n);
@@ -383,17 +295,17 @@
   >    		}
   >    	}
   >    }
-  >       
+  >          
   >    function nextt()
   >    {
   >    	for (var i = 2; i < sum; i = i + 2)
   >    	{
   >    		var n = i;
   >    		idd = "keyy" + String(n);
-  >       
+  >          
   >    		if (document.getElementById(idd).getAttribute("class") == "hidden")
   >    		{
-  >       
+  >          
   >    			idd = "keyy" + String(n - 1);
   >    			$("#" + idd)[0];
   >    			switchh(idd);

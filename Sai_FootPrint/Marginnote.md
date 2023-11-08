@@ -202,7 +202,7 @@
 >    >
 >    >    2. Anki卡片处理
 >    >
->    >       > 见关键词「删除Marginote卡片背面第一行的正面内容」[Keyboard_Maestro](Sai_FootPrint/Keyboard_Maestro.md)
+>    >       > 见[Keyboard_Maestro](Sai_FootPrint/Keyboard_Maestro.md)关键词「删除Marginote卡片背面第一行的正面内容」
 
 > * 制作选择题
 >   * https://www.bilibili.com/video/BV1yW41117PU
