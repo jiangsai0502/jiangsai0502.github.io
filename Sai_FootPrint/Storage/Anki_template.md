@@ -1,4 +1,4 @@
-1. 自制带书名号的问答题模板
+1. 初级自制：带书名号的问答题模板
 
    >正面
    >
@@ -45,7 +45,7 @@
    >}
    >```
 
-2. 自制带书名号的填空题模版
+2. 初级自制：带书名号的填空题模版
 
    >正面
    >
@@ -82,7 +82,7 @@
    >}
    >```
 
-3. 自制带书名号的浏览题模板
+3. 初级自制：带书名号的浏览题模板
 
    > 正面
    >
@@ -111,7 +111,7 @@
    > background-color: white;
    > }
 
-4. 自制高级阅读/填空题（加粗挖空）
+4. 高级自制：阅读/填空题（加粗挖空）
 
    > 正面
    >
@@ -119,81 +119,81 @@
    > <meta content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
    > 
    > <div class=bg>
-   >     <div class=bg2>
+   >        <div class=bg2>
    > 
-   >         {{#Sai填空题}}
-   >         <div style="margin:16px 0 0 0"></div>
-   >         <div id="div2" style="display:block">
-   >             <div id="blank" class="section2">
-   >                 <div id="secstem" onclick="blockk">
-   >                     <div class="mbooks-highlight-txt">{{Sai填空题}}</div>
-   >                 </div>
-   >             </div>
-   >         </div>
-   >         {{/Sai填空题}}
+   >            {{#阅读/填空正文}}
+   >            <div style="margin:16px 0 0 0"></div>
+   >            <div id="div2" style="display:block">
+   >                <div id="blank" class="section2">
+   >                    <div id="secstem" onclick="blockk">
+   >                        <div class="mbooks-highlight-txt">{{阅读/填空正文}}</div>
+   >                    </div>
+   >                </div>
+   >            </div>
+   >            {{/阅读/填空正文}}
    > 
-   >         <script type="text/javascript">
-   >             divs = document.querySelectorAll('#blank');
-   >             [].forEach.call(divs, function (div) {
-   >                 div.innerHTML = div.innerHTML
-   >                     .replace(/(<br>)(<br>)/g, "$1<div class=\"divider\"></div>$2")
-   >                     .replace(/(<div>|<br>)(#)(.*)/g, "");
-   >             });
+   >            <script type="text/javascript">
+   >                divs = document.querySelectorAll('#blank');
+   >                [].forEach.call(divs, function (div) {
+   >                    div.innerHTML = div.innerHTML
+   >                        .replace(/(<br>)(<br>)/g, "$1<div class=\"divider\"></div>$2")
+   >                        .replace(/(<div>|<br>)(#)(.*)/g, "");
+   >                });
    > 
-   >             function step1() {
-   >                 var ele = document.getElementById("secstem");
-   >                 var txt = document.getElementById("secstem").innerHTML;
-   >                 txt = txt.replace(/\*\*(.+?)\*\*/g, '<y id="keyy" onclick="switchh(id)">$1<\/y>');
-   >                 txt = txt.replace(/\{\{c1::/g, '<y id="keyy" onclick="switchh(id)">');
-   >                 txt = txt.replace(/\}\}/g, "<\/y>");
-   >                 txt = txt.replace(/<b>/g, '<y id="keyy" onclick="switchh(id)">');
-   >                 txt = txt.replace(/<\/b>/g, "<\/y>");
-   >                 txt = txt.replace(/<y.+?\/y>/g, "$&$&");
-   >                 ele.innerHTML = txt;
-   >             }
+   >                function step1() {
+   >                    var ele = document.getElementById("secstem");
+   >                    var txt = document.getElementById("secstem").innerHTML;
+   >                    txt = txt.replace(/\*\*(.+?)\*\*/g, '<y id="keyy" onclick="switchh(id)">$1<\/y>');
+   >                    txt = txt.replace(/\{\{c1::/g, '<y id="keyy" onclick="switchh(id)">');
+   >                    txt = txt.replace(/\}\}/g, "<\/y>");
+   >                    txt = txt.replace(/<b>/g, '<y id="keyy" onclick="switchh(id)">');
+   >                    txt = txt.replace(/<\/b>/g, "<\/y>");
+   >                    txt = txt.replace(/<y.+?\/y>/g, "$&$&");
+   >                    ele.innerHTML = txt;
+   >                }
    > 
-   >             step1();
+   >                step1();
    > 
-   >             function setn() {
-   >                 var i = 1;
-   >                 while (/keyy\"/.test(document.getElementById("secstem").innerHTML)) {
-   >                     idd = 'keyy' + String(i);
-   >                     var txt = document.getElementById("secstem").innerHTML.replace(/keyy\"/, idd + '"');
-   >                     document.getElementById("secstem").innerHTML = txt;
+   >                function setn() {
+   >                    var i = 1;
+   >                    while (/keyy\"/.test(document.getElementById("secstem").innerHTML)) {
+   >                        idd = 'keyy' + String(i);
+   >                        var txt = document.getElementById("secstem").innerHTML.replace(/keyy\"/, idd + '"');
+   >                        document.getElementById("secstem").innerHTML = txt;
    > 
-   >                     if (i % 2 == 0) {
-   >                         document.getElementById(idd).setAttribute("class", "hidden");
-   >                     } else {
+   >                        if (i % 2 == 0) {
+   >                            document.getElementById(idd).setAttribute("class", "hidden");
+   >                        } else {
    > 
-   >                         document.getElementById(idd).innerHTML = document.getElementById(idd).innerHTML.replace(/<[\/]?span[^>]*>/g, "").replace(/&nbsp;/g, "_").replace(/&amp;/g, "_").replace(/&gt;/g, "_").replace(/&lt;/g, "_").replace(/[^\u4e00-\u9fa5、；，。！？：—“”（）《》【】]+?/g, "_").replace(/[\u4e00-\u9fa5、；，。！？：—“”（）《》【】]+?/g, "＿");
-   >                         document.getElementById(idd).setAttribute("class", "color");
-   >                     }
-   >                     i++;
-   >                 }
-   >                 return i;
-   >             }
+   >                            document.getElementById(idd).innerHTML = document.getElementById(idd).innerHTML.replace(/<[\/]?span[^>]*>/g, "").replace(/&nbsp;/g, "_").replace(/&amp;/g, "_").replace(/&gt;/g, "_").replace(/&lt;/g, "_").replace(/[^\u4e00-\u9fa5、；，。！？：—“”（）《》【】]+?/g, "_").replace(/[\u4e00-\u9fa5、；，。！？：—“”（）《》【】]+?/g, "＿");
+   >                            document.getElementById(idd).setAttribute("class", "color");
+   >                        }
+   >                        i++;
+   >                    }
+   >                    return i;
+   >                }
    > 
-   >             var sum = setn();
+   >                var sum = setn();
    > 
-   >             function switchh(id) {
-   >                 idd = id.replace(/keyy/, "");
-   >                 if (Number(idd) % 2 == 1) {
-   >                     idd = Number(idd) + 1;
-   >                     var neww = "keyy" + String(idd);
-   >                 } else {
-   >                     idd = Number(idd) - 1;
-   >                     var neww = "keyy" + String(idd);
-   >                 }
+   >                function switchh(id) {
+   >                    idd = id.replace(/keyy/, "");
+   >                    if (Number(idd) % 2 == 1) {
+   >                        idd = Number(idd) + 1;
+   >                        var neww = "keyy" + String(idd);
+   >                    } else {
+   >                        idd = Number(idd) - 1;
+   >                        var neww = "keyy" + String(idd);
+   >                    }
    > 
-   >                 document.getElementById(id).setAttribute("class", "hiddendelay");
-   >                 window.setTimeout(
-   >                     function delay() {
-   >                         document.getElementById(id).setAttribute("class", "hidden");
-   >                         document.getElementById(neww).setAttribute("class", "cloze");
-   >                     }, 20);
-   >             }
-   >         </script>
-   >     </div>
+   >                    document.getElementById(id).setAttribute("class", "hiddendelay");
+   >                    window.setTimeout(
+   >                        function delay() {
+   >                            document.getElementById(id).setAttribute("class", "hidden");
+   >                            document.getElementById(neww).setAttribute("class", "cloze");
+   >                        }, 20);
+   >                }
+   >            </script>
+   >        </div>
    > </div>
    > ```
    >
@@ -203,19 +203,19 @@
    > <meta content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
    > 
    > <div class=bg>
-   >     <div class=bg2>
-   >         <div style="margin:16px 0 0 0"></div>
-   >         <div id="div2" style="display:block">
-   >             <div id="blank" class="section2">
-   >                 <div class="mbooks-highlight-txt">{{Sai填空题}}</div>
-   >             </div>
-   >         </div>
-   >     </div>
+   >        <div class=bg2>
+   >            <div style="margin:16px 0 0 0"></div>
+   >            <div id="div2" style="display:block">
+   >                <div id="blank" class="section2">
+   >                    <div class="mbooks-highlight-txt">{{阅读/填空正文}}</div>
+   >                </div>
+   >            </div>
+   >        </div>
    > 
-   >     <br>
-   >     <div style='font-family: Arial; font-size: 12px;float:left;color:#A2886D'>《{{《》}}》
-   >         <br>
-   >     </div>
+   >        <br>
+   >        <div style='font-family: Arial; font-size: 12px;float:left;color:#A2886D'>《{{《》}}》
+   >            <br>
+   >        </div>
    > </div>
    > ```
    >
@@ -407,5 +407,287 @@
    >     }
    > ```
 
-5. 
+5. 高级自制：问答题
+
+   > 正面
+   >
+   > ```css
+   > <meta content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+   > 
+   > <div class=bg>
+   >  <div class=bg2>
+   >      {{#问题}}
+   >      <div style="margin:5px 0 0 0"></div>
+   >      <div class="section">
+   >          <div class="title">{{问题}}</div>
+   >          <div id="front-tag" style="text-align:left; margin:-5px 12px 0px 6px"></div>
+   >      </div>
+   >      <div style="margin:8px 0 0 0"></div>
+   >      {{/问题}}
+   >      <script type="text/javascript">
+   >          divs = document.querySelectorAll('#blank');
+   >          [].forEach.call(divs, function (div) {
+   >              div.innerHTML = div.innerHTML
+   >                  .replace(/(<br>)(<br>)/g, "$1<div class=\"divider\"></div>$2")
+   >                  .replace(/(<div>|<br>)(#)(.*)/g, "");
+   >          });
+   >      </script>
+   >  </div>
+   > </div>
+   > ```
+   >
+   > 背面
+   >
+   > ```css
+   > <meta content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+   > 
+   > <div class=bg>
+   >  <div class=bg2>
+   >      {{#问题}}
+   >      <div style="margin:5px 0 0 0"></div>
+   >      <div class="section">
+   >          <div class="title">{{问题}}</div>
+   >          <div id="front-tag" style="text-align:left; margin:-5px 12px 0px 6px"></div>
+   >      </div>
+   >      <div style="margin:8px 0 0 0"></div>
+   >      {{/问题}}
+   >      {{#答案}}
+   >      <div style="margin:16px 0 0 0"></div>
+   >      <div id="div2" style="display:block">
+   >          <div id="blank" class="section2">
+   >              <div class="mbooks-highlight-txt">{{答案}}</div>
+   >          </div>
+   >      </div>
+   >      {{/答案}}
+   > 
+   >      <script type="text/javascript">
+   >          divs = document.querySelectorAll('#blank');
+   >          [].forEach.call(divs, function (div) {
+   >              div.innerHTML = div.innerHTML
+   >                  .replace(/(<br>)(<br>)/g, "$1<div class=\"divider\"></div>$2")
+   >                  .replace(/(<div>|<br>)(#)(.*)/g, "");
+   >          });
+   >      </script>
+   >  </div>
+   >     <br>
+   >     <div style='font-family: Arial; font-size: 12px;float:left;color:#A2886D'>《{{《》}}》
+   >         <br>
+   >     </div>
+   > </div>
+   > ```
+   >
+   > 样式
+   >
+   > ```css
+   > <style></style>
+   > 
+   > <style>
+   >  .card {
+   >      margin: 10px;
+   >      font-family: avenir next, helvetica, arial, sans-serif;
+   >      font-size: 20px;
+   >      text-align: left;
+   >      color: #393939;
+   >      background-color: #e9ebee;
+   >      line-height: 128%;
+   >  }
+   > 
+   >  ::-webkit-scrollbar {
+   >      display: none
+   >  }
+   > 
+   >  body {
+   >      transform: none !important;
+   >  }
+   > 
+   >  .bg {
+   >      z-index: -1;
+   >      background-image: url(_bg_texture.png);
+   >      background-attachment: fixed;
+   >      position: fixed;
+   >      top: 0px;
+   >      left: 0px;
+   >      bottom: 0px;
+   >      right: 0px;
+   >      width: 100%;
+   >      height: 100%;
+   >      overflow-y: scroll;
+   >      -webkit-overflow-scrolling: touch;
+   >  }
+   > 
+   >  .bg::-webkit-scrollbar {
+   >      display: none;
+   >  }
+   > 
+   >  .bg2 {
+   >      margin: 0.6em 0.65em
+   >  }
+   > 
+   >  .ipad .bg2 {
+   >      margin: 0.6em 0.65em
+   >  }
+   > 
+   >  .android .bg2 {
+   >      margin: 0.6em 0.5em
+   >  }
+   > 
+   >  .hide {
+   >      color: #fff;
+   >  }
+   > 
+   >  .nightMode .hide {
+   >      color: #222;
+   >  }
+   > 
+   >  .hidden {
+   >      display: none
+   >  }
+   >  /* --------- 字体样式 --------- */
+   > 
+   >  u {
+   >      color: #9e69bc;
+   >      text-decoration: underline;
+   >      margin: 0 2px;
+   >      font-family: avenir next, kt;
+   >      font-size: 1.05em;
+   >  }
+   > 
+   >  b {
+   >      color: #338eca;
+   >      font-weight: normal;
+   >      text-decoration: underline;
+   >      margin: 0 2px;
+   >      font-family: avenir next, kt;
+   >      font-size: 1.05em;
+   >  }
+   > 
+   >  strong {
+   >      font-weight: normal;
+   >      font-family: avenir next, kt;
+   >  }
+   > 
+   >  br {
+   >      display: block;
+   >      content: "";
+   >      border-bottom: 0.6em solid transparent
+   >  }
+   > 
+   >  .divider {
+   >      margin: 5px -6px;
+   >      height: 2px;
+   >      background-color: #ececec
+   >  }
+   > 
+   >  a:link {
+   >      color: #007aff
+   >  }
+   > 
+   >  th,
+   >  tr,
+   >  td {
+   >      border-collapse: collapse;
+   >      border: 1px solid #808080;
+   >  }
+   > 
+   >  #typeans {
+   >      font-size: 0.85em !important
+   >  }
+   > 
+   >  .ios #typeans {
+   >      font-size: 1em !important
+   >  }
+   > 
+   >  .typeGood {
+   >      background-color: ;
+   >      color:
+   >  }
+   > 
+   >  .typeBad {
+   >      background-color: ;
+   >      color:
+   >  }
+   > 
+   >  .typeMissed {
+   >      background-color: ;
+   >      color:
+   >  }
+   > 
+   >  @font-face {
+   >      font-family: kt;
+   >      src: url('_kt.ttf');
+   >  }
+   > 
+   >  @font-face {
+   >      font-family: times;
+   >      src: url('_times.ttf');
+   >  }
+   >  /* --------- 添加或修改 --------- */
+   >  /* 题目的字号、边距 */
+   > 
+   >  .title {
+   >      margin: 6px 12px;
+   >      font-weight: bold;
+   >      font-size: 0.96em;
+   >      letter-spacing: 0.02em;
+   >      text-align: justify;
+   >  }
+   >  /* --------- 主体部分 --------- */
+   >  /* 主体的边距、字体、行高、对齐 */
+   > 
+   >  .mbooks-highlight-txt {
+   >      margin: 8px 12px 7px;
+   >      display: block;
+   >      font-size: 0.9em;
+   >      line-height: 165%;
+   >      text-align: left;
+   >  }
+   >  /* 题目的方框区 */
+   > 
+   >  .section {
+   >      border: 1px solid;
+   >      border-color: #fff;
+   >      border-radius: 5px;
+   >      background-color: rgba(255, 255, 255, 0.85);
+   >      margin: 5px 0;
+   >      padding: 10px 12px;
+   >      line-height: 150%;
+   >      max-width: 828px;
+   >      margin: 0 auto;
+   >      box-shadow: #bbb 2px 2px 5px 1px;
+   >      word-break: break-word;
+   >      /*remove below 4 lines if you want flat style*/
+   >      /*
+   >  border           : 0px solid;
+   >  border-left-color : rgba(133,155,122,0.85);
+   >  border-left-width : 8px;
+   >  box-shadow: 1px 1px 2px rgba(0,0,0,0.3), 1px 1px 3px rgba(0,0,0,0.5);
+   > */
+   >  }
+   > 
+   >  .win .section-type {
+   >      display: block
+   >  }
+   > 
+   >  .mac .section-type {
+   >      display: block
+   >  }
+   >  /* 答案的方框区 */
+   > 
+   >  .section2 {
+   >      border: 1px solid;
+   >      border-color: #fff;
+   >      border-radius: 5px;
+   >      background-color: rgba(255, 255, 255, 0.85);
+   >      margin: 5px 0;
+   >      padding: 10px 12px;
+   >      line-height: 100%;
+   >      max-width: 828px;
+   >      margin: 0 auto;
+   >      box-shadow: #b7d5eb 2px 2px 5px 1px;
+   >      word-break: break-word;
+   >  }
+   > </style>
+   > ```
+   >
+   > 
 

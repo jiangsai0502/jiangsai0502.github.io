@@ -198,7 +198,7 @@
 >    >
 >    >       >卡片在Anki中的**3**个有效字段：Front即正面，Back即背面，MNLink即卡片在正文的位置
 >    >       >
->    >       >![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311071858977.png)
+>    >       >![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311081359068.png)
 >    >
 >    >    2. Anki卡片处理
 >    >

@@ -198,240 +198,34 @@
 
 ### 高级教程
 
-* 自制高级阅读/填空题（加粗挖空）
+* 高级自制：阅读/填空题（加粗挖空）
 
-  > 效果：只有2个字段
+  > 效果
   >
-  > 1. `正文`字段
-  >    1. 有加粗时：题目是填空题，加粗部分在正面被挖空，点击挖空显示文字，背面显示完整信息
-  >    2. 无加粗时：题目是阅读题
-  > 2. `《》`字段：书名号字段
-
-  > 1. 新建一个**问答题**模版
+  > 1. 阅读题：正反面一样；2个换行之间自动增加MarkDown分割线
+  > 2. 填空题
+  >    1. 正面，加粗部分被挖空，点击挖空部分显示文字
+  >    2. 背面，显示完整信息
+  >    3. 2个换行之间自动增加MarkDown分割线
   >
-  >    > 1. `正文`字段：Sai阅读/填空
-  >    >    1. 有加粗时：题目是填空题，加粗部分在正面被挖空，点击挖空显示文字，背面显示完整信息
-  >    >    2. 无加粗时：题目是阅读题
-  >    > 2. `《》`字段：书名号字段
+  > 设置
   >
+  > 1. 新建一个**问答题**模版，取名`Sai阅读/填空`
+  >    1. 字段1：名称`阅读/填空正文`，本字段既是正面又是背面
+  >    2. 字段2：名称`《》`，为书名号/MN位置链接
   > 2. 设置模版代码，见[Anki卡片模版样式代码](Storage/Anki_template.md)
 
-* 三合一模板
+* 高级自制：问答题
 
-  > 1. Fields 删改
+  > 效果
   >
-  >    1. 标题：改为《问题》，并设置为Sort by this field
-  >    2. 正面：改为《原文/填空》
-  >    3. 《》：新增书名号
-  >    4. 挖空率：不变
-  >    5. 反面、笔记、Remarks、MNLink、MNMindMap：删除
+  > 1. 正面，问题加粗
+  > 2. 背面，显示完整信息；2个换行之间自动增加MarkDown分割线
   >
-  > 2. 新增书名号部分
+  > 设置
   >
-  >    1. Card - Front template中`<div style="text-align:center">`前增加
-  >
-  >       ```
-  >       <br>
-  >       <div style='font-family: Arial; font-size: 12px;float:left;color:#D3D3D3'>《{{《》}}》</div><br>
-  >       ```
-  >
-  >    2. Card - Back template中`<div style="text-align:center">`前增加
-  >
-  >       ```
-  >       <br>
-  >       <div style='font-family: Arial; font-size: 12px;float:left;color:#D3D3D3'>《{{《》}}》</div><br>
-  >       ```
-  >
-  > 3. 修改卡片按钮名称
-  >
-  >    1. Card - Back template
-  >
-  >       ```
-  >       <button class="button1" onclick="text()" style=margin-right:6px>摘 录</button>
-  >       ```
-  >
-  >       “摘 录”改为“原 文”
-  >
-  >    2. Card - Front template
-  >
-  >       ```
-  >       <button class="button4" onclick="addnote()" style=margin-right:6px>笔 记</button>
-  >       ```
-  >
-  >       “笔 记”改为“原 文”
-  >
-  > 4. Card - Front template删除没用的部分
-  >
-  >    ```
-  >    <div class=bg><div class=bg2>
-  >          
-  >    <div style="margin:-5px 0 0 0"></div>
-  >    <div style="text-align:right;font-size:0.75em;max-width:828px;margin:0 auto;color:#808080">➵ {{Subdeck}}</div>
-  >    ```
-  >
-  >    ```
-  >    <div class="footer">
-  >    <ul style=float:left;left:0>
-  >    <li><a href="javascript:void(0)" onselectstart="return false;" onclick="prevv()">← Prev</a></li></ul>
-  >    <ul style=float:right;right:0>
-  >    <li><a href= "javascript:void(0)" class="active" onselectstart="return false;" onclick="nextt()">Next →</a></li></ul>
-  >    </div>
-  >    ```
-  >
-  >    ```
-  >    function prevv()
-  >    {
-  >    	for (var i = sum -1; i >0; i = i - 2)
-  >    	{
-  >    		var n = i;
-  >    		idd = "keyy" + String(n);
-  >          
-  >    		if (document.getElementById(idd).getAttribute("class") == "cloze")
-  >    		{
-  >    			idd = "keyy" + String(n);
-  >    			$("#" + idd)[0];
-  >    			switchh(idd);
-  >    			break;
-  >    		}
-  >    	}
-  >    }
-  >          
-  >    function nextt()
-  >    {
-  >    	for (var i = 2; i < sum; i = i + 2)
-  >    	{
-  >    		var n = i;
-  >    		idd = "keyy" + String(n);
-  >          
-  >    		if (document.getElementById(idd).getAttribute("class") == "hidden")
-  >    		{
-  >          
-  >    			idd = "keyy" + String(n - 1);
-  >    			$("#" + idd)[0];
-  >    			switchh(idd);
-  >    			break;
-  >    		}
-  >    	}
-  >    }
-  >    ```
-  >
-  > 
-  >
-  > 5. Card - Back template 删除一下没用的部分
-  >
-  >    ```
-  >    <div class=bg><div class=bg2>
-  >    
-  >    <div style="margin:-5px 0 0 0"></div>
-  >    <div style="text-align:right;font-size:0.75em;max-width:828px;margin:0 auto;color:#808080">➵ {{Subdeck}}</div>
-  >    ```
-  >
-  >    ```
-  >    <div style="margin:16px 0 0 0"></div>
-  >    <div id="div2" style="display:block">
-  >    <div id="blank" class="section2">
-  >    <div class="mbooks-highlight-txt"></div></div></div>
-  >    ```
-  >
-  >    ```
-  >    <div style="margin:16px 0 0 0"></div>
-  >    <div id=question class=section3 style=display:none;>
-  >    <div id=div3 class="mbooks-highlight-txt"></div></div>
-  >    
-  >    <div style="margin:16px 0 0 0"></div>
-  >    <div id=question class=section3 style=display:none;>
-  >    <div id=div3 class="mbooks-highlight-txt">{{原文/填空}}</div></div>
-  >    ```
-  >
-  >    ```
-  >    <div style="margin:16px 0 0 0"></div>
-  >    <div class="notes">
-  >    <div style="margin:10px 5px 10px 12px;font-weight:bold;font-size:0.92em;letter-spacing:0.02em">Notes :</div>
-  >    <div id=note class="notes-txt" style="font-family:kt"></div></div>
-  >    
-  >    <div style="margin:16px 0 0 0"></div>
-  >    <div class="notes">
-  >    <div style="margin:10px 12px 5px; font-size:0.75em;text-align:left"></div></div>
-  >    ```
-  >
-  >    ```
-  >    <audio id=player src=""></audio>
-  >    <button class="btn3" onclick="playAudio()">播放</button>
-  >    <button class="btn4" onclick="pauseAudio()">暂停</button>
-  >    <script type="text/javascript">
-  >    document.querySelector("audio").setAttribute('src', 'https://fanyi.baidu.com/gettts?lan=zh&text=' + "{{text:原文/填空}}".replace(/\{\{c1\:\:/g,"").replace(/\}\}/g,"") + '&spd=6');
-  >    function playAudio() {player.play()};
-  >    function pauseAudio() {player.pause()};
-  >    </script>
-  >    ```
-  >
-  > 6. Card - Front template 修改默认板块
-  >
-  >    1. 修改卡片一上来就展示填空板块
-  >       1. 找到`<div id="div2" style="display:none">`
-  >       2. 改为`<div id="div2" style="display:block">`
-  >
-  > 7. 挖空方式修改挖空率（Card - Front template）
-  >
-  >    1. 找到rate = 80，改为目标数字
-  >
-  > 8. 录入
-  >
-  >    * 问题栏：卡片的问题
-  >    * 原文/填空栏：做题时点**填空**按钮，填空栏里的加粗文字会隐藏，点击每个隐藏部分则逐个展示；点
-  >    * 挖空率：不填则默认挖空率80%，做题时点**随机**按钮，按照挖空率对填空栏的内容进行80%的隐藏。2种挖空方式
-  >
-  > 9. 2种挖空方式
-  >
-  >    1. 固定挖空率：卡片录入时，输入60，即可指定挖空60%的内容
-  >
-  >    2. 固定挖空位置：卡片录入时，输入7/5/6/7，即以7个字为一组，挖空第5、6、7个字，适合背诗（标点不算字数）
-  >
-  >       * 如“朝辞白帝彩云间，千里江陵一日还”，会被挖成“朝辞白帝 _ _ _，千里江陵 _ _ _”
-  >
-  >    3. 指定为一格一挖孔，模拟《背了个X》：
-  >
-  >       1. Card - Front template找到如下代码
-  >
-  >          ```
-  >          {{^挖空率}}
-  >          <script type="text/javascript">
-  >              var isFix = false;
-  >              var rate = 80;
-  >          </script>
-  >          {{/挖空率}}
-  >          ```
-  >
-  >          改为
-  >
-  >          ```
-  >          {{^挖空率}}
-  >          <script type="text/javascript">
-  >              var isFix = true;
-  >              var src = "2/1";
-  >              var arr_num =[];
-  >              src.split(/[/,;-]/).map(function(ele) {
-  >                  var num = parseInt(ele);
-  >                  if (!isNaN(num)) {
-  >                      arr_num.push(num);
-  >                  }
-  >              });
-  >          </script>
-  >          {{/挖空率}}
-  >          ```
-  >
-  >          其中 “ var src = "2/1"; ”，是指以2个字为一组，挖空第1个字，也可以替换为别的，如 “ var src = "5/2/4"; ”，是指以5个字为一组，挖空第2、4个字
-  >
-  >       2. 卡片录入的挖空率栏要清空
-  >
-  >    4. 英文“一个字母一个挖空”改为“一个单词一个挖空”
-  >
-  >       ```
-  >       element.innerHTML = Array(element.innerHTML.length + 1).join(char_mask);
-  >       ```
-  >
-  >       改为
-  >
-  >       ```
-  >       element.innerHTML = char_mask;
-  >       ```
+  > 1. 新建一个**问答题**模版，取名`Sai问答`
+  >    1. 字段1：名称`问题`，为正面
+  >    2. 字段2：名称`答案`，为背面
+  >    3. 字段3：名称`《》`，为书名号/MN位置链接
+  > 2. 设置模版代码，见[Anki卡片模版样式代码](Storage/Anki_template.md)

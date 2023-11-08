@@ -1,0 +1,1194 @@
+<style></style><style>
+/* --------- @Dayday不觉晓 22/06/27 修改 --------- */
+
+.card {
+    margin: 10px;
+    font-family: avenir next, helvetica, arial, sans-serif;
+    font-size: 20px;
+    text-align: left;
+    color: #393939;
+    background-color: #e9ebee;
+    line-height: 128%;
+}
+
+::-webkit-scrollbar {
+    display: none
+}
+
+body {
+    transform: none !important;
+}
+
+.bg {
+    z-index: -1;
+    background-image: url(_bg_texture.png);
+    background-attachment: fixed;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.bg::-webkit-scrollbar {
+    display: none;
+}
+
+.bg2 {
+    margin: 0.6em 0.65em
+}
+
+.ipad .bg2 {
+    margin: 0.6em 0.65em
+}
+
+.android .bg2 {
+    margin: 0.6em 0.5em
+}
+
+.hide {
+    color: #fff;
+}
+
+.nightMode .hide {
+    color: #222;
+}
+
+.hidden {
+    display: none
+}
+
+#question span {
+    display: inline-block
+}
+
+/* --------- 字体样式 --------- */
+
+i {
+    background-color: #9e69bc;
+    border-radius: 6px;
+    color: white;
+    font-size: 0.9em;
+    font-weight: bold;
+    font-style: normal;
+    padding: 0.03em 0.32em;
+    margin: 0 3px;
+    font-family: avenir next, kt;
+}
+
+u {
+    color: #9e69bc;
+    text-decoration: underline;
+    margin: 0 2px;
+    font-family: avenir next, kt;
+    font-size: 1.05em;
+}
+
+b {
+    color: #338eca;
+    font-weight: normal;
+    text-decoration: underline;
+    margin: 0 2px;
+    font-family: avenir next, kt;
+    font-size: 1.05em;
+}
+
+strong {
+    font-weight: normal;
+    font-family: avenir next, kt;
+}
+
+.cloze {
+    color: #338eca;
+    font-size: 1.05em;
+    margin: 0 2px;
+    text-decoration: underline;
+    font-family: avenir next, kt;
+}
+
+.cloze2 {
+    color: #338eca;
+    font-size: 1.05em;
+    margin: 0 2px;
+    text-decoration: underline;
+    font-family: avenir next, kt
+}
+
+.color {
+    color: #338eca;
+    font-size: 1.05em;
+    text-decoration: underline;
+    margin: 0 2px;
+    font-family: avenir next, kt;
+    display: inline;
+    -webkit-animation-name: fadeinn;
+    -webkit-animation-duration: 0.03s;
+    -webkit-animation-timing-fuction: linear;
+}
+
+.hiddendelay {
+    color: #338eca;
+    font-size: 1.05em;
+    text-decoration: underline;
+    margin: 0 2px;
+    font-family: avenir next, kt;
+    -webkit-animation-name: fadeoutt;
+    -webkit-animation-duration: 0.03s;
+    -webkit-animation-timing-fuction: linear;
+}
+
+.nightMode .hiddendelay {
+    color: #baa557;
+    margin: 0 2px;
+}
+
+.color1 {
+    color: #ec6c5f;
+    font-size: 1.05em;
+    margin: 0 2px;
+    text-decoration: underline;
+    font-family: avenir next, kt
+}
+
+.color2 {
+    color: #338eca;
+    font-size: 1.05em;
+    text-decoration: underline;
+    margin: 0 2px;
+    font-family: avenir next, kt
+}
+
+.color3 {
+    color: #56a855;
+    font-size: 1.05em;
+    margin: 0 2px;
+    text-decoration: underline;
+    font-family: avenir next, kt
+}
+
+.color4 {
+    color: #9e69bc;
+    font-size: 1.05em;
+    margin: 0 2px;
+    text-decoration: underline;
+    font-family: avenir next, kt
+}
+
+br {
+    display: block;
+    content: "";
+    border-bottom: 0.6em solid transparent
+}
+
+.divider {
+    margin: 5px -6px;
+    height: 2px;
+    background-color: #ececec
+}
+
+a:link {
+    color: #007aff
+}
+
+table {
+    text-align: left;
+    text-indent: 0.05em;
+    border-collapse: collapse;
+    border: 1px solid #808080;
+    margin: 5px 5px 0;
+}
+
+th,
+tr,
+td {
+    border-collapse: collapse;
+    border: 1px solid #808080;
+}
+
+#typeans {
+    font-size: 0.85em !important
+}
+
+.ios #typeans {
+    font-size: 1em !important
+}
+
+.typeGood {
+    background-color: ;
+    color:
+}
+
+.typeBad {
+    background-color: ;
+    color:
+}
+
+.typeMissed {
+    background-color: ;
+    color:
+}
+
+@font-face {
+    font-family: kt;
+    src: url('_kt.ttf');
+}
+
+@font-face {
+    font-family: times;
+    src: url('_times.ttf');
+}
+
+/* --------- 夜间模式 --------- */
+
+.card.nightMode {
+    background-color: #151515;
+    color: #ccc
+}
+
+.nightMode i {
+    color: #fff;
+}
+
+.nightMode u {}
+
+.nightMode b {
+    color: #baa557;
+    margin: 0 2px;
+}
+
+.nightMode .cloze {
+    color: #baa557;
+    margin: 0 2px;
+}
+
+.nightMode .cloze2 {
+    color: #baa557;
+    margin: 0 2px;
+}
+
+.nightMode .color {
+    color: #baa557;
+    margin: 0 2px;
+}
+
+.nightMode .color2 {
+    color: #baa557;
+    margin: 0 2px;
+}
+
+.nightMode .divider {
+    background-color: #282828
+}
+
+.nightMode a:link {
+    color: #77CCFF
+}
+
+.nightMode .section {
+    background-color: #222;
+    border: 2px solid #222;
+    box-shadow: #222 0px 0px 0px 0px;
+}
+
+.nightMode .section-type {
+    background-color: #222;
+    border: 2px solid #222;
+    box-shadow: #222 0px 0px 0px 0px;
+}
+
+.nightMode .section1 {
+    background-color: #222;
+    border: 2px solid #222;
+    box-shadow: #222 0px 0px 0px 0px;
+}
+
+.nightMode .section2 {
+    background-color: #222;
+    border: 2px solid #222;
+    box-shadow: #222 0px 0px 0px 0px;
+}
+
+.nightMode .section3 {
+    background-color: #222;
+    border: 2px solid #222;
+    box-shadow: #222 0px 0px 0px 0px;
+}
+
+.nightMode .notes {
+    background-color: #222;
+    border: 2px solid #222;
+    box-shadow: #222 0px 0px 0px 0px;
+}
+
+/* --------- 添加或修改 --------- */
+
+.title {
+    margin: 6px 12px;
+    font-weight: bold;
+    font-size: 0.96em;
+    letter-spacing: 0.02em;
+    text-align: justify;
+}
+
+.tags {
+    font-size: 0.68em;
+    color: #808080;
+    margin-left: 8px;
+    font-weight: bold
+}
+
+.single-tag {
+    font-size: 0.56em;
+    margin-left: 6px;
+    padding: 1pt 3pt;
+    border-radius: 15px;
+    color: #808080;
+    border: 1pt solid #808080;
+    font-weight: bold
+}
+
+.mbooks-htmlnote {}
+
+/* --------- 主体部分 --------- */
+
+.mbooks-highlight-txt {
+    margin: 8px 12px 7px;
+    display: block;
+    font-size: 0.9em;
+    line-height: 165%;
+    text-align: left;
+}
+
+.notes-txt {
+    margin: 8px 12px;
+    display: block;
+    line-height: 150%;
+    text-align: left;
+    font-size: 0.9em;
+}
+
+/* section global style */
+.section {
+    border: 1px solid;
+    border-color: #fff;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.85);
+    margin: 5px 0;
+    padding: 10px 12px;
+    line-height: 150%;
+    max-width: 828px;
+    margin: 0 auto;
+    box-shadow: #bbb 2px 2px 5px 1px;
+    word-break: break-word;
+
+    /*remove below 4 lines if you want flat style*/
+    /*
+    border           : 0px solid;
+    border-left-color : rgba(133,155,122,0.85);
+    border-left-width : 8px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.3), 1px 1px 3px rgba(0,0,0,0.5);
+*/
+}
+
+.section-type {
+    border: 1px solid;
+    border-color: #fff;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.85);
+    margin: 5px 0;
+    padding: 10px 12px;
+    line-height: 150%;
+    max-width: 828px;
+    margin: 0 auto;
+    box-shadow: #bbb 2px 2px 5px 1px;
+    word-break: break-word;
+    display: none;
+
+    /*remove below 4 lines if you want flat style*/
+    /*
+    border           : 0px solid;
+    border-left-color : rgba(133,155,122,0.85);
+    border-left-width : 8px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.3), 1px 1px 3px rgba(0,0,0,0.5);
+*/
+}
+
+.win .section-type {
+    display: block
+}
+
+.mac .section-type {
+    display: block
+}
+
+.section1 {
+    border: 1px solid;
+    border-color: #fff;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.85);
+    margin: 5px 0;
+    padding: 10px 12px;
+    line-height: 100%;
+    max-width: 828px;
+    margin: 0 auto;
+    box-shadow: #f7c5b8 2px 2px 5px 1px;
+
+    /*remove below 4 lines if you want flat style*/
+    /*
+    border           : 0px solid;
+    border-left-color : rgba(133,155,122,0.85);
+    border-left-width : 8px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.3), 1px 1px 3px rgba(0,0,0,0.5);
+*/
+}
+
+.section2 {
+    border: 1px solid;
+    border-color: #fff;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.85);
+    margin: 5px 0;
+    padding: 10px 12px;
+    line-height: 100%;
+    max-width: 828px;
+    margin: 0 auto;
+    box-shadow: #b7d5eb 2px 2px 5px 1px;
+
+    word-break: break-word;
+
+    /*remove below 4 lines if you want flat style*/
+    /*
+    border           : 0px solid;
+    border-left-color : rgba(133,155,122,0.85);
+    border-left-width : 8px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.3), 1px 1px 3px rgba(0,0,0,0.5);
+*/
+}
+
+.section3 {
+    border: 1px solid;
+    border-color: #fff;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.85);
+    margin: 5px 0;
+    padding: 10px 12px;
+    line-height: 100%;
+    max-width: 828px;
+    margin: 0 auto;
+    box-shadow: #c1e7b8 2px 2px 5px 1px;
+
+    /*remove below 4 lines if you want flat style*/
+    /*
+    border           : 0px solid;
+    border-left-color : rgba(133,155,122,0.85);
+    border-left-width : 8px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.3), 1px 1px 3px rgba(0,0,0,0.5);
+*/
+}
+
+.notes {
+    border: 1px solid;
+    border-color: #fff;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.85);
+    margin: 5px 0 0 0;
+    padding: 10px 12px;
+    line-height: 100%;
+    max-width: 828px;
+    margin: 0 auto;
+    box-shadow: #c9a8d2 2px 2px 5px 1px;
+
+    /*remove below 4 lines if you want flat style*/
+    /*
+    border: 0px solid;
+    border-left-color: rgba(133,155,122,0.85);
+    border-left-width: 8px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.3), 1px 1px 3px rgba(0,0,0,0.5);
+*/
+}
+
+/* ---------- 动画效果 --------- */
+
+@-webkit-keyframes cloze {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.slidetop {
+    position: relative;
+    -webkit-animation: slidetop 0.5s 0s;
+    -webkit-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes slidetop {
+    0% {
+        opacity: 0;
+        top: 50px;
+    }
+
+    50% {
+        opacity: 0.8;
+        top: -5px;
+    }
+
+    80% {
+        opacity: 0.95;
+        top: 0px;
+    }
+
+    100% {
+        opacity: 1;
+        top: 0px;
+    }
+}
+
+/* --------- 居中按钮 --------- */
+
+.button1 {
+    font-size: 0.55em;
+    color: #f7c5b8;
+    background-color: #ec6c5f;
+    border: 1px solid #f7c5b8;
+    border-radius: 6px;
+    margin: 12px 0 3px;
+    width: 25%;
+    height: 35px;
+    max-width: 250px;
+    box-shadow: #ec6c5f 0px 0px 3px 0px;
+}
+
+.button2 {
+    font-size: 0.55em;
+    color: #b7d5eb;
+    background-color: #338eca;
+    border: 1px solid #b7d5eb;
+    border-radius: 6px;
+    margin: 12px 0 3px;
+    width: 25%;
+    height: 35px;
+    max-width: 250px;
+    box-shadow: #338eca 0px 0px 3px 0px;
+}
+
+.button3 {
+    font-size: 0.55em;
+    color: #c1e7b8;
+    background-color: #56a855;
+    border: 1px solid #c1e7b8;
+    border-radius: 6px;
+    margin: 12px 0 3px;
+    width: 25%;
+    height: 35px;
+    max-width: 250px;
+    box-shadow: #56a855 0px 0px 3px 0px;
+}
+
+.button4 {
+    font-size: 0.55em;
+    color: #E8D8D8;
+    background-color: #ae79bc;
+    border: 1px solid #E8D8D8;
+    border-radius: 6px;
+    margin: 12px 0 3px;
+    width: 25%;
+    height: 35px;
+    max-width: 250px;
+    box-shadow: #ae79bc 0px 0px 3px 0px;
+}
+
+.nightMode .button1 {
+    color: #ec6c5f;
+    background-color: #1c1c1e;
+    border: 1px solid #ec6c5f;
+    width: 25%;
+    height: 35px;
+    max-width: 250px;
+}
+
+.nightMode .button2 {
+    color: #baa557;
+    background-color: #1c1c1e;
+    border: 1px solid #baa557;
+    width: 25%;
+    height: 35px;
+    max-width: 250px;
+    box-shadow: #baa557 0px 0px 3px 0px;
+}
+
+.nightMode .button3 {
+    color: #56a855;
+    background-color: #1c1c1e;
+    border: 1px solid #56a855;
+    width: 25%;
+    height: 35px;
+    max-width: 250px
+}
+
+.nightMode .button4 {
+    color: #9e69bc;
+    background-color: #1c1c1e;
+    border: 1px solid #9e69bc;
+    width: 25%;
+    height: 35px;
+    max-width: 250px
+}
+
+/* --------- 底部按钮 --------- */
+
+.footer {
+    margin: 16px 0;
+    height: auto;
+    z-index: 5;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgba(183, 213, 235, 0.6);
+    font-size: 12px;
+    font-weight: bold;
+    bottom: 15%;
+    position: fixed;
+    z-index: 3;
+}
+
+li a {
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 15px 20px;
+    text-decoration: none;
+    -webkit-user-select: none;
+}
+
+li a:link {
+    color: #fff
+}
+
+li a:hover:not(.active) {
+    #background-color: #111
+}
+
+li a:active {
+    #background-color: #111
+}
+
+.active {
+    #background-color: #4CAF50;
+}
+
+.nightMode ul {
+    background-color: rgba(52, 52, 52, 0.68);
+}
+
+.nightMode li a:link {
+    color: #666
+}
+
+/* --------- 侧边按钮 --------- */
+
+.btn3 {
+    font-size: 0.55em;
+    top: 39%;
+    position: fixed;
+    right: 3%;
+    z-index: 5;
+    color: #fff;
+    background-color: rgba(52, 52, 52, 0.16);
+    border: 1px solid #fff;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px
+}
+
+.btn4 {
+    font-size: 0.55em;
+    top: 50%;
+    position: fixed;
+    right: 3%;
+    z-index: 5;
+    color: #fff;
+    background-color: rgba(52, 52, 52, 0.16);
+    border: 1px solid #fff;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px
+}
+
+.nightMode .btn3 {
+    opacity: 0.68;
+    background-color: rgba(52, 52, 52, 0.68);
+    border: 1px solid #333;
+    color: #666;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px
+}
+
+.nightMode .btn4 {
+    opacity: 0.68;
+    background-color: rgba(52, 52, 52, 0.68);
+    border: 1px solid #333;
+    color: #666;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px
+}
+
+.win .btn3 {
+    top: 36%;
+    width: 35px
+}
+
+.win .btn4 {
+    width: 35px
+}
+
+.win .nightMode .btn3 {
+    color: #888;
+    width: 32px
+}
+
+.win .nightMode .btn4 {
+    color: #888;
+    width: 32px
+}
+
+.mac .btn3 {
+    top: 36%;
+    width: 35px
+}
+
+.mac .btn4 {
+    width: 35px
+}
+
+.mac .nightMode .btn3 {
+    color: #888;
+    width: 32px
+}
+
+.mac .nightMode .btn4 {
+    color: #888;
+    width: 32px
+}
+
+/* --------- 原格式 --------- */
+
+.mbooks-highlight-pic {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.mbooks_titlepressed {
+    background: #F0F0F0;
+    opacity: 0.9;
+}
+
+.mbooks-stylesblock {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.mbooks-stylesblock2 {
+    border-radius: 2px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #0076FF;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+.mbooks-colorstyle-sel {
+    border-width: 3px;
+    border-color: #0000FF;
+}
+
+.mbooks-fillstyle-sel {
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-color: #0000FF;
+}
+
+.mbooks-colorstyle {
+    margin-left: 8px;
+    margin-right: 8px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #E0E0E0;
+    border-radius: 4px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    float: left;
+    width: 20%;
+    height: 30px;
+}
+
+.mbooks-fillstyle-inner {
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.mbooks-fillstyle {
+    float: left;
+    width: 25%;
+    height: 30px;
+    color: #0076FF;
+    font-size: 75% !important;
+}
+
+.mbooks-list {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.mbooks-highlight {
+    border-radius: 4px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+blockquote {
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+}
+
+blockquote p {
+    display: inline;
+}
+
+.mbooks-notetitle-gray {
+    color: #A0A0A0;
+}
+
+.mbooks-notetitle-margin {
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.mbooks-noteblock {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.mbooks-mapblock {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    max-width: 100%
+}
+
+.mbooks-textnote {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.mbooks-tagnote {
+    color: #A0A0A0;
+    font-size: 70% !important;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.mbooks-imgnote {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.mbooks-picnote {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.mbooks-audionote {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.mbooks-noteline {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    height: 1px;
+    background: #E0E0E0;
+}
+
+.mbooks-notelink {
+    color: #1133CC;
+    margin-left: 10px;
+    margin-right: 10px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    font-size: 90% !important;
+}
+
+.mbooks-linkhighlight {
+    color: #553311;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.mbooks-linknote {
+    color: #553311;
+    margin-left: 2%;
+    margin-right: 5%;
+}
+
+.mbooks-booktitle {
+    color: #A0A0A0;
+    margin-top: 5px;
+    font-size: 70% !important;
+}
+
+.mbooks-booktitle0 {
+    color: #A0A0A0;
+    margin-top: 5px;
+    margin-left: 25px;
+    font-size: 70% !important;
+}
+
+.mbooks-question-left {
+    font-family: Helvetica;
+    font-size: 20px;
+    text-align: left;
+    color: black;
+    background-color: white;
+}
+
+.mbooks-question {
+    font-family: Helvetica;
+    font-size: 20px;
+    text-align: center;
+    color: black;
+    background-color: white;
+}
+
+.mbooks-mapimage {}
+
+/* OCCLUSION CSS START - don"t edit this */
+
+/* --------- 滤镜 --------- */
+
+.nightMode img {
+    filter: hue-rotate(108deg) invert(86%) saturate(120%);
+
+}
+
+.io-overlay {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+    pointer-events: none;
+    filter: hue-rotate(222deg) brightness(200%) sepia(28%)
+}
+
+.nightMode .io-overlay {
+    filter: hue-rotate(100deg) brightness(58%) sepia(68%)
+}
+
+.io-original {
+    position: relative;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.io-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+div.mbooks-annotation0 {
+    border-width: 2px;
+    border-color: #D2D28B;
+}
+
+div.mbooks-annotation1 {
+    border-width: 2px;
+    border-color: #9CD29C;
+}
+
+div.mbooks-annotation2 {
+    border-width: 2px;
+    border-color: #8EACD2;
+}
+
+div.mbooks-annotation3 {
+    border-width: 2px;
+    border-color: #D28B9C;
+}
+
+div.mbooks-annotation4 {
+    border-width: 2px;
+    border-color: #D2D200;
+}
+
+div.mbooks-annotation5 {
+    border-width: 2px;
+    border-color: #00D200;
+}
+
+div.mbooks-annotation6 {
+    border-width: 2px;
+    border-color: #009CD2;
+}
+
+div.mbooks-annotation7 {
+    border-width: 2px;
+    border-color: #D20000;
+}
+
+div.mbooks-annotation8 {
+    border-width: 2px;
+    border-color: #D26900;
+}
+
+div.mbooks-annotation9 {
+    border-width: 2px;
+    border-color: #006934;
+}
+
+div.mbooks-annotationa {
+    border-width: 2px;
+    border-color: #003393;
+}
+
+div.mbooks-annotationb {
+    border-width: 2px;
+    border-color: #AA160E;
+}
+
+div.mbooks-annotationc {
+    border-width: 2px;
+    border-color: #D2D2D2;
+}
+
+div.mbooks-annotationd {
+    border-width: 2px;
+    border-color: #B3B3B3;
+}
+
+div.mbooks-annotatione {
+    border-width: 2px;
+    border-color: #949494;
+}
+
+div.mbooks-annotationf {
+    border-width: 2px;
+    border-color: #A081B8;
+}
+
+</style><script type="text/javascript"> // 中文挖空填入的字符
+var chinese_mask='＿';
+// 其他语言挖空填入的字符
+var char_mask='_';
+
+// 找出所有可能被挖空的字符串， 为其添加 span
+// 中文 ： class： word cn_wond
+// 其他：  class： word other_word
+function addClass() {
+    var chinese_reg=/([\u4e00-\u9fa5])/g;
+    var word=/(&?[a-zA-Z_'\u00C0-\u024F]+;|[a-zA-Z_' \u00C0-\u024F]+)(?=[^>]*<)/g;
+    var src=document.getElementById("origin_text").innerHTML;
+
+    var question=src.replace(chinese_reg, "<span class='word cn_word'>$1</span>").replace(word, function (match) {
+            if (match.substr(0, 1) !=='&') {
+                return "<span class='word other_word'>" + match + "</span>";
+            }
+
+            else {
+                return match;
+            }
+        });
+    document.getElementById("question").innerHTML=question;
+}
+
+// 决定挖空的策略
+function isMaskProb(index) {
+    return (Math.ceil(Math.random()*100) < rate);
+}
+
+function isMaskFix(index) {
+    var rem=index % arr_num[0];
+
+    for (var i=1; i < arr_num.length; i++) {
+        if (rem===arr_num[i] - 1) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function isMask(index) {
+    if (isFix) {
+        return isMaskFix(index);
+    }
+
+    else {
+        return isMaskProb(index);
+    }
+}
+
+function addMask() {
+    var index=0;
+
+    [].forEach.call(document.querySelectorAll(".word"), function (element) {
+
+            // console.log("index: %d element: %s", index, element);
+            if (isMask(index)) {
+                if(element.classList.contains("cn_word")) {
+                    element.innerHTML=chinese_mask;
+                }
+
+                if(element.classList.contains("other_word")) {
+                    element.innerHTML=Array(element.innerHTML.length + 1).join(char_mask);
+                }
+            }
+
+            index +=1;
+        });
+}
+
+</script>

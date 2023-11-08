@@ -1,0 +1,179 @@
+<meta content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+
+<div class=bg>
+    <div class=bg2>
+
+        <div style="margin:-5px 0 0 0"></div>
+        <div style="text-align:right;font-size:0.75em;max-width:828px;margin:0 auto;color:#808080">➵ {{Subdeck}}</div>
+
+        {{#标题}}
+        <div style="margin:5px 0 0 0"></div>
+        <div class="section">
+            <div class="title">{{标题}}</div>
+            <div id="front-tag" style="text-align:left; margin:-5px 12px 0px 6px"></div>
+        </div>
+        <div style="margin:8px 0 0 0"></div>
+        {{/标题}}
+
+        <div style="text-align:center">
+            <button class="button4" onclick="addnote()" style=margin-right:6px>笔 记</button>
+            <button class="button2" onclick="div2()" style=margin-left:6px>填 空</button>
+            <button class="button3" onclick="question()" style=margin-left:12px>随 机</button>
+        </div>
+
+        {{^标题}}
+        <div style="margin:6px 0 0 0"></div>
+        <div id="front-tag" style="text-align:left;max-width:828px;margin:0px auto -3px"></div>
+        {{/标题}}
+
+        <script>
+            function showTags() {
+                var tags = "{{Tags}}"
+                if (!tags) return
+                tags = tags.split(' ')
+                var tagList = '<span class="tags">Tags: </span>'
+                for (var tag of tags) {
+                    if (tag) {
+                        tagList += '<span class="single-tag"># ' + tag + '</span>'
+                    }
+                }
+                document.getElementById("front-tag").innerHTML = tagList
+            }
+            showTags()
+        </script>
+
+        {{#摘录/背面}}
+        <div style="margin:16px 0 0 0"></div>
+        <div id="div2" style="display:block">
+            <div id="blank" class="section2">
+                <div class="mbooks-highlight-txt">{{摘录/背面}}</div>
+            </div>
+        </div>
+        {{/摘录/背面}}
+        {{^摘录/背面}}
+        <div style="margin:16px 0 0 0"></div>
+        <div id="div2" style="display:block">
+            <div id="blank" class="section2">
+                <div class="mbooks-highlight-txt">{{摘录/正面}}</div>
+            </div>
+        </div>
+        {{/摘录/背面}}
+
+        {{#摘录/背面}}
+        <div style="margin:16px 0 0 0"></div>
+        <div id=question class=section3 style=display:none;>
+            <div id=div3 class="mbooks-highlight-txt">{{摘录/背面}}</div>
+        </div>
+        {{/摘录/背面}}
+        {{^摘录/背面}}
+        <div style="margin:16px 0 0 0"></div>
+        <div id=question class=section3 style=display:none;>
+            <div id=div3 class="mbooks-highlight-txt">{{摘录/正面}}</div>
+        </div>
+        {{/摘录/背面}}
+
+        <div id=addnote class=slidetop style=display:block>
+
+            {{#笔记}}
+            <div style="margin:16px 0 0 0"></div>
+            <div class="notes">
+                <div style="margin:10px 5px 10px 12px;font-weight:bold;font-size:0.92em;letter-spacing:0.02em">Notes :
+                </div>
+                <div id=note class="notes-txt" style="font-family:kt">{{笔记}}</div>
+            </div>
+            {{/笔记}}
+
+            {{#MNMindMap}}
+            <div style="margin:16px 0 0 0"></div>
+            <div class="notes">
+                <div style="margin:10px 12px 5px; font-size:0.75em;text-align:left">{{MNMindMap}}</div>
+            </div>
+            {{/MNMindMap}}
+
+        </div>
+
+        {{#MNLink}}
+        <p>
+        <div style="text-align:center;max-width:828px;margin:0 auto;font-size:1.23em">{{MNLink}}</div>
+        {{/MNLink}}
+
+        <p><br>
+    </div>
+</div>
+
+<audio id=player src=""></audio>
+<button class="btn3" onclick="playAudio()">播放</button>
+<button class="btn4" onclick="pauseAudio()">暂停</button>
+<script type="text/javascript">
+    document.querySelector("audio").setAttribute('src', 'https://fanyi.baidu.com/gettts?lan=zh&text=' + "{{text:摘录/正面}}".replace(/\{\{c1\:\:/g, "").replace(/\}\}/g, "") + '&spd=6');
+    function playAudio() { player.play() };
+    function pauseAudio() { player.pause() };
+</script>
+
+
+<script type="text/javascript">
+
+    function addnote() {
+        var addnote = document.getElementById("addnote");
+        if (addnote.style.display == 'none') { addnote.style.display = 'block'; }
+        else { addnote.style.display = 'none'; }
+    }
+
+    divs = document.querySelectorAll('#note');
+    [].forEach.call(divs, function (div) {
+        div.innerHTML = div.innerHTML
+            .replace(/\*\*(.+?)\*\*/g, "<n class=\"color4\">$1</n>")
+            .replace(/(\{\{)(c1\:\:)(.*?)(\}\})/g, "<n class=\"cloze\">[$3]</n>")
+            .replace(/(<div>|<br>)(#)(.*)/g, "");
+    });
+
+    function div2() {
+        var div2 = document.getElementById("div2");
+        if (div2.style.display == 'none') { div2.style.display = 'block'; }
+        else { div2.style.display = 'none'; }
+    }
+
+    divs = document.querySelectorAll('#div2');
+    [].forEach.call(divs, function (div) {
+        div.innerHTML = div.innerHTML
+            .replace(/\*\*(.+?)\*\*/g, "<n class=\"color2\">$1</n>")
+            .replace(/(\{\{)(c1\:\:)(.*?)(\}\})/g, "<n class=\"color2\">$3</n>")
+            .replace(/(<b>)(.*?)(<\/b>)/g, "<n class=\"color2\">$2</n>")
+            .replace(/(<div>|<br>)(#)(.*)/g, "");
+    });
+
+    function question() {
+        var question = document.getElementById("question");
+        if (question.style.display == 'none') { question.style.display = 'block'; }
+        else { question.style.display = 'none'; }
+    }
+
+    divs = document.querySelectorAll('#div3');
+    [].forEach.call(divs, function (div) {
+        div.innerHTML = div.innerHTML
+            .replace(/\*\*(.+?)\*\*/g, "<n class=\"color3\">$1</n>")
+            .replace(/(\{\{)(c1\:\:)(.*?)(\}\})/g, "<n class=\"color3\">$3</n>")
+            .replace(/(<b>)(.*?)(<\/b>)/g, "<n class=\"color3\">$2</n>")
+            .replace(/(<br>)(<br>)/g, "$1<div class=\"divider\"></div>$2")
+            .replace(/(<div>|<br>)(#)(.*)/g, "");
+    });
+
+    divs = document.querySelectorAll('#blank');
+    [].forEach.call(divs, function (div) {
+        div.innerHTML = div.innerHTML
+            .replace(/(<br>)(<br>)/g, "$1<div class=\"divider\"></div>$2")
+            .replace(/(<div>|<br>)(#)(.*)/g, "");
+    });
+</script>
+
+<style>
+    .color2 {
+        -webkit-animation: cloze 0.3s 0s;
+        -webkit-animation-fill-mode: forwards
+    }
+
+    .color3 {
+        -webkit-animation: cloze 0.3s 0s;
+        -webkit-animation-fill-mode: forwards
+    }
+</style>
