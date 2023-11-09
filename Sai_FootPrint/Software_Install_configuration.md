@@ -120,7 +120,7 @@
 >    brew install wget;
 >    export REMOTE=https://gitee.com/imirror/ohmyzsh.git;
 >    sh -c "$(wget -O- https://cdn.jsdelivr.net/gh/ohmyzsh/ohmyzsh/tools/install.sh)";
->                        
+>                           
 >    open ~/.zshrc
 >    # 在.zshrc文件中搜索 source $ZSH/oh-my-zsh.sh，在本句之前加一句
 >    ZSH_DISABLE_COMPFIX="true"
@@ -158,7 +158,7 @@
 >
 >    ```
 >    brew install zsh-syntax-highlighting
->                        
+>                           
 >    open ~/.zshrc
 >    最后插入一行：source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 >    source ~/.zshrc
@@ -352,6 +352,8 @@
 
 ##### Chrome 搜索后新标签打开链接
 
+> ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311091253814.png)
+
 ##### Mac 修改文件创建时间
 
 > `touch -mt YYYYMMDDhhmm`
@@ -423,7 +425,93 @@
 > 问题：连外接键盘时，键位不对应
 >
 > 1. 修改单个键位
+>
+>    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311091255650.png)
+>
 > 2. 修改组合快捷键[参考](https://blog.csdn.net/qq_26012495/article/details/88539120)
+>
+> 3. 新建MyShortcut.json，放入`~/.config/karabiner/assets/complex_modifications`
+>
+>    > ```css
+>    > {
+>    >   "title": "JiangSai",
+>    >   "rules": [
+>    >     {
+>    >       "description": "锁屏",
+>    >       "manipulators": [
+>    >         {
+>    >           "type": "basic",
+>    >           "from": {
+>    >             "key_code": "l",
+>    >             "modifiers": {
+>    >               "mandatory": ["command"]
+>    >             }
+>    >           },
+>    >           "to": [
+>    >             {
+>    >               "key_code": "q",
+>    >               "modifiers": [
+>    >                 "command",
+>    >                 "control"
+>    >                 ]
+>    >             }
+>    >           ]
+>    >         }
+>    >       ]
+>    >     },
+>    >     {
+>    >       "description": "录音-新建",
+>    >       "manipulators": [
+>    >         {
+>    >           "type": "basic",
+>    >           "from": {
+>    >             "key_code": "1",
+>    >             "modifiers": {
+>    >               "mandatory": ["option"]
+>    >             }
+>    >           },
+>    >           "to": [
+>    >             {
+>    >               "key_code": "r",
+>    >               "modifiers": [
+>    >                 "shift",
+>    >                 "command"
+>    >                 ]
+>    >             }
+>    >           ]
+>    >         }
+>    >       ]
+>    >     },
+>    >     {
+>    >       "description": "录音-暂停",
+>    >       "manipulators": [
+>    >         {
+>    >           "type": "basic",
+>    >           "from": {
+>    >             "key_code": "2",
+>    >             "modifiers": {
+>    >               "mandatory": ["option"]
+>    >             }
+>    >           },
+>    >           "to": [
+>    >             {
+>    >               "key_code": "c",
+>    >               "modifiers": [
+>    >                 "shift",
+>    >                 "command"
+>    >                 ]
+>    >             }
+>    >           ]
+>    >         }
+>    >       ]
+>    >     }
+>    >   ]
+>    > }
+>    > ```
+>
+> 4. preference - complex modification - add rule - 第一行Anki_cloze内的命令"Change command+option+shift+c key to command+3"点击"Enable"
+>
+> 5. grave_accent_and_tilde即键盘esc下方的`
 
 ##### 中国大陆无法登陆某些网站（newbing、binance）
 
