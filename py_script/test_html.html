@@ -2,38 +2,23 @@
 
 <div class=bg>
     <div class=bg2>
-        {{#标题}}
-        <div style="margin:5px 0 0 0"></div>
-        <div class="section">
-            <div class="title">{{标题}}</div>
-            <div id="front-tag" style="text-align:left; margin:-5px 12px 0px 6px"></div>
-        </div>
-        <div style="margin:8px 0 0 0"></div>
-        {{/标题}} {{#摘录/背面}}
         <div style="margin:16px 0 0 0"></div>
         <div id="div2" style="display:block">
             <div id="blank" class="section2">
-                <div class="mbooks-highlight-txt">{{摘录/背面}}</div>
+                <div class="mbooks-highlight-txt">{{阅读/填空正文}}</div>
             </div>
         </div>
-        {{/摘录/背面}} {{^摘录/背面}}
-        <div style="margin:16px 0 0 0"></div>
-        <div id="div2" style="display:block">
-            <div id="blank" class="section2">
-                <div class="mbooks-highlight-txt">{{摘录/正面}}</div>
-            </div>
-        </div>
-        {{/摘录/背面}}
-
-        <script type="text/javascript">
-
-
-            divs = document.querySelectorAll('#blank');
-            [].forEach.call(divs, function (div) {
-                div.innerHTML = div.innerHTML
-                    .replace(/(<br>)(<br>)/g, "$1<div class=\"divider\"></div>$2")
-                    .replace(/(<div>|<br>)(#)(.*)/g, "");
-            });
-        </script>
+    </div>
+    <script type="text/javascript">
+        divs = document.querySelectorAll('#blank');
+        [].forEach.call(divs, function (div) {
+            div.innerHTML = div.innerHTML
+                .replace(/(<br>)(<br>)/g, "$1<div class=\"divider\"></div>$2")
+                .replace(/(<div>|<br>)(#)(.*)/g, "");
+        });
+    </script>
+    <br>
+    <div style='font-family: Arial; font-size: 12px;float:left;color:#A2886D'>《{{《》}}》
+        <br>
     </div>
 </div>
