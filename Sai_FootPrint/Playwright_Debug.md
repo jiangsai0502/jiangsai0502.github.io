@@ -116,7 +116,7 @@
   >   >   ```python
   >   >   # # 初始化一个浏览器（headless = False 有头浏览器；slow_mo = 3000 每个操作停3秒）
   >   >   # SaiBrowser = playwright.chromium.launch(headless = False, slow_mo = 3000)
-  >   >   
+  >   >     
   >   >   # # 加载本地cookie
   >   >  # # 若本地有cookie，则在SaiBrowser中创建一个context（网页管理器），并加载该cookie，实现免登陆；若本地没有，则在SaiBrowser中创建一个空的context
   >   >   # # 每个context是一个独立会话，用于环境隔离，每个context可使用1套代理，登录1套账号
@@ -419,7 +419,7 @@
   >   >   SonPage.wait_for_load_state()
   >   >  SonPage.bring_to_front()
   >   >   # SaiPage是一级页的标签页，还在，SonPage是二级页的标签页，可以分别操作2个标签页
-  >   >  ```
+  >   >   ```
   >   > 
   >   > 
   >   > 

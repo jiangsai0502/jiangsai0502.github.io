@@ -2,15 +2,9 @@
   
   * [Mac技巧](Sai_FootPrint/Mac_Skill.md)
   * [重装Mac](Sai_FootPrint/Software_Install_configuration.md)
-  * [Blog建站](Sai_FootPrint/0_BuildBlog.md)
-  * [Markdown语法](Sai_FootPrint/0_MarkdownUsage.md)
-  * [PicGo+GitHub 搭建图床](Sai_FootPrint/0_PicGo_GitHub.md)
   * [Keyboard_Maestro](Sai_FootPrint/Keyboard_Maestro.md)
-  * [Fusion360](Sai_FootPrint/0_AutodeskFusion360.md)
   * [Anki](Sai_FootPrint/Anki.md)
   * [Marginnote](Sai_FootPrint/Marginnote.md)
-  * [Excel技巧](Sai_FootPrint/Excel_Skills.md)
-  
 * 爬虫
   
   * [MySQL用法](Sai_FootPrint/2_MySQL.md)
@@ -36,7 +30,6 @@
   * [中级Ajax](Sai_FootPrint/2_WebCrawlerAjax.md)
   
   * [中级Selenium](Sai_FootPrint/2_WebCrawlerSelenium.md)
-  
 * Python
   
   * [Python 周边环境](Sai_FootPrint/1_PythonEnvironment.md)
@@ -49,9 +42,11 @@
   * [Html-Css](Sai_FootPrint/1_html_css.md)
   * [Pyecharts入门](Sai_FootPrint/1_Pyecharts.md)
   * [PyQt5](Sai_FootPrint/1_PyQt5.md)
-
-* 论文
+* 不常用
   
+  * [Blog建站](Sai_FootPrint/0_BuildBlog.md)
+  * [Markdown语法](Sai_FootPrint/0_MarkdownUsage.md)
+  * [PicGo+GitHub 搭建图床](Sai_FootPrint/0_PicGo_GitHub.md)
   * [硕士论文](Sai_FootPrint/4_MasterThesis.md)
-    
-    
+  * [Fusion360](Sai_FootPrint/0_AutodeskFusion360.md)
+  * [Excel技巧](Sai_FootPrint/Excel_Skills.md)

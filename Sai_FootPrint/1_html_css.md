@@ -1,273 +1,148 @@
+##### CSS定位
 
-
-> 网页三大件：Html是结构，Css是外观，Js是动作
+> > css调试技巧：F12开发者工具 - 进入Elements面板 - 按`Esc`键后下方打开Console面板
+> >
+> > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311091848566.png)
 >
-> [2019年黑马程序员前端入门视频教程 HTML5+CSS3-简单有趣好玩-pink老师](https://www.bilibili.com/video/BV14J4114768)
+> 
 >
-> ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200430201456.png)
+> > 1. `>`：即直接子节点
+> >
+> >    |        | `Son`                                                        | `.Son`                                                       | `#Son`                                                       |
+> >    | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+> >    | `Dad`  | `Dad>Son`<br />标签名为`Dad`，直接子标签名为`Son`的所有节点  | `Dad>.Son`<br />标签名为`Dad`，直接子标签的`class="Son"`的所有节点 | `Dad>#Son`<br />标签名为`Dad`，直接子标签的`id="Son"`的所有节点 |
+> >    | `.Dad` | `.Dad>Son`<br />标签的`class="Dad"`，直接子标签名为`Son`的所有节点 | `.Dad>.Son`<br />标签的为`class="Dad"`，直接子标签的`class="Son"`的所有节点 | `.Dad>#Son`<br />标签的为`class="Dad"`，直接子标签的`id="Son"`的所有节点 |
+> >    | `#Dad` | `#Dad>Son`<br />标签的`id="Dad"`，直接子标签名为`Son`的所有节点 | `#Dad>.Son`<br />标签的`id="Dad"`，直接子标签的`class="Son"`的所有节点 | `#Dad>#Son`<br />标签的`id="Dad"`，直接子标签的`id="Son"`的所有节点 |
+> >
+> > 2. 
+>
+> **单节点定位**
+>
+> 1. `Element`：标签名定位，无需符号标记
+>
+>    `document.querySelectorAll('div')`
+>
+>    >取所有 `div` 节点
+>
+> 2. `#id`：id属性定位，用符号 `#` 标记
+>
+>    `document.querySelectorAll('#Hello')`
+>
+>    >取所有 `id="Hello"` 的节点
+>
+> 3. `.class`：类属性定位，用符号 `.` 标记
+>
+>    `document.querySelectorAll('.world')`
+>
+>    >取所有 `class="world"` 的节点
+>
+> 4. 其他属性定位，用`属性名`标记
+>
+>    `document.querySelectorAll('[type="text"]')`
+>
+>    >取所有 `type="text"` 的节点
+>
+> 5. 组合定位
+>
+>    1. 精确匹配
+>
+>       > 1. `document.querySelectorAll('div#Hello')`
+>       >
+>       >    > 取所有 `id="Hello"` 的 `div` 节点
+>       >
+>       > 2. `document.querySelectorAll('#Hello.world')`
+>       >
+>       >    >取所有 `id="Hello"` 且`class="world"` 的节点
+>       >
+>       > 3. `document.querySelectorAll('.world[href]')`
+>       >
+>       >    >取所有 `class="world"` 且包含属性`href`的节点
+>       >
+>       > 4. `document.querySelectorAll('[href][type="text"]')`
+>       >
+>       >    >取所有包含属性`href`且 `type="text"` 的节点
+>
+>    2. 模糊匹配
+>
+>       > 1. `*=`：前后模糊匹配
+>       >
+>       >    `document.querySelectorAll('[href="163"]')` 
+>       >
+>       >    > 可匹配`href="163.com"`、`href="mail.163.com"`
+>       >
+>       > 2. `^=`：以指定字符串开头的后模糊匹配
+>       >
+>       >    `document.querySelectorAll('[href^="163"]')` 
+>       >
+>       >    > 可匹配`href="163.com"`，不可匹配`href="mail.163.com"`
+>       >
+>       > 3. `$=`：以指定字符串结尾的前模糊匹配
+>       >
+>       >    `document.querySelectorAll('[src$=".png"]')` 
+>       >
+>       >    > 可匹配`src="xxx.png"`、不可匹配`src="xxx.png/5435435"`、`src="xxx.jpg"`、
+>
+> 多节点组合定位
+>
+> 1. `，`：如`Element,Element`，即并集
+>
+>    >1. `document.querySelectorAll('div,#Hello')`
+>    >
+>    >   > 取所有`div` 节点和所有 `id="Hello"` 的节点的并集
+>    >
+>    >2. `document.querySelectorAll('#Hello,.world')`
+>    >
+>    >   >取所有 `id="Hello"` 的节点和所有`class="world"` 的节点的并集
+>    >
+>    >3. `document.querySelectorAll('.world,[href]')`
+>    >
+>    >   >取所有 `class="world"` 的节点和所有包含属性`href`的节点的并集
+>    >
+>    >4. `document.querySelectorAll('[href],[type="text"]')`
+>    >
+>    >   >取所有包含属性`href`的节点和所有 `type="text"` 的节点的并集
+>
+> 2. `>`：如`FatherElement>SonElement`，即直接子节点，只包含儿子，不包含孙子，重孙子
+>
+>    >1. `document.querySelectorAll('div>#Hello')`
+>    >
+>    >   > 取其父节点的标签名为 `div` 的所有 `id="Hello"` 的 节点
+>    >
+>    >2. `document.querySelectorAll('#Hello>.world')`
+>    >
+>    >   >取其父节点的 `id="Hello"` 的所有`class="world"` 的节点
+>    >
+>    >3. `document.querySelectorAll('.world>[href]')`
+>    >
+>    >   >取其父节点的 `class="world"` 的所有包含属性`href`的节点
+>    >
+>    >4. `document.querySelectorAll('[href]>[type="text"]')`
+>    >
+>    >   >取其父节点包含属性`href`的所有 `type="text"` 的节点
+>
+> 3. `空格`：如`FatherElement SonElement`，即子孙节点，既包含儿子，又包含孙子，重孙子
+>
+>    >1. `document.querySelectorAll('div #Hello')`
+>    >
+>    >   > 取 `div` 节点下的所有 `id="Hello"` 的 节点
+>    >
+>    >2. `document.querySelectorAll('#Hello .world')`
+>    >
+>    >   >取 `id="Hello"` 的节点下所有`class="world"` 的节点
+>    >
+>    >3. `document.querySelectorAll('.world [href]')`
+>    >
+>    >   >取 `class="world"` 的节点下所有包含属性`href`的节点
+>    >
+>    >4. `document.querySelectorAll('[href] [type="text"]')`
+>    >
+>    >   >取包含属性`href`的节点下所有 `type="text"` 的节点
+>
+> 4. 
 
+##### css基础篇
 
-
-### HTML
-
-1. vscode自动生成标准html代码（文件后缀html）
-
-   > 1. 自动生成头文件：输入`!`，按下`Tab`
-   > 2. 自动补齐
-   >    1. 输入`a`，按下`Tab`
-   >    2. 输入`img`，按下`Tab`
-   >    3. 输入`input`，按下`Tab`
-   >    4. 输入`div`，按下`Tab`
-
-2. 常用标签
-
-   >标签属性
-   >1. class：为html元素定义一个或多个类名
-   >2. id：定义元素的唯一id
-
-   ```html
-   <br> break换行
-   
-   <hr>分割线
-   
-   <p>paragraph一个段落</p>
-   
-   <!-- 这是一个注释 -->
-   
-   a标签
-   1. anchor定义一个超链接，target="_blank"，点击链接新开一个标签页
-   2. 相对路径，"./baidu.html"即当前html文件同目录下的baidu.html
-      相对路径，"../serach/google.html"即当前html文件上层目录下的serach目录下的google.html
-       <a href="https://www.runoob.com/" target="_blank">菜鸟教程</a>
-       <a href="./baidu.html" target="_blank">baidu</a>
-       <a href="../serach/google.html">google</a>
-   3. 锚点，id属性用于设置当前页面的锚点，实现页面内跳转
-       <a href="#c2">第2章</a>
-       <a id="c1">第1章：贾雨村风尘怀闺秀</a>
-       <a id="c2">第2章：冷子兴演说荣国府</a>
-   4. 下载文件，href给出绝对或相对文件路径
-       <a href="https://itsycal.s3.amazonaws.com/Itsycal.zip">google</a>
-       <a href="../store/Itsycal.zip">google</a>
-   
-   img标签
-   1. 在浏览器无法载入图像时，裂掉的图片会显示alt属性值
-   2. 相对路径，"./img/pic.jpg"即当前html文件同目录下的img目录下的pic.jpg
-      相对路径，"../img/pic.jpg"即当前html文件上层目录下的img目录下的pic.jpg
-       <img src="https://xxx.jpg" alt="我裂了">
-       <img src="./img/pic.jpg" alt="">
-       <img src="../pic/tmp.jpg" alt="">
-   3. 把img用做超链接，点击"./img/pic.jpg"，跳转到"./baidu.html"
-       <a href="./baidu.html" target="_blank"><img src="./img/pic.jpg" alt=""></a>
-       <a href="https://www.runoob.com/" target="_blank"><img src="./img/pic.jpg" alt=""></a>
-   
-   ul标签
-   1. unorder list无序列表，
-   2. li：list列表项，是个容器，可以存放任何元素，如a，，img，table等待
-       <ul>
-           <li>Coffee</li>
-           <li>Milk</li>
-       </ul>
-   
-   ol标签
-   1. order list有序列表
-   2. li：list列表项，是个容器，可以存放任何元素，如a，，img，table等待
-       <ol>
-           <li>Coffee</li>
-           <li>Milk</li>
-       </ol>
-   
-   dl标签
-   1. define list自定义列表，用于名词解释，项目说明
-   2. dt：项目名
-   3. dd：项目描述
-       <dl>
-           <dt>项目名</dt>
-           <dd>项目描述1</dd>
-           <dd>项目描述2</dd>
-       </dl>
-   
-   table标签
-   1. thead：表格的头部区域，用于存放表头
-       1. tr：table row表格的行
-       2. th：table head表格的表头单元格，是特殊的td
-   2. tbody：表格的主体区域，用户存放数据
-       1. tr：table row表格的行
-       2. td：table data表格的单元格
-   3. 合并单元格：rowspan属性，跨行合并(合并第2，3行)；colspan属性，跨列合并(合并第2，3列)
-   4. 表格常用属性：width：表格宽度；border：单元格边框厚度，默认是0px；cellpadding：单元格边缘与内容的距离，默认是1px；cellspacing：单元格之间的距离，默认是2px（px即像素）
-       <table border="1">
-           <thead>
-               <tr><th>姓名</th><th>房产</th></tr>
-           </thead>
-           <tbody>
-               <tr><td>老王</td><td>2套</td></tr>
-               <tr><td rowspan='2'>老张</td><td>3套</td></tr>
-               <tr><td>2套</td></tr>
-           </tbody>
-       </table>
-   
-   form表单
-   1. action 属性，是个url，接收表单提交数据。只有含name属性的元素 才会被提交(MyName不会被提交)
-   2. 可以是相对路径 action="example.html"，也可以是绝对路径action="http://www.example.com/example.html"
-   3. radio 和 checkbox 必须有相同的name，默认选中checked
-   4. submit在form的任何位置都会提交整个form表单域内的数据
-   5. label绑定表单元素，点击label标签内的文本时，鼠标会focus到对应元素上，提升用户体验
-   6. label用法for属性值与绑定元素的id属性值相同
-       <form name="Sai的表单" action="./example.html" method="GET">
-           Your name: <input type="text" name="name_文本域">
-         
-           <label for="psw">Password: </label>
-           <input type="password" name="psw_密码字段" id='psw'>
-   
-           <input type="radio" name="sex_单选按钮" value="male" checked='checked'>Male
-           <input type="radio" name="sex_单选按钮" value="female">Female
-   
-           <input type="checkbox" name="vehicle_复选框" value="Bike" checked='checked'>I have a bike
-           <input type="checkbox" name="vehicle_复选框" value="Car">I have a car
-   
-           <input type="file" name="pic_上传文件">
-   
-           <textarea name="comment_多行文本" id="" cols="30" rows="3"></textarea>
-   
-           <select name='favorite'>
-               <option value="1">Volvo</option>
-               <option value="2" selected='selected'>Saab</option>
-           </select>
-   
-           <input type="submit" name="sbm_提交按钮" value="提交">
-       </form>
-   
-   div块
-   1. 是用于文档布局的容器，可以组合其他 HTML 元素
-   2. 1行只能放1个div
-   
-   span 
-   1. 是用于文档布局的容器，可以组合其他 HTML 元素
-   2. 1行能放多个span
-   ```
-   
-   案例
-   
-   ```html
-   <h1>青春不再</h1>
-   <table border="1">
-     <thead>
-       <tr><th>类别</th><th>选项</th></tr>
-     </thead>
-     <tbody>
-       <tr>
-         <td>性别</td>
-         <td>
-           <input type="radio" name='sex' id="male"><label for="male">男</label>
-           <input type="radio" name='sex' id="female"><label for="female">女</label>
-         </td>
-       </tr>
-       <tr>
-         <td>生日</td>
-         <td>
-           <select name="" id="">
-             <option value="1">--年--</option>
-             <option value="1">1988</option>
-             <option value="2">1989</option>
-           </select>
-           <select name="" id="">
-             <option value="1">--月--</option>
-             <option value="1">1988</option>
-             <option value="2">1989</option>
-           </select>
-           <select name="" id="">
-          <option value="1">--日--</option>
-             <option value="1">1988</option>
-          <option value="2">1989</option>
-           </select>
-         </td>
-       </tr>
-       <tr>
-         <td>住址</td>
-         <td>
-           <input type="text" name="" id="">
-         </td>
-       </tr>
-       <tr>
-         <td>喜好</td>
-         <td>
-           <input type="checkbox" name="favo" id="">可爱型
-           <input type="checkbox" name="favo" id="">霸道型
-         </td>
-       </tr>
-       <tr>
-         <td>自介</td>
-         <td>
-           <textarea name="" id="" cols="30" rows="2"></textarea>
-         </td>
-       </tr>
-       <tr>
-         <td></td>
-         <td>
-           <a href="#">我是会员，立即登录</a>
-         </td>
-       </tr>
-       <tr>
-         <td></td>
-         <td>
-           <h4>承诺</h4>
-           <ul>
-             <li>我年满18</li>
-             <li>真诚寻爱</li>
-           </ul>
-         </td>
-       </tr>
-     </tbody>
-   </table>
-   ```
-   
-   ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200430200805.png)
-
-### css
-
-#### css基础篇
-
-1. 原生css
-
-   1. 位置： `<head></head>` 中的` <style></style>`
-
-   2. css引入方式1：css写在html中
-
-      ```html
-      <head>
-          <style>
-              ul{
-                  color: magenta;
-              }
-              ol{
-                  font-size: 30px;
-              }
-          </style>
-      </head>
-      ```
-
-   3. css引入方式2：css单独一个文件，html外部引用该文件
-
-      `index.html`
-
-      ```html
-      <head>
-          <link rel="stylesheet" href="../css/index_style.css">
-      </head>
-      ```
-
-      `index_style.css`
-
-      ```css
-      ul {
-          color: magenta;
-      }
-      ol {
-          font-size: 30px;
-      }
-      ```
-
-2. 基础选择器
+1. 基础选择器
 
    1. label选择器：修改指定标签的样式
 
@@ -427,7 +302,7 @@
    > 2. 行间距：包括上间距，文字高度，下间距，若行间距是26px，文字是16px，则上下间距各5px
    >
    >    ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200501151758.png)
-   
+
    * 文本垂直居中的技巧
 
      > 设置文字行高等于盒子高度，即 height = line-height，若`height: 40px`，则`line-height: 40px`
@@ -507,14 +382,14 @@
 
          > 1. 格式：`父>子`，子元素必须是**儿子**
    > 2. 父、子元素都可以是任意label选择器、class选择器、id选择器
-      
+   
          ```css
    /* 只有儿子是红色 */
          div>a {
              color: red;
          }
          ```
-      
+   
          ```html
    <div class="nav">
              <a href="">儿子</a>
@@ -523,15 +398,15 @@
              </p>
          </div>
          ```
-         
+   
       3. 并集选择器
       
          > 1. 格式：`标签元素1,标签元素2`
 
          ```css
-   /* 熊大、熊二、小猪一家都是粉色 */
+         /* 熊大、熊二、小猪一家都是粉色 */
          div,
-   p,
+         p,
          .pig li {
              color: pink;
          }
@@ -540,7 +415,7 @@
          ```html
          <div>熊大</div>
          <p>熊二</p>
-   <span>光头强</span>
+         <span>光头强</span>
          <ul class="pig">
              <li>佩奇</li>
              <li>猪爸爸</li>
@@ -551,20 +426,20 @@
       4. 伪类选择器
       
          1. 链接伪类选择器
-      
+         
             | 格式                       | 含义                     |
-      | -------------------------- | ------------------------ |
+         | -------------------------- | ------------------------ |
             | `a:link`/`.pig:link`       | 选择所有未访问过的链接   |
-      | `a:visited`/`.pig:visited` | 选择所有已访问过的链接   |
+         | `a:visited`/`.pig:visited` | 选择所有已访问过的链接   |
             | `a:hover`/`.pig:hover`     | 选择鼠标悬停的链接       |
-      | `a:active`/`.pig:active`   | 选择鼠标按下未弹起的链接 |
-      
+         | `a:active`/`.pig:active`   | 选择鼠标按下未弹起的链接 |
+         
             ```css
             /* 未访问过的链接显示黑色，去掉下划线 */
             a:link {
                 color: black;
                 text-decoration: none;
-      }
+         }
             /* 已访问过的链接显示屎黄色 */
             a:visited {
                 color: orange;
@@ -578,28 +453,28 @@
                 color: chartreuse;
             }
             ```
-      
+         
             ```html
             <a class="pig" href="#1">佩奇</a>
             <a class="pig" href="#2">熊大</a>
             <a class="pig" href="#3">光头强</a>
             ```
-      
+         
          2. 光标伪类选择器
-      
+         
             > 1. 作用：选取光标所在的**表单**元素
-      
+         
             ```css
-         /* 光标所在的表单元素背景色是粉红色 */
+            /* 光标所在的表单元素背景色是粉红色 */
             input:focus {
-          background-color: pink;
+             background-color: pink;
             }
       ```
          
       ```html
          <input type="text">输入框1
             <input type="text">输入框2
-            ```
+      ```
    
 2. 元素显示模式
 
@@ -642,7 +517,7 @@
       2. 行内元素转换为行内块元素：`display: inline-block;`
 
          ```css
-   #line_to_lineblock1 {
+         #line_to_lineblock1 {
              width: 350px;
              height: 50px;
              background-color: salmon;
@@ -657,7 +532,7 @@
          ```
       
          ```html
-   <span id='line_to_lineblock1'>行内元素转换为行内块元素1</span>
+         <span id='line_to_lineblock1'>行内元素转换为行内块元素1</span>
          <span id='line_to_lineblock2'>行内元素转换为行内块元素2</span>
          ```
    
@@ -707,7 +582,7 @@
    3. 背景色透明度
 
       ```css
-   .demo {
+      .demo {
           /* 盒子背景透明图，前3位是RGB色值，第4位是透明度，0-1之间 */
           background: rgba(255, 192, 203, 0.5);
       }
