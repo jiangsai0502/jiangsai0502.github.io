@@ -1,4 +1,4 @@
-import re, os, html2text, random
+import re, os, html2text, random, csv
 from playwright_stealth import stealth_sync
 
 
@@ -112,9 +112,20 @@ def Initial_Single_MDFile(MDdir, MDFile):
     return MarkDownMaker, MDFileDir
 
 
+def Initial_CSVFile(CSVdir, CSVFile):
+    """
+    初始化1个CSV文件：切换到目标路径，指定文件名
+    """
+    # 切换CSV文件目录
+    os.chdir(CSVdir)
+    # 声明全局CSV文件路径
+    CSVFileDir = f"{CSVdir}/{CSVFile}"
+    return CSVFileDir
+
+
 def Page_Scroll(ScrollPage, ScrollTimes):
     """
-    滚动加载更多内容，直到不再加载或者滚动了10次
+    滚动加载更多内容，直到不再加载
     """
     #
     NotEnd = True
@@ -128,7 +139,7 @@ def Page_Scroll(ScrollPage, ScrollTimes):
             ScrollPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
             # 微上划一下模拟人类
             ScrollPage.keyboard.press("PageUp")
-            ScrollPage.wait_for_timeout(random.randint(1000, 3000))
+            ScrollPage.wait_for_timeout(random.randint(500, 2000))
         # 滚动后的页面高度
         AfterScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
         if BeforeScrollHeight == AfterScrollHeight or ScrollTime >= ScrollTimes:
@@ -165,3 +176,32 @@ def Turn_Page(FatherPage, Xpath_Nav, Nav):
     Nav["Able_Click_Nav"] = sorted(list(Nav["All_Nav"].difference(Nav["Clicked_Nav"])))
     if len(Nav["Able_Click_Nav"]) == 0:
         Nav["Finish_Nav"] = True
+
+
+def Write_to_CSV(WriteList, CsvFile):
+    # 将数据写入CSV文件
+    with open(CsvFile, "w", encoding="utf-8-sig") as csv_file:
+        # 取列表首个元素（dict）的key，作为表头
+        Head = []
+        for key in WriteList[0]:
+            Head.append(key)
+        # 创建一个读写对象
+        CSVwriter = csv.writer(csv_file)
+        # 写入表头
+        CSVwriter.writerow(Head)
+        # 逐行写入
+        for temp_dict in WriteList:
+            row = []
+            # 按照key取出dict的每个元素
+            for key in Head:
+                row.append(temp_dict[key])
+            CSVwriter.writerow(row)
+
+
+def convert_wan_to_number(num):
+    if "万" in num:
+        # 删除"万"字符
+        num = num.replace("万", "").strip()
+        return str(int(float(num) * 10000))
+    else:
+        return str(num)

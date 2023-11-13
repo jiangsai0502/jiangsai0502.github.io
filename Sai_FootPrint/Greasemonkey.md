@@ -204,7 +204,8 @@
    >     'use strict';
    >     document.addEventListener('keydown', function(e) {
    >         // 获取视频元素
-   >         var video = document.querySelector('video');
+   >         // var video = document.querySelector('video');
+   >         let video = document.evaluate('//video', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
    >         if (!video) return; // 如果没有找到视频元素则不执行后续代码
    > 
    >         // 当同时按下 shift + 上箭头键时，以0.2的步长提高播放速度

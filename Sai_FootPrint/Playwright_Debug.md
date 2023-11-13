@@ -60,403 +60,406 @@
 
 * 常用功能
   
-  ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310061535560.png)
+  > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310061535560.png)
   
-  > ```
-  > import re, os, random
-  > from numbers import Integral
-  > from playwright.sync_api import Playwright, sync_playwright, expect
-  > from bs4 import BeautifulSoup
-  > ```
-  >
-  > * `def run(playwright: Playwright) -> None:`
-  >
-  >   > 浏览器环境
-  >   >
-  >   > * 方式一：Chrome本地浏览器（模拟完全真实场景）
-  >   >
-  >   >   > terminal操作部分
-  >   >   >
-  >   >   > 1. 查看9222端口是否被占用
-  >   >   >    `lsof -i:9222`
-  >   >   >
-  >   >   > 2. 若结果如下，表示端口已被占用
-  >   >   >
-  >   >   >    | COMMAND | PID   | USER     | FD  | TYPE | DEVICE            | SIZE/OFF | NODE | NAME                             |
-  >   >   >    | ------- | ----- | -------- | --- | ---- | ----------------- | -------- | ---- | -------------------------------- |
-  >   >   >    | Google  | 93266 | jiangsai | 97u | IPv4 | 0xf8edc13e875fe59 | 0t0      | TCP  | localhost:teamcoherence (LISTEN) |
-  >   >   >
-  >   >   > > 即9222端口被「Google进程」占用，PID为「93266」
-  >   >   >
-  >   >   > 3. 杀掉进程释放端口
-  >   >   >
-  >   >   >    `sudo kill -9 PID`
-  >   >   >
-  >   >   > 4. 关闭当前所有Chrome浏览器
-  >   >   >
-  >   >   > 5. debug模式启动本地Chrome有头浏览器
-  >   >   >
-  >   >   >    > ```bash
-  >   >   >   > /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222
-  >   >   >    > ```
-  >   >   > 
-  >   >   > 
-  >   >   >代码部分
-  >   >   > 
-  >   >   >```
-  >   >   > # 启动上述本地debug模式Chrome
-  >   >   > SaiBrowser = playwright.chromium.connect_over_cdp('http://localhost:9222')
-  >   >   > SaiContext = SaiBrowser.contexts[0]
-  >   >   >SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
-  >   >   >SaiPage = SaiContext.new_page()
-  >   >   > ```
-  >   >   
-  >   > * 方式二：Playwright无头浏览器（反爬网站能识别）
-  >   > 
-  >   >   ```python
-  >   >   # # 初始化一个浏览器（headless = False 有头浏览器；slow_mo = 3000 每个操作停3秒）
-  >   >   # SaiBrowser = playwright.chromium.launch(headless = False, slow_mo = 3000)
-  >   >     
-  >   >   # # 加载本地cookie
-  >   >  # # 若本地有cookie，则在SaiBrowser中创建一个context（网页管理器），并加载该cookie，实现免登陆；若本地没有，则在SaiBrowser中创建一个空的context
-  >   >   # # 每个context是一个独立会话，用于环境隔离，每个context可使用1套代理，登录1套账号
-  >   >  # os.chdir('/Users/jiangsai/Desktop')
-  >   >   # if os.path.exists('state.json'):
-  >   >   #     SaiContext = SaiBrowser.new_context(storage_state="state.json")
-  >   >   # else:
-  >   >     #     SaiContext = SaiBrowser.new_context()
-  >   >   
-  >   >   # 拦截SaiContext下所有页面的图片请求（凡含.png的链接，都当做是png图片）
-  >   >   # SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
-  >   >   
-  >   >   # 初始化一个网页
-  >   >   # SaiPage = SaiContext.new_page()
-  >   >   
-  >   >   # 拦截SaiPage这个页面的图片请求
-  >   >     # SaiPage.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
-  >   >   ```
-  >   > 
-  >   >     > `SaiContext.route()`和 `SaiPage.route()`的区别：前者应用于 `SaiContext`下的所有页面，后者只应用于 `SaiPage`这一个页面
-  >   > 
-  >   > 页面交互
-  >   >   
-  >   > * 打开一个网址
-  >   > 
-  >   >   `SaiPage.goto("https://www.zhihu.com/question/22543815")`
-  >   >
-  >   > * 等待页面加载，直至加载完成
-  >   >
-  >   >   `SaiPage.wait_for_load_state("networkidle")`
-  >   >
-  >   > * 将这个tab页置于顶部
-  >   >
-  >   >   `SaiPage.bring_to_front()`
-  >   >
-  >   > * 页面刷新
-  >   >
-  >   >   `SaiPage.reload()`
-  >   >
-  >   > * 页面后退
-  >   >
-  >   >   `SaiPage.go_back()`
-  >   >
-  >   > * 页面前进
-  >   >
-  >   >   `SaiPage.go_forward()`
-  >   >
-  >   > * 鼠标悬停
-  >   >
-  >   >   > 所有 `//`开头的表达式都会默认为 XPath
-  >   >
-  >   >   `SaiPage.locator('//div[@class="Question"]').hover()`
-  >   >
-  >   > * 键盘输入
-  >   >
-  >   >   1. 模拟字符串输入
-  >   >
-  >   >      `SaiPage.locator('//*[@id="Popover2"]').type('technical')`
-  >   >
-  >   >   2. 模拟按键输入
-  >   >
-  >   >      > `F(1-12)`,`数字(0-9)`,`Key(a-z、A-Z)大小写敏感`,`Backspace(向左删除)`,`Delete(向右删除)`,`Tab`,`Escape`,`End`,`Enter`,`Home`,`Insert`,`PageUp、PageDown`,`ArrowUp、ArrowDown、ArrowLeft、ArrowRight`
-  >   >
-  >   >      `SaiPage.locator('//*[@id="Popover2"]').press("Z")`
-  >   >
-  >   >      `SaiPage.locator('//*[@id="Popover2"]').press("Delete")`
-  >   >
-  >   >      `SaiPage.keyboard.press('Enter')`
-  >   >
-  >   >   3. 模拟组合键输入
-  >   >
-  >   >      > `Shift`, `Control`,` Alt`, `Meta(Meta = Win/Cmd 键)`
-  >   >     > [其他的按键参考这里](https://playwright.dev/python/docs/api/class-keyboard)
-  >   > 
-  >   >     全选 `Command+A`：`SaiPage.keyboard.press("Meta+A") `
-  >   > 
-  >   >* 鼠标点击
-  >   > 
-  >   >`SaiPage.locator('//button[@class="SearchBar"]').click()`
-  >   > 
-  >   > * 页面滚动
-  >   >
-  >   >   1. 滚动指定高度
-  >   >
-  >   >      > `page.mouse.wheel(向右滚动长度,向下滚动长度)`
-  >   >
-  >   >      `page.mouse.wheel(0,7000)`
-  >   >
-  >   >   2. 滚动到页面底部
-  >   >
-  >   >      `page.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")`
-  >   >
-  >   >   3. 滚动到页面顶部
-  >   >
-  >   >      `page.evaluate("() => window.scrollTo(0,0)")`
-  >   >
-  >   >   4. 向下滚动一屏
-  >   >
-  >   >      `page.evaluate("() => window.scrollBy(0,window.innerHeight)")`
-  >   >
-  >   >   5. 向上滚动一屏
-  >   >
-  >   >      `page.evaluate("() => window.scrollBy(0,-window.innerHeight)")`
-  >   >
-  >   >   6. 滚动到当前元素位置
-  >   >
-  >   >      `element = page.locator(xpath)` 或 `element = page.query_selector(xpath)`
-  >   >
-  >   >      `element.evaluate("element => element.scrollIntoView()")`
-  >   >
-  >   >   ```python
-  >   >  # 滚动加载更多内容，直到不再加载
-  >   >   NotEnd = True
-  >   >  while NotEnd:
-  >   >       # 滚动前的页面高度
-  >   >      BeforeScrollHeight = SaiPage.evaluate("() => document.body.scrollHeight")
-  >   >       # 滚动到页面底部
-  >   >      SaiPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
-  >   >       # 等待网络加载，单位是毫秒
-  >   >       SaiPage.wait_for_timeout(random.randint(1000,3000))
-  >   >       # 滚动后的页面高度
-  >   >       AfterScrollHeight = SaiPage.evaluate("() => document.body.scrollHeight")
-  >   >       if BeforeScrollHeight == AfterScrollHeight:
-  >   >           # 知乎加载到一定程度，加载速度会变慢，但实际还没加载完
-  >   >           SaiPage.wait_for_timeout(random.randint(1000,3000))
-  >   >           # SaiPage.mouse.wheel(0, 20000)
-  >   >           SaiPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
-  >   >           AfterScrollHeight = SaiPage.evaluate("() => document.body.scrollHeight")
-  >   >           # 两次等待，两次加载后依然页面高度不变，则判断为加载完了
-  >   >           if BeforeScrollHeight == AfterScrollHeight:
-  >   >               NotEnd = False
-  >   >   ```
-  >   > 
-  >   > * frame弹窗
-  >   > 
-  >   >   `SaiPage.frame_locator('//*[@id="iframe"]').locator('//div/input').click()`
-  >   > 
-  >   > 页面数据提取
-  >   > 
-  >   > * 截取页面当前可见部分
-  >   >
-  >   >   `SaiPage.screenshot(path = "FullScreen.png")`
-  >   >
-  >   > * 截取页面指定部分
-  >   >
-  >   >   `SaiPage.locator('//table[3]').screenshot(path = "PartPage.png")`
-  >   >
-  >   > * 截取整个页面
-  >   >
-  >   >   `SaiPage.screenshot(path = "FullPage.png", full_page = True)`
-  >   >
-  >   > * 获取页面网址
-  >   >
-  >   >   `PageURL = SaiPage.url`
-  >   >
-  >   > * 获取页面标题
-  >   >
-  >   >   `PageTitle = SaiPage.title()`
-  >   >
-  >   > * 获取页面完整Html源代码
-  >   >
-  >   >   `PageHtml = SaiPage.content()`
-  >   >
-  >   > * 获取页面某个节点的Html源代码
-  >   >
-  >   >   `ElementHtml = SaiPage.locator('//div[@class="Question"]').inner_html()`
-  >   >
-  >   >   `BSHtml = BeautifulSoup(ElementHtml).prettify()`
-  >   >
-  >   > * 获取页面完整文字
-  >   >
-  >   >   `PageTextContent = SaiPage.text_content()`
-  >   >
-  >   > * 获取页面某个节点的完整文字内容
-  >   >
-  >   >   > `text_content()`：返回代码内容；一股脑全部获取，包括隐藏内容
-  >   >  > `inner_text()`：返回页面显示内容；按照元素获取，元素间以换行分割
-  >   > 
-  >   >  `ElementTextContent = SaiPage.locator('//div[@class="HaHa"]').text_content()`
-  >   > 
-  >   >  `ElementInnerText = SaiPage.locator('//div[@class="HaHa"]').inner_text()`
-  >   > 
-  >   >* 获取页面的列表元素
-  >   > 
-  >   >   ```python
-  >   >  Elements = SaiPage.query_selector_all('//div[@class="Question"]/div')
-  >   >   # 枚举列表元素所有目标值
-  >   >  for element in Elements:
-  >   >       # 每个元素的文本值 text_content
-  >   >      print(element.text_content())
-  >   >       # 每个元素的链接
-  >   >      print(element.query_selector('//a[@id="Link"]').get_attribute('href'))
-  >   >   ```
-  >   > 
-  >   >   ```python
-  >   >   # 枚举列表中每个元素的每个属性值
-  >   >   for element in Elements:
-  >   >       # 提取每个元素的所有属性 evaluate
-  >   >       el_attrs = element.evaluate("el => el.getAttributeNames()")
-  >   >       # 枚举所有的属性名称和值 get_attribute
-  >   >       for attr in el_attrs:
-  >   >          print(attr, ":", element.get_attribute(attr))
-  >   >   ```
-  >   > 
-  >   > * 下载页面所有图片
-  >   > 
-  >   >   ```python
-  >   >   Pic_folder = SaiPage.title()
-  >   >   if not os.path.exists(Pic_folder):
-  >   >       # 创建文件夹
-  >   >       os.mkdir(Pic_folder)
-  >   >      # 进入文件夹
-  >   >       os.chdir(Pic_folder) 
-  >   >  # 找到所有图片节点
-  >   >   All_Pic = SaiPage.query_selector_all('//img')
-  >   >   Pic_num = 1
-  >   >   for Pic in All_Pic:
-  >   >       # 提取所有图片链接
-  >   >       Pic_url = Pic.get_attribute('src')
-  >   >       if Pic_url != '':
-  >   >           # 将图片写入文件
-  >   >           with open(f'{Pic_num}.jpg', 'wb') as file:
-  >   >               file.write(requests.get(Pic_url).content)
-  >   >               Pic_num += 1
-  >   >           print(Pic_url)
-  >   >   ```
-  >   > 
-  >   > * 将页面部分内容转化为 `markdown`后下载到本地
-  >   > 
-  >   >   ```python
-  >   >   # 切换目录
-  >   >   os.chdir('/Users/jiangsai/Desktop')
-  >   >   MarkDownMaker = html2text.HTML2Text()
-  >   >   MarkDownMaker.ignore_links = True
-  >   >  TargetHtml = SaiPage.locator('//div[@class="article"]').inner_html()
-  >   >   MarkDownContent = MarkDownMaker.handle(TargetHtml)
-  >   >  with open('test.md', mode='w', encoding='utf-8') as f:
-  >   >       f.write(MarkDownContent)
-  >   >   ```
-  >   > 
-  >   > 元素存在性判断[参考](https://www.cnblogs.com/yoyoketang/p/17214493.html)
-  >   > 
-  >   > * `locator()`判断页面中是否存在某个元素
-  >   > 
-  >   >   > `locator()`定位页面上的元素，不管元素存不存在，都返回一个 `locator`对象，可用 `count() `方法统计元素个数，个数是 0则元素不存在
-  >   > 
-  >   >   ```python
-  >   >  # 直接使用locator()和click()进行定位点击，若当前页面没有该元素则程序会一直等待，直到报错TimeoutError
-  >   >   SaiPage.locator(xpath).click()
-  >   >  # 因此要先判断一下，元素是否存在
-  >   >   if SaiPage.locator(xpath).count() != 0:
-  >   >      SaiPage.locator(xpath).click()
-  >   >   ```
-  >   >
-  >   > * `query_selector()`判断页面中是否存在某个元素
-  >   > 
-  >   >   > `query_selector()`和 `query_selector_all()`定位页面上的Dom，若元素不存在则返回None
-  >   > 
-  >   >   ```python
-  >   >   # 直接使用query_selector()和click()进行定位点击，若当前页面没有该元素则程序立刻报错AttributeError：'NoneType' object has no attribute 'click'
-  >   >   SaiPage.query_selector(xpath).click()
-  >   >  # 因此要先判断一下，元素是否存在
-  >   >   if SaiPage.query_selector(xpath) is not None:
-  >   >      SaiPage.query_selector(xpath).click()
-  >   >   ```
-  >   >
-  >   > * 判断某个节点是否有直接子节点存在
-  >   > 
-  >   >   > 平时可以直接用简写语句`'//div'`的双斜杠开头表示，这是个xpath，但是需要用到单斜杠时，就必须用到完整语句`'xpath=/div'`，`'xpath=/span'`，`'xpath=/*'`
-  >   >   >
-  >   >   > ```python
-  >   >   > if root_element.query_selector_all("xpath=/*") is not None:
-  >   >   >        pass
-  >   >  > ```
-  >   > 
-  >   >* 移除某个节点
-  >   > 
-  >   >   ```python
-  >   >   Target_node = WritePage.query_selector(Xpath)
-  >   >   Target_node_remove = Target_node.query_selector(Xpath)
-  >   >   Target_node_remove.evaluate("element => element.remove()")
-  >   >   ```
-  >   >
-  >   > 点击二级页链接
-  >   >
-  >   > * 情况一：二级页在老标签加载
-  >   > 
-  >   >   ```python
-  >   >   SaiPage.locator(xpath).click()
-  >   >   SaiPage.wait_for_timeout(random.randint(1000,3000))
-  >   >  # SaiPage是在打开二级页后，标签没有增加，一级页被二级页取代，未来只能操作二级页，但可以用SaiPage.go_back()在本标签回到一级页
-  >   >   ```
-  >   >
-  >   > * 情况二：二级页在新标签加载
-  >   >
-  >   >   ```python
-  >   >   with SaiContext.expect_page() as SonPageInfo:
-  >   >       SaiPage.locator(xpath).click()
-  >   >   SonPage = SonPageInfo.value
-  >   >   SonPage.wait_for_load_state()
-  >   >  SonPage.bring_to_front()
-  >   >   # SaiPage是一级页的标签页，还在，SonPage是二级页的标签页，可以分别操作2个标签页
-  >   >   ```
-  >   > 
-  >   > 
-  >   > 
-  >   > 存储Cookie
-  >   > 
-  >   > > 将 `cookie`保存到 `state.json`，方便方式二Playwright无头浏览器进行免登录
-  >   > 
-  >   > `storage = SaiContext.storage_state(path="state.json")`
-  >   >
-  >   > 收尾工作
-  >   >
-  >   > ```python
-  >   >SaiPage.pause()
-  >   > SaiContext.close()
-  >   >SaiBrowser.close()
-  >   > ```
-  > 
-  > ```python
-  > with sync_playwright() as playwright:
-  >     run(playwright)
-  > ```
+  1. 浏览器环境
+  
+     * 方式1：Chrome本地浏览器（模拟完全真实场景）
+  
+       * terminal操作部分
+  
+         > 1. 查看9222端口是否被占用
+         >    `lsof -i:9222`
+         >
+         > 2. 若结果如下，表示端口已被占用
+         >
+         >    | COMMAND | PID   | USER     | FD   | TYPE | DEVICE            | SIZE/OFF | NODE | NAME                             |
+         >    | ------- | ----- | -------- | ---- | ---- | ----------------- | -------- | ---- | -------------------------------- |
+         >    | Google  | 93266 | jiangsai | 97u  | IPv4 | 0xf8edc13e875fe59 | 0t0      | TCP  | localhost:teamcoherence (LISTEN) |
+         >
+         > > 即9222端口被「Google进程」占用，PID为「93266」
+         >
+         > 3. 杀掉进程释放端口
+         >
+         >    `sudo kill -9 PID`
+         >
+         > 4. 关闭当前所有Chrome浏览器
+         >
+         > 5. debug模式启动本地Chrome有头浏览器
+         >
+         >    `/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222`
+  
+       * 代码部分
+  
+         ```python
+         # 启动上述本地debug模式Chrome
+         SaiBrowser = playwright.chromium.connect_over_cdp('http://localhost:9222')
+         SaiContext = SaiBrowser.contexts[0]
+         SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
+         SaiPage = SaiContext.new_page()
+         ```
+  
+     * 方式2：Playwright无头浏览器（反爬网站能识别）
+  
+       ```python
+       # # 初始化一个浏览器（headless = False 有头浏览器；slow_mo = 3000 每个操作停3秒）
+       # SaiBrowser = playwright.chromium.launch(headless = False, slow_mo = 3000)
+       
+       # # 加载本地cookie
+       # # 若本地有cookie，则在SaiBrowser中创建一个context（网页管理器），并加载该cookie，实现免登陆；若本地没有，则在SaiBrowser中创建一个空的context
+       # # 每个context是一个独立会话，用于环境隔离，每个context可使用1套代理，登录1套账号
+       # os.chdir('/Users/jiangsai/Desktop')
+       # if os.path.exists('state.json'):
+       #     SaiContext = SaiBrowser.new_context(storage_state="state.json")
+       # else:
+         #     SaiContext = SaiBrowser.new_context()
+       
+       # 拦截SaiContext下所有页面的图片请求（凡含.png的链接，都当做是png图片）
+       # SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
+       
+       # 初始化一个网页
+       # SaiPage = SaiContext.new_page()
+       
+       # 拦截SaiPage这个页面的图片请求
+         # SaiPage.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.webp.*)"), lambda route: route.abort())
+       ```
+  
+       > `SaiContext.route()`和 `SaiPage.route()`的区别：前者应用于 `SaiContext`下的所有页面，后者只应用于 `SaiPage`这一个页面
+  
+  2. 页面交互
+  
+     * 打开一个网址
+  
+       `SaiPage.goto("https://www.zhihu.com/question/22543815")`
+  
+     * 等待页面加载，直至加载完成
+  
+       `SaiPage.wait_for_load_state("networkidle")`
+  
+     * 将这个tab页置于顶部
+  
+       `SaiPage.bring_to_front()`
+  
+     * 页面刷新
+  
+       `SaiPage.reload()`
+  
+     * 页面后退
+  
+       `SaiPage.go_back()`
+  
+     * 页面前进
+  
+       `SaiPage.go_forward()`
+  
+     * 鼠标悬停
+  
+       > 所有 `//`开头的表达式都会默认为 XPath
+  
+       `SaiPage.locator('//div[@class="Question"]').hover()`
+  
+     * 鼠标悬停
+  
+       > 所有 `//`开头的表达式都会默认为 XPath
+  
+       `SaiPage.locator('//div[@class="Question"]').hover()`
+  
+     * 键盘输入
+  
+       1. 模拟字符串输入
+  
+          `SaiPage.locator('//*[@id="Popover2"]').type('technical')`
+          
+       1. 模拟按键输入
+  
+          > `F(1-12)`,`数字(0-9)`,`Key(a-z、A-Z)大小写敏感`,`Backspace(向左删除)`,`Delete(向右删除)`,`Tab`,`Escape`,`End`,`Enter`,`Home`,`Insert`,`PageUp、PageDown`,`ArrowUp、ArrowDown、ArrowLeft、ArrowRight`
+          
+          `SaiPage.locator('//*[@id="Popover2"]').press("Z")`
+          
+          `SaiPage.locator('//*[@id="Popover2"]').press("Delete")`
+          
+          `SaiPage.keyboard.press('Enter')`
+          
+         3. 模拟组合键输入
+  
+            > `Shift`, `Control`,` Alt`, `Meta(Meta = Win/Cmd 键)`
+            >
+            > [其他的按键参考这里](https://playwright.dev/python/docs/api/class-keyboard)
+            
+            全选 `Command+A`：`SaiPage.keyboard.press("Meta+A") `
+  
+     * 鼠标点击
+  
+       `SaiPage.locator('//button[@class="SearchBar"]').click()`
+  
+     * 页面滚动
+  
+       1. 滚动指定高度
+  
+          > `page.mouse.wheel(向右滚动长度,向下滚动长度)`
+  
+          `page.mouse.wheel(0,7000)`
+  
+       2. 滚动到页面底部
+  
+          `page.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")`
+  
+       3. 滚动到页面顶部
+  
+          `page.evaluate("() => window.scrollTo(0,0)")`
+  
+       4. 向下滚动一屏
+  
+          `page.evaluate("() => window.scrollBy(0,window.innerHeight)")`
+  
+       5. 向上滚动一屏
+  
+          `page.evaluate("() => window.scrollBy(0,-window.innerHeight)")`
+  
+       6. 滚动到当前元素位置
+  
+          `element = page.locator(xpath)` 或 `element = page.query_selector(xpath)`
+  
+          `element.evaluate("element => element.scrollIntoView()")`
+          
+          ```python
+           # 滚动加载更多内容，直到不再加载
+          NotEnd = True
+          while NotEnd:
+                # 滚动前的页面高度
+               BeforeScrollHeight = SaiPage.evaluate("() => document.body.scrollHeight")
+                # 滚动到页面底部
+               SaiPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
+                # 等待网络加载，单位是毫秒
+                SaiPage.wait_for_timeout(random.randint(1000,3000))
+                # 滚动后的页面高度
+                AfterScrollHeight = SaiPage.evaluate("() => document.body.scrollHeight")
+                if BeforeScrollHeight == AfterScrollHeight:
+                    # 知乎加载到一定程度，加载速度会变慢，但实际还没加载完
+                    SaiPage.wait_for_timeout(random.randint(1000,3000))
+                    # SaiPage.mouse.wheel(0, 20000)
+                    SaiPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
+                    AfterScrollHeight = SaiPage.evaluate("() => document.body.scrollHeight")
+                    # 两次等待，两次加载后依然页面高度不变，则判断为加载完了
+                    if BeforeScrollHeight == AfterScrollHeight:
+                        NotEnd = False
+  
+     * frame弹窗
+  
+       `SaiPage.frame_locator('//*[@id="iframe"]').locator('//div/input').click()`
+  
+  3. 页面数据提取
+  
+     * 截取页面当前可见部分
+  
+       `SaiPage.screenshot(path = "FullScreen.png")`
+  
+     * 截取页面指定部分
+  
+       `SaiPage.locator('//table[3]').screenshot(path = "PartPage.png")`
+  
+     * 截取整个页面
+  
+       `SaiPage.screenshot(path = "FullPage.png", full_page = True)`
+  
+     * 获取页面网址
+  
+       `PageURL = SaiPage.url`
+  
+     * 获取页面标题
+  
+       `PageTitle = SaiPage.title()`
+  
+     * 获取页面完整Html源代码
+  
+       `PageHtml = SaiPage.content()`
+  
+     * 获取页面某个节点的Html源代码
+  
+       `ElementHtml = SaiPage.locator('//div[@class="Question"]').inner_html()`
+  
+       `BSHtml = BeautifulSoup(ElementHtml).prettify()`
+  
+     * 获取页面完整文字
+  
+       `PageTextContent = SaiPage.text_content()`
+  
+     * 获取页面某个节点的完整文字内容
+  
+       > `text_content()`：返回代码内容；一股脑全部获取，包括隐藏内容
+       >
+       > `inner_text()`：返回页面显示内容；按照元素获取，元素间以换行分割
+  
+        `ElementTextContent = SaiPage.locator('//div[@class="HaHa"]').text_content()`
+  
+        `ElementInnerText = SaiPage.locator('//div[@class="HaHa"]').inner_text()`
+  
+     * 获取页面的列表元素
+  
+       ```python
+        Elements = SaiPage.query_selector_all('//div[@class="Question"]/div')
+       # 枚举列表元素所有目标值
+        for element in Elements:
+           # 每个元素的文本值 text_content
+          print(element.text_content())
+           # 每个元素的链接
+          print(element.query_selector('//a[@id="Link"]').get_attribute('href'))
+       ```
+  
+       ```python
+       # 枚举列表中每个元素的每个属性值
+       for element in Elements:
+           # 提取每个元素的所有属性 evaluate
+           el_attrs = element.evaluate("el => el.getAttributeNames()")
+           # 枚举所有的属性名称和值 get_attribute
+           for attr in el_attrs:
+              print(attr, ":", element.get_attribute(attr))
+       ```
+  
+     * 下载页面所有图片
+  
+       ```python
+       Pic_folder = SaiPage.title()
+       if not os.path.exists(Pic_folder):
+           # 创建文件夹
+           os.mkdir(Pic_folder)
+          # 进入文件夹
+           os.chdir(Pic_folder) 
+       # 找到所有图片节点
+       All_Pic = SaiPage.query_selector_all('//img')
+       Pic_num = 1
+       for Pic in All_Pic:
+           # 提取所有图片链接
+           Pic_url = Pic.get_attribute('src')
+           if Pic_url != '':
+               # 将图片写入文件
+               with open(f'{Pic_num}.jpg', 'wb') as file:
+                   file.write(requests.get(Pic_url).content)
+                   Pic_num += 1
+               print(Pic_url)
+       ```
+  
+     * 将页面部分内容转化为 `markdown`后下载到本地
+  
+       ```python
+       # 切换目录
+       os.chdir('/Users/jiangsai/Desktop')
+       MarkDownMaker = html2text.HTML2Text()
+       MarkDownMaker.ignore_links = True
+       TargetHtml = SaiPage.locator('//div[@class="article"]').inner_html()
+       MarkDownContent = MarkDownMaker.handle(TargetHtml)
+       with open('test.md', mode='w', encoding='utf-8') as f:
+           f.write(MarkDownContent)
+  
+  4. 元素存在性判断[参考](https://www.cnblogs.com/yoyoketang/p/17214493.html)
+  
+     * `locator()`判断页面中是否存在某个元素
+  
+       > `locator()`定位页面上的元素，不管元素存不存在，都返回一个 `locator`对象，可用 `count() `方法统计元素个数，个数是 0则元素不存在
+  
+       ```python
+       # 直接使用query_selector()和click()进行定位点击，若当前页面没有该元素则程序立刻报错
+       # AttributeError：'NoneType' object has no attribute 'click'
+       SaiPage.query_selector(xpath).click()
+       # 因此要先判断一下，元素是否存在
+       if SaiPage.query_selector(xpath) is not None:
+          SaiPage.query_selector(xpath).click()
+       ```
+  
+     * `query_selector()`判断页面中是否存在某个元素
+  
+         > `query_selector()`和 `query_selector_all()`定位页面上的Dom，若元素不存在则返回None
+  
+         ```python
+       # 直接使用query_selector()和click()进行定位点击，若当前页面没有该元素则程序立刻报错
+       # AttributeError：'NoneType' object has no attribute 'click'
+       SaiPage.query_selector(xpath).click()
+       # 因此要先判断一下，元素是否存在
+       if SaiPage.query_selector(xpath) is not None:
+          SaiPage.query_selector(xpath).click()
+         ```
+  
+     * 判断某个节点是否有直接子节点存在
+  
+       > 平时可以直接用简写语句`'//div'`的双斜杠开头表示，这是个xpath，但是需要用到单斜杠时，就必须用到完整语句`'xpath=/div'`，`'xpath=/span'`，`'xpath=/*'`
+  
+       ```python
+       if root_element.query_selector_all("xpath=/*") is not None:
+           pass
+  
+     * 移除某个节点
+  
+       ```python
+       Target_node = WritePage.query_selector(Xpath)
+       Target_node_remove = Target_node.query_selector(Xpath)
+       Target_node_remove.evaluate("element => element.remove()")
+  
+  5. 点击二级页链接
+  
+     1. 情况一：二级页在老标签加载
+  
+        ```python
+        SaiPage.locator(xpath).click()
+        SaiPage.wait_for_timeout(random.randint(1000,3000))
+        # SaiPage是在打开二级页后，标签没有增加，一级页被二级页取代，未来只能操作二级页，但可以用SaiPage.go_back()在本标签回到一级页
+  
+     2. 情况二：二级页在新标签加载
+  
+        ```python
+        with SaiContext.expect_page() as SonPageInfo:
+            SaiPage.locator(xpath).click()
+        SonPage = SonPageInfo.value
+        SonPage.wait_for_load_state()
+        SonPage.bring_to_front()
+        # SaiPage是一级页的标签页，还在，SonPage是二级页的标签页，可以分别操作2个标签页
+        ```
+  
+  6. 存储Cookie
+  
+     > 将 `cookie`保存到 `state.json`，方便方式二Playwright无头浏览器进行免登录
+  
+     `storage = SaiContext.storage_state(path="state.json")`
 
 ##### 通用方法
 
 > 路径：`Module/Play_Wright_modules.py`
 >
 > ```python
-> import re, os, html2text, random
+> import re, os, html2text, random, csv
+> from playwright_stealth import stealth_sync
 > 
 > 
-> def Initial_Chrome(playwright, WebSites, AbortPic, WaitLoad):
+> def Initial_Headless_Chrome(playwright, WebSites, AbortPic, WaitLoad):
 >     """
 >     初始化浏览器：调用本地Chrome，在新标签打开目标网页，并切换到该标签
 >     """
 >     SaiBrowser = playwright.chromium.connect_over_cdp("http://localhost:9222")
->     SaiContext = SaiBrowser.contexts[0]
->     if AbortPic == True:
+>     ########## 无头反爬处理 ##########
+>     # 设置用户代理和其他选项
+>     custom_user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
+>     context_options = {"user_agent": custom_user_agent}
+>     SaiContext = SaiBrowser.new_context(**context_options)
+>     stealth_sync(SaiContext)
+>     # 处理WebGL检测
+>     SaiContext.add_init_script(
+>         """
+>         (() => {
+>             const getParameter = WebGLRenderingContext.getParameter;
+>             WebGLRenderingContext.prototype.getParameter = function(parameter) {
+>                 if (parameter === 37445) {
+>                     return 'NVIDIA Corporation';
+>                 }
+>                 if (parameter === 37446) {
+>                     return 'NVIDIA GeForce GTX 1050 Ti with Max-Q Design OpenGL Engine';
+>                 }
+>                 return getParameter(parameter);
+>             };
+>         })();
+>     """
+>     )
+>     ########## 无头反爬处理 ##########
+>     # 是否阻止图片加载
+>     if AbortPic:
 >         SaiContext.route(
 >             re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.gif.*)|(.*\.webp.*)"), lambda route: route.abort()
 >         )
@@ -465,7 +468,30 @@
 >         SaiPage = SaiContext.new_page()
 >         SaiPage.goto(i)
 >         SaiPage.bring_to_front()
->         if WaitLoad == True:
+>         if WaitLoad:
+>             SaiPage.wait_for_load_state("networkidle")
+>         SaiPage.wait_for_timeout(random.randint(1000, 3000))
+>         SaiPages.append(SaiPage)
+>     return SaiBrowser, SaiContext, SaiPages
+> 
+> 
+> def Initial_Chrome(playwright, WebSites, AbortPic, WaitLoad):
+>     """
+>     初始化浏览器：调用本地Chrome，在新标签打开目标网页，并切换到该标签
+>     """
+>     SaiBrowser = playwright.chromium.connect_over_cdp("http://localhost:9222")
+>     SaiContext = SaiBrowser.contexts[0]
+>     # 是否阻止图片加载
+>     if AbortPic:
+>         SaiContext.route(
+>             re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.gif.*)|(.*\.webp.*)"), lambda route: route.abort()
+>         )
+>     SaiPages = []
+>     for i in WebSites:
+>         SaiPage = SaiContext.new_page()
+>         SaiPage.goto(i)
+>         SaiPage.bring_to_front()
+>         if WaitLoad:
 >             SaiPage.wait_for_load_state("networkidle")
 >         SaiPage.wait_for_timeout(random.randint(1000, 3000))
 >         SaiPages.append(SaiPage)
@@ -513,11 +539,22 @@
 >     return MarkDownMaker, MDFileDir
 > 
 > 
+> def Initial_CSVFile(CSVdir, CSVFile):
+>     """
+>     初始化1个CSV文件：切换到目标路径，指定文件名
+>     """
+>     # 切换CSV文件目录
+>     os.chdir(CSVdir)
+>     # 声明全局CSV文件路径
+>     CSVFileDir = f"{CSVdir}/{CSVFile}"
+>     return CSVFileDir
+> 
+> 
 > def Page_Scroll(ScrollPage, ScrollTimes):
 >     """
->     滚动加载更多内容，直到不再加载或者滚动了10次
+>     滚动加载更多内容，直到不再加载
 >     """
->     # 
+>     #
 >     NotEnd = True
 >     ScrollTime = 1
 >     while NotEnd and ScrollTime < ScrollTimes:
@@ -529,7 +566,7 @@
 >             ScrollPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
 >             # 微上划一下模拟人类
 >             ScrollPage.keyboard.press("PageUp")
->             ScrollPage.wait_for_timeout(random.randint(1000, 3000))
+>             ScrollPage.wait_for_timeout(random.randint(500, 2000))
 >         # 滚动后的页面高度
 >         AfterScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
 >         if BeforeScrollHeight == AfterScrollHeight or ScrollTime >= ScrollTimes:
@@ -548,7 +585,7 @@
 >         if str(Nav_num).isdigit():
 >             Nav["All_Nav"].add(int(Nav_num))
 >     # 若本页是第1页，则不用点击
->     if Nav["Is_First_Nav"] == True:
+>     if Nav["Is_First_Nav"]:
 >         # 取所有导航数列表中最小的数为即将点击的数
 >         To_Click_Nav = sorted(list(Nav["All_Nav"]))[0]
 >         pass
@@ -566,9 +603,28 @@
 >     Nav["Able_Click_Nav"] = sorted(list(Nav["All_Nav"].difference(Nav["Clicked_Nav"])))
 >     if len(Nav["Able_Click_Nav"]) == 0:
 >         Nav["Finish_Nav"] = True
+> 
+> 
+> def Write_to_CSV(WriteList, CsvFile):
+>     # 将数据写入CSV文件
+>     with open(CsvFile, "w", encoding="utf-8-sig") as csv_file:
+>         # 取列表首个元素（dict）的key，作为表头
+>         Head = []
+>         for key in WriteList[0]:
+>             Head.append(key)
+>         # 创建一个读写对象
+>         CSVwriter = csv.writer(csv_file)
+>         # 写入表头
+>         CSVwriter.writerow(Head)
+>         # 逐行写入
+>         for temp_dict in WriteList:
+>             row = []
+>             # 按照key取出dict的每个元素
+>             for key in Head:
+>                 row.append(temp_dict[key])
+>             CSVwriter.writerow(row)
 > ```
 >
-> 
 
 ##### 网页爬虫案例
 
@@ -1927,6 +1983,94 @@ def run(playwright: Playwright) -> None:
         ExtractInfo(SaiPages[0])
     SaiPage.close()
     # 收尾
+    SaiContext.close()
+    SaiBrowser.close()
+
+
+with sync_playwright() as playwright:
+    run(playwright)
+```
+
+#### 抖音搜索结果抓取
+
+> 抓取用户列表
+
+```python
+import os, html2text, re, random
+from playwright.sync_api import Playwright, sync_playwright
+from Module import Play_Wright_modules as pwm
+import pandas as pd
+
+#########################全局变量#########################
+# CSV文件目录
+CSVDir = "/Users/jiangsai/Desktop"
+# CSV文件名
+CSVFile = "Test.csv"
+
+# 用户搜索
+# 搜索结果list
+Xpath_List = '//*[@id="search-content-area"]//ul[contains(@class,"fb5dK_Rl WTCKzPrM")]/*'
+# 昵称
+Xpath_Author = '//p[contains(@class,"bMoJi1wE")]'
+# 是否店铺
+Xpath_Shop = '//div[contains(@class,"OiNrUQTP GZzMrzN4")]'
+# 获赞
+Xpath_Thrumb = '//div[contains(@class,"H7Xy0nwI")]/span[3]'
+# 粉丝
+Xpath_Follower = '//div[contains(@class,"H7Xy0nwI")]/span[5]'
+# 简介
+Xpath_Intro = '//p[contains(@class,"go5cmngM")]'
+#########################全局变量#########################
+
+
+# 获取抖音搜索信息
+def GetSearchResultsInfo(WritePage):
+    # 获取所有搜索结果list
+    Elements = WritePage.query_selector_all(Xpath_List)
+    Author_Infos = []
+    for element in Elements:
+        # element.evaluate("element => element.scrollIntoView()")
+        Author = element.query_selector(Xpath_Author).text_content()
+        if element.query_selector(Xpath_Shop) != None:
+            Shop = element.query_selector(Xpath_Shop).text_content()
+        else:
+            Shop = ""
+        if element.query_selector(Xpath_Thrumb) != None:
+            Thrumb = element.query_selector(Xpath_Thrumb).text_content().replace("获赞", "")
+            Thrumb = pwm.convert_wan_to_number(Thrumb)
+        else:
+            Thrumb = ""
+        if element.query_selector(Xpath_Follower) != None:
+            Follower = element.query_selector(Xpath_Follower).text_content().replace("粉丝", "")
+            Follower = pwm.convert_wan_to_number(Follower)
+        else:
+            Follower = ""
+        if element.query_selector(Xpath_Intro) != None:
+            Intro = element.query_selector(Xpath_Intro).text_content()
+        else:
+            Intro = ""
+        Author_Infos.append(
+            {"Author": Author, "Shop": Shop, "Thrumb": Thrumb, "Follower": Follower, "Intro": Intro}
+        )
+    return Author_Infos
+
+
+def run(playwright: Playwright) -> None:
+    global CSVFileDir  # 文件名称（含路径）
+    WebSites = [
+        "https://www.douyin.com/search/%E5%A4%A7%E6%9D%BF?aid=3a03db05-a799-4870-8e28-1f1e5ea221ee&source=normal_search&type=user",
+    ]
+    SaiBrowser, SaiContext, SaiPages = pwm.Initial_Chrome(
+        playwright, WebSites, AbortPic=False, WaitLoad=False
+    )
+    for SaiPage in SaiPages:
+        CSVFileDir = pwm.Initial_CSVFile(CSVDir, CSVFile)
+        SaiPage.bring_to_front()
+        pwm.Page_Scroll(SaiPage, 0)
+        Author_Infos = GetSearchResultsInfo(SaiPage)
+        pwm.Write_to_CSV(Author_Infos, CSVFileDir)
+        # 收尾
+        SaiPage.close()
     SaiContext.close()
     SaiBrowser.close()
 

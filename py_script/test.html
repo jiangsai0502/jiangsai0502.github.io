@@ -9,26 +9,13 @@
 
 <body>
     <script>
-        // JS对象就是字典
-        let temp_Dict = {
-            name: 'Will',
-            age: 35,
-            tags: ['Python', 'SQL', 'JS']
-        }
-        // 属性取值
-        console.log(temp_Dict.tags)
-        // 属性赋值
-        temp_Dict.tags = ['Python', 'SQL', 'JS', 'PlayWright']
-        console.log(temp_Dict.tags)
-        // 动态增加属性
-        temp_Dict.sex = 'Gender'
-        console.log(temp_Dict)
-        // 动态删除属性
-        delete temp_Dict.age
-        console.log(temp_Dict)
-        // 判断对象是否包含某个属性
-        hasAtrr = temp_Dict.hasOwnProperty('name')
-        console.log(hasAtrr)
+        // 严格模式
+        "use strict";
+
+
+        // document：当前页面
+        // 修改页面标题
+        document.title = 'Sai'
     </script>
 </body>
 

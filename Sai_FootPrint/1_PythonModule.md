@@ -96,7 +96,6 @@ MoiveList = [
     {"影片名": "教父", "评分": "9.7", "评价人数": "2938225人"},
     {"影片名": "冰与火", "评分": "9.6", "评价人数": "2170430人"},
 ]
-AttrList = ["影片名", "评分", "评价人数"]
 
 with open(CsvFile, mode="w+", encoding="gbk", newline="") as OpenCSV:
     ########### 方法1：csv.DictWriter ##########
@@ -109,6 +108,7 @@ with open(CsvFile, mode="w+", encoding="gbk", newline="") as OpenCSV:
     # 写入电影信息
     for movie in MoiveList:
         CSVwriter.writerow(movie)
+        
     ########### 方法2：csv.writer ##########
     # 设置CSV文件的表头
     Header = ["影片名", "评分", "评价人数"]
@@ -120,31 +120,6 @@ with open(CsvFile, mode="w+", encoding="gbk", newline="") as OpenCSV:
     for movie in MoiveList:
         row = [movie["影片名"], movie["评分"], movie["评价人数"]]
         CSVwriter.writerow(row)
-    ########### 方法3：csv.writer ##########
-    # 创建一个读写对象
-    CSVwriter = csv.writer(OpenCSV)
-    # 写入电影信息
-    for movie in MoiveList:
-        extend_row = []
-        append_row = []
-        CSVwriter.writerow(["--extend--"])
-        for key, value in movie.items():
-            # list后扩充list（扩充的必须是list）
-            extend_row.extend([key, value])
-        CSVwriter.writerow(extend_row)
-        CSVwriter.writerow(["--append--"])
-        for key, value in movie.items():
-            # list后追加元素（追加的可以是int、str、list、dict等任意类型）
-            append_row.append(key)
-            append_row.append(value)
-        CSVwriter.writerow(append_row)
-
-with open(CsvFile, mode="r", encoding="gbk", newline="") as OpenCSV:
-    CSVreader = csv.reader(OpenCSV)
-    # 逐行转换成list，同行内每一个单元格为一个元素
-    for row in CSVreader:
-        print(row)
-        print(row[2], row[4])
 ```
 
 > 方法1和方法2的输出
@@ -198,208 +173,102 @@ with open(CsvFile, mode="r", encoding="gbk", newline="") as OpenCSV:
 
 ### 读写 Excel
 
-* 工作簿：workbook
-* 表单：worksheet
-* 行、列、单元格：row，column，cell
+1. 环境
 
-##### 1. 安装 openpyxl
+   > `pip install openpyxl`
+   >
+   > `pip install pandas `
 
-> 1. 切换到虚拟环境： `source activate jspython3`
->2. 安装openpyxl   ： `pip install openpyxl`
-
-##### 2. 写操作，写入时覆盖原文
-
-```python
-MyWB = Workbook()
-MyWS = MyWB.active
-MyWS.append(["第1行第1列", "第1行第2列", "第1行第3列"])
-MyWB.save('test.xlsx')
-```
-
-> 1. 每行写入 1 个 list
-
-#####  3. 读操作
-
-```python
-MyWB = load_workbook('test.xlsx')
-print(MyWB.get_sheet_names())
-MyWS = MyWB.get_sheet_by_name("TempData")
-print(MyWS['B2'].value)
-```
-
-1. 新建一个Excel工作簿
+2. 数据预备
 
    ```python
-   from openpyxl import Workbook, load_workbook
+   import pandas as pd
    
-   myExcel = '/Users/sai/Documents/临时/Test.xlsx'
-   
-   # 步骤：新建工作簿类 -> 保存指定文件
-   myWorkbook = Workbook()
-   # 保存修改
-   myWorkbook.save(myExcel)
+   ExcelFile = "/Users/jiangsai/Desktop/test.xlsx"
+   MoiveList = [
+       {"影片名": "教父", "评分": "9.7", "评价人数": "2938225人"},
+       {"影片名": "冰与火", "评分": "9.6", "评价人数": "2170430人"},
+   ]
    ```
 
-2. 新建一个表单
+3. Pandas写Excel
+
+   1. 覆盖写入
+
+      ```python
+      # 一次写入所有行
+      df = pd.DataFrame(MoiveList)
+      df.to_excel(ExcelFile, index=False, sheet_name="Sheet1")
+      ```
+
+   2. 追加写入
+
+      ```python
+      new_data = [
+          {"影片名": "肖申克的救赎", "评分": 9.3, "评价人数": 2513246},
+          {"影片名": "盗梦空间", "评分": 8.8, "评价人数": 2092510},
+      ]
+      
+      # 转换新数据
+      data_to_append = pd.DataFrame(new_data)
+      # 读取旧数据
+      original_data = pd.read_excel(ExcelFile)
+      # 合并新旧数据
+      combined_data = pd.concat([original_data, data_to_append], ignore_index=True)
+      # 将合并后的数据写回 Excel
+      with pd.ExcelWriter(ExcelFile, mode="w", engine="openpyxl") as writer:
+          combined_data.to_excel(writer, sheet_name="Sheet1", index=False)
+      ```
+
+4. Pandas读Excel
 
    ```python
-   from openpyxl import Workbook, load_workbook
-   
-   myExcel = '/Users/sai/Documents/临时/Test.xlsx'
-   
-   # 打开一个Excel文件
-   myWorkbook = load_workbook(myExcel)
-   # 新建一个表单Mysheet
-   myWorkbook.create_sheet('Mysheet')
-   # 保存修改
-   myWorkbook.save(myExcel)
+   # 一次读取所有行到字典列表
+   df = pd.read_excel(ExcelFile, sheet_name="Sheet1")
+   # 将DataFrame转换为字典列表
+   movies_list = df.to_dict(orient="records")
+   print(movies_list)
    ```
 
-3. 删除一个表单
+5. 不常用读写
 
    ```python
-   from openpyxl import Workbook, load_workbook
+   # 逐行写入
+   with pd.ExcelWriter(ExcelFile, engine="xlsxwriter") as writer:
+       workbook = writer.book
+       worksheet = workbook.add_worksheet("Sheet1")
+       # 写入列名
+       headers = MoiveList[0].keys()
+       for col_num, header in enumerate(headers):
+           worksheet.write(0, col_num, header)
+       # 写入数据
+       for row_num, row_data in enumerate(MoiveList, start=1):
+           for col_num, value in enumerate(row_data.values()):
+               worksheet.write(row_num, col_num, value)
    
-   myExcel = '/Users/sai/Documents/临时/Test.xlsx'
+   # 逐行读取到字典列表
+   def read_excel_row_by_row(ExcelFile, sheet_name):
+       # 读取 Excel 文件
+       xls = pd.ExcelFile(ExcelFile)
+       # 读取到的数据
+       ReadData = []
+       # 逐行读取每个 sheet
+       for sheet_name in xls.sheet_names:
+           df = xls.parse(sheet_name)
+           # 获取列名
+           column_names = df.columns
+           # 逐行读取数据
+           for index, row in df.iterrows():
+               row_data = {}
+               for column_name in column_names:
+                   value = row[column_name]
+                   row_data[column_name] = value
+               ReadData.append(row_data)
+       return ReadData
    
-   # 打开一个Excel文件
-   myWorkbook = load_workbook(myExcel)
-   # 引用指定表单Mysheet
-   Mysheet = myWorkbook['Sheet1']
-   # 删除表单Mysheet
-   myWorkbook.remove(Mysheet)
-   # 保存修改
-   myWorkbook.save(myExcel)
+   ReadData = read_excel_row_by_row(ExcelFile, "Sheet1")
+   print(ReadData)
    ```
-
-4. 复制一个表单
-
-   ```python
-   from openpyxl import Workbook, load_workbook
-   
-   myExcel = '/Users/sai/Documents/临时/Test.xlsx'
-   
-   # 打开一个Excel文件
-   myWorkbook = load_workbook(myExcel)
-   # 获取本文件所有表单名称
-   print(myWorkbook.sheetnames)
-   # 引用指定表单Mysheet
-   Mysheet = myWorkbook['Test']
-   # 复制一个表单
-   myWorkbook.copy_worksheet(Mysheet)
-   # 保存修改
-   myWorkbook.save(myExcel)
-   ```
-
-5. 修改表单名称
-
-   ```python
-   from openpyxl import Workbook, load_workbook
-   
-   myExcel = '/Users/sai/Documents/临时/Test.xlsx'
-   
-   # 打开一个Excel文件
-   myWorkbook = load_workbook(myExcel)
-   # 引用指定表单Mysheet
-   Mysheet = myWorkbook['Test Copy']
-   # 修改指定表单的名称
-   Mysheet.title = 'SaiSheet'
-   # 获取本文件所有表单名称
-   print(myWorkbook.sheetnames)
-   # 保存修改
-   myWorkbook.save(myExcel)
-   ```
-
-6. 按行取值
-
-   ```python
-   from openpyxl import Workbook, load_workbook
-   
-   myExcel = '/Users/sai/Documents/临时/Test.xlsx'
-   
-   # 打开一个Excel文件
-   myWorkbook = load_workbook(myExcel)
-   # 引用指定表单Mysheet
-   Mysheet = myWorkbook['SaiSheet']
-   # 按行获取所有值
-   for row in Mysheet.rows:
-       for cell in row:
-           print(f'{cell.value}', end=' ')
-       print()
-   # 获取指定行的值
-   for cell in Mysheet[3]:
-       print(f'{cell.value}', end=' ')
-   ```
-
-7. 按列取值
-
-   ```python
-   from openpyxl import Workbook, load_workbook
-   
-   myExcel = '/Users/sai/Documents/临时/Test.xlsx'
-   
-   # 打开一个Excel文件
-   myWorkbook = load_workbook(myExcel)
-   # 引用指定表单Mysheet
-   Mysheet = myWorkbook['SaiSheet']
-   # 按列获取所有值
-   for column in Mysheet.columns:
-       for cell in column:
-           print(f'{cell.value}', end=' ')
-       print()
-   # 获取指定列的值
-   for cell in Mysheet['B']:
-       print(f'{cell.value}', end=' ')
-   ```
-
-8. 获取指定单元格，指定切片范围内单元格的值
-
-   ```python
-   from openpyxl import Workbook, load_workbook
-   
-   myExcel = '/Users/sai/Documents/临时/Test.xlsx'
-   
-   # 打开一个Excel文件
-   myWorkbook = load_workbook(myExcel)
-   # 引用指定表单Mysheet
-   Mysheet = myWorkbook['SaiSheet']
-   # 获取指定单元格的值
-   print(Mysheet['B2'].value)
-   # 获取切片范围内单元格的值
-   for row in Mysheet['A1':'C2']:
-       for cell in row:
-           print(f'{cell.value}', end=' ')
-       print()
-   ```
-
-9. 1
-
-10. 1
-
-11. 1
-
-12. 1
-
-13. 
-
-
-
-
-
-```python
-from openpyxl import Workbook, load_workbook
-
-# bigData 是 List，data 是 Dictionary
-def WriteToExcel(bigData):
-    MyWB = Workbook()
-    MyWS = MyWB.active
-    MyWS.title = "TempData"
-    # 将 bigData 的第一个 data 字典的键设置为 Excel 第 1 行的表头
-    MyWS.append(list(bigData[0].keys()))
-    for data in bigData:
-        MyWS.append(list(data.values()))
-    MyWB.save('/Users/jiangsai02/Documents/Temp/test.xlsx')
-```
 
 ##### 合并多个Excel的sheet到一个sheet
 
@@ -512,32 +381,7 @@ MyWB.save('/Users/jiangsai02/Documents/Temp/CombineTable.xlsx')
            filecount += 1
    ```
 
-4. 
-
-
-
-
-
-
-
-### 进度条
-
-##### 1. 安装 tqdm
-
-> 1. 切换到虚拟环境： `source activate jspython3`
-> 2. 安装openpyxl   ： `pip install tqdm`
-
-##### 2. 用法
-
-```python
-from tqdm import tqdm
-import time
- 
-for i in tqdm(range(30)):
-    time.sleep(0.1)
-```
-
-
+   
 
 ### 多线程
 
@@ -902,8 +746,6 @@ if __name__ == '__main__':
         time.sleep(20)
 ```
 
-
-
 ##### 修改文件名中的汉字数字
 
 ```python
@@ -1178,8 +1020,6 @@ ffmpeg -ss 00:06:15 -i input.mp4 -to 00:02:25 -vcodec copy -acodec copy -y outpu
    ffmpeg -f concat -i filelist.txt -c copy output.mkv
    ```
 
-
-
 #### 5. 下载微博视频
 
 ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200501092000.png)
@@ -1227,199 +1067,6 @@ ffmpeg -i input.mp4 -vcodec libx264 -crf 20 output.mp4
 # （首选）对它降低fps和音频码率的方法大大压缩文件大小，而清晰度不变
 ffmpeg -i input.mp4 -r 10 -b:a 32k output.mp4
 ```
-
-
-
-#### 获取知乎问题答案并转换为MarkDown文件
-
-[参考](https://www.jianshu.com/p/59028353d0aa)
-
-> 知乎接口`https://www.zhihu.com/api/v4/questions/{}/answers?include=data[*].content,voteup_count,created_time&offset=0&limit=20&sort_by=default`
-
-```python
-# pip install html2text
-# pip install bs4
-# pip install lxml
-
-from multiprocessing import Pool
-import re, os, html2text, requests, json, time
-from requests import RequestException
-from bs4 import BeautifulSoup
-
-headers = {
-    'User-Agent':
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
-    'authorization': 'oauth c3cef7c66a1843f8b3a9e6a1e3160e20',
-}
-
-
-def html_template(data):
-    # api content
-    html = '''
-            <html>
-            <head>
-            <body>
-            %s
-            </body>
-            </head>
-            </html>
-            ''' % data
-    return html
-
-
-def request(url):
-    try:
-        response = requests.get(url=url, headers=headers)
-        if response.status_code == 200:
-            # 不管是不是最后一条数据, 先进行解析再说
-            text = response.text
-            # 此处进行进一步解析
-            # print('url =', url, 'text =', text)
-            content = json.loads(text)
-            parse_content(content)
-            # 如果不是最后一条数据, 继续递归请求并解析
-            if not content.get('paging').get('is_end'):
-                # next_page_url = content.get('paging').get('next').replace('http', 'https')
-                next_page_url = content.get('paging').get('next')
-                request(next_page_url)
-
-        return None
-    except RequestException:
-        print(RequestException)
-        return None
-
-
-def parse_content(content):
-    if 'data' in content.keys():
-        for data in content.get('data'):
-            parsed_data = parse_data(data)
-            transform_to_markdown(parsed_data)
-
-
-def parse_data(content):
-    data = {}
-    answer_content = content.get('content')
-
-    author_name = content.get('author').get('name')
-    print('author_name =', author_name)
-    answer_id = content.get('id')
-    question_id = content.get('question').get('id')
-    question_title = content.get('question').get('title')
-    vote_up_count = content.get('voteup_count')
-
-    content = html_template(answer_content)
-    soup = BeautifulSoup(content, 'lxml')
-    answer = soup.find("body")
-
-    soup.body.extract()
-    soup.head.insert_after(soup.new_tag("body", **{'class': 'zhi'}))
-
-    soup.body.append(answer)
-
-    img_list = soup.find_all("img", class_="content_image lazy")
-    for img in img_list:
-        img["src"] = img["data-actualsrc"]
-    img_list = soup.find_all("img",
-                             class_="origin_image zh-lightbox-thumb lazy")
-    for img in img_list:
-        img["src"] = img["data-actualsrc"]
-    noscript_list = soup.find_all("noscript")
-    for noscript in noscript_list:
-        noscript.extract()
-
-    data['content'] = soup
-    data['author_name'] = author_name
-    data['answer_id'] = answer_id
-    data['question_id'] = question_id
-    data['question_title'] = question_title
-    data['vote_up_count'] = vote_up_count
-    return data
-
-
-def transform_to_markdown(data):
-    content = data['content']
-    author_name = data['author_name']
-    answer_id = data['answer_id']
-    question_id = data['question_id']
-    question_title = data['question_title']
-    vote_up_count = data['vote_up_count']
-
-    file_name = f'{question_title}.md'
-    answer_path = os.path.join(os.getcwd(), file_name)
-
-    with open(answer_path, 'a+', encoding='utf-8') as f:
-        origin_url = 'https://www.zhihu.com/question/{}/answer/{}'.format(
-            question_id, answer_id)
-        f.write("-" * 40 + "\n")
-        f.write("##### Author_Name: " + author_name + "\n")
-        f.write("##### VoteCount: %s" % vote_up_count + "\n")
-        text = html2text.html2text(content.decode('utf-8'))
-        # 标题
-        r = re.findall(r'\*\*(.*?)\*\*', text, re.S)
-        for i in r:
-            if i != " ":
-                text = text.replace(i, i.strip())
-
-        r = re.findall(r'_(.*)_', text)
-        for i in r:
-            if i != " ":
-                text = text.replace(i, i.strip())
-        text = text.replace('_ _', '')
-        text = text.replace('_b.', '_r.')
-        # 图片
-        r = re.findall(r'!\[\]\((?:.*?)\)', text)
-        for i in r:
-            text = text.replace(i, i + "\n\n")
-            folder_name = f'{os.getcwd()}/{question_title}_img'
-            if not os.path.exists(folder_name):
-                os.mkdir(folder_name)
-            img_url = re.findall('\((.*)\)', i)[0]
-            save_name = img_url.split('/')[-1]
-            file_path = '%s/%s' % (folder_name, save_name)
-
-            try:
-                content = download_image(img_url)
-                if content:
-                    save_image(content, file_path)
-            except Exception as e:
-                print(e)
-            else:  # if no exception,get here
-                text = text.replace(img_url, file_path)
-
-        f.write(text)
-        f.close()
-
-
-def download_image(url):
-    print('正在下载图片', url)
-    try:
-        response = requests.get(url)
-        if response.status_code == 200:
-            return response.content
-    except RequestException:
-        print('请求图片错误', url)
-        pass
-
-
-def save_image(content, file_path):
-    with open(file_path, 'wb') as f:
-        f.write(content)
-        f.close()
-
-
-if __name__ == '__main__':
-    # todo 这里的header可能需要加cookie了, 因为有的作者名不加cookie拿不到真名, 只能得到一个叫做"知乎用户"的作者名,
-    # 真实的作者名给隐藏了
-
-    os.chdir('/Users/sai/Desktop/tmp/zhihu')  # 切换当前目录
-    question_id = '20926054'  # 知乎问题'https://www.zhihu.com/question/37400041'
-
-    url_format = 'https://www.zhihu.com/api/v4/questions/{}/answers?include=data[*].content,voteup_count,created_time&offset=0&limit=20&sort_by=default'
-    url = url_format.format(question_id)
-    request(url)
-```
-
-
 
 #### 下载荔枝音频
 

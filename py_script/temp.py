@@ -1,89 +1,77 @@
 import os, html2text, re, random
 from playwright.sync_api import Playwright, sync_playwright
 from Module import Play_Wright_modules as pwm
+import pandas as pd
 
 #########################全局变量#########################
-# 类型一：问答型
-# 问题
-Xpath_Answer = '//h1[@class="QuestionHeader-title"]'
-# 问题描述
-Xpath_Answer_Desc = '//div[@class="css-eew49z"]'
-# 整个答案块
-Xpath_Questions_Block = '//div[@role="list"]/div'
-# 答案块中的答案list
-Xpath_Questions = '//div[@role="list"]/*[not(@role="listitem")]'
-# 答案块中的每个答案的作者
-Xpath_Author = '//div[@class="AuthorInfo-head"]'
-# 答案块中的每个答案的内容
-Xpath_Question = '//span[@class="RichText ztext CopyrightRichText-richText css-117anjg"]'
-# 类型二：专题型
-Xpath_Article_Title = "//article/header/h1"
-Xpath_Article_Content = '//article/div[@class="Post-RichTextContainer"]'
+# CSV文件目录
+CSVDir = "/Users/jiangsai/Desktop"
+# CSV文件名
+CSVFile = "Test.csv"
+
+# 用户搜索
+# 搜索结果list
+Xpath_List = '//*[@id="search-content-area"]//ul[contains(@class,"fb5dK_Rl WTCKzPrM")]/*'
+# 昵称
+Xpath_Author = '//p[contains(@class,"bMoJi1wE")]'
+# 是否店铺
+Xpath_Shop = '//div[contains(@class,"OiNrUQTP GZzMrzN4")]'
+# 获赞
+Xpath_Thrumb = '//div[contains(@class,"H7Xy0nwI")]/span[3]'
+# 粉丝
+Xpath_Follower = '//div[contains(@class,"H7Xy0nwI")]/span[5]'
+# 简介
+Xpath_Intro = '//p[contains(@class,"go5cmngM")]'
+
 #########################全局变量#########################
 
 
-# 获取问答页信息
-def GetQAInfo(WritePage):
-    # 问题部分
-    Answer = WritePage.query_selector(Xpath_Answer).text_content()
-    Answer_Desc = ""
-    # 判断问题描述是否存在，有些问题没有描述
-    if WritePage.locator(Xpath_Answer_Desc).count() != 0:
-        # 判断问题描述是否被收起
-        if WritePage.locator(Xpath_Answer_Desc + "//button").count() != 0:
-            WritePage.locator(Xpath_Answer_Desc + "//button").click()
-        # 因问题描述可能包含图片，故此处使用HTML2Text提取富文本
-        Answer_Content_Html = WritePage.query_selector(Xpath_Answer_Desc).inner_html()
-        Answer_Desc = MarkDownMaker.handle(Answer_Content_Html)
-    with open(MDFileDir, mode="a", encoding="utf-8") as f:
-        f.write("### " + Answer + "\n" + "> " + Answer_Desc + "\n\n" + "----" + "\n")
-    # 答案部分
-    # 判断答案是否存在，有些问题没有答案
-    if WritePage.locator(Xpath_Questions_Block).count() != 0:
-        # 获取所有答案块
-        Elements = WritePage.query_selector_all(Xpath_Questions)
-        for element in Elements:
-            # 滚动到当前元素位置
-            element.evaluate("element => element.scrollIntoView()")
-            Author = element.query_selector(Xpath_Author).text_content()
-            # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
-            QuestionHtml = element.query_selector(Xpath_Question).inner_html()
-            Question = MarkDownMaker.handle(QuestionHtml)
-            with open(MDFileDir, mode="a", encoding="utf-8") as f:
-                f.write("##### " + Author + "\n" + Question + "----" + "\n")
-
-
-# 获取专栏页信息
-def GetZhuanLanInfo(WritePage):
-    # 因答案内容可能包含图片，故此处使用HTML2Text提取富文本
-    Article_Title_Html = WritePage.query_selector(Xpath_Article_Title).inner_html()
-    Article_Title = MarkDownMaker.handle(Article_Title_Html)
-    Article_Content_Html = WritePage.query_selector(Xpath_Article_Content).inner_html()
-    Article_Content = MarkDownMaker.handle(Article_Content_Html)
-    with open(MDFileDir, mode="a", encoding="utf-8") as f:
-        f.write("### " + Article_Title + "\n" + Article_Content + "\n\n" + "----" + "\n")
+# 获取抖音搜索信息
+def GetSearchResultsInfo(WritePage):
+    # 获取所有搜索结果list
+    Elements = WritePage.query_selector_all(Xpath_List)
+    Author_Infos = []
+    for element in Elements:
+        # element.evaluate("element => element.scrollIntoView()")
+        Author = element.query_selector(Xpath_Author).text_content()
+        if element.query_selector(Xpath_Shop) != None:
+            Shop = element.query_selector(Xpath_Shop).text_content()
+        else:
+            Shop = ""
+        if element.query_selector(Xpath_Thrumb) != None:
+            Thrumb = element.query_selector(Xpath_Thrumb).text_content().replace("获赞", "")
+            Thrumb = pwm.convert_wan_to_number(Thrumb)
+        else:
+            Thrumb = ""
+        if element.query_selector(Xpath_Follower) != None:
+            Follower = element.query_selector(Xpath_Follower).text_content().replace("粉丝", "")
+            Follower = pwm.convert_wan_to_number(Follower)
+        else:
+            Follower = ""
+        if element.query_selector(Xpath_Intro) != None:
+            Intro = element.query_selector(Xpath_Intro).text_content()
+        else:
+            Intro = ""
+        Author_Infos.append(
+            {"Author": Author, "Shop": Shop, "Thrumb": Thrumb, "Follower": Follower, "Intro": Intro}
+        )
+    return Author_Infos
 
 
 def run(playwright: Playwright) -> None:
-    global MarkDownMaker, MDFileDir  # 文件名称（含路径）
+    global CSVFileDir  # 文件名称（含路径）
     WebSites = [
-        "https://www.zhihu.com/question/21931620",
-        "https://www.zhihu.com/question/485142113",
+        "https://www.douyin.com/search/%E5%A4%A7%E6%9D%BF?aid=3a03db05-a799-4870-8e28-1f1e5ea221ee&source=normal_search&type=user",
     ]
     SaiBrowser, SaiContext, SaiPages = pwm.Initial_Chrome(
         playwright, WebSites, AbortPic=False, WaitLoad=False
     )
     for SaiPage in SaiPages:
-        MarkDownMaker, MDFileDir = pwm.Initial_EachWeb_MDFile(SaiPage)
+        CSVFileDir = pwm.Initial_CSVFile(CSVDir, CSVFile)
         SaiPage.bring_to_front()
-        # 专栏页面
-        if "zhuanlan" in SaiPage.url:
-            GetZhuanLanInfo(SaiPage)
-        # 问答页面
-        elif "question" in SaiPage.url:
-            # 滚动搜索页获取更多数据
-            pwm.Page_Scroll(SaiPage, 1)
-            GetQAInfo(SaiPage)
+        pwm.Page_Scroll(SaiPage, 0)
+        Author_Infos = GetSearchResultsInfo(SaiPage)
+        pwm.Write_to_CSV(Author_Infos, CSVFileDir)
         # 收尾
         SaiPage.close()
     SaiContext.close()
