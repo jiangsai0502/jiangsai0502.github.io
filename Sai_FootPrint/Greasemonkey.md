@@ -62,6 +62,7 @@
    > >
    > >    ```javascript
    > >    b1 = document.createElement('button')
+   > >    b1.id = 'tail'
    > >    b1.textContent='我插在尾上'
    > >    temp.appendChild(b1)
    > >    ```
@@ -70,10 +71,11 @@
    > >
    > >    ```javascript
    > >    b2 = document.createElement('button')
+   > >    b1.id = 'head'
    > >    b2.textContent='我插在头上'
    > >    temp.insertBefore(b2,temp.children[0])
    > >    ```
-   > >
+   > >    
    > >    > `DOM.insertBefore( [要插入的DOM节点] , [被插队的DOM节点])`，插在`被插队的Dom节点`之前
    >
    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311101409433.png)

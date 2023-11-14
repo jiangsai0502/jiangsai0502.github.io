@@ -119,32 +119,27 @@ Vscode配置
    >    > 整数、小数在 JS 中都是number
    >    >
    >    > ```js
-   >    > // 类型判断
-   >    > console.log(typeof 1)  // number
-   >    > console.log(typeof 1.1)  // number
+   >    > console.log(typeof 1)  // 类型判断：number
+   >    > console.log(typeof 1.1)  // 类型判断：number
    >
    > 3. 字符串
    >
    >    > ```js
-   >    > // 类型判断
-   >    > console.log(typeof 'Hello')  // string
-   >    > // 字符串长度
-   >    > console.log('Hello'.length)  // 5
-   >    > // 大小写转换
-   >    > console.log('Hello'.toUpperCase())  // HELLO
-   >    > console.log('Hello'.toLowerCase())  // hello
-   >    > // 字符串截取：从下标3到末尾
-   >    > console.log('Hello'.substr(3))  // lo
-   >    > // 字符串截取：从下标1到下标3
-   >    > console.log('Hello'.substr(1,3))  // ell
+   >    > console.log(typeof 'Hello')  // 类型判断：string
+   >    > console.log('Hello'.length)  // 字符串长度：5
+   >    > console.log('Hello'.toUpperCase())  // 大写转换HELLO
+   >    > console.log('Hello'.toLowerCase())  // 小写转换hello
+   >    > console.log('Hello'.substr(3))  // 字符串截取：从下标3到末尾：lo
+   >    > console.log('Hello'.substr(1,3))  // 字符串截取：从下标1到下标3：ell
+   >    > console.log('Hello, world'.split(", "))  // 字符串分割：['Hello', 'world']
+   >    > 
    >    > // 多行字符串
+   >    > let name = 'Will'
    >    > let msg_MoreLine = `Hello
    >    > world
    >    > guys`
    >    > console.log(msg_MoreLine)
-   >    > // 模板字符串
-   >    > let name = 'Will'
-   >    > console.log(`你好啊${name}`)  // 你好啊Will
+   >    > console.log(`你好啊 ${name}`)  // 模板字符串：你好啊 Will
    >    > ```
    >
    > 4. 布尔值
@@ -169,10 +164,10 @@ Vscode配置
    >    >
    >    > ```js
    >    > let temp_Array = [1, 2, 'Hi', "Jiang Sai", null, true]
-   >    > // 数组取值
-   >    > console.log(temp_Array[3])
-   >    > // 数组长度
-   >    > console.log(temp_Array.length)
+   >    > console.log(typeof temp_Array)  // 类型判断：object
+   >    > console.log(Array.isArray(temp_Array))  // 判断是否为数组类型：true
+   >    > console.log(temp_Array[3])  // 数组取值：Jiang Sai
+   >    > console.log(temp_Array.length)  // 数组长度：6
    >    > // 数组增加元素：splice(index, 0 , let) 在下标index处增加元素let
    >    > temp_Array.splice(2, 0, 'will');
    >    > console.log(temp_Array)
@@ -188,12 +183,9 @@ Vscode配置
    >    > }
    >    > 
    >    > //以下不常用
-   >    > // 数组截取：从下标3到末尾
-   >    > console.log(temp_Array.slice(3))
-   >    > // 数组截取：从下标1到下标3
-   >    > console.log(temp_Array.slice(1, 3))
-   >    > // 数组增加元素：头部增加多个元素
-   >    > temp_Array.unshift(520, 123)
+   >    > console.log(temp_Array.slice(3))  // 数组截取：从下标3到末尾
+   >    > console.log(temp_Array.slice(1, 3))  // 数组截取：从下标1到下标3
+   >    > temp_Array.unshift(520, 123)  // 数组增加元素：头部增加多个元素
    >    > console.log(temp_Array)
    >    > // 数组增加元素：尾部增加多个元素
    >    > temp_Array.push(250, 321)
@@ -219,6 +211,7 @@ Vscode配置
    >    >     age: 35,
    >    >     tags: ['Python', 'SQL', 'JS']
    >    > }
+   >    > console.log(typeof temp_Dict)  // 类型判断：object
    >    > // 遍历对象
    >    > for (const [key, value] of Object.entries(temp_Dict)) {
    >    >     console.log(`${key}: ${value}`);
@@ -228,26 +221,47 @@ Vscode配置
    >    > }
    >    > ```
    >
-   > 8. Set（无序不重复集合）
+   > 8. 对象（字典）和Json的转换
    >
    >    > ```js
-   >    > let temp = new Set([1, 2, 1, 3]);
-   >    > // 新增元素
-   >    > temp.add(4)
-   >    > // 删除元素
-   >    > temp.delete(1)
-   >    > // 判断set是否包含元素
-   >    > console.log(temp.has(1));
-   >    > // 输出set所有元素
-   >    > console.log(Array.from(temp));
+   >    > let temp_Dict = {
+   >    >     name: 'Will',
+   >    >     age: 35,
+   >    >     tags: ['Python', 'SQL', 'JS']
+   >    > }
+   >    > console.log(temp_Dict.tags)
+   >    > let temp_Json = JSON.stringify(temp_Dict)  // 对象可转换成Json
+   >    > console.log(temp_Json)
+   >    > let temp_Json_Parse = JSON.parse(temp_Json)  // Json可解析成对象
+   >    > console.log(temp_Json_Parse)
+   >    > ```
+   >    >
+   >    > 对象和Json的区别
+   >    >
+   >    > > 对象：`temp_Dict = { name: 'Will', age: 35, tags: ['Python', 'SQL', 'JS'] }`
+   >    > >
+   >    > > Json：`temp_Json = {"name":"Will","age":35,"tags":["Python","SQL",798]}`
+   >    > >
+   >    > > Json的key必须全都带双引号
+   >
+   > 9. Set（无序不重复集合）
+   >
+   >    > ```js
+   >    > let temp_Set = new Set([1, 2, 1, 3]);
+   >    > console.log(typeof temp_Set)  // 类型判断：object
+   >    > temp_Set.add(4)  // 新增元素
+   >    > temp_Set.delete(1)  // 删除元素
+   >    > console.log(temp_Set.has(1))  // 判断set是否包含元素
+   >    > console.log(Array.from(temp_Set))  // 输出set所有元素
+   >    > 
    >    > // 3种遍历set所有元素
-   >    > temp.forEach(function (element) {
+   >    > temp_Set.forEach(function (element) {
    >    >     console.log(element);
    >    > })
-   >    > temp.forEach((element) => {
+   >    > temp_Set.forEach((element) => {
    >    >     console.log(element);
    >    > });
-   >    > for (let element of temp) {
+   >    > for (let element of temp_Set) {
    >    >     console.log(element);
    >    > }
    >    > ```
@@ -257,7 +271,7 @@ Vscode配置
    > ```js
    > let num = 1
    > 
-   > // 三目运算：结果 = 条件判断 ？ 条件成立的值 : 条件不成立的值
+   > // 三目运算：结果 = 条件判断 ? 条件成立的值 : 条件不成立的值
    > let result = num > 5 ? '条件成立' : '条件不成立';
    > console.log(`结果是 ${result}`);
    > 
@@ -302,94 +316,173 @@ Vscode配置
 
 7. 函数
 
-   > > 对象外叫函数，对象内叫方法
+   > * 普通函数
    >
-   > ```js
-   > // 普通函数
-   > function Func_Normal(x) {
-   >     if (x > 0) {
-   >         console.log(`${x}是正数`);
-   >     } else {
-   >         console.log(`${x}是负数`);
-   >     }
-   > }
-   > Func_Normal(-5)
-   > // 普通函数超标传参
-   > function Func_Normal_Args(x) {
-   >     console.log(`函数认的参数是： ${x}`);
-   >     for (let i = 0; i < arguments.length; i++) {
-   >         console.log('函数的全部参数有：' + arguments[i])
-   >     }
-   > }
-   > Func_Normal_Args(1,2,3)
-   > ```
+   >   ```js
+   >   function Func_Normal(x) {
+   >       if (x > 0) {
+   >           console.log(`${x}是正数`);
+   >       } else {
+   >           console.log(`${x}是负数`);
+   >       }
+   >   }
+   >   Func_Normal(-5)
+   >   ```
    >
-   > >匿名函数又叫立即执行函数；因为匿名，所以不能被调用；因为不能被调用，所以不立即执行的话就没意义；因为立即执行，所以在执行完之后就会被销毁
+   >   * 普通函数传入多于定义的参数时，使用arguments获取所有参数
    >
-   > ```js
-   > // 匿名函数
-   > (function (x) {
-   >     if (x > 0) {
-   >         console.log(`${x}是正数`);
-   >     } else {
-   >         console.log(`${x}是负数`);
+   >     ```js
+   >     function Func_Normal_Args(x) {
+   >         console.log(`函数认的参数是： ${x}`);
+   >         for (let i = 0; i < arguments.length; i++) {
+   >             console.log('函数的全部参数有：' + arguments[i])
+   >         }
    >     }
-   > }
-   > )(-5)
-   > // 匿名函数应用场景
-   > // 函数表达式
-   > let Func_Anon = function () {
-   >     console.log(`这是个函数表达式`);
-   > }
-   > Func_Anon()
-   > // 对象方法
-   > let temp_Dict = {
-   >     name: 'Will',
-   >     scream: function () {
-   >         console.log(`这是个对象方法`);
+   >     Func_Normal_Args(1,2,3)
+   >     ```
+   >
+   > * 匿名函数
+   >
+   >   > * 又叫立即执行函数
+   >   > * 因为匿名，所以不能被调用；因为不能被调用，所以不立即执行的话就没意义；因为立即执行，所以在执行完之后就会被销毁
+   >
+   >   ```js
+   >   (function (x) {
+   >       if (x > 0) {
+   >           console.log(`${x}是正数`);
+   >       } else {
+   >           console.log(`${x}是负数`);
+   >       }
+   >   })(-5)
+   >   ```
+   >
+   >   * 匿名函数应用场景
+   >
+   >     ```js
+   >     // 函数表达式
+   >     let Func_Anon = function () {
+   >         console.log(`这是个函数表达式`);
    >     }
-   > }
-   > temp_Dict.scream()
-   > // 按钮点击事件
-   > button.onclick = function () {
-   >     console.log(`这是个点击事件`);
-   > 
-   > }
-   > // 回调函数
-   > setInterval(function () {
-   >     console.log("这是个回调函数，每1秒执行1次");
-   > }, 1000);
-   > ```
+   >     Func_Anon()
+   >     
+   >     // 对象方法，函数在对象外叫函数，函数在对象内叫方法
+   >     let temp_Dict = {
+   >         name: 'Will',
+   >         scream: function () {
+   >             console.log(`这是个对象方法`);
+   >         }
+   >     }
+   >     temp_Dict.name  // 属性直接引用
+   >     temp_Dict.scream()  //方法需要加括号
+   >     
+   >     // 按钮点击事件
+   >     button.onclick = function () {
+   >         console.log(`这是个点击事件`);
+   >     
+   >     }
+   >     
+   >     // 回调函数
+   >     setInterval(function () {
+   >         console.log("这是个回调函数，每1秒执行1次");
+   >     }, 1000);
 
-8. BOM
-
-   > ```js
-   > // window：当前浏览器窗口
-   > // 窗口内边框高度
-   > console.log(window.innerHeight)
-   > // 窗口内边框宽度
-   > console.log(window.innerWidth)
-   > // 窗口外边框高度
-   > console.log(window.outerHeight)
-   > // 窗口外边框高度
-   > console.log(window.outerWidth)
-   > 
-   > // screen：当前电脑屏幕
-   > // 屏幕宽度
-   > console.log(screen.width)
-   > // 屏幕高度
-   > console.log(screen.height)
-   > 
-   > // location：当前页面的URL信息
-   > // 页面重定向
-   > // location.assign('https://www.zhihu.com/question/23498580')
-   > ```
-
-9. DOM
+8. Date对象
 
    > ```js
+   > let now = new Date()
+   > console.log(now)  // 当前完整时间
+   > console.log(now.getFullYear())  // 年
+   > console.log(now.getMonth())  // 月（0-11）
+   > console.log(now.getDate())  // 日
+   > console.log(now.getDay())  // 星期几
+   > console.log(now.getHours())  // 时
+   > console.log(now.getMinutes())  // 分
+   > console.log(now.getSeconds())  // 秒
+   > console.log(now.getTime())  // 时间戳
+   > console.log(now.toLocaleString())  // 当地时间：年月日 时分秒
    > ```
-   >
+
+9. 类
+
+   > ```js
+   > class Father {
+   >     constructor(name, age) {
+   >         this.name = name
+   >         this.age = age
+   >     }
+   >     say() {
+   >         console.log(`我是爸爸，我叫 ${this.name}`)
+   >     }
+   > }
    > 
+   > class Son extends Father {
+   >     constructor(name, age, like) {
+   >         super(name, age)
+   >         this.like = like
+   >     }
+   >     shout() {
+   >         console.log(`我是儿子，我叫 ${this.name}，今年 ${this.age}`)
+   >     }
+   >     hobby() {
+   >         console.log(`我的兴趣是 ${this.like}`)
+   >     }
+   > }
+   > let Old_Will = new Father('Will')
+   > let Young_Jason = new Son('Jason', '吹水')
+   > ```
+
+10. BOM对象
+
+   > * window：当前浏览器窗口
+   >
+   >   ```js
+   >   console.log(window.innerHeight)  // 窗口内边框高度
+   >   console.log(window.innerWidth)  // 窗口内边框宽度
+   >   console.log(window.outerHeight)  // 窗口外边框高度
+   >   console.log(window.outerWidth)  // 窗口外边框高度
+   >   ```
+   >
+   > * screen：当前电脑屏幕
+   >
+   >   ```js
+   >   console.log(screen.width)  // 屏幕宽度
+   >   console.log(screen.height)  // 屏幕高度
+   >   ```
+   >
+   > * location：当前页面的URL信息
+   >
+   >   ```js
+   >   location.href  // 当前网页的网址
+   >   location.host  // 当前网站主机名
+   >   location.reload()  // 当前网页刷新
+   >   location.assign('https://www.zhihu.com')  // 页面重定向
+   >   ```
+   >
+   > * document：当前页面
+   >
+   >   ```js
+   >   document.title = 'Sai'  // 修改页面标题
+   >   console.log(document.cookie)  // 获取页面cookie（病毒程序，获取对方的cookie可以免登陆做很多事）
+   >   ```
+   >
+   > * history：页面历史
+   >
+   >   ```js
+   >   history.back()  // 页面后退
+   >   history.forward()  // 页面前进
+   >   ```
+
+11. DOM对象（增删改查）
+
+    > 获取
+    >
+    > ```js
+    > ```
+    >
+    > 新增
+    >
+    > 修改
+    >
+    > 删除
 
 
