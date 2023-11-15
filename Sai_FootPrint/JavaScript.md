@@ -43,6 +43,47 @@
 
    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311151554165.png)
 
+3. [调试技巧](https://www.bilibili.com/video/BV1zu4y127mu)
+
+   1. 普通断点
+
+   2. 条件断点
+
+      > 断点上右键 - Edit breakpoint - 设置i === 5，即只在i的值是5时，暂停
+      >
+      > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311151859540.png)
+
+   3. 调试方式
+
+      ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311151830074.png)
+
+      1. `① 恢复 (Resume）`：执行，直到下一个断点
+
+      2. `② 跨步(step over）`：运行下一条指令，不会进入函数
+
+      3. `③ 步入(step into）`：运行下一条指令，会进入函数；
+
+      4. `④ 步出 (step out）`：执行完当前函数，回到③步入之前的代码
+
+         > 使用`③步入`偶然进入到一个函数，但是又想中途跳出，可使用 `④步出`
+
+      5. `⑤ 单步 (step）`：同`③ 步入`
+
+         > 同步代码中与`③步入` 类似，异步上有区别
+
+      6. 使用场景：当我们。
+         忽略调试文件
+         debugger
+
+      7. 
+
+      8. 和步入(step into）异步执行的区别
+
+   4. 
+
+      
+
+
 #### 引入js
 
 1. 内部引入
@@ -327,12 +368,13 @@
 
    * 匿名函数
 
-     > * 又叫立即执行函数；因为匿名，所以不能被调用；因为不能被调用，所以不立即执行的话就没意义
+     > * 写法：`(参数) => {} `，完全等于 `function(参数) {}`
+     > * 又叫立即执行函数；因为没有函数名，因此不能被调用，故而不立即执行就没意义
      > * 用途：如果一个函数仅使用一次，即用即弃，就没必要给它命名
-
+     
      ```js
      // 只在页面加载时运行的逻辑
-     (function (x) {
+     ((x) => {
          if (x > 0) {
              console.log(`${x}是正数`);
          } else {
@@ -364,7 +406,34 @@
 8. 类
 
    ```js
+   class Person {
+       // 构造函数
+       constructor(name, age) {
+           this.name = name;
+           this.age = age;
+       }
    
+       greet() {
+           console.log(`This's ${this.name}, I'm ${this.age}`);
+       }
+   }
+   // 继承
+   class Student extends Person {
+       constructor(name, age, course) {
+           super(name, age);
+           this.course = course;
+       }
+   
+       study() {
+           console.log(`I'm studying ${this.course}.`);
+       }
+   }
+   let person1 = new Person('Alice', 30);
+   person1.greet();
+   
+   let student1 = new Student('Bob', 20, 'JavaScript');
+   student1.greet();
+   student1.study();
    ```
 
 9. BOM对象

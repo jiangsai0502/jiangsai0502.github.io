@@ -9,40 +9,37 @@
 
 <body>
     <script>
-        let temp1 = 2 > 1 && 3 > 4 ? "全部为真" : "任意一方为假"
-        console.log(temp1)
-        let temp2 = 2 > 1 || 3 > 4 ? "任意一方为真" : "全部为假"
-        console.log(temp2)
-        let temp3 = !2 > 1 ? "非真" : "非假"
-        console.log(temp3)
-        let temp4 = 2 === "2" ? "绝对等于" : "不绝对等于"
-        console.log(temp4)
-        let temp5 = 2 !== "2" ? "绝对不等于" : "不绝对不等于"
-        console.log(temp5)
-        class Father {
+        class Person {
+            // 构造函数
             constructor(name, age) {
-                this.name = name
-                this.age = age
+                this.name = name;
+                this.age = age;
             }
-            say() {
-                console.log(`我是爸爸，我叫 ${this.name}`)
-            }
-        }
 
-        class Son extends Father {
-            constructor(name, age, like) {
-                super(name, age)
-                this.like = like
-            }
-            shout() {
-                console.log(`我是儿子，我叫 ${this.name}，今年 ${this.age}`)
-            }
-            hobby() {
-                console.log(`我的兴趣是 ${this.like}`)
+            greet() {
+                console.log(`This's ${this.name}, I'm ${this.age}`);
             }
         }
-        let Old_Will = new Father('Will')
-        let Young_Jason = new Son('Jason', '吹水')
+        // 继承
+        class Student extends Person {
+            constructor(name, age, course) {
+                super(name, age);
+                this.course = course;
+            }
+
+            study() {
+                console.log(`I'm studying ${this.course}.`);
+            }
+        }
+        let person1 = new Person('Alice', 30);
+        person1.greet();
+
+        let student1 = new Student('Bob', 20, 'JavaScript');
+        student1.greet();
+        student1.study();
+
+
+
     </script>
 </body>
 
