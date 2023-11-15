@@ -181,9 +181,10 @@
 >    2. Anaconda Extension Pack - 代码提示增强
 >    3. Python Extension Pack(Don Jayamanne) - 代码补全
 >    4. Error Lens - 错误实时提示
->    5. Live Server - 保存即可实施预览html（右键Open with live server）
->    6. Auto Rename Tag - 同步修改html前后标签名
->    7. Black Formatter - python格式美化工具
+>    5. Highlight Matching Tag - 相同选中时高亮
+>    6. Live Server - 保存即可实施预览html（右键Open with live server）
+>    7. Auto Rename Tag - 同步修改html前后标签名
+>    8. Black Formatter - python格式美化工具
 >
 > 2. 查看Python版本路径
 >
