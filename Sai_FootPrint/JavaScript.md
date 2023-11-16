@@ -30,11 +30,14 @@
 
    1. 在线上页面调试自己的js代码
 
+      > 都不用vscode，用`Snippets`  写代码族裔
+
       1. 进入`Snippets` ：开发者工具 - `Sources` - 左侧导航中的找到`Snippets`
       2. 编写代码：`New Snippet` - 命名 - 编辑器中粘贴我的 JavaScript 代码
       3. 设置断点：编辑器行号旁边的空白处来设置断点
-      4. 运行`Snippets` ：
+      4. 运行`Snippets` 
       5. 运行代码：编辑器右下角“Run”执行Snippet；左侧导航的Snippet 文件上右击“Run”
+
    2. 在线上页面调试页面上的js代码
 
       1. 进入`Page` ：开发者工具 - `Sources` - 左侧导航中的找到`Page`，选择js文件
@@ -71,18 +74,6 @@
 
          > 同步代码中与`③步入` 类似，异步上有区别
 
-      6. 使用场景：当我们。
-         忽略调试文件
-         debugger
-
-      7. 
-
-      8. 和步入(step into）异步执行的区别
-
-   4. 
-
-      
-
 
 #### 引入js
 
@@ -115,13 +106,17 @@
 
 #### 基础语法
 
-1. 用户输入
+1. 用户输入 `prompt`  `confirm`
 
    ```js
-   prompt("输入一个字符串")
+   let temp_prompt = prompt("输入一个字符串")
+   console.log(`用户输入的是：${temp_prompt}`)
+   // 确定：true，取消：false
+   let temp_confirm = confirm('今天心情好么')
+   console.log(`用户输入的是：${temp_confirm}`)
    ```
 
-2. 程序输出
+2. 程序输出 `alert`
 
    ```js
    alert('前端弹窗的输出内容')
@@ -340,52 +335,104 @@
    ```
 
 6. 函数
+   | 原始形式                                                     | 箭头形式                                                     |
+   | ------------------------------------------------------------ | ------------------------------------------------------------ |
+   | 带名函数<br />function Func_Name(x) {<br/>    console.log(`x 是${x}`);<br/>}<br/>Func_Name(-5) | 带名 - 箭头函数<br />const fun_name = (x) => {<br/>    console.log(`x 是${x}`);<br/>}<br/>Func_Name(-5) |
+   | 匿名函数<br />// 声明时不赋值，仅用于立即执行<br/>(function (x, y) {<br/>    return x*(y+1);<br/>})(-5, 5) | 匿名函数<br />// 声明时不赋值，仅用于立即执行<br/>((x, y) => {<br/>    return x*(y+1);<br/>})(-5, 5) |
+   | 匿名函数<br />// 声明时赋值，用法同带名函数<br/>let temp = function (x, y) {<br/>    return x*(y+1);<br/>}<br/>temp(-5, 5) | 匿名函数<br />// 声明时赋值，用法同带名函数<br/>let temp = (x, y) => {<br/>    return x*(y+1);<br/>}<br/>temp(-5, 5) |
+   | // 事件监听<br />// click发生时，执行function(e) {} <br/>sai.addEventListener('click', function(e) {<br/>    console.log('「监听事件」点了我一下')<br/>}) | // 事件监听<br />// click发生时，执行function(e) {} <br/>sai.addEventListener('click', (e) => {<br/>    console.log('「监听事件」点了我一下')<br/>}) |
 
-   * 普通函数
-
-     ```js
-     function Func_Normal(x) {
-         if (x > 0) {
-             console.log(`${x}是正数`);
-         } else {
-             console.log(`${x}是负数`);
-         }
-     }
-     Func_Normal(-5)
-     ```
-
-     >普通函数传入多于定义的参数时，使用arguments获取所有参数
+   * 带名函数
 
      ```js
-     function Func_Normal_Args(x) {
-         console.log(`函数认的参数是： ${x}`);
-         for (let i = 0; i < arguments.length; i++) {
-             console.log('函数的全部参数有：' + arguments[i])
-         }
+     function Func_Name(x) {
+         console.log(`x 是${x}`);
      }
-     Func_Normal_Args(1,2,3)
+     Func_Name(-5)
      ```
 
    * 匿名函数
 
-     > * 写法：`(参数) => {} `，完全等于 `function(参数) {}`
      > * 又叫立即执行函数；因为没有函数名，因此不能被调用，故而不立即执行就没意义
      > * 用途：如果一个函数仅使用一次，即用即弃，就没必要给它命名
-     
+
      ```js
-     // 只在页面加载时运行的逻辑
-     ((x) => {
-         if (x > 0) {
-             console.log(`${x}是正数`);
-         } else {
-             console.log(`${x}是负数`);
-         }
-     })(-5)
-     // 临时增加的事件
-     document.addEventListener('click', function() {
-         console.log('元素被点击');
-     });
+     // 声明时不赋值，仅用于立即执行
+     (function (x, y) {
+         return x*(y+1);
+     })(-5, 5)
      ```
+
+     ```js
+     // 声明时赋值，用法同带名函数，不知意义何在
+     let temp = function (x, y) {
+         return x*(y+1);
+     }
+     temp(-5, 5)
+
+   * 箭头函数
+
+     ```js
+     // 声明时不赋值，仅用于立即执行
+     ((x, y) => {
+         return x*(y+1);
+     })(-5,5)
+     ```
+
+     ```js
+     // 声明时赋值，用法同带名函数，不知意义何在
+     let temp = ((x, y) => {
+         return x*(y+1);
+     })(-5,5)
+     temp(-5, 5)
+     ```
+
+     * 当箭头函数只有一个参数时
+
+       * 正常的写法
+
+         ```js
+         ((x) => {
+             return x;
+         })(5)
+
+       * 省略参数括号的写法
+
+         ```js
+         (x => {
+             return x;
+         })(5)
+         ```
+
+     * 当箭头函数的函数体只有一个return时
+
+       * 正常的写法
+
+         ```js
+         ((x, y) => {
+             return x*(y+1);
+         })(-5, 6)
+         ```
+
+       * 省略 `return` 关键字，省略函数体花括号的写法
+
+         ```js
+         ((x, y) => x*(y+1))(-5, 6)
+         ```
+
+     * 当箭头函数只有一个参数，且函数体只有一个return时
+
+       * 正常的写法
+
+         ```js
+         ((x) => {
+             return x*(x+1);
+         })(5)
+
+       * 省略参数括号，省略 `return` 关键字，省略函数体花括号的写法
+
+         ```js
+         (x => x*(x+1))(5)
 
 7. Date对象
 
@@ -438,25 +485,28 @@
 
 9. BOM对象
 
-   * window：当前浏览器窗口
+   * window：当前浏览器窗口，**以下 `window.` 均可省略**
 
      ```js
-     console.log(window.innerHeight)  // 窗口内边框高度
-     console.log(window.innerWidth)  // 窗口内边框宽度
-     console.log(window.outerHeight)  // 窗口外边框高度
-     console.log(window.outerWidth)  // 窗口外边框高度
+     window.innerHeight  // 窗口内边框高度
+     window.innerWidth  // 窗口内边框宽度
+     window.outerHeight  // 窗口外边框高度
+     window.outerWidth  // 窗口外边框高度
+     // 判断浏览器当前是否有temp_url标签，若没有则新建temp_url标签，并打开https://www.baidu.com/
+     window.open('https://www.baidu.com/','temp_url')  
+     ```
 
    * screen：当前电脑屏幕
 
      ```js
-     console.log(screen.width)  // 屏幕宽度
-     console.log(screen.height)  // 屏幕高度
+     screen.width  // 屏幕宽度
+     screen.height  // 屏幕高度
 
    * location：当前页面的URL信息
 
      ```js
-     location.href  // 当前网页的网址
-     location.host  // 当前网站主机名
+     location.href  // 当前网页的网址：'https://baidu.rudon.cn/'
+     location.host  // 当前网站主机名：'baidu.rudon.cn'
      location.reload()  // 当前网页刷新
      location.assign('https://www.zhihu.com')  // 页面重定向
 
@@ -464,7 +514,7 @@
 
      ```js
      document.title = 'Sai'  // 修改页面标题
-     console.log(document.cookie)  // 获取页面cookie（病毒程序，获取对方的cookie可以免登陆做很多事）
+     document.cookie  // 获取页面cookie（病毒程序，获取对方的cookie可以免登陆做很多事）
 
    * history：页面历史
 
@@ -557,150 +607,264 @@
       Temp.getAttribute('class')  // 获取Temp节点自身的class属性值  // 'bili'
       Temp.setAttribute('src', 'wula')  // 首先判断Temp节点是否有src属性，若没有则新增，若有则将src属性值设为wula
       Temp.removeAttribute('src')  // 删除Temp节点的src属性
+  ```
 
-12. Dom事件
+#### 事件注册方式
 
-    1. 添加鼠标事件
+```js
+// 当前temp为：<img src="/img/bd.png"">，要为其添加点击事件
+let node_img = document.querySelector("img")
+```
 
-       * **`click`**：单击节点时触发
-       * **`dblclick`**：双击节点时触发
-       * **`mousedown`**：在节点上按下鼠标时触发
-       * **`mouseup`**：在节点上释放鼠标时触发
-       * **`mousemove`**：鼠标移动时触发
-       * **`mouseover`**：鼠标移入元素上方时触发
-       * **`mouseout`**：鼠标移出元素上方时触发
+* 方法一：添加 onclick 事件属性
 
-       ```js
-       Temp = document.querySelector("img")
-       // Temp节点被鼠标单击时触发
-       Temp.addEventListener('click', function() {
-           console.log('元素被点击');
-       });
-       // Temp节点被鼠标双击时触发
-       Temp.addEventListener('dblclick', function() {
-           console.log('元素被双击');
-       });
-       // Temp节点上有鼠标按下时触发
-       Temp.addEventListener('mousedown', function() {
-           console.log('鼠标按下');
-       });
-       // Temp节点上有鼠标释放时触发
-       Temp.addEventListener('mouseup', function() {
-           console.log('鼠标释放');
-       });
-       // Temp节点上有鼠标移动时触发
-       Temp.addEventListener('mousemove', function(event) {
-           console.log('鼠标坐标：', event.clientX, event.clientY);
-       });
-       // Temp节点上鼠标进入时触发
-       Temp.addEventListener('mouseover', function() {
-           console.log('鼠标悬停在元素上方');
-       });
-       // Temp节点上鼠标离开时触发
-       Temp.addEventListener('mouseout', function() {
-           console.log('鼠标离开元素');
-       });
-       ```
+  * 带名函数
 
-       * 实战案例：在屏幕上，鼠标右下方，实时展示鼠标的坐标
+    ```js
+    // 带名函数
+    node_img.setAttribute('onclick',"fun_name()")
+    function fun_name(){
+      console.log('「带名函数」点了')
+    }
+    // 带名 - 箭头函数
+    node_img.setAttribute('onclick', "fun_name()");
+    const fun_name = () => {
+      console.log('「带名函数」点了');
+    };
+    ```
 
-         ```js
-         // 创建用于显示坐标的元素（如果已经存在则跳过此步骤）
-         var mouse_XY = document.createElement('div');
-         mouse_XY.id = 'mouse_XY';
-         mouse_XY.style.position = 'absolute';
-         mouse_XY.style.backgroundColor = 'lightgrey';
-         mouse_XY.style.padding = '5px';
-         mouse_XY.style.border = '1px solid black';
-         document.body.appendChild(mouse_XY);
-         
-         // 鼠标在页面上移动时触发
-         document.addEventListener('mousemove', function (event) {
-             // 更新坐标显示元素的内容
-             mouse_XY.textContent = '鼠标坐标：' + event.clientX + ', ' + event.clientY;
-             // 更新坐标显示元素的位置
-             mouse_XY.style.left = (event.clientX + 10) + 'px';
-             mouse_XY.style.top = (event.clientY + 10) + 'px';
-         });
+    > `function fun_name()` 替换成 `const fun_name = () => `
 
-    2. 添加键盘事件
+  * 匿名函数
 
-       * **`keydown`** ：任一键「被按下」时触发
+    ```js
+    // 匿名函数
+    node_img.onclick = function (){
+      console.log('「匿名函数1」点了')
+    }
+    // 匿名 - 箭头函数
+    node_img.onclick = () => {
+      console.log('「匿名函数1」点了');
+    };
+    ```
 
-         ```js
-         // 为「页面document」添加键盘事件：Escape 和 m 键被按下时触发
-         document.addEventListener('keydown', function(event) {
-             if (event.key === 'Escape') {
-                 document.querySelector("img").style.visibility = 'hidden';
-                 console.log('Esc键被按下，消息隐藏');
-             }else if (event.key === 'm') {
-                 document.querySelector("#subBtn").value = '小样';
-                 console.log('Esc键被按下，消息隐藏');
-             }
-         });
-         // 为「某个div」添加键盘事件
-         Temp = document.querySelector("img")
-         Temp.addEventListener('keydown', function(event){
-         }
+    >`function ()` 替换成 `() => `
 
-       * **`keyup`** ：任一键「弹起」时触发
+    ```js
+    匿名函数 - 简写
+    node_img.setAttribute('onclick',"console.log('「匿名函数2」点了')")
 
-         ```js
-         // 为「页面document」添加键盘事件：Escape 和 m 键弹起时触发
-         document.addEventListener('keyup', function(event) {
-             if (event.key === 'Escape') {
-                 document.querySelector("img").style.visibility = 'visible';
-                 console.log('Esc键被按下，消息隐藏');
-             }else if (event.key === 'm') {
-                 document.querySelector("#subBtn").value = '百度一下';
-                 console.log('Esc键被按下，消息隐藏');
-             }
-         });
-         // 为「某个div」添加键盘事件
-         Temp = document.querySelector("img")
-         Temp.addEventListener('keyup', function(event){
-         }
-         ```
+* 方法二：添加 click 事件监听
 
-         * 实战案例：若当前网页的URL 以https://www.baidu.com/开头，则组织某些快捷键
+  ```js
+  // click 是事件，function(event) {} 是事件发生时执行的函数
+  node_img.addEventListener('click', function(event) {
+      console.log('「监听事件」点了我一下')
+  })
+  // click 是事件，event => {} 是事件发生时执行的箭头函数
+  node_img.addEventListener('click', (event) => {
+    console.log('「监听事件」点了我一下');
+  })
+  ```
 
-           ```js
-           // 判断当前网址
-           if (window.location.href.startsWith("https://www.baidu.com/")) {
-               // 监听键盘事件 keydown
-               document.addEventListener('keydown', function(event) {
-                   // 检查是否按下了 Command + S
-                   if (event.metaKey && event.key === 's') {
-                       // 阻止默认的保存行为
-                       event.preventDefault();
-                       console.log('执行自定义操作');
-                   }
-               });
-           }
-           ```
+  > 同上匿名函数： `function(event)` 替换成 `(event) => `
 
-           >`control` ：对应 `e.ctrlKey` 
-           >`shift` ：对应 `e.shiftKey` ，使用 `shift + 某个按键` 时需将`event.key === 'S'`设为大写，因为shift会影响大小写
-           >
-           >`command` ：对应  `e.metaKey` ，一般不单独使用`command`与其他键的组合，因为`command`+其他键的常规组合太多，会冲突
-           >
-           >`option` ：对应 `e.altKey` ，一般不单独使用`option`与其他键的组合，因为`option`+其他键会输出特殊字符
+1. 添加节点事件属性：`内联模式绑定事件`
 
-    3. 删除事件
+   > JavaScript代码混入HTML中，不利于维护
 
-       >只能删除普通函数的事件监听器，匿名函数的事件监听器无法删除
+   * `onclick`： **单击节点** 时触发
 
-       ```js
-       // 添加事件
-       head.addEventListener('click', SaiFun);
-       function SaiFun() {
-           alert('增加响应click事件');
-       }
-       // 移除事件
-       head.removeEventListener("click", SaiFun)
-       ```
+   * `ondblclick`： **双击节点** 时触发
 
+   * `onfocus`：节点 **获得焦点** 时触发
 
+   * `onblur`：节点 **失去焦点** 时触发
+
+   *  `onkeydown` ：节点上，任一键 **按下** 时触发
+
+   * `onkeyup` ：节点上，任一键 **弹起** 时触发
+
+   * `onchange`：节点的 **值发生变化** 时触发。用于`<input>`、`<select>`和`<textarea>`）
+
+   * `onmouseover` ：节点上方 **有鼠标经过** 时触发
+
+   * `onmouseout`：节点上方 **有鼠标移出** 时触发
+
+   * `onload` ：节点加载完成时触发。一般手工增加节点时能用到
+
+     ```js
+     let node_input = document.querySelector("input")
+     node_input.setAttribute('onclick',"console.log('input 点击')")
+     node_input.setAttribute('ondblclick',"console.log('input 双击')")
+     node_input.setAttribute('onfocus',"console.log('input 获得焦点')")
+     node_input.setAttribute('onblur',"console.log('input 失去焦点')")
+     node_input.setAttribute('onkeydown',"console.log('input 按键被按下')")
+     node_input.setAttribute('onkeyup',"console.log('input 按键释放')")
+     node_input.setAttribute('onchange',"console.log('input 值改变了')")
+     node_input.setAttribute('onmouseover',"this.style.backgroundColor='red'")
+     node_input.setAttribute('onmouseout',"this.style.backgroundColor=''")
+     node_input.setAttribute('onload',"console.log('input 加载完毕')")
+     ```
+
+2. 添加事件监听：`外联模式绑定事件`
+
+   1.  鼠标事件
+
+      * **`click`**：**单击节点** 时触发
+      * **`dblclick`**：**双击节点** 时触发
+      * **`mousedown`**：节点上 **按下鼠标** 时触发
+      * **`mouseup`**：节点上 **释放鼠标** 时触发
+      * **`mousemove`**：节点上 **鼠标移动** 时触发
+      * **`mouseover`**：节点上方 **有鼠标经过** 时触发
+      * **`mouseout`**：节点上方 **有鼠标移出** 时触发
+
+      ```js
+      node_img = document.querySelector("img")
+      // Temp节点被鼠标单击时触发
+      node_img.addEventListener('click', function() {
+          console.log('元素被点击');
+      });
+      // Temp节点被鼠标双击时触发
+      node_img.addEventListener('dblclick', function() {
+          console.log('元素被双击');
+      });
+      // Temp节点上有鼠标按下时触发
+      node_img.addEventListener('mousedown', function() {
+          console.log('鼠标按下');
+      });
+      // Temp节点上有鼠标释放时触发
+      node_img.addEventListener('mouseup', function() {
+          console.log('鼠标释放');
+      });
+      // Temp节点上有鼠标移动时触发，event就是监听的事件mousemove
+      node_img.addEventListener('mousemove', function(event) {
+          console.log('鼠标坐标：', event.clientX, event.clientY);
+      });
+      // Temp节点上鼠标进入时触发
+      node_img.addEventListener('mouseover', function() {
+          console.log('鼠标悬停在元素上方');
+      });
+      // Temp节点上鼠标离开时触发
+      node_img.addEventListener('mouseout', function() {
+          console.log('鼠标离开元素');
+      });
+      ```
+
+      * 实战案例：在屏幕上，鼠标右下方，实时展示鼠标的坐标
+
+        ```js
+        // 创建用于显示坐标的元素（如果已经存在则跳过此步骤）
+        var mouse_XY = document.createElement('div');
+        mouse_XY.id = 'mouse_XY';
+        mouse_XY.style.position = 'absolute';
+        mouse_XY.style.backgroundColor = 'lightgrey';
+        mouse_XY.style.padding = '5px';
+        mouse_XY.style.border = '1px solid black';
+        document.body.appendChild(mouse_XY);
+        
+        // 鼠标在页面上移动时触发，mousemove 事件发生时，调用function (event) {}
+        document.addEventListener('mousemove', function (event) {
+            // 更新坐标显示元素的内容 
+            mouse_XY.textContent = '鼠标坐标：' + event.clientX + ', ' + event.clientY;
+            // 更新坐标显示元素的位置
+            mouse_XY.style.left = (event.clientX + 10) + 'px';
+            mouse_XY.style.top = (event.clientY + 10) + 'px';
+        });
+        ```
+
+        > `event.clientX` ，`event.clientY `：以当前可视窗口的左上角为原点
+        >
+        > `event.pageX` ，`event.pageY `：以当前整个页面的左上角为原点
+        >
+        > `event.screenX` ，`event.screenY `：以当前屏幕的左上角为原点
+
+      * 实战案例：废弃掉，某个节点的点击跳转
+
+        ```js
+        let node_temp = document.querySelector('div[class="beian-wrapper"]').children[0]
+        node_temp.addEventListener('click', function (event) {
+            event.preventDefault(); // 这会阻止默认行为
+        });
+        ```
+
+   2. 键盘事件
+
+      * **`keydown`** ：任一键「被按下」时触发
+
+        ```js
+        // 为「页面document」添加键盘事件：Escape 和 m 键被按下时触发
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelector("img").style.visibility = 'hidden';
+                console.log('Esc键被按下，消息隐藏');
+            }else if (event.key === 'm') {
+                document.querySelector("#subBtn").value = '小样';
+                console.log('Esc键被按下，消息隐藏');
+            }
+        });
+        // 为「某个div」添加键盘事件
+        node_img = document.querySelector("img")
+        node_img.addEventListener('keydown', function(event){
+        }
+        ```
+
+      * **`keyup`** ：任一键「弹起」时触发
+
+        ```js
+        // 为「页面document」添加键盘事件：Escape 和 m 键弹起时触发
+        document.addEventListener('keyup', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelector("img").style.visibility = 'visible';
+                console.log('Esc键被按下，消息隐藏');
+            }else if (event.key === 'm') {
+                document.querySelector("#subBtn").value = '百度一下';
+                console.log('Esc键被按下，消息隐藏');
+            }
+        });
+        // 为「某个div」添加键盘事件
+        node_img = document.querySelector("img")
+        node_img.addEventListener('keyup', function(event){
+        }
+        ```
+
+        * 实战案例：若当前网页的URL 以https://www.baidu.com/开头，则组织某些快捷键
+
+          ```js
+          // 判断当前网址
+          if (window.location.href.startsWith("https://www.baidu.com/")) {
+              // 监听键盘事件 keydown
+              document.addEventListener('keydown', function(event) {
+                  // 检查是否按下了 Command + S
+                  if (event.metaKey && event.key === 's') {
+                      // 阻止默认的保存行为
+                      event.preventDefault();
+                      console.log('执行自定义操作');
+                  }
+              });
+          }
+          ```
+
+          >`control` ：对应 `e.ctrlKey` 
+          >`shift` ：对应 `e.shiftKey` ，使用 `shift + 某个按键` 时需将`event.key === 'S'`设为大写，因为shift会影响大小写
+          >
+          >`command` ：对应  `e.metaKey` ，一般不单独使用`command`与其他键的组合，因为`command`+其他键的常规组合太多，会冲突
+          >
+          >`option` ：对应 `e.altKey` ，一般不单独使用`option`与其他键的组合，因为`option`+其他键会输出特殊字符
+
+   3. 删除事件
+
+      >只能删除普通函数的事件监听器，匿名函数的事件监听器无法删除
+
+      ```js
+      // 添加事件
+      head.addEventListener('click', SaiFun);
+      function SaiFun() {
+          alert('增加响应click事件');
+      }
+      // 移除事件
+      head.removeEventListener("click", SaiFun)
+      ```
 
 ----
 
@@ -713,18 +877,18 @@
    ```js
    // 1. 定位父节点
    var xpath_Parent = '//*[@class="video-list row"]/div[1]'
-   var Parent = document.evaluate(xpath_Parent, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+   var node_Parent = document.evaluate(xpath_Parent, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
    
-   if (Parent) {
+   if (node_Parent) {
        // 2. 取属性值：在父节点下定位到「标题」节点
        var xpath_Title = '//*[@class="bili-video-card__info--tit"]'
-       var Title_Node = document.evaluate(xpath_Title, Parent, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-       var Title = Title_Node ? Title_Node.getAttribute('title') : null;
+       var node_Title = document.evaluate(xpath_Title, node_Parent, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+       var Title = node_Title ? node_Title.getAttribute('title') : null;
    
        // 3. 取节点正文：在父节点下定位到「上传日期」节点
        var xpath_LoadTime = '//*[@class="bili-video-card__info--date"]'
-       var LoadTime_Node = document.evaluate(xpath_LoadTime, Parent, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-       var LoadTime = LoadTime_Node ? LoadTime_Node.textContent : null;
+       var node_LoadTime = document.evaluate(xpath_LoadTime, node_Parent, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+       var LoadTime = node_LoadTime ? node_LoadTime.textContent : null;
    
        console.log("标题是:", Title);
        console.log("上传时间是:", LoadTime);
@@ -740,20 +904,20 @@
    ```js
    // 1. 定位父节点
    let xpath_Parent = '//*[@class="video-list row"]'
-   let Parent = document.evaluate(xpath_Parent, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-   let Sons = Parent.children
+   let node_Parent = document.evaluate(xpath_Parent, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+   let Sons = node_Parent.children
    
    // 2. 遍历每个子节点
    Array.from(Sons).forEach(function(son) {
        // 3. 子节点内取属性值：在父节点下定位到「标题」节点；使用相对 XPath 路径
        let xpath_Title = './/*[@class="bili-video-card__info--tit"]'
-       let Title_Node = document.evaluate(xpath_Title, son, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-       let Title = Title_Node ? Title_Node.getAttribute('title') : null;
+       let node_Title = document.evaluate(xpath_Title, son, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+       let Title = node_Title ? node_Title.getAttribute('title') : null;
    
        // 4. 子节点内取节点正文：在父节点下定位到「上传日期」节点；使用相对 XPath 路径
        let xpath_LoadTime = './/*[@class="bili-video-card__info--date"]'
-       let LoadTime_Node = document.evaluate(xpath_LoadTime, son, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-       let LoadTime = LoadTime_Node ? LoadTime_Node.textContent : null;
+       let node_LoadTime = document.evaluate(xpath_LoadTime, son, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+       let LoadTime = node_LoadTime ? node_LoadTime.textContent : null;
    
        console.log("标题是:", Title);
        console.log("上传时间是:", LoadTime);

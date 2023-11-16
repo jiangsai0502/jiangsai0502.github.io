@@ -9,35 +9,9 @@
 
 <body>
     <script>
-        class Person {
-            // 构造函数
-            constructor(name, age) {
-                this.name = name;
-                this.age = age;
-            }
-
-            greet() {
-                console.log(`This's ${this.name}, I'm ${this.age}`);
-            }
-        }
-        // 继承
-        class Student extends Person {
-            constructor(name, age, course) {
-                super(name, age);
-                this.course = course;
-            }
-
-            study() {
-                console.log(`I'm studying ${this.course}.`);
-            }
-        }
-        let person1 = new Person('Alice', 30);
-        person1.greet();
-
-        let student1 = new Student('Bob', 20, 'JavaScript');
-        student1.greet();
-        student1.study();
-
+        ((x) => {
+            console.log(`${x}是正数`);
+        })(5)
 
 
     </script>
