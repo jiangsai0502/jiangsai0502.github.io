@@ -1,55 +1,57 @@
 * 杂记
   
-  * [Mac技巧](Sai_FootPrint/Mac_Skill.md)
-  * [重装Mac](Sai_FootPrint/Software_Install_configuration.md)
-  * [Keyboard_Maestro](Sai_FootPrint/Keyboard_Maestro.md)
-  * [Anki](Sai_FootPrint/Anki.md)
-  * [Marginnote](Sai_FootPrint/Marginnote.md)
-  * [Greasemonkey](Sai_FootPrint/Greasemonkey.md)
+  * [Mac技巧](FootPrint/Mac_Skill.md)
+  * [重装Mac](FootPrint/Software_Install_configuration.md)
+  * [Keyboard_Maestro](FootPrint/Keyboard_Maestro.md)
+  * [Anki](FootPrint/Anki.md)
+  * [Marginnote](FootPrint/Marginnote.md)
+  * [Greasemonkey](FootPrint/Greasemonkey.md)
 * 爬虫
   
-  * [MySQL用法](Sai_FootPrint/2_MySQL.md)
+  * [MySQL用法](FootPrint/2_MySQL.md)
   
-  * [爬前须知](Sai_FootPrint/2_WebCrawlerTutorial.md)
+  * [爬前须知](FootPrint/2_WebCrawlerTutorial.md)
   
-  * [Web SCraper](Sai_FootPrint/Web_Scraper.md)
+  * [Web SCraper](FootPrint/Web_Scraper.md)
   
-  * [JavaScript](Sai_FootPrint/JavaScript.md)
+  * [JavaScript](FootPrint/JavaScript.md)
   
-  * [PlayWright有界面-调试](Sai_FootPrint/Playwright_Debug.md)
+  * [JavaScript游戏](FootPrint/JavaScript_Game.md)
   
-  * [PlayWright无界面-真实抓](Sai_FootPrint/Playwright_work.md)
+  * [PlayWright](FootPrint/Playwright.md)
   
-  * [PlayWright异步](Sai_FootPrint/playwright_async.md)
+  * [PlayWright无界面](FootPrint/Playwright_work.md)
 
-  * [Xpath](Sai_FootPrint/xpath.md)
+  * [PlayWright异步](FootPrint/playwright_async.md)
   
-  * [初级工具](Sai_FootPrint/2_WebCrawlerBasicTool.md)
+  * [Xpath](FootPrint/xpath.md)
   
-  * [初级示例](Sai_FootPrint/2_WebCrawlerBasicCase.md)
+  * [初级工具](FootPrint/2_WebCrawlerBasicTool.md)
   
-  * [中级Scrapy](Sai_FootPrint/2_WebCrawlerScrapy.md)
+  * [初级示例](FootPrint/2_WebCrawlerBasicCase.md)
   
-  * [中级Ajax](Sai_FootPrint/2_WebCrawlerAjax.md)
+  * [中级Scrapy](FootPrint/2_WebCrawlerScrapy.md)
   
-  * [中级Selenium](Sai_FootPrint/2_WebCrawlerSelenium.md)
+  * [中级Ajax](FootPrint/2_WebCrawlerAjax.md)
+  
+  * [中级Selenium](FootPrint/2_WebCrawlerSelenium.md)
 * Python
   
-  * [Python 周边环境](Sai_FootPrint/1_PythonEnvironment.md)
-  * [Python 入门](Sai_FootPrint/1_PythonTutorial.md)
-  * [PyAutoGUI](Sai_FootPrint/PyAutoGUI.md)
-  * [Python 优秀包](Sai_FootPrint/1_PythonModule.md)
-  * [Git 入门](Sai_FootPrint/1_GitStudy.md)
-  * [Flask 入门](Sai_FootPrint/1_Flask_1_Tutorial.md)
-  * [Flask 源码 - Todolist](Sai_FootPrint/1_Flask_2_Todolist.md)
-  * [Html-Css](Sai_FootPrint/1_html_css.md)
-  * [Pyecharts入门](Sai_FootPrint/1_Pyecharts.md)
-  * [PyQt5](Sai_FootPrint/1_PyQt5.md)
+  * [Python 周边环境](FootPrint/1_PythonEnvironment.md)
+  * [Python 入门](FootPrint/1_PythonTutorial.md)
+  * [PyAutoGUI](FootPrint/PyAutoGUI.md)
+  * [Python 优秀包](FootPrint/1_PythonModule.md)
+  * [Git 入门](FootPrint/1_GitStudy.md)
+  * [Flask 入门](FootPrint/1_Flask_1_Tutorial.md)
+  * [Flask 源码 - Todolist](FootPrint/1_Flask_2_Todolist.md)
+  * [Html-Css](FootPrint/1_html_css.md)
+  * [Pyecharts入门](FootPrint/1_Pyecharts.md)
+  * [PyQt5](FootPrint/1_PyQt5.md)
 * 不常用
   
-  * [Blog建站](Sai_FootPrint/0_BuildBlog.md)
-  * [Markdown语法](Sai_FootPrint/0_MarkdownUsage.md)
-  * [PicGo+GitHub 搭建图床](Sai_FootPrint/0_PicGo_GitHub.md)
-  * [硕士论文](Sai_FootPrint/4_MasterThesis.md)
-  * [Fusion360](Sai_FootPrint/0_AutodeskFusion360.md)
-  * [Excel技巧](Sai_FootPrint/Excel_Skills.md)
+  * [Blog建站](FootPrint/0_BuildBlog.md)
+  * [Markdown语法](FootPrint/0_MarkdownUsage.md)
+  * [PicGo+GitHub 搭建图床](FootPrint/0_PicGo_GitHub.md)
+  * [硕士论文](FootPrint/4_MasterThesis.md)
+  * [Fusion360](FootPrint/0_AutodeskFusion360.md)
+  * [Excel技巧](FootPrint/Excel_Skills.md)

@@ -335,6 +335,7 @@
    ```
 
 6. 函数
+
    | 原始形式                                                     | 箭头形式                                                     |
    | ------------------------------------------------------------ | ------------------------------------------------------------ |
    | 带名函数<br />function Func_Name(x) {<br/>    console.log(`x 是${x}`);<br/>}<br/>Func_Name(-5) | 带名 - 箭头函数<br />const fun_name = (x) => {<br/>    console.log(`x 是${x}`);<br/>}<br/>Func_Name(-5) |
@@ -348,7 +349,7 @@
      function Func_Name(x) {
          console.log(`x 是${x}`);
      }
-     Func_Name(-5)
+     setInterval(Func_Name(1), 1000)
      ```
 
    * 匿名函数
@@ -450,7 +451,24 @@
    console.log(now.toLocaleString())  // 当地时间：年月日 时分秒
    ```
 
-8. 类
+8. 定时器
+
+   1. `setInterval(目标函数, 间隔时间)` ：每隔一段时间执行1次目标函数
+
+      ```js
+      let timing = setInterval(function() {
+          // 打印当前时间
+          console.log(new Date().toLocaleString())
+          // 秒数为30时，结束定时器 timing
+          if (new Date().getSeconds() === 30) {
+              clearInterval(timing)
+          }
+      }, 1000)
+      ```
+
+   2. 
+
+9. 类
 
    ```js
    class Person {
@@ -483,7 +501,7 @@
    student1.study();
    ```
 
-9. BOM对象
+10. BOM对象
 
    * window：当前浏览器窗口，**以下 `window.` 均可省略**
 
@@ -607,7 +625,9 @@
       Temp.getAttribute('class')  // 获取Temp节点自身的class属性值  // 'bili'
       Temp.setAttribute('src', 'wula')  // 首先判断Temp节点是否有src属性，若没有则新增，若有则将src属性值设为wula
       Temp.removeAttribute('src')  // 删除Temp节点的src属性
-  ```
+      ```
+
+
 
 #### 事件注册方式
 

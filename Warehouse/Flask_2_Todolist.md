@@ -181,28 +181,28 @@
    >    >
    >    >   ```python
    >    >   from flask import Flask
-   >    >   
+   >    >     
    >    >   app = Flask(__name__)
-   >    >   
+   >    >     
    >    >   @app.after_request
    >    >   def Sai_a_r1(res):
    >    >       print("Sai_a_r1------", res)
    >    >       return res
-   >    >   
+   >    >     
    >    >   def Sai_a_r2(res):
    >    >       print("Sai_a_r2------", res)
    >    >       return res
-   >    >   
+   >    >     
    >    >   @app.after_request
    >    >   def Sai_a_r3(res):
    >    >       print("Sai_a_r3------", res)
    >    >       return res
-   >    >   
+   >    >     
    >    >   @app.route("/")
    >    >   def index():
    >    >       print("执行了index()视图------")
    >    >       return "这是Sai首页"
-   >    >   
+   >    >     
    >    >   if __name__ == '__main__':
    >    >       app.run(host='0.0.0.0', port=5000, debug=True)
    >    >   ```
@@ -398,7 +398,8 @@
    >       1. 用户第一次请求，客户端的HTTP request（cookie为空）到服务端，服务端创建session，视图函数根据用户请求中的form表单填写session，请求结束时，session内容填写入response的cookie中并返回给客户端，客户端的cookie中便保存了用户的数据。
    >       2. 同一客户端再次请求时， 客户端的HTTP request中cookie已经携带数据，视图函数根据cookie中值做相应操作（如已经携带用户名和密码就可以直接登陆）
 
-   
+
+
 
 ### 第3版：添加flash消息
 
@@ -473,8 +474,6 @@
 #### 源码分析
 
 1. app.py
-
-
 
 
 
