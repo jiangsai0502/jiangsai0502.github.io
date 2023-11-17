@@ -7,7 +7,7 @@
    > 3. 点击事件：点击 node_btn 时触发一个定时器 my_timer
    > 4. 定时器事件：每0.5秒给 node_div 增加1个 step 的长度
 
-   ```js
+   ```html
    <style>
        * {
            margin: 0px;
@@ -63,7 +63,7 @@
    > 4. move 函数：判断鼠标是移入还是移出，移入则目标位在右侧，step为正，移出则反之
    > 5. 定时器事件：每0.1秒给 node_div 增加1个 step 的长度
 
-   ```js
+   ```html
    <style>
        #node_div {
            width: 100px;
@@ -123,3 +123,6 @@
            }
        });
    </script>
+   ```
+   
+   
