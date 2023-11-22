@@ -120,7 +120,7 @@
 >    brew install wget;
 >    export REMOTE=https://gitee.com/imirror/ohmyzsh.git;
 >    sh -c "$(wget -O- https://cdn.jsdelivr.net/gh/ohmyzsh/ohmyzsh/tools/install.sh)";
->                           
+>                                       
 >    open ~/.zshrc
 >    # 在.zshrc文件中搜索 source $ZSH/oh-my-zsh.sh，在本句之前加一句
 >    ZSH_DISABLE_COMPFIX="true"
@@ -158,7 +158,7 @@
 >
 >    ```
 >    brew install zsh-syntax-highlighting
->                           
+>                                       
 >    open ~/.zshrc
 >    最后插入一行：source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 >    source ~/.zshrc
@@ -515,22 +515,7 @@
 
 ##### 中国大陆无法登陆某些网站（newbing、binance）
 
-#### [jupyter用法](https://zhuanlan.zhihu.com/p/139776843)
-
-> 1. 安装
->
->    ```bash
->    # 切换到虚拟环境
->    > conda activate py3
->    # 在该虚拟环境下安装jupyter
->    > conda install jupyter
->    # 启动jupyter
->    > jupyter notebook
->    ```
->
-> 2. 使用
->
->    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310301406036.png)
+> 1. 
 
 ##### PDF增加大纲书签
 

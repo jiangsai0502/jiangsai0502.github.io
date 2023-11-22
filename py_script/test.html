@@ -1,71 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <title>打地鼠</title>
+    <link rel="stylesheet" type="text/css" href="css/地鼠.css" />
 </head>
 
 <body>
-    <style>
-        #node_div {
-            width: 100px;
-            height: 200px;
-            background-color: gray;
-            position: absolute;
-            left: -100px;
-            top: 400px;
-        }
+    <div id="out">
 
-        #node_div span {
-            width: 20px;
-            height: 60px;
-            background-color: orange;
-            position: absolute;
-            left: 100px;
-            top: 70px;
-            line-height: 20px
-        }
-    </style>
-    <div id='node_div'> <span>分享到</span></div>
+    </div>
+    <h1>
+        得分:<span id="fen_shu">0</span>&emsp;
+        倒计时:<input type="text" value="30" id="clock">
 
-    <script>
-        // 在页面 DOM 加载完成后执行的代码
-        document.addEventListener('DOMContentLoaded', () => {
-            let node_div = document.querySelector('[id="node_div"]');
-            let my_timer = null;
-
-            // 鼠标移入时淡入
-            node_div.addEventListener('mouseover', () => {
-                move(0)
-            })
-            // 鼠标移入时淡出
-            node_div.addEventListener('mouseout', () => {
-                move(-node_div.offsetWidth)
-            })
-
-            function move(Target) {
-                // 清除上一个计时器事件，防止计时器叠加
-                clearInterval(my_timer)
-                let step = 20;
-                // 若当前左边距离窗口的距离 > 目标位，说明目标位在左侧，步长要设为负值
-                if (parseInt(node_div.style.left) > Target) {
-                    step = -step;
-                }
-                my_timer = setInterval(() => {
-                    // 若当前左边距离窗口的距离 = 目标位，说明到站了，结束计时器事件
-                    if (parseInt(node_div.style.left) === Target) {
-                        clearInterval(my_timer)
-                    } else {
-                        // 模拟运动：node_div的左边框增加一个step的长度
-                        node_div.style.left = node_div.offsetLeft + step + 'px';
-                    }
-                }, 100)
-            }
-        });
-    </script>
+    </h1>
 </body>
+<script type="text/javascript">
+    //获取渲染地鼠的方块
+    var out = document.getElementById("out");
+    //加载时执行此方法，渲染地图
+    onload = function () {
+        for (var i = 0; i < 20; i++) {
+            var p = document.createElement("p");
+            out.appendChild(p);
+        }
+    }
+    var count = 0;
+    var fenshu = 0;
+    var ps = document.getElementsByTagName("p");
+    //随机刷新老鼠的位置
+    function suijilaoshu() {
+        var index = Math.floor(Math.random() * ps.length);
+        for (var i = 0; i < ps.length; i++) {
+            ps[i].style.background = "url(img/00.jpg)";
+        }
+        ps[index].style.background = "url(img/01.jpg)";
+        count = index;
+        ps[index].className = "laoshu";
+    }
+    //定时调用
+    setInterval("suijilaoshu()", 1500);
+    var clock = document.getElementById("clock");
+    var fen = document.getElementById("fen_shu");
 
+    var second = 30;
+    var timer;
+    //倒计时方法，每一局游戏时长30秒
+    function daojishi() {
+        if (second != 0) {
+            second--;
+            clock.value = second + "s";
+        } else {
+            clearInterval(timer);
+            alert("游戏结束,您的得分为:" + fenshu);
+            location.reload();
+        }
+    }
+    timer = setInterval("daojishi()", 1000);
+    //点中老鼠后，切换图片为老鼠被击中
+    onclick = function (event) {
+        var obj = event.target;
+        if (obj.className == "laoshu") {
+            ps[count].style.background = "url(img/02.jpg)";
+            ps[count].className = "";
+            fenshu += 10;
+            fen.innerHTML = fenshu;
+        }
+    }
+</script>
 
 </html>

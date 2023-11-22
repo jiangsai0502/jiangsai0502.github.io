@@ -2,71 +2,58 @@ import re, os, html2text, random, csv
 from playwright_stealth import stealth_sync
 
 
-def Initial_Headless_Chrome(playwright, WebSites, AbortPic, WaitLoad):
+def Initial_Chromium(playwright, WebSite, headless, AbortPic, WaitLoad):
     """
-    初始化浏览器：调用本地Chrome，在新标签打开目标网页，并切换到该标签
+    初始化PlayWright自带的Chromium浏览器，在新标签打开目标网页，并切换到该标签
     """
-    SaiBrowser = playwright.chromium.connect_over_cdp("http://localhost:9222")
-    ########## 无头反爬处理 ##########
-    # 设置用户代理和其他选项
-    custom_user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
-    context_options = {"user_agent": custom_user_agent}
-    SaiContext = SaiBrowser.new_context(**context_options)
-    stealth_sync(SaiContext)
-    # 处理WebGL检测
-    SaiContext.add_init_script(
-        """
-        (() => {
-            const getParameter = WebGLRenderingContext.getParameter;
-            WebGLRenderingContext.prototype.getParameter = function(parameter) {
-                if (parameter === 37445) {
-                    return 'NVIDIA Corporation';
-                }
-                if (parameter === 37446) {
-                    return 'NVIDIA GeForce GTX 1050 Ti with Max-Q Design OpenGL Engine';
-                }
-                return getParameter(parameter);
-            };
-        })();
-    """
-    )
-    ########## 无头反爬处理 ##########
-    # 是否阻止图片加载
+    # 1、初始化一个浏览器（headless = False 有头浏览器；slow_mo = 3000 每个操作停3秒）
+    SaiBrowser = playwright.chromium.launch(headless=headless, slow_mo=3000)
+    # 2、是否加载本地cookie，有则加载，无则新建
+    os.chdir("/Users/jiangsai/Desktop")
+    if os.path.exists("state.json"):
+        SaiContext = SaiBrowser.new_context(storage_state="state.json")
+    else:
+        SaiContext = SaiBrowser.new_context()
+    # 3、是否阻止图片加载：拦截SaiContext下所有页面的图片请求（凡含.png的链接，都当做是png图片）
     if AbortPic:
         SaiContext.route(
             re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.gif.*)|(.*\.webp.*)"), lambda route: route.abort()
         )
-    SaiPages = []
-    for i in WebSites:
-        SaiPage = SaiContext.new_page()
-        SaiPage.goto(i)
-        SaiPage.bring_to_front()
-        if WaitLoad:
-            SaiPage.wait_for_load_state("networkidle")
-        SaiPage.wait_for_timeout(random.randint(1000, 3000))
-        SaiPages.append(SaiPage)
-    return SaiBrowser, SaiContext, SaiPages
+    # 4、初始化一个网页
+    SaiPage = SaiContext.new_page()
+    SaiPage.goto(WebSite)
+    SaiPage.bring_to_front()
+    if WaitLoad:
+        SaiPage.wait_for_load_state("networkidle")
+    else:
+        # SaiPage.wait_for_timeout(random.randint(1000, 3000))
+        pass
+    return SaiBrowser, SaiContext, SaiPage
 
 
-def Initial_Chrome(playwright, WebSites, AbortPic, WaitLoad):
+def Initial_LocalChrome(playwright, WebSites, AbortPic, WaitLoad):
     """
     初始化浏览器：调用本地Chrome，在新标签打开目标网页，并切换到该标签
     """
+    # 1、调起本地Chrome，只能有头，调起前要手动退出Chrome程序
     SaiBrowser = playwright.chromium.connect_over_cdp("http://localhost:9222")
     SaiContext = SaiBrowser.contexts[0]
-    # 是否阻止图片加载
+    # 2、是否阻止图片加载
     if AbortPic:
         SaiContext.route(
             re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.gif.*)|(.*\.webp.*)"), lambda route: route.abort()
         )
+    # 3、逐个打开目标网页
     SaiPages = []
     for i in WebSites:
         SaiPage = SaiContext.new_page()
         SaiPage.goto(i)
         SaiPage.bring_to_front()
+        # 4、不同的加载模式：等待页面反馈加载 or 读秒加载
         if WaitLoad:
             SaiPage.wait_for_load_state("networkidle")
-        SaiPage.wait_for_timeout(random.randint(1000, 3000))
+        else:
+            SaiPage.wait_for_timeout(random.randint(1000, 3000))
         SaiPages.append(SaiPage)
     return SaiBrowser, SaiContext, SaiPages
 
@@ -75,25 +62,25 @@ def Initial_EachWeb_MDFile(SaiPage):
     """
     每个网页初始化写入方法：切换到目标路径，将网页标题处理成合法文件名
     """
-    # 切换MarkDown文件目录
+    # 1、切换MarkDown文件目录
     MDdir = "/Users/jiangsai/Desktop"
     os.chdir(MDdir)
-    # 声明全局MarkDown文件操作类
+    # 2、声明全局MarkDown文件操作类
     MarkDownMaker = html2text.HTML2Text()
     MarkDownMaker.ignore_links = True
-    # 知乎网页标题格式：(99+ 封私信 / 81 条消息) 期货怎么才能赚钱？ - 知乎
-    # 处理MarkDown文件名
+    # 3、处理MarkDown文件名
+    #   知乎网页标题格式：(99+ 封私信 / 81 条消息) 期货怎么才能赚钱？ - 知乎
     MDFile = SaiPage.title()
-    # 文件名中不能含有'.', '/', ':' 这些字符
+    # 4、文件名中不能含有'.', '/', ':' 这些字符
     replace_dict = {".": "_", "/": "_", ":": "_", " ": "_"}
-    # 遍历字典的键值对，将字符串中的每一个键都替换为对应的值
+    #   遍历字典的键值对，将字符串中的每一个键都替换为对应的值
     for key, value in replace_dict.items():
         MDFile = MDFile.replace(key, value)
-    # 将重复的'_'替换为1个
+    #   将重复的'_'替换为1个
     MDFile = re.sub(r"(_)\1+", "_", MDFile)
-    # 将括号和括号中的字符替换掉
+    #   将括号和括号中的字符替换掉
     MDFile = re.sub(r"\((.*?)\)", "", MDFile)
-    # 声明全局MarkDown文件路径
+    # 5、声明全局MarkDown文件路径
     MDFileDir = f"{MDdir}/{MDFile}.md"
     return MarkDownMaker, MDFileDir
 
@@ -131,17 +118,19 @@ def Page_Scroll(ScrollPage, ScrollTimes):
     NotEnd = True
     ScrollTime = 1
     while NotEnd and ScrollTime < ScrollTimes:
-        # 滚动前的页面高度
+        # 1、记录滚动前的页面高度
         BeforeScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
         ScrollTime += 1
         for i in range(3):
-            # 滚动到页面底部
+            # 2、滚动到页面底部
             ScrollPage.evaluate("() => window.scrollTo(0,document.body.scrollHeight)")
-            # 微上划一下模拟人类
+            # 3、微上划一下模拟人类
             ScrollPage.keyboard.press("PageUp")
+            # 4、缓一下模拟人类
             ScrollPage.wait_for_timeout(random.randint(500, 2000))
-        # 滚动后的页面高度
+        # 5、记录滚动后的页面高度
         AfterScrollHeight = ScrollPage.evaluate("() => document.body.scrollHeight")
+        # 6、判断滚动前后的页面是否有变化，如果没变，说明到底了
         if BeforeScrollHeight == AfterScrollHeight or ScrollTime >= ScrollTimes:
             NotEnd = False
 
@@ -205,3 +194,52 @@ def convert_wan_to_number(num):
         return str(int(float(num) * 10000))
     else:
         return str(num)
+
+
+#################################################################
+########################   不  常  用   ##########################
+#################################################################
+def Initial_LocalChrome_Headless(playwright, WebSites, AbortPic, WaitLoad):
+    """
+    初始化浏览器：调用本地Chrome，在新标签打开目标网页，并切换到该标签
+    """
+    SaiBrowser = playwright.chromium.connect_over_cdp("http://localhost:9222")
+    # ------------- 无头反爬处理 -------------#
+    # 设置用户代理和其他选项
+    custom_user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
+    context_options = {"user_agent": custom_user_agent}
+    SaiContext = SaiBrowser.new_context(**context_options)
+    stealth_sync(SaiContext)
+    # 处理WebGL检测
+    SaiContext.add_init_script(
+        """
+        (() => {
+            const getParameter = WebGLRenderingContext.getParameter;
+            WebGLRenderingContext.prototype.getParameter = function(parameter) {
+                if (parameter === 37445) {
+                    return 'NVIDIA Corporation';
+                }
+                if (parameter === 37446) {
+                    return 'NVIDIA GeForce GTX 1050 Ti with Max-Q Design OpenGL Engine';
+                }
+                return getParameter(parameter);
+            };
+        })();
+    """
+    )
+    # ------------- 无头反爬处理 -------------#
+    # 是否阻止图片加载
+    if AbortPic:
+        SaiContext.route(
+            re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.gif.*)|(.*\.webp.*)"), lambda route: route.abort()
+        )
+    SaiPages = []
+    for i in WebSites:
+        SaiPage = SaiContext.new_page()
+        SaiPage.goto(i)
+        SaiPage.bring_to_front()
+        if WaitLoad:
+            SaiPage.wait_for_load_state("networkidle")
+        SaiPage.wait_for_timeout(random.randint(1000, 3000))
+        SaiPages.append(SaiPage)
+    return SaiBrowser, SaiContext, SaiPages

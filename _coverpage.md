@@ -9,4 +9,4 @@
 
 * 过去的点滴就像散落的珍珠，等待着未来某个契机，串成了一串项链
 
-[Get Started](Sai_FootPrint/README.md)
+[Get Started](FootPrint/README.md)

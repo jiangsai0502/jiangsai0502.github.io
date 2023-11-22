@@ -1,4 +1,4 @@
-#### Vscode配置
+#### 调试
 
 1. 调试本地页面
 
@@ -18,13 +18,7 @@
       </html>
       ```
 
-   2. 安装`Live Server`插件
-
-      ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311111221157.png)
-
-      >* 浏览器地址：`http://127.0.0.1:5500/文件名`
-      >
-      >* 保存即自动执行
+   2. 配合VSCode的 `Live Server` 插件
 
 2. 调试线上页面
 
@@ -916,7 +910,7 @@ let node_img = document.querySelector("img")
        console.log("未找到指定的父节点");
    }
    ```
-   
+
 2. 爬取页面中列表节点下的元素
 
    >定位列表的父节点，然后在该父节点下取子节点，在该子节点下进行定位取值
@@ -942,3 +936,28 @@ let node_img = document.querySelector("img")
        console.log("标题是:", Title);
        console.log("上传时间是:", LoadTime);
    })
+   ```
+
+3. 爬取（暂时用不到）
+
+   ```js
+   fetch('https://scrape.center/')
+     .then(response => response.text())
+     .then(html => {
+       // 解析HTML内容
+       const parser = new DOMParser();
+       const doc = parser.parseFromString(html, 'text/html');
+       
+       // 提取标题文本
+       const title = doc.querySelector('title').textContent;
+       
+       // 打印标题文本
+       console.log('网页标题：', title);
+     })
+     .catch(error => {
+       console.error('发生错误：', error);
+     });
+   ```
+
+   
+

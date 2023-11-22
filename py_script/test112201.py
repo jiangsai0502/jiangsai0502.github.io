@@ -52,45 +52,55 @@ def match_template_in_folder(template_folder, search_image):
     return matches
 
 
-def match_templates_in_folders(templates_root_folder, search_image_path):
-    search_image = cv2.imread(search_image_path)
-    if search_image is None:
-        print("Error: Unable to load the search image.")
+def match_templates_in_video(templates_root_folder, video_path):
+    # 打开视频文件
+    video = cv2.VideoCapture(video_path)
+
+    if not video.isOpened():
+        print("Error: Unable to open video.")
         return
 
-    # 遍历根模板文件夹中的每个二级文件夹
-    for folder_name in os.listdir(templates_root_folder):
-        folder_path = os.path.join(templates_root_folder, folder_name)
-        if os.path.isdir(folder_path):
-            # 对当前二级文件夹中的模板进行匹配
-            matches = match_template_in_folder(folder_path, search_image)
-            for best_match, matched_template_name in matches:
-                max_val, max_loc, scale, t_width, t_height = best_match
-                top_left = (int(max_loc[0]), int(max_loc[1]))
-                bottom_right = (int(max_loc[0] + t_width), int(max_loc[1] + t_height))
+    # 读取视频的每一帧
+    while True:
+        ret, frame = video.read()
+        if not ret:
+            break  # 如果没有帧了，就退出循环
 
-                # 在搜索图像上画出矩形框，并在矩形框上方标注二级文件夹名称
-                cv2.rectangle(search_image, top_left, bottom_right, (0, 0, 255), 4)
-                cv2.putText(
-                    search_image,
-                    folder_name,
-                    (top_left[0], top_left[1] - 10),
-                    cv2.FONT_HERSHEY_SIMPLEX,
-                    0.7,
-                    (0, 0, 255),
-                    2,
-                )
+        # 遍历根模板文件夹中的每个二级文件夹
+        for folder_name in os.listdir(templates_root_folder):
+            folder_path = os.path.join(templates_root_folder, folder_name)
+            if os.path.isdir(folder_path):
+                # 对当前二级文件夹中的模板进行匹配
+                matches = match_template_in_folder(folder_path, frame)
+                for best_match, matched_template_name in matches:
+                    max_val, max_loc, scale, t_width, t_height = best_match
+                    top_left = (int(max_loc[0]), int(max_loc[1]))
+                    bottom_right = (int(max_loc[0] + t_width), int(max_loc[1] + t_height))
+                    # 在当前帧上画出矩形框，并在矩形框上方标注二级文件夹名称
+                    cv2.rectangle(frame, top_left, bottom_right, (0, 0, 255), 2)
+                    cv2.putText(
+                        frame,
+                        folder_name,  # 标注文件夹名称
+                        (top_left[0], top_left[1] - 10),
+                        cv2.FONT_HERSHEY_SIMPLEX,
+                        0.5,
+                        (0, 0, 255),
+                        1,
+                    )
 
-    # 显示所有匹配结果的搜索图像
-    cv2.imshow("Template Matches", search_image)
-    cv2.waitKey(0)
+        # 显示带有匹配结果的视频帧
+        cv2.imshow("Template Matches", frame)
+        if cv2.waitKey(1) & 0xFF == ord("q"):  # 如果按下'q'键，则退出
+            break
+
+    # 释放视频和关闭所有窗口
+    video.release()
     cv2.destroyAllWindows()
 
 
-# 设置根模板文件夹路径和搜索图像路径
-templates_root_folder = "/Users/jiangsai/Desktop/test/recognition"  # 根模板文件夹
-search_image_path = "/Users/jiangsai/Desktop/test/demo.jpeg"  # 搜索图像
+# 设置根模板文件夹路径和视频路径
+templates_root_folder = "/Users/jiangsai/Desktop/test/aa"  # 根模板文件夹
+video_path = "/Users/jiangsai/Desktop/test/恐龙快打1.mp4"  # 视频文件路径
 
-
-# 调用函数，执行匹配并在找到的矩形框上标注模板文件名
-match_templates_in_folders(templates_root_folder, search_image_path)
+# 调用函数，在视频中执行匹配并在找到的矩形框上标注模板文件名
+match_templates_in_video(templates_root_folder, video_path)
