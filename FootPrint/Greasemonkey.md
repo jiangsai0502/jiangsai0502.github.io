@@ -105,3 +105,29 @@
    > ```
    >
 
+4. 阻止CSDN的弹窗
+
+   > ```js
+   > // ==UserScript==
+   > // @name         阻止CSDN的弹窗
+   > // @namespace    http://tampermonkey.net/
+   > // @version      0.1
+   > // @description  try to take over the world!
+   > // @author       You
+   > // @match        https://blog.csdn.net/*
+   > // @grant        none
+   > // ==/UserScript==
+   > 
+   > (function() {
+   >     'use strict';
+   >     // 查找具有指定选择器的元素
+   >     var popup = document.querySelector("body > div.passport-login-container");
+   > 
+   >     // 检查是否找到了元素
+   >     if (popup) {
+   >         // 如果找到了元素，删除它
+   >         popup.remove();
+   >     }
+   > })();
+   > ```
+

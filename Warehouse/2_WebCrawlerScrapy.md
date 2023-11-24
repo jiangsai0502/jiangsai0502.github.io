@@ -26,7 +26,12 @@
 
    2. 创建 `Scrapy` 项目：`scrapy startproject QuotesSpider`
 
-   3. 展示项目的目录树：`tree`
+   3. 展示项目的目录树：
+
+      ```bash
+      brew install tree
+      tree
+      ```
 
       ```python
       MyScrapy
@@ -194,7 +199,7 @@
            >        quote = QuotesItem()
            >        quote['main_url'] = response.url
            >        yield response.follow('author/J-K-Rowling/', meta={'quote': quote}, callback=self.parse_2)
-           >    
+           >       
            >    def parse_2(self, response):
            >        quote = response.meta['quote']
            >        quote['other_url'] = response.url
@@ -253,7 +258,7 @@
                from QuotesSpider.items import QuotesItem
                quote = QuotesItem()
                quote.fields
-               ```
+      ```
 
          2. vscode调试
 
