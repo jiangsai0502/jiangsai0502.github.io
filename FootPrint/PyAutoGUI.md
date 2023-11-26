@@ -331,6 +331,8 @@ if __name__ == "__main__":
 
 * 截图
 
+  > 不好用，人要看的截图尽量用 Quartz.CoreGraphics
+
   ```python
   # 当前屏幕分辨率 1800x1169
   pyautogui.size()
@@ -396,11 +398,161 @@ if __name__ == "__main__":
 
 1. 调用`pyautogui.locateOnScreen(target_pic)`时，报错`TypeError: '<' not supported between instances of 'str' and 'int'`
 
-   > 定位：pyautogui的bug
+   > 定位：pyautogui的bug。解决[参考](https://zhuanlan.zhihu.com/p/657907193)
    >
-   > 解决[参考](https://zhuanlan.zhihu.com/p/657907193)
 
 ----
+
+###### OpenCV识别+Pyautogui操作
+
+> 在当前屏幕识别模板图片，然后打印中心点坐标
+
+```py
+import cv2
+import numpy as np
+import pyautogui
+import time
+
+
+if __name__ == "__main__":
+    # 模板匹配精确度,超过该值才认为匹配成功
+    threshold = 0.7
+    path = "/Users/jiangsai/Desktop/test/"
+    templates = ["1.png", "2.png", "3.png"]
+    while True:
+        start_time = time.time()  # 开始时间
+        # 获取屏幕截图
+        # 截全屏
+        screen = pyautogui.screenshot()
+        screen = np.array(screen)
+        screen_gray = cv2.cvtColor(screen, cv2.COLOR_BGR2GRAY)
+
+        for template in templates:
+            # 读取模板图片
+            template_path = cv2.imread(path + template, 0)
+            w, h = template_path.shape[::-1]
+
+            # 模板匹配
+            res = cv2.matchTemplate(screen_gray, template_path, cv2.TM_CCOEFF_NORMED)
+            loc = np.where(res >= threshold)
+            if loc[0].size > 0:
+                left_top = loc[1][0], loc[0][0]
+                right_bottom = loc[1][0] + w, loc[0][0] + h
+                center = loc[1][0] + w / 2, loc[0][0] + h / 2
+                print(f"{template} 在位置: 中心点：{center} 左上角: {left_top} 右下角: {right_bottom}")
+        print("--" * 10 + f"本轮执行时间: {time.time() - start_time} 秒" + "--" * 10)
+        # time.sleep(0.5)  # 间隔一定时间后再次检测
+```
+
+> ```python
+> # 截右上角1/4屏（并没有节省时间）
+> x, y = pyautogui.screenshot().size
+> region = (x / 2, 0, x / 2, y / 2)
+> screen = pyautogui.screenshot(region)
+> ```
+
+* 多线程版本
+
+  ```python
+  import cv2
+  import numpy as np
+  import pyautogui
+  import time
+  import concurrent.futures
+  
+  
+  def match_template(template):
+      # 模板匹配精确度,超过该值才认为匹配成功
+      threshold = 0.7
+      while True:
+          start_time = time.time()  # 开始时间
+          # 截全屏
+          screen = pyautogui.screenshot()
+          screen = np.array(screen)
+          screen_gray = cv2.cvtColor(screen, cv2.COLOR_BGR2GRAY)
+  
+          for template in templates:
+              # 读取模板图片
+              template_path = cv2.imread(path + template, 0)
+              w, h = template_path.shape[::-1]
+  
+              # 模板匹配
+              res = cv2.matchTemplate(screen_gray, template_path, cv2.TM_CCOEFF_NORMED)
+              loc = np.where(res >= threshold)
+              if loc[0].size > 0:
+                  left_top = loc[1][0], loc[0][0]
+                  right_bottom = loc[1][0] + w, loc[0][0] + h
+                  center = loc[1][0] + w / 2, loc[0][0] + h / 2
+                  print(f"{template} 在位置: 中心点：{center} 左上角: {left_top} 右下角: {right_bottom}")
+          print("--" * 10 + f"本轮执行时间: {time.time() - start_time} 秒" + "--" * 10)
+  
+  
+  if __name__ == "__main__":
+      path = "/Users/jiangsai/Desktop/test/"
+      templates = ["1.png", "2.png", "3.png"]
+      with concurrent.futures.ThreadPoolExecutor() as executor:
+          # 提交所有模板匹配任务到线程池
+          futures = [executor.submit(match_template, template) for template in templates]
+          for future in concurrent.futures.as_completed(futures):
+              print(future.result())
+  ```
+
+###### 定位程序的位置
+
+```python
+import Quartz
+from AppKit import NSWorkspace
+import cv2
+import numpy as np
+import Quartz.CoreGraphics as CG
+
+
+def get_window_info(app_name):
+    workspace = NSWorkspace.sharedWorkspace()
+    active_apps = workspace.runningApplications()
+    for app in active_apps:
+        # 模糊查找运行中的应用名称
+        if "sub" in app.localizedName().lower():
+            print(app.localizedName())
+        if app.localizedName() == app_name:
+            app_pid = app.processIdentifier()
+            window_info_list = Quartz.CGWindowListCopyWindowInfo(Quartz.kCGWindowListOptionOnScreenOnly, Quartz.kCGNullWindowID)
+            for window_info in window_info_list:
+                if window_info["kCGWindowOwnerPID"] == app_pid:
+                    window_bounds = window_info["kCGWindowBounds"]
+                    return (window_bounds["X"], window_bounds["Y"], window_bounds["Width"], window_bounds["Height"])
+
+
+def capture_screen(x, y, width, height):
+    # 创建一个 CGRect 结构体来表示捕获区域
+    region = CG.CGRectMake(x, y, width, height)
+    # 捕获指定区域的屏幕内容
+    image_ref = CG.CGWindowListCreateImage(region, CG.kCGWindowListOptionOnScreenOnly, CG.kCGNullWindowID, CG.kCGWindowImageDefault)
+    # 将捕获的内容转换为 numpy 数组
+    width = CG.CGImageGetWidth(image_ref)
+    height = CG.CGImageGetHeight(image_ref)
+    bytes_per_row = CG.CGImageGetBytesPerRow(image_ref)
+    pixel_data = CG.CGDataProviderCopyData(CG.CGImageGetDataProvider(image_ref))
+    image = np.frombuffer(pixel_data, dtype=np.uint8).reshape((height, bytes_per_row // 4, 4))
+    image = image[:, :width, :3]  # 去掉 alpha 通道
+    return image
+
+
+if __name__ == "__main__":
+    app_name = "Google Chrome"
+    bounds = get_window_info(app_name)
+    print(f"{app_name} 的位置是: {bounds}")
+    if bounds:
+        x, y, width, height = bounds
+        screenshot = capture_screen(x, y, width, height)
+        cv2.imshow("Screenshot", screenshot)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+    else:
+        print(f"{app_name} not found or no accessible window.")
+```
+
+
 
 #### 储备库
 
