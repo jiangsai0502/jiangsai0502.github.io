@@ -52,7 +52,7 @@
 
 3. 视频网站播放加速
 
-   > > 使用`shift` + `↑` 、`shift` +`↓` 以0.2的步长增减播放速度
+   > > 1. 使用`shift` + `↑` 、`shift` +`↓` 以0.2的步长增减播放速度
    >
    > ```javascript
    > // ==UserScript==
@@ -66,22 +66,26 @@
    >     'use strict';
    >     document.addEventListener('keydown', function(e) {
    >         // 获取视频元素
-   >         // var video = document.querySelector('video');
    >         let video = document.evaluate('//video', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
    >         if (!video) return; // 如果没有找到视频元素则不执行后续代码
-   > 
    >         // 当同时按下 shift + 上箭头键时，以0.2的步长提高播放速度
    >         if (e.shiftKey && e.code === 'ArrowUp') {
-   >             video.playbackRate = Math.min(video.playbackRate + 0.2, 16); // 确保播放速度不超过16
+   >             // 确保播放速度不超过16
+   >             video.playbackRate = Math.min(video.playbackRate + 0.2, 16); 
    >         }
-   > 
    >         // 当同时按下 shift + 下箭头键时，以0.2的步长降低播放速度
    >         if (e.shiftKey && e.code === 'ArrowDown') {
-   >             video.playbackRate = Math.max(video.playbackRate - 0.2, 0.1); // 确保播放速度不低于0.1
+   >             // 确保播放速度不低于0.1
+   >             video.playbackRate = Math.max(video.playbackRate - 0.2, 0.1); 
    >         }
    >     });
    > })();
    > ```
+   >
+   > > ```js
+   > > var video = document.querySelector('video');
+   > > video = document.evaluate('//video', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+   > > ```
    >
    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311091626966.png)
    >
@@ -104,7 +108,81 @@
    > })();
    > ```
    >
-
+   > **强化版**
+   >
+   > > 增加页面右上角变速按钮
+   >
+   > ```js
+   > (function() {
+   >     'use strict';
+   >     // 检查页面中是否有视频元素
+   >     var video = document.querySelector('video');
+   >     if (!video) return; // 如果没有找到视频元素则不执行后续代码
+   > 
+   >     // 创建并添加浮动面板
+   >     var floatPanel = document.createElement('div');
+   >     floatPanel.style.position = 'fixed'; // 设置定位为固定
+   >     floatPanel.style.top = '5px'; // 距离顶部
+   >     floatPanel.style.right = '5px'; // 距离右侧
+   >     floatPanel.style.border = 'none';  // 没有边框
+   >     floatPanel.style.zIndex = '9999';  // 确保在顶层
+   >     floatPanel.style.backgroundColor = 'white'; // 背景色为白色
+   >     floatPanel.style.padding = '10px'; // 内边距
+   >     floatPanel.style.boxShadow = '0px 0px 10px rgba(0, 0, 0, 0.5)'; // 设置阴影
+   >     floatPanel.style.width = '65px'; // 面板宽度
+   >     floatPanel.style.borderRadius = '5px';  // 面板圆角
+   > 
+   >     // 函数用于设置按钮样式
+   >     function setButtonStyle(button) {
+   >         button.style.backgroundColor = 'red';  // 按钮背景色
+   >         button.style.color = 'white';  // 按钮字体颜色
+   >         button.style.marginBottom = '5px';  // 按钮间隔
+   >         button.style.border = 'none';  // 删除按钮黑边
+   >         button.style.padding = '5px 15px';  // 按钮大小
+   >         button.style.fontSize = '16px';  // 按钮字体大小
+   >         button.style.borderRadius = '5px';  // 按钮圆角
+   >         button.style.boxShadow = '0 4px #999';  // 按钮凸出效果
+   >     }
+   > 
+   >     // 创建加速按钮
+   >     var speedUpButton = document.createElement('button');
+   >     speedUpButton.textContent = '加速';
+   >     setButtonStyle(speedUpButton); // 应用样式
+   >     speedUpButton.onclick = function() {
+   >         video.playbackRate = Math.min(video.playbackRate + 0.2, 16);
+   >     };
+   > 
+   >     // 创建减速按钮
+   >     var slowDownButton = document.createElement('button');
+   >     slowDownButton.textContent = '减速';
+   >     setButtonStyle(slowDownButton); // 应用样式
+   >     slowDownButton.onclick = function() {
+   >         video.playbackRate = Math.max(video.playbackRate - 0.2, 0.1);
+   >     };
+   > 
+   >     // 将按钮添加到浮动面板
+   >     floatPanel.appendChild(speedUpButton);
+   >     floatPanel.appendChild(slowDownButton);
+   > 
+   >     // 将浮动面板添加到页面
+   >     document.body.appendChild(floatPanel);
+   > 
+   >     // 添加键盘事件监听器
+   >     document.addEventListener('keydown', function(e) {
+   >         // 当同时按下 shift + 上箭头键时，以0.2的步长提高播放速度
+   >         if (e.shiftKey && e.code === 'ArrowUp') {
+   >             video.playbackRate = Math.min(video.playbackRate + 0.2, 16);
+   >         }
+   >         // 当同时按下 shift + 下箭头键时，以0.2的步长降低播放速度
+   >         if (e.shiftKey && e.code === 'ArrowDown') {
+   >             video.playbackRate = Math.max(video.playbackRate - 0.2, 0.1);
+   >         }
+   >     });
+   > })();
+   > ```
+   > 
+   > 
+   
 4. 阻止CSDN和360doc的弹窗
 
    > ```js

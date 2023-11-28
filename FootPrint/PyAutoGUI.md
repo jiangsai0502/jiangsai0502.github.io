@@ -18,7 +18,7 @@ from Module import PyAutoGUI_modules as PAU
 if __name__ == "__main__":
     # 调用在执行动作后暂停的秒数
     pyautogui.PAUSE = 0.1
-    # 启用自动防故障功能，locateOnScreen()会使 FailSafe 检测失效
+    # 启用自动防故障线程，q键结束程序
     # pyautogui.FAILSAFE = True
 
     pic = "/Users/jiangsai/Desktop/2.png"
@@ -113,7 +113,8 @@ if __name__ == "__main__":
   pyautogui.click(x=660, y=425)
   pyperclip.copy("今天天气")
   time.sleep(0.2)
-  pyautogui.hotkey("command", "v")
+  # 使用热键粘贴文本
+  pyautogui.hotkey("command", "v", interval=0.2)
   time.sleep(1)
   pyautogui.press(["enter", "enter"], interval=0.25)
   
@@ -153,7 +154,8 @@ if __name__ == "__main__":
   # 2、输入插件密码：复制到剪切板，粘贴，回车
   pyperclip.copy("xxxx")
   time.sleep(0.2)
-  pyautogui.hotkey("command", "v")
+  # 3、使用热键粘贴文本
+  pyautogui.hotkey("command", "v", interval=0.2)
   time.sleep(1)
   pyautogui.press(["enter", "enter"], interval=0.25)
   time.sleep(3)
@@ -181,28 +183,61 @@ if __name__ == "__main__":
 
   * 手动定义的自动防故障功能
 
-    > 鼠标移到屏幕左上角时触发防故障机制
-
     ```python
-    import pyautogui, time
+    import os, threading, time
     from pynput import keyboard
     
-    def check_failsafe():
-        x, y = pyautogui.position()
-        if x == 1799 and y == 0:
-            raise pyautogui.FailSafeException
+    def keyboard_listener():
+        """用于键盘输入的线程"""
+        def on_press(key):
+            try:
+                if key.char == "q":
+                    print("自动防故障触发，程序停止中……")
+                    return False  # 停止监听
+            except AttributeError:
+                pass  # 忽略非字符按键
     
-    def Do_Sth():
-        check_failsafe()
-        time.sleep(1)
-        print("打印一下")
-    
-    try:
-        while 1:
-            Do_Sth()
-    except pyautogui.FailSafeException:
-        print("自动防故障触发，程序已停止。")
+        with keyboard.Listener(on_press=on_press) as listener:
+            listener.join()
     ```
+    
+    > 长时间有限循环时，按下q键触发防故障机制，结束程序
+    
+    ```python
+    if __name__ == "__main__":
+        # 在单独的线程中启动键盘监听
+        keyboard_listener_thread = threading.Thread(target=keyboard_listener)
+        keyboard_listener_thread.start()
+    
+        try:
+            n = 0
+            while keyboard_listener_thread.is_alive():
+                """主程序代码"""
+                if n < 100:
+                    n += 1
+                    time.sleep(1)
+                    print("打印一下")
+        finally:
+            keyboard_listener_thread.join()  # 结束键盘监听线程
+    ```
+    
+    >无线循环时，按下q键触发防故障机制，结束程序
+    
+    ```python
+    if __name__ == "__main__":
+        # 在单独的线程中启动键盘监听
+        keyboard_listener_thread = threading.Thread(target=keyboard_listener)
+        keyboard_listener_thread.start()
+    
+        try:
+            while keyboard_listener_thread.is_alive():
+                """主程序代码"""
+                time.sleep(1)
+                print("打印一下")
+        finally:
+            keyboard_listener_thread.join()  # 结束键盘监听线程
+    ```
+    
 
 #### 语法
 
@@ -274,7 +309,7 @@ if __name__ == "__main__":
        import pyautogui, pyperclip, time
        pyperclip.copy("今天天气")  # 1、将文本复制到剪贴板
        time.sleep(0.2)  # 2、等待0.2秒让剪贴板命令完成
-       pyautogui.hotkey('command', 'v')  # 3、使用热键粘贴文本
+       pyautogui.hotkey("command", "v", interval=0.2)  # 3、使用热键粘贴文本
        ```
 
   * 模拟按键盘按键
@@ -394,166 +429,6 @@ if __name__ == "__main__":
           # 点击中心点：中心点(x=3464, y=511)大于屏幕分辨率1800x1169，Mac通病，解法是坐标/2
           pyautogui.click(my_point[0]/2, my_point[1]/2)
 
-坑
-
-1. 调用`pyautogui.locateOnScreen(target_pic)`时，报错`TypeError: '<' not supported between instances of 'str' and 'int'`
-
-   > 定位：pyautogui的bug。解决[参考](https://zhuanlan.zhihu.com/p/657907193)
-   >
-
-----
-
-###### OpenCV识别+Pyautogui操作
-
-> 在当前屏幕识别模板图片，然后打印中心点坐标
-
-```py
-import cv2
-import numpy as np
-import pyautogui
-import time
-
-
-if __name__ == "__main__":
-    # 模板匹配精确度,超过该值才认为匹配成功
-    threshold = 0.7
-    path = "/Users/jiangsai/Desktop/test/"
-    templates = ["1.png", "2.png", "3.png"]
-    while True:
-        start_time = time.time()  # 开始时间
-        # 获取屏幕截图
-        # 截全屏
-        screen = pyautogui.screenshot()
-        screen = np.array(screen)
-        screen_gray = cv2.cvtColor(screen, cv2.COLOR_BGR2GRAY)
-
-        for template in templates:
-            # 读取模板图片
-            template_path = cv2.imread(path + template, 0)
-            w, h = template_path.shape[::-1]
-
-            # 模板匹配
-            res = cv2.matchTemplate(screen_gray, template_path, cv2.TM_CCOEFF_NORMED)
-            loc = np.where(res >= threshold)
-            if loc[0].size > 0:
-                left_top = loc[1][0], loc[0][0]
-                right_bottom = loc[1][0] + w, loc[0][0] + h
-                center = loc[1][0] + w / 2, loc[0][0] + h / 2
-                print(f"{template} 在位置: 中心点：{center} 左上角: {left_top} 右下角: {right_bottom}")
-        print("--" * 10 + f"本轮执行时间: {time.time() - start_time} 秒" + "--" * 10)
-        # time.sleep(0.5)  # 间隔一定时间后再次检测
-```
-
-> ```python
-> # 截右上角1/4屏（并没有节省时间）
-> x, y = pyautogui.screenshot().size
-> region = (x / 2, 0, x / 2, y / 2)
-> screen = pyautogui.screenshot(region)
-> ```
-
-* 多线程版本
-
-  ```python
-  import cv2
-  import numpy as np
-  import pyautogui
-  import time
-  import concurrent.futures
-  
-  
-  def match_template(template):
-      # 模板匹配精确度,超过该值才认为匹配成功
-      threshold = 0.7
-      while True:
-          start_time = time.time()  # 开始时间
-          # 截全屏
-          screen = pyautogui.screenshot()
-          screen = np.array(screen)
-          screen_gray = cv2.cvtColor(screen, cv2.COLOR_BGR2GRAY)
-  
-          for template in templates:
-              # 读取模板图片
-              template_path = cv2.imread(path + template, 0)
-              w, h = template_path.shape[::-1]
-  
-              # 模板匹配
-              res = cv2.matchTemplate(screen_gray, template_path, cv2.TM_CCOEFF_NORMED)
-              loc = np.where(res >= threshold)
-              if loc[0].size > 0:
-                  left_top = loc[1][0], loc[0][0]
-                  right_bottom = loc[1][0] + w, loc[0][0] + h
-                  center = loc[1][0] + w / 2, loc[0][0] + h / 2
-                  print(f"{template} 在位置: 中心点：{center} 左上角: {left_top} 右下角: {right_bottom}")
-          print("--" * 10 + f"本轮执行时间: {time.time() - start_time} 秒" + "--" * 10)
-  
-  
-  if __name__ == "__main__":
-      path = "/Users/jiangsai/Desktop/test/"
-      templates = ["1.png", "2.png", "3.png"]
-      with concurrent.futures.ThreadPoolExecutor() as executor:
-          # 提交所有模板匹配任务到线程池
-          futures = [executor.submit(match_template, template) for template in templates]
-          for future in concurrent.futures.as_completed(futures):
-              print(future.result())
-  ```
-
-###### 定位程序的位置
-
-```python
-import Quartz
-from AppKit import NSWorkspace
-import cv2
-import numpy as np
-import Quartz.CoreGraphics as CG
-
-
-def get_window_info(app_name):
-    workspace = NSWorkspace.sharedWorkspace()
-    active_apps = workspace.runningApplications()
-    for app in active_apps:
-        # 模糊查找运行中的应用名称
-        if "sub" in app.localizedName().lower():
-            print(app.localizedName())
-        if app.localizedName() == app_name:
-            app_pid = app.processIdentifier()
-            window_info_list = Quartz.CGWindowListCopyWindowInfo(Quartz.kCGWindowListOptionOnScreenOnly, Quartz.kCGNullWindowID)
-            for window_info in window_info_list:
-                if window_info["kCGWindowOwnerPID"] == app_pid:
-                    window_bounds = window_info["kCGWindowBounds"]
-                    return (window_bounds["X"], window_bounds["Y"], window_bounds["Width"], window_bounds["Height"])
-
-
-def capture_screen(x, y, width, height):
-    # 创建一个 CGRect 结构体来表示捕获区域
-    region = CG.CGRectMake(x, y, width, height)
-    # 捕获指定区域的屏幕内容
-    image_ref = CG.CGWindowListCreateImage(region, CG.kCGWindowListOptionOnScreenOnly, CG.kCGNullWindowID, CG.kCGWindowImageDefault)
-    # 将捕获的内容转换为 numpy 数组
-    width = CG.CGImageGetWidth(image_ref)
-    height = CG.CGImageGetHeight(image_ref)
-    bytes_per_row = CG.CGImageGetBytesPerRow(image_ref)
-    pixel_data = CG.CGDataProviderCopyData(CG.CGImageGetDataProvider(image_ref))
-    image = np.frombuffer(pixel_data, dtype=np.uint8).reshape((height, bytes_per_row // 4, 4))
-    image = image[:, :width, :3]  # 去掉 alpha 通道
-    return image
-
-
-if __name__ == "__main__":
-    app_name = "Google Chrome"
-    bounds = get_window_info(app_name)
-    print(f"{app_name} 的位置是: {bounds}")
-    if bounds:
-        x, y, width, height = bounds
-        screenshot = capture_screen(x, y, width, height)
-        cv2.imshow("Screenshot", screenshot)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
-    else:
-        print(f"{app_name} not found or no accessible window.")
-```
-
-
-
 #### 储备库
 
 ###### pynput库keyboard函数获取键盘按键 
@@ -660,149 +535,3 @@ arrow_right_key = keyboard.Key.right
 | 'down'        | Down Arrow (↓)     | 向下箭头键                     |
 | 'left'        | Left Arrow (←)     | 向左箭头键                     |
 | 'right'       | Right Arrow (→)    | 向右箭头键                     |
-
-##### 按键精灵
-
-> 1. Excel格式
->
->    | 序号 | 操作指令 | 操作内容 | 重复次数（不填则执行1次） |
->    | ---- | -------- | -------- | ------------------------- |
->    |      |          |          |                           |
->
-> 2. 用法
->
->    > 1. 操作指令：1-单击、2-双击、3-右键、4-输入、5-等待、6-滚轮
->    > 2. 操作内容：
->    >    1. 指令1、2、3对应的操作内容为png图片
->    >    2. 指令4对应的为输入文字
->    >    3. 指令5为等待
->    >    4. 指令6为滚动
->
-> ```python
-> #导入 用于自动化控制鼠标与键盘
-> import pyautogui, time, xlrd, pyperclip
-> from openpyxl import Workbook, load_workbook
-> 
-> # Excel数据检查
-> def dataCheck(C_sheet):
->     # 默认Excel的数据全部有效
->     Validation = True
-> 
->     #Excel行数检查
->     if C_sheet.max_row <2:
->         print("没数据")
->         Validation = False
->         return Validation
-> 
->     #每行数据检查
->     current_line = 2
->     while current_line <= C_sheet.max_row:
->         # 第1列 操作类型
->         cmd_type = C_sheet[current_line][0]
->         # 判断第1列数据有效性
->         if cmd_type.value not in [1,2,3,4]:
->             print('第',current_line,"行,第1列当前是", cmd_type.value,"，必须是1-6的数字")
->             Validation = False
-> 
->         # 第2列 内容检查
->         cmd_content = C_sheet[current_line][1]
->         # 判断第2列数据有效性
->         # 1、2、3是图片操作，操作内容必须为字符串类型
->         if cmd_type.value ==1 or cmd_type.value == 2 or cmd_type.value == 3:
->             if not cmd_content.value.lower().endswith('.png'):
->                 print('第',current_line,"行,第2列当前是", cmd_content.value,"，图片操作必须预备png图片")
->                 Validation = False
->         # 4是输入操作，输入内容不能为空
->         elif cmd_type.value == 4:
->             if cmd_content.value.strip() is None:
->                 print('第',current_line,"行,第2列当前是", cmd_content.value,"，输入操作必须设置输入内容")
->                 Validation = False
-> 
->         # 第3列 重复次数检查
->         cmd_times = C_sheet[current_line][2]
->         # 判断第3列数据有效性
->         if cmd_times.value is not None:
->             if type(cmd_times.value) is not int:
->                 print('第',current_line,"行,第3列当前是", cmd_times.value,"，重复次数必须是整数")
->                 Validation = False
->             elif cmd_times.value < 1:
->                 print('第',current_line,"行,第2列当前是", cmd_times.value,"，重复次数必须>=1")
->                 Validation = False
->         current_line += 1
->     return Validation
-> 
-> #定义鼠标操作方法
-> def mouseClick(clicks,mouse,image,reTry):
->     # 目标图片坐标
->     location = None
->     # 等待加载时间
->     second = 0
->     while reTry == 0:
->         # 只要没找到图片，或者加载时间没超过10秒，就一直循环
->         while (location == None and second != 10):
->             try:
->                 time.sleep(0.5)
->                 second = second + 0.5
->                 location = pyautogui.locateCenterOnScreen(image,confidence=0.9)
->             except Exception as e:
->                 print(e)
->         # 找到图，或者过了10秒没找到图
->         if location is None:
->             print('不等了')
->         else:
->             pyautogui.click(location.x/2,location.y/2,clicks=clicks,interval=0.2,duration=0.2,button=mouse)
->             print("点击1次")
->             reTry -= 1
-> 
-> #任务
-> def mainWork(W_sheet):
->     current_line = 2
->     while current_line <= W_sheet.max_row:
->         #取本行第1列，操作类型
->         cmd_type = W_sheet[current_line][0]
->         # 图片操作
->         if cmd_type.value in [1,2,3]:
->             # 取本行第2列，操作内容
->             imageFile = W_sheet[current_line][1].value
->             # 默认重复执行1次
->             reTry = 1
->             # 若本行第3列不为空，则重新赋值重复次数
->             if W_sheet[current_line][2].value is not None:
->                 reTry = W_sheet[current_line][2].value
->             if cmd_type.value == 1:
->                 print("左键单击",imageFile,reTry,"次")
->                 mouseClick(1,"left",imageFile,reTry)
->             elif cmd_type.value == 2:
->                 print("左键双击",imageFile,reTry,"次")
->                 mouseClick(2,"left",imageFile,reTry)
->             elif cmd_type.value == 3:
->                 print("右键单击",imageFile,reTry,"次")
->                 mouseClick(1,"right",imageFile,reTry)
->         # 输入操作
->         elif cmd_type.value == 4:
->             pyautogui.click(x=1470,y=850,clicks=2)
->             inputValue = W_sheet[current_line][1].value
->             # 复制内容
->             pyperclip.copy(inputValue)
->             # 粘贴复制的内容
->             pyautogui.hotkey('command','v')
->             pyautogui.hotkey('enter')
->             time.sleep(0.5)
->             print("输入:",inputValue) 
->         current_line += 1
-> 
-> if __name__ == '__main__':
->     # 打开Excel文件
->     myWorkbook = load_workbook('test.xlsx')
->     # 引用指定表单Mysheet
->     Mysheet = myWorkbook['Sheet2']
-> 
->     #数据检查
->     checkCmd = dataCheck(Mysheet)
->     if checkCmd:
->         mainWork(Mysheet)
->     else:
->         print('输入有误或者已经退出!')
-> ```
-
-##### 

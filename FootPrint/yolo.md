@@ -1,3 +1,7 @@
+###### 教程
+
+> * [YOLOv5 40分钟训练自定义模型](https://www.bilibili.com/video/BV13G4y1W75c)
+
 ##### yoloV5训练 & 识别
 
 ###### 下载模型
@@ -83,7 +87,7 @@
 >    > 2. `改变存放目录`：打开`/XML_to_TXT_Project/Original_XML_Images/xml_of_Images/` 目录
 >    > 3. `PascalVOC`：标注为xml文件
 >    > 4. `创建区块`：框选目标区域
->    > 5. `保存`：保存xml文件到`改变存放目录`
+>    > 5. `保存`：保存xml文件到 `改变存放目录`
 >
 > 3. 跑`XML_to_TXT.py` [脚本](#`XML_to_TXT.py`)
 >
@@ -312,13 +316,12 @@ if __name__ == "__main__":
     split_datasets(image_dir, xml_dir, directories, TRAIN_RATIO)
 ```
 
-###### Python程序调用yolo V5
-
-##### OpenCV+yolov5+PyautoGui
+##### OpenCV+yolov5识别摄像头/本地视频
 
 ```python
 import cv2
 import torch
+import pyautogui
 
 # 加载官方预训练的模型
 # model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
@@ -340,6 +343,9 @@ while cap.isOpened():
     if not ret:
         break
 
+    # 前置摄像头为左右反转的镜像模式，下面将画面反转回来
+    frame = cv2.flip(frame, 1)
+
     # 使用 YOLOv5 模型对当前帧进行目标检测
     results = yolo_model(frame)
 
@@ -359,6 +365,11 @@ while cap.isOpened():
         # cv2.FONT_HERSHEY_SIMPLEX 是字体样式，0.9 是字体大小，(0, 255, 0) 是字体颜色，2 是字体厚度。
         cv2.putText(frame, label, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 0), 2)
 
+        # 计算检测框的中心位置
+        center_x = int((x1 + x2) / 2)
+        center_y = int((y1 + y2) / 2)
+        cv2.rectangle(frame, (center_x - 10, center_y - 10), (center_x + 10, center_y + 10), (0, 0, 255), 2)
+
     # 显示处理后的帧。
     cv2.imshow("YOLOv5 Detection", frame)
 
@@ -369,5 +380,113 @@ while cap.isOpened():
 # 释放 VideoCapture 对象和销毁所有 OpenCV 窗口。
 cap.release()
 cv2.destroyAllWindows()
+
+```
+
+###### OpenCV+yolov5+PyautoGUI识别本地程序+自动操作
+
+```py
+import Quartz, time, pyautogui, torch
+from AppKit import NSWorkspace, NSScreen
+import numpy as np
+import Quartz.CoreGraphics as CG
+import cv2 as cv
+
+def get_scaling_factor():
+    """获取主屏幕的缩放因子，Retina屏幕通常为2"""
+    scaling_factor = NSScreen.mainScreen().backingScaleFactor()
+    return scaling_factor
+
+def find_app_window(app_name):
+    """获取目标程序窗口的信息"""
+    workspace = NSWorkspace.sharedWorkspace()
+    active_apps = workspace.runningApplications()
+    for app in active_apps:
+        # 模糊查找运行中的所有应用名称，用于调试
+        if "sub" in app.localizedName().lower():
+            print(app.localizedName())
+        if app.localizedName() == app_name:
+            # 获取目标程序的进程ID
+            app_pid = app.processIdentifier()
+            # 获取所有窗口的信息
+            window_info_list = Quartz.CGWindowListCopyWindowInfo(Quartz.kCGWindowListOptionOnScreenOnly, Quartz.kCGNullWindowID)
+            for window_info in window_info_list:
+                # 如果窗口属于目标程序
+                if window_info["kCGWindowOwnerPID"] == app_pid:
+                    # 获取窗口的位置和大小
+                    window = window_info["kCGWindowBounds"]
+                    return (window["X"], window["Y"], window["Width"], window["Height"])
+
+def capture_screen(x, y, width, height):
+    """「固定用法」捕获屏幕上指定区域的图像"""
+    # 根据指定的位置和大小创建CGRect结构体
+    region = CG.CGRectMake(x, y, width, height)
+    # 捕获指定区域的屏幕内容
+    image_ref = CG.CGWindowListCreateImage(region, CG.kCGWindowListOptionOnScreenOnly, CG.kCGNullWindowID, CG.kCGWindowImageDefault)
+    # 将捕获的内容转换为 numpy 数组
+    width = CG.CGImageGetWidth(image_ref)
+    height = CG.CGImageGetHeight(image_ref)
+    bytes_per_row = CG.CGImageGetBytesPerRow(image_ref)
+    pixel_data = CG.CGDataProviderCopyData(CG.CGImageGetDataProvider(image_ref))
+    image = np.frombuffer(pixel_data, dtype=np.uint8).reshape((height, bytes_per_row // 4, 4))
+    image = image[:, :width, :3]
+    image = np.ascontiguousarray(image, dtype=np.uint8)
+    return image
+
+if __name__ == "__main__":
+    # 待识别程序
+    app_name = "Google Chrome"
+    # 程序所在当前屏幕位置
+    window_info = find_app_window(app_name)
+    print(f"{app_name} 的左上角坐标和宽高是: {window_info}")
+    # 当前屏幕坐标和分辨率的缩放比例
+    scaling_factor = get_scaling_factor()
+    # 使用自定义模型权重加载模型
+    model_path = "/Users/jiangsai/Desktop/test/yolov5/weights/yolov5s.pt"
+    # "custom" 即自定义模型，"path" 指定模型文件的路径。
+    yolo_model = torch.hub.load("ultralytics/yolov5", "custom", path=model_path, force_reload=True)
+    # 设置置信度阈值
+    conf_thres = 0.25  # 例如，设定为 0.25
+    yolo_model.conf = conf_thres  # 更新模型的置信度阈值
+    
+    if window_info:
+        while True:
+            x, y, w, h = window_info
+            # 1、获取目标程序的实时截图
+            app_screenshot = capture_screen(x, y, w, h)
+            # 2、使用 YOLOv5 模型实时截图进行目标检测
+            results = yolo_model(app_screenshot)
+            # 遍历所有检测结果results.xyxy[0]，并在每个检测结果上画边框和标签
+            # 每个检测结果包括边界框坐标（xyxy）、置信度 (conf) 和类别索引 (cls)。
+            for *xyxy, conf, cls in results.xyxy[0].cpu().numpy():
+                # 获取类别名称。model.names 是一个列表，包含了所有可能的类别名称。
+                # int(cls) 将类别索引 (cls) 转换为整数，然后用它来从 model.names 中获取相应的类别名称。
+                label = yolo_model.names[int(cls)]
+                # 解析边界框坐标 xyxy，并将它们转换为整数。
+                # xyxy 是一个列表，包含了四个元素：x1, y1, x2, y2（边界框的左上角和右下角坐标）。
+                x1, y1, x2, y2 = [int(i) for i in xyxy]
+                # (x1, y1) 是边界框的左上角坐标，(x2, y2) 是边界框的右下角坐标。
+                # (0, 255, 0) 是矩形颜色（绿色）的 RGB 值，2 是矩形边框的厚度。
+                cv.rectangle(app_screenshot, (x1, y1), (x2, y2), (0, 255, 0), 2)
+                # putText 函数在边界框的展示文字 (x1, y1 - 10) 指定了文本开始的位置（稍微在边界框上方）。
+                # cv.FONT_HERSHEY_SIMPLEX 是字体样式，0.9 是字体大小，(0, 255, 0) 是字体颜色，2 是字体厚度。
+                # 创建带有置信度的标签文本
+                label_with_conf = f"{label} {conf:.2f}"
+                cv.putText(app_screenshot, label_with_conf, (x1, y1 - 10), cv.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 0), 2)
+                # 计算检测框的中心位置
+                center_x = int((x1 + x2) / scaling_factor)
+                center_y = int((y1 + y2) / scaling_factor)
+                cv.rectangle(app_screenshot, (center_x - 10, center_y - 10), (center_x + 10, center_y + 10), (0, 0, 255), 2)
+                # 将鼠标移动到检测框的中心
+                # pyautogui.moveTo(center_x, center_y)
+            # 显示处理后的帧。
+            cv.imshow("YOLOv5 Detection", app_screenshot)
+
+            # 按下 'q' 键跳出循环。
+            if cv.waitKey(1) & 0xFF == ord("q"):
+                break
+    else:
+        print(f"{app_name} not found or no accessible window.")
+    cv.destroyAllWindows()
 ```
 
