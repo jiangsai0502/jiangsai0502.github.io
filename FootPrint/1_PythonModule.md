@@ -385,53 +385,83 @@ MyWB.save('/Users/jiangsai02/Documents/Temp/CombineTable.xlsx')
 
 ### 多线程
 
+> 线程用法
+>
+> 1. 独立线程：如 `keyboard_thread` 用于控制整个程序的结束
+> 2. 并行线程：如 `threads` 用于多线程执行主程序任务（下载）
+
+> 模拟多线程下载
+
 ```python
-import time, random, threading
-from tqdm import tqdm
-from queue import Queue
+import time
+import threading
+from pynput import keyboard
+import random
 
-# 线程池
-threads = []
-# 线程数
-threads_num = 3
 
-# 让线程一直从队列获取消息，一直等待一直获取，直至等到结束信号，就退出
-def a():
-    while True:
-        # Queue().get()的作用是阻塞队列直到获得消息
-        num = test_queue.get()
-        if num is 'signal_exit':
-            break
+def keyboard_listener():
+    """键盘监听函数：键盘输入q键退出整个程序"""
 
-        print(f'随机数是{num}的开始时间是{time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())}')
-        for i in tqdm(range(num)):
-            time.sleep(1)
-        print(f'随机数是{num}的结束时间是{time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())}')
-        
-        test_queue.task_done()
+    def on_press(key):
+        """内部函数：当键盘按键被按下时触发"""
+        try:
+            if key.char == "q":
+                print("自动防故障触发，程序停止中……")
+                stop_event.set()  # 设置停止事件
+                return False  # 停止监听
+        except AttributeError:
+            pass  # 对于非字符按键（如功能键等）不做处理
 
-if __name__ == '__main__':
-    test_queue = Queue()
-    numlist = [4,5,6,7,8,9,10]
-    for i in numlist:
-        test_queue.put(i)
+    # 对于非字符按键（如功能键等）不做处理
+    with keyboard.Listener(on_press=on_press) as listener:
+        listener.join()  # 阻塞当前线程，直到监听器停止
 
-    # 启动线程，并将线程对象 放入列表保存
-    for i in range(threads_num):
-        # target从队列里取任务去执行
-        mythread = threading.Thread(target=a)
-        mythread.start()
-        threads.append(mythread)
 
-    # 阻塞队列，直到队列被清空
-    test_queue.join()
-    # 向队列发送多个退出信号
-    for i in range(threads_num):
-         test_queue.put('signal_exit')
+def download(video):
+    """模拟下载视频的函数"""
+    # 随机生成一个下载所需的时间长度
+    download_time = random.randint(5, 20)
+    for i in range(1, download_time, 1):
+        # 模拟下载当前视频，打印下载时间
+        print(f"片名：{video[0]} 链接：{video[1]}，下载的第{i}秒")
+        time.sleep(1)
+    print(f"------ {video} 下载完成 ------")
 
-    # 阻塞队列，直到所有线程退出
-    for t in threads:
-        t.join()
+
+def manage_threads(my_list):
+    """管理工作线程"""
+    threads = []  # 用于存储工作线程的列表
+    while my_list and not stop_event.is_set():  # 检查视频列表和全局停止事件
+        # 确保总是有两个线程在运行
+        while len(threads) < 2 and my_list and not stop_event.is_set():
+            # 从列表中取出一个视频
+            item = my_list.pop(0)
+            # 创建一个新的下载线程
+            thread = threading.Thread(target=download, args=(item,), daemon=True)
+            thread.start()  # 启动线程
+            threads.append(thread)  # 将线程添加到线程列表
+
+        # 移除已完成的线程
+        threads = [t for t in threads if t.is_alive()]
+        time.sleep(1)  # 每秒检查一次线程列表
+
+
+if __name__ == "__main__":
+    # 全局变量，用于指示程序是否应该停止
+    stop_event = threading.Event()
+
+    video_list = [("霸王别姬", "xxxxx"), ("白与黑", "yyyyy"), ("心灵捕手", "zzzz")]
+
+    # 启动键盘监听线程
+    keyboard_thread = threading.Thread(target=keyboard_listener)
+    keyboard_thread.start()
+
+    # 管理和执行工作线程
+    manage_threads(video_list)
+
+    # 等待键盘监听线程结束
+    keyboard_thread.join()
+    print("程序结束。")
 ```
 
 

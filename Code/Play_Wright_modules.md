@@ -1,10 +1,14 @@
 ###### PlayWright爬虫通用方法
 
+> 文件路径：`Module/PlayWright_modules.py`
+
 [返回](FootPrint/Playwright.md#通用方法)
 
 ```python
 import re, os, html2text, random, csv
-from playwright_stealth import stealth_sync
+from urllib.parse import urlparse
+import mimetypes
+import requests
 
 
 def Initial_Chromium(playwright, WebSite, headless, AbortPic, WaitLoad):
@@ -21,9 +25,7 @@ def Initial_Chromium(playwright, WebSite, headless, AbortPic, WaitLoad):
         SaiContext = SaiBrowser.new_context()
     # 3、是否阻止图片加载：拦截SaiContext下所有页面的图片请求（凡含.png的链接，都当做是png图片）
     if AbortPic:
-        SaiContext.route(
-            re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.gif.*)|(.*\.webp.*)"), lambda route: route.abort()
-        )
+        SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.gif.*)|(.*\.webp.*)"), lambda route: route.abort())
     # 4、初始化一个网页
     SaiPage = SaiContext.new_page()
     SaiPage.goto(WebSite)
@@ -45,9 +47,7 @@ def Initial_LocalChrome(playwright, WebSites, AbortPic, WaitLoad):
     SaiContext = SaiBrowser.contexts[0]
     # 2、是否阻止图片加载
     if AbortPic:
-        SaiContext.route(
-            re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.gif.*)|(.*\.webp.*)"), lambda route: route.abort()
-        )
+        SaiContext.route(re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.gif.*)|(.*\.webp.*)"), lambda route: route.abort())
     # 3、逐个打开目标网页
     SaiPages = []
     for i in WebSites:
@@ -192,6 +192,59 @@ def Write_to_CSV(WriteList, CsvFile):
             CSVwriter.writerow(row)
 
 
+def Write_to_TXT(data, txt_file):
+    """保存到txt文件
+    data：待保存数据，如：[("name1", "value1"),("name2", "value2")]
+    txt_file：保存文件路径
+    """
+    """"""
+    # 打开文件以写入数据
+    with open(txt_file, "a+") as file:
+        for item in data:
+            # 将每个项写入文件，以适当的格式
+            file.write(f"{item[0]}：{item[1]}\n")
+    print(f"已写入文件：{txt_file}")
+
+
+def download_file(url, filename, folder):
+    """下载文件
+    url：文件URL
+    filename：文件名
+    folder：文件保存的目录
+    """
+    # 检查保存文件的文件夹是否存在
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+
+    # 提取URL的文件扩展名
+    parsed_url = urlparse(url)
+    path = parsed_url.path
+    extension = os.path.splitext(path)[1]
+
+    # 如果无法从URL中获取扩展名，尝试从内容类型中获取
+    if not extension:
+        response = requests.head(url)
+        content_type = response.headers.get("content-type")
+        extension = mimetypes.guess_extension(content_type)
+
+    # 构造完整的文件名
+    filename = f"{filename}{extension}"
+    file_path = os.path.join(folder, filename)
+
+    # 检查文件是否存在
+    if not os.path.exists(file_path):
+        print(f"正在下载: {file_path}")
+        # 下载文件
+        response = requests.get(url)
+        response.raise_for_status()  # 确保请求成功
+        # 保存文件
+        with open(file_path, "wb") as file:
+            file.write(response.content)
+        print(f"文件已下载: {file_path}")
+    else:
+        print(f"{file_path} 已存在")
+
+
 def convert_wan_to_number(num):
     if "万" in num:
         # 删除"万"字符
@@ -199,55 +252,5 @@ def convert_wan_to_number(num):
         return str(int(float(num) * 10000))
     else:
         return str(num)
-
-
-#################################################################
-########################   不  常  用   ##########################
-#################################################################
-def Initial_LocalChrome_Headless(playwright, WebSites, AbortPic, WaitLoad):
-    """
-    初始化浏览器：调用本地Chrome，在新标签打开目标网页，并切换到该标签
-    """
-    SaiBrowser = playwright.chromium.connect_over_cdp("http://localhost:9222")
-    # ------------- 无头反爬处理 -------------#
-    # 设置用户代理和其他选项
-    custom_user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
-    context_options = {"user_agent": custom_user_agent}
-    SaiContext = SaiBrowser.new_context(**context_options)
-    stealth_sync(SaiContext)
-    # 处理WebGL检测
-    SaiContext.add_init_script(
-        """
-        (() => {
-            const getParameter = WebGLRenderingContext.getParameter;
-            WebGLRenderingContext.prototype.getParameter = function(parameter) {
-                if (parameter === 37445) {
-                    return 'NVIDIA Corporation';
-                }
-                if (parameter === 37446) {
-                    return 'NVIDIA GeForce GTX 1050 Ti with Max-Q Design OpenGL Engine';
-                }
-                return getParameter(parameter);
-            };
-        })();
-    """
-    )
-    # ------------- 无头反爬处理 -------------#
-    # 是否阻止图片加载
-    if AbortPic:
-        SaiContext.route(
-            re.compile(r"(.*\.png.*)|(.*\.jpg.*)|(.*\.gif.*)|(.*\.webp.*)"), lambda route: route.abort()
-        )
-    SaiPages = []
-    for i in WebSites:
-        SaiPage = SaiContext.new_page()
-        SaiPage.goto(i)
-        SaiPage.bring_to_front()
-        if WaitLoad:
-            SaiPage.wait_for_load_state("networkidle")
-        SaiPage.wait_for_timeout(random.randint(1000, 3000))
-        SaiPages.append(SaiPage)
-    return SaiBrowser, SaiContext, SaiPages
-
 ```
 

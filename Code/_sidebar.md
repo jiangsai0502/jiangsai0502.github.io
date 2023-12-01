@@ -1,10 +1,13 @@
 * PyautoGUI
-  * [定位程序位置](Code/Recognize_pic_by_change_size.md)
+  * [定位程序位置](Code/OpenCV_Recognize_Pic_by_change_size.md)
 * OpenCV
   * [定时截屏 - 本地视频 / 摄像头](Code/ScreenShot_Camera_Video.md)
   * [定时截屏 - 屏幕程序](Code/ScreenShot_DesktopApp.md)
-  * [金字塔识图](Code/Recognize_pic_by_change_size.md)
+  * [金字塔识图](Code/OpenCV_Recognize_Pic_by_change_size.md)
   * [打地鼠](Code/Hit_Moles.md)
+* YoloV5
+  * [YoloV5识别摄像头/本地视频](Code/YoloV5_Recognize_Video_Camera.md)
+  * [YoloV5识别桌面程序](Code/YoloV5_Recognize_DesktopApp.md)
 * PlayWright爬虫
   * [PlayWright爬虫通用方法](Code/Play_Wright_modules.md)
   * [滚动加载 - 爬取二级页信息](Code/Scroll_SonPage.md)
@@ -14,6 +17,7 @@
   * [滚动加载 - Quora](Code/Quora.md)
   * [翻页 - 一级页+二级页爬取](Code/Turn_TopSonPage.md)
   * [翻页 - 一级页+二级页爬取：CCP文章列表](Code/CCP.md)
+  * [翻页 - 一级页爬取：下载彩视后台视频](Code/Download_CaiShiXueTang.md)
   * [ChatGPT问答](Code/ChatGPT.md)
   * [金色财经](Code/Jinse.md)
   * [Json接口爬法](Code/JsonCrawler.md)

@@ -28,7 +28,7 @@
     >   > 
     >   > `conda install pip3`
     > 
-    > - `pip3 install pytest-playwright`
+    > - `pip install pytest-playwright`
 
 2. 为playwright安装浏览器
 
@@ -176,6 +176,8 @@
        `SaiPage.locator('//*[@id="Popover2"]').press("Delete")`
        
        `SaiPage.keyboard.press('Enter')`
+       
+       `SaiPage.keyboard.press("Escape")`  ：常用于取消弹窗
        
       3. 模拟组合键输入
 
