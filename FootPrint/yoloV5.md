@@ -5,7 +5,7 @@
 
 ##### 环境搭建
 
-1. 源码
+1. 下载源码、安装依赖、安装看板
 
    ```bash
    cd /Users/jiangsai/Desktop
@@ -14,16 +14,18 @@
    
    cd /Users/jiangsai/Desktop/yolov5
    
-   conda create -n yolov5 python=3.10
+   conda create -n yolov5 python=3.8
    
    conda activate yolov5
    
    pip install -r requirements.txt
    
    mkdir /Users/jiangsai/Desktop/yolov5/weights
+   
+   pip install tensorboard
    ```
 
-2. 预制模型
+2. 预制模型说明
 
    >`yolov5/models` 目录有4个模型：s > m > l > x，精度越来越高，速度越来越慢
    >
@@ -31,57 +33,235 @@
    >
    >将 `yolov5s.pt` 模型放入 `/Users/jiangsai/Desktop/yolov5/weights`
 
-3. 
+##### 预制模型检测
 
-##### yoloV5训练 & 识别
+1. VSCode加载 `yolov5` 项目：`/Users/jiangsai/Desktop/yolov5`
 
-###### 下载模型
+2. VSCode终端切换到 `/Users/jiangsai/Desktop/yolov5` 目录
 
-> ```bash
-> 
-> ```
->
-> >
+3. 使用 **`./detect.py`** 检测
 
-###### 使用训练好的预制模型
+   ```python
+   def parse_opt():
+       parser.add_argument("--weights", nargs="+", type=str, default="./weights/yolov5s.pt")
+       parser.add_argument("--source", type=str, default="./data/images")
+       parser.add_argument("--conf-thres", type=float, default=0.25)
+       parser.add_argument("--classes", nargs="+", type=int)
+       parser.add_argument("--project", default="./runs/detect")
+       parser.add_argument("--name", default="exp")
+       parser.add_argument("--view-img", action="store_true")
+   ```
 
-> 1. 安装依赖包
->
->    ```bash
->    // 进入模型目录
->    cd yolov5
->    // 安装依赖包
->    pip install -r requirements.txt
->    ```
->
-> 2. 设置 `detect.py`
->
->    ```python
->    def parse_opt():
->        # 执行识别的模型文件的路径
->        parser.add_argument("--weights", nargs="+", type=str, default="weights/yolov5s.pt", help="model path or triton URL")
->        # 识别素材文件的路径
->        # 识别图片：default="./data/images"
->        # 识别视频：default="/Users/jiangsai/Desktop/test/jump boy.mp4"
->        # 识别摄像头：default=0
->        parser.add_argument("--source", type=str, default="./data/images", help="file/dir/URL/glob/screen/0(webcam)")
->        # 置信度阈值：即 >default=0.25的结果都识别出来
->        parser.add_argument("--conf-thres", type=float, default=0.25, help="confidence threshold")
->    ```
->
->    > #yolo 检测中有两个阈值参数，一般使用--conf-thres 比较好理解，--iou-thres 太大时容易出现一个目标多个检测框，太小时容易出现检测不到
->
-> 3. vscode终端切换到`/Users/jiangsai/Desktop/test/yolov5/` 目录后， 执行 `detect.py`
->
-> 4. 识别结果保存在`yolov5/runs/detect` 目录
->
-> | `view_img` | 显示结果。如果启用，将在检测时显示窗口。 | `--view-img`                       |
-> | ---------- | ---------------------------------------- | ---------------------------------- |
-> | `classes`  | 过滤类别。按类别ID过滤检测结果。         | `--classes 0` 或 `--classes 0 2 3` |
-> | `project`  | 保存结果的项目目录。                     | `--project runs/detect`            |
-> | `name`     | 保存结果的子目录名。                     | `--name exp`                       |
+   * `"--weights"` ：执行检测的模型文件路径
 
-###### 自己训练模型
+   * `"--source"` ：待识别的素材文件路径
+
+     * `default=0` ：识别摄像头
+     * `default="screen"` ：识别屏幕
+     * `default="/Users/jiangsai/Desktop/yolov5/Sai"` ：识别本地文件夹内的视频和图片
+     * `default="/Users/jiangsai/Desktop/yolov5/Sai/jump.mp4"` ：识别本地视频
+     * `default="/Users/jiangsai/Desktop/yolov5/Sai/people.jpg"` ：识别本地图片，网络图片也可
+
+   * `"--conf-thres"` ：置信度阈值，`default=0.25` 即置信度>0.25的结果都识别出来
+
+     * yolo 有两个阈值参数：`--conf-thres` 越小越宽松，识别结果越多；`--iou-thres` 越大越宽松，识别结果越多
+
+   * `"--classes"` ：识别的类别
+
+     * 类别文件：`data/coco128.yaml`
+
+       ```yaml
+       # Classes
+       names:
+         0: person
+         1: bicycle
+         2: car
+         3: motorcycle
+         4: airplane
+         5: bus
+       ```
+
+     * 指定识别类别：`default=[0, 5]` 只识别第0和第5个类别，即 person 和 bus
+
+       ```python
+       parser.add_argument("--classes", nargs="+", type=int, default=[0, 5])
+       ```
+
+     * 不指定识别类别，凡是 `data/coco128.yaml` 文件中的类别全都识别
+
+       ```python
+       parser.add_argument("--classes", nargs="+", type=int)
+       ```
+
+   * `"--project"` ：所有检测结果的保存目录
+
+   * `"--name"` ：每次检测结果的保存目录
+
+   * `"--view-img"` ：
+
+     * 若 `action="store_false"` 默认实时显示检测结果；但若在命令行加上 `--view-img` 则不实时显示检测结果
+     * 若 `action="store_true"` 默认不实时显示检测结果；但若在命令行加上 `--view-img` 则实时显示检测结果
+
+4. 识别结果保存在`yolov5/runs/detect` 目录
+
+5. 使用 **自制脚本** 检测
+
+   ```python
+   import torch
+   
+   # 加载模型
+   model = torch.hub.load("./", "custom", path="./weights/yolov5s", source="local")
+   # 待识别数据
+   recog_data = "./data/images/bus.jpg"
+   # 开始识别
+   recog_results = model(recog_data)
+   # 展示识别结果
+   recog_results.show()
+   ```
+
+   1. `torch.hub.load("./", "custom", path="./weights/yolov5s", source="local")`
+      1. `"./"` ：「固定写法」`yolo V5` 源码目录（目录里的 `hubconf.py` 定义了如何加载模型）
+      2. `"custom"` ：「固定写法」声明使用自定义模型
+      3. `path="./weights/yolov5s"` ：「固定写法」模型文件的路径
+      4. `source="local"` ：「固定写法」从本地加载模型
+
+##### 自制模型检测
+
+1. 图片准备
+
+   > [自动化截帧 - 摄像头/本地视频](Code/ScreenShot_Camera_Video.md)
+   >
+   > [自动化截帧 - 桌面程序](Code/ScreenShot_DesktopApp.md)
+
+   > 目录准备
+   >
+   > 1. `/Users/jiangsai/Desktop/material/images`： 存放待训练图片（必须叫 `images`）
+   > 2. `/Users/jiangsai/Desktop/material/labels`： 存放标注文件（必须叫 `labels`）
+
+2. 标注软件
+
+   ```bash
+   // 安装标注软件
+   pip install labelImg
+   // 启动标注软件
+   labelImg
+   ```
+
+   ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202312011745248.png)
+
+   > 1. 软件设置：自动保存、显示类别、专家模式
+   > 2. `打开目录`：打开 `/Users/jiangsai/Desktop/material/images`
+   > 3. `改变存放目录`：打开 `/Users/jiangsai/Desktop/material/labels`
+   > 4. `yolo`：标注为 txt 文件
+   > 5. `创建区块`：框选目标区域
+
+   > 标注完成后  `/Users/jiangsai/Desktop/material/labels` 目录会生成与图片等量的 txt 文件，外加1个 classes.txt，里面是标注的类别 Red，Black
+   >
+   > ```
+   > Red
+   > Black
+   > ```
+
+3. 数据集拆分
+
+   1. 当前目录
+
+      ```
+      material/
+      ├── images/
+      │     ├── screenshot_1.png
+      │     └── screenshot_2.png
+      └── labels/
+          ├── classes.txt
+          ├── screenshot_1.txt
+          └── screenshot_2.txt
+      ```
+
+   2. 新建目录，并转移文件
+
+      > `images` 目录新建 `train` 和 `val` 目录，将 80%的图片转移到 `train` ，剩余20% 到 `val`
+      >
+      > *  `train` ：训练集图片
+      > *  `val` ：验证集图片
+      >
+      > `labels` 目录新建 `train` 和 `val` 目录，将 80%的 `同名txt` 转移到 `train` ，剩余20% 到 `val`
+      >
+      > *  `train` ：训练集标注文件，必须与训练集图片名称一一对应
+      > *  `val` ：验证集标注文件，必须与验证集图片名称一一对应
+      >
+      > `labels` 目录的 `classes.txt` 转移到 `material` 目录
+
+      ```
+      material/
+      ├── images/
+      │    ├── train/
+      │    │     ├── screenshot_1.png
+      │    │     └── screenshot_2.png
+      │    └── val/
+      │         └── screenshot_3.png
+      └── labels/
+      │    ├── train/
+      │    │     ├── screenshot_1.txt
+      │    │     └── screenshot_2.txt
+      │    └── val/
+      │         └── screenshot_3.txt
+      └── classes.txt
+      ```
+
+4. 使用 **`./train.py`** 训练
+
+   ```python
+   def parse_opt(known=False):
+       parser = argparse.ArgumentParser()
+       parser.add_argument('--weights', type=str, default='./weights/yolov5s.pt')
+       parser.add_argument('--data', type=str, default='./data/data1201.yaml')
+       parser.add_argument('--epochs', type=int, default=100)
+   ```
+
+   * `'--weights'` ：执行训练的模型文件路径
+
+   * `'--data'` ：训练数据集的配置文件路径（存放训练数据集目录和训练类别）
+
+     > 1. 将 `./data/coco128.yaml` 原地复制一份，改名为 `data1201.yaml`
+     >
+     >    ```bash
+     >    path: /Users/jiangsai/Desktop/material/  # material的绝对路径
+     >    train: images/train/  # 训练集图片的相对path的路径
+     >    val: images/val/  # 验证集图片的相对path的路径
+     >    test: 留空
+     >    
+     >    # Classes 必须与标注时生成 classes.txt 里的类别顺序一致
+     >    names:
+     >      0: Red
+     >      1: Black
+     >    ```
+
+   * `--epochs` ：模型的训练轮次，`default=100` 即训练100 轮
+
+5. 训练结果
+
+   > 识别结果保存在`./runs/train` 目录，一般使用训练出的最优模型 `best.pt`
+
+6. 查看训练过程
+
+   > 切换到 `/Users/jiangsai/Desktop/yolov5` 源码目录
+   >
+   > `tensorboard --logdir=runs/train` 可在浏览器查看训练过程
+
+7. 使用训练结果模型进行识别
+
+   切换到`/Users/jiangsai/Desktop/yolov5/` 目录
+
+   ```bash
+   // 调用训练结果模型检测视频
+   python detect.py --source "/Users/jiangsai/Desktop/box.mp4" --weights runs/train/exp2/weights/best.pt --view-img
+   ```
+
+   
+
+
+
+##### 另一种训练标注方式
 
 > 教程：[文字](https://blog.csdn.net/weixin_46046179/article/details/129639551)    [视频](https://www.bilibili.com/video/BV1f44y187Xg)   [yolo桌面软件](https://gitee.com/song-laogou/yolov5-mask-42)
 >
@@ -103,22 +283,22 @@
 >    > 2. `/XML_to_TXT_Project/Original_XML_Images/Images/` 目录里放的是要训练的图片
 >    > 3. `/XML_to_TXT_Project/Original_XML_Images/xml_of_Images/` 目录是空的，用于后续标注时放的xml文件
 >
-> 2. 标注软件
->
->    ```bash
->    // 安装标注软件
->    pip install labelImg
->    // 启动标注软件
->    labelImg
->    ```
->
->    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311240027760.png)
->
->    > 1. `打开目录`：打开`/XML_to_TXT_Project/Original_XML_Images/Images/` 目录
->    > 2. `改变存放目录`：打开`/XML_to_TXT_Project/Original_XML_Images/xml_of_Images/` 目录
->    > 3. `PascalVOC`：标注为xml文件
->    > 4. `创建区块`：框选目标区域
->    > 5. `保存`：保存xml文件到 `改变存放目录`
+> 2. > 1. 标注软件
+>    >
+>    >    ```bash
+>    >    // 安装标注软件
+>    >    pip install labelImg
+>    >    // 启动标注软件
+>    >    labelImg
+>    >    ```
+>    >
+>    >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311240027760.png)
+>    >
+>    >    > 1. `打开目录`：打开`/XML_to_TXT_Project/Original_XML_Images/Images/` 目录
+>    >    > 2. `改变存放目录`：打开`/XML_to_TXT_Project/Original_XML_Images/xml_of_Images/` 目录
+>    >    > 3. `PascalVOC`：标注为xml文件
+>    >    > 4. `创建区块`：框选目标区域
+>    >    > 5. `保存`：保存xml文件到 `改变存放目录`
 >
 > 3. 跑`XML_to_TXT.py` [脚本](#`XML_to_TXT.py`)
 >
@@ -148,72 +328,6 @@
 >    >          └── val/
 >    >               └── 2.txt
 >    > ```
->
-> 4. 新增本项目的YOLO配置文件
->
->    > 1. 将 `YOLO_Data` 目录copy到 `yolov5` 目录下，即与 `train.py` 和 `detect.py` 同级目录
->    >
->    > 2. 将 `/data/VOC.yaml` 复制一份，改名为 `will.yaml`
->    >
->    >    ```yaml
->    >    # 相对路径：vscode左侧资源管理器 - 右键「复制相对路径」
->    >    path: /Users/jiangsai/Desktop/test/yolov5/
->    >    train: YOLO_Data/images/train/  # 相对于path的训练集路径
->    >    val: YOLO_Data/images/val/  # 相对于path的验证集路径
->    >    test: # 如果没有测试集可以留空
->    >    ```
->    >
->    >    ```yaml
->    >    # Classes
->    >    names:
->    >      0: Yellow
->    >      1: Red
->    >    ```
->    >
->    >    > `["Yellow", "Red"]`：框选的目标名称
->    >
->    > 3. 将 `/models/yolov5s.yaml` 复制一份，改名为 `yolov5s_will.yaml`
->    >
->    >    > 本项目使用的是 yolov5s.pt 这个训练模型，若用别的模型，则复制改名别的yaml文件
->    >
->    >    ```yaml
->    >    nc: 2  # number of classes
->    >    ```
->    >
->    >    > 2 是框选的目标名称数量
->
-> 5. 开始训练
->
->    1. 设置 `train.py`
->
->       ```python
->       def parse_opt(known=False):
->           # 执行训练的模型文件的路径
->           parser.add_argument('--weights', type=str, default='weights/yolov5s.pt', help='initial weights path')
->           # 执行训练的模型配置文件的路径
->           parser.add_argument('--cfg', type=str, default='models/yolov5s_will.yaml', help='model.yaml path')
->           # 训练素材配置文件的路径
->           parser.add_argument('--data', type=str, default='data/will.yaml', help='dataset.yaml path')
->           # 模型的训练轮次 300 轮
->           parser.add_argument('--epochs', type=int, default=100, help='total training epochs')
->           # 单次图片处理数量
->           parser.add_argument('--batch-size', type=int, default=16, help='total batch size for all GPUs, -1 for autobatch')
->       ```
->
->    2. vscode终端切换到`/Users/jiangsai/Desktop/test/yolov5/` 目录后， 执行 `train.py`
->
->    3. 另开一个终端切换到`/Users/jiangsai/Desktop/test/yolov5/` 目录后，执行 `tensorboard --logdir=runs/train` 可在浏览器查看训练过程
->
->    4. 训练结束后会在 `yolov5/runs/train/exp5/weights` 产生两个模型文件，最后一轮的模型和效果最好的模型，一般用效果最好的
->
-> 6. 使用训练结果模型进行识别
->
->    切换到`/Users/jiangsai/Desktop/test/yolov5/` 目录
->
->    ```bash
->    // 调用训练结果模型检测视频
->    python detect.py --source "/Users/jiangsai/Desktop/test/aaaaa.mp4" --weights runs/train/exp5/weights/best.pt 
->    ```
 >
 
 ###### `XML_to_TXT.py`
