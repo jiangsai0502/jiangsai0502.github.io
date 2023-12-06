@@ -185,9 +185,7 @@
    > 8. **创建 `MutationObserver` 实例**: `MutationObserver`用于观察页面上的DOM变化，如新元素的添加。
    > 9. **开始观察DOM变化**: 使用 `observer.observe` 方法开始监视 `document.body` 元素，寻找任何子元素的添加或移除。
 
-   
-
-   
+   补充
 
    > > ```js
    >> var video = document.querySelector('video');
@@ -295,3 +293,49 @@
    > })();
    > ```
 
+5. 页面自动滚动
+
+   > Shift + ↓ 每0.5秒滚动1屏；Esc 键停止滚动
+
+   ```js
+   // ==UserScript==
+   // @name         页面自动滚动
+   // @namespace    http://tampermonkey.net/
+   // @version      0.1
+   // @description  Shift + ↓ 每0.5秒滚动1屏
+   // @author       You
+   // @match        https://www.zhihu.com/*
+   // @icon         https://www.google.com/s2/favicons?sz=64&domain=zhihu.com
+   // @grant        none
+   // ==/UserScript==
+   
+   
+   (function() {
+       'use strict';
+   
+       let scrollInterval = null;
+   
+       function startAutoScroll() { // 开始滚动
+           scrollInterval = setInterval(function() {
+               window.scrollBy(0, window.innerHeight);
+           }, 500);
+       }
+   
+       function stopAutoScroll() { // 停止滚动
+           clearInterval(scrollInterval);
+       }
+   
+       document.addEventListener('keydown', function(e) {
+           if (e.shiftKey && e.keyCode === 40) { // 检测是否按下了 Shift + ↓
+               startAutoScroll();
+               console.log('Auto scrolling started. Press ESC to stop.');
+           }
+           if (e.keyCode === 27) { // 检测是否按下了 ESC
+               stopAutoScroll();
+               console.log('Auto scrolling stopped.');
+           }
+       });
+   })();
+   ```
+
+   

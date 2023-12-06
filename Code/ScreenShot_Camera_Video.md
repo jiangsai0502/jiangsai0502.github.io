@@ -1,4 +1,39 @@
-> 每个2秒对摄像头、本地视频截一次屏
+##### 从视频中抽帧
+
+> 本地视频：每个5帧截一帧
+
+```python
+import cv2 as cv
+import os
+
+def extract_frames(video_path, output_folder, frame_rate=1):
+    """从视频中截取帧并保存"""
+    video = cv.VideoCapture(video_path)
+    count = 0
+    num = 1
+    success = True
+    while success:
+        success, frame = video.read()
+        if not success:
+            break
+        if count % frame_rate == 0:
+            frame_path = os.path.join(output_folder, f"frame_{num}.png")
+            num += 1
+            cv.imwrite(frame_path, frame)
+        count += 1
+
+
+if __name__ == "__main__":
+    # 图像输出目录
+    input_folder_img = "/Users/jiangsai/Desktop/new/1.original_pic"  # 待检测图片目录
+    # 确保输出目录存在
+    os.makedirs(input_folder_img, exist_ok=True)
+    # 从视频中截取帧并保存
+    video_path = "/Users/jiangsai/Desktop/box01.mp4"  # 视频文件路径
+    extract_frames(video_path, input_folder_img, frame_rate=5)  # 每5帧保存一次
+```
+
+> 摄像头、本地视频：每个2秒截一帧
 
 ```bash
 pip install pyobjc-framework-Quartz

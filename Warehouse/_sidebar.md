@@ -1,6 +1,7 @@
 * 工具
 
   * [Git 入门](Warehouse/Git.md)
+  * [Gradio 入门](Warehouse/Gradio.md)
   * [VSCode](Warehouse/VSCode.md)
   * [Blog建站](Warehouse/Blog.md)
   * [Markdown语法](Warehouse/Markdown.md)
@@ -10,7 +11,7 @@
   * [AutodeskFusion360](Warehouse/AutodeskFusion360.md)
   * [Flask入门](Warehouse/Flask_1_Tutorial.md)
   * [Flask源码](Warehouse/Flask_2_Todolist.md)
-* 工具
+* 爬虫
   * [爬前须知](Warehouse/2_WebCrawlerTutorial.md)
   * [初级工具](Warehouse/2_WebCrawlerBasicTool.md)
   * [初级示例](Warehouse/2_WebCrawlerBasicCase.md)
