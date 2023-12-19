@@ -23,6 +23,6 @@
 * 待提升
   * [PlayWright无界面](FootPrint/Playwright_work.md)
   * [PlayWright异步](FootPrint/playwright_async.md)
-  * [Python面向对象语法](FootPrint/Python_OO_Grammar.md)
+  * [Python高级用法](FootPrint/Python_Advanced)
   * [Python常用模块](FootPrint/1_PythonModule.md)
   * [PyQt5](FootPrint/1_PyQt5.md)

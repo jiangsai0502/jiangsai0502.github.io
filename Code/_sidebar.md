@@ -1,15 +1,14 @@
 * PyautoGUI
-  * [定位程序位置](Code/OpenCV_Recognize_Pic_by_change_size.md)
+  * [按键精灵](Code/Key_Wizard)
 * OpenCV
-  * [定时截屏 - 本地视频 / 摄像头](Code/ScreenShot_Camera_Video.md)
-  * [定时截屏 - 屏幕程序](Code/ScreenShot_DesktopApp.md)
+  * [自动化截帧 - 摄像头/本地视频](Code/ScreenShot_Camera_Video.md)
+  * [自动化截帧 - 桌面程序](Code/ScreenShot_DesktopApp.md)
   * [金字塔识图](Code/OpenCV_Recognize_Pic_by_change_size.md)
   * [打地鼠](Code/Hit_Moles.md)
 * YoloV5
-  * [YoloV5识别摄像头/本地视频](Code/YoloV5_Recognize_Video_Camera.md)
-  * [YoloV5识别桌面程序](Code/YoloV5_Recognize_DesktopApp.md)
-  * [自动化截帧 - 摄像头/本地视频](Code/ScreenShot_Camera_Video.md)
-  * [自动化截帧 - 桌面程序](Code/ScreenShot_DesktopApp.md)
+  * [识别摄像头/本地视频](Code/YoloV5_Recognize_Video_Camera.md)
+  * [识别桌面程序](Code/YoloV5_Recognize_DesktopApp.md)
+  * [半自动标注](Code/YoloV5_automate_label.md)
   * [labelImg的xml文件转换成txt](Code/YoloV5_XML_To_TXT)
 * PlayWright爬虫
   * [PlayWright爬虫通用方法](Code/Play_Wright_modules.md)

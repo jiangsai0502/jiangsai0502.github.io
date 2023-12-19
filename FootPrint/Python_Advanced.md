@@ -10,13 +10,174 @@
    >         print(fun)
    > ```
    >
-   
-1. python格式化输出：**f-string**
+
+1. 格式化输出：**f-string**
 
    > ```py
    > name = "testerzhang" 
    > print(f'Hello {name}')
    > ```
+
+1. 变量名加冒号
+
+   > ```python
+   > user: User = xxxxx
+   > ```
+   >
+   > 变量名：类型注解，3.6 引入的语法，为解释器指明变量类型，方便写代码时，点自动提示补齐
+
+1. Python 中实现一些常用的命令行命令
+
+   1. 获取当前目录位置（类似于 `pwd` ）
+
+      ```
+      pwd
+      ```
+
+      ```python
+      import os
+      print("当前目录位置：", os.getcwd())
+      ```
+
+   2. 打开目录（类似于 `open` ）
+
+      ```bash
+      open /Users/jiangsai/Downloads
+      ```
+
+      ```python
+      import subprocess
+      
+      folder_path = '/Users/jiangsai/Downloads'
+      subprocess.run(["open", folder_path])
+      ```
+
+   3. 列出目录内容（类似于 `ls` ）
+
+      ```
+      ls /Users/jiangsai
+      ```
+
+      ```python
+      import os
+      
+      directory_path = "/Users/jiangsai"
+      print(os.listdir(directory_path))
+      ```
+
+   4. 复制文件（类似于 `cp`）
+
+      ```bash
+      cp "/Users/jiangsai/source.txt" "/Users/jiangsai/Downloads/destination.txt"
+      ```
+
+      ```python
+      import shutil
+      
+      source_file = "/Users/jiangsai/source.txt"
+      destination_file = "/Users/jiangsai/Downloads/destination.txt"
+      shutil.copyfile(source_file, destination_file)
+      ```
+
+   5. 移动或重命名文件（类似于 `mv`）
+
+      ```bash
+       mv "/Users/jiangsai/source.txt" "/Users/jiangsai/Downloads/destination.txt"
+      ```
+
+      ```python
+      import shutil
+      
+      source_file = "/Users/jiangsai/source.txt"
+      destination_file = "/Users/jiangsai/Downloads/destination.txt"
+      shutil.move(source_file, destination_file)
+      ```
+
+   6. 删除文件（类似于 `rm`）
+
+      ```bash
+      rm "/Users/jiangsai/destination.txt"
+      ```
+
+      ```python
+      import os
+      
+      delete_file = "/Users/jiangsai/Desktop/destination.txt"
+      os.remove(delete_file)
+      ```
+
+   7. 创建目录（类似于 `mkdir`）
+
+      ```bash
+      mkdir /Users/jiangsai/Desktop/Becca
+      ```
+
+      ```python
+      import os
+      
+      create_folder = "/Users/jiangsai/Desktop/Becca"
+      os.mkdir(create_folder)
+      ```
+
+   8. 改变当前工作目录（类似于 `cd`）
+
+      ```bash
+      cd "/Users/jiangsai/Desktop/Becca"
+      ```
+
+      ```python
+      import os
+      
+      create_folder = "/Users/jiangsai/Desktop/Becca"
+      os.chdir(create_folder)
+      print(f"当前工作目录已更改为：{os.getcwd()}")
+      ```
+
+   9. 执行下载命令
+
+      ```bash
+      yt-dlp --cookies-from-browser chrome  https://www.bilibili.com/video/BV1dP411f7kX
+      ```
+
+      ```python
+      # 单纯执行
+      import subprocess
+      
+      # 定义要执行的命令
+      command = ["yt-dlp", "--cookies-from-browser", "chrome", "https://www.bilibili.com/video/BV1dP411f7kX"]
+      
+      # 使用subprocess.run()执行命令
+      result = subprocess.run(command, capture_output=True, text=True)
+      
+      # 打印命令的标准输出和标准错误
+      print(f"标准输出: {result.stdout}")
+      print(f"标准错误: {result.stderr}")
+      ```
+
+      ```python
+      # 观察执行过程
+      import subprocess
+      
+      # 定义要执行的命令
+      command = ["yt-dlp", "--cookies-from-browser", "chrome", "https://www.bilibili.com/video/BV1dP411f7kX"]
+      
+      # 使用subprocess.Popen()创建子进程来执行命令
+      process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+      
+      # 实时获取并打印命令的输出
+      while True:
+          output = process.stdout.readline()
+          if output == "" and process.poll() is not None:
+              break
+          if output:
+              print(output.strip())
+      
+      # 获取命令的返回代码
+      return_code = process.poll()
+      print(f"命令执行完毕，返回代码: {return_code}")
+      ```
+
+      
 
 #### Python面向对象
 

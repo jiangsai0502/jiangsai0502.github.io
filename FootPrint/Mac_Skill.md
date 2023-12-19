@@ -47,18 +47,24 @@
     > > 4. ChatGPT iOS端内购时自动扣礼品卡金额
     >
 
-1. Typora打印PDF格式设置
+1. Typora设置
 
-    > 1. 页边距
+    > 1. 展示设置：增加行宽
     >
-    >    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310261112999.png)
+    >    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202312161642913.png)
     >
-    > 2. [行距](https://www.twblogs.net/a/5db288f8bd9eee310d9fd66c/?lang=zh-cn)
+    > 2. 打印设置
     >
-    >    > 1. 微调`body`中的`line-height`参数
-    >    > 2. 关闭文件重新打开，修改即可生效
-    >    >
-    >    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310261109296.png)
+    >    1. 页边距
+    >
+    >       > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310261112999.png)
+    >
+    >    2. [行距](https://www.twblogs.net/a/5db288f8bd9eee310d9fd66c/?lang=zh-cn)
+    >
+    >       > 1. 微调`body`中的`line-height`参数
+    >       > 2. 关闭文件重新打开，修改即可生效
+    >       >
+    >       > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310261109296.png)
 
 1. OpenAI语音转文字模型Whisper
 
@@ -171,13 +177,13 @@
     >
     >   ```python
     >   import os
-    >             
+    >               
     >   Voice = "zh-CN-YunjianNeural"
     >   Rate = "+0%"
     >   Volume = "+0%"
-    >             
+    >               
     >   Handle_Folder = "/Users/jiangsai/Desktop/1"
-    >             
+    >               
     >   # 转换目录内所有单个txt文件为单个mp3音频
     >   for Folder_Path, SonFolders, FileNames in os.walk(Handle_Folder):
     >       for FileName in FileNames:
