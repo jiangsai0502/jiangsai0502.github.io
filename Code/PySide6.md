@@ -69,7 +69,11 @@
      >
      > 2. 每个`Frame` 中 放置对应功能的控件，如下
      >
-     >    账号栏：拖入左右2个 `横向弹簧Vertical Spacer` + `标签label` + `单行文本框LineEdit` > `Frame` 设置为水平布局
+     >    * 账号栏：拖入左右2个 `横向弹簧Vertical Spacer` + `标签label` + `单行文本框LineEdit` > `Frame` 设置为水平布局
+     >
+     >    * 密码栏：同上
+     >    * 登录栏：`shortcut` 设为option + 5
+     >    * 密码状态栏：同账号栏
      >
      > 3. 需要交互的控件全部语义化命名：`计算按钮` 、 `待输入数字框`、`结果标签`
      >
@@ -335,27 +339,38 @@
 
    * 使用Qt Designer 画界面
 
-     > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202312190005120.png)
+     > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202312192221639.png)
      >
-     > 1. 数据展示窗口：新建 `QWidget`，拖入1个 `表格tableWidget` ，1个按钮`pushButton`，`QWidget`设置为垂直布局
+     > 1. 数据展示窗口：新建 `QWidget`
      >
-     >    > **`tableWidget`**设置：双击控件，设置列名；`sortingEnabled`：开启列排序
+     >    1. 搜索区：1个`单行文本框lineEdit` + 1个`按钮pushButton`，全选6个控件设为水平布局
+     >    2. 数据展示区：1个 `表格tableWidget`
+     >    3. 插入区：1个`按钮pushButton`
      >
-     > 2. 用户录入窗口：3个 `label` +  `单行文本框lineEdit` + `数字下拉框spinBox` + `文本下拉框comboBox`，全选6个控件设置为栅格布局
+     >    > `QWidget` 设置：`QWidget` 为垂直布局；双击`QWidget` ，设置列名；`sortingEnabled`：开启排序；
      >
-     >    > **`spinBox`**设置：`value`：默认值设为18
-     >    >
-     >    > **`comboBox`**设置：双击控件，设置选项
+     > 2. 用户录入窗口：新建 `QWidget`
+     >
+     >    1. 用户输入区：3个 `label` +  `单行文本框lineEdit` + `数字下拉框spinBox` + `文本下拉框comboBox`，全选6个控件设置为栅格布局
+     >
+     >       > `spinBox`设置：`value`：默认值设为18；`minimum`：设为0；`maximum`：设为60；`singleStep`：设为0.5
+     >       >
+     >       > `comboBox`设置：双击控件，设置选项
+     >
+     >    2. 确认区：1个`按钮pushButton`
+     >
+     >    > `QWidget` 设置：`QWidget` 为垂直布局；
      >
      > 3. 需要交互的控件全部语义化命名
      >
      > 4. 文件保存为 `forth.ui`、`forth_son.ui`，自动编译生成 `forth_ui.py`、`forth_son_ui.py`
-
+   
    * 主程序代码
-
+   
      ```python
      import sys
      from PySide6.QtWidgets import QApplication, QWidget, QTableWidgetItem, QDialog
+     from PySide6.QtCore import Qt
      from tableWidget_ui import Ui_Form
      from tableWidge_sonWindow_ui import Ui_Form as Ui_Form_sonWindow
      
@@ -370,9 +385,13 @@
      
          def bind_event(self):
              """绑定事件"""
-             self.ui.insert_btn.clicked.connect(self.showEntryDialog)
+             self.ui.insert_btn.clicked.connect(self.showEntryDialog)  # 插入按钮被点击时，调用showEntryDialog
+             self.ui.search_btn.clicked.connect(self.current_cell_on_selected)  # 搜索按钮被点击时，调用current_cell_on_selected
+             self.ui.tableWidget.cellClicked.connect(self.current_cell_row_col)  # 任何单元格被点击时，调用current_cell_row_col
+             self.ui.tableWidget.cellChanged.connect(self.current_cell_on_changed)  # 任何单元格内容改变时，调用current_cell_on_changed
      
          def showEntryDialog(self):
+             """显示子窗口，若点击“确定”，则将子窗口数据添加到主窗口"""
              dialog = EntryDialog(self)  # 创建 EntryDialog 子窗口
              dialog.show()  # 显示 dialog
              if dialog.exec():  # 显示 dialog 并等待用户点击“确定”（即 accept() 被调用）
@@ -382,6 +401,26 @@
                  self.ui.tableWidget.setItem(row_position, 0, QTableWidgetItem(data["name"]))  # 该行的第一列设为“name”
                  self.ui.tableWidget.setItem(row_position, 1, QTableWidgetItem(str(data["age"])))  # 该行的第二列设为“age”
                  self.ui.tableWidget.setItem(row_position, 2, QTableWidgetItem(data["sex"]))  # 该行的第三列设为“sex”
+     
+         def current_cell_row_col(self):
+             """显示当前选中行的行号、列号、内容"""
+             row = self.ui.tableWidget.currentRow()  # 获取当前选中行的行号
+             col = self.ui.tableWidget.currentColumn()  # 获取当前选中列的列号
+             content = self.ui.tableWidget.item(row, col).text()  # 获取表格中指定行和列的文本内容
+             print(f"行数：{row}；列数：{col}；内容：{content}")
+     
+         def current_cell_on_changed(self):
+             """显示当前选中行的行号、列号"""
+             row = self.ui.tableWidget.currentRow()  # 获取当前选中行的行号
+             col = self.ui.tableWidget.currentColumn()  # 获取当前选中列的列号
+             print(f"行数：{row}；列数：{col} 单元格发生改变")
+     
+         def current_cell_on_selected(self):
+             """当前选定的单元格坐标和内容"""
+             search_text = self.ui.search_input_lineEdit.text()  # 获取搜索文本
+             result = self.ui.tableWidget.findItems(search_text, Qt.MatchExactly)  # 在表格中搜索匹配的项
+             for item in result:
+                 print(f"行数：{item.row()}；列数：{item.column()}；内容：{item.text()}")
      
      
      class EntryDialog(QDialog):
@@ -411,22 +450,30 @@
          window = mainWindow()  # 创建主窗口对象
          window.show()  # 显示主窗口
          sys.exit(app.exec())  # 运行应用
-     
      ```
-
-     > *  `QTableWidget`
+     
+     > *  `表格QTableWidget`
      >    *  `insertRow(row_position)`：在 `row_position` 插入一行
      >    *  `removeRow(row_position)`：删除第 `row_position` 行
-     >    *  `setItem(int row, int column, QTableWidgetItem item)`：在指定位置设置一个 QTableWidgetItem
-     >    *  `item(int row, int column)`：返回位于指定位置的 QTableWidgetItem
+     >    *  `setItem(int row, int column, QTableWidgetItem item)`：设置单元格(行、列)的值
+     >    *  `item(int row, int column)`：返回单元格的值
+     >    *  `findItems(search_text, Qt.MatchFlag)`：搜索文本
+     >       *  `Qt.MatchFlag.MatchContains`：包含匹配
+     >       *  `Qt.MatchFlag.MatchExactly`：完全匹配
+     >       *  `Qt.MatchFlag.MatchStartsWith`：开头匹配
+     >       *  `Qt.MatchFlag.MatchEndsWith`：结尾匹配
+     >    *  `scrollToItem(text, QTableWidget.ScrollHints)`：滚动到文本处
+     >       *  `QTableWidget.ScrollHints.PositionAtTop`：表格顶部
+     >       *  `QTableWidget.ScrollHints.PositionAtCenter`：表格中间
+     >       *  `QTableWidget.ScrollHints.PositionAtBottom`：表格底部
      >    *  信号
      >       *  `table_Name.cellClicked.connect(your_function)`：任何单元格被点击时触发
      >       *  `table_Name.cellChanged.connect(your_function)`：任何单元格内容改变时触发
-     > *  `QTableWidgetItem`
-     >    *  setText(str)：设置单元格的文本。
-     >    *  text()：返回单元格的文本。
-     >    *  setData(int role, QVariant value)：设置单元格的数据。
-     >    *  data(int role)：返回单元格的数据。
+     > *  `表格的单元格QTableWidgetItem`
+     >    *  `setText(str)`：设置该单元格的值
+     >    *  `text()`：返回该单元格的值
+     >    *  `setBackground(Qt.GlobalColors)`：设置该单元格的背景色
+     >    *  `setForeground(Qt.GlobalColors)`：设置该单元格的前景色
      > *  `QDialog`
      >    * `exec()`：执行对话框并阻塞其余程序，直到对话框关闭。
      >    * `accept()`：接受对话框，关闭并发送 Accepted 信号。
@@ -440,7 +487,15 @@
 
 
 
+![image-20231221235621082](/Users/jiangsai/Library/Application Support/typora-user-images/image-20231221235621082.png)
 
+
+
+创建一个命令快捷输入窗口，分为三个区域
+
+1. 命令新增区：用来新增命令。新增命令后，实时展示在「待执行命令集」
+2. 待执行命令集：用来展示已经新增的命令
+3. 待执行命令-编辑区：用来展示所有已新增命令的文本形式，文本可编辑，编辑保存后，实时更新「待执行命令集」
 
 
 

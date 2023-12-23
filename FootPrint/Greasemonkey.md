@@ -53,6 +53,15 @@
 3. 视频网站播放加速
 
    > 1. 使用`shift` + `↑` 、`shift` +`↓` 以 0.2 的步长增/减播放速度
+   >
+   >    > `ctrlKey` ：`Control`
+   >    >
+   >    > `shiftKey` ：`Shift`
+   >    >
+   >    > `altKey` ：`Option`
+   >    >
+   >    > `metaKey` ：`Command`
+   >
    > 2. 播放面板也可增减速度
 
    ```js
@@ -295,14 +304,14 @@
 
 5. 页面自动滚动
 
-   > Shift + ↓ 每0.5秒滚动1屏；Esc 键停止滚动
+   > Option + ↓ 每0.5秒滚动1屏；Esc 键停止滚动
 
    ```js
    // ==UserScript==
    // @name         页面自动滚动
    // @namespace    http://tampermonkey.net/
    // @version      0.1
-   // @description  Shift + ↓ 每0.5秒滚动1屏
+   // @description  Option + ↓ 每0.5秒滚动1屏
    // @author       You
    // @match        https://www.zhihu.com/*
    // @icon         https://www.google.com/s2/favicons?sz=64&domain=zhihu.com
@@ -326,7 +335,7 @@
        }
    
        document.addEventListener('keydown', function(e) {
-           if (e.shiftKey && e.keyCode === 40) { // 检测是否按下了 Shift + ↓
+           if (e.altKey && e.keyCode === 40) { // 检测是否按下了 Shift + ↓
                startAutoScroll();
                console.log('Auto scrolling started. Press ESC to stop.');
            }
