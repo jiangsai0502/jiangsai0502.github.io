@@ -122,3 +122,69 @@ if __name__ == "__main__":
     download_files_from_text(download_file, download_dir)
 ```
 
+> Xpath 获取视频链接和视频名后存入txt，格式如下
+>
+> ```
+> 001_什么是迷宫理论？如何入门金融交易?：https://www.youtube.com/watch?v=Jy6mkzDsbmE
+> 002_02_基本面分析，技术分析和盘口分析概述：https://www.youtube.com/watch?v=bgZBeaa3H6Y
+> ```
+
+```python
+import os
+import subprocess
+
+
+def download_url(url, filename, folder):
+    """下载文件
+    url：文件URL
+    filename：文件名
+    folder：文件保存的目录
+    """
+    # 检查保存文件的文件夹是否存在
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+    os.chdir(folder)
+
+    # 检查文件是否存在
+    if not os.path.exists(filename):
+        print(f"正在下载: {filename}")
+        # 定义要执行的命令
+        command = ["yt-dlp", "--cookies-from-browser", "chrome", "-o", filename, url]
+
+        # 使用subprocess.Popen()创建子进程来执行命令
+        process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+
+        # 实时获取并打印命令的输出
+        while True:
+            output = process.stdout.readline()
+            if output == "" and process.poll() is not None:
+                break
+            if output:
+                print(output.strip())
+
+        # 获取命令的返回代码
+        return_code = process.poll()
+        print(f"命令执行完毕，返回代码: {return_code}")
+    else:
+        print(f"{filename} 已存在")
+
+
+# 读取文本文件并下载文件
+def download_files_from_text(download_file, download_dir):
+    with open(download_file, "r") as file:
+        lines = file.readlines()
+        for line in lines:
+            parts = line.strip().split("：")
+            if len(parts) == 2:
+                filename = parts[0]
+                url = parts[1]
+                download_url(url, filename, download_dir)
+
+
+if __name__ == "__main__":
+    download_dir = "/Users/jiangsai/Desktop/test"
+    download = "/Users/jiangsai/Desktop/1.txt"
+    # 调用下载文件的函数
+    download_files_from_text(download, download_dir)
+```
+
