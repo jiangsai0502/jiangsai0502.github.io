@@ -177,13 +177,13 @@
     >
     >   ```python
     >   import os
-    >               
+    >                 
     >   Voice = "zh-CN-YunjianNeural"
     >   Rate = "+0%"
     >   Volume = "+0%"
-    >               
+    >                 
     >   Handle_Folder = "/Users/jiangsai/Desktop/1"
-    >               
+    >                 
     >   # 转换目录内所有单个txt文件为单个mp3音频
     >   for Folder_Path, SonFolders, FileNames in os.walk(Handle_Folder):
     >       for FileName in FileNames:
@@ -213,4 +213,41 @@
     >
     >    `chmod +x 重启音频服务.command`
 
-    
+1. 批量删除文件夹内所有视频的开头 x 秒，结尾 y 秒
+
+    > ```python
+    > import subprocess
+    > import os
+    > 
+    > # 要处理的视频文件夹路径
+    > video_folder = "/Users/jiangsai/Desktop/tt"
+    > 
+    > # 处理后的视频保存的文件夹
+    > output_folder = "/Users/jiangsai/Desktop/ss"
+    > if not os.path.exists(output_folder):
+    >     os.makedirs(output_folder)
+    > 
+    > # 要删除的开头时长和结尾时长
+    > start_duration = 24  # 开头时长
+    > end_duration = 8  # 结尾时长
+    > 
+    > # 获取文件夹内所有的视频文件
+    > videos = [f for f in os.listdir(video_folder) if f.endswith((".mp4", ".mkv", ".avi"))]
+    > 
+    > for video in videos:
+    >     input_path = os.path.join(video_folder, video)
+    >     output_path = os.path.join(output_folder, f"trimmed_{video}")
+    > 
+    >     # 获取视频总时长
+    >     cmd = f'ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "{input_path}"'
+    >     total_duration = float(subprocess.check_output(cmd, shell=True).decode("utf-8").strip())
+    > 
+    >     # 计算裁剪后的视频长度
+    >     trimmed_duration = total_duration - start_duration - end_duration
+    > 
+    >     # 使用ffmpeg命令行工具来裁剪视频
+    >     cmd = f'ffmpeg -y -i "{input_path}" -ss {start_duration} -t {trimmed_duration} -c copy "{output_path}"'
+    >     subprocess.call(cmd, shell=True)
+    > 
+    > print("所有视频处理完毕。")
+    > ```
