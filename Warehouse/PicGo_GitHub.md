@@ -26,76 +26,6 @@
 
 
 
-### 创建Gitee图床
-
-[参考](https://zhuanlan.zhihu.com/p/102594554)
-
-![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200709230723.png)
-
-* repo：jiangsai0502/PicBedRepo
-* token：37ad7df3148561d78e096ce8ce9af044
-
-### 将Gitee与Github保持同步
-
-[参考](https://blog.csdn.net/idsof/article/details/105005158)
-
-> 描述：本地1个代码库，远端2个代码库（Github，Gitee），保持同步
->
-> **总结操作**
->
-> 1. 进入项目目录：`cd ~/Documents/GitHub/PicBedRepo`
-> 2. 先讲远程仓库全部合并到本地
->    1. `git pull GiteePicbed master`
->    2. `git pull GithubPicbed master`
-> 3. 本地修改
-> 4. 提交到本地仓库
->    1. `git add .`
->    2. `git commit -am "删除测试文件"`
-> 5. 再将本地仓库全部推送到远程
->    1. `git push GiteePicbed master`
->    2. `git push GithubPicbed master`
-
-#### 案例（从新建库开始）
-
-1. 新建库
-
-   > | GitHub新建库PicBed                                           | Gitee新建库PicBed                                            |
-   > | ------------------------------------------------------------ | ------------------------------------------------------------ |
-   > | ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200425105755.png) | ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200425105827.png) |
-
-2. 创建项目目录：`mkdir ~/Documents/GitHub/PicBed && cd ~/Documents/GitHub/PicBed`
-
-3. 克隆项目到本地
-
-   1. `git clone https://gitee.com/jiangsai0502/PicBed.git`
-   2. `git clone https://github.com/jiangsai0502/PicBed.git`
-
-4. 关联`Gitee`和`GitHub`远程库并设置远程库的本地名称
-
-   1. 设置`Gitee`远程库的本地名称为`GiteePicbed`
-
-      `git remote add GiteePicbed https://gitee.com/jiangsai0502/PicBed.git`
-
-   2. 设置`GitHub`远程库的本地名称为`GithubPicbed`
-
-      `git remote add GithubPicbed https://github.com/jiangsai0502/PicBed.git`
-
-5. 查看远程库地址和在本地的默认名称：`git remote -v`
-
-6. 删除远程库在本地的默认名称：`git remote rm origin`
-
-7. 将本地代码推送到远程仓库
-
-   1. `git push GiteePicbed master`
-   2. `git push GithubPicbed master`
-
-8. 从远程仓库拉取代码到本地
-
-   1. `git pull GiteePicbed master`
-   2. `git pull GithubPicbed master`
-
-
-
 ### 配置PicGo
 
 [参考](https://picgo.github.io/PicGo-Doc/zh/guide/config.html)
@@ -110,23 +40,9 @@
 > * 自定义域名的作用是，在上传图片后成功后，PicGo会将“自定义域名+上传的图片名”生成的访问链接，放到剪切板上https://raw.githubusercontent.com/账户名/仓库名/分支名，自定义域名需要按照这样去填写
 >   * 如https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master
 
+### Typora图片自动长传到PicGo
 
-
-### 配置upic
-
-[参考](https://blog.svend.cc/upic/)
-
-![V1fBdf](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/V1fBdf.png)
-
-
-
-### 保存图片在blog中
-
-![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/image-20200420204547297.png)
-
-
-
-
+![image-20240504172744911](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405041727992.png)
 
 ### 图片左对齐
 
@@ -156,8 +72,8 @@
 > 3. 修改hosts 
 >
 >    ```bash
-> sudo vi /etc/hosts    #打开hosts文件
->    
+>    sudo vi /etc/hosts    #打开hosts文件
+>       
 >    127.0.0.1	localhost
 >    255.255.255.255	broadcasthost
 >    ::1             localhost
