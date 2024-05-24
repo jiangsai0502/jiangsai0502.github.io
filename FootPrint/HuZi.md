@@ -1,4 +1,4 @@
-# 胡子图表技术分析总结
+胡子图表技术分析总结
 
 ![image-20240504172903776](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405041729016.png)
 
@@ -25,168 +25,6 @@
 > * 止盈：做波段时小资金见到该级别放量即可止盈
 > * 止损：原有进场依据被破坏，如楔形的顺破，旗形顺破
 >   * 当设置止损时可先将止损放远一些来观察结构内的波动，防止被插针打止损
-
-## 反转结构
-
-### 头肩结构
-
-#### 定义
-
-![image-20240517165249963](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171652165.png)
-
-![image-20240517165339401](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171653549.png)
-
-> * 头肩形态一般是行情接近尾声时的形态，由头部、左右肩以及颈线构成
-> * 理论上，成交量从左至右呈递减，而头肩底则相反，成交量从左至右呈现递增，但并非所有头肩项的形态都十分标准。
-
-#### 切入点
-
-> * 头肩顶的进场位置：①跌破、②突破颈线后的反抽、③激进者可在右肩处进场
-> * 右肩处结合结构定式来增大成功率：如右肩+M 头，右肩＋次级别上升楔形，右肩＋次级别头肩顶
-> * 头肩顶一般作为上升趋势中的同级别反转结构出现，偶尔也会出现在下降趋势中做下跌中继结构
->   * 血泪教训：若上升过程中出现的次级别头肩顶，千万别参与，失败率极大
-
-#### 案例示范
-
-| ![image-20240517170131797](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171701963.png) | ![image-20240517170225003](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405172143897.png) |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![image-20240517170350628](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171703793.png) | ![image-20240517170435981](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171704139.png) |
-
-## 圆弧结构
-
-#### 定义
-
-![image-20240517170631959](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171706115.png)
-
-![image-20240517170754876](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171707031.png)
-
-> * 圆弧顶左半段，高低点不断降低，成交量逐渐减弱， 看起来市场十分疲软
-> * 右半段，高低点不断抬高，成交量逐渐增加
->   * 往往也伴随着主力洗盘，当K线完成圆弧底结构向上拉升初期，往往会吸引大多散户进场，主力会让价格再度进入盘整区间，即形成杯柄，一旦杯柄完成突破后该行情的上涨一般来说比较可观
-
-#### 切入点
-
-> * 圆弧底的进场位置：①如圆弧＋三角、②圆弧＋上升通道、③圆弧完成后出现的杯柄形态
-
-#### 案例示范
-
-| ![image-20240517173032360](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171730531.png) | ![image-20240517173107341](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171731496.png) |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![image-20240517173156501](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171731647.png) |                                                              |
-
-### M头/W底
-
-#### 定义
-
-![image-20240517173343618](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171733772.png)
-
-> M头/W底是一种反转形态，由两个相近的高点或低点所构成，一般情况下第二个高点/低点的成交量略低于第一个
-
-#### 切入点
-
-> M 头的切入点一般为①右峰、②跌破颈线后的反抽，两个位置在进场时一定要配搭①空头结构或②标志性K线
-
-#### 案例示范
-
-| ![image-20240517173752072](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171737221.png) | ![image-20240517174034404](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171740566.png) |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-
-## 中继结构
-
-### 三角结构
-
-#### 定义
-
-![image-20240517174224810](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171742971.png)
-
-> 三角结构分为：上直三（上升直角三角形）、下直三（下降直角三角形）、对三（对称三角形）
->
-> * 上直三：代表行情强势，一般充当上升中继
-> * 下直三：代表行情弱势，一般充当下跌中继
-> * 对三：代表中性结构， 可以同时充当上升和下降时的中继结构
->
-> > 注意：三角结构出现在相对的高位或者低位则大多是反转结构
-
-#### 切入点
-
-> * 三角结构的切入点都是 ①逆势边第3点（E点）、②突破边界后的回踩
->
-> > 注意：在接触一条边界后，末触碰另一条边界前的回落被视为同一个点
-
-#### 案例示范
-
-| ![image-20240517181530024](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171815105.png) | ![image-20240517181628659](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171816823.png) |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-
-### 旗形结构
-
-#### 定义
-
-![image-20240517182120176](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171821336.png)
-
-> * 旗形是中继结构，由两条与原趋势方向相反的窄幅平行线构成
->
-> * 旗形的回撤不能太大，不能太过于倾斜
-
-#### 切入点
-
-> * 旗形的切入点也是 ①逆势边第3点（E点）、②突破边界后的回踩、③若没有E点则观察D点的边界蓄势
-> * 注意：**一旦旗形突破后又砸回结构内，则视为失败，直接离场**
-
-#### 案例示范
-
-| ![image-20240517182640919](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171826097.png) | ![image-20240517182712258](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171827409.png) |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-
-### 楔形结构
-
-#### 定义
-
-![image-20240517182906243](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171829404.png)
-
-> 楔形由两条同向但不平行的趋势线构成
->
-> * 与大趋势同向时，是反转形态
-> * 与大趋势反向时，是中继形态
-
-#### 切入点
-
-> 和上述几种中继结构一样，楔形的切入点逆势边的第三点也就是E点，突破前的蓄势和突破后的回踩也可进行加仓，但是也要注意，在大级别趋势中出现的小级别反转楔形由于其力量不足以扭转整段趋势，很容易收多头/空头陷阱后被顺破，
->
-> * 楔形的切入点也是 ①逆势边第3点（E点）、②突破边界后的回踩、③若没有E点则观察D点的边界蓄势
-> * 注意：**大级别趋势中出现的小级别反转楔形，因其力量不足以扭转整段趋势，故很容易收多头/空头陷阱后被顺破**
-
-#### 案例示范
-
-##### 楔形中继
-
-| ![image-20240517183415551](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171834711.png) | ![image-20240517183446774](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171834930.png) |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-
-##### 楔形反转
-
-| ![image-20240517183610006](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171836164.png) | ![image-20240517183653942](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171836104.png) |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-
-### 一些简单的结构定式
-
-| 头肩顶＋右肩对三                                             | 头肩顶＋上直三                                               |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![image-20240517184454364](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171844551.png) | ![image-20240517184807644](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171848826.png) |
-
-| 楔形+W 底(1)                                                 | 楔形+W 底(2)                                                 |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![image-20240517184101505](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171841669.png) | ![image-20240517184151632](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171841823.png) |
-
-| 楔形顺破＋M头                                                | 头肩顶＋头肩底(顶底转换）                                    |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![image-20240517184733161](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171847356.png) | ![image-20240517184253282](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405171842492.png) |
-
-
-
-# *新手指引*
-
-> 图表是术，心态是道；术易学，道难修。
 
 # **仓位管理**
 
@@ -242,10 +80,6 @@
    > * 5000÷10=500（开10倍杠杆，保证金需要500u）
    > * 5000÷20=250（开20倍杠杆，保证金需要250u）
 
-
-
-
-
 # 标志性K线
 
 选取《日本蜡烛图》，让小伙伴们快速的掌握图表交易需要用到的部分标志性K线，时间充裕的建议全读此书。
@@ -283,8 +117,6 @@
 
 1. 锤子线必须紧跟在下跌行情后，锤子线在短线、长线都有效
 2. 上吊线必须紧跟在上涨行情后，上吊线必须在长线上冲行情创下历史新高后才有效
-
-
 
 # 不同级别的运用
 
@@ -357,17 +189,15 @@
    >
    >     > 当价格击穿支撑/阻力位后，在这个敏感区磨磨蹭蹭，反复做动作，画形态，就是不走远，则要警惕，该价格可能回去
 
-   
-
 # 趋势线
 
 在我们正常做单中，斜线趋势破了之后，找水平支撑。
 
-| ![image-20240518171840069](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405181718260.png) | ![image-20240518171920541](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405181719752.png) |
+| ![image-20240519134802299](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191348399.png) | ![image-20240519134856673](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191348757.png) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 1. 上升趋势线是由依次上升的低点连接而成的                    | 1. 下降趋势线是由依次下降的高点连接而成的                    |
 
-**怎样使用趋势线**
+**怎样使用趋势线
 
 > * 趋势概念的基本观点是，既成趋势的下一步常常是顺势发展
 >
@@ -377,7 +207,7 @@
 >   >
 >   > 趋势线突破，是趋势生变的最佳预警信号，警告我们要平仓当前的顺势单（至少平掉50%）
 
-| ![image-20240518174200754](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405181742951.png) |
+| ![image-20240519134956167](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191349243.png) |
 | ------------------------------------------------------------ |
 | 1. 点5、7是加仓机会<br />2. 点9处跌破趋势线，表示原上升趋势完结，警告我们要平仓当前的顺势单（至少平掉50%） |
 
@@ -395,13 +225,13 @@
 
 **如何对待对趋势线的细小穿越**
 
-| ![image-20240518175215986](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405181752206.png) |
+| ![image-20240519135038300](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191350374.png) |
 | ------------------------------------------------------------ |
 | 若突破趋势线的价格规模较小，只是一时之举，且后续价格又回到原趋势线之上，则<br />1. 可忽略这个“毛刺”<br />2. 保留旧趋势线，同时作出新趋势线(虛线），观察后续真正的价格行为 |
 
 **趋势线角色互换** 
 
-| ![image-20240518180038694](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405181800886.png) | ![image-20240518180058412](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405181800632.png) |
+| ![image-20240519135244134](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191352226.png) | ![image-20240519135133431](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191351633.png) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 上升趋势的支撑线被跌破后，后续会对价格起到阻力作用           | 下跌趋势的阻力线被突破后，后续会对价格起到支撑作用           |
 
@@ -486,7 +316,7 @@
 > * 头肩顶一般作为上升趋势中的同级别反转结构出现，偶尔也会出现在下降趋势中做下跌中继结构
 >   * 血泪教训：若上升过程中出现的次级别头肩顶，千万别参与，失败率极大
 
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F284e4e0f-e15d-4f94-82de-1dbc1fcb8ecf%2FUntitled.png?table=block&id=abb45838-cee6-447f-a5e4-46ff1094a79c&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1750&userId=&cache=v2)
+![image-20240519135338215](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191353401.png)
 
 #### 头肩顶
 
@@ -514,7 +344,7 @@
 > * 旗形的切入点也是 ①逆势边第3点（E点）、②突破边界后的回踩、③若没有E点则观察D点的边界蓄势
 > * 注意：**一旦旗形突破后又砸回结构内，则视为失败，直接离场**
 
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fac1ef8a6-9972-4aab-8691-3a607f6104a9%2FUntitled.png?table=block&id=2d22125f-303b-4aaa-abf6-96a149f2d445&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1750&userId=&cache=v2)
+![image-20240519135413662](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191354845.png)
 
 | 上升旗形                                                     | 下降旗形                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -714,306 +544,135 @@
 
 ## 旗形+楔形
 
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd2fe95a7-3d95-48db-b4c5-1d551b42e6e8%2FUntitled.png?table=block&id=f1f76a74-460c-42dc-b715-719d29eb1b5e&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+| ![image-20240519112537555](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191125772.png) | ![image-20240519112602516](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191126607.png) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+|                                                              |                                                              |
+| ![image-20240519112732137](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191127236.png) |                                                              |
+| waves，1h，旗形通道+上升楔形收敛上边界，100k，20210209       |                                                              |
 
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F3519d49e-fa45-47fe-b097-2ce04756a28d%2FUntitled.png?table=block&id=66d30497-8682-4ee4-9c81-1afc05eab4af&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+#### 旗形+旗形
 
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F911e9350-ebae-4887-820e-f6071b817393%2FUntitled.png?table=block&id=62f18be9-ff3e-4cf7-a733-5da034434983&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+| ![image-20240519113053240](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191130321.png) |                                                              |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+|                                                              |                                                              |
+| ![image-20240519113027951](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191130060.png) | ![image-20240519112935135](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191129340.png) |
+| VET 8H 通道（旗形） E点旗形蓄势顺破 中继 顺势 125根 2019-5-14 | MANA 2H 旗形 E点旗形 窄幅通道上涨 中继 顺势 178根 2021-1-7 矩形！ |
 
-waves，1h，旗形通道+上升楔形收敛上边界，100k，20210209
+#### 旗形+通道
 
-## 旗形+旗形
+| ![image-20240519113325710](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191133915.png) | ![image-20240519113434947](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191134163.png) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+|                                                              |                                                              |
+| ![image-20240519113606817](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191136038.png) | ![image-20240519113821099](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191138185.png) |
+| VET 4H 旗形 E点通道下跌 中继 顺势 107根 2021-5-11            | FTM 2H 旗形 通道顺破 中继 顺势 70根 2021-8-27                |
 
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe5e74e1d-7bd8-42e7-9ce3-42e0977912c0%2FUntitled.png?table=block&id=1adb2941-613a-468b-aabd-109b28e79d31&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+#### 旗形+头肩
 
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa9ddbeb2-82fd-4cc9-ba14-85125a02fc30%2FUntitled.png?table=block&id=5d4b6b12-49db-47c2-a76d-98d5b2005bc6&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+| ![image-20240519113917231](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191139432.png) | ![image-20240519113944492](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191139704.png) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+|                                                              |                                                              |
+| ![image-20240519140322184](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191403264.png) | ![image-20240519140020098](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191400295.png) |
+| ant，1h，旗形+通道上涨+头肩顶，肩线看跌，180k，20210712      | ETH，4H，347K，上升通道，通道内下降楔形上涨，通道末上升旗形跌破通道，对三中继下跌，通道（好像更接近圆弧顶）中继结构，下降楔形顺破回踩下边界继续下跌，20190924 |
 
-VET 8H 通道（旗形） E点旗形蓄势顺破 中继 顺势 125根 2019-5-14
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe9642082-fb16-4bf3-a4ad-ffe30e9f2548%2FUntitled.png?table=block&id=8d0437e6-7fd8-4d9f-beb2-5f281f866c81&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-MANA 2H 旗形 E点旗形 窄幅通道上涨 中继 顺势 178根 2021-1-7 矩形！
-
-## 旗形+通道
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F91bc3c4f-cc61-42ff-85b4-dd524823ac58%2FUntitled.png?table=block&id=d8dad561-96f0-40c0-81b8-965a7f7c7ada&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5f518364-3252-446e-a359-ee9f8724cf05%2FUntitled.png?table=block&id=65086432-ebf8-422d-ae92-28ced93fdac0&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F049d8190-562d-4991-8b04-787d338867f8%2FUntitled.png?table=block&id=f6141bf7-5dc0-4ec6-9aaa-8272c1a2a80c&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-CELR H2 129K 旗形通道-小上直三-小下降通道-中继 20200308
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7ffd6463-3437-4370-a461-27736caaec6d%2FUntitled.png?table=block&id=2a996bd1-840f-44cf-ae8f-4cd1f20de559&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-CFX H2 144K 旗形-下降通道跌穿-中继 20210409
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F34c3eef8-987d-43a7-80e3-96cdd657067d%2FUntitled.png?table=block&id=7755db0e-fd16-49db-90e1-1cbba36f990e&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-VET 4H 旗形 E点通道下跌 中继 顺势 107根 2021-5-11
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff67a7edc-d326-4b10-ab1c-ad11d1e2fa11%2FUntitled.png?table=block&id=96009da2-c74d-4dc0-8658-0bf603887c7c&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-DYDX 1H 旗形 E点通道下跌 中继 顺势 89根 2022-3-14
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F3e08cd04-2e08-4268-a831-c693143e9d8c%2FUntitled.png?table=block&id=ac59889f-7829-4e41-8b3a-6550e55420f4&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-FTM 2H 旗形 通道顺破 中继 顺势 70根 2021-8-27
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F94de08c3-2802-4352-8302-950f38c5d224%2FUntitled.png?table=block&id=1f0aa971-99e7-4e90-b76e-e5440196996d&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-ALICE 1H 旗形 E点通道下跌 放量 中继 顺势 80根 2022-3-13
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd6973052-6fe3-4be3-8d42-1fc9e5e9122f%2FUntitled.png?table=block&id=e3df5e6b-142a-47e8-909b-83144134efa5&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-FIL 2H 旗形 E点通道下跌 中继 顺势 116根 2022-1-8
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F39d07011-088b-4c08-8afc-f947f86ebddd%2FUntitled.png?table=block&id=97df7c6e-0848-4053-9fe0-3bbe3232499e&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-ETC 2H 旗形 通道上涨 中继 顺势 105根 2021-4-15
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa0361489-52e2-4994-8141-099ab9526782%2FUntitled.png?table=block&id=eaa7c820-ff7a-49a8-898a-d5ec3e66d939&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-BCH 30F 旗形 C点通道上涨 D点蓄势突破 没有E点 中继 顺势 111根 2021-4-13
-
-## 旗形+头肩
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe77b3945-050b-4799-bba2-ac3bbe0e130a%2FUntitled.png?table=block&id=961366e7-393a-4130-9647-0549738320bc&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fad5ecd2e-5ad4-4323-bdf6-e29e6faa129f%2FUntitled.png?table=block&id=0c789e13-6092-4628-aea6-da7e188e5bd1&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa9984d6b-d3e2-4884-a5fc-64a88ab31e16%2FUntitled.png?table=block&id=78bc2b07-1364-42ce-b479-ee34a36d46fd&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-ant，1h，旗形+通道上涨+头肩顶，肩线看跌，180k，20210712
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6626cfcc-7d5d-4692-81ea-afce57881790%2FUntitled.png?table=block&id=4a86d9bc-0eaa-4d14-83ae-3d323de0297e&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-ETH，4H，347K，上升通道，通道内下降楔形上涨，通道末上升旗形跌破通道，对三中继下跌，通道（好像更接近圆弧顶）中继结构，下降楔形顺破回踩下边界继续下跌，20190924
-
-# 头肩结构定式
+### 头肩结构定式
 
 ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fa84fcb81-b87d-45b9-a4fb-fe2d49b8bf58%2Fa11c5afe-f07d-4943-aa56-6ea677895a88%2FUntitled.png?table=block&id=efb614fc-2473-460f-91a8-62dad6deffe9&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
 
 ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fa84fcb81-b87d-45b9-a4fb-fe2d49b8bf58%2Fd9f2306f-14c1-4b0f-83a1-c749accea92a%2FUntitled.png?table=block&id=38688eaa-b3a9-4edc-a488-3fd725b1c3a9&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
 
-## 头肩+三角
+#### 头肩+三角
 
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F9af28e4f-b116-4eda-ad58-0ef9cb6b0442%2FUntitled.png?table=block&id=6b5f66d2-6dd2-4198-8efa-11a36afa65ea&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+| ![image-20240519140601184](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191406380.png) | ![image-20240519140556148](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191405348.png) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+|                                                              |                                                              |
+| ![image-20240519140854823](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191408910.png) | ![image-20240519140951486](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191409564.png) |
+| BTC-H1-顺势中继-130根-20220518                               | BTC-H2-逆势反转-128根-20190708                               |
 
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F934aff97-2bb2-4340-af1a-657455a92308%2FUntitled.png?table=block&id=78080b5c-59d2-4db1-8c30-93b671f38292&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+### 头肩+头肩
 
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F91692dd8-8a12-4e1c-b9cb-34eed24e2785%2FUntitled.png?table=block&id=500a65d9-d0fc-4062-87bc-668fd253343b&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+| ![image-20240519141225118](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191412327.png) | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191412482.png) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+|                                                              |                                                              |
+| ![image-20240519141500825](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191415023.png) | ![image-20240519141415146](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191414351.png) |
+| ETH-H4-逆势反转-119根-20211212                               | BNB-H2-逆势反转-143根，20210531                              |
 
-BTC-H1-顺势中继-130根-20220518
+#### 头肩+通道
 
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7efa11ce-f9af-4f55-9836-a3c4be8fda86%2FUntitled.png?table=block&id=bf9619f5-4e0e-4147-a024-f38f4dc3c93f&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+| ![image-20240519141712039](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191417110.png) | ![image-20240519141717152](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191417251.png) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+|                                                              |                                                              |
+| ![image-20240519142111785](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191421859.png) | ![image-20240519141949230](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191419425.png) |
+|                                                              | LTC  F30  120K  头肩底+通道（顺破）中继  顺势  20200921      |
 
-BTC-H2-逆势反转-128根-20190708
+#### 头肩+楔形
 
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc0479044-efc8-48b1-b552-caa41ba3d766%2FUntitled.png?table=block&id=1457cee3-e32f-4c1a-a4b5-31503afb1b55&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+| ![image-20240519142251186](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191422378.png) | ![image-20240519142255144](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191422345.png) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+|                                                              |                                                              |
+| ![image-20240519142857232](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191428424.png) | ![image-20240519142909412](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191429605.png) |
+| BTC-H8-逆势反转-189根-20210511                               | NEAR-H1-逆势反转-153根，20220228                             |
+| ![image-20240519143051946](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191430135.png) | ![image-20240519143040055](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191430251.png) |
+|                                                              |                                                              |
 
-LTC,2H，139根，（头肩+右肩三角蓄势） 2022/4/7
+#### 头肩+旗形
 
-## 头肩+头肩
+| ![image-20240519143233889](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191432084.png) | ![image-20240519143238875](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191432078.png) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+|                                                              |                                                              |
+| ![image-20240519143527614](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191435814.png) | ![image-20240519143535327](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405191435516.png) |
+| AAVE 2H 头肩顶中继 右肩旗形下跌 通道上涨形成M头 反转 逆势 148根/70根 2021-5-19 | ETH，2H，131+71K，（上升趋势形成头肩顶，短期看回调，左肩旗形=右肩旗形，跌破底部形成头肩底，）20210310--20210329 |
 
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F89a1ec90-6039-4643-becd-bd09457467f1%2FUntitled.png?table=block&id=d6f39c75-8fad-496f-bfde-d89d08b21ac4&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+#### 头肩中继
 
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F93138bd7-30e0-4533-9308-d7d786f19251%2FUntitled.png?table=block&id=e0d8213c-c601-42be-87b9-c3c9fdf4b3ab&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+| ![image-20240520230635780](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405202306977.png) | ![image-20240520230709834](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405202307048.png) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
 
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa7c101e8-570d-47b7-a65c-2a8958717f42%2FUntitled.png?table=block&id=54e9f6a9-ce31-4631-9401-3e967bc7e4c3&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+### 圆弧结构定式
 
-ETH-H4-逆势反转-119根-20211212
+#### 圆弧+三角形
 
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7768f834-e288-48a6-af5c-069dc715dbda%2FUntitled.png?table=block&id=50e1e851-80da-4d4c-b864-539f502d844a&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+| ![image-20240520230834885](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405202308074.png) | ![image-20240520230841552](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405202308762.png) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405202310599.png) | ![image-20240520231043603](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405202310788.png) |
 
-BNB-H2-逆势反转-143根，20210531
+#### 圆弧+楔形
 
-## 头肩+通道
+| ![image-20240520231316997](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405202313193.png) | ![image-20240520231311791](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405202313980.png) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![image-20240520231433876](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405202314958.png) | ![image-20240520231355217](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405202313308.png) |
+| ![image-20240520231617715](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405202316879.png) | ![image-20240520231614005](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405202316092.png) |
 
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F3a12dffd-2255-4583-9523-08bcff04d5b6%2FUntitled.png?table=block&id=7a6222a6-a1b8-439a-ab0a-b2f8a2efb238&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+#### 圆弧+通道
 
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F836c0084-01a5-411b-8d41-0c303e70b361%2FUntitled.png?table=block&id=c68d04d6-50da-467a-869d-ef90966c3568&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+| ![image-20240520231742707](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405202317901.png) | ![image-20240520231852325](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405202318520.png) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![image-20240520232017599](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405202320669.png) | ![image-20240520232012711](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405202320803.png) |
 
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F1a252423-3400-4632-afb2-d8a257629bbb%2FUntitled.png?table=block&id=e3b72885-4aed-4af8-a873-4540c27dc9d2&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+#### 圆弧+头肩
 
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7659cd76-2c53-4037-83ad-de504b2df604%2FUntitled.png?table=block&id=8dcc90b0-8d3e-4c9d-95fa-b412fdded486&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+| ![image-20240520232122112](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405202321300.png) | ![image-20240520232128053](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405202321245.png) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![image-20240520232249790](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405202322883.png) | ![image-20240520232246152](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405202322253.png) |
+| BCH，H1，杯柄形态（圆弧底+头肩底，右肩进场），中继，顺势，117根K，20210903 | LUNA，H4，圆弧顶+头肩顶，以头肩顶作为切入点入场吃圆弧顶的肉，跌破颈线入场，反转形态，124根，2021090 |
 
-LTC  F30  120K  头肩底+通道（顺破）中继  顺势  20200921
+### 胡子哥金句摘抄
 
-## 头肩+楔形
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ffc0594f4-dd52-4149-a944-03d638597c93%2FUntitled.png?table=block&id=8c377d37-3c72-405f-b0f2-a70485a062bb&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F8536b40e-6847-458b-9160-10ad8f7a1e21%2FUntitled.png?table=block&id=83498c76-40e3-4b24-9a8b-0ac1c1308b4e&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F3740d009-7300-453e-a81f-e92c2c3b6116%2FUntitled.png?table=block&id=837fb221-2f2b-4a23-89ae-b87ba01d6bc6&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-BTC-H8-逆势反转-189根-20210511
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F129299a7-e1ae-4085-9412-bbdc934483a1%2FUntitled.png?table=block&id=b60db8f3-09f4-4164-a3f1-e7dc4b9b3a0d&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-NEAR-H1-逆势反转-153根，20220228
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe4cab34c-fb6b-4858-8986-38369227a895%2FUntitled.png?table=block&id=590e57d4-63c6-423f-b76f-cfbd8d63452a&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fce4f69c8-f69b-495e-8dba-d37d792af17c%2FUntitled.png?table=block&id=ce211e66-ba87-4bd5-97ba-d57a04307e95&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6947ae4f-7fa4-409e-9164-61c43fbf224f%2FUntitled.png?table=block&id=cfeddc04-3607-4aad-851c-c21c53ef475b&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-## 头肩+旗形
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa6700c0a-19eb-48b3-be05-46ea39126365%2FUntitled.png?table=block&id=5d30fbfc-04e1-4982-894d-867830095f33&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F25f48abd-07f2-4bcb-bbe3-004f28996817%2FUntitled.png?table=block&id=ec022fb4-5a1d-4001-8694-d732c49f500a&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2511c7c0-4c26-42c6-a314-03987fbb6363%2FUntitled.png?table=block&id=e8e57fc7-3f75-4a7c-bd01-22dc35a78e1c&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-AAVE 2H 头肩顶中继 右肩旗形下跌 通道上涨形成M头 反转 逆势 148根/70根 2021-5-19
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F9bb1a324-fb50-4c80-a202-2f6a427353c6%2FUntitled.png?table=block&id=f4155b30-0aeb-41e9-b11b-c64c9a68059c&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-ETH，2H，131+71K，（上升趋势形成头肩顶，短期看回调，左肩旗形=右肩旗形，跌破底部形成头肩底，）20210310--20210329
-
-## 头肩中继
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa99edd6c-5551-439e-9583-fe4be5cab8db%2FUntitled.png?table=block&id=31acb9cc-0cc1-4e00-b84a-85f962da725b&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F96073545-9ef2-4390-bc7d-a7e2ccbce675%2FUntitled.png?table=block&id=5234a55c-d3c7-4a81-bc2a-dc5d3fc2500e&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-# 圆弧结构定式
-
-## 圆弧+三角形
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa2d2d236-b409-4d8a-923f-f21fed483640%2FUntitled.png?table=block&id=c01da9e5-a5c9-4aa9-9184-787538075da0&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4ec983a0-02cd-4f01-9d42-12b0b33213c1%2FUntitled.png?table=block&id=1d8b9741-d7e7-4dc6-889a-6e8abf89cce1&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5cff67c4-77ce-459a-80aa-6bfdd91670dc%2FUntitled.png?table=block&id=6dd847bd-edd1-4cf3-9d83-d088d45b0c15&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-ETH,F15,圆弧顶，三角，反转，见顶结构，180K，20210905
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F13e34137-f411-4fb1-a3af-48d6ea776df1%2FUntitled.png?table=block&id=121f873a-ed14-4a40-a759-fc16afdf14a1&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-uni，圆弧+三角，跌破反抽有入场机会，20220418
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc81e48a6-0978-4a83-9bc0-970e170f4669%2FUntitled.png?table=block&id=694a5d6e-d0bb-48fb-9c92-dcb589bb5ddb&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-果然 圆弧加三角
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F1f07add5-9f4a-44a2-a005-72e5966cf534%2FUntitled.png?table=block&id=b8aec18b-ab9f-4be5-8c7e-e3caa9d01483&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-LUNA 2H 圆弧顶 三角 中继 顺势 130根/67根 2021-4-6
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F58e7227a-ce78-4844-8dc1-7d5e21be50d4%2FUntitled.png?table=block&id=6ae9eeea-57b7-461b-b402-32eaf26f9346&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-2.16-xauusd
-
-## 圆弧+楔形
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7609f4ef-7ff0-474b-a066-11efe141d589%2FUntitled.png?table=block&id=0acea7e4-a098-4b65-a448-bbcf5bf66a34&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0863ba3a-0f1a-43a6-b38f-195ff53660eb%2FUntitled.png?table=block&id=132d44ae-1d69-4be6-a96d-fa901297a818&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff5f390fe-5cf1-44af-a31a-3842e0813340%2FUntitled.png?table=block&id=5f42f9b6-c5a8-4b0d-8995-cc5ab303b4e4&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-BTC，H4，圆弧+楔形，顺势，中继，142K，2020.12.11
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F102e116e-94ab-484c-b9a4-9c33ac082e71%2FUntitled.png?table=block&id=9efe7fb7-3937-4908-9eb8-f15ae96e9f4d&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-H2，SOL，圆弧+上升楔形，反转，378，20210616
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F19b91c16-a677-42a0-b720-8f837035c157%2FUntitled.png?table=block&id=bdea4235-6569-4e6e-9c31-13dc7285caaf&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-BCH 4H 137K 圆弧顶+楔形 中继 顺势 20191217
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd997fb24-a333-467f-aded-9158ac93c82f%2FUntitled.png?table=block&id=75f01b3e-136e-4366-8c90-58be0c9168db&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-MATIC-H1-圆弧底+楔形顺破-147K-20210807
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F841f02ab-15f8-4702-b6a7-7ea59d939eb1%2FUntitled.png?table=block&id=a3fbfcde-f304-46d6-9f6f-40e4e2e7fe23&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-ETH 1H 186K 圆弧底+楔形 20210830
-
-## 圆弧+通道
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F81b479e1-9769-4649-bc13-c8847d23be10%2FUntitled.png?table=block&id=87e85cbe-74c8-43ee-a77f-d773346255f7&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5cbea639-143a-4d3b-aa94-c0533c6c550f%2FUntitled.png?table=block&id=7f771e73-ad4c-4493-be55-874296e2bd92&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F25bc6c79-7b20-457e-a25c-c49571449e98%2FUntitled.png?table=block&id=f3d968ee-c426-40f7-ad38-f7073e4246a2&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-191216, ETH, 4H, 圆弧底+楔形顺破e点空；中继；顺势
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7cab2d20-479e-4301-8eb8-2c4b5e577635%2FUntitled.png?table=block&id=a954bde0-2bea-4bff-a6a1-60ea9860cf3f&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-WAVES-H1-逆势反转-140根，20220403
-
-## 圆弧+头肩
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd8e6299c-5ac6-4849-aada-4ff5fab0adac%2FUntitled.png?table=block&id=ce2a8fa1-afe2-47af-872f-5bdd3d04dac1&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F510e699a-cbae-4c5b-8a93-12022cbbbbcf%2FUntitled.png?table=block&id=b31c2af7-337d-4236-94e0-8854111f968d&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ffa70515f-8d6a-4b62-a76b-ed8e0466a401%2FUntitled.png?table=block&id=ea17f063-b2e5-44a4-83fc-112fce144872&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-BCH，H1，杯柄形态（圆弧底+头肩底，右肩进场），中继，顺势，117根K，20210903
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fdc2bebc2-cdf8-4bcf-a8b1-de41642c6d1f%2FUntitled.png?table=block&id=15c3ead4-5813-43b8-8495-7c28ca8b10bb&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-LUNA，H4，圆弧顶+头肩顶，以头肩顶作为切入点入场吃圆弧顶的肉，跌破颈线入场，反转形态，124根，20210907
-
-
-
-# 胡子哥金句摘抄
-
-- 啥分析方法都是市场的切入点，主要目的是区别强弱，分出强弱，确定盈亏比。
-
-技术就这么一回事，最后拼的是心态和运气。
-
-技术没啥好说的，就是找趋势和确定盈亏比。
+- 技术没啥好说的，就是找趋势和确定盈亏比。
 
 - 炒币，唯一确定的就是你单笔的止损。
+  - 别把交易想的太难，一种交易方法如果你听了几遍听不懂，大概率就是一个解释行情的方法，你用这种方法，你就会发现过后看很多都是对的。
 
-别把交易想的太难，一种交易方法如果你听了几遍听不懂，大概率就是一个解释行情的方法，你用这种方法，你就会发现过后看很多都是对的。
 
-为啥做不上？实际上就是交易太复杂，不好执行，交易技术真的很简单。
+- 不需要做太多交易，只需要在有行情的时候梭哈，有爆发力就行了
+  - 再次强调，你能梭的前提是技术没问题，能识别机会。
 
-- 碳基不需要做太多交易，只需要在有行情的时候梭哈，有爆发力就行了。
 - 追求准确率的，有可能说明你还没学透。
-
-高准确率一定是盈利空间小，如果你期望过高，那大概率是不赚钱的。
-
-当然这个是拉长周期来看。
-
-- 很多人误会了，对于交易，能赚钱才是入门，等级是由量级决定的。
-
-跑车这东西过了年纪，再玩对于大多数人没啥意义了。
-
-不在短时间内赚更多的钱，意外备不住哪天就来了。
-
-如果想避免中年危机，就要在能梭哈的时候赶紧梭哈，不要浪费机会成本，当然我说的未必对…个人理解
-
-对于中年人最大的悲哀，还是输不起啊。
-
-输不起怎么做交易，有家有孩的一破釜沉舟家没了… 这种悲剧看了太多了。
-
-当然这是对于交易能赚钱的人来说，可以有效识别交易的质量，（不是对不能赚钱的人说的，毕竟赚钱才是入门，自己估量下）
-
-换个角度，如果有家有孩子交易还没入门，放弃吧，积累点别的，做啥都比做交易好。
-
-极短时间赚绝对值钱，才是交易的魅力
-
-交易能不能当打工？也能，但是明天和意外哪个先来真不知道。
-
-年轻人努力梭点，大不了打工再来。
-
-再次强调，你能梭的前提是技术没问题，能识别机会。
-
-别瞎梭。毕竟梭哈是一种智慧。
+  - 高准确率一定是盈利空间小，如果你期望过高，那大概率是不赚钱的。
 
 
+- 很多人误会了，对于交易，能赚钱才是入门，等级是由量级决定的
 
-# 流水师兄交易心得 **新手看这一篇就够啦**
+### 流水师兄交易心得 **新手看这一篇就够啦**
 
 1. 所有低于H2的框架都不值得参考，所有低于F15的收敛结构都不值得下手
 2. 在框架的中间赌收敛中继，边界赌毛刺反转
@@ -1023,94 +682,53 @@ LUNA，H4，圆弧顶+头肩顶，以头肩顶作为切入点入场吃圆弧顶�
 6. 任何时候，全仓杠杆超过5x，都是赌命
 7. 对于99.99%的交易员而言，H12（含）以上级别的图形是没有意义的
 8. 对于规模资金，合约是地狱，现货是乐土
-9. 新人选定一个框架，比如F30+H2+H6，并坚定的参与少数几个结构（定式），这是急速入门之道
-10. 多头止盈了，不要立即反手空；反之亦然 (已编辑)
+9. 新人选定一个框架，比如F30+H2+H6，并坚定的参与**少数**几个结构（定式），这是急速入门之道
+10. 多头止盈了，不要立即反手空；反之亦然
 11. 长途奔袭后的收敛易反转，尤其是这个收敛位于某大级别压力或支撑附近
 12. 小资金快速长大三条路：1）高杠杆梭哈比特币以太坊的稳定结构 2）中等杠杆梭哈热门妖币 3）参与未上所的概念新币
 13. 小止损等同于没止损，尤其是针对收敛结构，止损尽可能放到毛刺之外，开仓尽可能靠近边界
 14. 每个交易员都应该设置熔断，阶段性会有低谷，出现的时候就要硬性终止。至于怎么定义低谷，可以是累计最大亏损，也可以是连续亏损次数
 15. 交易是典型的变速跑，天时地利人和类机会来临时，应该勇于梭哈赌命（九条命之一条）
+16. 做投机，尤其是高波动性的市场，比如币，千万不要大额入金，没有必要。几千u足够了。我进币圈入了两次金，都是低于2000u.
+17. 纯粹的交易分两块，一是技术（拐棍）二是心态（心理），技术好学难精，心态都懂难成熟。拿可承受的资金，去市场中一刀一枪的练吧，没有捷径。
+18. 复盘，复盘，复盘。你常做的几个品种，至少应该达到什么地步昵？看到价格，就应该图在心里。
+19. 基本功。在明确了画图的基本规则后，应该遍历各种各样的行情，绘制各种各样的
+20. 学的足够多足够广之后，就要开始认识自我，剖析自己的性格。你最终形成的交易系统就是跟性格息息相关的，理想状态是招数是从心里长出来的，如臂使指，毫无滞涩感
+21. 利润回吐。这个属于止损止盈一致性的问题，即平仓一致性。想拿大利润，就要做好连续回吐的心理准备，最近两周，我已经经历了连续三次回吐200e+的交易，但并不是失败的交易。
+22. 风险资金。任何时候不要动用超过自身承受的资金来投机交易，高利贷做交易，你让阎王爷来也会动作变形。
+23. 缺陷的艺术。交易就是典型的此类工种。不要对自己太苛责。比如，高位的单子，拿到了很好的位置，面对次级别回踩时，心里动摇了，提前出局了，事后悔恨万千，没有必要。下次记得留点单子就好了
+24. 宽恕。交易是孤独者的修罗场。没有成功以前，不需要得到任何人的赞同理解，成功后，也是如此。人生很短，褒扬和贬低都没有意义。正视自己的内心即可，学会宽恕自我。
+25. 圈层（圈子）。任何行当都有圈层，越处于核心位置，食利愈丰。投机者要远离弱者的圈子，远离屌丝圈子，懦弱会传染，像病毒一样，从生活到动作。面对强者，要像狗皮膏药一样，死死粘住，学习长处。
+26. 交易系统。成熟的交易员必备神器，他是把你在交易过程中所有的动作（有形的手部动作，无形的心理活动）尽可能细化后的条款汇总。
+27. 坚持。交易是单行线，尤其是杠杆交易。当你的沉默成本足够大时，其实没有退出一说。除了成功，没有第二条路。所以，没事别瞎辞职，别瞎全职。
+28. 除非你能看到别人的交割单，否则不要相信任何人，尤其是大神，因为这个市场中从来不缺滔滔不绝的老亏货。我也不例外。
 
-杠杆高低跟资金实力有关，跟场内场外资金管理的类型有关，通用讲，任何时候高于5都是很危险的。我个人基本上很少超过1，全仓。
-
-1. 做投机，尤其是高波动性的市场，比如币，千万不要大额入金，没有必要。几千u足够了。我进币圈入了两次金，都是低于2000u.
-2. 纯粹的交易分两块，一是技术（拐棍）二是心态（心理），技术好学难精，心态都懂难成熟。拿可承受的资金，去市场中一刀一枪的练吧，没有捷径。
-3. 复盘，复盘，复盘。你常做的几个品种，至少应该达到什么地步昵？看到价格，就应该图在心里。
-4. 基本功。在明确了画图的基本规则后，应该遍历各种各样的行情，绘制各种各样的
-5. 学的足够多足够广之后，就要开始认识自我，剖析自己的性格。你最终形成的交易系统就是跟性格息息相关的，理想状态是招数是从心里长出来的，如臂使指，毫无滞涩感。举个例子，机械性格的人很难在自由心证上有所建树
-6. 自由心证和定式。前者是后者融会贯通后的遗忘，不分高低贵贱。田伯光的快刀可以砍人，令狐冲的独孤九剑同样可以砍人，定式也分高低。但很难说独孤九剑比太极更低劣。
-7. 一致性。交易手法有一致性，资金管理有一致性，止损有一致性，心态管理同样有一致性。举例，早上拿一万块梭哈，晚上喝高兴了，拿五万块梭哈，这就违背了一致性。
-8. 利润回吐。这个属于止损止盈一致性的问题，即平仓一致性。想拿大利润，就要做好连续回吐的心理准备，最近两周，我已经经历了连续三次回吐200e+的交易，但并不是失败的交易。
-9. 风险资金。任何时候不要动用超过自身承受的资金来投机交易，高利贷做交易，你让阎王爷来也会动作变形。
-10. 缺陷的艺术。交易就是典型的此类工种。不要对自己太苛责。比如，高位的单子，拿到了很好的位置，面对次级别回踩时，心里动摇了，提前出局了，事后悔恨万千，没有必要。下次记得留点单子就好了
-11. 宽恕。交易是孤独者的修罗场。没有成功以前，不需要得到任何人的赞同理解，成功后，也是如此。人生很短，褒扬和贬低都没有意义。正视自己的内心即可，学会宽恕自我。
-12. 圈层（圈子）。任何行当都有圈层，越处于核心位置，食利愈丰。投机者要远离弱者的圈子，远离屌丝圈子，懦弱会传染，像病毒一样，从生活到动作。面对强者，要像狗皮膏药一样，死死粘住，学习长处。
-13. 交易系统。成熟的交易员必备神器，他是把你在交易过程中所有的动作（有形的手部动作，无形的心理活动）尽可能细化后的条款汇总。
-14. 坚持。交易是单行线，尤其是杠杆交易。当你的沉默成本足够大时，其实没有退出一说。除了成功，没有第二条路。所以，没事别瞎辞职，别瞎全职。
-15. 悖论。好的图形会让你先失败两次，第三次你不敢出手了，行情来临。你的熔断系统必须要权衡悖论。
-16. 交易没有秘密，（完）！
-17. 后记。除非你能看到别人的交割单，否则不要相信任何人，尤其是大神，因为这个市场中从来不缺滔滔不绝的老亏货。我也不例外。
-
-
-
-# ZT交易心得
+### ZT交易心得
 
 1. 第一波回踩确定性是最大的，无风险。
-
 2. 闪崩一般三波
+3. 怎么减少损失？逆波的方法，顺大逆小，顺应大的上升趋势，逆小的回调趋势。
+4. 磁吸效应，处于中间位置大概率会跑到阻力位或支撑位，比如通道边界、前高位置、前低位置
+5. 如果反转结构走成中继，那么行情具有一定延续性
+6. 楔形顺破加速见顶，正常顺破速度应该很快，所以往往会开启大行情，但走的墨迹(+整数关口)就会见顶
+7. 逆势一定要主动止盈
+8. 扎针-正常扎针应该做多，仙人指路怎么回事？扎针后依旧破位，说明有一股力量抵消掉扎针后结构性的力量而且还带动原有突破，那么向下的力量是很大的，那仙人指路之后只需要做突破（收线为准），然后拿着就行。（跌下来的过程中做进去拿着）
+9. 20年的胡子哥操作：现货用冰山条件单挂一挂，合约就结构波段
+10. 上升通道，走到通道的上端，以第二个顶的位置上形成收敛，大概率证明往后还有一段行情，那么在发现企稳，直接进场。
+11. 上升通道，每次回踩都回踩前高（波峰），这说明拉升是一步一个台阶，所以是比较强势的，容易通道顺破加速。
+12. 如果真是头肩底，应该在末端巨幅反弹向上，除此他是个下降通道、就该走掉开空，提前突破很重要！！
+13. 流畅行情就一比一止盈
+14. 牛市做空只做下降abc，三波后放量就走
+15. 空头行情，凌晨3：30 4：30要重点关注
+16. 多头行情，早上6：30-7：30 下午3：30-4：30重点关注
+17. 放量是市场共识，市场有人在该位置产生分歧和共识，你卖我买，死伤严重。
+18. 一次突破下来，形成蓄势，然后二次突破，二次突破回踩边界后不在创新高就形成确认，确认突破失败（走坏趋势），确认后直接市价止损，观察市场整体环境决定开不开反手
+19. 当价格处于关键位置（大量筹码密集区域）没有反弹，或者反弹很弱，本身在关键位置就好像身后有千军万马来帮助向上，但它不反弹证明很弱，这也是恒久必跌的原来。但要观察整个市场处于什么环境，牛市那就不关注它，因为下去也会快速收上来形成空头陷阱，熊市可就太喜欢了，弱！
+20. 当你做单什么时候离场？最大止损放在逆边第2点，当你确定边线后，本级别收了实体阴线跌破边线，就该止损
+21. 做明确结构赚的钱，很容易在猜顶猜底的时候试单亏回去，尤其是多弱势币、空强势币的时候，管住手钱才能留得住……🤔
+22. 小级别的抄底摸顶尽量少做，亏的钱不如留给大级别的机会，好机会止损给大点，比较舒服
 
-3. 标志性K线-长下影+金针探底+关键位+爆量
-
-4. 陷阱-突破到颈线位置形成天然抛压，下来不破坏结构就形成二次突破
-    陷阱、提前突破、二次突破统称为脱序， 只有他突破才能确定它的方向，那么当提前突破下来形成二次突破，提前突破方向为上，就做上，是陷阱，往下突破则再进场。如果一个脱序，充当了头肩结构的头部，则不叫脱序
-    。怎么减少损失？逆波的方法，顺大逆小，顺应大的上升趋势，逆小的回调趋势。
-
-5. 磁吸效应，处于中间位置大概率会跑到阻力位或支撑位，比如通道边界、前高位置、前低位置
-
-6. 逆波三要素-边界 标志K 轻微放量
-    结构、波动、市场情绪
-
-7. 如果反转结构走成中继，那么行情具有一定延续性
-
-8. 楔形顺破加速见顶，正常顺破速度应该很快，所以往往会开启大行情，但走的墨迹(+整数关口)就会见顶
-
-9. 逆势一定要主动止盈
-
-10. 扎针-正常扎针应该做多，仙人指路怎么回事？扎针后依旧破位，说明有一股力量抵消掉扎针后结构性的力量而且还带动原有突破，那么向下的力量是很大的，那仙人指路之后只需要做突破（收线为准），然后拿着就行。（跌下来的过程中做进去拿着）
-
-11. 20年的胡子哥操作：现货用冰山条件单挂一挂，合约就结构波段
-
-12. 通道-以上升通道为例，她走到通道的上端，以第二个顶的位置上形成收敛，大概率证明往后还有一段行情，那么在发现企稳，直接进场。
-    还以上升通道为例，每次回踩都回踩前高（波峰），这说明拉升是一步一个台阶，所以是比较强势的，容易通道顺破加速。
-
-13. 定式结构-相同的市场环境，市场情绪就会演变成相同的图形。三角+旗形（三角内部末端形成旗形蓄势，可能E点就是旗形充当的）通道+楔形  三角+头肩
-
-14. 如果真是头肩底，应该在末端巨幅反弹向上，除此他是个下降通道、就该走掉开空，提前突破很重要！！
-
-15. 流畅行情就一比一止盈
-
-16. 频繁画门，重心下移，通道加速，出现标志性k，直接空，（阴跌加速没有反弹，出现结构，无脑空）通道顺破出现的矩形中继，无风险套利，几乎百分之百
-
-17. 牛市做空只做下降abc，三波后放量就走
-
-18. 空头行情，凌晨3：30 4：30要重点关注
-    多头行情，早上6：30-7：30 下午3：30-4：30重点关注
-
-19. 放量-放量是市场共识，市场有人在该位置产生分歧和共识，你卖我买，死伤严重。
-
-20. 一次突破下来，形成蓄势，然后二次突破，二次突破回踩边界后不在创新高就形成确认，确认突破失败（走坏趋势），确认后直接市价止损，观察市场整体环境决定开不开反手
-
-21. 当价格处于关键位置（大量筹码密集区域）没有反弹，或者反弹很弱，本身在关键位置就好像身后有千军万马来帮助向上，但它不反弹证明很弱，这也是恒久必跌的原来。但要观察整个市场处于什么环境，牛市那就不关注它，因为下去也会快速收上来形成空头陷阱，熊市可就太喜欢了，弱！
-
-22. 当你做单什么时候离场？最大止损放在逆边第2点，当你确定边线后，本级别收了实体阴线跌破边线，就该止损
-
-23. 做明确结构赚的钱，很容易在猜顶猜底的时候试单亏回去，尤其是多弱势币、空强势币的时候，管住手钱才能留得住……🤔
-
-24. 小级别的抄底摸顶尽量少做，亏的钱不如留给大级别的机会，好机会止损给大点，比较舒服
-
-# **基本交易守则——摘录自《亚当理论》**
-
-**小黑｜胡子观币🚀**
+### **小黑｜胡子观币🚀**
 
 1. 亏损的头寸绝不要加码或“摊平”。
 
@@ -1134,593 +752,429 @@ LUNA，H4，圆弧顶+头肩顶，以头肩顶作为切入点入场吃圆弧顶�
 
 > 操千曲而后晓声，观千剑而后识器——勤复盘
 
-# **青衣 | 胡子观币的不断总结**
+### **青衣 | 胡子观币的不断总结**
 
 1. 不看盘面，妄猜顶底，偏见交易，大忌！
+2. 没有机会不进场，看准机会果断进场！
+3. 想赢，并不一定靠实力和本钱，最重要的是信心和胆识！
+4. 带着偏见进场是交易员最大的忌讳！
+5. 逆势永远是亏损最大的源头，要顺势而为！
+6. 知行合一，知是行之始，行是知之成！
+7. 市场总是向最小阻力方向运行！
+8. 方向错了，果断止损是减少亏损最有力的行动！
+9. 合约是金融市场最为专业的交易，无技术积累如同盲人赶路！
+10. “事前花时间考虑清楚，可是一旦到了该行动的时候，就要毫不犹豫，放手一搏。”     ——拿破仑·波拿巴
 
-2. 不确定的市场，唯一确定的就是我们的止损！
+### 各种恐惧感相关的想法和失常交易行为的例子
 
-3. 没有机会不进场，看准机会果断进场！
+| 恐惧类型         | 可能出现的想法                                               | 可能出现的失常行为                                           |
+| ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 害怕犯错         | 1. 我不能在这里出错<br />2. 我不能再赔钱了<br />3. 我不能让老婆知道我又赔钱了 | 1. 忽略资金管理，规避交易<br />2. 畏惧进场交易<br />3. 太早获利了结 |
+| 害怕亏损         | 1. 我需要一个更好的指标/交易系统来降低亏损<br />2. 我必须把亏损限制在×%以内<br />3.我必须弥补早上的损失 | 1. 寻求高获利概率/低亏损概率的交易方法。<br/>2. 太早结清获利的部位<br/>3. 情绪性入场 |
+| 害怕错失机会     | 1. 市场正在起飞，我没跟上<br/>2. 我之前错过这样的结构，我不想再错失一次。<br />3.  我必须现在立即进场，我不能错过这次交易。 | 1. 冲动进去未经计划的交易<br/>2. 太早进场                    |
+| 害怕没有把钱赚够 | 1. 这笔交易真的可以让我赚到钱。<br/>2. 上一笔交易涨幅很可观，所以我会继续拿住这一单。<br/>3. 我手气很好，已经连胜几次，我想我可以扩大部位， 大赚一笔。 | 1. 持有太久<br/>2. 忽视原本的止盈点<br/>3. 无视市场发出的出场讯号 |
 
-4. 想赢，并不一定靠实力和本钱，最重要的是信心和胆识！
+#### 書摘：《以交易為生》
 
-5. 带着偏见进场是交易员最大的忌讳！
+1. 第一目标是长期生存下去，第二目标资本稳定增长，第三目标赚取高额利润
 
-6. 逆势永远是亏损最大的源头，要顺势而为！
+   > 大多数交易者将第三目标放在第一位，更有甚者都不知道第一目标和第二目标的存在
 
-7. 知行合一，知是行之始，行是知之成！
+2. 90%的人不是暴跌的时候亏完的，而是暴跌完之后，不能接受账面回撤，拼命折腾，才亏完的
 
-8. 市场总是向最小阻力方向运行！
+3. 不贪婪，不急于交易，把你的时间用于学习，市场一直在这里，未来无尽的岁月中会有更多更好的交易机会
 
-9. 方向错了，果断止损是减少亏损最有力的行动！
+#### 阿布｜胡子观币🔥📈的心得
 
-10. 合约是金融市场最为专业的交易，无技术积累如同盲人赶路！
+1. 绝大多数投机者都有一个通病 -- 急于求成，总想在短时间内发财致富。 他们不是准备花费两到三年的时间来使自己的资本增值500%，而是企图在两到三个月内做到这一点。 偶尔，他们会成功。然而，此类大胆交易者最终有没有保住胜利果实呢?没有。为什么? 因为这些钱来得不稳妥，来得快去得也快，只在他们那里过手了片刻。 这样的投机者丧失了平衡感，他们会说:“既然我能够在这两个月内使自己的资本增值500%，想想下两个月我能做什么!我要发大财了。”
+2. 亏损是交易的成本。不管交易者多么有经验，亏损的可能性总是存在，因为机不可能百分之百安全。所谓经验就是教训多了，心痛了，不痛，记不住，不痛，不会反思。事情就是这样，一个人犯错很正常，但是若不能从错误中吸取教训，那就真冤了。
+3. 爆拉时警醒，暴跌时兴奋。看着K线上下窜动，你不动，那你就离赚钱就不远了，币圈亏的，永远是那些实时盯盘，躁动不安，频繁换仓的。所以要想赚钱，请收起你躁动不安的心！要不然你一定会出现凭运气赚钱，凭实力亏钱
+4. 交易前,你必须制订一份清晰详细的交易计划并且严格执行
+5. 严格来说，按照图表结构来交易，肯定能降低你的止损，一定不会爆仓。 
+   1. 很多人的止损来自于哪里？ 
+      1. 频繁交易。又想多，又想空，结果自己迷失了方向不说，还来回割肉
+      2. 追涨杀跌。不在逆势边进场，不断割肉，不断追涨杀跌
+      3. 无谓的止损。提前进场了，由于自己仓位重，没到图表结构止损位，扛不住了，割肉离场
+6. 冷静下来不要FOMO 不要追涨 也不要追跌
 
-11. 价格不会因基本面或技术面因素而上涨或下跌。个体对市场方向形成一个观点。他们中的一些将根据自己的观点进行操作——他们将制定决策买进或卖出。所有买进或卖出决策的总和形成了群体的集合观点，可能是看涨或看跌。所有市场参与者的这种集合观点，引起一个净看涨或看跌订单流，那将使价格运动。
+#### **阿兵｜胡子观币📈的心得**
 
-12. 以市场分析为依据，按价格形态来行事！
+1. 做图表结构，一般来说是不会爆仓的
+   1. 一般开单都有明确的止损点。如果止损点大，就要适当轻一点仓位，别太极限；如果止损点位小，才适合适当上一点仓位
+   2. 大幅盈利后，应设移动止损，以保护本金。根据个人喜好来，移动止损一般是设在自己认为短期趋势走坏时
+   3. 合约和现货要区分开，别啥图都一个劲儿往合约里冲
+2. 限制开单数量，选择一两个好的币种，适当分配仓位
+3. 做多就选强势币种，做空就空最弱的币种。 资金大就做交易量大的币种，不要碰成交量太低的币种，很容易被埋
+4. 亏钱是有原因的，要么技术不到位，要么心态差，或者运气不好。三者都占，那就美团见吧！
+5. 币圈小白的复盘画图的心路历程
+   1. 了解什么是K线
+   2. 了解基本图形，但是记得当时都是股票里的
+   3. 看大胡子直播视频，先是依葫芦画瓢，先把基本设置复制一下，再跳转到当时时间节点，画一样的图，去理解为什么这么画。这花了我不少时间，看完直播视频一共花了3个月时间，期间基本没做单
+   4. 此时已经知道大致哪些图形，及怎么画了。但是经验不够，一图一做一错，信心被打击。意识到自己画图肯定有问题，去请教社群优秀的小伙伴，比如朝阳、猫车等。再回过头再去看自己看视频时记得笔记，再总结
+   5. 每天看大胡子的直播，试着去理解他是怎么解读盘面的。但是，真是是台上一分钟，台下十年功。自己一旦开始理解，就是瞎琢磨，一通瞎分析，徒添烦恼。事实是，没有一定的交易经验，真的很难做到。于是，专心画图、总结，学习他人的图表，再画图，再总结。
+   6. 合约现货都可以，新手或者技术差，建议现货为主。有信仰，就屯币。 别瞎加杠杆实在不懂就退出这个市场，别把钱都亏没了。
 
-13. “事前花时间考虑清楚，可是一旦到了该行动的时候，就要毫不犹豫，放手一搏。”     ——拿破仑·波拿巴
+#### **10U战神 ｜频繁打损心得**
 
-14. 情绪上最难以接受的决策往往是正确的！
+* 说一下最近几天频繁打损的感悟：俄乌打仗开始了，我判断要跌，尽管大级别下跌结构还没有到位，可心里偏想提前布局，想抓到一个空单最高点。所以就开始找寻小级别的做空结构，尽管找的结构还算标准，但空下去，打损，空下去，打损。每天损2单，连续损3天，搞得我整个人都懵逼了，心态爆炸。
+* 是大级别的结构挤压出小级别的结构，而不是小级别的结构去挤压出大级别的结构，基本逻辑和主要矛盾全部搞错了，本末倒置了，亏的活该！
+* 图表是中性的，大级别结构没有走到位，做小级别的结构就很容易翻车。今天复盘100张图！说到做到！
+* 刚才把最近做的亏损的单子重新复盘了一遍，2次fomo追单大亏，没结构和点位瞎做单亏，总结了一下：坚决不追单，结构必完美再出手，可以少亏90%
 
-# 关于恐惧感的想法和失常交易例子
+#### Ahri宝宝的策略笔记
 
-**AHAO|胡子观币**
+1. 大仓位很难拿住，小仓位用高盈亏比可以赚很多，小仓位持有更容易
 
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F100f2534-fcb1-4bb4-885e-2aa511e92775%2FUntitled.png?table=block&id=a25718a0-8dbc-4a8c-bc37-46181952a398&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+2. 到达目标要减仓，然后剩余的可以做长线
 
-# 書摘：《以交易為生》
+3. 一定要有高的盈亏比才下手
 
-**Carti｜胡子观币↗**
+4. rsi上方是70以上是超卖区域，下方是30以下是超买区域；单边上涨或下跌，rsi指标无效；rsi需要跟别的指标或形态配合，单一使用不准
 
-每個試圖成為成功交易者的人，都要面對無數的困難，需要一路披荊斬棘、斬妖除魔。這裡有一些準則，讓我從一名肆無忌憚的業餘交易者，成長為一名偶有獲利的半專業交易者，最終進化為一名冷靜的專業交易者。
+5. 风控和仓位管理比策略更重要
 
-1. 堅定自己在市場中長期作戰的意念——從現在開始，至少交易20年。
+6. 模拟仓，小仓交易建立信心没毛病
 
-2. 像海綿一般地學習。
+7. 每个单子每个商品独立去分析，3连败5连败都不代表什么，看50-100单数据比较有意义
 
-3. 不貪婪，不急於交易——要把你的時間用於學習，市場一直在這裡，未來無盡的歲月中，會有更多更好的機會。
+8. 左侧加仓，极其弱智。一但错了，不能加仓
 
-4. 培養分析市場的方法，換句話說，就是“如果A發生，那麼B很可能會發生”。
+9. 等待好价位进场，不要那么随便，市场的好机会是等出来的
 
-5. 建立一套資金管理計劃。
+10. 朋友或家人可能不看好你，但不代表你不会成功
 
-你的第一目標是必須長期生存下去，第二目標是資本的穩定增長，第三目標才是賺取高額利潤。
+11. 熊市用合约积累，一波一波做，牛市做现货，低吸高抛，抓住机会
 
-大多數交易者對第一目標和第三目標的重要性產生了混淆，將第三目標放在了第一位，更有甚者，都不知道第一目標和第二目標的存在。
+12. 心态让技术可执行，钱让计划可执行
 
-為了成功，你需要動力、知識和自律。錢很重要，但這些品質的重要性要遠遠大於錢。
+13. 口诀：频繁画门，波动收窄，重心下移，三者集齐，后续大跌
 
-90%的人不是暴跌的时候亏完的，而是暴跌完之后，不能接受账面回撤，拼命折腾，才亏完的。
-人不亏完，是不能接受自己只是普通人的。普通人没能力逆趋势而行
+    > 乒乓球，自由落体，反弹后，又落下去，直到静止
+    >
+    > ![image-20240521170404391](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405211704597.png)
 
-# **阿布｜胡子观币🔥📈的心得**
+14. 减少损失的方法：一天1-2单(控制每日做单数，每月做单数，超出数，基本就是fomo状态，容易亏钱)
 
-绝大多数投机者都有一个通病--急于求成，总想在很短的时间内发财致富。 他们不是准备花费两到三年的时间来使自己的资本增值500%，而是企图在两到三个月内做到这一点。 偶尔，他们会成功。然而，此类大胆交易者最终有没有保住胜利果实呢?没有。为什么? 因为这些钱来得不稳妥，来得快去得也快，只在他们那里过手了片刻。 这样的投机者丧失了平衡感，他们会说:“既然我能够在这两个月内使自己的资本增值500%，想想下两个月我能做什么!我要发大财了。”
+#### 泽城 | 逐渐加仓 而非次次梭哈
 
-亏损是交易的成本，失败并不可怕，可怕的是没有从失败中得到足够的教训!
+1. 最近一直在反思经常踏空的原因，觉得还是仓位管理的问题。**好机会是试出来的**，在合理的止损下，找盈亏比最好的位置，分批次建仓
+2. 我太执着于找最好的点位满仓干进去，所以经常犹犹豫豫，画出了正确的图却不敢进场。人是一口吃不成胖子的。总想着能找到一个“最好的点位”，本身就是一种过于自信，不利于长久的活下去
+3. **控制仓位，一点点试单**，对市场保持敬畏。每次网不好就会看到Tradingview提示：“你离线了，但市场没有”。活下来才是真的。
 
-不管交易者多么有经验，他犯错做出亏损交易的可能性总是存在。因为投 机不可能百分之百安全。所谓经验就是教训比较多，比较深刻，让人心痛，让人尴尬;不痛，记不住，不痛，不会反思。事情就是这样。一个人犯错很正常，但是如果他不能从错误中吸取教训，那就真冤了。
+#### Cc | 拿不住仓位的原因
 
-经验告诉我们，没有什么行情走势是一帆风顺的，跌宕起伏扣人心弦才是常态。
+1. 紧盯着盈利/亏损金额，而不是当前的图形结构
+2. 开仓是并没有看出市场的方向且坚定自己的判断
+3. 想赚个差价，想着还能接回来的
+4. 前3条说的好听，本质还是穷
 
-爆拉时警醒，暴跌时兴奋，有涨有跌才是健康的，看着上下窜动，你不动，那你就离赚钱就不远了，币圈亏的，永远是那些实时盯盘，躁动不安，频繁换仓的。
+> ![image-20240521173129661](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405211731859.png)
+>
+> 最想得到机会时，多半会失去机会；害怕错过机会时，多半会错过机会。所以
+>
+> 1. 降低频率
+> 2. 接受错过
 
-所以要想赚钱，请收起你躁动不安的心！要不然你一定会出现凭运气赚钱，凭实力亏钱这种情况！
+1. 人是爱和自己捉迷藏的，说着一图一做，无图不做，单子要有逻辑，要有止损。但是LUNA这种上下几十倍的波动，还是让无数群友乃至整个币圈趋之若鹜，去享受这种赌博的快感，冲动式交易，赌博式开单，可能是这条归零路上永远的敌人吧。
 
-交易市场里有很多特别气人的定律，比如： 一旦你需要用钱的时候，市场就会大跌！ 看起来没有逻辑支持，所以你可以暂时不信，但你一定会体会到这 个定律的魔力。 对所有新手来说，这个定律几乎永恒不变： 你一买，它就开始跌； 你一卖，它就开始涨
+2. “可供其反转的趋势” 这是直播中多次提到的8个字，终结楔的波浪模型充分体现了这句话，附图一张ABC三浪反弹末端终结楔形，整体下降中继的实例吧，能充分解释这句话的意思和终结楔波浪模型的含义，“可供其反转的趋势”这8字堪比做楔形的真言了，记住这句话能充分感受和找到进场点到底在哪里。
 
-简直气死人了！ 为什么会出现这种吊诡的情况呢？因为，每一次行情结束的根本原 因是“入场资金枯竭”。换言之，当连街边卖茶叶蛋的大妈都在讨论股票 的时候，那么股市的“入场资金”已经到了枯竭边缘……你想啊，连你这 个八竿子打不着的人都知道了，要冲进来赚钱的时候，那交易市场的行 情是不是到头了？
+   >![image-20240521173526822](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405211735910.png)
+   >
+   >![image-20240521173555106](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405211735177.png)
 
-所以，对新手来说，有两句话很重要。第一句是永远正确的陈述， 第二句是所有老手希望自己当年被人提点过的建议（要是当年有人这么 教导我就好了！）： 连你都开始进场的时候，牛市就要结束了； 你就应该干看着，啥都不买……到了熊市，等到大家都骂娘的 时候，再开始买买买！
+3. 有那么一丢丢硬核科普系列，扩表与缩表，到底是个啥？图中为扩表路线，美元就是这么无中生有的，缩表就要在财政部，美联储，银行之间画来画去了，偷个懒，简单说，就是美联储国债到期，财政部出来偿付到期国债，不再复投，美联储的资产和负债就开始同时收缩，财政部再发债，银行又用准备金买，银行的国债继续增加，准备金变少，整个过程里，美联储资产负债规模缩小，财政部，银行，资产负债表没变，但是结构变化巨大，公众也可参与购买财政部新国债，持有资产，减少存款，这是一套精密的现代金融游戏（真的非常有趣，无中生有，有中生无），如果没科普明白的话，明白流动收紧就好了，兄弟我尽力啦！！！想简单说懂这个还真挺难！
 
-当然，还有更可怕的，就是“一进场就连借来的钱都花光了”！人越 穷，赚钱的欲望就越强烈，所以常常不惜铤而走险。很多新手就这样给 自己挖好了陷阱，拴好了上吊绳，他们不仅把自己仅有的一点钱在交易 市场里花光，还要“加上杠杆”，借钱“投资”……结果呢？很惨。
+   > ![image-20240521190057943](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405211900130.png)
 
-投机者拒绝学习，投资者善于学习。 交易之前，认真研究，深入学习；交易过后，无论输赢，都要总结 归纳，修正自己的观念和思考，以便完善下一次的决策——这么做的 人，在我眼里都是投资者，哪怕他们是“快进快出”。 “韭菜”是什么样的呢？他们不学习，他们不研究，他们鼠目寸光， 他们怨天尤人……这样的人，在我眼里无论有钱与否，无论智商高低， 都是“失败的投机者”，是千真万确的傻×
+4. 再画个缩表吧，事不能做一半！国债到期，美联储不续了，财政部连本带息偿付，这笔钱回到美联储，美联储资产负债同时减少，这笔钱就不参与流动了，但是财政部可能没钱了啊，财政部继续发新债，银行用准备金买新债，银行国债增加，准备金减少（资产负债表没变），财政部现金减少，但是国债增加（资产负债表没变），简单点就是这样了，复杂一点的话，一些非银机构还可以使用杠杆工具来抵消一半的缩表危机，就是非银机构还能再套娃，来个信贷扩张甚至可以缩个寂寞，总结，无用的知识又增加了，加息缩表只不过是预期管理和操作情绪的手段尔，非银有充足的工具应对，买消息，卖事实，答案不在缩表，答案在缩表引发的情绪反应里，情绪又不可预测，但是K线也许有机会看懂。完
 
-如果你发现自己必须向别人咨询，或者必须“打探小道消息”才能决 定交易的方向，那么说明你竟然真的就是一根所谓的“韭菜”，因为你全 然不懂自己正在做的交易……如果这个时候，你竟然不自己去学习，自 己去研究，不想着得出属于自己的结论，那么，你甚至就是一根“没有 修养的韭菜”
+   > ![image-20240521190036656](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405211900853.png)
 
-韭菜想要翻身，说一千道一万，只有一条路可走： 降低交易频次……降低降低再降低。 千万别不信：只要你在频繁交易，你就依然是一根“韭菜”而已。 降 低交易频次，说起来容易做起来难。很多高手都劝新手不要频繁交易， 只不过他们拿出来的根据虽然极其有道理，但是新手并不在意：
+#### 村长 | 每日盘面整理思路
 
-频繁交易的结果就是交易手续费累积，累积到吞噬你的所有利润 和本金。
-
-、在交易市场里： 越是短期的预测，越接近于抛硬币； 越是长期的预测，越容易接近真实的逻辑推断…… 所以，降低交易频次的本质，是拒绝抛硬币，坚持逻辑推断
-
-所谓的“韭菜”其实常常并不是被别人割，在更多的情况下，他们是 被自己割的！ 他们犯的错误拆解开来有三个： 先是不能正确识别价值和价格，做出了错误的购买决定； 而后依然不能正确识别价值和价格，所以做出了错误的出售决 定；最后还是不能正确识别价值和价格，但是全然不自知，认为是 别人欺骗了他们，自己“被割了韭菜”……
-
-暂时放弃自己的智商，还有另外一个定律作为支撑： 在交易市场上，涨得猛的，会涨得更猛；跌得狠的，会跌得更 狠……于是， 所有东西都在涨的时候，一定要选那个涨得最猛的；因为概率 上来看，或者说，市场在教育你，它更可能涨； 在所有东西都在跌的时候，一定要选那个跌得最少的；因为概 率上来看，或者说，市场在教育你，它最扛跌……
-
-认识周期识别周期和把握周期，真正的趋势常常需要在多个周期（至少2个）之后才能真实展现
-
-币圈熊市生存法则：1、在熊市不要抄底任何非蓝筹资产，无论是股票、token还是nft；2、熊市投机一定要设置止盈止损，不要心存幻想，本质上就和德州偷鸡一样，偷到就偷到了，没偷到马上撤离；3、熊市是最适合做事的时候，学习、布局、交朋友这三件事情是下一个牛市能够一波上岸的必备因素；4、不要做空
-
-成功投资者必须学习的三点：
-
-入场时机 ——什么时候入场,就像是利弗莫尔的密友、棕榈滩赌场老板艾德·布拉德利经常说的：“什么时候持有,什么时候收手。”
-
-资金管理 ——千万不要随意亏钱,不要亏掉你的筹码、你的仓位。一个没有了现金的投机者就像一个没有了存货的杂货店主。如果没有了现金,那你就出局了。所以千万不要亏掉你的本钱!
-
-情绪控制 ——在进行一笔成功的交易之前,你必须制订一份清晰详细的交易计划并且严格执行。在真正开始投机之前,每个投机者都必须制订一份充满智慧的作战计划,根据自己的性格特征作出修改。投机者最需要控制的就是自己的情绪。要记住,推动股票市场的不是推理、逻辑或者纯粹的经济学。真正的推动力量是人性,而人性从未改变。这是我们与生俱来
-
-炒股，千万不要太“勤劳” 炒股其实不用太忙乎，也千万不要太贪心而想抓住每一次机会，在市场方向不明朗的时候，适当休息、劳逸结合或许会取得更好的效果。可以说，会休息的人，才更会炒股。也许，在有些时候，投资者不能过于“勤劳”。 股市投资重在对市场的深层次理解和感悟，以及由此作出的具体操作，至于买和卖的交易次数并不是最重要的。如果投资决策正确，一年只做一笔交易也能获利不菲;如果投资思路不正确，一年上百笔的交易也未必能获取超过银行利率的收益，甚至还可能出现反复的亏损。
-
-交易，不是越勤劳，就能获得越多的。当你学会了如何看待市场行情，知道了资金管理，明白了心态也能够决定投资策略的时候，你也会懂得，交易，也是需要休息等待的。
-
-严格来说，按照图表结构来交易，肯定能降低你的止损，一定不会爆仓。 很多人的止损来自于哪里？ 1、频繁交易。又想多，又想空，结果自己迷失了方向不说，还来回割肉。 2、追涨杀跌。不在逆势边进场，不断割肉，不断追涨杀跌。 3、无谓的止损。提前进场了，由于自己仓位重，没到图表结构止损位，扛不住割肉。
-
-冷静下来不要FOMO 不要追涨 也不要追跌
-
-# **阿兵｜胡子观币📈的心得**
-
-做图表结构，一般来说是不会爆仓的。 第一，一般开单都会有明确的止损点。如果止损点大，这个时候就要适当轻一点仓位，别太极限；如果止损点位小，才适合适当上一点仓位。 第二，当远离成本价后，应该设移动止损，以保护自己的本金。移动止损的设置，根据个人喜好来，一般是设在当市场走到自己认为短期趋势走坏了时。 第三，合约和现货要区分开，别啥图都一个劲儿往合约里冲。
-
-为什么要开那么多个单子呢？看都看不过来，选择一两个好的币种，适当分配仓位，不是更好吗？ 做多就选强势币种，做空就空最弱的币种。 资金大就做交易量大的币种，因为交易量小的资金大了很容易自己画线。 资金小的也不要去碰成交量太低的币种，很容易被埋。
-
-亏钱是有原因的，要么技术不到位，要么心态差，或者运气不好。三者都占，那就美团见吧！
-
-为什么要制定交易计划呢？ ①标的物的确定及跟踪 ②检验经验与现实是否背离 ③知行合一的有效执行
-
-写一下我一路看视频，一路复盘画图的心路历程： 本人币圈小白一枚，0金融基础。 step1：了解什么是K线。 step2：了解基本图形，但是记得当时都是股票里的。 step3：看大胡子一直播视频，先是依葫芦画瓢，比如先把基本设置复制一下，再跳转到当时时间节点，画一样的图，去理解为什么这么画。这花了我不少时间，看完一直播视频一共花了3个月时间，期间基本没做单。 step4：此时已经知道大致哪些图形，及怎么画了。但是经验不够，一图一做一错，信心被打击。意识到自己画图肯定有问题，去请教社群优秀的小伙伴，比如朝阳、猫车等。再回过头再去看自己看视频时记得笔记，再总结。 step5：每天看大胡子的直播，试着去理解他是怎么解读盘面的。但是，真是是台上一分钟，台下十年功。自己一旦开始理解，就是瞎琢磨，一通瞎分析，徒添烦恼。事实是，没有一定的交易经验，真的很难做到。于是，专心画图、总结，学习他人的图表，再画图，再总结。
-
-合约现货都可以，新手或者技术差，建议现货为主。有信仰，就屯币。 别瞎加杠杆实在不懂就退出这个市场，别把钱都亏没了。
-
-# **10U战神 ｜胡子观币📈的频繁打损心得**
-
-说一下我最近几天频繁打损的心里想法：感觉主旋律还是要跌，不过大级别还是没有涨到位再跌，打仗开始了，我以为要提前开始跌（这个错误的判断想法是导致我这几天频繁打损的主要原因）明明知道大级别下跌结构还没有到位，可是心里偏要不停的空，想要抓到一个空单最高点。所以就开始找寻小级别的做空结构，找的结构也都还算标准，空下去，打损。空下去打损。每天损2单，连续损3天。搞得我整个人都懵逼了，心态爆炸。大级别的结构挤压出小级别的结构，而不是小级别的结构去挤压出大级别的结构，基本逻辑和主要矛盾全部搞错了，本末倒置了，亏的活该！图表是中性的，大级别结构没有走到位，做小级别的看空结构就很容易翻车。望诸君引以为戒！今天复盘100张图！说到做到！
-
-刚才把最近做的亏损的单子重新复盘了一遍，2次fomo追单大亏，没结构和点位瞎做单亏，总结了一下：坚决不追单，结构必完美再出手，可以少亏90%
-
-# **Ahri宝宝的策略笔记**
-
-# 策略笔记
-
-仓位管理
-
-大仓位很难拿住，小仓位用高盈亏比可以赚很多，小仓位持有更容易
-
-到达目标要减仓，然后剩余的可以做长线
-
-盈亏比
-
-一定要有高的盈亏比才下手
-
-rsi
-
-上方是70以上是超卖区域，下方是30以下是超买区域
-
-单边上涨或下跌，rsi指标无效
-
-k线不断创新高而rsi没有创新高，则背离，应该卖，反之应该买
-
-rsi需要跟别的指标或形态配合，单一使用不准
-
-制定交易策略，然后看符合哪个，按照哪个去执行具体怎么做
-
-每次的二次反转区会比较夸张
-
-在中间就什么都有可能，在底部涨得几率高，在顶部跌的几率高，所以等好时机
-
-tradingview好用的工具
-
-1、特别FIBO设定
-
-2、RSI指标
-
-3、暴增量成交指标
-
-4、XABCD工具
-
-5、盈亏比计算工具
-
-交易观念
-
-1.不要说一定，每天交易都要谨慎害怕，对手是华尔街那些精英，华尔街狼
-
-2.风控和仓位管理比策略更重要
-
-3.模拟仓，小仓交易建立信心没毛病
-
-4.每个单子每个商品独立去分析，3连败5连败都不代表什么，看50-100单数据比较有意义。
-
-5.等待好价位进场，不要那么随便，市场的好机会是等出来的
-
-6.别听别人为你算命，凡事有付出，都会有成功
-
-7.朋友或家人可能不看好你，但不代表你不会成功
-
-8.努力把每一单做好，其他看老天爷
-
-harmonictrader
-
-风控，止损是仓位的5%，盈亏比不要小于3
-
-止损不要太近，要给一点呼吸空间
-
-消息日不做交易
-
-技术:画图，盈亏比，心态:梭哈拿住，运气:整体赚不赚。判断市场应该是什么样，实际是什么样，根据实际做出决策，执行，这不是预测是跟随
-
-左侧加仓，极其弱智。一但错了，不能加仓
-
-熊市用合约积累，一波一波做，牛市做现货，低吸高抛，抓住机会
-
-心态让技术可执行，钱让计划可执行
-
-看的三个纬度，图表，波动，整体的情绪
-
-口诀，频繁画门，波动收窄，重心下移
-
-不要频繁交易，可能节奏不对，也会影响情绪，还有磨损
-
-谐波一个形态的维度辅助形态，以形态为主，形态确认好后可以仓位大些
-
-减少损失的方法，
-
-1被动防守，一天1-2单。(做单数，每月能做多少单，每天能做多少单，超出数，基本就是fomo状态，容易亏钱。30分钟图，一天做一单)
-
-2消息日不做单，要看市场对消息的反应，然后再判断，点波动太大，不做。在市场自发形成形态的，没有消息刺激，才真实反应，下降是有消息刺
-
-# **泽城｜胡子观币📈的反思心得**
-
-最近一直在反思经常踏空的原因，觉得还是仓位管理的问题。好机会应该是试出来的，在合理的止损下，找盈亏比最好的位置，打一部分单子进去。我太执着于找最好的机会满仓干进去，就经常会犹犹豫豫，画出了正确的图却不敢进场。人是一口吃不成胖子的。如果总想着能找到一个“最好的点位”，本身就是一种过于自信，不利于长久的活下去。控制仓位，一点点试单，对市场保持敬畏。每次网不好就会看到Tradingview提示：“你离线了，但市场没有”。活下来才是真的。
-
-# **Cc｜胡子观币的总结**
-
-拿不住仓位的原因 1，看钱，眼里只有跳动的盈利与亏损而不是市场 2，其实并没有看出方向且坚定自己的判断 3，赚个差价，还能接回来的 4，有点利润，就随便丢掉自己的仓位 5，前4条说的多好听，本质还是穷
-
-人最欲得到时，他多半会失望，在交易中一个害怕失去机会的人，就会错过机会，太专注于害怕失去机会，就会忽略或不清楚自己需要怎样的机会，也没有赚很多，但是交易最恶心的地方就在于很多时候，都是你赚到了，才开始懂，亏，并不能有效积累正向经验，朋友们，降低频率，接受错过。。。。
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4c96ff4c-b526-4317-9100-63037769674e%2FUntitled.png?table=block&id=5af306e7-5674-49c6-bf84-b2b61eaf0c17&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-大多数人的做法是预期当前有趋势的，然后设法追随趋势，我是觉得最好的出发点都是震荡预期，而后再考虑趋势，或者走到哪里才可能变为趋势，一旦确认趋势，所有的转向都是调整预期，每一次调整都是再次加入趋势的机会。
-
-突然发现人是爱和自己捉迷藏的，说着一图一做，无图不做，单子要有逻辑，要有止损。但是LUNA这种上下几十倍的波动，还是让无数群友乃至整个币圈趋之若鹜，去享受这种赌博的快感，冲动式交易，赌博式开单，可能是这条归零路上永远的敌人吧。
-
-“可供其反转的趋势” 这是直播中多次提到的8个字，终结楔的波浪模型充分体现了这句话，附图一张ABC三浪反弹末端终结楔形，整体下降中继的实例吧，能充分解释这句话的意思和终结楔波浪模型的含义，“可供其反转的趋势”这8字堪比做楔形的真言了，记住这句话能充分感受和找到进场点到底在哪里。
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc73a3030-ca40-43a8-8475-8194d539b71f%2FUntitled.png?table=block&id=7e144569-718c-44f4-a5ad-846907480167&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff15e6e38-a2b6-49f3-a83d-a774ba0d4a6b%2FUntitled.png?table=block&id=d18ae666-c474-4b88-9d03-41a347d2c71a&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-有那么一丢丢硬核科普系列，扩表与缩表，到底是个啥？图中为扩表路线，美元就是这么无中生有的，缩表就要在财政部，美联储，银行之间画来画去了，偷个懒，简单说，就是美联储国债到期，财政部出来偿付到期国债，不再复投，美联储的资产和负债就开始同时收缩，财政部再发债，银行又用准备金买，银行的国债继续增加，准备金变少，整个过程里，美联储资产负债规模缩小，财政部，银行，资产负债表没变，但是结构变化巨大，公众也可参与购买财政部新国债，持有资产，减少存款，这是一套精密的现代金融游戏（真的非常有趣，无中生有，有中生无），如果没科普明白的话，明白流动收紧就好了，兄弟我尽力啦！！！想简单说懂这个还真挺难！
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7cea599f-cebc-439a-aac8-a6e4eff271b1%2FUntitled.png?table=block&id=671724e4-4ba0-44ae-8cfb-b2504b9048a7&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-再画个缩表吧，事不能做一半！国债到期，美联储不续了，财政部连本带息偿付，这笔钱回到美联储，美联储资产负债同时减少，这笔钱就不参与流动了，但是财政部可能没钱了啊，财政部继续发新债，银行用准备金买新债，银行国债增加，准备金减少（资产负债表没变），财政部现金减少，但是国债增加（资产负债表没变），简单点就是这样了，复杂一点的话，一些非银机构还可以使用杠杆工具来抵消一半的缩表危机，就是非银机构还能再套娃，来个信贷扩张甚至可以缩个寂寞，总结，无用的知识又增加了，加息缩表只不过是预期管理和操作情绪的手段尔，非银有充足的工具应对，买消息，卖事实，答案不在缩表，答案在缩表引发的情绪反应里，情绪又不可预测，但是K线也许有机会看懂。完
-
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F27e43833-47cb-4e73-b2d8-55b1ca21bcde%2FUntitled.png?table=block&id=3aa72446-7db5-457c-9730-3bc96e7e5ae1&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-
-
-# **村长 | 胡子观币💹的每日盘面整理思路**
-
-每日盘面整理思路
 1. BTC、ETH日线收线点位和实体引线走势记录。12H-8H-4H-2H-1H-30MIN，级别从大到小调整支撑压力线。确定形态类型、级别、关建位置
 2. 检查ETH/BTC汇率对走势，同样从大到小级别确认走势。判断大哥二哥昨天今天谁在走强，走强到什么位置会遇到压力。（同样走弱到哪里会获得支撑.）
 3. 从BNB开始，切1H2H从高市值到热门币大概浏览20-30个，分别拉一下支撑压力线。
-主要看两点：1是有没有统一形态结构，大多数币都表现一个结构方向，那市场方向确定性更高。2是看看有没有将要完成的图表结构，记录下来，可以参与做单。
+  主要看两点：1是有没有统一形态结构，大多数币都表现一个结构方向，那市场方向确定性更高。2是看看有没有将要完成的图表结构，记录下来，可以参与做单。
 4. 大概看下MACD指标（任何你喜欢的指标即可. ，有没有背离或者有较强方向的动能，大概有个印象。（比如底背离，或者大级别能量柱虚实切换。再比如均线交叉，RSI超买卖等，不能提供做单点位，但能提供做单方向. 
 5. 结合前面的信息，确定当天市场方向，涨或者跌，日日如此，提高概率再提高盈利。通过个人做单习惯，大仓做主流或小仓博山寨等，不赘述，切记不做反向单，盘中反向，否定自己，做错即止损，观察后不再开单，明日再复盘记录经验。
 6. 存在横盘判断，横盘不开单，或者小仓做完成图表结构的山寨（横盘山寨有突拉情况比较普遍. 图表逻辑走乱、走差不清楚、每天早晨得不到方向判断——不开单。
 
-
-
-# 杂1
-
-**fe1fei ｜胡子观币📈💀**
+#### fe1fei
 
 1. 你要耐心把每天晨会看完，其实都会讲到很具体，适当做笔记 
-2. 不懂基本面的币你不要碰 
 3. 如果你不知道止盈止损设在哪里，不要开单 
 4. 不要看到图就开单，不要 fomo 情绪，做山寨前看看大饼姨太是不是骑稳 
 5. 合约赚到的钱体现或者放在资金钱包，不然亏了钱会上头，提现了还可以缓冲fomo情绪，数字永远不是钱
 
-**Yx**
+#### **Yx**
 
 1. 利润或者资金回撤的时候就会明白仓位管理的重要性。
 2. 所以要以损定量，每笔交易控制最大的亏损上限。同样的逻辑也可以用在浮盈的时候锁定利润上。
 3. 每笔交易想明白一个逻辑：长线趋势单？短线单？不同订单对应不同的风险控制手段，也对应不同的心理预期。
-4. 各种形式的亏损、踏空、利润回撤都是必须经历的，只有各种情况都经历过并不断总结才能完善自己的交易理念和交易系统。只要风险控制好，不伤害到本金，就不必懊悔和恐惧。晚经历不如早经历。
+4. 各种形式的亏损、踏空、利润回撤都是必须经历的，只有各种情况都经历过并不断总结才能完善自己的交易理念和交易系统。只要风险控制好，不伤害到本金。晚经历不如早经历。
 5. 没有最正确的交易方式，只有最适合自己交易方式。人生的很多方面都同理。
 
-**koip｜胡子观币**
+#### **Sparking**
 
-如果最近亏钱了 打开冷静期好好休息。盲目的开单会扩大你的亏损
+1. 币圈从来不缺机会，就怕机会来了你被折腾的没钱了
+2. 能够从容割肉，交易会进入一个新的阶段。判断错了就错了，认栽。时刻谨记，保住本金。
 
-**Sparking丨胡子观币**
+####  阿桀
 
-币圈从来不缺机会，就怕机会来了你被折腾的没钱了
+1. 做行情盈亏比 明白什么是飞机单什么是趋势单 永远顺势 
+2. 形成m顶趋势时右肩构筑旗形上破回踩漏了大概率要大跌 
+3. 没有既要又要 如果选择趋势单 必须要去面对回撤的存在
 
-能够从容割肉 交易会进入一个新的阶段。判断错了就错了 认栽。时刻谨记 保住本金。
+#### cc
 
-**阿桀 |胡子观币🛫**
-
-1. 以结构进场 爆量标志k为信号 不以单根k线作为判断依据 
-2. 做行情盈亏比 明白什么是飞机单什么是趋势单 永远顺势 
-3. 可以选择做反手 但是一个品种做过1次反手 错了就不再介入了 
-4. 不要在亏损以后上头操作 在上班的时候尽量不操作 不要太关注于小级别 
-5. 永远不要情绪化交易 如果上头了 请到厕所赏自己两巴掌冷静一下 
-6. 形成m顶趋势时右肩构筑旗形上破回踩漏了大概率要大跌 
-7. 没有既要又要 如果选择趋势单 必须要去面对回撤的存在
-
-**Cc｜胡子观币**
-
-散户的归零账户状态是什么样呢？应该都是由若干微小盈利和几笔大额亏损组成的，一开始小亏你就要跑了，割的迅速，赚回来了也保本果断平仓，然后你获得了一个宝贝，这个宝贝叫补仓，开始小亏补仓，但是补完还是扛不住，但是你的亏损已经从单笔5%，渐渐来到单笔30%，这样可不行，要先回本，好机会仓位重一点，没事，看准了，我再补一手，该抗还是要抗的，等等等等心理暗示。。。。最后BOOM！！
+1. 散户的归零账户状态是什么样呢？应该都是由若干微小盈利和几笔大额亏损组成的，一开始小亏你就要跑了，割的迅速，赚回来了也保本果断平仓，然后你获得了一个宝贝，这个宝贝叫补仓，开始小亏补仓，但是补完还是扛不住，但是你的亏损已经从单笔5%，渐渐来到单笔30%，这样可不行，要先回本，好机会仓位重一点，没事，看准了，我再补一手，该抗还是要抗的，等等等等心理暗示。。。。最后BOOM！！
 
 **NORMAN  🤑 胡子观币💲💲💲**
 
-多巴胺是奖励机制：做成一件事，奖励一下，让你产生快感，希望下次还能再做。
-
-内啡肽是补偿机制：做一件事时感觉很难受，补偿一下，让你产生快感，让你坚持下去，也不怕下次再做。
+1. 多巴胺是奖励机制：做成一件事，奖励一下，让你产生快感，希望下次还能再做。
+2. 内啡肽是补偿机制：做一件事时感觉很难受，补偿一下，让你产生快感，让你坚持下去，也不怕下次再做。
 
 **churenai**
 
-1. 绝不追高，哪怕是15分钟k，不亏就是赚，赚钱机会多。 
-2. 没有好结构不要进场，交易如同狩猎，讲求一击必杀，不要频繁出手，耐心忍受空仓时间。 
-3. 看准机会就是干，梭他妈的！回踩加仓、中继加仓！不要怂、大不了止损。 
-4. 带好止损进场，扛单一定爆仓。
+1. 没有好结构不要进场，交易如同狩猎，讲求一击必杀，不要频繁出手，耐心忍受空仓时间。 
+2. 看准机会就是干，梭他妈的！回踩加仓、中继加仓！不要怂、大不了止损。 
+3. 带好止损进场，扛单一定爆仓。
 
 **SmALLWIHTE！胡子观币**
 
-1. 不fomo,不追高，不杀跌 
+1. 不fomo，不追高，不杀跌 
 2. 无结构不进场 
 3. 减少交易次数，每日不超过3次 
 4. 不过5%的输钱
 
-**ray.｜胡子观币🔥**
-
-复盘心得： 
+#### ray
 
 1. 越简单的图表威力越大，千万不要去过度解读，耐心等待图穷匕见的时机。 
 2. 确定图表级别后观察该级别的收线，也可观察次级别的结构，两者方向性一直是最好的，小级别跟大级别产生背离的时候就要注意是否构成反转了 
 3. 画图只是交易的入门，仓位决定心态，心态决定你的止止盈止损能否坚决执行。 
 4. 画图能帮你感知波动的强弱，一切由K线决定，不要去主观臆想。 关于画图的内在逻辑：价格的波动只有上涨横盘震荡下跌三种，价格的波动都是在一定的框架内，画图就是帮助你去识别趋势，识别价格波动的框架，观察波动。
 
-**者羽｜胡子观币📈**
+#### 鬼鬼的亏钱日记
 
-个人以前非常韭菜的时候，就是跟着“大佬”开单，那个说要涨，这个说要跌，还有说xx有利好，那我跟，没错，我跟了，那段心态非常动荡的时间亏得最多，因为你永远不知道人家用多少仓位多少倍数，人家说梭哈了，你也跟着梭哈，人家把账户上的100万梭哈了，殊不知人家还能再梭个1000万，但是你真的梭哈了，那是你仅有的20万。记得多学习，小资金学习，做好仓位管理，你能亏多少很重要，活着才能翻身。
+1. fomo+重仓 结构画好未在最佳位置进仓，错过最佳位置之后上头，眼看到手的利润要错过，直接重仓追进，这时候，回调一段受不了，胡思乱想，砍仓出来，一会行情又按照预期走了，这时候追不追，追进去，又鸡儿回调了，怎么办？（新手期错误）
 
-勤修戒定慧，息灭贪嗔痴。 不因外物而分心，情顺万物而无情。
+2. 做突破时，错过最佳进仓点看着要突破，追突破，突破的边界被摁在边界反复打脸，反复止损。
 
-假如人人都说真话 马斯克：狗子很好——拉盘——车重踩踏与我无瓜； 孙割：XX个币被转到交易所——整理钱包，但是我明盘了；
+3. 看到一个好结构，忍不住出手，但是上边界迟迟不突破，还朝着相反的方向运行，心里容易胡思乱想，最后止损出局，没过多久行情如期突破（没耐心） 
 
-# 鬼鬼的亏钱日记
+4. 看到一个好机会容易重仓出击，人性使然，仓位越重越容易胡思乱想拿不住，最终看对做不对。
 
-1. fomo，重仓 结构画好未在最佳位置进仓，错过最佳位置之后上头，眼看到手的利润要错过，直接重仓追进，这时候，回调一段受不了，胡思乱想，砍仓出来，一 会行情又按照预期走了，这时候追不追，追进去，又鸡儿回调了，怎么办？（新手期错误）
+5. 经常性幻想，意淫一个盈利的单子要赚多少赚多少，忽视了眼前的风险，最终导致保本或亏损出局
 
-2. 做突破的时候，错过最佳进仓点看着要突破，追突破，突破的边界被摁在边界反复打脸，反复止损。
+6. 做单做在天时+地利的地方，e点开仓，行情往预期方向开始波动，这时觉得仓位小了，胡乱加仓，结果行情反向运行一段，打掉止损，又朝着预期方向运行，这时负面情绪开始影响你，追进去，然后行情又反方向波动，开始胡思乱想是不是自己图画的不对，找各种理由让自己不亏钱，不去接受那么大的止损，最终自己割自己离场。（gmt的低点多单就是这么没的，血泪史） 
 
-3. 看到一个很好的结构，忍不住出手，但是上边界迟迟不突破，还朝着相反的方向运行，心里容易胡思乱想，最后止损出局，没过多久行情如期突破（没耐心） 
+7. 做突破，完美突破，账户大幅盈利，突然行情开始反向运行，一直打掉止损，心里情绪开始发酵为什么不止盈，痛苦面具，懊恼没有仔细观察盘面，想想可能的回踩预期。一味关注盈利与否，之后发现只是回踩，已经没有了追的勇气，导致错失行情。
 
-4. 做交易的时候，看到一个很好的机会容易重仓出击，人性使然，仓位越重越容易胡思乱想拿不住，最终看对做不对。
+8. 过分关注小级别盘面，单子做对时，总是去关注盘面，时不时的看看，无法忍受短期的利润回吐，（找各种理由说服自己止盈走人）再没达到自己的止盈目标前离场走人，错过行情
 
-5. 经常性幻想，意淫一个盈利的单子要赚多少赚多少，忽视了眼前出现的风险，最终导致保本或亏损出局
+心态是内功，图表是招式，交易系统是规矩。心法招式有成，择时入场出场
 
-6. 做单做在天时地利的地方，进仓e点，行情往预期方向开始波动，这时候觉得仓位小了，胡乱加仓，结果行情反方向运行了一段，打掉止损，又朝着预期方向运行，这时候情绪的负面开始影响你，追进去控制不住自己追进去后一旦行情又反方向波动容易胡思乱想是不是自己图画的不对，找各种理由让自己不亏钱，不去接受那么大的止损，最终自己割自己离场。（gmt的低点多单就是这么没的，血泪史） 
+#### odrwz读《裸K交易法》有得
 
-7. 做突破，完美突破，账户大幅盈利，这时行情开始反向运行，一直打掉止损，心里情绪开始发酵为什么不止盈，痛苦面具，没有去仔细观察盘面想想可能的回踩预期。一味关注盈利与否，之后发现只是回踩，已经没有了追的勇气。导致错失行情。
+> 1-8章，可根据自己情况，学习融入自己的交易系统，强烈建议读9-10章，以下为节选，有教育意义
 
-8. 过分关注小级别盘面，单子做对的时候，总是去关注盘面，时不时的看看，无法忍受短期的利润回吐，（找各种理由说服自己止盈走人）再没达到自己的止盈目标前离场走人，错过行情
+**失败交易者的特点**
 
-心态是内功，图表是招式，交易系统是规矩。心法招式有成，该选择什么时候杀人什么时候救人，君子爱财取之有道，这就是规矩。一点点小理解
+1. 没有交易计划，更别谈交易系统了。他们随意地、任性地入场、止损、出场
 
-# **odrwz读《裸K交易法》有得**
+2. 没有资金管理方案，完全凭借感觉下单。有时仓位很轻，有时可能重仓、满仓操作
 
-最近读了《裸K交易法》，1-8章，大家可以根据自己情况学习融入自己的交易系统中，强烈建议读9-10章，以下为 节选，有教育意义
-失败的交易者的特点
+3. 情绪波动强烈。盈利时，快乐、兴奋；亏损时，负面情绪缠身，甚至怀疑自己的交易系统
 
-1. 没有交易计划，更别谈交易系统了。他们随意地、任性地入场交易、止 损或出场。
+4. 开仓后就感到紧张，甚至失眠
 
-2. 没有资金管理方案，完全凭借感觉下单。有时仓位很轻，有时可能重 仓、满仓操作。
+5. 一旦止损出局，会采取激进的交易行为企图立刻弥补损失
 
-3. 情绪波动强烈。当盈利时，处于快乐和兴奋的状态中;亏损时，则产生 各种负面的情绪和行为，甚至怀疑自己的交易系统。
+6. 习惯扛单，明显出现问题了还坚持持有手上的亏损单，导致亏损放大到无法挽回
 
-4. 开仓后就感到紧张，甚至失眠。
+7. 喜欢抄底逃顶，而且是在上涨时做空，在下跌时做多
 
-5. 一旦止损出局，会采取激进的交易行为企图立刻弥补损失。
-
-6. 习惯扛单，明显出现问题了还是坚持持有手上的亏损单，导致亏损放大 到自己无法挽回。
-
-7. 喜欢抄底逃顶，而且是在上涨时做空，在下跌时做多。
-
-8. 一整天坐在电脑前，无时无刻地盯盘，恨不得把握所有的机会。
+8. 一整天坐在电脑前，无时无刻地盯盘，恨不得把握所有的机会
 
 9. 从来不会总结或者回顾自己的交易行为和交易表现，也不懂如何优化自己的操作
 
-# **自由｜胡子观币的反思**
+#### 自由
 
-20220425~20220427反思：
-1. 一定要等到上边界或者下边界再开单。不要被骗炮。不要慌，结构必然完美。看不懂的时候，不要开。
-2. 冲高或者急跌的时候，一定不能fomo。fomo大概率要不赚不到很多，要不亏钱。
-   冲高大概率会有回踩，急跌大概率又二探。
-3.  开仓一定先小仓试探观察，有了浮盈再继续加仓。
-   不要试图赚最大的利润，特别是对三啦这种上下皆可的case。这样很容易判断失误的时候亏一笔大的。
-4.  不要试图左侧去摸顶抄底。这是一种极其自负的行为。这个行为已经不是在用结构去解释行情，而是想去预测，证明自己牛逼。
-   特别是再波动极大的时候。没亏死算幸运。
-5.  阅读行情不要看分钟，会被骗死。最小15分钟足以。
-6.  看多的时候找强势币种，比如APE。看空的时候找弱势的，比如AR。
-有很多不怎么跟大盘的，流动性差的，不要去做。因为不稳定。
+**20220425~20220427**
 
-20220429  心得（激烈厮杀的一晚）
-1. 白天亚盘的时候4看一次盘基本够了。晚上美股开盘之后才是厮杀的主要时间点。
-2. 开单之前主流币基本浏览一遍，看看是不是有一致性多或者空的结构。如果有矛盾，以BTC，ETH为准。
-3. 再次强调：上下边界开单的重要性！开完单设好止损，然后管住手！
-今晚的上下插针的激烈厮杀，没有打到止损点，证明的这个策略的有效性。
-4. 关于止盈：随缘。或者按照百分比设好！落袋才是自己的！
-5. 开单的时候，检查一下自己的标的：
-多单的时候有没有遗落了自己心目中的强势币种。(我漏了APE，有点遗憾)
-空单的时候，有没有加入了一直看好的弱势币种。（加了AR，很好）
+1. 一定要等到上边界或者下边界再开单。不要被骗炮。不要慌，结构必然完美。看不懂的时候，不要开
 
-20220430
+2. 冲高或者急跌的时候，一定不能fomo。fomo大概率要不赚不到很多，要不亏钱
 
-**1 写给ENS爆仓后的自己：要敬畏市场，对自己的分析千万不要过分自信**
+   > 冲高大概率会有回踩，急跌大概率又二探
 
-市场情绪，结构，波动，从时间轴上来说，宏观市场的情绪有效期最长。
-   但是结构形态，1h或者30f的话，有效期做多维持4h到8h吧
-   这次爆仓的原因，就来源于之前上边界空单的约100%回报率。后来再次上涨时，还单纯的以为是加仓的好时机。
-   边张边加，设在了23的止损，被23.2精确的爆掉了! 资金一夜回到解放前。
+3. 不要试图赚最大的利润，特别是对三啦这种上下皆可的case。这样很容易在判断失误时亏一笔大的
 
-**2 一夜回到解放前后的反思：**
+   >开仓一定先小仓试探观察，有了浮盈再继续加仓
 
-止损位：是按照图标结构设置的吗？还是按照心里价位随便设的？
-   开单时扪心自问：
-   （1）市场结构波动，三位一体了吗
-   （2）你是在预测吗，还是看到了结构？
-   （2）这次单子的逻辑，是长拿，还是短线？K线是什么单位？逻辑有效期多长？
-   （3）千万千万，不要在结构不稳定时下单！！！图表的有效性，是结构！！！
+4. 不要试图左侧去摸顶抄底，这是一种极其自负的行为。这个行为已经不是在用结构去解释行情，而是想去预测，证明自己牛逼
 
+   > 特别是再波动极大的时候，没亏死算幸运
 
+5. 阅读行情不要看分钟，会被骗死。最小15分钟足以
 
+6. 看多时找强势币种，如APE。看空时找弱势的，如AR。有很多不怎么跟大盘的，流动性差的，不要去做，因为不稳定。
 
+**20220429  心得（激烈厮杀的一晚）**
 
-# 杂2
+1. 开单之前主流币基本浏览一遍，看看是不是有一致性多或者空的结构。如果有矛盾，以BTC，ETH为准。
+2. 再次强调：上下边界开单的重要性！开完单设好止损，然后管住手！今晚上下插针的激烈厮杀，没有打到止损点，证明这个策略的有效性。
+3. 关于止盈：随缘。或者按照百分比设好！落袋才是自己的！
+4. 开单时，检查一下自己的标的：
+  * 做多时，有没有遗落自己心目中的强势币种。(我漏了APE，有点遗憾)
+  * 做空时，有没有加入一直看好的弱势币种。（加了AR，很好）
 
-**阿柴｜胡子观币**
+**20220430**
 
-耐得住寂寞，等确定性结构，切忌频繁开单，一图一做好好做渣男，over。
+1. 写给ENS爆仓后的自己：要敬畏市场，对自己的分析千万不要过分自信
+   * 市场情绪，结构，波动，从时间轴上来说，宏观市场的情绪有效期最长
+   * 但是结构形态，1h或者30f的话，有效期做多维持4h到8h吧
+   * 这次爆仓的原因，就来源于之前上边界空单的约100%回报率。后来再次上涨时，还单纯的以为是加仓的好时机。边涨边加，设在了23的止损，被23.2精确的爆掉了! 资金一夜回到解放前
+2. 一夜回到解放前后的反思
+   * **止损位：是按照图标结构设置的吗？还是按照心里价位随便设的？**
+   * 开单时扪心自问：
+     1. 市场结构波动，三位一体了吗？
+     2. 你是在预测吗，还是看到了结构？
+     3. 这次单子的逻辑，是长拿，还是短线？K线是什么单位？逻辑有效期多长？
+     4. 千万千万，不要在结构不稳定时下单！！！图表的有效性，是结构！！！
 
-**Zarek｜胡子观币🧐**
+#### 阿柴
 
-反复敲打自己的价值标尺以适应当下的市场波动，交易是自我教育的一部分，效率贼高
+* 耐得住寂寞，等确定性结构，切忌频繁开单，一图一做，好好做渣男，over。
 
-**观星｜胡子观币💹**
+#### 观星
 
-别人恐惧贪婪的时候，我们一定要冷静下来思考。
+* 别人恐惧贪婪的时候，我们一定要冷静下来思考。
 
-**93|胡子观币**
+#### 93
 
-做了不一定赚，不做肯定不亏。
+* 做了不一定赚，不做肯定不亏。
 
-**lijun.eth｜胡子观币**
+#### lijun.eth
 
-严格按交易计划执行，切勿感情用事，平凡看盘，随意更换止盈止损点！
+* 严格按交易计划执行，切勿感情用事，频繁看盘，随意更换止盈止损点！
 
-**小邱_胡子观币📈**
+#### 小邱
 
-覆盤覆的是什麼 1.結構 2.趨勢中的位置 3.在框架中的位置 4.末端的波動 5.該級別一個月可能出現幾次
+* 复盘复的是什么：①结构 ②趋势中的位置 ③框架中的位置 ④末端的波动 ⑤该级别一个月可能出现几次
 
-**Runsensen｜胡子观币📈**
+#### Runsensen
 
-提高做图级别 切勿多开频繁开 管住情绪，切勿fomo 不要 既要又要，勤止盈 按图结构做好计划，设好止损，剩下的交给运气。
+* 提高做图级别 切勿多开频繁开 管住情绪，切勿fomo 不要 既要又要，勤止盈 按图结构做好计划，设好止损，剩下的交给运气。
+* 没有单、不想做单的时候，画的图就很顺畅看的很舒服。 主观情绪引导想做单时，画图的图就失去了感觉。 有图去做，而不是想做单再去画图。
 
-没有单、不想做单的时候，画的图就很顺畅看的很舒服。 主观情绪引导想做单时，画图的图就失去了感觉。 有图去做，而不是想做单再去画图。
+#### Ayknee
 
-**Survive（戒合约）｜胡子观币📈**
+* 一定要客观冷静的看待图形，有仓位时忍住臆想预判，保持对图表形态的客观感知
 
-与自己和解，该休息休息。
+#### Licht
 
-**小屿不小丨胡子观币**
+顺势而为，不能只见树木（小级别）不见森林（大级别）
 
-1. 不要怕亏损，不要怕亏损。
-2. 方向对了扛一波亏损是为了吃更多的盈利。
+坐下来等待很长一段无聊时间，等待具有良好盈亏比的良好切入点。这意味着你可能会错过很多“机会”，但肯定不会加入赌博的人群
 
-**Ayknee丨胡子观币**
+#### 王华烽
 
-一定要做到客观冷静的看待市场走出来的图形，有仓位的时候总是忍不住主观去臆想预判，保持客观，保持对图标形态的客观感知，幸好洗了把脸，看到反抽及时离场睡觉，保住了本金
+* 心态：好心态决定着好的交易状态，要对自己做的每一次交易有绝对的信心，做好止盈止损，君子藏器于身伺机而动
+* 技术:
+  1. 级别的K线数量：75-175根
+  2. 级别怎么看：级别的三浪结构要看次级别里面的五浪：三浪：ABC      五浪：123456
+  3. 级别区分：  H1的级别的次级别-看F15     H4的级别的次级别-看H1    D1的级别的次级别-看H4
+  4. 级别和交易机会的次数：
+     1. H1和F30级别交易机会4-8次/月
+     2. H2级别交易机会2-3次/月
+     3. H4级别交易机会1-2次/月
+     4. 1D级别交易机会1-2次/半年
 
-# **Licht | 胡子观币的心得**
+  5. 交易心得：
+     1. 大行情来临之前必有陷阱
+     2. 事出反常必有妖
+     3. 当自己的经验和盘面背离一定要及时止盈止损
 
-当缺乏信心的时候不妨想明白这一单到底赚谁的钱（多选）
 
-1. K线图表结构
-2. 项目消息面预期
-3. 群众情绪面（恐慌/贪婪情绪指标极值）
-4. 多/空转换，合约爆量平仓
-如果有以上预期，依据自己的优先级给信心加权重
+#### eric兔子tra
 
-如何判定是在交易还是在赌博：关键在于冲动控制。
-病态赌博的特征：
+* 仓位是累加的
 
-1. 需要不断加注提升刺激度
-2. 赌博次数少或不赌时坐立不安
-3. 屡次尝试控制、减低或戒赌失败
-4. 脑海经常充斥着赌博
-5. 输了钱后非常想再赌回本
-6. 因为赌博行为而说谎
+  1. 首先逆势边第3点（E点）低吸建仓
 
-把以上内容换成交易，若符合，即赌博。
+  2. 在突破钱的蓄势，通过E点获取的浮盈反推出新的止损点位，把仓位加进去
 
-顺势而为，不能只见树木不见森林
+  3. 回踩时重复上面的方法，把仓位加进去
 
-有时，您只需要坐下来等待很长一段时间的无聊时间，然后等待具有良好风险/回报的良好切入点。这意味着你会错过很多“机会”，也不会加入人群来满足赌博的冲动。
+     ![image-20240522094827166](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405220948254.png)
 
-# **王华烽| 胡子观币的心得**
+#### 过客
 
-一、初心：正所谓知人者智，知之者明。交易亦是如此，一定要时刻的问自己为什么要选择做交易这个行业？是否真正的下定决心、确定方向坚持在这条路上走下去？
-二、心态：今天的学习让我明白，好的交易者心态决定着好的交易状态，要对自己做的每一次交易有绝对的信心，做好止盈止损，君子藏器于身伺机而动。
-三、技术:
+* 看不懂时管住手，看不懂出手就没有规则，磨损就会很大，容易陷入一会多、一会空的状态，频繁反手是很多人亏损的重要原因
+* 一个位置做出2次以上的反手，就不要再做了，一旦连续错了2次，那市场大概率是个混沌状态，就不适合在这次混沌状态下赚钱了，就该停下来了
 
-1. 级别的K线数量：75-175根
-2. 级别怎么看：级别的三浪结构要看次级别里面的五浪：三浪：ABC      五浪：123456
-3. 级别区分：  H1的级别的次级别看F15     H4的级别的次级别看H1    D1的级别的次级别看H4
-4. 级别和交易机会的次数：
-   H1和F30级别交易机会4-8次/月
-   H2级别交易机会2-3次/月
-   H4级别交易机会1-2次/月
-   1D级别交易机会1-2次/半年
-5. 交易心得：
-大行情来临之前必有陷阱
-事出反常必有妖
-梭哈有时候是一种智慧
-当自己的经验和盘面背离一定要及时止盈止损
+#### ray
 
-# **eric兔子tra｜胡子观币😋的心得**
+* 熊市只做标准的图形，边界，结构，氛围，模棱两可的机会不做！耐得住寂寞才能抓得住好机会~
 
-賺錢，講求一筆賺大，賺的時候如何多賺，虧的時候如何少虧。 多賺和少虧的前提：倉位是累加的。 一開始播一個種子，等春天發芽，重點關注浮盈的倉位，透過浮盈可以做到小止損+大倉位。 一旦脫離成本，形成可識別的結構時，把浮盈全部打進去。 對的時候在正確的倉位上疊加，錯的時候也只虧最開始的倉位。
+#### 小黑
 
-以作圖五結構為例， 
+技术学到位 + 轻仓顺势，心态自然就好了
 
-1. 首先逆勢(E點)邊低吸建倉
-2. 在突破前的續勢，從E點抱上來的浮盈，可以當作加倉的反推止損打進去。 此時整體止損縮小，倉位加大
-3. 回踩的時候再重複上面的方法，把倉位加進去。
+技术没学到位 + 重仓，别巴拉巴拉谈心态了
 
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fda6dd4cb-aa74-4b51-811d-740310a5cb7f%2FUntitled.png?table=block&id=7fb82068-4724-4a20-b22e-2cbe2f5d894e&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+#### aiyidan.eth
 
-# 杂3
+* 笨方法：按部就班看视频看回放，复盘，等时机来临，要有足够的耐心，忍耐煎熬中一点一点前进
 
-**过客 | 胡子观币💹**
+#### Madlife
 
-你在影响价格的同时 价格也在以一种因素去影响你 看不懂的时候要管住手 看不懂出手就没有规则规律 磨损就会很大 容易陷入一种状态  一会多 一会空 频繁反手交易是很多人亏损的重要原因之一 在一个位置上频繁 2次以上的反手 那你就不要再做单了 一旦你连续错了2次 那市场大概率是个混沌状态 你就不适合在这次混沌状态下赚钱了 就该停下来了
+**开单的时候**
 
-**ray.｜胡子观币🔥**
+1. 仓位重了：认为是非常大的机会，认为可以赚很多，内心狂喜，下了重仓，只看到了大机会，没有看到大风险。
 
-熊市只做标准的图形，边界，结构，氛围，模棱两可的机会不做！耐得住寂寞才能抓得住好机会~
+   > 1. 贪心，后果可想而知，有一定概率是大亏
+   >
+   > 2. 不管是天大的行情，都把风险定在自己可以接受的范围内
 
-**小黑｜胡子观币🚀**
+2. 瞎开瞎玩：没有行情，或者现阶段行情看不懂，但是不想错过市场波动，或者纯属无聊，想做单
 
-技术+资金管理（包含仓位管理）+耐心
+   > * 这种单子往往是最没意思的，轻则消耗精力，重则打乱原本节奏，从而影响后续单子
 
-心态？技术学到位、轻仓顺势，心态自然就好了
+3. 害怕开仓：前面屡次亏损，导致对自己的图不自信了，不敢开单，踏空了行情，从而影响后续单子
 
-技术没学到位+重仓，别巴拉巴拉谈心态
+   > * 不要害怕，交易本身就是试错的过程，控制好止损，亏了，这一单能转化成正向经验，成长了，那这一单就值了
 
-![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4bdb315d-8c3f-4784-aef0-6370f2684004%2FUntitled.png?table=block&id=2828932f-409b-4bd8-87b6-ccd056ec6c5a&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+4. 上头情绪化：亏太多了，想重仓或者高杠杆，快速回本
 
-**aiyidan.eth**
+   > * 那基本都是归零
 
-进攻变成防守，交易的时候把可能会亏钱的问题摸索总结出来，比如追涨杀跌，重仓频繁不设止损，看不懂不做，大赚之后手松，通道高多低空等等。先占据不大亏损的高地，然后慢慢获得正反馈，笨方法，按部就班看视频看回放复盘，等时机来临，要有足够的耐心，忍耐煎熬中一点一点前进。
+**持仓和平仓的时候**
 
-# **Madlife丨胡子观币的总结**
+1. 没耐心等：行情反复震荡不走，内心犹豫和折磨，来回割肉或者倒在黎明前
 
-自己总结了一些关于心态的东西，老哥们随便看看就好，轻喷。
+   > 1. 反复震荡不走，说明不到天时，或者做反了
+   > 2. 定好计划，管住头寸的风险，按一致性原则，一图一做，这样不到止损，拿着就可以了
+   > 3. 轻微被套其实问题不大，如果自己情绪不对，那就看仓位是不是太大，有没有设止损，仓位大就减仓，没设止损就设置
 
-各阶段可能出现的情绪和心态问题及应对—Madlife丨胡子观币
+2. 被骗下车：行情顺利走，但是中途曲折，被震下来了
 
-开单的时候
+   > 1. 急于兑现浮盈，这是属于经济压力大，或者盯盘太紧导致的
+   > 2. 分清楚目前单子的级别，然后一级别一做，不要瞎平仓。
 
-1. 仓位重了：认为是非常大的机会，认为可以赚很多，内心狂喜，下了重仓，但是没有注意头寸风险，只看到了大机会，没有看到大风险。（贪心，后果可想而知，有一定概率是大亏，如何避免呢，把头寸的风险固定起来，或者定在自己可以接受的范围内，不管是天大的行情）
-2. 瞎开瞎玩：没有行情，或者现阶段行情看不懂，但是不想错过市场波动，或者纯属无聊，想做单。（这种单子往往是没意思的，甚至消耗精力，而且极有可能打乱本来的节奏，影响后续单子）
-3. 害怕开仓：前面屡次亏损，或者对自己分析不自信的时候，不敢开单，踏空了行情，从而影响后续。（不要害怕，交易本身就是试错的过程，控制好止损，就可以开，亏了，这一单能转化成正向经验，成长了，那这一单就是值得的）
-4. 强迫症和比较心理：单子开的位置不好，或者点位数字不好，就想平仓了再开，或者想给别人炫耀，很多时候来回止损，总止损较大。（不要和人比嘛，自己赚自己的钱）
-5. 上头情绪化：亏太多了，想重仓或者高杠杆，快速回本（那基本都是归零）
+3. 远超预期赚多了：行情非常流畅，极度膨胀，下次开仓手重
 
-持仓和平仓的时候
+   > 1. 保持之前的仓位，万万不能直接下重手，容易打乱节奏，或者影响情绪
+   > 2. 赚钱了就提现花一点
 
-1. 没耐心等：行情反复震荡不走，内心犹豫和折磨，来回割肉或者倒在黎明前：反复震荡不走，说明不到天时，或者做反了。一定要定好计划，管住头寸的风险，并且按一致性原则，一图一做，这样不到止损，拿着就可以了。轻微的被套其实问题不大，如果自己情绪不对，那就看看仓位是不是太大了，或者没有设置止损，仓位大就减仓，没有止损就重新设置。
-2. 被骗下车：行情顺利走，但是中途曲折，被震下来了：急于兑现浮盈，这还是属于经济压力大，或者盯盘太紧导致的。分清楚目前单子的级别，然后一级别一做，不要瞎平仓。
-3. 远超预期赚多了：行情非常流畅，极度膨胀，下次开仓手重：如果短时间内大幅盈利，最好还是保持之前的仓位，以及之前的头寸风险，万万不能直接下重手，容易打乱节奏，或者影响情绪，赚钱了就提现花一点，欢乐豆太多也不好。
-4. 不及预期白干了：行情中途有变，导致利润大幅回撤：利润回撤也不要惋惜，说白了还是要区分清楚，这是什么级别的单子，小级别的，随时止盈走了都是可以的，大级别的单子，轻易不会改变大趋势，拿住就行了，不要怕利润回撤。
+4. 不及预期白干了：行情中途有变，导致利润大幅回撤
+
+   > 1. 利润回撤也不要惋惜，说白了还是要区分清楚，这是什么级别的单子
+   > 2. 小级别的：随时止盈走了都是可以的
+   > 3. 大级别的：轻易不会改变大趋势，拿住就行了，不要怕利润回撤
 
 ## 形研社学员成长经历 
 
@@ -1728,301 +1182,1232 @@ harmonictrader
 
 * 课前
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F645072c5-f03e-42bb-a828-6e0ef707b225%2FUntitled.png?table=block&id=483b33be-dfa7-4447-b2f2-f644cfc63e94&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >**交易认知**
+  >
+  >> 对交易要有一颗敬畏之心，勿以善小而不为，勿以悉小而为之，善小好比小级别的结构，这个可以不为，恶小好比在结构不严谨时频繁开单进进出出，觉得就这点小钱损就损了，不把钱当钱那是一种最大的罪恶
+  >
+  >> 个人交易经历和现状
+  >>
+  >> 目前我处于建立信心的过程中，一开始跟着哥哥们画图，后来自己慢慢画当下市场的结构，中间一直被不人说画的丑，虽然画的很多，但是都是没什么用的，别人这么说时，很难受，但必须接受。现在是对行情走势有了一个大致的方向感，结构能画出来，做不做到取决于是否在看盘，至于后续结构的波动，转换强弱关系，有时候能做到，有时候却不能，关于什么时候加仓，并不严谨，会陷入频繁交易，并且逐渐理解到在行情不好的时候努力是没乱用。
+  >>
+  >> 我明白自己处于建立信心的阶段，缺少的可能是大赚一次，在好的机会要勇于用梭哈的心态。既要仰望星空，也要脚踏实地，大胆假设，小心验证，结构完美时直捣黄龙！
+  >
+  >
 
 * 课后
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2749dff3-5477-480d-b034-f8430e070bda%2FUntitled.png?table=block&id=eed0ccea-ff89-4ba5-b144-a01a99f65b80&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  > 课后总结
+  >
+  > > 我负责总结大家的毕业心得，对李子哥总结的深有感触，因为我也是这样子，没有好的交易纪律和心态， 没有找准节奏，他本人也在最后一节课中提到过他的困惑，胡子哥也解答了，说能度过这一阶段的话，会迎来非常大的进步与提升，能够迅速的起来，我就比较深刻的记住了这一句话。还有看到朝阳哥一丝不苟的课程的总结和感悟，人家的成功是必然的
+  > >
+  > > 通过课程，我详细了解到图表背后的逻辑，看到了市场运行的规律，跌多了涨、涨多了跌，那些公理定理：磁场效应，重力势能，布朗运动等，很棒。生活即交易，交易即人生，其他具体的就不写在总结里了。二期的同学们都很努力，而且氛围很棒，一起讨论、学习，共同进步，最后一节课流水师兄讲述他的历程，给我帮助很大，因为我现在认知并不高，相当于胡子哥和流水师兄站在云端伸出一条藤蔓摆到我面前，为我前进的道路指出明确的方向
+  >
+  > 存在的问题
+  >
+  > >实话说，前两天心态刚崩过一次，对周围一切东西，包括与人之间的关系， 自身的思想、方法，进行全方位的否定，还是比较难受的，总结了一下，心态是时时刻刻变化的，而偏离轨迹往往是从小事开始的，这一点需要额外注意，然后就发现了很多存在的陋习，
+  > >
+  > >1. 开单后会频繁操作， 也就是胡思乱想，不可取，接下来会学拉菲哥，开完单，设置止损后直接睡觉
+  > >2. 按受不了亏损，扛不佳，这一点需要磨练
+  > >3. 认知不够，心态崩就是因为连续亏损，搞崩的，该休息休息
+  > >4. 会画很多模楼两可的图，按下来只做结构完美的图，不然很搞人
 
 #### 朝阳
 
 * 课前
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F8b3f4545-e772-4b93-b854-00169080a3de%2FUntitled.png?table=block&id=80b85fab-8528-4cec-b7b3-94f374659d01&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  > 交易认知
+  >
+  > > 1. 技术：切入市场的一个角度，观察波动强弱，分辨出多空博弈结果
+  > > 2. 心态：规避几大死穴 “频繁交易，重仓交易，不设止损”，不要去挑战人性，滅少情绪化交易，及时觉知，熔断，下头
+  > > 3. 运气：行善，不作恶，吃水不忘挖井人
+  >
+  > 个人状态
+  >
+  > > 1. 能看懂博弈，看懂行情，心态建设也不错，很少上头了（可及时中止）
+  > > 2. 不足：还不会上大仓位，加仓加不下手（梭哈是一种智慧），要稳住心态，时刻保持敬畏之心，记住不能飘，希望与各位优秀的家人们在二期学习、交流中得到提升。
 
 * 课后
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe628276e-1d83-43f6-a273-2dfdcee16e8b%2FUntitled.png?table=block&id=dc5fa9a0-3b4a-40e9-90db-f7472bbdab15&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa19148ca-c973-40bf-8dd0-06d224257204%2FUntitled.png?table=block&id=d061ab63-c2aa-4675-a36e-8e2ff3c65af0&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F335fe2a5-4b5a-43c4-a8ff-65561baf9076%2FUntitled.png?table=block&id=07aaa41a-ebd6-45de-9fd6-4cc5d4cd1c2a&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6b6173ca-fbf1-4985-ac35-793698007e24%2FUntitled.png?table=block&id=5d7a88ce-ffe3-4e20-84c5-8366efc8efca&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4743837e-6fe1-4a86-8566-1fdbf4a46046%2FUntitled.png?table=block&id=e835fc3a-2b62-484d-b3b8-f0d8451a3663&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd0787836-bfbb-4da0-a311-128f93e4cc1a%2FUntitled.png?table=block&id=80de6242-b0c7-48e8-9062-c6813412ae28&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  
+  >**第一课**
+  >
+  >* 课程设罝
+  >
+  >  > 1. 交易是人生的一次长跑，你既要弯道超车，还得笑到最后
+  >  > 2. 总纲（道），图表技术（术），资金管理和熔断体系
+  >  > 3. 交易员自我的养成。初学，图表；短线炒单，波动：股市和大宗商品
+  >  > 4. 心法。对行情和市场的理解，对交易的认识。（553建立的交易世界观， 切入市场的角度）
+  >  > 5. 个人认知，交易理念。（交易系统，市场实践，学习系统，提高个人认知）
+  >  > 6. 梭哈是一种智慧。甄别出机会，一定要梭哈。单笔赚大，才是交易的魅力
+  >
+  >* 图表的认识
+  >
+  >  > 1. 跟随体系。不是预期，而是跟随市场。它会告诉你可能有没有机会
+  >  > 2. 降低预期，抱朴守拙。图表给我们提供的是一个市场切入点，正向积累
+  >  > 3. 技术，心态，运气
+  >  > 4. 切入点，越简单越好。核心风暴小，爆发力强；对比和谐（预测），对大资金更友好，它的止损很大，或者盈亏比很小。
+  >
+  >* 策略(和谐）与自由心证（图表）
+  >
+  >  > 1. 和谐：情绪回归，价格回归；图表：情绪的收敛与发散
+  >  > 2. 和谐：偏预测体系；图表：跟随体系，切入点，观察波动
+  >  > 3. 自我认识与技术所结合
+  >
+  >* 级別
+  >
+  >  >1. 划分。依据浪形；K线数量(底层：交易是科学还是艺术？)
+  >  >2. 级别的界定是分析行情的起点
+  >  >3. 确定级别，才能确定框架和边界。
+  >
+  >* 交易频次总结
+  >
+  >  >| 级别   | 交易机会 |
+  >  >| ------ | -------- |
+  >  >| H1&F30 | 4~8次/月 |
+  >  >| H2     | 2~3次/月 |
+  >  >| H4     | 1~2次/月 |
+  >  >| D1     | 1~2次/月 |
+  >  >
+  >  >1. 交易频率：经验次数的,总结，用于反观日常交易次数，避免频繁交易
+  >  >2. 控制频次，就是自控节奏
+  >  >3. 耐心等待大机会。小机会消耗精力多了，大机会来临必将缺乏精力和定力拿不住单子。咬定青山不放松的韧劲，需要体力精力支撑的。
+  >
+  >**第二课**
+  >
+  >* 图表心法：最高“武功秘籍”心法
+  >
+  >  >1. 生活即是交易 · 交易离不开生活
+  >  >2. 交易的模式：策略；自由心证
+  >  >3. 图表结构的本源：公理定理
+  >  >4. 交易即人生，交易的哲学。
+  >
+  >* 交易模式
+  >
+  >  > 1. 短线：盘口，成交速率。高频炒单基本是讲究执行力，拼体力。 (349）
+  >  > 2. 趋势：大资金，个人认知，行业红利。做日线、 周线大周期。（工总）
+  >  > 3. 波段：回归概率，考验心态
+  >  > 4. 自由心证法：观察波动，看懂博弈，单笔上量。“结构、情绪、波动”三位一体
+  >  > 5. 策略交易：特点时期总结出的结论
+  >
+  >* 公理定理：交易的哲学
+  >
+  >  > 图表为什么是有效的：知其然知其所以然
+  >  >
+  >  > 1. 价格共识；结构必完美
+  >  > 2. 物理模型：磁场效应；布朗运动；重力势能；动能（照）动量（照）
+  >  > 3. 常识：阴阳转化，涨跌转化，牛熊转化，如同太阳东升西落，白天黑夜
+  >
+  >* 通道
+  >
+  >  > 通道是一切结构的核心，即图表交易的核心
+  >  >
+  >  > 1. 通道是稳态状态。通道有很强的束缚力量
+  >  > 2. 通道，自然界最安稳的状态之一
+  >  > 3. 收敛态（压缩态）一一稳定态（自然态）；新稳态一一收敛态一一新稳态
+  >
+  >**第三课**
+  >
+  >* 术：图表结构，作为切入市场角度
+  >
+  >  > 1. 自我感知（第一感觉）一 逻辑认知（定式交易）一 哲科思维（了解事物的本质）
+  >  > 2. 学习。学的是思维方式，而不是学一个简单的结论
+  >  > 3. 本质是通道。二维世界的基本框架
+  >
+  >* 通道
+  >
+  >  >什么是通道：价格永远都是由无序进入有序状态，通道就是一种有序的形态
+  >  >
+  >  >1. 通道是一个框架。边界大概率会是一个反转，框架的中间大概率会是一个中继
+  >  >2. 价格所处框架的位置：位置大于结构，位置大于波动
+  >
+  >* 交易的本源
+  >
+  >  >交易的核心：博弈
+  >
+  >* 总结
+  >
+  >  > 1. 止损设置。E点进场，C点止损：蓄势区间进场，区问极值点止损；止损， 需要观察收线
+  >  > 2. 资金管理抹平波动。最大隐含波动，必须能承受住
+  >  > 3. E点，没必要过度解读，频繁止损．还不如给一笔最大止损
+  >  > 4. 小资金。平时积累资金，等待“三位一体”的优质机会，梭。个人资金曲线的突破，一定是单笔梭哈带来巨幅利润
+  >  > 5. 第一笔单子，一定要扛得住
+  >  > 6. 要么以损定量，要么资金管理抹平波动
+  >  > 7. 核心：抗亏能力。盈亏同源，必要的回调，必须能扛住。你亏不起，也必然没资格赚
+  >
+  >**第四课**
+  >
+  >* 复合结构
+  >
+  >  > 什么是复合结构？
+  >  >
+  >  > > * 由2种或2种以上的基础结构组合而成的结构
+  >  > > * 比较常见的基础结构有：三角，楔形，旗形，矩形，通道，头肩顶(底)，M顶(W底)，圆弧顶(底)
+  >  >
+  >  > | 2种结构组合 | 三角 | 楔形 | 旗形 | 通道 | M头(W庆) | 头肩顶(底) | 圆弧顶(底) |
+  >  > | ----------- | ---- | ---- | ---- | ---- | -------- | ---------- | ---------- |
+  >  > | 三角        |      |      |      | 常见 |          |            |            |
+  >  > | 楔形        |      |      |      | 常见 |          |            |            |
+  >  > | 旗形        |      |      |      | 常见 |          |            |            |
+  >  > | 通道        | 常见 | 常见 | 常见 | 常见 | 常见     | 常见       | 常见       |
+  >  > | M头(W庆)    |      |      |      | 常见 |          |            |            |
+  >  > | 头肩顶(底)  |      |      |      | 常见 |          |            |            |
+  >  > | 圆弧顶(底)  |      |      |      | 常见 |          |            |            |
+  >
+  >* 交易闭环
+  >
+  >  > 1. 个人认知 - 交易理念 - 交易系统 - 市场实践 - 学习系统 - 改变认知
+  >  >
+  >  > 2. 闭环系统：哲科思维一方法论一实践一学习一改变认知
+  >  >
+  >  > 3. 交易的个人理解
+  >  >
+  >  >    > 1. 四因子：趋势、情绪、结构、波动。趋势大于结构，波动大于结构：情绪强化趋势，情绪影响波动
+  >  >    > 2. 三要素：技术，心态，运气
+  >  >    > 3. 自由心证交易法：结构只是切入市场的一个角度，观察市场情绪，价格波动。从博弈角度代入式思考价格行为内含的意义。市场是共性的，价格是有共识， 你在影响价格的同时，价格也在偷偷的影响你
+  >  >    > 4. 不违背常识：趋势不可逆；有涨必有跌；有牛必有熊
+  >  >    > 5. 位置：价格所处趋势中的位置，内在属性不可忽视
+  >  >    > 6. 做好三件事：选对品种，识别结构，找盛亏比
+  >  >    > 7. 进场好价格。成本的优势，是你稳定好心态（持仓的充分条件）的充分必要条件
+  >
+  >**第五课**
+  >
+  >* 心态管理和熔断
+  >
+  >  > 1. 核心
+  >  >
+  >  >    >建立强大的自信心，控制好资金回撤，保护好心态，稳固好心态，目的是 ①让交易计划便于执行，②能轻松安心的持仓，以致于实现交易预期目标或预期止损
+  >  >
+  >  > 2. 熔断机制
+  >  >
+  >  >    >1. 累计限额：当日最大亏损，当周最大亏损，当月最大亏损
+  >  >    >2. 止损：单笔亏损（个人可承受范围内）
+  >  >    >
+  >  >    >现金流是生存的保障，活下去有本金就有机会
+  >
+  >* 交易三大死穴
+  >
+  >  > **频繁交易，重仓交易，不设止损**
+  >  >
+  >  > 1. 快半步。半步是情绪＋波动，一步是结构，十步百步是认知。结构定框架切入市场，为了观察关键位置的波动行为，结合市场情绪与趋势，最后执行交易计划
+  >  > 2. 止损：市场唯一确定性的就是止损。必须手握核心风暴，保护好心态，以纪情绪化。情绪化会降低自制力，容易陷入三大死穴。失控，往往是大亏损的前兆
+  >  >    1. 延伸推论：结构进场，波动梭哈
+  >  >    2. 情绪化：由小亏，频繁磨损，垫一手，炫技操作等引起的
+  >
+  >* 维护好心态
+  >
+  >  > 1. 降低盈利预期（考虑止损）。心态的摧毁，由大幅不可承受的亏损开始的
+  >  > 2. 交易频次：月，周，日：对应不同级别，有多少机会，复盘的总结
+  >  > 3. 账户资金曲线维护。 “熔断＋交易稳定盈利的自信”
+  >  > 4. 止损。市场唯一的确定性。
+  >  > 5. 手握核心，剩下的自己构建交易系统
+  >  > 6. 确定波动的时候，就是要梭。该梭哈，就要梭哈。梭哈是一种大智慧。（浪费行情，就是浪费生命）
+  >  > 7. 交易的魅力（形态爆点的魅力）：一把单子，赚到别人一辈子的钱（基数大于收益率，绝对收益大于收益率）
+  >
+  >* 20220621 二刷课程总结
+  >
+  >  > 1. 现金流的重要性
+  >  >
+  >  > 2. 现金流
+  >  >
+  >  >    > 1. 赚钱，是为了不赚钱的时候做准备
+  >  >    > 2. 时刻做好被市场淘汰的准备
+  >  >    > 3. 自我迭代，自我进化，适应市场
+  >  >    > 4. 保持学习状态，提高认知
+  >  >    > 5. 终生学习，健康身体状态，稳定的心态，这些是交易长久的基本生存之道
 
 #### 小李子
 
 * 课前
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5d9346e8-fc68-4618-8ffd-53f2f733fa9c%2FUntitled.png?table=block&id=1673c0f7-082a-446d-b662-40e1e0adb29a&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ​	![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd8f0f175-1862-47a8-a4ff-d003efb8b0da%2FUntitled.png?table=block&id=5557a50e-9b50-4895-975e-589688ec6865&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ​	![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F71fb74d0-c13f-4b05-bc58-0d97dde3cf88%2FUntitled.png?table=block&id=ea94cbe6-f083-4869-bd72-f0f8a7dac471&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  > **对交易的一些认知**
+  >
+  > > 1. 市场是对的，不要侥幸认为自己是天命之子，如果自己和市场反了要认输，不要拿自己辛苦赚的钱去挑战市场
+  > > 2. 管住手，要像猎人一样等待绝佳的机会，而不是试图做上每一个行情，尤其是逆势时。有这种生怕错过行情的执念时，最好是自我熔断，不然就可能成为大亏的开始
+  > > 3. 有钱才能在市场上活下去，一定要让自己的风险可控，亏完了本金就没有上赌桌的资格了
+  > > 4. 尽可能摒弃噪音，只和自己比。这个行业不缺造富神话，听的太多会影响心态从而影响自己的交易，因为这个行业更多破产的故事
+  >
+  > **个人经历**
+  >
+  > > 我是18 年初进的币圈，那时候对数字货币和投资一窍不通，我刚进币圈的那天正好是以太坊突破1万人民币，也就是 ICO 的顶峰。可以说我着几年在币圈踩过很多坑，付出过很多惨痛的教训。18 年事后看来是熊了一整年，整年的态势都是在下跌，反弹，继续跌的过程。但是身处当时很多人还停留在牛市的思维当中，认为按他们当时对过往比特币的认知，只要长拿就一定能赚钱。
+  > >
+  > > 那时候 EOS 的盛况是现在任何天王级项目都无法比的，几乎所有有实力的人或者机构都想参与EOS 的节点竞争，有很多人压上身家性命，集资、货款就为了参与这个，而且很多人看着它一直跌，也不认输甚至不断地补仓，事后来看不认输的最后都输得一败涂地。 那时候的行情惨到什么地步？我记得我当时买了一个币叫LBTC，是比特币的分叉币，创始人还是和赵长鹏一个等级的扑克牌大佬。那会这个币都不能说是山寨币，应该算是主流币。 是我同事告诉我买的，顶峰时期 6000 人民币一个，我买的时候 500 块，他告诉我跌了90%，下跌空间不大了，结果现在几乎被所有交易所下架，币价和归零无异。
+  > >
+  > > 那年的熊市多么残酷？比特币从2万美金跌到3000多，跌去 85%，国内很多顶级项目都在那一年解散或者半解散。很多人17年赚几千万、几个亿都在 18 年的下跌中不断补仓或者加杠杆亏完了，甚至很多大佬和当时财富自由的人，至今都没有机会翻身。当年这批被市场毒打的人，也就是后面进圈的人口里的“老韭菜”，这些人因为经过18年19年的惨淡，要么涨一点就卖，甚至反弹就是空。
+  > > 我就是其中之一，虽然那时候我在币圈一年了，但是我主要是做运营，其实不具备任何交易能力，应该说是研习社社群内所有人交易水平都比我当时高。我买过 6000多的比特币，在见识过 312惨状时 5000 割了。我买过 200 多的以太坊，在100 多的时候割了。
+  > >
+  > > 我在20年10月份，以太坊300 多的时候开始做空，空到700多，币本位亏损近百个以太， 做空了一个主升浪。我在21年4 月份时候尝试过不停的合约高抛低吸，生怕错过每一个反弹或者下跌，收获颇丰。开始自满认为自己很有水平，仓位越加越大，最终在418 那天爆掉了我所有的波卡。
+  > >
+  > > 这也就是我认为，当市场实际走势和自己观点不一致时一定要认错的原因，不要拿钱来为错误埋单，因为信仰都是套出来的。 用胡子哥的话来说，如果这笔单子亏损了， 千万不要试图在亏损的单子上补仓推薄成本。而且千万不要亏光自己所有的钱， 也不要借贷交易。很多人18-19年亏完了以后，20年牛市来了没有本金交易，反而天天陷入被追债的窘境中。
+  > > 讲这些是告诉一些没经历过的人熊市的惨淡，现在是否会像18 年那么惨淡不得而知，甚至有可能更惨也不是不可能
 
 * 课后
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2b71d6e0-7735-4dcb-ae35-f57962359510%2FUntitled.png?table=block&id=be580c92-3b85-41a4-88d6-0197247c5027&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F8007ef82-a348-408d-abe2-2eb6fa15979e%2FUntitled.png?table=block&id=d9e8f0b2-894f-4d50-a55f-b70f333b30a1&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F94d9bf98-45c2-4b50-b7c7-f18120adaef8%2FUntitled.png?table=block&id=1bdcb083-8be2-4c72-b34f-7d8c4837aec7&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  
+  > 短短两个月时间，第二期课程结束了。让我对这一期课程做一个总结，那就是收获很大，遗憾也很多。
+  >
+  > 收获
+  >
+  > > 通过对这一期课程的学习，让我对形态的了解和背后的原理了解的更加清晰，对图表结构的理解更进一步，对当下图表结构的判断和大环境的判断让我画起图水更得心应手。具体学习到的“术”就不写在总结里了，每天在复盘时候都有写。第二期的学习氛围是很好的，同学们都很努力的学习， 复盘，相较于其他的社群最大的区别就是大家都保持着一份谦卑，画图有好有坏，天赋有长有短，但是大家都不吝交流，也让我从他们身上学到了很多
+  >
+  > 遗憾
+  >
+  > >课程期间我很焦虑，一方面是我的本职工作就是币圈从业者， 收入主要是来自于项目方的服务费和广告费，市场暴跌客户也没钱了，对我自己的工作收入有不小的影响，让我心里不自觉的产生了很多悲观情绪。另一方面是开始在交易中不断怀疑自己，上次胡子哥在群里做了个调查，大家近期的交易情況，绝大部分同学都是盛利，有翻仓其至是盈利十几倍的，还有半数是躺平没参与，真正亏钱的寥寥无几，我正好是其中之一。
+  > >
+  > >我是现货抄底接飞刀被套，导致的浮亏，为什么刚学的同学都能收益颇丰，而我学了两期课程还是那个亏钱的少数人。为什么大半的人能够在暴跌行情里管住手不参与，而我却在垃圾行情瞎努力抄底？是我比别人画的图差吗？还是我比别人傻？那段时间经常会怀疑自己。我会在课后会复看视频学习，会早起看直播对比自己的分析，有在认真去完成2000张复盘，也在社群里和别人积极交流。但，我还是做不好。我一直在想我的问题到底出在哪里。
+  >
+  > 我列举儿个点
+  >
+  > > 1. 没能找准自己的节奏，和大盘相背离
+  > >
+  > >    > 我自己炒币的过程很坎坷，虽然进币圈早，18年就进来了，但是一直是从事运营工作，加上18年正好赶上熊市，几乎18-20年买币是什么也不懂， 既不研究基本面，也不懂K线。于是20年下半年开始的大牛市，因为之前挨打疼了，我几乎是涨一点就卖，甚至还做空，低价筹码都交完了。而等我终于开始放弃熊市思维开始囤币，结果牛市结束了。不能保持敏锐度，节奏始终慢大盘一拍。牛市好赚钱的时候没赚到大钱，却想熊市去赚回来，这让我的心态有些失衡，变得很急。
+  > >
+  > > 2. 过去养成了很多交易坏习惯
+  > >
+  > >    > 进入胡子观币，相比起很多人从一张白纸开始，直接系统的学习图表交易，我的纸上却像是画满了涂鸦，我一边擦掉旧的，一边学习新的。我18年开始买币，到20年底加入社群之前，我的交易只能用两个字来形容， “随意”。比如我的买和卖，纯粹是因为涨多了，或者跌多了。没有任何反转逻辑的时候，仅仅是因为涨了几个、十几个点，我就全卖了。 没有任何止跌信号时我却开始不断抄底。我的合约，从来不设置止损，相反还会通过补仓降低开仓价格，合约“扛单”、“补仓”两大忌我都占全了。 比如我20年下半年做空了以太坊整个主升浪，21年上半年遭遇波卡一天跌50个点，因为不断补仓不设止损最终爆仓。诸如此类过去养成的坏习惯，在我学习和交易的过程中造成了很大的困扰，也让我付出了极其慘痛的代价。
+  > >
+  > > 3. 没有好的交易纪律和心态
+  > >
+  > >    > 这些坏习惯，至今都还在影响着我的交易。我现在从不止损变成了只给小止损。有时候明明做的是大级别，只给一个很小级别的止损；甚至是做大级别，却不停看小级别的波动，有时候没到止损位置就手动平仓出局。
+  > >    > 有时候复盘的时候做好了交易计划，却不能按计划的去执行。
+  > >    > 譬如很标准的结构可以E点进场， 我却因为生怕踏空，没到位置就进场， 也让我经常出现成本劣势的情况。止损亏的比别人多，止盈赚的比别人少。有时计划突破回踩进，或者到边界出结构再进，真正执行时却总是变成突破就忍不住追进去，或者一到边界就开单，导致无意义的亏损。在没有明显结构的情况下，有点利润时候，回撤了就拿不住单子，仓位总是一股脑进去一股脑出去， 不能做好分仓。
+  > >    >
+  > >    > 因为自己没赚到钱，对自己不自信，有时候开了单子，因为看到别人有相反的判断而草草平仓，事后看来反而自己是对的。不能严格执行自己的交易策略，又做不好仓位管理，心态还不行，这也是我这段时间“看对做不对”、 “越努力越亏”的主要原因。
+  > >    >
+  > >
+  > > 4. 最后总结
+  > >
+  > >    >在交易的技术上，我通过看胡子直播和形研社的两期课程学习了很多，但是在自己的心态、交易纪律上依旧有很大的缺陷
+  > >    >
+  > >    >我看的到我的问题，但是还不知道如何去解决我的问题，可能在未来很长一段时间里，我还需要不断的和自己做斗争，挑战自己的缺陷。
+  > >
+  > > 目前二期课程学完以后，我当下能做的有两件事：
+  > >
+  > > 1. 完成2000张复盘（目前600多张）；
+  > > 2. 多在社区和优秀的人学习，通过学习他们分析市场的逻辑和交易方式，慢慢改变自己的不足
 
 #### fengyufei
 
 * 课前
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc88873df-c8bb-4322-8b24-848132d47120%2FUntitled.png?table=block&id=e24f4c34-3afc-42d9-9234-3c9e2bb2e2c6&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >目前对交易的认知
+  >
+  >>1. 开单必须有逻辑
+  >>2. 开单必须带止损
+  >>3. **要能接受损失，开单的底仓就像鱼饵，有时候就会无本而归**
+  >>4. 性格缺陷在交易上会被放大
+  >
+  >个人交易经历和现状
+  >
+  >>去年入场，虽然之前炒股，但是一直都是无脑长拿状态。5月入场就赶上暴跌，加仓比例和节奏没有把握好，被套了很长时间。一直都是现货，没有碰过合约和杠杆，知道自己水平不行一定会死。当时认为技术分析不可信，相信钻石手，结果拿着E过了个大过山车。有时候还会 FOMO，看到某个大v喊单就赶紧上车。患得患失，有时候损失一点钱都很难受。
+  >>一直觉得自己没能力单独挣到钱，需要加各种群和大V。
+  >>现在开始画图复盘，相信在图形分析和仓位控制的情况 下能做到盛利。认为图表交易技术可以复制，但是要经过很多次训练实战，就像1万小时定律一样。
+  >>最近复盘＋上课，对胡子哥很多视频里的话有了更深的认知和验证。但是距离建立交易系统还要一定距离，停留在知道但不深入的阶段，目前还没有根据图表进行过实战，要建立对自己的信心。
 
 * 课后
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fed212e3e-2a30-43cd-93a9-7fe2d80077a8%2FUntitled.png?table=block&id=5b75b8da-6d19-4eeb-b6b8-04e700ca3739&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >整体上完，有很多新的感悟，尤其是之前看直播视频时的一些领悟点也在这次课上得到了印证和回响，通道，框架，约束，级别，波动，心态各个方面，融合在一个完整体系中，从点变为线，再从线变为面，最终成体。再加上在学习课程的过程中也开始2000张复盘，以及在高阶区里学习到的精彩复盘和讨论，第一次让我有信心觉得自己也有可能掌握交易，成为一个合格的交易员。交易在掌握了正确的前进途径后，应该也会符合10000小时原则，最终达到唯手熟尔的境界
+  >
+  >还有很多想写，比如这次课程学习后对胡子哥交易体系的一些新的认知和见解，但是经过最近实际的复盘的过程，反而觉得现在写这些太早，可能复满1000， 2000甚至更多时，才能写出满意的内容，因此就不写更多了。
 
 #### 大美
 
-* 课前
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F8ed015df-3412-45f3-b2a7-7703ed2ece02%2FUntitled.png?table=block&id=a07f7880-726d-403c-99df-c122a828175b&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
 * 课后
 
-  
+  > 目前对交易的认知
+  >
+  > > 1. 尊重市场，顺大逆小
+  > > 2. 开单要有明确的图表结构和逻辑，而非"我认为"
+  > > 3. 开单要严格止损，耐心等待入场的机会止损给大一点，也不一点点的进行无质量消耗
+  > > 4. 不频繁开单，但凡两次错，关机休息
+  >
+  > 个人交易经历
+  >
+  > > 本人进场就是熊初的开始，没有享受过牛市带来的福利和欢乐，也正因为如此，反而没有患得患失和很消极消沉的情绪。自进入这个市场至认真学习图表之前，合约125 倍拉满，千u秒没，如此来回加现货从未实现盛利。好在也算及时止损，相信任何圈层都有正确的方法，于是从微博到推特，一路搜到胡子观币。从此开始走向正向的交易，回头看看自己的行为亏的也是合情合理
+  >
+  > 现状
+  >
+  > > 对图表的基础结构有一定的了解，认识到复盘的重要性，并且主动复盘(虽不会将每张都放入复盘区)。入社区以来每天听晨会，加现己系统上课后，从完全听不懂到视野开始清晰，思路开始清晰，能了解晨会所说的内容的含义。画图开始自信，图表呈现一定的美观性。但是对于整体结构，市场情绪结合现在复杂的环境来讲，还是有不太自信的一面。另外有时候做不到知行合一，利润经常回吐，有时候赚到会还给市场。就目前较之前相比，亏损减少。最后在币圈的一些认知方面欠缺很多，需要提升
 
 #### 伟奇
 
 * 课前
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd580ae23-3940-4ffe-b151-372e0d6498eb%2FUntitled.png?table=block&id=0f8ab97c-5dfc-444e-8749-9a29cdb350d0&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >交易认知
+  >
+  >> * 我对交易的认识：拿资金进行风险变现，寻找一个多空争歧点，选择出获胜的一方
+  >> * 我对图表技术交易的认识：使用历史图表制作交易系统，然后实战并使之完善的过程
+  >>
+  >
+  >经历：
+  >
+  >> * 第一笔交易让我影响深刻，2021 年四五月份的DOGECOIN 热点，我在0.28 的位置 5x合约多单进场，当时我只知道一点，马斯克在喊单，热度在升，资金在注入，我就有钱赚。五千块钱进场，最高浮盈两三万。直到在马斯克推特喊"DOGECOIN, SNL”，那期夜现场，马斯克并没有进行清晰的阐述，灰度 CEO 也在顶部喊空，我便进行离场，后来证实我的判断是对的。
+  >> * 高中轻松赚一笔万级别的交易，当时也是充满的自信，后来也被频繁毒打，直到后面我加入了胡子观币，胡子哥的正向 PUA 让我对图表交易产生了新的认识，渐渐的也改变了自己状态，大大减少了 FOMO，也不亏钱了。
+  >
+  >现状：
+  >
+  >> * 现在自己可以识别图表交易的机会，但是时而会错过，如果不进行盯盘，偶尔还是会扛扛单，但不会再暴仓了。但是当我胜率高的时候时常会出现心理问题，对于开单的麻痹感觉， 非常上头，然后就容易崩了。现在的问题就在于赚，赚不到多的钱，容易资金回撤，少数时候会大幅亏损，自己还是比较佛系，但还是想改变下自己的现状，让自己进步点。
 
 * 课后
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0c7f9de6-90d0-49a2-a855-c48f82744851%2FUntitled.png?table=block&id=3866cf9c-5ac1-445e-a89d-45d9dbd5bd69&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >* 这次的培训让我受益匪浅，不仅仅是在交易上，甚至在这期间生活中发生的变故让我经历了一次重挫和成长。
+  >* 重新思考起初为什么做交易，无非想嫌钱去完成自己想做的事情，但这一定是建立在交易有效的前提下，而通过这次系统的学习传统图表技术分析，让我对看裸区是一种全新的感受，特别是通道别致的作用以及对定式的总结。而两千张复盘，目前复盘至六七百张，还在慢慢进行着，这个过程其实也是在逐渐积累的过程，积累到不同张数给人的感受也是截然不同。大道至简，听起来通俗易懂， 但是只有亲身经历，从经历中悟到，才是真正使人记忆犹新悟到了。
+  >* 在方式正确的前提下，我发现自己仍然存在问题，心态。心态问题很多种。
+  >  *  一段大幅资金曲线上涨后，会存在对于风险的麻木，进而产生重仓、频繁交易、不设止损三大致命爆仓问题
+  >  * 在生活中对自己心态产生的影响也会大幅影响自己的交易
+  >  * 还有最重要的一点：飘是亏钱的开始。我也为真正感受到一点这些问题交了学费。
+  >* 交易是为了生活上更好的追求某个目标，但说到底交易依旧归于生活。那生活的状态，生活中产生的影响又大大波及到交易上，也存在一个螺旋桨的风险。交易的同时不能忘记自己为什么交易，不能忘记身边的人，不能影响生活和其他学习，为交易多一层保障和后盾
+  
+  
 
 #### 小邱
 
 * 课前
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fbbaa27ba-7592-44de-a2f8-c75c5e2f030b%2FUntitled.png?table=block&id=27ecdf8b-5f49-40e0-8335-8cbc6892c0c4&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  > **对交易的认知**
+  >
+  > > 做交易一定要做好风险管控，情愿放弃手上的猎物，也不能将自己暴露在野狼的视线里
+  >
+  > **个人交易经历和现状**
+  >
+  > > 大约是 2020踏入金融市场，当时一开始是操作台股，当时是学生，钱也不多，大约台币十万元在操作。随后马上遇到疫情那波下杀，当时的我胆子小，受不了帐面亏损，随后在股票连跌两三天时，出清了手上所有股票。那是人生中第一次经历大跌。也许是命运之神眷顾，随后市易发生了神奇的V转，整个台股都在炒作防疫类股，口罩股，疫苗股等等，天天都是涨停板，只要敢追，钱就像是天上掉下来的，每天就是10%进帐，这时候顺利地做上几只飙股，赚了以当时学生来说算是不错的数目。当然行情不可能每天这么好，后来行情就开始休息了，随后因为要服四个月的兵役，没法看盘，时而操作美股，当时幸运的搭上富途牛牛、大麻相关类股、电动车三俊（理想、蔚来、小鹏）的顺风车，也累积了一些钱，让之后的5/19 爆仓之后，还有资金能运用
+  > >
+  > > 2020 年间总共入金币圈三次，前两次各入台币五万元（约1600U)，但两次皆以去中心化方式达成快速出金，平均在半天内会完成爆仓出金，后来爆了两次也就没再关注这市场。一直到 12月底退伍出来再度入金，这次入了 7000U，刚好又搭上牛市的起点， 2-4月每次清杠杆大概就是跌20~30%，以当时的全仓杠杆，我相信能安稳扛过下杀。
+  > >
+  > > 每份命运中的馈赠，早已暗自标注好了价格。但到了5.19 的时候，才发我错了，爆仓+现货浮亏大约20 万U，虽然对很多大佬来说并不多，但那时还没毕业，对还没毕业的我来说己经算是非常大的金额。之后基本没怎么做交易，中间跟朋友去学习defi相关知识，还有NFT，基本上就是啥都碰，有点像在寻找圣杯，看哪样赚钱快。交易方面看了斐波那契，谐波，基本上都不太适合我，中间也踩了许多坑，套用到交易也是一样的，像胡子哥说的，一项技术要练起来，总是得花些成本学习，我到处学习的结果就是每项技术都有他独到的地方，晃了一圈。一直到前阵子看了胡子哥视频，才意识到做图表交易才是最适合我的，从四月才又重新回来学习。当时直播听了一个月，听到胡子哥要开课立马报名，当时每天听胡子直播己经有赚到学费了，心想都是靠胡子哥赚的，基本这课程也就当胡子哥送的吧。没想到，后来迎来大行情，赚了好几堂的学费。有时会想，可能就是要有舍，才有得，学习的事是绝对不能省的。
+  >
+  > 目前交易上的缺点
+  >
+  > > 看对的时候，不敢下大，不够有耐心，常常提早进场，导致成本过高。在不敢下大之后，发现行情如预期，下一次便会加大等码，通常这时就会发生亏损，违反一致性原则
 
 * 课后
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F00f22d52-1a2a-4459-a361-a7ea2f0e8814%2FUntitled.png?table=block&id=5e768730-a21e-425b-9be6-3e28202dc64c&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >回想两年前，刚踏入金融市场之时，一切懵懵懂懂，期间买了许多书，上了许多老师的课，无奈当时没有能力分辦谁是真材实料，谁又是骗子，缴了不少学费，走了不少弯路。胡子哥曾说，过去做过或发生的事情，都将在未来形成果报。我想如果不是经历过那些挫折，大概也无法继续前行。在金融市场闯荡，如果能遇到良师，确实能少走一些弯路，但如果不是用真金白银，彻底地在市场裡折腾一番，仍难以体会个中滋味。
+  >
+  >第一堂课开始后，我明白过去的折腾终于有了回报，我以后再也不需要报名甚麼奇怪的股市课程了。 过去曾有的纠结，也在第一课得到解答。一直以来，我的个性属于自由心证那派的，指标类的我都不喜欢看，总觉得无法说服自己相信那些东西，毕竞指标追根究底，还是来自量与价。过去曾羨慕做链上分析的，看着他们使用各种厉害的工具，最终都能归结出一套厉害的结论，心想自己也得会这门功夫才行。
+  >就这样，因为不明白自己的个性，反倒去学习与性格不相符的工具，最终结果终究是白忙一场。
+  >
+  >四月进群后，我感觉在心态与技术方面自己的进步很大，具体呈现在亏的钱少了，但赚的钱多了。 但我很难硬性规纳这些成长，究竞是来自于课程，还是复盘，还是每天努力坚持听直播，又或者是加入高阶群的所见所闻，我只知道我这段时间将自己大量浸淫在胡子社区的所有资源里。上次在twitter space因为紧张，有些话忘了说， 那次是谈到有关话题要不要进入高阶群的话题。我认为光是社区内部免费的资源就己经非常强大，像是notion特攻队辛苦编纂的notion，真的太屌了，还有图海蚀珠总结的定式，以及前辈们分享的心路历程。 这些定式与结构怎麼来？难道不是前辈们用真金白银换来的吗？换句话说，胡子社区裡其实藏着金山银山．就等待大家大挖掘而己。2000张复盘只是个开始，完成他也是必然，自然就没有进不进高阶群的问题了。画图万遍，其义自现！
+  >
 
 #### 文森特
 
 * 课前
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F000f86ea-1fba-4278-af36-511dd47e6bbd%2FUntitled.png?table=block&id=b05fa492-ca8b-4132-94e4-053fbf0e9c11&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  > **个人交易现状**
+  >
+  > > 1. 之前赚赚亏亏，盈利拿不住，好在胜率不错，略赚一点，最近一周利润全部回撤。
+  > > 2. 一步错步步错，死于追突破，追突破失败后，逆势边第三点不敢进场，心态爆炸，完全没有自信心，看好的结构不敢进场，节奏完全被打乱，频繁开仓，没到预设止损位，频繁手动止损，目前熔断状态，调整心念再出发
 
 * 课后
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd69fc435-98a4-42a6-8d53-90aa46581057%2FUntitled.png?table=block&id=7e3f210f-9836-498f-83a1-2f137c62729d&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fcd59c39a-6590-449e-bdea-7b7facaca3f8%2FUntitled.png?table=block&id=c5e827fd-4f00-4845-b9e9-41816e670ade&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >胡子哥一直说交易是一件很私密的事
+  >进胡子观币社区前我是个纯小白 什么都不懂 交易的书也没看过 跟着动物币fomo进的币圈 进了就亏麻 亏麻后开始找交易“圣经”
+  >
+  >作为第一批的社区贡献者 自认是比大多数学员有一点基础的。开课前就在高阶熏陶了那么久 上课的时候听起来也是事半功倍。真要说对我而言这几节课最大的收获，技术上是通道，更多的还是心法内功。过去一直喜欢垫一手，自以为可以扛得住波动，但实际上还是高估了自己。以前往往提前进场 没到止损位手动止损，盈利拿不住、频繁开单。但上完课明显能感觉到心态好了很多，也有一部分原因是回本了。上完课现在是宁可错过 也要等最好的进场点位。
+  >
+  >**以前误解了胡子哥说的突破不能做，要做就做突破前的蓄势和突破后的回踩， 还有做右侧交易**
+  >
+  >**因为我对于这两句话的误解，导致以前做的一直都是突破单，十突九死，所以我亏麻了。**
+  >
+  >上完课后，我明白了突破前的蓄势也是有结构的。右侧交易部分呢，我的理解是，大级别中找次级别右侧进场，相对小级别的话 还是左侧进场试单感受波动。
+  >
+  >胡子哥在三亚的时候说交易和冲浪一样，这句话对我触动真挺大。有下跌大势再配合大通道上边界的结构进场 一路流畅的下跌，开完单就是丝亳不用担心。亳不夸张的说比起刚开始，我现在很有自信。
+  >
+  >需要改进的地方
+  >
+  >>拿不住单子。还是这个老毛病。最后一段完全没吃到 我总结了以下几点原因：
+  >>
+  >>1. 仓位重
+  >>2. 刚好回本了，不想再亏钱
+  >>3. 没有完全相信：结构必完美，不过也是吸取了教训
+  >
+  >现在的状念
+  >
+  >> 对小级别的结构丝亳没有兴趣
+  >>
+  >> 挺自信的，不会像以前一样什么飞机都想着做，这两天生病了 还在修养 等病好了开始复盘。
 
 #### kiracomp
 
-* 课前
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F211d9d6c-5d25-4523-9e9c-464c8071c18f%2FUntitled.png?table=block&id=ba8ea3e8-ebe2-49c0-9527-f602d1e114f6&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
 * 课后
 
-  
+  >**对于交易的认知**
+  >
+  >> 1. 交易的术：指各种理论、流派，比如指标，图表形态， 谐波，缠论以及波浪等等。
+  >>
+  >>    > 交易理论没有高低之分，只有对于个体的适合与不适合。
+  >>    >
+  >>    > 所谓的大道至简，其实都是大量输入之后的勤学苦练，提炼总结之后找到适合自己的部分
+  >>
+  >> 2. 交易的道：对自己的不断认知。
+  >>
+  >>    > 1. 交易的获利：是对于市场认知与运气综合之后的结果。 
+  >>    > 2. 交易的亏损：是自己的贪嗔痴与运气综合之后的结果。
+  >>    > 3. 道的修炼就是对于自己的认知不断加深， 也就是对于自己是什么玩意心里有多少逼数。对于交易的道，有很多流传的词汇与口诀能够窥见一斑。比如盈亏同源，你的喜好就是你的陷阱。又比如大亏之后易大赚，大嫌之后易大亏。心态、认知、净值实际上是三位一体的。比如说靠运气赚的钱，靠实力亏回去。短期净值的大幅上升，认知和心态跟不上，往往离亏损就不远了。这种时候最需要的就是冷静，然后去充电。心态，认知，净值一定是相互缠绕的，至于能不能螺旋上升，这个就需要个人的不断修炼与努力了。当然也有运气的成分，但是**运气只能给一个初始速度，并且对于机会的识别需要认知的积累**。在日新月异的市场环境下，认知的积累如逆水行舟，不进则退。心态的练习需要去对自己进行解构，了解自己为什么会产生这种心态。比如情绪高涨的时候要去想想自己是否是膨账或者 fomo了。对于净值，做好风控，不要让净值的大幅下滑去影响心态和认知。心态，认知，净值三者中，净值是最容易先爆掉的，随即就会把心态和认知拉下水
+  >
+  >**个人交易经历**
+  >
+  >> 在学习交易之前，亏损主要靠所谓的佛系持仓，也在市场底部由于缺钱割过肉。312之后开始学习交易，最开始接触的是蜡烛图，基础的指标和形态。大仓位只做现货，合约偶尔参与，单子都带有止损，没有出现过巨大的亏损。交易经历上中规中矩，没有什么出格的地方。
+  >
+  >**现状**
+  >
+  >> 学习很多，总结很多，练习不足。主要做的是 H4、D1周期，很多时候不会去盯盘，也不会一直泡在市场里。感觉交易是一个持续与自己斗争的状态，和自己的贪婪恐惧斗争，和自己的懒惰和拖延斗争，需要做的是持续对市场保持跟踪和基本的关注度， 再就是持续复盘。相信天道酬勤，希望能够踏实地交易。
 
 #### gong
 
 * 课前
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa40a3bb0-7115-4fb5-9b79-13694bc13d43%2FUntitled.png?table=block&id=02dd485b-4b2a-4550-b03d-8bec0675d413&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >**交易经历和现状**
+  >
+  >* 基本上在币圈是用自己的工作收入拟补币圈的理财支出。
+  >* 牛市初期犹犹豫豫不敢进场，但没有逃过顶点入场被一波割走
+  >* 感觉自己缺之勇气和决断，该进犹犹豫豫，敢进不敢割，基本上所有合约单子都是盈利不走，亏损走的，追涨杀跌是常态，一个头号大韭菜，该拿不敢拿，该跑不果断。
+  >* 个人的原因很多， 没有完成 2000 张图表。没有构建好自己交易体系，没有用工努力，其实挺喜欢胡子哥骂人的， 给我信心，让我知道自己还很差
 
 * 课后
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2ffdc28e-814a-49b8-977a-5ed4d2fb9d8c%2FUntitled.png?table=block&id=be2ad913-0899-438f-a6f9-81d357da7041&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F76e51a0d-63f6-42ae-ac0d-f7b20be7e9c9%2FUntitled.png?table=block&id=3b41c354-ca8c-46dc-8ae4-538d6a59dca4&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F1fb794e5-2ecd-4c5c-b834-fec9cf21e594%2FUntitled.png?table=block&id=e0e45ba5-3332-4fbf-ae6f-772a292279b5&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >胡子哥说，当你没有自己的交易体系， 迟早有一天你要还给市场的。所以 94 一波我回到了原点。在这个时候想到了要去学习交易了，认识到了老铁，报名学习了谐波，也算是真正见识到一个合格优秀的交易员是怎么去做交易的，更是在群里认识到了胡子哥。
+  >
+  >我在这批课程里是很平庸的一个学徒，和优秀的师兄们差距还很大。但是我想到了胡子哥教给我们的，做自己认知范围内交易，挣能挣明白的钱。而且胡子哥课程给我印象最深刻的就是前3节课的心法了。懂了心法再配合术法去悟，有次一次很小金额的试单真的是很舒服，不心慌不难受，就像胡子哥说的那样交易做简单的。虽然还是会有胆小不敢下单，拿不住单子的毛病， 但是明显感觉到了自己进步，以前只会无能狂怒，现在会有自己逻辑，“知其然知其所以然"，不只是停留在书面。那种感觉真好，做到自己认知的，在没有形成自己的交易理念，交易系统不轻易做一个全职的交易员，不做一个把全部身家赌进去的赌鬼，认知自己，定位自己。
+  >
+  >我想，做一个继续默默复盘努力进步的学徒；我想，继续提高自己的认知在自己喜欢的领域
 
 #### 豆豆
 
 * 课前
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7b814319-bfbc-47e7-a3ce-a8ceac9b316c%2FUntitled.png?table=block&id=7b53ac34-e891-4eb0-9526-389d43dca921&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >**自我认知**
+  >
+  >> 虽然17年就入圈了，开始就是胆子大，碰上了牛市参加 ICO 赚了点钱还不舍得套现，结果到了熊市就持续亏钱。现在仔细想想简直就是运气赚钱，其实就是跟着别人赚钱，直到今年看了胡子哥的视频才认识到自己根本就没有交易逻辑，亏钱就是必然。所以就开始交易了空仓学习
+  >
+  >**交易经历**
+  >
+  >> 最开始参加的 dot 一级开盘涨到 6u 没有处理，接下来反弹到 5u 出掉，然后不断的波段，中间做了一把 uni 没有做到止盈，结果利润回撤很多，dot 启动前追进去了大概在5-6u，涨到10几回调那一波在 8u 全仓出掉，结果 dot 起飞（这里很诡异的事情不敢追了）踏空dot 是心态崩掉的开始，后面的交易就全是错的了。比如追高，拿不住币，3个eth买了500 亿个shib 结果1个eth割掉成功错过暴富机会。总体就是赚赚亏亏的，凭运气赚的钱也凭实力亏回去了，只是有点小运气。
+  >
+  >**现状**
+  >
+  >> 合约交易只有很小一笔资金在做，作为练习账户。
+  >> 大资金主要还是现货交易。
+  >> 努力学习找出符合自己节奏的交易级别。
 
 * 课后
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc64013d6-3bef-4fb4-a8a8-a02a7c97b0e1%2FUntitled.png?table=block&id=166cc685-a477-4a1b-bd10-bf9a9ce79783&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F374c2102-cea8-4847-ae38-e3c114fccd02%2FUntitled.png?table=block&id=d2130d6b-53b7-4fda-a492-9fa3a6aa9b38&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >**自我认知**
+  >
+  >> 从前自己根本就没有交易逻辑，第一节课的时候如果还有怀疑那么第二节课就是烧掉那一点怀疑的火把。刚开始其实自己还在想学习完了再去做复盘的事情， 因为自己真的什么都不懂，以至于把师兄们总结的图标结构做成了屏保。但是第二节课后就好像打通了任督二脉，这时候感觉能画一下明显的机会了，便开始了我的复盘之路。等到了400张图左右的时候在回过头去看自己的图就能明显感觉到不足的地方。这时候想到师兄们之前的复盘感悟，就是复盘这件事肯定是对的，现在我每天保持30左右的复盘。
+  >>
+  >> 当然能找到机会只是开启交易之门的开始，能够做对了做上了才是到家了
+  >>
+  >> ![image-20240522172744527](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405221727618.png)
+  >>
+  >> * 当时看到这个机会时，把手里的现货都清掉了准备干波大的，但因为差那么一点的没有达到心里价位错过了这次机会，其实后面的回调当时我记得很清楚我们在上课我还画图判断是没有错的，但是因为第一波没有做上后面的更是不敢去做了（节奏真的很重要，不过节奏乱了选择不做也是一种不错的选择）
+  >> * **现在不断的总结和归纳自己，在复盘和实战中找出自己的一招鲜**
+  >
+  >**现状**
+  >
+  >> * 合约交易只要能发现2小时的明显结构会设好止损梭哈干
+  >> * 现货更多的做波段赚取更多的本金
 
 #### 宅少
 
-* 课前
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fec82cb6d-1703-45dd-844a-d7140bac8bbe%2FUntitled.png?table=block&id=5244fda3-012b-4002-9077-807bf8cef2e7&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
 * 课后
+
+  >交易认知与理解
+  >
+  >> * 目前认知较浅：只能说有一定的基本认知，在努力提升自己中
+  >>
+  >> * 目前最大的问题：合约拿不住，其实大部分都开在不错的位置，但因为担心被止损而提前出局错失了后面本应该计划内的大盈利
+  >> * 还有一个认识增长：不要去预测行情
+  >
+  >交易经历
+  >
+  >> 币圈是一个神奇的地方,亏过钱也赚过钱
+  >>
+  >> * 312 暴仓，当时资金量挺大的，几年才缓过来
+  >> * 519 暴仓，好在长记性了，暴的只是合约仓，现货当时空仓，基本没影响。
+  >> * 也有赚的比较舒服的，比如私募过 flow，解锁一半时卖出价 13 块好像，130倍，还有FTM 的早期买入,十倍+后卖出等等。总体就是赚赚亏亏的，凭运气赚的钱也凭实力亏回去，总体运气略好一些
+  >
+  >交易现状
+  >
+  >> 现货：自确定熊市后现货极少操作了，耐心等待好的入场时机
+  >>
+  >> 合约：会进行一些波段操作，有亏有赚的,总体不亏
 
 #### 沉浮
 
 * 课后
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc832d339-fce7-434e-97fa-9a2cade110c2%2FUntitled.png?table=block&id=fef8052a-3c09-47e9-b711-32f470273573&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >六节课下来，大胡子和流水师叔讲的非常好，收获很大，基本实现了报课的初衷，但是我也明白自己能留下多少知识还得靠自己去打磨、复盘、交易、感悟市场。我虽然进入市场有几年了，但是进来时没有交易基础，啥也不懂，只是在网上结识一些炒币的朋友跟着乱冲，赚赚亏亏的，总体赚一点钱，但是吃的都是市场上升期的红利，归结起来是运气好，要是运气不好就要亏惨了。看到别人赚钱好容易，可以赚好多，很羨慕也很焦虑，也一直到处学习一些方法，但总是不得其法。
+  >
+  >几节课程下来，很好的解决我的一个技术学习问题，很有效，有点耐心就能够识别到，一个心态的学习，要克服在大机会来临时敢于下单，情况不对要敢于砍仓，不要fomo，克服普遍存在的追高心态，改掉交易的陋习
 
 #### Jieeeeee
 
 * 课前
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F13e15cb6-9afe-4ed9-9403-8bd05c464ef3%2FUntitled.png?table=block&id=7a7f8eb3-ab92-4d88-b661-611ed7467908&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F03e49619-6567-40f2-98d6-3ec828a37abf%2FUntitled.png?table=block&id=ae530aed-58d9-4e24-8a41-c139d0df723a&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc48266a1-79e3-43f9-b7c7-a1638ff0971d%2FUntitled.png?table=block&id=bb47d4df-697f-492d-97bc-b891b7c70360&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  > 目前对交易的认知
+  >
+  > * 结构
+  >
+  >   > 能看懂结构，找到自己想做的级别结构，能根据小结构大致推测后续走势
+  >
+  > * 执行力
+  >
+  >   > 因为 15~30F 做得多，并且以前是做 50x 的，现在改做20X，所以抗压能力自认不错 （亏了就亏了，踏空就踏空，平凡心对待），哪怕同一个币种打了3单止损，只要结构和趋势还是看得懂，大体趋势仍是符合自己的判断走势，那就相信自己的判断，最后还是会赚回来，赚不回来那就等下次机会，而缺点则是大级别的单子因为经常都是翻倍止盈， 导致经常就赚了个本金，后续赚的不多
+  >
+  > * 心态
+  >
+  >   > 无所谓，嫌不到这个钱，则是无缘，整个币圈这么多币，何必单恋一枝花
+  >
+  > * 交易体系
+  >
+  >   > * 翻倍平一半，只要趋势对，10单总有1单能让我翻倍，能让我赚大钱
+  >   > * 没有翻倍，但己有 100%利润，总体趋势是对的，死拿，大不了原地止损，吃我手续费判断失误，如果连续3 单还是打我止损，那算了，当天不看这个B
+  >
+  > **2022/5/1~2022/5/9**
+  >
+  > > 一切如预期，问题出在心态，只做 30F 以上结构单子，虽然大多盈利，但总觉得隐隐约约的不自信，所以经常手动止赢，并没有翻倍。仅有 CRV ZIL XRP WAVES 这几个币种有明显结构，并且在趋势线中发现严重阻力，我基本直接搜哈了进去，在这几个单子里面获得了巨额利润，其余单子全部为浮盈开单
+  > >
+  > > 在这个时间段开单的日子里，我深刻意识到自己的潜意识带来的好处同时也是坏处 --- 你真的绝对相信你的判断和胡子所教的结构吗？我相信，那，赌10次和赌一次不也一样吗？
+  > >
+  > > 这种莫名的自信带来的优势，是开单果断，相信自己的判断，而坏处则是过度相信自己的判断。GMT 和 NEAR 己经给了我预警，但，还是迷之自信，导致最后结构开始变形， 最终浮盈变止损，开始进入一个死循环，找不到方向
+  >
+  > **2022/5/9~2022/5/16**
+  >
+  > > 最近经历了一个瓶预，在5月14号周六培训后，尝试以波浪去理解周末的行清，但最终30F 结构说变就变，1H结构也是说变就变，可能你画的点明明己经走到D，但是回过头发现原来D也是错的，难道波浪理论，我真的学错了？这周末直接亏损了 3000多U。周末对自己的交易系统产生了怀疑，并且开始失去了自信，但多亏和 GAY 老师沟通，最终还是相信自己的交易体系，可能我缺少的的确是一点运气吧！周一早上，仍旧相信自己面的结构， 相信这个市场的的走势依旧偏弱，做了2单，把周末亏损的拿了一大部分回来，目前仍在拿着， 中途有加仓过一次，总体仍旧亏损，亏得有点多哈
+  >
+  > > 【ps】果然还是自己长期关注的币种比较香。感谢 CRV，感谢 XMR。 XCH操你妈。
+  >
+  > **2022/5/16 号深夜反恩**
+  >
+  > > 5月1号的时候曾经想测试自己是否真的是运气做单，所以给自己下了一个测试，我就留了 300U，是的，其余全部慢慢出金，就拿300U 来玩，目前5月16号，总盈利 10836U， 加上交的学费 3000U，是赚了 13536U，翻了 46倍！
+  > >
+  > > 昨天看了龙哥的 PDF 总结，很美慕龙哥有一个敢搜哈常拿的机会，目前我自认为仍是高频交易员，5月尾的目标是 3WU，翻100倍，然后拿 3WU，稳稳妥妥的等待一个可以搜哈的机会（因为目前开的是 20x .并且保证金也就 500~600U，小仓位交易〕因为最近真的很少开单，具体都是在DC 吹牛，画画图，做单少了，不想像以前那样，想让自己像龙哥一样， 找到一个好机会，直接快速把 1WU 翻成 100wU
+  >
+  > **2022/5/17~2022/5/23**
+  >
+  > > 这一周我发现压力很大，DC 上出现了一堆杰哥牛逼，跟杰哥单稳，杰哥天才，杰哥天赋好……好你个J8，捧杀懂不懂，听着爽吗？爽，但压力开始了，我不敢在单一图表发任何机会了，复盘也不想发了， 压力贼大，交易做对了，代表画图对吗？怎么可能，纯粹运气好罢了。
+  > > 我这一周只能说少赚了很多，GNT 真的害死了很多人，我也不例外，就今晚，那个GMT 往上爆拉这个，直接打我止损，后面我开一单，又给我打止损，第三单又止损，好家伙。连续3次错了，可以，关机，睡觉，我感觉你要走头肩，但是3笔无缘，我溜好了吧，你要是走出头肩，我绝对日死你。
+  > >
+  > > 刚把把胡子哥教的视频看了下，里面讲到了通道，原来通道是这个意思，原来通道中间做中继的真正含义是这样，这下很多东西都解释的通了，如果我画好通道， 那么冥冥之中自有定数不是吗？
+  > >
+  > > 怪不得有些楔形突破后，会被趋势线压制，画个通道后，一切都是那么完美。怪不得有些了三角突破，还是会被谜一样的压制，慢慢的走下来，我原本一直以为是趋势线和阻力线压制，通道，原来才是TM 交易的核心！！！！
+  > >
+  > > 如果我通道画好了，止盈也能增强信心，TMD，不行！我得发推特！让更多人知道胡子哥的牛逼之处！
+  > >
+  > > 我有预感，下周，我应该能大赚，但是搜哈的话，还是稳点吧，熊市不能暴富，但能好好积攒经验
 
 * 课后
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fce5ae53c-b1ed-4e9a-9d36-c1bbcc49a7ce%2FUntitled.png?table=block&id=99a5c2ea-cfff-4a30-ae73-135d0b7fa459&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F10d69850-1dcc-44c2-8ab4-df90c4c51563%2FUntitled.png?table=block&id=c72ccfa7-1af5-4699-a1db-5f17a63b1064&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe20e944e-53fb-4bf1-bbd1-5ea81b70a30b%2FUntitled.png?table=block&id=e08fac2a-5263-4f6b-87b6-f1e5a3d1291c&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff69bbe8f-c37e-4bd6-8b28-d452b0370392%2FUntitled.png?table=block&id=88f74f20-3e28-4fc9-8aae-18cbbce3aa6d&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F68567f76-7282-4c93-8792-aa04fecb280f%2FUntitled.png?table=block&id=0df57092-af28-40bb-9eab-553b88de2dd5&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F9b29cbad-dbd2-47b8-b7b0-135c02891577%2FUntitled.png?table=block&id=b4fcde92-9337-4090-ad43-b86b1fa0d770&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fca2c41e0-a9f5-401f-8dd2-48f9dfd13a2d%2FUntitled.png?table=block&id=e78c9ecb-d3f0-48d9-971b-61ed2170e3f4&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F1e154a47-ab74-4d7d-a664-e862d34ebc4a%2FUntitled.png?table=block&id=51b35c0f-ba77-4b2d-a812-dd91f4208a33&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F62f17713-2a4e-4c7f-94c9-442c3b9d067e%2FUntitled.png?table=block&id=cad418f9-2cd3-4841-8388-86995a206067&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5b432bb5-e4ad-41d1-96d0-02d373471653%2FUntitled.png?table=block&id=4fa6fa86-26a6-4e81-b09c-145a057d1762&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >**2022/5/23~2022/5/31**
+  >
+  >> 这一周，黑暗时期吧
+  >
+  >>前半周，空仓看戏，等待一个大级别的好机会，最终 KSM, LOOK,KNC, CMT 让我赚了一波大的，瞬间明白大级别的好处
+  >
+  >> 虽然没有了以前交易的激情，但多了一分看淡市场的情绪，有一种，我就赚我该赚的感觉，开始没有像以前那么追求太大的收益了，而且好像当你没有如此在意收益，而去考虑这一单可以承受多少亏损，你赚的反而更多，更舒服
+  >
+  >> 开始做 GMT 时，我在推特发了自己的思考逻辑，也因为做到了这一单，所以开始想改良一下自己的交易系统
+  >
+  >> 我发现自己更喜欢逻辑下单，找到自己想要的进场点，若后期出现怎样的结构，怎样的走势，该怎么去做，开始思考为什么这样做更为合理，好像灵活的交易，更为适合我？
+  >
+  >> 并且，我想着一周根据自己对市场的理解，看看，自己的做法是否合理
+  >
+  >**2022/5/28~2022/5/31**
+  >
+  >> 黑暗的3天，我做了 GNT 亏了，BTC 亏了，people大亏，无法理解胡子哥为什么会看涨
+  >
+  >> 明明市场都是批量下跌结构？到底哪里出了问题？People 我是知道自己上头了，想不到我也会上头啊。都是想着，补仓补仓补仓，补你MLGB 啊，为啥这么看好 people 上涨？不是刚学了通道吗？
+  >
+  >>把赚的全亏了个大半，好像，我做单的时候，想着的是，大不了把赚的都拿出去赌一次，我好像忘了，这是熊市啊！！！这是熊市啊！！！这个得改下，不是 FOMO，但这个想法就是 FOMO，停止交易！绝对要停止交易！我这个状态，绝对会出事！
+  >
+  >**2022/6/1~2022/6/7**
+  >
+  >> 身体越来越差，感染了水痘，唉。。。。
+  >>
+  >
+  >> WAVES，不应该轻信信息面，真的不应该，我好像忘了那时候悟透的一点，当大结构到达的时候，市场总会有基本面出现。复合结构，圆弧底，圆弧顶，原来无非也就那么一回事，太钻牛角尖了。而且复合结构，无非都是大结构里面的小结构，其实直接忽视掉，也可以。 我知道 WAVES，是一波大行清，我可以反手，但我不想。我想让WAVES 这波错过的行清，让我记住，一一当大结构到达的时候，市场，总会有基本面出现
+  >
+  >> 今天是1号，我进了高阶，以管理员身份进的，非胡子的朋友，其实， 我并不觉得自己画的图可以，更不觉得自己有资格进，也许单纯自己水群多了， 得到胡子哥的认可？或者，因为我喜欢分享？不知道，责任有了，但相比于高阶群，我更喜欢在讨论组发表看法，在讨论组帮助新人和没有参与培训的人，虽说自己不知道说的某些观点是否正确，但大框架还是可以说的，毕竞，我在这赚过钱，也在这吃过亏，听得进去就听吧，听不进去，我也没办法， 市场会教育你的。
+  >
+  >> 看到了很多大佬发的机会，画的都比我好，也看了下高阶群里面的机会，可惜， 没有一个想做的欲望，我更希望，只做自己看得懂的，只做自己喜欢的结构，只做趋势性我能抓死的，新币可能会日后慢慢去看，但现在，我想让自己的交易系统更为完善，胡子哥的早会，这个月我不会再早起去看了，胡子哥是我今年的贵人，但我更喜欢学习过后，自己去体悟，自己去反思，自己去理解，若一直看胡子哥的早会，虽说看了，可能当天开单会很舒服，有一条明路，可胡子哥哪天万一不直播呢？
+  >
+  >> 我更希望有一套属于自己的交易体系，目前有，但不完善，我想让市场来帮助我完善它。
+  >
+  >> 今天是6月5日，OP 也是基本面的单子，但因为 WAVES，我知道了 --- 当大结构到达时，市场总会有基本面出现。还有这个 A16z，我可太熟悉了，XCH 就是这么被他坑过，所以信息面？算了吧。很成功做到了这个币种，极度自信，让我好好回了波血。挺好的，胡子哥之前也讲过复合结构，WAVES，好像有点符合，可是圆弧，我是真的没有做成功过啊。要不试试？？
+  >
+  >**2022/6/8~2022/6/13**
+  >
+  >> WAVES、OP、ADA，成功让我把亏得全赚回来，很开心，同时，开始理解自由心证交易员到底指的是什么，慢慢来，慢慢等，结构自呈现，只做2H，**只做看得懂的结构，没必要去预测，应该去跟随**；跟做人一样，有时太急太快，往往出事，所以，慢慢来吧
+  >
+  >> 特别喜欢一部电影的台词 --- 你希望慢慢的、闷闷的、无聊的把钱赚了？还是直接一把梭哈，凭运气赚钱？
+  >
+  >>这个6月份，越来越觉得，交易，真的没那么难。
+  >
+  >> 你做 30F，1H， 每天盯盘，每天都活的那么累
+  >
+  >> 4月份那段超频的日子，生不如死，赚是赚到了，但我记得，我对象跟我说过“杰， 你别做交易了，你知不知道这段时间，你的眼里，每天都是带有杀气的。。。 我很怕你”
+  >
+  >> 那段日子，我把币圈当成了我一生中最大的仇人，那是必须的，因为我就没有在币圈赚过钱，19年尾进圈，挖以太坊，明明是牛市，我却基本一直亏，赚的又全拿去投资别的，后来又信了起亚，把赚的基本又全砸进去，学的缠论啥的，MACD 啥的，都TM让我亏钱，你让我怎么喜欢起来？这种一生之敌的感觉，你怎会懂呢。
+  >
+  >>4月，胡子哥让我找到了一个能杀敌报仇的理论和方法，能用在这个吃人的市场中，我第一次，凭借结构，让他们把吃进去的钱从肚子里挖出来，那种快感，杀的很爽，我也的确做到了，那段时间，我感觉找到了一丝创业时的快感，我爱交易，我爱上这种有目标的感觉，爱上这种自信，疯癫的快感，很爽，但现在肯定知道不适合我（你看我现在，水痘，湿疹，浑身无力，整天发烧，啥都出现了，是很爽，但，会死的很惨。）
+  >
+  >>14 号凌晨，发着烧，我想下周继续沿用我的这套方案，看看是否可以稳定盈利，不求翻倍，只想试试看，自己的这一套交易系统，是否可行。你也不在，我可以好好交易，再大的病也比不过穷病
+  >
+  >> 无用的努力，错误的方向，不正确的的选择，在交易上，会死的很难看。
+  >>
+  >
+  >**2022/6/14~2022/6/19**
+  >
+  >>很舒服的 5天，依旧每天盯盘，复盘，一周时间，做了XMR，FTM 两个币。其中XMR，老朋友了，面对你的时候，我很自信，但我发现社区的人，好像都不喜欢你？波动大，流动性差，无结构，亏你还叫小美人呢XMR，我会日常观察你的，毕竞，做你的单子这么久了，没错过，每次赚大钱，都有你的存在
+  >
+  >> 20 号凌晨，回想一下，好像做交易这段时间，第一次，1周只做了2个单子，严格来说，就做了1单，XMR 是我很早以前开的单子，只是不怎么关注，因为有预期在，所以一直拿着。这段时间，看的币种很多，但都不是我想要的结构，我喜欢这种感觉，不需要每天紧绷着，可以安心地思考，体悟自己学到的东西，若继续保持，我想下周，应该会很爽，第一次有了很期待去做交易的感觉，哪怕亏了也无所谓，就是喜欢那种慢慢的等待，慢慢观察波动的感觉，在不开单的这段时间，我看到K线会感到很愉悦，结构学，K线，让人感觉像是有生命的样子。
+  >
+  >> 以前一直做交易，没有细细静下心来品味，现在觉得，K线上下跳动的感觉， 很美妙。
+  >>
+  >> 我很喜欢，我想，他就算打我止损，我只会归因于这根K线，有点调皮？
+  >>
+  >> 我喜欢交易，我喜欢观察K线，发自内心的喜欢。
+  >
+  >**2022/6/20~2022/6/26**
+  >
+  >> 26号的凌晨4点，今天是最后1节课了。本来1点就应该写日记的，可惜停电了，3点半才刚恢复供电，毕竟写日记，己经刻在DNA 上了。PEOPLE, BTC, KNC, XMR，这周做的有点多，不过全部盈利，今天也结课了，分享下这2个月，300u的最终成果吧
+  >
+  >> 目前交易所，剩余 8902U。其中2 个月出金6000u，3000u 学费，中途买了 6432U的以太坊小图片，所以，24332U．翻了 81 倍，当然这个倍数纯粹自嗨，300u，只要资产翻倍6次就做到了
+  >>
+  >> 要问满不满意，我很满意，我己经不纠结翻多少倍这个事了， 起码，我做到了稳定盈利
+  >
+  >> 5 月尾那段黑暗时期，其实本金就剩下 2300u，直接只剩 20%本金。26 天，2300U，变成 8902+3000+2432=14332U，2300U 资产也是翻了6倍吧。至于那段黑暗时期，没有击溃我的自信，感谢市场，感谢胡子观币社区，感谢这个课程
+  >
+  >> 感谢相知，感谢相遇，相约牛市，看看牛市水临之前，我能把这八千多U，滚到多少
+  
+  > 我并没有在结业课的最后，发表自己的感悟，因为我觉得没必要，我不是一个喜欢言语感谢的人，我更喜欢拿行动来反馈自己内心的爱，况且，这个课程，牛人很多，我相信我这个只是一个臭鱼烂虾水平，何必献丑呢？ 没别的意思，只是不喜欢在众人面前发表太过煽情的言语。在心中，我问心无愧就行了，没必要得到别人的认可。若有机会参与下一个课程，我想，我才有资格，去发表自己的感悟吧？
+  
+  > **结业感悟**
+  >
+  > > 请先认真思考一下以下问题
+  > >
+  > > 1. 你喜欢结构吗？真喜欢交易吗？你喜欢的是结构，还是喜欢它能给你带来财富？
+  > > 2. 你有属于自己的交易系统吗？
+  > > 3. 你对自我的认知，到底是怎样？
+  > > 4. 你有自信吗？
+  > > 5. 你如何看待交易？
+  > > 6. 你是一个愿意分享的人吗？
+  > > 7. 你承认，你其实就是一个普通人吗？
+  > > 8. 你真的能为一件事情，一直努力吗？
+  > > 9. 你对风险的认知是什么？
+  >
+  > 1. 你喜欢结构吗？你真喜欢交易吗？你喜欢的是结构，还是喜欢它能给你带米财富？
+  >
+  >    > 若在4月份，我可以说，我不喜欢交易，我不喜欢结构，我纯粹只是喜欢它能赚钱罢了，我是个俗人，我就TM爱钱
+  >
+  >    > 但现在，我喜欢结构，我喜欢交易，我能在我喜欢的事情中赚到钱，还有比这更棒的吗？
+  >    >
+  >
+  >    > 个人感觉，兴趣，是交易的头等大事，只有你喜欢上结构，喜欢上交易， 你才真正的有动力做好它，若你一开始只是为了赚钱，那么，你迟早会被市场淘汰，别忘了，市场一直在进化，一招鲜，吃遍天？算了吧，哪怕你现在认真学习，没有专研的劲，迟早都会亏回去，哪怕你复盘2000张，2万张，无非也就是证明，你有这个信念去赚钱罢了
+  >
+  > 2. 你有属于自己的交易系统吗？
+  >
+  >    > 我一直都有自己的交易系统，但这个，字面上回答的很朦胧，课程结束了，我也明白，现在的我，不会再去做2H 以下结构。也许无聊时，会打打飞机，但1H才算我的飞机范畴，以上，也属于交易系统，只做你喜欢的级别结构等
+  >
+  > 3. 你对自我的认知，到底是怎样？
+  >
+  >    > 你要对自我有一个认知，才有自己开单的风格，我喜欢逻辑交易，社区有人调侃过我，“同样的币种，我亏钱，杰哥赚钱"，胡子哥也批评过我，“杰哥画的图，要让人猜” 。我明白，我有时候很喜欢钻牛角尖，复盘时经常1张图，盯在那里几个小时，都不知道怎么画才好，就是对比于冰冷的复盘，我更喜欢让市场来教育我，因为，我可以根据K线的波动，走势，去完善改良自己的交易体系， 有参与感，有见机行事的快感，而复盘，有上帝视角，哪怕存在回放，也提前知道走势了，没有那种生命力。
+  >
+  >    >当然，这种做法是错误的，所以后期我会好好复盘，画图风格也会改变，这是后话
+  >
+  >    > 具体就是，你要对自己有一个自我认知，才能决定好你做单的风格
+  >    >
+  >    > 例如，你是一个喜欢随心的，那么随时全部平仓止盈，赚多少看命，这可能是你的做单风格。目前对于认知的重要性，仅存在于自己片面的理解。
+  >
+  > 4. 你有自信吗？
+  >
+  >    > 开单不自信，多半源于你对自己的交易系统不信任，你画的图不好看，也许， 你没有做过一张赚大钱的单子！
+  >
+  >    >每一个交易员都是自信的。若没有自信，那你离资金归0，也差不多了。自信，是重中之重，有一种“今天亏了，那就明天赚。 明天赚不了，那就过几天，反正总能赚回来” 的心态，这非常重要！
+  >
+  >    > 试过本金只剩下 20%，不也照样赚回来了吗，若没有自信，早死了，那可不是盲目自信， 错了就错了，承认自己的失败，那也是一种自信
+  >
+  > 5. 你如何看待交易？
+  >
+  >    > 交易，是一种对人生，对社会的感悟体现吧？
+  >
+  >    > 激进的人，C点进场，有可能会赢的盆满钵满，但也可能输得遍体鳞伤，因为结构需要 CD 点的出现，而现实中这种人，多半也是一个赌徒，这人靠谱吗？多半不靠谱
+  >
+  >    > 大级别结构，E点进场，止损却很少的人，多半也是小心谨慎之人，看对了机会，但总是太过在意风险，就算做对了单子，可只要有一点小小的回撤，也会马上市价平仓吧？
+  >
+  >    > 为什么有的人，只拿到一点利润，就跑了？也许他为人就是老实本分，脚踏实地
+  >    >
+  >    > 为什么有的人，单子可以一直拿到尾呢？也许他做人目光长远，看得到未来，愿意为未来放弃短期的收益呢？
+  >
+  >    > 交易，真的能看清一个人，装不出来的，这也正是交易有趣的地方。不信，你看看一些玩A股的老韭菜们，说的头头是道，可依旧为柴米油盐发愁， 一看，就是赚只赚了几个点，而扛单，一扛能扛几年
+  >
+  > 6. 你是一个愿意分享的人吗？
+  >
+  >    > 胡子观币社区，里面的家人，基本都是喜欢分享的人，为什么喜欢分享，因为分享所学时，你也在加深自己的认知能力，请务必勤分享， 没必要藏私，帮助他人的同时，其实他人也在帮助你，所以，感谢相遇吧。
+  >
+  > 7. 你承认，你其实就是一个普通人吗？
+  >
+  >    > 其实这个问题的背后逻辑就 1个，你愿意承认，你错了吗？
+  >    >
+  >    > 若你承认你错了，那么很棒，也能避免FOMO 的情况出现，毕竟很多时候，都是为了证明你是对的，所以才会FOMO 交易
+  >    > 同时，我们都不是神，都是普通人，若你一直想证明你很强，那么你其实不是在交易，你只是为了证明你自己，而去开单，想想自己以往亏钱的方式，多半，这种证明自己，也是你经常亏钱的一种原因吧？
+  >
+  > 8. 你真的能为一件事情，一直努力吗？
+  >
+  >    > 胡子哥，是个有格局的人，其实，整个课程，无非就是把之前几百个视频，浓缩成几节课罢了，也就是说，你看完胡子哥的视频，基本，你学的和我们一样。
+  >
+  >    > 胡子哥一直主张复盘2000 张图背后的意义是什么
+  >    > 目前，我没有复盘满 2000 张图，但，胡子哥，早就说出这背后的原因了。当你一直复盘，坚持复盘的时候，你能加强对结构，对K线走势的敏感性，当市场走到一定的位置时，你会在以往的复盘中，隐约把控住对未来的走势
+  >    >
+  >    > 社区，给了你浓厚的氛围，高阶，给了你尖子班的目标，而复盘，只是你为你自己负责罢了
+  >    >
+  >    > 如果连复盘最基础的东西都做不到，那就别交易了，老老实实打工吧
+  >
+  > 9. 你对风险的认知是什么？
+  >
+  >    > 其实，就是你敢不敢亏罢了。
+  >    >
+  >    > 大结构就应该比小结构放更高的止损
+  >    >
+  >    > 下赌场，没有不亏的理由，若你是很胆小的人，那么，合约，期货，也许真的不适合你。
+  >
+  > **结业总结**
+  >
+  > > **交易是否大赚，其实讲究一个“缘”**
+  > > 有时候，缘到了，你能赚很多很多，例如有人空了 LUNA，创造了暴富传说，没必要太过追求利润的多少，考虑的，应该是你能接受亏损多少，慢慢等待一个机会，勇敢的，充满智慧的梭哈进去，慢半步，提前规划，该是你赚的，市场不会少你一分，不必FOMO，相信自己，学好图表，市场遍地机会，总有你参与的机会耐心，是市场交易的最重要一步，剩下的，交给市场，随缘吧
 
 #### 香芋
 
 * 课前
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Feefa3094-9d83-4dc3-9ce3-05d2491ad620%2FUntitled.png?table=block&id=10e89c85-287a-4606-820e-eab1104ca448&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  > **现在的交易认知**
+  >
+  > > 对市场要有敬畏：任何情况都有可能发生，Luna百亿市值，豪车直接变成士狗，一旦无脑做多， 百万资产缩水成几百块。
+  > >
+  >
+  > > 尽量别做小级别：F15 F30 尽可能少做，最好是别做，尽量做 H1 及以上的周期，对准确度，心态都有一个比较好的建立
+  >
+  > > 止损要合理：每一个仓位都要有一个合理的逻辑，没有合理的止损，止损太小时稍微一个深度回撤就打损出局了，而止损太大将面临盈利大幅度回撤甚至本金受损，不舍止损就等着爆仓吧
+  >
+  > > 浮赢都是假的：钱不进口袋等于没赚钱。看见有群友晒跟自己同币同方向的单子，就可以止盈一半了
+  >
+  > **交易现状**
+  >
+  > > 没发现好的机会，就出去玩、打游戏、旅游什么都好，每天看盘几次就足够了，并不需要长时间盯盘。
+  >
+  > > 盯盘很容易拿不住单，也在克服盯盘这个坏习惯，特别是看合约仓位的浮赢，这个算是最影响心态的东西。
+  >
+  > > 逐渐也在开始复盘了，希望等复盘2k 张图之后，再来跟自己做个交易历史对比
+  >
+  > **交易历史**
+  >
+  > > 刚进场时，什么都不懂，一进来玩的就是土狗，对交易根本没有概念，甚至连支付宝的基金都没玩过。玩土狗就梭哈干进去，土狗积累了第一笔资金，虽然不多就买了dot，也买过fil。dot没吃满就跑了。反思了之后決定以后要常持，然后就在30多fil刚启动的时候买了fil，也拿到过 200多，但那会儿没跑，就坐着 519 的瀑布一起向下，幸运的是9月给了个反弹成功在 100 附近跑路。这也算是不幸中的万幸了。后来也进了gala，吃了 50%就跑了，完美错过暴富，shib 就不提了。11月在imx 上赚了一点，但 12.4大跌的时候也跟着回吐了非常多，后来清仓就痛定恩痛认真学习了。
+  >
+  > > 总的来说是赚，暴富谈不上小赚几十万，来来回回浮赢也有过非常多的时候，但大体来算基本没什么变化。归根到底还是对交易缺乏认知、不懂交易，也有过分看重链上数据和情绪面的行为。
 
 * 课后
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5c306de4-2545-46a3-983f-c2cd7701b952%2FUntitled.png?table=block&id=8add4f63-1ea7-48e3-b3d1-d506ec3e5010&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  > 学了2个月，最大的变化就是心态的变化，还有对行情的理解。回顾过往的课程，才能明白什么样的行情才值得去交易，而什么样的行情最好是去休息。
+  
+  > 胡子说的亏钱案例，几乎每一个我都犯过，过去的我一直都很焦虑，担心上不了行情的车。上了车又担心会不会大跌，自己只能扛着。讲白了就是韭菜的经典思路，担心赚不到钱，又害怕亏钱。
+  
+  > 学了形研社的课程之后，不能说每一单都赚钱，起码现在对行情的理解相对于几个月前的自己是有个相当大进步了。而且对于胡子哥经典的一向话 “交易特别简单”，以前我认为只是凡尔赛，现在听完课程讲的几个模型，其实真的可以很简单。
+  
+  >对于复盘，我过去的复盘基本可以全删了，那根本不是复盘就是瞎几把乱画，对形态根本没有正确的理解。现在要重新开始洗刷自己的思想，从头再开始复盘，理解各个币种自己呈现出的形态，并且依照形态来做单。
+  >师傅领进门，修行靠个人。一切都得靠自己全部靠胡子哥跟流水师兄还有高阶群里的师兄师姐们是不行的，必须自己要有个撑到，3个月内死都得复盘全部至少2k张图表，不破不立。
 
 #### 乘风
 
 * 课后
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fdd7a1693-246f-4dd3-ad6c-18ce92db4de9%2FUntitled.png?table=block&id=b8967527-6f84-4753-a5ad-09503e900a5d&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  > **交易的认知**
+  >
+  > > 1. 顺势而为，顺趋势走赚钱会更容易
+  > > 2. 严格止损，不要怕亏钱：这个市场只要活着就有机会，就怕扛单爆仓一无所有
+  > > 3. 不要频繁交易：看不懂的行情就别做，保存实力
+  > > 4. 赚要大赚，亏要小亏，活下去永远是最重要的
+  > > 5. 不要想一口气吃成胖子，不要轻易梭哈
+  >
+  > **交易经历**
+  >
+  > > 交易还处于喜欢追单 （右侧交易），害怕错过行情的心态，这样风险很高， 盈亏比不好
+  >
+  > **结课**
+  >
+  > > 交易心态上，以前喜欢追涨杀跌， **现在经过课程和复盘发现，耐心等待结构自呈现是最好的，这就是胡子哥所说的快半步不要快一步**。
+  >
+  > >交易信心上，以前不够自信，哪怕一个标准的图形也不敢上仓位，相信坚持复盘能够改善，以后坚持复盘。
+  >
+  > >越发感受到交易是件自我的事，以前的我特别喜欢跟单，或者看其他人是不是跟我看的方向一样，现在了解到这点是不可取的，相信自己，盈亏自付，才能在交易的道路上越走越远。
+  >
+  > >还有就是关注级别，小级别现在越来越没有吸引力了，每天默念结构自呈现！
+  >
+  > >课程讲的心态方面的课程，我认为更能够帮助我这种小白走下去，胡子哥和流水师兄讲的都非常实在，非常感谢两位老师不吝指教，绝对的值回票价！
+  >
+  > > **更重要是之后的坚持复盘（复盘划重点〉，交易上的知行合一。**
 
 #### 锦梦蝶
 
 * 课前
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6dce61ab-a35e-4fb6-affd-df143dd1cde5%2FUntitled.png?table=block&id=bc887fac-bd0e-4cab-83dc-9fc3fec2a77b&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >**个人交易经历和现状**
+  >
+  >> 19年通过 cx 币进入币圈，年纪太小对市场是懵的，一路玩山寨币，到处梭哈，有人cx玩合约，赚赚亏亏加起来亏了几百万，把之前做其他赚的基本都亏进去了，后面一路现货、合约，牛市中间赚了百倍吧，也回撤了很大部分进去。
+  >>
+  >> 目前交易挺杂乱，随心情随波动随行情随市场，开单没有稳定的止损，合约目前整体还是赚的，完全是运气，没有交易原则和系统，操作位置没有稳定的逻辑，什么加仓、减仓、止损完全没有根据图表设置，交易心态很浮躁，往往自己推测行情都是对的，交易确一团糟，心手不一严重，操作太频繁，结构图表认知太差。
 
 * 课后
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F98fa4822-7cd4-4a2d-8fe8-a32791a85390%2FUntitled.png?table=block&id=968fe204-b168-4fa1-8ab1-46d043c5b4d4&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >1. 自我认知定位，是稳定型人格还是急躁性人格，激进还是稳健型，资金管理严格执行
+  >2. 清零自己所会的一切，既然学胡子哥的传统图表结构就是要从新开始， 放弃固有思维，根据个人性格在去决定做单交易系统，交易理念，最后去市场实践。为什么说清零，因为我自己老是有自己之前的想法去看盘面，导致亏损。
+  >3. 严格止损，不抗单
+  >4. 术，好好复盘，做大概率的结构，心态控制好，慢慢悟透胡子哥的术的基础，不断复盘听直播，听课程，**再懒也要想办法坚持复盘**，复盘让自己循序渐进领悟图表中的东西
+  >5. 高阶群带来的意义是自己复很多盘也学不到的东西
 
 #### xpgeng
 
 * 课前
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fcaf6aac4-fb5e-4de1-8222-8d9f247c76b5%2FUntitled.png?table=block&id=d62ded07-74cb-4dfd-a002-688be6de5b3a&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >**交易认知**
+  >
+  >> 不预测行情， 但要有交易预期：针对不同的预期要有相应的交易计划。
+  >
+  >> 止盈太难了：很多时候后悔不该长拿，利润全部回吐。又有很多时候后悔怎么不再扛一扛，扛过这波反弹就天亮了
+  >
+  >> 有几个单子，因为移动止损结果没有吃到后边的利润，经过几次惨痛的交易意识到，有些机会真的是不应该去做，少做和不做都比多做强
+
+  >**个人交易经历**
+  >
+  >> 19年，开始做项目，帮忙写点代码。因为工资开的是比特币，就开始接触交易所，但是当时不敢交易，发了工资都出金了。
+  >
+  >>20 年，狗币火了一把，被当时的暴富神话吸引，就拿出了部分工资换了狗币，结果买了就开始跌，然后就损失了一部分就出掉了。加上当时念书也没闲钱，开的工资都用来租房、吃喝满酒了，交易就搁置了。
+  >
+  >>21 年初，毕业工作，开始有闲钱，开始在交易所做现货交易。追了shib，结果 519被砍一半，忍痛砍仓(谁知道后来又尼玛涨了回来）
+  >
+  >>21 年下半年，才开始研究交易技术，找各种资料看，并且继续开始现货交易。但是还是始终不得法。买的现货，总是想拿出个十倍百倍，结果一路拿到腰斩。即使 69000，也没挣多少， 还好中间蒙到了一波celt，才不至于损失惨重。但是因为买了 ENS 和后半段的people，都是仓位腰斩。 
+  >
+  >>22 年初，twitter 上遇到胡子哥，就开始深入图表技术，通过看直播、看书，感觉这个靠谱，一对比，感觉以前就是在XB交易。但是中间还是有各种上头的交易，比如冲了后半段的 x2v2，腰斩。拿了剩下的钱冲了个貔貅盘，直接没了。冲了阿桑奇，没了。亏了之后才能冷静下来思考究竟什么是对
+
+  > **交易现状**
+  >
+  > > 入场时机掌握的不好：走马观花似的寻找机会，看到肉，只要能画出图表就做， 观察盘面不充分。而且很多时候入场都比较着急，感觉发现机会就要马上入场。结果要么是入在半山腰，要么入的点比较高，然后就扛很大的止损，亏多了就会有损失厌悉，扛一扛就不爱扛了，然后就砍。积少成多，砍的多了，就砍成了大止损。越到后面就越不敢上仓位，结果真正来行情时，仓位很小。
+  >
+  > > 开单次数太多：不断的砍小止损，带来的负面就是总想快速找下一个机会，然后一天开很多单，砍很多单。最后心态崩了，就想快点被爆了得了，情绪就上头了，第二天起来悔恨不己。
+  >
+  > > 盯盘时间太长：开单之后，频繁看盘，K线有一点风吹草动就想调整止损，调整仓位，调整这个，调整那个。然后就导致由于调整了止损被扫到，吃不到后边真正的起飞
 
 * 课后
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F31dc3880-0067-4b91-ab3a-4e19f3320669%2FUntitled.png?table=block&id=233928e2-cc7c-4eb2-8d4c-28e19706f13c&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >要想少走弯路，就得经常总结。之所以“卖血”报名，是想少走些弯路。人生短暂，尽快赚钱
+  >
+  >**交易上的变化**
+  >
+  >> 目标明确：知道自己要做什么，以及该怎么做。
+  >>
+  >> 1. 做什么：ETH、热门山寨。这就足够了。
+  >>
+  >> 2. 该怎么做：①h4、h2级别的框架或者结构的边界试单 ②耐心等待波动的末端加仓。 除此之外，不做
+  >>
+  >>    > 非常明显的变化：做单次数下降了很多。这解决了我在课程前的问题：随机做单，做单频率高
+  >
+  >> 心态更平稳：因为明确了做什么和怎么做，所以知道每周在等什么， 而且清楚只要等待，自己关注的这些品种里一定会出现一两个入场点
+  >>
+  >> > 非常明显的变化：整个等待的过程中相比之前就没那么着急入场。
+  >
+  >目前的改变就这么多，虽然文字没多少，但这些改变带来的收益很多， 因为快要翻仓了。
+  >
+  >所以，感觉真的非常幸运能参加这期课程。思维、方法、心态、 仓位多维提升。
+  
+  >**自己的不足**
+  >
+  >> 复盘的数量还不够多。距离2000 张还有很大一段距离。没有这2000 张打底 · 总感觉不踏实。
+  >
+  >> 缺少下重注的魄力。我觉得究其原因还是因为复盘数量不够。
+  >
+  >>社区参与的不够深入。哎，2000 张都不够，没脸在社区里吹水啊，腰杆都不硬。所以，经过一番总结，其实接下来的目标也很明确：持续复盘， 2000,5000, 10000… · 等复盘够了 2000 张 · 再米总结一下自己的变化吧。
 
 #### 陈皮
 
 * 课前
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F3f14c958-882e-46b8-8179-cee2e206d4e4%2FUntitled.png?table=block&id=821daa4e-17f8-4088-bc1f-d3c465600dc3&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >**交易认知**
+  >
+  >> 1. 交易像是和外星人沟通：假设“市场”是个外星人，K线是它的语言，我们要用认知内的手段去”翻译”某段信息，然后回应
+  >>
+  >>    > 沟通的过程中需要做到
+  >>    >
+  >>    > 1. 学会倾听，听人把话说完
+  >>    > 2. 尽可能将思维情绪与对方同步
+  >>    > 3. 几分真几分假要有个判断，但别过度解读
+  >>    > 4. 听懂的话要给对方回应，听不懂也很正常，别硬聊
+  >>
+  >> 2. 市场中有3股力量：向右、向上、向下。
+  >>
+  >>    > 向右的力不变，所以合力方向由上、下的力量强弱引发。
+  >>    >
+  >>    > 学会感知到价格运动中力的渐强渐弱，在图表交易系统中至关重要。
+  >>
+  >> 3. 交易中最重要的是活下去，生活中最重要的事是好好活着
+  >>
+  >>    > 交易的时候要适当“懒”一些，减少频率，多看，找准时机
+  >>    >
+  >>    > 生活的时候要适当"勤"一些，好好吃饭、睡觉、健身，多陪陪家人，保持好的身体和精神状态。
+
+  >**交易经历**
+  >
+  >> 18 年初，入币圈，根本没有深入研究，只觉得大饼以太价格比较高了（大饼5、6K，以太500 多），就买了很多EOS，少量的 ZEC 和 BCH，决心做一个钻石手，结果就是浪费了3年时间
+  >
+  >> 20年中，觉得必须得换车，就换了一些大饼现货，结果21 年初的回调直接给我吓跑了， 等于现货吃了不到2倍，踏空了后面的大行情。
+  >
+  >> 近年来，由于疫情加上我自身的选择，希望脱离打工的模式，往自由职业方向发展。我觉得交易是个可以长久做下去的事，也比较符合我个人的生活状态，于是22 年初开始正式学习技术分析。
+
+  >**交易现状**
+  >作为一个新手，为自己简单设置了一个机会审查系统，入场前问自己几个问题
+  >
+  >> 1. 有没有结构？
+  >> 2. 是否F30级别以上？
+  >> 3. 结构是否和谐&美？
+  >> 4. 是否末端叠加次级别结构？
+  >> 5. 是否顺势？
+  >> 6. 是否为市场批量结构？
 
 * 课后
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F48ce953a-4119-4aa6-898d-5b71a598ed8a%2FUntitled.png?table=block&id=f99101d1-cd53-4b7e-9641-25e7769eeffa&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >**我曾经视 “科学” 二字为圣经**
+  >
+  >> * 我追求“科学的交易”，于是刚开课时我极度迷恋于定式，我觉得定式是结构的法门，是无比科学的。
+  >>
+  >> * 如今看这属于狹隘且浅薄的， 或者说我对科学二字有很大的误解。科学，只是一种求真的态度，是一种敢于质疑的状态而非让久获得安全甚至信仰的工具。
+  >> * 如今看来，任何固定的、 先入为主的事物都是僵硬的，是无法展现自由心证最精华思想的。同样的结构，在不同的位置，不同的情绪，不同的波动下会有全然不同的结果，只有随心而动，静心为市场“把脉”，才是练习传统图表的正道。
+  
+  >**每个人都在自己人生的框架中沉浮**
+  >
+  >> * 就像从一座山向另一座山前进，你必将途径一个山谷，要跨过它，只有先步入谷底，而后上升
+  >> * 当你在框架底部盘桓时，在这个位置反转并非难事，但你需要慢慢地积攒， 徐徐图之。切勿自暴自弃，波动转弱的结果是跌下深渊
+  >> * 当你在框架顶部春风得意时，要做好心理准备，因为月盈则缺。
+  >> * 一定要明白这框架的牢固程度，这并非2小时、4小时的结构，而是你人生中以年为单位的大级别。你选择的，得到的，失去的，事与愿违的，如愿所偿的⋯构筑了这个看似坚不可摧的框架。虽然它很牢固，但请牢记一点，框架存在的意义，就是为了突破。
+  
+  >**我和交易是相互选择**
+  >
+  >> 中岛敦《山月记》中的一段话
+  >>
+  >> 人生就是不断地驯服心中野兽的过程： 因为害怕自己并非明珠而不敢刻苦琢磨，又因为有几分相信自己是明珠，而不能与瓦砾碌碌为伍，遂逐渐远离世间，疏避人群，结果在内心不断地用愤懑和羞怒饲育着自己懦弱的自尊心。世上每个人都是驯兽师，那匹猛兽就是各自的性情。对我而言，猛兽就是这自大的差耻心了。我折损自己，施苦妻儿，伤害朋友。末了，我就变成了这副与内心一致的模样
 
 #### 小吉
 
 * 课前
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff88d913c-d207-43c6-87cc-79ec3214363c%2FUntitled.png?table=block&id=e458dc75-771d-457d-b3e5-79f1807e07fd&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >**交易的认知与理解**
+  >
+  >> * 交易本质是一场概率游戏，利用有限的等码持续做高期望值的事
+  >>
+  >> * 期望值有两项：胜率、盈亏比。一般情况无法两者兼得
+  >>
+  >>   > * 右侧交易者跟随趋势，追求高胜率
+  >>   > * 左侧交易者预测趋势，追求高盈亏比
+  >>
+  >> * 遇到低胜率的机会，可以丢少点筹码或躺平不做
+  >>
+  >> * 遇到高胜率的机会，可以丢多点筹码甚至梭哈
+  >>
+  >> * 完成上述规划后，就能根据自己的性格与偏好选出适合的交易策略与风控方式，并且在实盘交易中不停去迭带完善自己的交易系统
+
+  >**交易经历**
+  >
+  >> 19年，当时还是学生，对于投资十分憧憬，在网上学习如何投资美股，投钱买了些科技股、ETF
+  >
+  >> 20 年，疫情蔓延，3月经济崩盘，帐面大缩水，心生恐惧就清了全数仓位，甚至利用差价合约做空，这使我扭亏为盈资产翻倍，但后续心生贪念杠杆越开越大，最后一个回调爆了，白折腾了几个夜晚
+  >
+  >> 21年，年初BTC持续创新高，FOMO 进场、519 崩盘接飞刀、买NFT、玩Gamefi、冲土狗、买元宇宙、web3.0概念币，我刚毕业人在军营服役错过了逃顶机会，获利全吐还伤了本金，又瞎折腾了一年。
+  >
+  >> 22 年，进入社区开接触合约交易，2月初 ETH 上楔D点顺破，以为又要开启新一输跌势，所以直接重仓做空，结果隔天一波拉升爆没，当时相当难过了一段间。但也因这事完美触发了学习系统。
+
+  >**交易现状**
+  >
+  >> 原本我切入市场的核心是谐波策略，但发现在单边行情下容易造成连续标损，且仓位的把控十分不易，一个失误可能错失大把行情或造成资产大幅回撤
+  >>
+  >
+  >> 检讨后决定清空自己，用传统图表切入市场，去了解整体框架与当前趋势位置，根据图表结构寻找合适交易机会
+  >
+  >>当前依然持续学习，会看胡子哥以前的视频、师兄姐们学习经验，并持续复盘，目前遇到的问题是心态把控和实盘经验，有时还是会忍不住去做小级别，确定性不高的结构，甚至会想追多追空，加减仓的把控也不是很熟练，希望课后能拿捏” 术”的技巧，判别出确定性高的交易机会
 
 * 课后
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6cb5d745-86c2-4476-9875-f145a4ad4b4f%2FUntitled.png?table=block&id=c52ab318-453c-4dd7-903d-6788fcdb6431&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >为求学好交易赚钱，我不断找寻市场圣杯，找寻财富密码，找寻混沌中的规律，殊不知这想法使我坠入深渊，不但磨损了大量本金，还折腾大量时间精神。网上无数的交易技巧让我每每激动也每每失落，这就像身处黑暗中有无数的光点， 每个光点都好似能指引走向康庄大道，但往往都会被一堵墙卡死无法继续前进，直到我遇见了胡子观币
+  >
+  >* 做交易有两个核心：”术”与”道”，曾经的我在”术” 上一直纠结，却忽视了”道〞对于日常交易的重要影响。
+  >
+  >* 胡子哥与流水师叔分享过，**作交易有如变速跑，今天赔掉的未来有信心能赚回来，绝不急于当下上头报仇**，当天时地利人和来临时，应勇于开仓持仓，甚至赌命梭哈
+  >
+  >* 赔的时候勇敢断臂，赚的时候把握机会往死里干，没人是靠复利发家，而是通过自己迭带后的交易系统伺机而动，在几次的战役中实现财富指数级增长。
+  >* 杜绝交易陋习，只关注大级别交易机会， 永不垫一手，不快一步，遇到机会，结构试仓，波动梭哈
 
 #### aiyidan
 
-* 课前
+* 课后
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6555157b-2f37-4da5-b91d-46f12cabc3ee%2FUntitled.png?table=block&id=32c18bb4-4893-44fe-b81a-dad01ad3bff7&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  > * 做能看得懂的结构，结构是不断重复的定式
+  > * 进场带止损，止损有逻辑，下单前写清楚下单思路，越简单越好
+  > * 下单后不要一直看盘，不要看群里的讨论改变最初的思路，确定一个方向，扛住亏损波动，拿住，要么亏损离场，要么目标位离场，中间的时间看书复盘
 
 #### 阿良
 
 * 课后
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F280a8e16-1014-4806-9c77-f8c8843e7394%2FUntitled.png?table=block&id=6f993b96-8091-4e52-b42c-baa5f93effde&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fb677ff39-bca9-4ba2-899f-94c41138567c%2FUntitled.png?table=block&id=ed0b8b18-75cd-448b-abe5-600749aa6468&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >>从前我只会无脑跟单，不会设置止盈和止损，对交易没有任何理解，别人开什么我就开什么
+  >>
+  >>现在我学会了结构，慢慢的理解市场，知道哪些位置可以进场，哪些位置可以抗一抗，学会了以损定量，对交易的信心也大大提高了
+  >
+  >>这次课程令我有最大改变的是心态：五月中包的时候，我膝盖韧带手术，趟医院的这段时间，错过了很多交易机会，我看到了很多学员，师兄师姐盈利赚钱，学费赚回来，甚至有的翻了好几倍，而我除了第二节课后开了一两单，盈利一点之后便再也没再开单了。看到大家的收益图，一开始我的fomo情绪是很大的，还有点焦虑，甚至想要直接进场，但是又想到我们学图表技术分析，就是无结构不交易，错过就错过，这个市场的机会很多，耐心等待下一次机会即可。况且我学这门技术是为了不再亏钱．不再无脑开单的。于是抛开这种想法，我去discord社区看**交易员心路历程**，让自己平静下来学习，既然复盘不了那我就去看师兄们的复盘区，学习如何画图、如何找结构，看微信群里同期学员的笔记，感悟。不知道从什么时候开始，我再看到大家的收益图，没有这么焦虑，甚至为他们高兴，也让我越发觉得传统图表分析真的很厉害，更是喜欢上这种氛围。万事有失必有得，我失去了交易机会， 但这也让我心态更加强大，在大家看来这可能是自我安慰吧，但我认为这对我是一个大机遇，或许我也会跟大家一样有赚，但也可能因为内心浮躁而导致最后亏钱。
+  >>
 
 #### 鲁子
 
 * 课前
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F5db3e0ed-1c70-44cd-9121-b9f4038d28b6%2FUntitled.png?table=block&id=f3b95f2f-0bd8-4242-b0c2-70f3cdaea3d4&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >**交易的认知与理解**
+  >
+  >> 交易是一场狩猎者的游戏，市场就像黑森林。猎人与猎物在黑森林里面，弱肉强食，你死我活的厮杀。每个在黑森林里面的厮杀者，既可以是猎人也可以是猎物，每一次的厮杀，到底是成为猎人，还是成为猎物，取决于参与者的心态，技巧和择时认势。所以，在这场猎杀的游戏里，比拼的更多的是谁的心脏足够大，谁的心态足够稳，谁有足够的耐心，耐心的等待猎物自己亮出底牌，然后一击必杀。
+  >
+  >> 交易的过程中，也是一次次与自己对话的过程，可以不断审视自己的内心，认识自己，认清自己。盈利了，佐证了自己交易系统的正确，积累正反馈：亏损了，积累经验，为下次开单做好准备
+  >
+  >**交易经历**
+  >
+  >> 去年 10月份，开始着重研究区块链技术
+  >
+  >>1月份，买了uni 现货， 一晚上涨了大概 20%左右，像是发现了新大陆一样，喜说之心溢于言表。然后追涨买了LOOKS 现货，3刀买，2.17刀卖，从此知道了砍仓的感觉
+  >
+  >> 2、3月份，开始玩合约，”初生牛犊不怕虎“，追涨杀跌，上头操作，被市场教育的跟孙子一样，然后痛定思痛
+  >
+  >>4月份，开始将时间分配在复盘和看视频学习上，随着看视频的深入和坚持复盘，逐渐能够按照结构开单、止损、盈利。那种感觉非常美妙。
+  >
+  >**交易的现状**
+  >
+  >> 目前做交易，能够按照图表逻辑和波动进行开单、设止盈和止损。但是有时还是会存在追涨杀跌的韭菜心理， 交易的操作上缺乏一致性。需要时间逐步构建稳定的交易系统。
 
 * 课后
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0dd0e48d-8617-4750-bf99-3eade53f455f%2FUntitled.png?table=block&id=cd2d9d46-54a5-4032-96af-8a74050c610a&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F9c5fbdae-f62e-47d9-8a57-45267e642622%2FUntitled.png?table=block&id=3cebe2c2-db3b-4031-8913-910318d657f7&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >**前言**
+  >
+  >> 一个半月的课程，虽然只学了五节课，但每节课程都反复看了3遍以上，每看一遍，都会有新的收获。跟一个半月前相比，无论是从对画图的理解，盘面的感觉，还是对于交易的理解，做单的 “杀伐果断”，都有了长足的进步。
+  
+  >**对于交易的理解**
+  >
+  >> 盈利时贪婪， 亏损时恐惧，这是韭菜共同的心理，之前我也如此。现在好很多了
+  >
+  >> 对于交易的预期降低了，每个单子开单时，首先想的是这单谁备亏多少， 而不是之前想的这单一定要赚多少，一定要通过这单回本等等
+  >
+  >> 学会错了就是错了， 就要立正挨打，学会了承认有些单子是做不到的。
+  
+  >**图的理解**
+  >
+  >> 水滴石穿非一日之功，冰冻三尺非一日之寒，画图是个慢功夫，急不得
+  
+  >**收获**
+  >
+  >> * 结构的精髓是通道，所有的结构都是通道的变体
+  >> * 画图，最重要的是确立结构所在的通道（框架）。有了框架，结构才有了依附，有了灵魂
+  >> * 在实盘 中，快速画出框架和结构的能力，来源于平日里的复盘。
+  >> * 千里之行，始于脚下。未来依然会坚持复盘，把复盘变成像呼吸一样自然的事情。
 
 #### KAI
 
-* 课前
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7c6f22cb-75ab-43e0-acf4-47dc3022c7b9%2FUntitled.png?table=block&id=857c1f82-bcf3-484d-ab83-0633c51e303e&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
 * 课后
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F02e0d627-8b84-4b13-bc76-cf5658ab286b%2FUntitled.png?table=block&id=70a54af0-b892-4e53-b928-c908bad40517&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >**复盘**
+  >
+  >> 经过这段时间的沉淀，复盘对我的正向影响有2点
+  >>
+  >> 1. 从复盘中反复练习形态，从而提高对形态的拿捏
+  >> 2. 复盘是时间成本最小的模拟盘，我一直认为“实战”才可以真正验证学习的结果。刚好也符合我现学现卖的行为习惯，可以让我最快吸取“己跑完的经验”
 
-#### Mak1r
+  >**认知**
+  >
+  >> 我把交易当成“修行”，我性格急，容易被周边环境变化影响，这个在交易里的结果就是“亏损”
+  >>
+  >> 交易技术对我来说像是一个对自我行为约束的一个“保险”。
 
-* 课前
-
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F43729957-a5bd-4f1b-8783-645a2c0435b4%2FUntitled.png?table=block&id=04d3fe83-868c-4198-a334-e7d5043ecc6f&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
-
-  
+  >**风险管控，自我熔断**
+  >
+  >> 接触熔断这个概念前，我基本不会去考虑每天亏多少百分比，因为我总想着反手做一笔，赚回来
+  >
+  >> “熔断”让我意识到，当做出一个决策得出一个错误结论时，要让自己慢下来、停下来，去调整回一个最佳的理性状态后再择机进入
+  >
+  >> 自己对自己负责，做交易这段时间，我意识到首先要沉淀下来，多学习、多复盘，要敢为自己的选择买单，不怕亏损。在这种高波动的市场里做到波澜不惊，做到每笔单子都要有交易逻辑，每笔单子都要有止损
 
 #### 阿飞
 
 * 课前
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe5057ada-2ec2-4eed-a287-974c2c3c47ce%2FUntitled.png?table=block&id=51430404-ce53-4492-96c4-cc5cfb90dba1&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >**对交易认识**
+  >
+  >> * 交易是谋略游戏，而不是赌大小。
+  >>
+  >> * 在盈亏比好的位置，给能承受的止损，静待行情发展，要么止损出局，要么止盈出场。
+  >>
+  >>   > 说起来无比简单，做起来十分困难，每一个环节都是对人性的考验。但是人性经不起考验，所以交易注定只有极少数人能走出来
+
+  >**个人交易经历**
+  >
+  >> 20年3月14 号听闻币圈暴跌，觉得机会来了，遂动用能支配的所有资金，抄底btc。现货交易持续到八月份，因暴跌后没有可用的抄底资金，决定动用合约进行抄底。经历过爆仓、回撤、踏空等等，韭菜能踩的坑全踩一遍。
+  >
+  >>21 年2月认为牛市接近中后期，清仓挖矿，持续到五月份，机缘巧合又做起交易，恰逄市场暴跌，资金缩水一半。
+  >
+  >>21 年 11月，随着行情回暖，账户达到新高。赚钱之后，止损变得随意，对后市盲目乐观，虽然在 65000 逃顶，却在58000 满仓干了进去，12.4 暴跌后的震荡行情，是损失最为惨痛的一段经历。经各路大v传销，这是一场史无前例的大牛市，所以一直以趋势思维，频繁重仓交易，直至损失难以承受，才幡然悔悟
+  >
+  >>22 年1月份账户剩余 1/3的资金，遇到了胡子哥，从此不再出现巨额亏损，也慢慢有了章法，有了观察市场的角度，争取早日实现稳定盈利。昨天流水师兄的一句话，点醒了我， 最傻的交易方法之最：下跌反弹过程中做多头突破信号。我用总资金的2/3来验证了这句话是名么正确
+  >
+  >**现状**
+  >
+  >>* 技术：刚复盘 400 多张图，对结构有些浅显的了解，但是存在诸多新手问题。对市场上比较明显的结构，能够识别出来，但是经常因为在边界处过度解读，导致看对做不对，经常被止损（通过第一次课的学习我认识到这是因为级别搞混了）。
+  >>
+  >>* 心态：心态上的问题比较多。因账户损失较大，交易信心还没有完全恢复，导致一系列操作变形的问题时有发生。
+  >>
+  >>  > * 比如盈利的单子稍有回撤就拿不住
+  >>  > * 设好的止损，行情没有按照预期发展但还没触及止损线，提前平仓
+  >>  > * 经常fomo，担心错过行情，导致追涨杀跌，亳无章法
+  >>  > * 不敢上大仓位等等
 
 * 课后
 
-  ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4cceab53-d05d-4db4-8f86-c012f5e64ace%2FUntitled.png?table=block&id=bce88d3c-b5ba-4556-b0b4-1a0fb769122b&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
+  >>我自诩运气不错。在内心躁动，不安于现状时，偶然看到了比特币312腰斩的新闻，重仓梭哈遇到了大牛市，挣到了打工十年也不敢想的钱
+  >
+  >>在牛熊交替，账户折损过半时，遇到了胡子哥，让我一个交易近两年仍然追涨杀跌的老韭菜，找到了切入市场的角度，不敢说能稳定盈利，至少做到减少亏损， 更是避免了账户的毁灭性打击，让我能活到下个牛市
+  >
+  >>在技术提升遇到瓶颈时，胡子哥开了形研社二期，让我得以系统地学习交易，从心法到定式，从心态到风控，听完之后醍醐灌顶，豁然开朗
+  >
+  >>回想刚进入币圈时，冲动交易，完全没有章法。每当遇到正常回调就不知所措，盯着上蹿下跳的K线，祈祷它能尽快涨上去。有了合约的加持，爆仓更是水到渠成。
+  >
+  >>有过这一段三天饿九顿的经历，才深刻体会到，有一种观察市场的角度，是多么可贵，我认为，这是韭菜向专业交易员转变的第一步。
+  >
+  >>胡子哥在平时的行情直播中，正是用传统图表的视角，来观察市场，让我们在读懂行情减少亏损的同时，也渐渐掌握了这种方法。但是受限于每天直播的时间太短，零碎的知识点，难以串起传统图表的整体脉络，形研社的系统培训就显得格外重要
+  >
+  >>胡子哥一直说，交易特别简单。大家都觉得是凡尔赛，起初我也这么认为。直到听完课程里讲的重力模型、磁极模型、布朗运动、通道，才明白原来交易真的可以如此简单，时隔一个月， 仍然记得听完课程时的通透感。回头再去看那些k线，不再上蹿下跳，而是有序地运行在通道里，做多做空不再是猜大小的游戏，通道边界做反转，通道中间做中继，配合结构与波动，一目了然。
+  >
+  >>师傅领进门，修行在个人。我目前在交易上仍然存在一些问题，比如频繁开仓， 拿不住单子等等。师傅己经把任督二脉打 通，能不能习得武林绝学，全靠我的努力了。
+  >
+  >> 今天重新开了 2000张复盘子区，在此立一个flag，三个月之内一定完成2000 张复盘任务！若当成一份事业来做，那必须拿出应有的态度，没有理由，没有借口。
 
 #### 隔壁老王
 
 * 课前
+
+  
+
+  >
+
+  >
+
+  >
+
+  >
+
+  >
+
+  >
+
+  >
+
+  
 
   ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc40773cb-b910-4e15-a640-27c5a55d2d39%2FUntitled.png?table=block&id=8e26a8f2-efac-42e4-b602-3ef4fb8b4095&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
 
@@ -2294,75 +2679,208 @@ harmonictrader
 
   ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F56467bfd-6346-4d59-bfe3-cba48a5825b2%2FUntitled.png?table=block&id=dcfdf391-4694-49a4-a37e-551c3eccfd1c&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1370&userId=&cache=v2)
 
+![image-20240524085703065](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405240857365.png)
 
+### 万丈高楼平地起 - 复盘还得靠自己
 
+> 大家好，我是观星，2019 年的时候通过和朋友了解进入了币圈，刚进市圈的时候就认识了胡子哥。
+>
+> **进入币圈后接触了哪些交易方法？为何认可传统图表？**
+>
+> >在学图表之前，我学过均线的交易方法，但是均线的表现是有滞后性的，也没有一个明确性的止损点，一般都是拿长线趋势这种交易方式。学过之后发现并不适合我，毕竟趋势交易更适合大资金长时间持有，比如做现货，但是进币圈大部分人都想快速挖到第一桶金，图表是能使小资金做波段快速积累财富的一个交易技术。
+> >
+> >为什么找到胡子哥呢，因为我知道金融市场裸K其实是最实用的，因此裸K配合图表交易就成了我最想认真学的一个交易系统，同时胡子哥也是币圈里我知道的第一个科普传统图表技术分析的， 我就想学习一图一做的交易方式，胡子哥无论是交易经验还是传统图表技术都是十分成熟的
+>
+> **复盘一万张后，让你对传统图表有了哪些认识？**
+>
+> >自从社区有了 2000 张复盘的活动，我就开始了复盘画图，第一期我是画了 3000 张，当时我的感受是对基本图形有了更深的认识，比如旗形、楔形、通道、对三等K，级别 稳定的K线数量一般是在75~175 根之间。
+> >
+> >**第一期的500 张是一个起步阶段**
+> >
+> >> 因为大家可以看到，早起我自己找图形还是比较难的，就像找不同一样啊，很多位置并不能一眼就看出来，而是需要反复仔细的观察，但第一期的 3000 张画完之后，就能一眼看出来某个位置是什么图形。
+> >
+> >**第二期的 3000 张就需要带有逻辑的思考每个图的进场位置**
+> >
+> >> 如果进场位置不好那就不做，因为胡子哥往期直播说过做形态做图表，每一个进场的点都是固定的：①逆势进场 ②突破进场 ③回踩进场 ④图形中间去赌方向
+> >
+> >>就四种方式，最次的就是②突破进场，其次是就是④赌方向，再次③回踩进场，最好的就是①逆势进场
+> >
+> >>再比如通道上边界出现头肩顶结构的这种不会去盲目追多，因为画图多了也就大概知道自己画的图对不对，K线数量对不对，每个结构的支撑点，入场点位在哪，几小时结构的盈亏比更合适，所以我基本不会去做 15 分钟的结构，就像胡子哥说的“池浅王八多”，小时级别的图跟分钟级别的图的止损其实是差不多的，但是分钟图盈亏比不合适，稳定性也比较差，不确定性太高了。
+> >
+> >**第三期的 10000 张除了加深对图表的熟悉，更重要的是理解和了解每一波行情的趋势性**
+> >
+> >>牛市上涨趋势 & 熊市的下跌趋势跟图表结合，思考思考每个图形在趋势里具有怎么样的特性
+> >
+> >>比如对三是中性的，但头肩顶、头肩底在不同的趋势里会有大概率反转结构转中继结构，不再是单一图形具备的意义，而是随着市场而变化
+> >
+> >>比如很多旗形、对三没有E点，头肩顶加楔形伴随的不再是直上直下的跌幅，而是转化成了通道下跌/上涨
+> >
+> >>还有整体市场不同币种之间的共振， 比如市场批量的空头结构，就会促使我有信心放大仓位去把握住机会
+> >
+> >**复盘 1000 张后我给自己制定了几个必要的交易守则**
+> >
+> >>1. 坚决不做分钟级别结构，而且少看，因为看多了就会沉浸在小级别的波动里，从而错过大级别的机会，最后没了自己的节奏，变成市场的炮灰
+> >>2. 不管自己的判断是否准确，只要有一个清晰的开单逻辑就去执行，胡子哥说交易就是自我实现，错了就是错了，汲取教训再进行改成，坚持自己、相信自己
+> >>3. 如果有的币种我提前止盈了，后期他还张了一大截，在止盈之后我会把币种删自选， 直接就不看了，哪怕后续再涨，至少眼不见心不烦，也不会去追高
+> >
+> >>坚持复盘到10000张后，明显能感觉到量变后的质变，进步能明显感觉到，很多图表技术和体会在画图没到一定数量的时候哪怕别人跟你讲，也是体会不到那么深刻的，只知其然不知其所以然。所以社区的小伙伴大家一定要坚持复盘画图
 
+### 个人学习传统图表有哪些方法？
 
-# 社区SPACE精彩内容整理
+>**Yoyomu**
+>
+>>我是 17年进圈，什么也不懂，年底熊市就退圈了。20 年牛市又重新进圈，到了21年底，认识到自己什么也不懂， 只会看消息跟着别人买，买了之后就死，那时候起就决定要学习技术。
+>>
+>
+>>第一期2000 张复盘的时候，自己画的效果并不是太好。在这里要感谢兵哥，兵哥对我说了一句话， 他说：“虽然你画了很多，但是你的图并没有进场点”，从那一刻起算是点醒了我，因为我之前只是画了一个三角、一个楔形，并不知道为什么会出现这样的结构。到了现在我可以知道一个三角结构我做的是哪一段的趋势，一个楔形我做的是哪一段的反转。就像观星说的，随著复盘数量的增加，是可以从量变转换成质变的
+>
+>>最后总结一句话：画图是为自己画的，交易是为自己做的，钱是为自己赚的。当复盘数量积累到一定程度，才能为以后的交易打下良好的基础
 
-## 20221108暴跌生存指南
+> **Kaii**
+>
+> >我是今年 4月30日才开始建立子区复盘的，到现在为止大概半年时间，最激励我复盘的是胡子哥直播时的一句话，“赚钱你都不努力，难道吃屎时努力吗”
+>
+> >随着我复盘的数量增加，我做单的自信心也越来越强，我的交易系统最喜欢一些定式结构，比如一个中立结构，必须是要站上一个大级别的阻力位/支撑位，还有楔形＋头肩，这些都是我比较喜欢也是胜率比较高的定式，这些经验和自信也都是通过复盘得来的。
+>
+> >对于传统图表来说，复盘就是对自己最大的一笔投资。
 
-![image-20240503181122291](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181122291.png)
+> **AM00**
+>
+> >我最早开始复盘是模仿朝阳老师画的，边模仿边学习，因为我是学画画的， 所以知道随著画图数里的增加，哪怕是临摹也能够熟能生巧，一眼看出哪个位置是什么结构形成自己的肌肉记忆。
+>
+> >在油管看胡子哥的往期视频也是一个很好的学习方法，900 个视频基本币圈所有的行情走势都涵盖了，视频里有讲胡子哥对单子的处理、对行情的预判逻辑、结构定式，比如频繁画门、重心下移、波动收窄，每当胡子哥说这种定式的时候我都会打开 TradingView 回放到当时的行情去找一找感觉，体会定式所表达的含义，就像老师教给了你一个公式，但是需要你不断地自己去复习做练习册一样。
+>
+> >最后通过自己的学习理解整理出自己的交易系統，让自己更清醒的去看待市场、看待交易
+>
+> >学习最关键的是要动起来，不要做思想上的巨人，行动上的侏儒
 
-![image-20240503181138852](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181138852.png)
+**学习传统图表多久后，开始实现稳定盈利？**
 
-![image-20240503181155775](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181155775.png)
+> **循序渐进**
+>
+> >如果你通过复盘发现传统图表十分有效，你想做交易，那也不要直接拿大钱做，首先这个策略不管好不好，你都一定有对行情的不适应期，本来策略是好的， 但你的入场时间错误，你就会亏很多钱、耽误很多时间。初期一定要用你可以承受的资金、用小钱去试手、去验证，这样也可以保证你的交易心态处于一个稳定且舒适的状态。
+>
+> **前人栽树 后人乘凉**
+>
+> >尽可能选一些成熟的交易体系，许多人通过这个交易体系赚到钱了，经得起市场的验证了，传统图表就是这样一个成熟且经得起验证的交易体系
+>
+> >分享一个我自己的经历，最早我是做短线的，短线这条路非常难，可能市场上只有 20%的人可以通过短线赚到钱，那你如果选择了一条很难的交易体系，你后续在交易之路上也会相比其他人遇到更多的困难
+>
+> **个人认知成就交易系统**
+>
+> >随着交易的入门，找到符合自己性格的交易方法就成了首要目标
+>
+> >比如入门阶段你喜欢做 F5 F15的飞机，但是随者你的资金体量变大，这种小级别你就做不进去了，然后你开始做 H8 H12，但是你又发现自己扛不住波动，最后你通过尝试发现自己最适合做H2 H4的图形， 确定了自己的交易系统之后就保持只做自己擅长的时间级别
+>
+> >交易同样也有一个不可能三角，流动性、盈亏比、成功率，这三个你只可以选择两个，图表只选择了盈亏比和流动性，所以成功率并不是重要的，也许你的成功率只有40%~50%，但通过合适的盈亏比，你一样可以通过图表赚到很多钱。
 
-![image-20240503181217130](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181217130.png)
+**如何利用图形做资金管理，突破自己的交易瓶颈？**
 
-![image-20240503181237717](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181237717.png)
+> **Babyhuzi**
+>
+> >**资金管理**
+> >
+> >* 大资金："33制〞资金管理
+> >
+> >  > 假如账户有 1000 个 ETH，那就按 “33 制"原则分成3份，每一份300个 ETH， 3+3+3=900
+> >
+> >  > 当一个框架出现时，我们通常赌他边界反转，那就在边界先开 1/3 仓位试试水，如果这时候在边界构筑了次级别的交易信号，就再加1/3，然后观察后续行情如何发展，如果后续继续构筑一个次级别的中继，那就再加 1/3
+> >  >
+> >  > ![image-20240524104835956](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405241048268.png)
+> >  >
+> >  > 在第2次 1/3 仓位加完之后
+> >  >
+> >  > * 如果行情不符合预期
+> >  >
+> >  >   * 后续没有向下跌破，而是长时间横住了，则先把第2次加的 1/3 仓位砍掉
+> >  >
+> >  >   * 后续向上突破通道框架，则把第1次加的 300张也砍掉
+> >
+> >  > 这就是典型的“33制“ 原则，进可攻，退可守。
+> >
+> >  > 选攻顺利时，仓位就是 90%，很激进
+> >
+> >  > 选攻不顺利时，仓位还可以回到 30%
+> >
+> >  > 这种 369 的资管体系非常简洁，但这通常适用于单一品种的交易，如果做多品种就很容易弄混
+> >
+> >* 小资金：“交易是变速跑”
+> >
+> >  > 资金管理对于大规模资金才有意义，小资金不建议搞花里胡哨的资金管理，直接 55分
+> >
+> >  >找到好的机会直接打进去 50%仓位，用大止损覆盖波动
+> >
+> >  >如果行情符合预期，再把剩下的 50%打进去，这样可以在短期内把资金做起来
+> >
+> >  >小资金做交易，每天点灯熬油也赚不到多少钱，只有资金长大之后再慢惯細化，才能走上稳定正规的道路
+> >
+> >**如何突破资金瓶颈**
+> >
+> >>很多交易员的资金曲线看起来很漂亮，但实际上资金体量很小，如果你的野心不大也可以，但如果你不想止步于此，就一定要突破自己的资金瓶颈。以我个人的经历来讲我是如何突破自己的资金瓶颈的：
+> >
+> >* 初入币圈
+> >
+> >  > 19年底，当时非常缺钱，需要在一年内赚够 1000 多万才能把亏空堵上，所以只能想办法在资本市场找机会，碰巧当时胡子兄和王师兄都安利我进币圈，尤其胡子兄当时和我说币圈人傻钱多速来。19 年底正式进入币圈
+> >
+> >* 小试牛刀
+> >
+> >  > 进圈后，第一次入金是在19 年 11 月 ，我的入金次数很少，只有两三次，每次只有 2000、 3000，因为当时全身上下只剩一点钱了，大概 100 万左右，相对于债务来说简直是杯水车薪。 刚开始做币的时候其实是很混沌的，跟许多刚进圈的新人一样，在你还没有进入状态，对币圈的波动没有太多感悟的时候，交易做起来是很混沌的，每天感觉做了很多，但账户资金并没有什么增加
+> >
+> >  > 真正进入状态是在 312，312 之前突然在 BCH 上出现了一个我十分熟悉的做空信号，然后就直接梭了进去，当时因为钱少也并没有 55 分，直接全部梭了进去，之后就有了浮盈，然后浮盈加仓，因为想着 10% 是可以覆盖波动的，现在想起来也是运气比较好，操作如行云流水一般十分流畅。随后又发现了一个LINK 的做空机会，当时记得是社区的小伙伴都在做空 LINK，直接把 LINK 空归零了。最后把自己所有单子平掉之后算了一下， 大概一周时间就从几千块钱到了十万块，这也就是我在币圈的第一桶金，当然这个时候去谈资金规模还是 扯淡，这点钱还谈不上资金管理，所以我就开始通过各个渠道找机会，想办法借助资本的力量
+> >
+> >* 步入正轨
+> >
+> >  > 在 20 年，王师兄通过他的面子帮我背书，给我搞了一些 ETH 让我做资管，刚开始量很小，只有 100 个ETH，和老板说的是每增加 20%浮盈就给增加一倍的量，也就是再加 100个ETH（做到 120 个给你增加到 200、做到 240个给你增加到 400）虽然刚开始的量很小，但是做到后面资金是以指数級增加的。那时候开始我感觉到我作为一个职业交易员开始上道了
+> >
+> >* 水到渠成
+> >
+> >  > 我的资金瓶颈是在这三年中无意间慢慢突破的，强大的压力下人是可以迸发出强大潜能的。我记得在 20年，我接了四个币的资管加上我自己的自营，还有外汇和股票的资管，基本一年没有任何休息。回头看，如果不是因为当时有超强的压力，我是挺不过来的，当然过程中也出现了很多事故，比如 519 ，当时出现了大量的浮亏，那时候满身都是湿汗，但是你咬牙挺过去了也就过去了。毕竟相对于穷和死，压力算个球啊。经历了这些之后下次再遇到资金瓶颈，突破就是水到渠成 。
 
-![image-20240503181257259](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181257259.png)
-
-![image-20240503181308957](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181308957.png)
-
-![image-20240503181320386](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181320386.png)
-
-![image-20240503181333823](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181333823.png)
-
-![image-20240503181348887](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181348887.png)
-
-![image-20240503181404507](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181404507.png)
-
-![image-20240503181418221](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181418221.png)
-
-![image-20240503181432055](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181432055.png)
-
-![image-20240503181446358](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181446358.png)
-
-![image-20240503181459337](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181459337.png)
-
-![image-20240503181517439](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181517439.png)
-
-![image-20240503181532780](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181532780.png)
-
-![image-20240503181545112](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181545112.png)
-
-## 20221110 “万丈高楼平地起复盘还得靠自己”
-
-![image-20240503181721054](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181721054.png)
-
-![image-20240503181738149](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181738149.png)
-
-![image-20240503181754318](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181754318.png)
-
-![image-20240503181810868](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181810868.png)
-
-![image-20240503181823329](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181823329.png)
-
-![image-20240503181835064](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181835064.png)
-
-![image-20240503181849601](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181849601.png)
-
-![image-20240503181904051](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181904051.png)
-
-![image-20240503181923628](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503181923628.png)
-
-![image-20240503182343194](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503182343194.png)
-
-![image-20240503182354477](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503182354477.png)
-
-![image-20240503182406356](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240503182406356.png)
+> **Piaoxue**
+>
+> >我一直以短线为主，类似继远师兄的炒蛋模式，因为去年行情不错非常适合小资金去做，流动性足够、波动幅度也很大，在 519 之前积累了一些本金，519时因为运气比较好，把多单开进去了，然后随着交易所拔网线，我的多单也平不掉，所以被动赚了一些钱。再后来我的主要资金放在了现货上，合约只占我总资金的 3%
+>
+> * **性格决定系统**
+>
+>   > 做单习惯和性格相关
+>   >
+>   > 比如做合约时。价格波动会导致我的内心也会波动，导致生活状态不好。所以自己总结下来，我还是适合短平快，比较适合这种平掉单子之后安心过生活，处理社区事务
+>
+>   > 总体来说，小资金去博一个大收益，大资金去做一个确定性，大概是这个思路。
+>
+> * **赚相对应维度的钱**
+>
+>   币圈的钱我把他分为三个维度：
+>
+>   1. **最大的維度 --- 周期**
+>
+>      >例如SBF 本质上就是赚周期的钱、前年和去年 DeFi 比较火时，他就拿客户的资金去做 DeFi，这种是赚的很快的，大概 3~4年的时候就变成了最有钱的90后
+>
+>      >但同时周期的钱亏起来也很快，可能因为资金体量大出不来、也可能低估了行情的波动等各式各样的原因
+>
+>   2. **其次的維度 --- 趋势**
+>
+>      > 例如图表的大级别，像日线或 者 H12 这种本质就是在赚一个趋势的钱
+>
+>   3. **最后的维度 --- 波动**
+>
+>      > 我赚的就是波动的钱，级别更小，通过提升交易频率达到一个相对稳定的收益，但是对技术基础要求很高。
+>
+> * **与自己和解**
+>
+>   > 做交易一定要接受真实的自己 ，学会与自己和解，因为你自己才是交易这条路上最坚定的战友
+>
+>   >有些人对自身要求比较苛刻，比如上学时非常自律优秀的人，他希望他在交易上也是如此，但是市场往往不会如你所愿，我们身处在一个逆人性且少数人才能赚钱的市场里，如果你对自身要求非常苛刻的话，自身的压力其实是很大的。
+>
+>   >长期处于这种状态，一是会对交易产生庆恶，二是身体会出现问题
+>
+>   >所以建议大家试着接受自己的无能为力，有些机会做不上，赚不到的时候对学会宽恕自己
+>
+> * 敬畏市场
+>
+>   > 尤其是在币圈，比如像 LUNA 这种极端行情，很多人只是一张单子开错方向，就很可能账户归零
+>
+>   >要对市场充满敬畏，对自己保持信心，只要信心还在、通过正向的努力，大家都可以实现扭亏为盈，把交易走向正轨
 
 ## 胡子哥五年前的一篇文章
 
@@ -2495,15 +3013,57 @@ harmonictrader
 
 # 交易员的心路历程（高赞版）
 
-> 宏观的讲，每一个人生来便是不同的。
+> 宏观的讲，每一个人都是不同的，身边的一切都在潜移默化的影响着你
 >
-> 即使是双胞胎，世界上也不存在彻头彻尾完全相同的两个人，身边的一切都在潜移默化的影响着你，由内到外。所以人与人的观点、做派、行事风格、方式方法也会因此产生不同进而引发出对立面。置换到微观上，虽社群内每一位交易员使用的底层技术相同，但也会因为种种原因促使每人有不大相同的理解与操作，从中悟到的心得自然也就不尽相同。
->
-> 本篇中所记录的内容皆为群员们做交易以来得到的个人教训及个人感悟，或许这能使正在观看的你有所体会，又或者毫无收获，甚至嗤之以鼻。但既然你我从根本上即是不同的，又何必对对方抱有过多的意见呢。从相同中吸取经验、巩固教训；从不同中认识新的观点，避免类似的灾祸。感悟看的再多，最重要的还是能在实践中找到适合自己的方法。
->
-> 望你我共同成长、共同进步、共同富裕。
 
-![image-20240504002313066](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240504002313066.png)
+> 社群内每一位交易员使用的底层技术相同，但也会因为种种原因促使每人有不大相同的理解与操作，从中悟到的心得自然也就不尽相同
+
+>本篇记录皆为群员们做交易以来得到的个人教训及感悟，或许这能使你有所体会，又或毫无收获，甚至嗤之以鼻，感悟看的再多，最重要的还是能在实践中找到适合自己的方法。
+
+>望你我共同成长、共同进步、共同富裕
+
+**流水不腐 2022/05/03**
+
+> 1. 所有低于H2的框架都不值得参考，所有低于F15的收敛结构都不值得下手
+> 2. 在框架的中间赌收敛中继，边界赌毛刺反转
+> 3. 大结构突破后的第一个次级别收敛是财富倍增器
+> 4. 任何时候，都不值得参与浪五的顺势fomo
+> 5. 任何时候，当你的单子让你对自我产生怀疑，立即马上减仓25%；如果依旧不自信，继续减仓25%
+> 6. 任何时候，全仓杠杆超过5x，都是赌命
+> 7. 对于99.99%的交易员而言，H12（含）以上级别的图形是没有意义的
+> 8. 对于规模资金，合约是地狱，现货是乐士
+> 9. 新人选定一个框架，比如F30+H2+H6，并坚定的参与少数几个结构（定式），这是急速入门之道
+> 10. 多头止盈了，不要立即反手空；反之亦然
+> 11. 长途奔袭后的收敛易反转，尤其是这个收敛位于某大级别压力或支摚附近
+> 12. 小资金快速长大三条路
+>     1. 高杠杆梭哈比特市、以太坊的稳定结构
+>     2. 中等杠杆梭哈热门妖币
+>     3. 参与末上所的概念新币
+> 13. 小止损等同于没止损，尤其是针对收敛结构，止损尽可能放到毛刺之外，开仓尽可能靠近边界
+> 14. 每个交易员都应该设置熔断，阶段性会有低谷，出现的时候就要硬性终止。至于怎么定义低谷，可以是累计最大亏损，也可以是连续亏损次数
+> 15. 交易是典型的变速跑，天时地利人和类机会来临时，应该勇于梭哈赌命 （九条命之一条）
+> 16. 做投机，尤其是高波动性的市场，比如币，千万不要大额入金，没有必要。几千u足够了。我进币圈入了两次金，都是低于2000u
+> 17. 纯粹的交易分两块，一是技术（拐棍）二是心态（心理），技术好学难精，心态都懂难成熟。拿可承受的资金，去市场中一刀一枪的练吧，没有捷径
+> 18. 复盘，复盘，复盘：你常做的几个品种，至少应该达到什么地步呢？ 看到价格，就应该图在心里
+> 19. 基本功：在明确了画图的基本规则后，应该遍历各种各样的行情，绘制各种各样的结构图形。什么时候你觉得以前画的是屎了，就是进步了
+> 20. 学的足够多足够广之后，就要开始认识自我，剖析自己的性格。你最終形成的交易系统就是跟性格息息相关的，理想状态是招数是从心里长出来的，如臂使指，毫无滞涩感。举个例子，机械性格的人很难在自由心证上有所建树
+> 21. 自由心证和定式：前者是后者融会贯通后的遗忘，不分高低贵戏。田伯光的快刀可以砍人，令狐冲的独孤九创同样可以砍人，定式也分高低。但很难说独孤九剑比太极更低劣
+> 22. 一致性：交易手法有一致性，资金管理有一致性，止损有一致性，心态管理同样有一致性。举例，早上拿一万块梭哈，晚上喝高兴了，拿五万块梭哈，这就违背了一致性
+> 23. 利润回吐：这个属于止损止盈一致性的问题，即平仓一致性。想拿大利润，就要做好连续回吐的心理准备，最近两周，我已经经历了连续二次回吐200e+的交易，但并不是失败的交易
+> 24. 风险资金：任何时候不要动用超过自身承受的资金来投机，高利贷做交易，你让阎王爷来也会动作变形
+> 25. 缺陷的艺术：交易就是典型的此类工种。不要对自己太苛责。比如，高位的单子，拿到了很好的位置，面对次级别回踩时，心里动摇了，提前出局了，事后悔恨万千，没有必要。下次记得留点单子就好了
+> 26. 亮恕：交易是孤独者的修罗场。没有成功以前，不需要得到任何人的赞同理解，成功后，也是如此。人生很短，褒扬和贬低都没意义。正视自己的内心即可，学会亮恕自我
+> 27. 圈层（圈子）：任何行当都有圈层，越处于核心位置，食利越丰。投机者要远离弱者的圈子，远离屌丝圈子。懦弱会传染，像病毒一样，从生活到交易。面对强者，要像狗皮膏药一样，死死粘住，学习长处
+> 28. 交易系统：成熱交易员的必备神器，是把你在交易过程中所有的动作尽可能细化后的条款汇总（有形的动作，无形的心理活动） 
+> 29. 坚持：交易是单行线，尤其是杠杆交易。当你的沉默成本足够大时，其实没有退出一说。除了成功，没有第二条路。所以，没事别瞎辞职，别瞎全职
+> 30. 悖论：好的图形会让你先失败两次，第三次你不敢出手了，行情来临。你的熔断系统必须要权衡悖论
+> 31. 除非你能看到别人的交割单，否则不要相信任何人，尤其是大神，因为这个市场中从来不缺滔滔不绝的老亏货。我也不例外
+
+
+
+
+
+
 
 ![img](https://huziguanbi.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff2398118-d9d8-476f-9efa-0329da8b63a3%2FUntitled.png?table=block&id=5251ac66-e190-44c3-9939-2febbab1ceda&spaceId=a84fcb81-b87d-45b9-a4fb-fe2d49b8bf58&width=1130&userId=&cache=v2)
 
