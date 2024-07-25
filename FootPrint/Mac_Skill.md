@@ -130,7 +130,7 @@
 
 1. 购买ChatGPT4
 
-     > 方式一：[按次购买，每次买一个月](https://www.youtube.com/watch?v=kkl2YPO33qc)
+     > 方式一：[按次购买，每次买一个月](https://www.youtube.com/watch?v=kkl2YPO33qc) ，[教程](https://hailangya.com/articles/2021/04/02/apple-gift-card/)
      >
      > > 1. 注册Apple美国免税洲账号
      > > 2. 办理招商双币信用卡
@@ -159,133 +159,178 @@
 
 1. OpenAI语音转文字模型Whisper
 
-     > [教程](https://github.com/openai/whisper)
-     >
-     > ```bash
-     > pip3 install -U openai-whisper
-     > // 会自动下载medium模型到 ~/.cache/whisper
-     > whisper audio.mp3 --model medium
-     > ```
-     >
+      > [教程](https://github.com/openai/whisper)
+      >
+      > ```bash
+      > pip3 install -U openai-whisper
+      > // 会自动下载medium模型到 ~/.cache/whisper
+      > whisper audio.mp3 --model medium
+      > ```
+      >
+      > * 在线视频转文字
+      >
+      >   ```python
+      >   import subprocess  # 导入subprocess模块，用于执行系统命令
+      >   import whisper  # 导入whisper模块，用于语音转文字
+      >   
+      >   # 定义YouTube视频的URL
+      >   youtube_url = "https://www.youtube.com/watch?v=qZ3T5hunOuQ"
+      >   # 定义输出的音频文件名
+      >   output_audio = "audio.m4a"
+      >   
+      >   # 使用yt-dlp下载音频并提取为m4a格式，设置为低等品质
+      >   # -f bestaudio: 选择最佳音频质量
+      >   # --extract-audio: 只提取音频
+      >   # --audio-format m4a: 转换音频为m4a格式
+      >   # --audio-quality 2: 设置音频质量为低等，0最低，9最高
+      >   # -o output_audio: 指定输出文件名为 output_audio
+      >   subprocess.run(
+      >       [
+      >           "yt-dlp",
+      >           "-f",
+      >           "bestaudio",
+      >           "--extract-audio",
+      >           "--audio-format",
+      >           "m4a",
+      >           "--audio-quality",
+      >           "2",
+      >           "-o",
+      >           output_audio,
+      >           youtube_url,
+      >       ]
+      >   )
+      >   
+      >   # 加载Whisper模型
+      >   # "base" 是模型的大小，可以根据需要选择 "tiny", "base", "small", "medium", "large"
+      >   model = whisper.load_model("base")
+      >   
+      >   # 使用Whisper模型读取音频文件并进行语音转文字
+      >   result = model.transcribe(output_audio)
+      >   
+      >   # 打印转换后的文字
+      >   print(result["text"])
+      >   
+      >   # 将转换后的文字保存到文本文件中
+      >   # with open("transcription.txt", "w") as f:
+      >   #     f.write(result["text"])
+      >   ```
 
 1. 微软文字转语音库
 
-     > [教程](https://github.com/rany2/edge-tts)
-     >
-     > ```bash
-     > //更新pip
-     > pip install --upgrade pip
-     > //安装依赖库
-     > pip install cchardet
-     > //安装edge-tts
-     > pip3 install edge-tts
-     > ```
-     >
-     > * 安装后测试
-     >
-     >   ```bash
-     >   edge-tts --text "手机微信扫码登录，成功后按回车继续" --write-media 'test.mp3'
-     >   ```
-     >
-     > * 转换指定文件
-     >
-     >   ```bash
-     >   cd /Users/jiangsai/Desktop
-     >   edge-tts -f "demo.txt" --write-media "demo.mp3"
-     >   ```
-     >
-     > * 转换指定文件 - 使用指定语音
-     >
-     >   ```bash
-     >   edge-tts --voice zh-CN-YunxiNeural -f "demo.txt" --write-media "demo.mp3"
-     >   ```
-     >   
-     > * 调整语速
-     >
-     >   ```bash
-     >   //语速降低50%
-     >   edge-tts --voice zh-CN-YunxiNeural --rate=-50% -f "demo.txt" --write-media "demo.mp3"
-     >   //语速增加50%
-     >   edge-tts --voice zh-CN-YunxiNeural --rate=+50% -f "demo.txt" --write-media "demo.mp3"
-     >   ```
-     >
-     > * 调整音量
-     >
-     >   ```bash
-     >   //音量降低30%
-     >   edge-tts --voice zh-CN-YunxiNeural --rate=-50% --volume=-30% -f "demo.txt" --write-media "demo.mp3"
-     >   //音量增加30%
-     >   edge-tts --voice zh-CN-YunxiNeural --rate=+50% --volume=+30% -f "demo.txt" --write-media "demo.mp3"
-     >   ```
-     >   
-     >   
-     >
-     > * 查看更多发音
-     >
-     >   ```bash
-     >   (py3)  Sai  ~/Desktop ：edge-tts --list-voices
-     >   Name: af-ZA-AdriNeural
-     >   Gender: Female
-     >   
-     >   Name: af-ZA-WillemNeural
-     >   Gender: Male
-     >   ```
-     >
-     >   ```python
-     >   import os
-     >   
-     >   Voice_List = [
-     >       "en-AU-NatashaNeural",
-     >       "en-AU-WilliamNeural",
-     >       "en-IN-NeerjaExpressiveNeural",
-     >       "en-IN-PrabhatNeural",
-     >       "en-US-AnaNeural",
-     >       "en-US-JennyNeural",
-     >       "en-US-RogerNeural",
-     >       "en-US-SteffanNeural",
-     >       "zh-CN-XiaoxiaoNeural",
-     >       "zh-CN-XiaoyiNeural",
-     >       "zh-CN-YunjianNeural",
-     >       "zh-CN-YunxiaNeural",
-     >       "zh-CN-YunxiNeural",
-     >       "zh-CN-YunyangNeural",
-     >       "zh-HK-HiuGaaiNeural",
-     >       "zh-HK-WanLungNeural",
-     >       "zh-TW-HsiaoChenNeural",
-     >       "zh-TW-YunJheNeural",
-     >   ]
-     >   
-     >   folderPath = "/Users/jiangsai/Desktop/1"
-     >   
-     >   for Voice in Voice_List:
-     >       Voice_Path = f"{folderPath}/{Voice}.mp3"
-     >       cmd = f'edge-tts --text "手机微信扫码登录，成功后按回车继续，Our companies have a track record of becoming billion dollar companies." --voice {Voice} --write-media "{Voice_Path}"'
-     >       print(cmd)
-     >       os.system(cmd)
-     >   ```
-     >
-     > * Python 文字转语音脚本
-     >
-     >   ```python
-     >   import os
-     >                   
-     >   Voice = "zh-CN-YunjianNeural"
-     >   Rate = "+0%"
-     >   Volume = "+0%"
-     >                   
-     >   Handle_Folder = "/Users/jiangsai/Desktop/1"
-     >                   
-     >   # 转换目录内所有单个txt文件为单个mp3音频
-     >   for Folder_Path, SonFolders, FileNames in os.walk(Handle_Folder):
-     >       for FileName in FileNames:
-     >           if FileName.endswith(".txt"):
-     >               # 把 dirpath 和 每个文件名拼接起来 就是全路径
-     >               FilePath = f"{Folder_Path}/{FileName}"
-     >               mp3Name = FileName.replace(".txt", ".mp3")
-     >               mp3Path = f"{Folder_Path}/{mp3Name}"
-     >               cmd = f'edge-tts --voice {Voice} --rate={Rate} --volume={Volume} -f {FilePath} --write-media "{mp3Path}"'
-     >               os.system(cmd)
-     >   ```
+      > [教程](https://github.com/rany2/edge-tts)
+      >
+      > ```bash
+      > //更新pip
+      > pip install --upgrade pip
+      > //安装依赖库
+      > pip install cchardet
+      > //安装edge-tts
+      > pip3 install edge-tts
+      > ```
+      >
+      > * 安装后测试
+      >
+      >   ```bash
+      >   edge-tts --text "手机微信扫码登录，成功后按回车继续" --write-media 'test.mp3'
+      >   ```
+      >
+      > * 转换指定文件
+      >
+      >   ```bash
+      >   cd /Users/jiangsai/Desktop
+      >   edge-tts -f "demo.txt" --write-media "demo.mp3"
+      >   ```
+      >
+      > * 转换指定文件 - 使用指定语音
+      >
+      >   ```bash
+      >   edge-tts --voice zh-CN-YunxiNeural -f "demo.txt" --write-media "demo.mp3"
+      >   ```
+      >
+      > * 调整语速
+      >
+      >   ```bash
+      >   //语速降低50%
+      >   edge-tts --voice zh-CN-YunxiNeural --rate=-50% -f "demo.txt" --write-media "demo.mp3"
+      >   //语速增加50%
+      >   edge-tts --voice zh-CN-YunxiNeural --rate=+50% -f "demo.txt" --write-media "demo.mp3"
+      >   ```
+      >
+      > * 调整音量
+      >
+      >   ```bash
+      >   //音量降低30%
+      >   edge-tts --voice zh-CN-YunxiNeural --rate=-50% --volume=-30% -f "demo.txt" --write-media "demo.mp3"
+      >   //音量增加30%
+      >   edge-tts --voice zh-CN-YunxiNeural --rate=+50% --volume=+30% -f "demo.txt" --write-media "demo.mp3"
+      >   ```
+      >
+      > * 查看更多发音
+      >
+      >   ```bash
+      >   (py3)  Sai  ~/Desktop ：edge-tts --list-voices
+      >   Name: af-ZA-AdriNeural
+      >   Gender: Female
+      >
+      >   Name: af-ZA-WillemNeural
+      >   Gender: Male
+      >   ```
+      >
+      >   ```python
+      >   import os
+      >
+      >   Voice_List = [
+      >       "en-AU-NatashaNeural",
+      >       "en-AU-WilliamNeural",
+      >       "en-IN-NeerjaExpressiveNeural",
+      >       "en-IN-PrabhatNeural",
+      >       "en-US-AnaNeural",
+      >       "en-US-JennyNeural",
+      >       "en-US-RogerNeural",
+      >       "en-US-SteffanNeural",
+      >       "zh-CN-XiaoxiaoNeural",
+      >       "zh-CN-XiaoyiNeural",
+      >       "zh-CN-YunjianNeural",
+      >       "zh-CN-YunxiaNeural",
+      >       "zh-CN-YunxiNeural",
+      >       "zh-CN-YunyangNeural",
+      >       "zh-HK-HiuGaaiNeural",
+      >       "zh-HK-WanLungNeural",
+      >       "zh-TW-HsiaoChenNeural",
+      >       "zh-TW-YunJheNeural",
+      >   ]
+      >
+      >   folderPath = "/Users/jiangsai/Desktop/1"
+      >
+      >   for Voice in Voice_List:
+      >       Voice_Path = f"{folderPath}/{Voice}.mp3"
+      >       cmd = f'edge-tts --text "手机微信扫码登录，成功后按回车继续，Our companies have a track record of becoming billion dollar companies." --voice {Voice} --write-media "{Voice_Path}"'
+      >       print(cmd)
+      >       os.system(cmd)
+      >   ```
+      >
+      > * Python 文字转本地语音脚本
+      >
+      >   ```python
+      >   import os
+      >   
+      >   Voice = "zh-CN-YunjianNeural"
+      >   Rate = "+0%"
+      >   Volume = "+0%"
+      >   
+      >   Handle_Folder = "/Users/jiangsai/Desktop/1"
+      >   
+      >   # 转换目录内所有单个txt文件为单个mp3音频
+      >   for Folder_Path, SonFolders, FileNames in os.walk(Handle_Folder):
+      >       for FileName in FileNames:
+      >           if FileName.endswith(".txt"):
+      >               # 把 dirpath 和 每个文件名拼接起来 就是全路径
+      >               FilePath = f"{Folder_Path}/{FileName}"
+      >               mp3Name = FileName.replace(".txt", ".mp3")
+      >               mp3Path = f"{Folder_Path}/{mp3Name}"
+      >               cmd = f'edge-tts --voice {Voice} --rate={Rate} --volume={Volume} -f {FilePath} --write-media "{mp3Path}"'
+      >               os.system(cmd)
+      >   ```
 
 1. Mac创建双击执行脚本
 
