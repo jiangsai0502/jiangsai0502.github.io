@@ -167,6 +167,29 @@
       > whisper audio.mp3 --model medium
       > ```
       >
+      > * 本地视频/音频转文字
+      >
+      >   ```python
+      >   import whisper  # 导入whisper模块，用于语音转文字
+      >   
+      >   # 待处理的视频/音频
+      >   video_audio = "/Users/jiangsai/Downloads/形研社第2課.webm"
+      >   
+      >   # 转录结果
+      >   transcription = "/Users/jiangsai/Downloads/whisper1.txt"
+      >   
+      >   # 加载Whisper模型 "tiny", "base", "small", "medium", "large"
+      >   model = whisper.load_model("medium")
+      >   
+      >   # 使用Whisper模型进行语音转文字
+      >   result = model.transcribe(video_audio)
+      >   
+      >   # 将转换后的文字保存到文本文件中
+      >   with open(transcription, "w") as f:
+      >       f.write(result["text"])
+      >       # print(result["text"])
+      >   ```
+      >   
       > * 在线视频转文字
       >
       >   ```python
@@ -313,13 +336,13 @@
       >
       >   ```python
       >   import os
-      >   
+      >     
       >   Voice = "zh-CN-YunjianNeural"
       >   Rate = "+0%"
       >   Volume = "+0%"
-      >   
+      >     
       >   Handle_Folder = "/Users/jiangsai/Desktop/1"
-      >   
+      >     
       >   # 转换目录内所有单个txt文件为单个mp3音频
       >   for Folder_Path, SonFolders, FileNames in os.walk(Handle_Folder):
       >       for FileName in FileNames:
