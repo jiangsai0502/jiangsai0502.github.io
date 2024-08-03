@@ -124,38 +124,38 @@
 
 1. Photoshop任意角度旋转图片
 
-     > | 标尺工具                                                     | 图像--图像旋转--任意角度                                     |
-     > | ------------------------------------------------------------ | ------------------------------------------------------------ |
-     > | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210812184958.png) | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210812185049.png) |
+      > | 标尺工具                                                     | 图像--图像旋转--任意角度                                     |
+      > | ------------------------------------------------------------ | ------------------------------------------------------------ |
+      > | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210812184958.png) | ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/20210812185049.png) |
 
 1. 购买ChatGPT4
 
-     > 方式一：[按次购买，每次买一个月](https://www.youtube.com/watch?v=kkl2YPO33qc) ，[教程](https://hailangya.com/articles/2021/04/02/apple-gift-card/)
-     >
-     > > 1. 注册Apple美国免税洲账号
-     > > 2. 办理招商双币信用卡
-     > > 3. Apple官网使用信用卡购买礼品卡，送给自己的美区Apple账号
-     > > 4. ChatGPT iOS端内购时自动扣礼品卡金额
-     >
+      > 方式一：[按次购买，每次买一个月](https://www.youtube.com/watch?v=kkl2YPO33qc) ，[教程](https://hailangya.com/articles/2021/04/02/apple-gift-card/)
+      >
+      > > 1. 注册Apple美国免税洲账号
+      > > 2. 办理招商双币信用卡
+      > > 3. Apple官网使用信用卡购买礼品卡，送给自己的美区Apple账号
+      > > 4. ChatGPT iOS端内购时自动扣礼品卡金额
+      >
 
 1. Typora设置
 
-     > 1. 展示设置：增加行宽
-     >
-     >    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202312161642913.png)
-     >
-     > 2. 打印设置
-     >
-     >    1. 页边距
-     >
-     >       > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310261112999.png)
-     >
-     >    2. [行距](https://www.twblogs.net/a/5db288f8bd9eee310d9fd66c/?lang=zh-cn)
-     >
-     >       > 1. 微调`body`中的`line-height`参数
-     >       > 2. 关闭文件重新打开，修改即可生效
-     >       >
-     >       > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310261109296.png)
+      > 1. 展示设置：增加行宽
+      >
+      >    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202312161642913.png)
+      >
+      > 2. 打印设置
+      >
+      >    1. 页边距
+      >
+      >       > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310261112999.png)
+      >
+      >    2. [行距](https://www.twblogs.net/a/5db288f8bd9eee310d9fd66c/?lang=zh-cn)
+      >
+      >       > 1. 微调`body`中的`line-height`参数
+      >       > 2. 关闭文件重新打开，修改即可生效
+      >       >
+      >       > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202310261109296.png)
 
 1. OpenAI语音转文字模型Whisper
 
@@ -170,15 +170,17 @@
       > * 本地视频/音频转文字
       >
       >   ```python
+      >   ############## 处理单个音/视频 ##############
       >   import whisper  # 导入whisper模块，用于语音转文字
       >   
       >   # 待处理的视频/音频
-      >   video_audio = "/Users/jiangsai/Downloads/形研社第2課.webm"
+      >   video_audio = "/Users/jiangsai/Downloads/Trading/HZGB/形研社第5課.webm"
       >   
       >   # 转录结果
-      >   transcription = "/Users/jiangsai/Downloads/whisper1.txt"
+      >   transcription = "/Users/jiangsai/Downloads/Trading/HZGB/形研社第5課.txt"
       >   
       >   # 加载Whisper模型 "tiny", "base", "small", "medium", "large"
+      >   # 使用时会自动下载到~/.cache/whisper
       >   model = whisper.load_model("medium")
       >   
       >   # 使用Whisper模型进行语音转文字
@@ -187,9 +189,35 @@
       >   # 将转换后的文字保存到文本文件中
       >   with open(transcription, "w") as f:
       >       f.write(result["text"])
-      >       # print(result["text"])
-      >   ```
       >   
+      >   ############## 处理文件夹的全部音/视频 ##############
+      >   import os
+      >   import whisper
+      >   
+      >   # 待处理的视频/音频文件夹路径
+      >   input_folder = "/Users/jiangsai/Desktop/temp"
+      >   
+      >   # 加载Whisper模型 "tiny", "base", "small", "medium", "large"
+      >   # 使用时会自动下载到~/.cache/whisper
+      >   model = whisper.load_model("medium")
+      >   
+      >   # 获取指定文件夹内的所有视频文件
+      >   video_files = [f for f in os.listdir(input_folder) if f.endswith((".webm", ".mp4", ".mkv", ".avi"))]
+      >   
+      >   # 处理每个视频文件
+      >   for video_file in video_files:
+      >       video_path = os.path.join(input_folder, video_file)
+      >       transcription_path = os.path.join(input_folder, os.path.splitext(video_file)[0] + ".txt")
+      >   
+      >       # 使用Whisper模型进行语音转文字
+      >       result = model.transcribe(video_path)
+      >   
+      >       # 将转换后的文字保存到文本文件中
+      >       with open(transcription_path, "w") as f:
+      >           f.write(result["text"])
+      >       print(f"{transcription_path} 转录完成")
+      >   ```
+      >
       > * 在线视频转文字
       >
       >   ```python
@@ -336,13 +364,13 @@
       >
       >   ```python
       >   import os
-      >     
+      >         
       >   Voice = "zh-CN-YunjianNeural"
       >   Rate = "+0%"
       >   Volume = "+0%"
-      >     
+      >         
       >   Handle_Folder = "/Users/jiangsai/Desktop/1"
-      >     
+      >         
       >   # 转换目录内所有单个txt文件为单个mp3音频
       >   for Folder_Path, SonFolders, FileNames in os.walk(Handle_Folder):
       >       for FileName in FileNames:
@@ -355,87 +383,102 @@
       >               os.system(cmd)
       >   ```
 
+1. 分割中英字幕脚本
+
+      ```python
+      import re
+      
+      text = """Excuse me. My name is Richard Stewart. 对不起，我叫Richard Stewart。
+      I'm a photographer. 我是一位摄影师。"""
+      
+      # 使用正则表达式在每段中文的第一个汉字前面增加数字112
+      result = re.sub(r"(^|[^\u4e00-\u9fff])([\u4e00-\u9fff])", r"\1 分割词 \2", text, count=1)
+      result = re.sub(r"([。！？\n])([^\u4e00-\u9fff]*)([\u4e00-\u9fff])", r"\1\2 分割词 \3", result)
+      
+      print(result)
+      ```
+
 1. Mac创建双击执行脚本
 
-     > 1. 新建文件`command`文件
-     >
-     >    `touch 重启音频服务.command`
-     >
-     > 2. 使用`Sublime Text`打开`重启音频服务.command`文件
-     >
-     >    ```
-     >    #!/bin/bash
-     >    sudo killall coreaudiod
-     >    ```
-     >
-     > 3. 文件授权
-     >
-     >    `chmod +x 重启音频服务.command`
+      > 1. 新建文件`command`文件
+      >
+      >    `touch 重启音频服务.command`
+      >
+      > 2. 使用`Sublime Text`打开`重启音频服务.command`文件
+      >
+      >    ```
+      >    #!/bin/bash
+      >    sudo killall coreaudiod
+      >    ```
+      >
+      > 3. 文件授权
+      >
+      >    `chmod +x 重启音频服务.command`
 
 1. 批量删除文件夹内所有视频的开头 x 秒，结尾 y 秒
 
-     > ```python
-     > import subprocess
-     > import os
-     > 
-     > # 要处理的视频文件夹路径
-     > video_folder = "/Users/jiangsai/Desktop/tt"
-     > 
-     > # 处理后的视频保存的文件夹
-     > output_folder = "/Users/jiangsai/Desktop/ss"
-     > if not os.path.exists(output_folder):
-     >     os.makedirs(output_folder)
-     > 
-     > # 要删除的开头时长和结尾时长
-     > start_duration = 24  # 开头时长
-     > end_duration = 8  # 结尾时长
-     > 
-     > # 获取文件夹内所有的视频文件
-     > videos = [f for f in os.listdir(video_folder) if f.endswith((".mp4", ".mkv", ".avi"))]
-     > 
-     > for video in videos:
-     >     input_path = os.path.join(video_folder, video)
-     >     output_path = os.path.join(output_folder, f"trimmed_{video}")
-     > 
-     >     # 获取视频总时长
-     >     cmd = f'ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "{input_path}"'
-     >     total_duration = float(subprocess.check_output(cmd, shell=True).decode("utf-8").strip())
-     > 
-     >     # 计算裁剪后的视频长度
-     >     trimmed_duration = total_duration - start_duration - end_duration
-     > 
-     >     # 使用ffmpeg命令行工具来裁剪视频
-     >     cmd = f'ffmpeg -y -i "{input_path}" -ss {start_duration} -t {trimmed_duration} -c copy "{output_path}"'
-     >     subprocess.call(cmd, shell=True)
-     > 
-     > print("所有视频处理完毕。")
-     > ```
+      > ```python
+      > import subprocess
+      > import os
+      > 
+      > # 要处理的视频文件夹路径
+      > video_folder = "/Users/jiangsai/Desktop/tt"
+      > 
+      > # 处理后的视频保存的文件夹
+      > output_folder = "/Users/jiangsai/Desktop/ss"
+      > if not os.path.exists(output_folder):
+      >     os.makedirs(output_folder)
+      > 
+      > # 要删除的开头时长和结尾时长
+      > start_duration = 24  # 开头时长
+      > end_duration = 8  # 结尾时长
+      > 
+      > # 获取文件夹内所有的视频文件
+      > videos = [f for f in os.listdir(video_folder) if f.endswith((".mp4", ".mkv", ".avi"))]
+      > 
+      > for video in videos:
+      >     input_path = os.path.join(video_folder, video)
+      >     output_path = os.path.join(output_folder, f"trimmed_{video}")
+      > 
+      >     # 获取视频总时长
+      >     cmd = f'ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "{input_path}"'
+      >     total_duration = float(subprocess.check_output(cmd, shell=True).decode("utf-8").strip())
+      > 
+      >     # 计算裁剪后的视频长度
+      >     trimmed_duration = total_duration - start_duration - end_duration
+      > 
+      >     # 使用ffmpeg命令行工具来裁剪视频
+      >     cmd = f'ffmpeg -y -i "{input_path}" -ss {start_duration} -t {trimmed_duration} -c copy "{output_path}"'
+      >     subprocess.call(cmd, shell=True)
+      > 
+      > print("所有视频处理完毕。")
+      > ```
 
 1. chrome 书签&插件同步不及时
 
-     > 手动强制同步
-     >
-     > 1. 架梯子
-     > 2. 地址栏输入：chrome://sync-internals
-     > 3. 中间那列中下方，点击“Stop Sync (Keep Data)”，之后点击“Request Start”
-     > 4. 两个设备上的Chrome都进行一次这个操作
+      > 手动强制同步
+      >
+      > 1. 架梯子
+      > 2. 地址栏输入：chrome://sync-internals
+      > 3. 中间那列中下方，点击“Stop Sync (Keep Data)”，之后点击“Request Start”
+      > 4. 两个设备上的Chrome都进行一次这个操作
 
 1. iOS备忘录写日记
 
-     > 1. 手动创建指令，用于调试
-     >
-     >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309181410996.png)
-     >
-     > 2. 自动
-     >
-     >    1. 早晨10:10新建一条日记，用于记ToDo
-     >
-     >       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309181908378.png)
-     >
-     >    2. 晚上22:10打开当日日记，用于记总结
-     >
-     >       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309201506823.png)
-     >
-     >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309201505769.png)
+      > 1. 手动创建指令，用于调试
+      >
+      >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309181410996.png)
+      >
+      > 2. 自动
+      >
+      >    1. 早晨10:10新建一条日记，用于记ToDo
+      >
+      >       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309181908378.png)
+      >
+      >    2. 晚上22:10打开当日日记，用于记总结
+      >
+      >       ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309201506823.png)
+      >
+      >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309201505769.png)
 
 1. 

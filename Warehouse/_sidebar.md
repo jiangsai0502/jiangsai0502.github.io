@@ -18,4 +18,7 @@
   * [中级Scrapy](Warehouse/2_WebCrawlerScrapy.md)
   * [中级Ajax](Warehouse/2_WebCrawlerAjax.md)
   * [中级Selenium](Warehouse/2_WebCrawlerSelenium.md)
+* Trading
+  * [HZGB](Warehouse/HuZi)
+  * [形研](Warehouse/XingYanShe)
 

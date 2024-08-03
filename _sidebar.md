@@ -27,5 +27,3 @@
   * [Python常用模块](FootPrint/1_PythonModule.md)
   * [PyQt5](FootPrint/1_PyQt5.md)
   * [小米设备](FootPrint/XiaoMi)
-  * [HZGB](FootPrint/HuZi)
-  * [XYS](FootPrint/XingYanShe)
