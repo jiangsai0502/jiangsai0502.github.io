@@ -170,52 +170,57 @@
       > * 本地视频/音频转文字
       >
       >   ```python
-      >   ############## 处理单个音/视频 ##############
-      >   import whisper  # 导入whisper模块，用于语音转文字
-      >   
-      >   # 待处理的视频/音频
-      >   video_audio = "/Users/jiangsai/Downloads/Trading/HZGB/形研社第5課.webm"
-      >   
-      >   # 转录结果
-      >   transcription = "/Users/jiangsai/Downloads/Trading/HZGB/形研社第5課.txt"
-      >   
-      >   # 加载Whisper模型 "tiny", "base", "small", "medium", "large"
-      >   # 使用时会自动下载到~/.cache/whisper
-      >   model = whisper.load_model("medium")
-      >   
-      >   # 使用Whisper模型进行语音转文字
-      >   result = model.transcribe(video_audio)
-      >   
-      >   # 将转换后的文字保存到文本文件中
-      >   with open(transcription, "w") as f:
-      >       f.write(result["text"])
-      >   
-      >   ############## 处理文件夹的全部音/视频 ##############
       >   import os
       >   import whisper
+      >   from zhconv import convert
       >   
-      >   # 待处理的视频/音频文件夹路径
-      >   input_folder = "/Users/jiangsai/Desktop/temp"
       >   
-      >   # 加载Whisper模型 "tiny", "base", "small", "medium", "large"
-      >   # 使用时会自动下载到~/.cache/whisper
-      >   model = whisper.load_model("medium")
-      >   
-      >   # 获取指定文件夹内的所有视频文件
-      >   video_files = [f for f in os.listdir(input_folder) if f.endswith((".webm", ".mp4", ".mkv", ".avi"))]
-      >   
-      >   # 处理每个视频文件
-      >   for video_file in video_files:
-      >       video_path = os.path.join(input_folder, video_file)
-      >       transcription_path = os.path.join(input_folder, os.path.splitext(video_file)[0] + ".txt")
-      >   
+      >   # 处理单个音视频
+      >   def transcribe_audio_file(model, input_path, output_path, language):
       >       # 使用Whisper模型进行语音转文字
-      >       result = model.transcribe(video_path)
-      >   
+      >       result = model.transcribe(input_path, language=language)
+      >       # 将转换后的文字从繁体中文转换为简体中文
+      >       simplified_text = convert(result["text"], "zh-cn")
       >       # 将转换后的文字保存到文本文件中
-      >       with open(transcription_path, "w") as f:
-      >           f.write(result["text"])
-      >       print(f"{transcription_path} 转录完成")
+      >       with open(output_path, "w") as f:
+      >           f.write(simplified_text)
+      >       print(f"{output_path} 转录完成")
+      >   
+      >   
+      >   # 处理文件夹内的所有音视频
+      >   def transcribe_directory(model, input_folder, language):
+      >       # 获取指定文件夹内的所有视频文件
+      >       video_files = [
+      >           f for f in os.listdir(input_folder) if f.endswith((".mp3", ".m4a", ".webm", ".mp4", ".mkv", ".avi"))
+      >       ]
+      >   
+      >       # 处理每个音视频
+      >       for video_file in video_files:
+      >           video_path = os.path.join(input_folder, video_file)
+      >           transcription_path = os.path.join(input_folder, os.path.splitext(video_file)[0] + ".txt")
+      >           print(f"{video_file}，正在转录....")
+      >           transcribe_audio_file(model, video_path, transcription_path, language)
+      >   
+      >   
+      >   def cooking(input_path):
+      >       # 加载Whisper模型 "tiny", "base", "small", "medium", "large"
+      >       # 使用时会自动下载到~/.cache/whisper
+      >       model = whisper.load_model("small")
+      >   
+      >       if os.path.isdir(input_path):
+      >           transcribe_directory(model, input_path, language="zh")
+      >       elif os.path.isfile(input_path):
+      >           output_path = os.path.splitext(input_path)[0] + ".txt"
+      >           print(f"{input_path}，正在转录....")
+      >           transcribe_audio_file(model, input_path, output_path, language="zh")
+      >       else:
+      >           print(f"提供的路径无效：{input_path}")
+      >   
+      >   
+      >   if __name__ == "__main__":
+      >       # 要处理的目录或文件
+      >       input_path = "/Users/jiangsai/Desktop/未命名文件夹"
+      >       cooking(input_path)
       >   ```
       >
       > * 在线视频转文字
@@ -364,13 +369,13 @@
       >
       >   ```python
       >   import os
-      >         
+      >           
       >   Voice = "zh-CN-YunjianNeural"
       >   Rate = "+0%"
       >   Volume = "+0%"
-      >         
+      >           
       >   Handle_Folder = "/Users/jiangsai/Desktop/1"
-      >         
+      >           
       >   # 转换目录内所有单个txt文件为单个mp3音频
       >   for Folder_Path, SonFolders, FileNames in os.walk(Handle_Folder):
       >       for FileName in FileNames:
