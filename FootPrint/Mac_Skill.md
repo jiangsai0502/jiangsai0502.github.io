@@ -369,13 +369,13 @@
       >
       >   ```python
       >   import os
-      >           
+      >             
       >   Voice = "zh-CN-YunjianNeural"
       >   Rate = "+0%"
       >   Volume = "+0%"
-      >           
+      >             
       >   Handle_Folder = "/Users/jiangsai/Desktop/1"
-      >           
+      >             
       >   # 转换目录内所有单个txt文件为单个mp3音频
       >   for Folder_Path, SonFolders, FileNames in os.walk(Handle_Folder):
       >       for FileName in FileNames:
@@ -486,4 +486,6 @@
       >
       >    ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309201505769.png)
 
-1. 
+1. Sublime Text在非空行且没有标点符号的行末添加句号
+
+      > `(?<![。，？！；：）])(?<=\S)$` 替换 `\0。`
