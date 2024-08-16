@@ -369,13 +369,13 @@
       >
       >   ```python
       >   import os
-      >             
+      >                 
       >   Voice = "zh-CN-YunjianNeural"
       >   Rate = "+0%"
       >   Volume = "+0%"
-      >             
+      >                 
       >   Handle_Folder = "/Users/jiangsai/Desktop/1"
-      >             
+      >                 
       >   # 转换目录内所有单个txt文件为单个mp3音频
       >   for Folder_Path, SonFolders, FileNames in os.walk(Handle_Folder):
       >       for FileName in FileNames:
@@ -489,3 +489,83 @@
 1. Sublime Text在非空行且没有标点符号的行末添加句号
 
       > `(?<![。，？！；：）])(?<=\S)$` 替换 `\0。`
+
+1. 自制番茄钟
+
+      > 每隔30分钟，暂停chrome，mpv的所有播放，并锁屏
+
+      ```python
+      import os
+      import time
+      import tempfile
+      import socket
+      import json
+      
+      
+      def lock_screen():
+          # 使用 AppleScript 锁屏命令
+          os.system(
+              'osascript -e "tell application \\"System Events\\" to keystroke \\"q\\" using {control down, command down}"'
+          )
+      
+      
+      def pause_browser_media():
+          # 使用临时文件存储AppleScript脚本
+          pause_chrome_script = """
+          tell application "Google Chrome"
+              activate
+              set foundMedia to false
+              repeat with w in windows
+                  repeat with t in tabs of w
+                      try
+                          -- 执行 JavaScript 查找和暂停所有媒体元素
+                          set mediaCount to (execute t javascript "document.querySelectorAll('video, audio').length;")
+                          if mediaCount > 0 then
+                              execute t javascript "document.querySelectorAll('video, audio').forEach(media => media.pause());"
+                              set foundMedia to true
+                          end if
+                      on error errMsg
+                          display dialog "Error in tab: " & errMsg
+                      end try
+                      delay 0.5 -- 添加延迟来防止浏览器卡死
+                  end repeat
+              end repeat
+          end tell
+          """
+      
+          # 将AppleScript代码写入临时文件
+          with tempfile.NamedTemporaryFile("w", delete=False, suffix=".applescript") as script_file:
+              script_file.write(pause_chrome_script)
+              script_file_path = script_file.name
+      
+          # 执行临时AppleScript文件
+          os.system(f"osascript {script_file_path}")
+      
+          # 删除临时文件
+          os.remove(script_file_path)
+      
+      
+      def pause_mpv():
+          # 在~/.config/mpv/mpv.conf 增加一句：input-ipc-server=/tmp/mpvsocket
+          # 发送暂停命令到 mpv 的 IPC socket
+          try:
+              mpv_socket = "/tmp/mpvsocket"  # 确保使用正确的 socket 文件路径
+              command = json.dumps({"command": ["set_property", "pause", True]})
+      
+              # 连接到 mpv 的 socket 并发送命令
+              with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as client_socket:
+                  client_socket.connect(mpv_socket)
+                  client_socket.sendall(command.encode() + b"\n")
+          except Exception as e:
+              print(f"Error pausing mpv: {e}")
+      
+      
+      if __name__ == "__main__":
+          while True:
+              time.sleep(30*60)  # 30分钟
+              pause_browser_media()  # 暂停浏览器中的媒体播放
+              pause_mpv()  # 暂停 mpv 播放
+              lock_screen()  # 锁屏
+      ```
+
+      
