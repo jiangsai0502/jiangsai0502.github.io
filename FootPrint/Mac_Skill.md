@@ -369,13 +369,13 @@
       >
       >   ```python
       >   import os
-      >                 
+      >                       
       >   Voice = "zh-CN-YunjianNeural"
       >   Rate = "+0%"
       >   Volume = "+0%"
-      >                 
+      >                       
       >   Handle_Folder = "/Users/jiangsai/Desktop/1"
-      >                 
+      >                       
       >   # 转换目录内所有单个txt文件为单个mp3音频
       >   for Folder_Path, SonFolders, FileNames in os.walk(Handle_Folder):
       >       for FileName in FileNames:
@@ -490,6 +490,13 @@
 
       > `(?<![。，？！；：）])(?<=\S)$` 替换 `\0。`
 
+1. Flow番茄钟
+
+      >
+      > flow 休息前的叮一声可替换Keep录屏提示音（[MP3转aiff后修改后缀为aif](https://www.freeconvert.com/zh/aif-converter)）
+      >
+      > /Applications/Flow.app/Contents/Resources/Flow.aif
+
 1. 自制番茄钟
 
       > 每隔30分钟，暂停chrome，mpv的所有播放，并锁屏
@@ -500,6 +507,7 @@
       import tempfile
       import socket
       import json
+      from tqdm import tqdm
       
       
       def lock_screen():
@@ -525,7 +533,8 @@
                               set foundMedia to true
                           end if
                       on error errMsg
-                          display dialog "Error in tab: " & errMsg
+                              -- 捕获错误，但不做任何处理，防止弹窗
+                              -- display dialog "Error in tab: " & errMsg
                       end try
                       delay 0.5 -- 添加延迟来防止浏览器卡死
                   end repeat
@@ -561,8 +570,12 @@
       
       
       if __name__ == "__main__":
+          total_time = 30 * 60  # 30分钟
+          interval = 1  # 每秒更新进度条
+          
           while True:
-              time.sleep(30*60)  # 30分钟
+              for _ in tqdm(range(0, total_time, interval), desc="工作中", unit="秒"):
+                  time.sleep(interval)
               pause_browser_media()  # 暂停浏览器中的媒体播放
               pause_mpv()  # 暂停 mpv 播放
               lock_screen()  # 锁屏
