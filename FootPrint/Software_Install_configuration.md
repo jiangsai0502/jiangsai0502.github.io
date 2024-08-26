@@ -125,7 +125,7 @@
 >    brew install wget;
 >    export REMOTE=https://gitee.com/imirror/ohmyzsh.git;
 >    sh -c "$(wget -O- https://cdn.jsdelivr.net/gh/ohmyzsh/ohmyzsh/tools/install.sh)";
->                                          
+>                                             
 >    open ~/.zshrc
 >    # 在.zshrc文件中搜索 source $ZSH/oh-my-zsh.sh，在本句之前加一句
 >    ZSH_DISABLE_COMPFIX="true"
@@ -163,7 +163,7 @@
 >
 >    ```
 >    brew install zsh-syntax-highlighting
->                                          
+>                                             
 >    open ~/.zshrc
 >    最后插入一行：source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 >    source ~/.zshrc
@@ -431,7 +431,9 @@
 >
 > 1. 修改单个键位
 >
->    > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202311091255650.png)
+>    > ![image-20240827025736308](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240827025736308.png)
+>    >
+>    > 
 >
 > 2. 修改组合快捷键[参考](https://blog.csdn.net/qq_26012495/article/details/88539120)
 >
