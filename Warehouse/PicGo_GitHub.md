@@ -30,7 +30,7 @@
 
 [参考](https://picgo.github.io/PicGo-Doc/zh/guide/config.html)
 
-![anX8GM](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/uPic/anX8GM.png)
+![image-20240827030714971](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240827030714971.png)
 
 > * 设定仓库名的时候，是按照“账户名/仓库名”的格式填写
 >   * 如 jiangsai0502/PicBedRepo
@@ -73,7 +73,7 @@
 >
 >    ```bash
 >    sudo vi /etc/hosts    #打开hosts文件
->       
+>          
 >    127.0.0.1	localhost
 >    255.255.255.255	broadcasthost
 >    ::1             localhost
