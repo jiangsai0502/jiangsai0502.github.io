@@ -3645,20 +3645,6 @@
 5) 通过个人做单习惯，大仓做主流或小仓博山寨等， 不赘述，切记不做反向单，不在盘中反向，否定自己，做错即止损，观察后不再开单，明日再复盘记录经验
 6) 存在横盘判断，横盘不开单，或者小仓做完成图表结构的山寨（横盘山寨有突拉情况比较普遍）图表逻辑走乱走差，走的看不清楚，每天早晨得不到方向判断等情况，都不开单
 
-
-
-
-
-
-
-# anki录入分界线
-
-
-
-
-
-
-
 **TOP 2022/04/03**
 
 1. H2以上的图才能出方向，F30以下的图只能打飞机
@@ -3693,19 +3679,17 @@
 
 # 小细节的细节
 
-![image-20240504003515929](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240504003515929.png)
+![image-20240504003515929](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240504003515929.png)
 
-![image-20240504003530240](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240504003530240.png)
+![image-20240504003530240](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240504003530240.png)
 
-![image-20240504003541562](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240504003541562.png)
+![image-20240504003541562](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240504003541562.png)
 
-![image-20240504003553846](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240504003553846.png)
+![image-20240504003553846](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240504003553846.png)
 
-![image-20240504003620986](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240504003620986.png)
+![image-20240504003620986](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240504003620986.png)
 
-![image-20240504003634540](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240504003634540.png)
-
-![image-20240504031539005](/Users/jiangsai/Library/Application Support/typora-user-images/image-20240504031539005.png)
+![image-20240504003634540](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240504003634540.png)
 
 # 胡子DC社区新手指南
 
@@ -3750,33 +3734,13 @@
 
    > 社区最核心的功能之一，每4个月一期， 在这一期当中完成2000张复盘就可以获得胡子的朋友们的称号，获得观看编辑高阶图表讨论区的权限，持续输出还能按比例得到社区返佣
 
-10. 
-
-
-
 # 学习笔记
 
-1. 顺破
-
-   > 顺势突破当前结构的边界线
-   >
-   > > 顺破后未必能让趋势继续，也可能是个假突破，因此开单必设止损
-
-2. 三角形 & 楔形
-
-   > 三角：2条不同向线段向同一方向收敛
-   >
-   > ![image-20240510114919607](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405101149682.png)
-
-   > 楔形：2条同向线段向同一方向收敛
-   >
-   > ![image-20240510115013854](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405101150879.png)
-
-3. 复盘技巧
+1. 复盘技巧
 
    > ![image-20240510182450883](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405101824951.png)
 
-4. 波浪理论
+2. 波浪理论
 
    > ![image-20240526145034082](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202405261450152.png)
    >
@@ -3789,13 +3753,6 @@
    >   * b是下跌修正波
    > * 上涨趋势的每个攻击波又有5波，每个修正波又有3波
    > * 下跌趋势的每个攻击波又有5波，每个修正波又有3波
-
-# 复盘计划
-
-1. 三角（上/下直三、对三）-500张
-2. 楔形-500张
-3. W/M/多重顶/底-500张
-4. 头肩顶/底-500张
 
 ### 新人注意
 
