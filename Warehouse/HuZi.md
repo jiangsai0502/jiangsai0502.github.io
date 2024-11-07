@@ -268,25 +268,25 @@
 
 > 1. 第1止盈位：M/W的1:1
 
-| !          | !                                                            | !                                                            |
-| ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-|            |                                                              |                                                              |
-| W/M + 头肩 | ![image-20241107160901083](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20241107160901083.png) | ![image-20241107173629506](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20241107173629506.png) |
+**W/M + 头肩**
+
+| ![image-20241107174733606](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20241107174733606.png) | ![image-20241107174740598](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20241107174740598.png) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
 
 
 
-| W/M + W/M                                                    | 三角 + 楔形                                                  | W/M + 头肩 |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
-| ![image-20240911181815340](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911181815340.png) | ![image-20240911182838370](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911182838370.png) |            |
-| ![image-20240911181847635](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911181847635.png) | ![image-20240911182745666](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911182745666.png) |            |
-| W/M + 头肩                                                   |                                                              |            |
-| ![image-20241107160901083](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20241107160901083.png) |                                                              |            |
-| ![image-20241107173629506](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20241107173629506.png) |                                                              |            |
-| **W/M + 通道**                                               | **W/M + 旗形**                                               |            |
-| ![image-20240911182359599](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911182359599.png) | ![image-20240911184339756](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911184339756.png) |            |
-| ![image-20240911182330332](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911182330332.png) | ![image-20240911184411926](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911184411926.png) |            |
-|                                                              |                                                              |            |
-|                                                              |                                                              |            |
+| W/M + W/M                                                    | 三角 + 楔形                                                  | W/M + 头肩                                                   |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![image-20240911181815340](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911181815340.png) | ![image-20240911182838370](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911182838370.png) | ![image-20241107174710603](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20241107174710603.png) |
+| ![image-20240911181847635](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911181847635.png) | ![image-20240911182745666](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911182745666.png) | ![image-20241107174623968](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20241107174623968.png) |
+| W/M + 头肩                                                   |                                                              |                                                              |
+| ![image-20241107160901083](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20241107160901083.png) |                                                              |                                                              |
+| ![image-20241107173629506](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20241107173629506.png) |                                                              |                                                              |
+| **W/M + 通道**                                               | **W/M + 旗形**                                               |                                                              |
+| ![image-20240911182359599](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911182359599.png) | ![image-20240911184339756](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911184339756.png) |                                                              |
+| ![image-20240911182330332](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911182330332.png) | ![image-20240911184411926](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911184411926.png) |                                                              |
+|                                                              |                                                              |                                                              |
+|                                                              |                                                              |                                                              |
 
 #### 三角
 
