@@ -53,7 +53,7 @@
 
     > 1. 局域网IP：`ifconfig en0 | grep 'inet' | grep -vE 'inet6'`
     >
-    >    <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200330111301.png" align='left' style="zoom:33%;" />
+    >    ![image-20240909222434731](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240909222434731.png)
     >
     > 2. 外网IP：`curl 'http://httpbin.org/get' -s | grep 'origin'`
 
@@ -65,11 +65,11 @@
     >
     > 3. 获取局域网IP：`ifconfig en0 | grep 'inet' | grep -vE 'inet6'`
     >
-    >    <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200330111301.png" align='left' style="zoom:33%;" />
+    >    ![image-20240909222434731](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240909222434731.png)
     >
     > 4. Ipad浏览器访问：`http://192.168.1.5:8000`
     >
-    >    <img src="https://gitee.com/jiangsai0502/PicBedRepo/raw/master/img/20200330112119.png" style="zoom:33%;" />
+    >    ![image-20240909222654404](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240909222654404.png)
     >
     > 5. 局域网共享Axure原型
     >
@@ -369,13 +369,13 @@
       >
       >   ```python
       >   import os
-      >                       
+      >                           
       >   Voice = "zh-CN-YunjianNeural"
       >   Rate = "+0%"
       >   Volume = "+0%"
-      >                       
+      >                           
       >   Handle_Folder = "/Users/jiangsai/Desktop/1"
-      >                       
+      >                           
       >   # 转换目录内所有单个txt文件为单个mp3音频
       >   for Folder_Path, SonFolders, FileNames in os.walk(Handle_Folder):
       >       for FileName in FileNames:
@@ -581,4 +581,9 @@
               lock_screen()  # 锁屏
       ```
 
-      
+1. Wgetcloud VPN的socket5
+
+      > socks5://127.0.0.1:8234
+
+
+
