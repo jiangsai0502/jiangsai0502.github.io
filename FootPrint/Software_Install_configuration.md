@@ -125,7 +125,7 @@
 >    brew install wget;
 >    export REMOTE=https://gitee.com/imirror/ohmyzsh.git;
 >    sh -c "$(wget -O- https://cdn.jsdelivr.net/gh/ohmyzsh/ohmyzsh/tools/install.sh)";
->                                             
+>                                                
 >    open ~/.zshrc
 >    # 在.zshrc文件中搜索 source $ZSH/oh-my-zsh.sh，在本句之前加一句
 >    ZSH_DISABLE_COMPFIX="true"
@@ -163,7 +163,7 @@
 >
 >    ```
 >    brew install zsh-syntax-highlighting
->                                             
+>                                                
 >    open ~/.zshrc
 >    最后插入一行：source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 >    source ~/.zshrc
@@ -520,10 +520,12 @@
 >
 > 5. grave_accent_and_tilde即键盘esc下方的`
 
-##### 中国大陆无法登陆某些网站（newbing、binance）
-
-> 1. 
-
 ##### PDF增加大纲书签
 
 > ![](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/img/202309201537091.png)
+
+##### getcloud代理地址
+
+> http://127.0.0.1:8234
+>
+> ![image-20241107172851202](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20241107172851202.png)

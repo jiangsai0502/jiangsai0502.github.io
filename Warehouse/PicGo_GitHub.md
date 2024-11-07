@@ -73,7 +73,7 @@
 >
 >    ```bash
 >    sudo vi /etc/hosts    #打开hosts文件
->          
+>             
 >    127.0.0.1	localhost
 >    255.255.255.255	broadcasthost
 >    ::1             localhost
@@ -89,3 +89,8 @@
 >
 > ![](https://gitee.com/jiangsai0502/PicBedRepo/raw/master/20200709230841.png)
 
+### PicGo报错
+
+>Picgo 上传报错：Error connect ETIMEDOUT 20.205.243.168443n at TCPConnectWrap.afterConnect
+>
+>![image-20241107173202457](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20241107173202457.png)

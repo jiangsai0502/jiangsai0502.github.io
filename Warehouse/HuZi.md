@@ -249,13 +249,44 @@
 
 #### W/M
 
-| W/M + W/M                                                    | 三角 + 楔形                                                  | W/M + 头肩                                                   |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![image-20240911181815340](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911181815340.png) | ![image-20240911182838370](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911182838370.png) | ![image-20240911180749221](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911180749221.png) |
-| ![image-20240911181847635](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911181847635.png) | ![image-20240911182745666](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911182745666.png) | ![image-20240911180923350](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911180923350.png) |
-| **W/M + 通道**                                               | **W/M + 旗形**                                               |                                                              |
-| ![image-20240911182359599](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911182359599.png) | ![image-20240911184339756](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911184339756.png) |                                                              |
-| ![image-20240911182330332](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911182330332.png) | ![image-20240911184411926](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911184411926.png) |                                                              |
+> 1. 试仓：头肩顶右肩
+> 2. 仓位：总仓位1%
+> 3. 止损：固定百分比，如10%
+
+> 1. 1st 加仓：颈线蓄势形态的E点（没有E点不加仓)
+> 2. 仓位：总仓位1%
+> 3. 止损
+>    1. 加仓仓位：蓄势形态的止损位止损
+>    2. 试仓仓位：成本线止损
+
+> 1. 2ed加仓：颈线反抽（到颈线就加仓，不用等形态)
+> 2. 仓位：总仓位1%
+> 3. 止损
+>    1. 2d加仓仓位：蓄势形态的止损位止损
+>    2. 1st加仓仓位：成本线止损
+>    3. 试仓仓位：成本线止损
+
+> 1. 第1止盈位：M/W的1:1
+
+| !          | !                                                            | !                                                            |
+| ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+|            |                                                              |                                                              |
+| W/M + 头肩 | ![image-20241107160901083](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20241107160901083.png) | ![image-20241107173629506](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20241107173629506.png) |
+
+
+
+| W/M + W/M                                                    | 三角 + 楔形                                                  | W/M + 头肩 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+| ![image-20240911181815340](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911181815340.png) | ![image-20240911182838370](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911182838370.png) |            |
+| ![image-20240911181847635](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911181847635.png) | ![image-20240911182745666](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911182745666.png) |            |
+| W/M + 头肩                                                   |                                                              |            |
+| ![image-20241107160901083](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20241107160901083.png) |                                                              |            |
+| ![image-20241107173629506](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20241107173629506.png) |                                                              |            |
+| **W/M + 通道**                                               | **W/M + 旗形**                                               |            |
+| ![image-20240911182359599](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911182359599.png) | ![image-20240911184339756](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911184339756.png) |            |
+| ![image-20240911182330332](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911182330332.png) | ![image-20240911184411926](https://raw.githubusercontent.com/jiangsai0502/PicBedRepo/master/image-20240911184411926.png) |            |
+|                                                              |                                                              |            |
+|                                                              |                                                              |            |
 
 #### 三角
 
